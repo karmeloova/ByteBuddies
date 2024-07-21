@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://br5jh3sh28ig4"]
+[gd_scene load_steps=15 format=3 uid="uid://br5jh3sh28ig4"]
 
 [ext_resource type="Texture2D" uid="uid://ddmrcvq0prt24" path="res://Images/Backgrounds/Tlov1.png" id="1_5tq1h"]
 [ext_resource type="Texture2D" uid="uid://ch30i3jkm2643" path="res://Images/Accessories/Drapak3.png" id="2_rsjqa"]
@@ -9,6 +9,10 @@
 [ext_resource type="Texture2D" uid="uid://bcghi5003ch4b" path="res://Images/UI/Necessity.png" id="7_0qgfc"]
 [ext_resource type="Texture2D" uid="uid://ckfgt3ibsoco4" path="res://Images/UI/Under.png" id="8_ic1ir"]
 [ext_resource type="Texture2D" uid="uid://c4oxc1n8q8k35" path="res://Images/UI/Progress.png" id="9_mdr1f"]
+[ext_resource type="Texture2D" uid="uid://dl8dw08og2gr8" path="res://Images/Backgrounds/Placeholder_backgorund_minigames.jpg" id="10_1xqql"]
+[ext_resource type="Script" path="res://Scripts/MinigamesPanel.gd" id="10_j240k"]
+[ext_resource type="Script" path="res://Scripts/MinigameButton.gd" id="11_37ado"]
+[ext_resource type="Script" path="res://Scenes/WalkToTarget.gd" id="12_rck85"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_03gin"]
 font_size = 250
@@ -59,15 +63,15 @@ position = Vector2(118.356, 597.755)
 scale = Vector2(0.0879788, 0.0879788)
 texture = ExtResource("5_qahp6")
 
-[node name="Node2D" type="Node2D" parent="."]
+[node name="Necessities" type="Node2D" parent="."]
 position = Vector2(376, 48)
 scale = Vector2(0.249311, 0.249311)
 script = ExtResource("6_1vdjr")
 
-[node name="Necessity" type="Sprite2D" parent="Node2D"]
+[node name="Necessity" type="Sprite2D" parent="Necessities"]
 texture = ExtResource("7_0qgfc")
 
-[node name="TextureProgressBar" type="TextureProgressBar" parent="Node2D"]
+[node name="TextureProgressBar" type="TextureProgressBar" parent="Necessities"]
 offset_left = -168.464
 offset_top = -168.464
 offset_right = 172.536
@@ -79,6 +83,46 @@ nine_patch_stretch = true
 texture_under = ExtResource("8_ic1ir")
 texture_progress = ExtResource("9_mdr1f")
 
-[node name="Timer" type="Timer" parent="Node2D"]
+[node name="Timer" type="Timer" parent="Necessities"]
 
-[connection signal="timeout" from="Node2D/Timer" to="Node2D" method="_on_timer_timeout"]
+[node name="MinigamesPanel" type="Node2D" parent="."]
+position = Vector2(581, 324)
+script = ExtResource("10_j240k")
+
+[node name="Sprite2D" type="Sprite2D" parent="MinigamesPanel"]
+modulate = Color(1, 1, 1, 0.392157)
+texture = ExtResource("10_1xqql")
+
+[node name="WalkToTarget" type="Node2D" parent="MinigamesPanel"]
+script = ExtResource("12_rck85")
+
+[node name="WalkToTargetLabel" type="Label" parent="MinigamesPanel/WalkToTarget"]
+offset_left = -338.0
+offset_top = -217.0
+offset_right = -298.0
+offset_bottom = -194.0
+scale = Vector2(0.99523, 1.03372)
+theme_override_font_sizes/font_size = 42
+text = "Dojdź do celu"
+
+[node name="WalkToTargetButton" type="Button" parent="MinigamesPanel/WalkToTarget"]
+offset_left = 257.0
+offset_top = -212.0
+offset_right = 325.0
+offset_bottom = -162.0
+theme_override_font_sizes/font_size = 30
+text = "Graj"
+
+[node name="MinigameButton" type="Node2D" parent="."]
+position = Vector2(1100, 596)
+script = ExtResource("11_37ado")
+
+[node name="Button" type="Button" parent="MinigameButton"]
+offset_left = -31.0
+offset_top = -30.0
+offset_right = 41.0
+offset_bottom = 42.0
+
+[connection signal="timeout" from="Necessities/Timer" to="Necessities" method="_on_timer_timeout"]
+[connection signal="pressed" from="MinigamesPanel/WalkToTarget/WalkToTargetButton" to="MinigamesPanel/WalkToTarget" method="_on_walk_to_target_button_pressed"]
+[connection signal="pressed" from="MinigameButton/Button" to="MinigameButton" method="_on_button_pressed"]

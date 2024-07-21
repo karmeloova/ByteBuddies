@@ -1,0 +1,109 @@
+[gd_scene load_steps=8 format=3 uid="uid://d4bs4i6ftyij1"]
+
+[ext_resource type="Script" path="res://Scenes/CodeArea.gd" id="1_mma4l"]
+[ext_resource type="Texture2D" uid="uid://dl8dw08og2gr8" path="res://Images/Backgrounds/Placeholder_backgorund_minigames.jpg" id="1_srog5"]
+[ext_resource type="Script" path="res://Scenes/GameArea.gd" id="3_bxsdk"]
+[ext_resource type="Texture2D" uid="uid://naenhjudkebd" path="res://Images/Backgrounds/BackgroundMiniGameHolders.png" id="4_gta6i"]
+[ext_resource type="Texture2D" uid="uid://hsjbfixtbw5j" path="res://Images/Backgrounds/Tileplaceholder.jpg" id="5_ht5bw"]
+[ext_resource type="Texture2D" uid="uid://xr24310ei2bc" path="res://Images/Backgrounds/LACMTA_Circle_Purple_Line.svg.png" id="6_76sqd"]
+[ext_resource type="Script" path="res://Scenes/PlayerGoToTarget.gd" id="6_biw7u"]
+
+[node name="WalkToTarget" type="Node2D"]
+
+[node name="CodeArea" type="Node2D" parent="."]
+script = ExtResource("1_mma4l")
+
+[node name="Background" type="Sprite2D" parent="CodeArea"]
+modulate = Color(0.752094, 0.598877, 0.641279, 1)
+position = Vector2(214.75, 324.5)
+scale = Vector2(0.582993, 1.32041)
+texture = ExtResource("1_srog5")
+
+[node name="CodeField" type="TextEdit" parent="CodeArea"]
+offset_left = 32.0
+offset_top = 177.0
+offset_right = 396.0
+offset_bottom = 550.0
+
+[node name="ExecuteButton" type="Button" parent="CodeArea"]
+offset_left = 274.0
+offset_top = 576.0
+offset_right = 399.0
+offset_bottom = 627.0
+text = "Wykonaj"
+
+[node name="RestartButton" type="Button" parent="CodeArea"]
+offset_left = 36.0
+offset_top = 577.0
+offset_right = 167.0
+offset_bottom = 629.0
+text = "Restart"
+
+[node name="GameArea" type="Node2D" parent="."]
+script = ExtResource("3_bxsdk")
+
+[node name="GameBackground" type="Sprite2D" parent="GameArea"]
+position = Vector2(791, 322.5)
+scale = Vector2(3.22667, 2.85778)
+texture = ExtResource("4_gta6i")
+
+[node name="Tile1" type="Sprite2D" parent="GameArea"]
+position = Vector2(557, 572)
+scale = Vector2(0.164318, 0.153061)
+texture = ExtResource("5_ht5bw")
+
+[node name="Tile2" type="Sprite2D" parent="GameArea"]
+position = Vector2(557, 479)
+scale = Vector2(0.164318, 0.153061)
+texture = ExtResource("5_ht5bw")
+
+[node name="Tile3" type="Sprite2D" parent="GameArea"]
+position = Vector2(557, 386)
+scale = Vector2(0.164318, 0.153061)
+texture = ExtResource("5_ht5bw")
+
+[node name="Tile4" type="Sprite2D" parent="GameArea"]
+position = Vector2(656, 386)
+scale = Vector2(0.164318, 0.153061)
+texture = ExtResource("5_ht5bw")
+
+[node name="Tile5" type="Sprite2D" parent="GameArea"]
+position = Vector2(757, 386)
+scale = Vector2(0.164318, 0.153061)
+texture = ExtResource("5_ht5bw")
+
+[node name="Tile6" type="Sprite2D" parent="GameArea"]
+position = Vector2(857, 386)
+scale = Vector2(0.164318, 0.153061)
+texture = ExtResource("5_ht5bw")
+
+[node name="Tile7" type="Sprite2D" parent="GameArea"]
+position = Vector2(858, 293)
+scale = Vector2(0.164318, 0.153061)
+texture = ExtResource("5_ht5bw")
+
+[node name="Tile8" type="Sprite2D" parent="GameArea"]
+position = Vector2(858, 199)
+scale = Vector2(0.164318, 0.153061)
+texture = ExtResource("5_ht5bw")
+
+[node name="Tile9" type="Sprite2D" parent="GameArea"]
+position = Vector2(958, 198)
+scale = Vector2(0.164318, 0.153061)
+texture = ExtResource("5_ht5bw")
+
+[node name="Tile10" type="Sprite2D" parent="GameArea"]
+position = Vector2(958, 92.4184)
+scale = Vector2(0.164318, 0.194178)
+texture = ExtResource("5_ht5bw")
+
+[node name="Player" type="Node2D" parent="."]
+script = ExtResource("6_biw7u")
+
+[node name="PlayerSprite" type="Sprite2D" parent="Player"]
+position = Vector2(556, 573)
+scale = Vector2(0.116211, 0.116211)
+texture = ExtResource("6_76sqd")
+
+[connection signal="pressed" from="CodeArea/ExecuteButton" to="CodeArea" method="_on_execute_button_pressed"]
+[connection signal="pressed" from="CodeArea/RestartButton" to="CodeArea" method="_on_restart_button_pressed"]
