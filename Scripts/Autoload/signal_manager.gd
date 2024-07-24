@@ -4,3 +4,5 @@ signal go_forward(steps);
 signal go_right(steps);
 signal go_left(steps);
 signal restart_button();
+signal scratch(value);
+signal changed_needs();

@@ -1,20 +1,27 @@
 extends Node2D
-var img = [load("res://Images/Progress.png"), load("res://Images/Under.png")];
 var dir = 1;
+
+var necessities = {
+	"hungry" : 0,
+	"play" : 0,
+	"scratch" : 0,
+	"sleep" : 0,
+	"clean" : 0
+}
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	$Timer.start(10);
-	$TextureProgressBar.value = VariableManager.hungry;
+	SignalManager.changed_needs.connect(_on_changed_needs)
+	$Timer.start(1);
+	necessities["hungry"] = $Hungry/TextureProgressBar;
+	necessities["play"] = $Play/TextureProgressBar;
+	necessities["scratch"] = $Scratch/TextureProgressBar;
+	necessities["sleep"] = $Sleep/TextureProgressBar;
+	necessities["clean"] = $Cleanliness/TextureProgressBar;
+	
+	for i in necessities :
+		necessities[i].value = VariableManager.needs[i];
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	pass
-
-func _on_timer_timeout():
-	$TextureProgressBar.value += dir*5
-	VariableManager.hungry = $TextureProgressBar.value
-	if($TextureProgressBar.value == 100 or $TextureProgressBar.value == 0) : 
-		dir*=-1;
-	$Timer.start();
-
+func _on_changed_needs() :
+	for i in necessities :
+		necessities[i].value = VariableManager.needs[i];

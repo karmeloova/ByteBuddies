@@ -1,0 +1,38 @@
+[gd_scene load_steps=5 format=3 uid="uid://bn3gwraheq4rb"]
+
+[ext_resource type="Texture2D" uid="uid://ddmrcvq0prt24" path="res://Images/Backgrounds/Tlov1.png" id="1_8y4lk"]
+[ext_resource type="Script" path="res://Scenes/ScratchingPostMiniGame.gd" id="1_eut25"]
+[ext_resource type="Texture2D" uid="uid://ch30i3jkm2643" path="res://Images/Accessories/Drapak3.png" id="2_jci16"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_woekr"]
+size = Vector2(1150, 645)
+
+[node name="ScratchingPost" type="Node2D"]
+
+[node name="Scene" type="Area2D" parent="."]
+script = ExtResource("1_eut25")
+
+[node name="Background" type="Sprite2D" parent="Scene"]
+position = Vector2(577, 322)
+texture = ExtResource("1_8y4lk")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Scene"]
+visible = false
+position = Vector2(575, 321.5)
+shape = SubResource("RectangleShape2D_woekr")
+
+[node name="Drapak3" type="Sprite2D" parent="Scene"]
+position = Vector2(777, 290)
+scale = Vector2(0.350296, 0.350296)
+texture = ExtResource("2_jci16")
+
+[node name="BackButton" type="Button" parent="Scene"]
+offset_left = 12.0
+offset_top = 582.0
+offset_right = 128.0
+offset_bottom = 637.0
+theme_override_font_sizes/font_size = 27
+text = "Powrót"
+
+[connection signal="input_event" from="Scene" to="Scene" method="_on_input_event"]
+[connection signal="pressed" from="Scene/BackButton" to="Scene" method="_on_back_button_pressed"]

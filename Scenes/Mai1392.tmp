@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://br5jh3sh28ig4"]
+[gd_scene load_steps=15 format=3 uid="uid://br5jh3sh28ig4"]
 
 [ext_resource type="Texture2D" uid="uid://ddmrcvq0prt24" path="res://Images/Backgrounds/Tlov1.png" id="1_5tq1h"]
 [ext_resource type="Texture2D" uid="uid://ch30i3jkm2643" path="res://Images/Accessories/Drapak3.png" id="2_rsjqa"]
@@ -13,8 +13,6 @@
 [ext_resource type="Script" path="res://Scripts/MinigamesPanel.gd" id="10_j240k"]
 [ext_resource type="Script" path="res://Scripts/MinigameButton.gd" id="11_37ado"]
 [ext_resource type="Script" path="res://Scenes/WalkToTarget.gd" id="12_rck85"]
-[ext_resource type="Script" path="res://Scenes/Bowl.gd" id="13_gxamd"]
-[ext_resource type="Script" path="res://Scenes/Scratching_post.gd" id="14_7xxgu"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_03gin"]
 font_size = 250
@@ -30,6 +28,11 @@ scale = Vector2(0.190099, 0.190099)
 [node name="Background" type="Sprite2D" parent="Scene"]
 position = Vector2(577, 322)
 texture = ExtResource("1_5tq1h")
+
+[node name="Scratching_post" type="Sprite2D" parent="Scene"]
+position = Vector2(1016, 342)
+scale = Vector2(0.1998, 0.1998)
+texture = ExtResource("2_rsjqa")
 
 [node name="Cat" type="Node2D" parent="."]
 
@@ -54,6 +57,11 @@ offset_right = 31.5413
 offset_bottom = 162.406
 text = "10000"
 label_settings = SubResource("LabelSettings_03gin")
+
+[node name="Miska" type="Sprite2D" parent="."]
+position = Vector2(214, 477)
+scale = Vector2(0.0879788, 0.0879788)
+texture = ExtResource("5_qahp6")
 
 [node name="Necessities" type="Node2D" parent="."]
 position = Vector2(376, 48)
@@ -152,7 +160,6 @@ texture_under = ExtResource("8_ic1ir")
 texture_progress = ExtResource("9_mdr1f")
 
 [node name="MinigamesPanel" type="Node2D" parent="."]
-visible = false
 position = Vector2(581, 324)
 script = ExtResource("10_j240k")
 
@@ -190,53 +197,6 @@ offset_top = -30.0
 offset_right = 41.0
 offset_bottom = 42.0
 
-[node name="Bowl" type="Area2D" parent="."]
-script = ExtResource("13_gxamd")
-
-[node name="Miska" type="Sprite2D" parent="Bowl"]
-self_modulate = Color(0.99558, 0.99558, 0.99558, 1)
-position = Vector2(214, 477)
-scale = Vector2(0.0879788, 0.0879788)
-texture = ExtResource("5_qahp6")
-
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Bowl"]
-visible = false
-polygon = PackedVector2Array(172, 454, 185, 447, 212, 443, 236, 444, 254, 451, 260, 458, 265, 478, 268, 488, 267, 495, 258, 501, 245, 506, 212, 509, 180, 504, 165, 496, 163, 486)
-
-[node name="Fridge" type="Node2D" parent="."]
-visible = false
-
-[node name="Fridge" type="Sprite2D" parent="Fridge"]
-modulate = Color(1, 1, 1, 0.392157)
-position = Vector2(564, 333)
-texture = ExtResource("10_1xqql")
-
-[node name="BackButton" type="Button" parent="Fridge"]
-offset_left = 843.0
-offset_top = 93.0
-offset_right = 925.0
-offset_bottom = 130.0
-theme_override_colors/font_color = Color(1, 1, 1, 1)
-text = "POWRÓT"
-
-[node name="Scratching_post" type="Area2D" parent="."]
-script = ExtResource("14_7xxgu")
-
-[node name="Sprite" type="Sprite2D" parent="Scratching_post"]
-position = Vector2(1016, 342)
-scale = Vector2(0.1998, 0.1998)
-texture = ExtResource("2_rsjqa")
-
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Scratching_post"]
-polygon = PackedVector2Array(919, 245, 932, 226, 965, 216, 1004, 218, 1033, 230, 1039, 246, 1035, 261, 1035, 270, 1019, 281, 995, 286, 994, 454, 1024, 454, 1023, 407, 1025, 393, 1044, 380, 1074, 374, 1098, 376, 1117, 386, 1125, 400, 1124, 411, 1126, 410, 1125, 457, 1135, 468, 1137, 480, 1135, 489, 1127, 498, 1114, 506, 1091, 512, 1061, 513, 913, 513, 912, 503, 939, 455, 961, 455, 962, 284, 939, 279, 924, 269, 923, 262)
-
 [connection signal="timeout" from="Necessities/Timer" to="Necessities" method="_on_timer_timeout"]
 [connection signal="pressed" from="MinigamesPanel/WalkToTarget/WalkToTargetButton" to="MinigamesPanel/WalkToTarget" method="_on_walk_to_target_button_pressed"]
 [connection signal="pressed" from="MinigameButton/Button" to="MinigameButton" method="_on_button_pressed"]
-[connection signal="input_event" from="Bowl" to="Bowl" method="_on_input_event"]
-[connection signal="mouse_entered" from="Bowl" to="Bowl" method="_on_mouse_entered"]
-[connection signal="mouse_exited" from="Bowl" to="Bowl" method="_on_mouse_exited"]
-[connection signal="pressed" from="Fridge/BackButton" to="Bowl" method="_on_back_button_pressed"]
-[connection signal="input_event" from="Scratching_post" to="Scratching_post" method="_on_input_event"]
-[connection signal="mouse_entered" from="Scratching_post" to="Scratching_post" method="_on_mouse_entered"]
-[connection signal="mouse_exited" from="Scratching_post" to="Scratching_post" method="_on_mouse_exited"]
