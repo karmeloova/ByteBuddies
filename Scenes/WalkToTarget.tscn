@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://Scenes/CodeArea.gd" id="1_mma4l"]
 [ext_resource type="Texture2D" uid="uid://dl8dw08og2gr8" path="res://Images/Backgrounds/Placeholder_backgorund_minigames.jpg" id="1_srog5"]
 [ext_resource type="Script" path="res://Scenes/GameArea.gd" id="3_bxsdk"]
-[ext_resource type="Texture2D" uid="uid://naenhjudkebd" path="res://Images/Backgrounds/BackgroundMiniGameHolders.png" id="4_gta6i"]
+[ext_resource type="Texture2D" uid="uid://dpgvthlrc473g" path="res://Images/Tiles/Tile.png" id="4_k4glk"]
 [ext_resource type="Texture2D" uid="uid://hsjbfixtbw5j" path="res://Images/Backgrounds/Tileplaceholder.jpg" id="5_ht5bw"]
 [ext_resource type="Texture2D" uid="uid://xr24310ei2bc" path="res://Images/Backgrounds/LACMTA_Circle_Purple_Line.svg.png" id="6_76sqd"]
 [ext_resource type="Script" path="res://Scenes/PlayerGoToTarget.gd" id="6_biw7u"]
@@ -43,12 +43,13 @@ text = "Restart"
 script = ExtResource("3_bxsdk")
 
 [node name="GameBackground" type="Sprite2D" parent="GameArea"]
-position = Vector2(791, 322.5)
-scale = Vector2(3.22667, 2.85778)
-texture = ExtResource("4_gta6i")
+modulate = Color(0.364706, 0.733333, 0.388235, 1)
+position = Vector2(789, 323.527)
+scale = Vector2(0.354984, 0.315891)
+texture = ExtResource("4_k4glk")
 
 [node name="Tile1" type="Sprite2D" parent="GameArea"]
-position = Vector2(557, 572)
+position = Vector2(557, 571)
 scale = Vector2(0.164318, 0.153061)
 texture = ExtResource("5_ht5bw")
 
@@ -105,5 +106,6 @@ position = Vector2(556, 573)
 scale = Vector2(0.116211, 0.116211)
 texture = ExtResource("6_76sqd")
 
+[connection signal="text_changed" from="CodeArea/CodeField" to="CodeArea" method="_on_code_field_text_changed"]
 [connection signal="pressed" from="CodeArea/ExecuteButton" to="CodeArea" method="_on_execute_button_pressed"]
 [connection signal="pressed" from="CodeArea/RestartButton" to="CodeArea" method="_on_restart_button_pressed"]
