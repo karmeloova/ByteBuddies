@@ -6,3 +6,4 @@ signal go_left(steps);
 signal restart_button();
 signal scratch(value);
 signal changed_needs();
+signal set_player_pos(position);

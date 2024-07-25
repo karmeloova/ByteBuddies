@@ -1,0 +1,28 @@
+[gd_scene load_steps=4 format=3 uid="uid://ceowbu4jravbh"]
+
+[ext_resource type="Texture2D" uid="uid://dbl3gdu16nsd1" path="res://Images/Tiles/myTIle.png" id="1_mimsp"]
+[ext_resource type="Script" path="res://Scenes/Tiles.gd" id="1_q1j0o"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_lm8e3"]
+size = Vector2(1252, 1244)
+
+[node name="Tiles" type="Area2D"]
+modulate = Color(0.903598, 0.903598, 0.903598, 1)
+scale = Vector2(0.065, 0.065)
+script = ExtResource("1_q1j0o")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+modulate = Color(0.545098, 0.278431, 0.14902, 1)
+scale = Vector2(0.608887, 0.608887)
+texture = ExtResource("1_mimsp")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(1, 2)
+shape = SubResource("RectangleShape2D_lm8e3")
+
+[node name="Label" type="Label" parent="."]
+offset_left = -154.0
+offset_top = -154.0
+offset_right = 154.0
+offset_bottom = 169.0
+theme_override_font_sizes/font_size = 200
