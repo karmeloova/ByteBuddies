@@ -9,6 +9,7 @@ size = Vector2(1252, 1244)
 [node name="Tiles" type="Area2D"]
 modulate = Color(0.903598, 0.903598, 0.903598, 1)
 scale = Vector2(0.065, 0.065)
+collision_priority = 10.0
 script = ExtResource("1_q1j0o")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]

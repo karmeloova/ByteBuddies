@@ -43,6 +43,7 @@ func _on_code_to_make():
 		else : 
 			tab_of_instructions.append(instruction);
 			instruction = "";
+	tab_of_instructions.append("end");
 	make_move();
 
 func make_move() :
@@ -55,6 +56,8 @@ func make_move() :
 			SignalManager.go_left.emit(steps);
 		if(tab_of_instructions[i].contains("right")) : 
 			SignalManager.go_right.emit(steps);
+		if(tab_of_instructions[i].contains("end")) :
+			SignalManager.end_code.emit();
 		
 func _on_restart_button() :
 	tab_of_instructions = [];
@@ -178,3 +181,5 @@ func generate_board_again() :
 	first = true;
 	niebedeliczyl = 0;
 	generateBoard();
+
+
