@@ -4,7 +4,7 @@ var code;
 
 func _ready():
 	$ExecuteButton.disabled = true;
-
+	SignalManager.moveEnd.connect(_on_end_move)
 
 func _on_execute_button_pressed():
 	$CodeField.editable = false;
@@ -17,8 +17,13 @@ func _on_restart_button_pressed():
 	$CodeField.editable = true;
 	SignalManager.restart_button.emit();
 
-
 func _on_code_field_text_changed():
 	if($CodeField.text.length() > 0) : $ExecuteButton.disabled = false;
 	else : $ExecuteButton.disabled = true;
+
+func _on_end_move() :
+	$ExecuteButton.disabled = true;
+	$PlayerCode.text += $CodeField.text + "\n"
+	$CodeField.clear();
+	$CodeField.editable = true;
 

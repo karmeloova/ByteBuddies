@@ -9,3 +9,5 @@ signal scratch(value);
 signal changed_needs();
 signal set_player_pos(position);
 signal loseLife();
+signal nextLevel();
+signal moveEnd();

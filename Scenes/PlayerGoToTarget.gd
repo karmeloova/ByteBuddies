@@ -24,7 +24,6 @@ func _on_go_forward(steps) :
 func _on_go_right(steps) :
 	for i in range(steps) :
 		instructions_tab.append("right");
-	
 
 func _on_go_left(steps) :
 	for i in range(steps) :
@@ -35,7 +34,7 @@ func _on_end_code() :
 	$TweenWaiter.start(0.01);
 
 func _on_restart_button_():
-	position = VariableManager.start_position;
+	restart();
 
 func _on_tween_waiter_timeout():
 	if(steps_counter < instructions_tab.size()) :
@@ -54,9 +53,17 @@ func _on_tween_waiter_timeout():
 			$TweenWaiter.start(0.25)
 		$CollWaiter.start(0.15)
 		steps_counter += 1;
+	else : 
+		coll = 0;
+		steps_counter = 0;
+		instructions_tab = [];
+		SignalManager.moveEnd.emit();
 
 func _on_area_entered(area):
 	if(moved) : coll += 1;
+	if(area.name.contains("Last_tile")) : 
+		print("Gratki, doszedłeś do końca!")
+		$NextLevelWaiter.start(1);
 
 func checkColl() :
 	if(steps_counter > coll) : 
@@ -78,4 +85,6 @@ func restart() :
 	steps_counter = 0
 	moved = false;
 
-
+func _on_next_level_waiter_timeout():
+	SignalManager.nextLevel.emit();
+	restart();
