@@ -5,6 +5,7 @@ var tween;
 var instructions_tab = [];
 var steps_counter = 0
 var moved = false;
+var game_pause;
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -14,8 +15,10 @@ func _ready():
 	SignalManager.go_forward.connect(_on_go_forward);
 	SignalManager.go_right.connect(_on_go_right);
 	SignalManager.go_left.connect(_on_go_left);
-	SignalManager.restart_button.connect(_on_restart_button_)
+	SignalManager.restartGame.connect(_on_restart_game_)
 	SignalManager.end_code.connect(_on_end_code)
+	SignalManager.stopGame.connect(_on_stop_game)
+	SignalManager.startGameAfterPause.connect(_on_start_game_after_pause)
 
 func _on_go_forward(steps) :
 	for i in range(steps) :
@@ -33,7 +36,7 @@ func _on_end_code() :
 	moved = true;
 	$TweenWaiter.start(0.01);
 
-func _on_restart_button_():
+func _on_restart_game_():
 	restart();
 
 func _on_tween_waiter_timeout():
@@ -66,16 +69,17 @@ func _on_area_entered(area):
 		$NextLevelWaiter.start(1);
 
 func checkColl() :
-	if(steps_counter > coll) : 
+	if(steps_counter > coll and not(game_pause)) : 
 		$TweenWaiter.stop();
 		$RestartWaiter.start(1);
-		SignalManager.loseLife.emit();
+		print("Steps: ", steps_counter, " Coll: ", coll)
 		print("Zle poszedles mordo")
 
 func _on_coll_waiter_timeout():
 	checkColl()
 
 func _on_restart_waiter_timeout():
+	SignalManager.loseLife.emit();
 	restart();
 
 func restart() :
@@ -88,3 +92,17 @@ func restart() :
 func _on_next_level_waiter_timeout():
 	SignalManager.nextLevel.emit();
 	restart();
+
+func _on_stop_game() :
+	if(moved) :
+		$TweenWaiter.stop();
+		tween.pause();
+	game_pause = true;
+
+func _on_start_game_after_pause():
+	if(moved) :
+		$TweenWaiter.start();
+		print($TweenWaiter.time_left);
+		tween.play();
+	game_pause = false;
+

@@ -16,3 +16,4 @@ func _process(delta):
 func _on_lose_life() :
 	lives -= 1;
 	$LivesLabel.text = "Życia: " + str(lives);
+	if(lives == 0) : SignalManager.loseGame.emit();

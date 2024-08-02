@@ -152,7 +152,6 @@ texture_under = ExtResource("8_ic1ir")
 texture_progress = ExtResource("9_mdr1f")
 
 [node name="MinigamesPanel" type="Node2D" parent="."]
-visible = false
 position = Vector2(581, 324)
 script = ExtResource("10_j240k")
 
@@ -177,6 +176,26 @@ offset_left = 257.0
 offset_top = -212.0
 offset_right = 325.0
 offset_bottom = -162.0
+theme_override_font_sizes/font_size = 30
+text = "Graj"
+
+[node name="CatHop" type="Node2D" parent="MinigamesPanel"]
+
+[node name="CatHopLabel" type="Label" parent="MinigamesPanel/CatHop"]
+offset_left = -338.0
+offset_top = -147.0
+offset_right = -65.0
+offset_bottom = -89.0
+scale = Vector2(0.99523, 1.03372)
+theme_override_font_sizes/font_size = 42
+text = "CatHop
+"
+
+[node name="CatHopButton" type="Button" parent="MinigamesPanel/CatHop"]
+offset_left = 257.0
+offset_top = -153.0
+offset_right = 325.0
+offset_bottom = -103.0
 theme_override_font_sizes/font_size = 30
 text = "Graj"
 
@@ -232,6 +251,7 @@ polygon = PackedVector2Array(919, 245, 932, 226, 965, 216, 1004, 218, 1033, 230,
 
 [connection signal="timeout" from="Necessities/Timer" to="Necessities" method="_on_timer_timeout"]
 [connection signal="pressed" from="MinigamesPanel/WalkToTarget/WalkToTargetButton" to="MinigamesPanel/WalkToTarget" method="_on_walk_to_target_button_pressed"]
+[connection signal="pressed" from="MinigamesPanel/CatHop/CatHopButton" to="MinigamesPanel/WalkToTarget" method="_on_walk_to_target_button_pressed"]
 [connection signal="pressed" from="MinigameButton/Button" to="MinigameButton" method="_on_button_pressed"]
 [connection signal="input_event" from="Bowl" to="Bowl" method="_on_input_event"]
 [connection signal="mouse_entered" from="Bowl" to="Bowl" method="_on_mouse_entered"]

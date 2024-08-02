@@ -13,7 +13,7 @@ var tile = preload("res://Scenes/Tiles.tscn");
 func _ready():
 	
 	SignalManager.code_to_make.connect(_on_code_to_make);
-	SignalManager.restart_button.connect(_on_restart_button)
+	SignalManager.restartGame.connect(_on_restart_button)
 	
 	SignalManager.moveEnd.connect(_on_end_move)
 	
