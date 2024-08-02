@@ -21,3 +21,8 @@ SaveManager="*res://Scripts/Autoload/save_manager.gd"
 SignalManager="*res://Scripts/Autoload/signal_manager.gd"
 VariableManager="*res://Scripts/Autoload/variable_manager.gd"
 Needs="*res://needs.gd"
+
+[layer_names]
+
+2d_physics/layer_1="World"
+2d_physics/layer_2="Board"

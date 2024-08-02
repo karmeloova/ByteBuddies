@@ -8,4 +8,7 @@ var needs = {
 	"clean" : 0
 }
 
+var tile_size;
+var start_position;
+
 var code;

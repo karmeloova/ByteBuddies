@@ -1,0 +1,125 @@
+[gd_scene load_steps=11 format=3 uid="uid://d4bs4i6ftyij1"]
+
+[ext_resource type="Script" path="res://Scenes/CodeArea.gd" id="1_mma4l"]
+[ext_resource type="Texture2D" uid="uid://dl8dw08og2gr8" path="res://Images/Backgrounds/Placeholder_backgorund_minigames.jpg" id="1_srog5"]
+[ext_resource type="Script" path="res://Scenes/GameArea.gd" id="3_bxsdk"]
+[ext_resource type="Texture2D" uid="uid://dpgvthlrc473g" path="res://Images/Tiles/Tile.png" id="4_k4glk"]
+[ext_resource type="Texture2D" uid="uid://xr24310ei2bc" path="res://Images/Backgrounds/LACMTA_Circle_Purple_Line.svg.png" id="6_76sqd"]
+[ext_resource type="Script" path="res://Scenes/PlayerGoToTarget.gd" id="6_biw7u"]
+[ext_resource type="Script" path="res://Scenes/Lives.gd" id="7_uu7bw"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_qkeyp"]
+radius = 30.0167
+
+[sub_resource type="Animation" id="Animation_7fu57"]
+resource_name = "go_forward"
+length = 2.0
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(),
+"points": PackedFloat32Array(),
+"times": PackedFloat32Array()
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:position:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(-2, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0.2)
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_x3sg1"]
+_data = {
+"go_forward": SubResource("Animation_7fu57")
+}
+
+[node name="WalkToTarget" type="Node2D"]
+
+[node name="CodeArea" type="Node2D" parent="."]
+script = ExtResource("1_mma4l")
+
+[node name="Background" type="Sprite2D" parent="CodeArea"]
+modulate = Color(0.752094, 0.598877, 0.641279, 1)
+position = Vector2(253.75, 324.5)
+scale = Vector2(0.689116, 1.32041)
+texture = ExtResource("1_srog5")
+
+[node name="CodeField" type="TextEdit" parent="CodeArea"]
+offset_left = 75.0
+offset_top = 161.0
+offset_right = 439.0
+offset_bottom = 534.0
+
+[node name="ExecuteButton" type="Button" parent="CodeArea"]
+offset_left = 314.0
+offset_top = 558.0
+offset_right = 439.0
+offset_bottom = 609.0
+text = "Wykonaj"
+
+[node name="RestartButton" type="Button" parent="CodeArea"]
+offset_left = 78.0
+offset_top = 552.0
+offset_right = 209.0
+offset_bottom = 604.0
+text = "Restart"
+
+[node name="Background" type="Node2D" parent="."]
+
+[node name="GameBackground" type="Sprite2D" parent="Background"]
+modulate = Color(0.468015, 0.897566, 0.49354, 1)
+position = Vector2(830, 325)
+scale = Vector2(0.316, 0.316)
+texture = ExtResource("4_k4glk")
+
+[node name="GameArea" type="Node2D" parent="."]
+script = ExtResource("3_bxsdk")
+
+[node name="Player" type="CharacterBody2D" parent="."]
+script = ExtResource("6_biw7u")
+
+[node name="PlayerSprite" type="Sprite2D" parent="Player"]
+scale = Vector2(0.116211, 0.116211)
+texture = ExtResource("6_76sqd")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
+shape = SubResource("CircleShape2D_qkeyp")
+
+[node name="CollWaiter" type="Timer" parent="Player"]
+one_shot = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Player"]
+libraries = {
+"": SubResource("AnimationLibrary_x3sg1")
+}
+
+[node name="Lives" type="Node2D" parent="."]
+script = ExtResource("7_uu7bw")
+
+[node name="LivesLabel" type="Label" parent="Lives"]
+offset_left = 35.0
+offset_top = 12.0
+offset_right = 175.0
+offset_bottom = 48.0
+theme_override_font_sizes/font_size = 30
+text = "Życia: "
+
+[node name="Lose" type="Node2D" parent="."]
+
+[node name="LoseLabel" type="Label" parent="Lose"]
+offset_right = 40.0
+offset_bottom = 23.0
+
+[connection signal="text_changed" from="CodeArea/CodeField" to="CodeArea" method="_on_code_field_text_changed"]
+[connection signal="pressed" from="CodeArea/ExecuteButton" to="CodeArea" method="_on_execute_button_pressed"]
+[connection signal="pressed" from="CodeArea/RestartButton" to="CodeArea" method="_on_restart_button_pressed"]
+[connection signal="timeout" from="Player/CollWaiter" to="Player" method="_on_coll_waiter_timeout"]

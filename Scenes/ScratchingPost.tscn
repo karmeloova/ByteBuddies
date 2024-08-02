@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://bn3gwraheq4rb"]
+[gd_scene load_steps=5 format=3 uid="uid://chwa6iprveskn"]
 
 [ext_resource type="Texture2D" uid="uid://ddmrcvq0prt24" path="res://Images/Backgrounds/Tlov1.png" id="1_8y4lk"]
 [ext_resource type="Script" path="res://Scenes/ScratchingPostMiniGame.gd" id="1_eut25"]

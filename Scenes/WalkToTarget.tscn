@@ -1,12 +1,21 @@
-[gd_scene load_steps=8 format=3 uid="uid://d4bs4i6ftyij1"]
+[gd_scene load_steps=14 format=3 uid="uid://d4bs4i6ftyij1"]
 
 [ext_resource type="Script" path="res://Scenes/CodeArea.gd" id="1_mma4l"]
 [ext_resource type="Texture2D" uid="uid://dl8dw08og2gr8" path="res://Images/Backgrounds/Placeholder_backgorund_minigames.jpg" id="1_srog5"]
 [ext_resource type="Script" path="res://Scenes/GameArea.gd" id="3_bxsdk"]
 [ext_resource type="Texture2D" uid="uid://dpgvthlrc473g" path="res://Images/Tiles/Tile.png" id="4_k4glk"]
-[ext_resource type="Texture2D" uid="uid://hsjbfixtbw5j" path="res://Images/Backgrounds/Tileplaceholder.jpg" id="5_ht5bw"]
+[ext_resource type="Script" path="res://Scenes/GenerateBoard.gd" id="5_ds08a"]
 [ext_resource type="Texture2D" uid="uid://xr24310ei2bc" path="res://Images/Backgrounds/LACMTA_Circle_Purple_Line.svg.png" id="6_76sqd"]
 [ext_resource type="Script" path="res://Scenes/PlayerGoToTarget.gd" id="6_biw7u"]
+[ext_resource type="Script" path="res://Scenes/Lives.gd" id="7_uu7bw"]
+[ext_resource type="Texture2D" uid="uid://b417hifsytge3" path="res://Images/Accessories/Miska.png" id="8_xx3rc"]
+[ext_resource type="Script" path="res://Scenes/Layout.gd" id="9_krsfa"]
+[ext_resource type="Script" path="res://Scenes/Lose.gd" id="11_ua1wu"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_qkeyp"]
+radius = 30.0167
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_1wdm2"]
 
 [node name="WalkToTarget" type="Node2D"]
 
@@ -15,97 +24,182 @@ script = ExtResource("1_mma4l")
 
 [node name="Background" type="Sprite2D" parent="CodeArea"]
 modulate = Color(0.752094, 0.598877, 0.641279, 1)
-position = Vector2(214.75, 324.5)
-scale = Vector2(0.582993, 1.32041)
+position = Vector2(253.75, 324.5)
+scale = Vector2(0.689116, 1.32041)
 texture = ExtResource("1_srog5")
 
 [node name="CodeField" type="TextEdit" parent="CodeArea"]
-offset_left = 32.0
-offset_top = 177.0
-offset_right = 396.0
-offset_bottom = 550.0
+offset_left = 14.0
+offset_top = 141.0
+offset_right = 304.0
+offset_bottom = 514.0
 
 [node name="ExecuteButton" type="Button" parent="CodeArea"]
-offset_left = 274.0
-offset_top = 576.0
-offset_right = 399.0
-offset_bottom = 627.0
+offset_left = 99.0
+offset_top = 527.0
+offset_right = 224.0
+offset_bottom = 578.0
 text = "Wykonaj"
 
-[node name="RestartButton" type="Button" parent="CodeArea"]
-offset_left = 36.0
-offset_top = 577.0
-offset_right = 167.0
-offset_bottom = 629.0
-text = "Restart"
+[node name="PlayerCode" type="Label" parent="CodeArea"]
+offset_left = 315.0
+offset_top = 142.0
+offset_right = 498.0
+offset_bottom = 577.0
+theme_override_font_sizes/font_size = 20
+
+[node name="Background" type="Node2D" parent="."]
+
+[node name="GameBackground" type="Sprite2D" parent="Background"]
+modulate = Color(0.468015, 0.897566, 0.49354, 1)
+position = Vector2(830, 325)
+scale = Vector2(0.316, 0.316)
+texture = ExtResource("4_k4glk")
 
 [node name="GameArea" type="Node2D" parent="."]
 script = ExtResource("3_bxsdk")
 
-[node name="GameBackground" type="Sprite2D" parent="GameArea"]
-modulate = Color(0.364706, 0.733333, 0.388235, 1)
-position = Vector2(789, 323.527)
-scale = Vector2(0.354984, 0.315891)
-texture = ExtResource("4_k4glk")
+[node name="Board" type="Node2D" parent="."]
+script = ExtResource("5_ds08a")
 
-[node name="Tile1" type="Sprite2D" parent="GameArea"]
-position = Vector2(557, 571)
-scale = Vector2(0.164318, 0.153061)
-texture = ExtResource("5_ht5bw")
-
-[node name="Tile2" type="Sprite2D" parent="GameArea"]
-position = Vector2(557, 479)
-scale = Vector2(0.164318, 0.153061)
-texture = ExtResource("5_ht5bw")
-
-[node name="Tile3" type="Sprite2D" parent="GameArea"]
-position = Vector2(557, 386)
-scale = Vector2(0.164318, 0.153061)
-texture = ExtResource("5_ht5bw")
-
-[node name="Tile4" type="Sprite2D" parent="GameArea"]
-position = Vector2(656, 386)
-scale = Vector2(0.164318, 0.153061)
-texture = ExtResource("5_ht5bw")
-
-[node name="Tile5" type="Sprite2D" parent="GameArea"]
-position = Vector2(757, 386)
-scale = Vector2(0.164318, 0.153061)
-texture = ExtResource("5_ht5bw")
-
-[node name="Tile6" type="Sprite2D" parent="GameArea"]
-position = Vector2(857, 386)
-scale = Vector2(0.164318, 0.153061)
-texture = ExtResource("5_ht5bw")
-
-[node name="Tile7" type="Sprite2D" parent="GameArea"]
-position = Vector2(858, 293)
-scale = Vector2(0.164318, 0.153061)
-texture = ExtResource("5_ht5bw")
-
-[node name="Tile8" type="Sprite2D" parent="GameArea"]
-position = Vector2(858, 199)
-scale = Vector2(0.164318, 0.153061)
-texture = ExtResource("5_ht5bw")
-
-[node name="Tile9" type="Sprite2D" parent="GameArea"]
-position = Vector2(958, 198)
-scale = Vector2(0.164318, 0.153061)
-texture = ExtResource("5_ht5bw")
-
-[node name="Tile10" type="Sprite2D" parent="GameArea"]
-position = Vector2(958, 92.4184)
-scale = Vector2(0.164318, 0.194178)
-texture = ExtResource("5_ht5bw")
-
-[node name="Player" type="Node2D" parent="."]
+[node name="Player" type="Area2D" parent="."]
+position = Vector2(0, -2)
 script = ExtResource("6_biw7u")
 
 [node name="PlayerSprite" type="Sprite2D" parent="Player"]
-position = Vector2(556, 573)
 scale = Vector2(0.116211, 0.116211)
 texture = ExtResource("6_76sqd")
 
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
+shape = SubResource("CircleShape2D_qkeyp")
+
+[node name="CollWaiter" type="Timer" parent="Player"]
+one_shot = true
+
+[node name="TweenWaiter" type="Timer" parent="Player"]
+one_shot = true
+
+[node name="RestartWaiter" type="Timer" parent="Player"]
+one_shot = true
+
+[node name="NextLevelWaiter" type="Timer" parent="Player"]
+one_shot = true
+
+[node name="Bowl" type="Node2D" parent="."]
+
+[node name="Miska" type="Sprite2D" parent="Bowl"]
+position = Vector2(1.19209e-07, -1)
+scale = Vector2(0.0583366, 0.0583366)
+texture = ExtResource("8_xx3rc")
+
+[node name="Layout" type="Node2D" parent="."]
+script = ExtResource("9_krsfa")
+
+[node name="Lives" type="Node2D" parent="Layout"]
+script = ExtResource("7_uu7bw")
+
+[node name="LivesLabel" type="Label" parent="Layout/Lives"]
+offset_left = 153.0
+offset_top = 3.0
+offset_right = 293.0
+offset_bottom = 45.0
+theme_override_font_sizes/font_size = 30
+text = "Życia: "
+
+[node name="Lose" type="Node2D" parent="Layout"]
+script = ExtResource("11_ua1wu")
+
+[node name="Menu" type="Sprite2D" parent="Layout/Lose"]
+modulate = Color(1, 1, 1, 0.392157)
+position = Vector2(580.609, 336)
+scale = Vector2(1.31535, 1.0898)
+texture = ExtResource("1_srog5")
+
+[node name="LoseLabel" type="Label" parent="Layout/Lose"]
+offset_left = 201.0
+offset_top = 128.0
+offset_right = 945.0
+offset_bottom = 265.0
+theme_override_font_sizes/font_size = 100
+text = "Przegrałeś"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="BackButton" type="Button" parent="Layout/Lose"]
+offset_left = 108.0
+offset_top = 77.0
+offset_right = 210.0
+offset_bottom = 128.0
+theme_override_font_sizes/font_size = 25
+text = "Powrót"
+
+[node name="RestartButton" type="Button" parent="Layout/Lose"]
+offset_left = 457.0
+offset_top = 284.0
+offset_right = 686.0
+offset_bottom = 349.0
+theme_override_font_sizes/font_size = 25
+text = "Zagraj ponownie"
+
+[node name="Pause" type="Node2D" parent="Layout"]
+
+[node name="PauseButton" type="Button" parent="Layout/Pause"]
+offset_left = 12.0
+offset_top = 10.0
+offset_right = 52.0
+offset_bottom = 48.0
+
+[node name="PauseMenu" type="Node2D" parent="Layout/Pause"]
+visible = false
+
+[node name="Menu" type="Sprite2D" parent="Layout/Pause/PauseMenu"]
+modulate = Color(1, 1, 1, 0.392157)
+position = Vector2(572.486, 312.906)
+scale = Vector2(0.401748, 0.673087)
+texture = ExtResource("1_srog5")
+
+[node name="BackButton" type="Button" parent="Layout/Pause/PauseMenu"]
+modulate = Color(0, 0, 0, 0.623529)
+material = SubResource("CanvasItemMaterial_1wdm2")
+offset_left = 486.0
+offset_top = 220.812
+offset_right = 661.0
+offset_bottom = 275.813
+theme_override_font_sizes/font_size = 30
+text = "Wróć"
+
+[node name="RestartButton" type="Button" parent="Layout/Pause/PauseMenu"]
+modulate = Color(0, 0, 0, 0.623529)
+material = SubResource("CanvasItemMaterial_1wdm2")
+offset_left = 486.0
+offset_top = 286.813
+offset_right = 661.0
+offset_bottom = 341.813
+theme_override_font_sizes/font_size = 30
+text = "Restart"
+
+[node name="QuitButton" type="Button" parent="Layout/Pause/PauseMenu"]
+modulate = Color(0, 0, 0, 0.623529)
+material = SubResource("CanvasItemMaterial_1wdm2")
+offset_left = 486.0
+offset_top = 354.813
+offset_right = 661.0
+offset_bottom = 409.813
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 30
+text = "Wyjdź"
+
 [connection signal="text_changed" from="CodeArea/CodeField" to="CodeArea" method="_on_code_field_text_changed"]
 [connection signal="pressed" from="CodeArea/ExecuteButton" to="CodeArea" method="_on_execute_button_pressed"]
-[connection signal="pressed" from="CodeArea/RestartButton" to="CodeArea" method="_on_restart_button_pressed"]
+[connection signal="area_entered" from="Player" to="Player" method="_on_area_entered"]
+[connection signal="area_exited" from="Player" to="Player" method="_on_area_exited"]
+[connection signal="timeout" from="Player/CollWaiter" to="Player" method="_on_coll_waiter_timeout"]
+[connection signal="timeout" from="Player/TweenWaiter" to="Player" method="_on_tween_waiter_timeout"]
+[connection signal="timeout" from="Player/RestartWaiter" to="Player" method="_on_restart_waiter_timeout"]
+[connection signal="timeout" from="Player/NextLevelWaiter" to="Player" method="_on_next_level_waiter_timeout"]
+[connection signal="pressed" from="Layout/Lose/BackButton" to="Layout/Lose" method="_on_back_button_pressed"]
+[connection signal="pressed" from="Layout/Lose/RestartButton" to="Layout/Lose" method="_on_restart_button_pressed"]
+[connection signal="pressed" from="Layout/Pause/PauseButton" to="Layout" method="_on_pause_button_pressed"]
+[connection signal="pressed" from="Layout/Pause/PauseMenu/BackButton" to="Layout" method="_on_back_button_pressed"]
+[connection signal="pressed" from="Layout/Pause/PauseMenu/RestartButton" to="Layout" method="_on_restart_button_pressed"]
+[connection signal="pressed" from="Layout/Pause/PauseMenu/QuitButton" to="Layout" method="_on_quit_button_pressed"]
