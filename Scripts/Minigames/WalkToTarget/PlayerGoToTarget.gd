@@ -12,27 +12,13 @@ func _ready():
 	start_position = position
 	position = VariableManager.start_position
 	
-	SignalManager.go_forward.connect(_on_go_forward);
-	SignalManager.go_right.connect(_on_go_right);
-	SignalManager.go_left.connect(_on_go_left);
 	SignalManager.restartGame.connect(_on_restart_game_)
-	SignalManager.end_code.connect(_on_end_code)
 	SignalManager.stopGame.connect(_on_stop_game)
 	SignalManager.startGameAfterPause.connect(_on_start_game_after_pause)
+	SignalManager.makeMove.connect(_on_make_move)
 
-func _on_go_forward(steps) :
-	for i in range(steps) :
-		instructions_tab.append("forward");
-	
-func _on_go_right(steps) :
-	for i in range(steps) :
-		instructions_tab.append("right");
-
-func _on_go_left(steps) :
-	for i in range(steps) :
-		instructions_tab.append("left");
-
-func _on_end_code() :
+func _on_make_move(tab_of_instructions) :
+	instructions_tab = tab_of_instructions;
 	moved = true;
 	$TweenWaiter.start(0.01);
 
@@ -105,4 +91,3 @@ func _on_start_game_after_pause():
 		print($TweenWaiter.time_left);
 		tween.play();
 	game_pause = false;
-

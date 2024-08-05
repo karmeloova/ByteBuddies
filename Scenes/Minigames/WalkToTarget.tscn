@@ -1,16 +1,18 @@
-[gd_scene load_steps=14 format=3 uid="uid://d4bs4i6ftyij1"]
+[gd_scene load_steps=16 format=3 uid="uid://d4bs4i6ftyij1"]
 
-[ext_resource type="Script" path="res://Scenes/CodeArea.gd" id="1_mma4l"]
-[ext_resource type="Texture2D" uid="uid://dl8dw08og2gr8" path="res://Images/Backgrounds/Placeholder_backgorund_minigames.jpg" id="1_srog5"]
-[ext_resource type="Script" path="res://Scenes/GameArea.gd" id="3_bxsdk"]
-[ext_resource type="Texture2D" uid="uid://dpgvthlrc473g" path="res://Images/Tiles/Tile.png" id="4_k4glk"]
-[ext_resource type="Script" path="res://Scenes/GenerateBoard.gd" id="5_ds08a"]
-[ext_resource type="Texture2D" uid="uid://xr24310ei2bc" path="res://Images/Backgrounds/LACMTA_Circle_Purple_Line.svg.png" id="6_76sqd"]
-[ext_resource type="Script" path="res://Scenes/PlayerGoToTarget.gd" id="6_biw7u"]
-[ext_resource type="Script" path="res://Scenes/Lives.gd" id="7_uu7bw"]
-[ext_resource type="Texture2D" uid="uid://b417hifsytge3" path="res://Images/Accessories/Miska.png" id="8_xx3rc"]
-[ext_resource type="Script" path="res://Scenes/Layout.gd" id="9_krsfa"]
-[ext_resource type="Script" path="res://Scenes/Lose.gd" id="11_ua1wu"]
+[ext_resource type="Script" path="res://Scripts/Minigames/WalkToTarget/CodeArea.gd" id="1_dto5f"]
+[ext_resource type="Texture2D" uid="uid://dl8dw08og2gr8" path="res://Images/Backgrounds/Placeholder_backgorund_minigames.jpg" id="2_jbpt1"]
+[ext_resource type="Texture2D" uid="uid://dpgvthlrc473g" path="res://Images/Tiles/Tile.png" id="3_631bc"]
+[ext_resource type="Script" path="res://Scripts/Minigames/WalkToTarget/CodeTest.gd" id="4_8jv00"]
+[ext_resource type="Script" path="res://Scripts/Minigames/WalkToTarget/GenerateBoard.gd" id="5_y7m5q"]
+[ext_resource type="Script" path="res://Scripts/Minigames/WalkToTarget/PlayerGoToTarget.gd" id="6_uoexw"]
+[ext_resource type="Texture2D" uid="uid://xr24310ei2bc" path="res://Images/Backgrounds/LACMTA_Circle_Purple_Line.svg.png" id="7_g0173"]
+[ext_resource type="Texture2D" uid="uid://b417hifsytge3" path="res://Images/Accessories/Miska.png" id="8_sigdh"]
+[ext_resource type="Script" path="res://Scripts/Minigames/WalkToTarget/Layout.gd" id="9_mabsa"]
+[ext_resource type="Script" path="res://Scripts/Minigames/WalkToTarget/Lives.gd" id="10_1r340"]
+[ext_resource type="Script" path="res://Scripts/Minigames/WalkToTarget/Lose.gd" id="11_m3308"]
+[ext_resource type="FontFile" uid="uid://ccgpsjqwwow8o" path="res://Fonts/Bubblegum.ttf" id="12_pdcmy"]
+[ext_resource type="Texture2D" uid="uid://o332hh7r7y4y" path="res://Images/UI/Button.png" id="12_ri7d6"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_qkeyp"]
 radius = 30.0167
@@ -20,13 +22,13 @@ radius = 30.0167
 [node name="WalkToTarget" type="Node2D"]
 
 [node name="CodeArea" type="Node2D" parent="."]
-script = ExtResource("1_mma4l")
+script = ExtResource("1_dto5f")
 
 [node name="Background" type="Sprite2D" parent="CodeArea"]
 modulate = Color(0.752094, 0.598877, 0.641279, 1)
 position = Vector2(253.75, 324.5)
 scale = Vector2(0.689116, 1.32041)
-texture = ExtResource("1_srog5")
+texture = ExtResource("2_jbpt1")
 
 [node name="CodeField" type="TextEdit" parent="CodeArea"]
 offset_left = 14.0
@@ -54,21 +56,21 @@ theme_override_font_sizes/font_size = 20
 modulate = Color(0.468015, 0.897566, 0.49354, 1)
 position = Vector2(830, 325)
 scale = Vector2(0.316, 0.316)
-texture = ExtResource("4_k4glk")
+texture = ExtResource("3_631bc")
 
 [node name="GameArea" type="Node2D" parent="."]
-script = ExtResource("3_bxsdk")
+script = ExtResource("4_8jv00")
 
 [node name="Board" type="Node2D" parent="."]
-script = ExtResource("5_ds08a")
+script = ExtResource("5_y7m5q")
 
 [node name="Player" type="Area2D" parent="."]
 position = Vector2(0, -2)
-script = ExtResource("6_biw7u")
+script = ExtResource("6_uoexw")
 
 [node name="PlayerSprite" type="Sprite2D" parent="Player"]
 scale = Vector2(0.116211, 0.116211)
-texture = ExtResource("6_76sqd")
+texture = ExtResource("7_g0173")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
 shape = SubResource("CircleShape2D_qkeyp")
@@ -90,13 +92,13 @@ one_shot = true
 [node name="Miska" type="Sprite2D" parent="Bowl"]
 position = Vector2(1.19209e-07, -1)
 scale = Vector2(0.0583366, 0.0583366)
-texture = ExtResource("8_xx3rc")
+texture = ExtResource("8_sigdh")
 
 [node name="Layout" type="Node2D" parent="."]
-script = ExtResource("9_krsfa")
+script = ExtResource("9_mabsa")
 
 [node name="Lives" type="Node2D" parent="Layout"]
-script = ExtResource("7_uu7bw")
+script = ExtResource("10_1r340")
 
 [node name="LivesLabel" type="Label" parent="Layout/Lives"]
 offset_left = 153.0
@@ -107,21 +109,22 @@ theme_override_font_sizes/font_size = 30
 text = "Życia: "
 
 [node name="Lose" type="Node2D" parent="Layout"]
-script = ExtResource("11_ua1wu")
+script = ExtResource("11_m3308")
 
 [node name="Menu" type="Sprite2D" parent="Layout/Lose"]
 modulate = Color(1, 1, 1, 0.392157)
 position = Vector2(580.609, 336)
 scale = Vector2(1.31535, 1.0898)
-texture = ExtResource("1_srog5")
+texture = ExtResource("2_jbpt1")
 
 [node name="LoseLabel" type="Label" parent="Layout/Lose"]
-offset_left = 201.0
-offset_top = 128.0
-offset_right = 945.0
-offset_bottom = 265.0
+offset_left = 182.0
+offset_top = 151.0
+offset_right = 926.0
+offset_bottom = 288.0
+theme_override_fonts/font = ExtResource("12_pdcmy")
 theme_override_font_sizes/font_size = 100
-text = "Przegrałeś"
+text = "Przegrales"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -133,13 +136,41 @@ offset_bottom = 128.0
 theme_override_font_sizes/font_size = 25
 text = "Powrót"
 
-[node name="RestartButton" type="Button" parent="Layout/Lose"]
-offset_left = 457.0
-offset_top = 284.0
-offset_right = 686.0
-offset_bottom = 349.0
-theme_override_font_sizes/font_size = 25
-text = "Zagraj ponownie"
+[node name="RestartButton" type="TextureButton" parent="Layout/Lose"]
+offset_left = 380.0
+offset_top = 271.0
+offset_right = 3430.0
+offset_bottom = 1251.0
+scale = Vector2(0.1, 0.1)
+texture_normal = ExtResource("12_ri7d6")
+ignore_texture_size = true
+
+[node name="RestartButtonLabel" type="Label" parent="Layout/Lose"]
+offset_left = 442.0
+offset_top = 299.0
+offset_right = 656.0
+offset_bottom = 348.0
+theme_override_fonts/font = ExtResource("12_pdcmy")
+theme_override_font_sizes/font_size = 45
+text = "Restart"
+
+[node name="RestartButton2" type="TextureButton" parent="Layout/Lose"]
+offset_left = 92.0
+offset_top = 64.0
+offset_right = 3142.0
+offset_bottom = 1044.0
+scale = Vector2(0.08, 0.1)
+texture_normal = ExtResource("12_ri7d6")
+ignore_texture_size = true
+
+[node name="RestartButtonLabel2" type="Label" parent="Layout/Lose"]
+offset_left = 133.0
+offset_top = 91.0
+offset_right = 347.0
+offset_bottom = 140.0
+theme_override_fonts/font = ExtResource("12_pdcmy")
+theme_override_font_sizes/font_size = 45
+text = "Powrot"
 
 [node name="Pause" type="Node2D" parent="Layout"]
 
@@ -156,7 +187,7 @@ visible = false
 modulate = Color(1, 1, 1, 0.392157)
 position = Vector2(572.486, 312.906)
 scale = Vector2(0.401748, 0.673087)
-texture = ExtResource("1_srog5")
+texture = ExtResource("2_jbpt1")
 
 [node name="BackButton" type="Button" parent="Layout/Pause/PauseMenu"]
 modulate = Color(0, 0, 0, 0.623529)
@@ -199,6 +230,7 @@ text = "Wyjdź"
 [connection signal="timeout" from="Player/NextLevelWaiter" to="Player" method="_on_next_level_waiter_timeout"]
 [connection signal="pressed" from="Layout/Lose/BackButton" to="Layout/Lose" method="_on_back_button_pressed"]
 [connection signal="pressed" from="Layout/Lose/RestartButton" to="Layout/Lose" method="_on_restart_button_pressed"]
+[connection signal="pressed" from="Layout/Lose/RestartButton2" to="Layout/Lose" method="_on_restart_button_pressed"]
 [connection signal="pressed" from="Layout/Pause/PauseButton" to="Layout" method="_on_pause_button_pressed"]
 [connection signal="pressed" from="Layout/Pause/PauseMenu/BackButton" to="Layout" method="_on_back_button_pressed"]
 [connection signal="pressed" from="Layout/Pause/PauseMenu/RestartButton" to="Layout" method="_on_restart_button_pressed"]

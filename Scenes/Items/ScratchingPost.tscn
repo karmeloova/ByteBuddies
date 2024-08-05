@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://chwa6iprveskn"]
 
 [ext_resource type="Texture2D" uid="uid://ddmrcvq0prt24" path="res://Images/Backgrounds/Tlov1.png" id="1_8y4lk"]
-[ext_resource type="Script" path="res://Scenes/ScratchingPostMiniGame.gd" id="1_eut25"]
+[ext_resource type="Script" path="res://Scripts/Items/ScratchingPostMiniGame.gd" id="1_eut25"]
 [ext_resource type="Texture2D" uid="uid://ch30i3jkm2643" path="res://Images/Accessories/Drapak3.png" id="2_jci16"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_woekr"]

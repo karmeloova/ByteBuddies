@@ -6,13 +6,12 @@ func _ready():
 	visible = false;
 	SignalManager.loseGame.connect(_on_lose_game)
 
-
 func _on_lose_game() :
 	visible = true;
 	$LoseLabel.text = "Przegrałeś"
 	
 func _on_restart_button_pressed():
-	SignalManager.nextLevel.emit()
+	SignalManager.restartGame.emit()
 	visible = false;
 
 func _on_back_button_pressed():

@@ -7,13 +7,13 @@ func _ready():
 	$LivesLabel.text = "Życia: " + str(lives);
 	
 	SignalManager.loseLife.connect(_on_lose_life)
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	pass
+	SignalManager.restartGame.connect(_on_restart_game)
 
 func _on_lose_life() :
 	lives -= 1;
 	$LivesLabel.text = "Życia: " + str(lives);
 	if(lives == 0) : SignalManager.loseGame.emit();
+
+func _on_restart_game() :
+	lives = 3;
+	$LivesLabel.text = "Życia: " + str(lives);

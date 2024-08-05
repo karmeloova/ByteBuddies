@@ -15,13 +15,14 @@ var niebedeliczyl = 0;
 var czy_bylo_zero = false;
 var first_pos
 
-var tile = preload("res://Scenes/Tiles.tscn");
+var tile = preload("res://Scenes/Prefabs/Tiles.tscn");
 @onready var world = get_node("/root/WalkToTarget/Board")
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	generateBoard();
 	SignalManager.nextLevel.connect(_on_next_level)
+	SignalManager.restartGame.connect(_on_restart_game)
 
 func generateBoard() :
 	tile_instance = tile.instantiate();
@@ -154,4 +155,9 @@ func generate_board_again() :
 
 # W przypadku gdy gracz przejdzie do kolejnego poziomu, generujemy nową planszę
 func _on_next_level() :
+	generate_board_again()
+
+# W przypadku gdy gracz chce zrestować grę (zagraj ponownie/restart) również
+# generujemy nową planszę
+func _on_restart_game() :
 	generate_board_again()

@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="ByteBuddies"
-run/main_scene="res://Scenes/MainRoom.tscn"
+run/main_scene="res://Scenes/Rooms/MainRoom.tscn"
 config/features=PackedStringArray("4.2", "Forward Plus")
 config/icon="res://icon.svg"
 
@@ -20,7 +20,7 @@ config/icon="res://icon.svg"
 SaveManager="*res://Scripts/Autoload/save_manager.gd"
 SignalManager="*res://Scripts/Autoload/signal_manager.gd"
 VariableManager="*res://Scripts/Autoload/variable_manager.gd"
-Needs="*res://needs.gd"
+Needs="*res://Scripts/Autoload/needs.gd"
 
 [layer_names]
 
