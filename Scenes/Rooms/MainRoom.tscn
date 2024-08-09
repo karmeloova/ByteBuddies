@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://br5jh3sh28ig4"]
+[gd_scene load_steps=16 format=3 uid="uid://br5jh3sh28ig4"]
 
 [ext_resource type="Texture2D" uid="uid://ddmrcvq0prt24" path="res://Images/Backgrounds/Tlov1.png" id="1_5tq1h"]
 [ext_resource type="Texture2D" uid="uid://ch30i3jkm2643" path="res://Images/Accessories/Drapak3.png" id="2_rsjqa"]
@@ -12,7 +12,6 @@
 [ext_resource type="Texture2D" uid="uid://dl8dw08og2gr8" path="res://Images/Backgrounds/Placeholder_backgorund_minigames.jpg" id="10_1xqql"]
 [ext_resource type="Script" path="res://Scripts/Minigames/MinigamesPanel.gd" id="10_j240k"]
 [ext_resource type="Script" path="res://Scripts/Minigames/MinigameButton.gd" id="11_37ado"]
-[ext_resource type="Script" path="res://Scripts/Minigames/WalkToTarget/WalkToTarget.gd" id="12_rck85"]
 [ext_resource type="Script" path="res://Scripts/Items/Bowl.gd" id="13_gxamd"]
 [ext_resource type="Script" path="res://Scripts/Items/Scratching_post.gd" id="14_7xxgu"]
 
@@ -160,7 +159,6 @@ modulate = Color(1, 1, 1, 0.392157)
 texture = ExtResource("10_1xqql")
 
 [node name="WalkToTarget" type="Node2D" parent="MinigamesPanel"]
-script = ExtResource("12_rck85")
 
 [node name="WalkToTargetLabel" type="Label" parent="MinigamesPanel/WalkToTarget"]
 offset_left = -338.0
@@ -250,8 +248,8 @@ texture = ExtResource("2_rsjqa")
 polygon = PackedVector2Array(919, 245, 932, 226, 965, 216, 1004, 218, 1033, 230, 1039, 246, 1035, 261, 1035, 270, 1019, 281, 995, 286, 994, 454, 1024, 454, 1023, 407, 1025, 393, 1044, 380, 1074, 374, 1098, 376, 1117, 386, 1125, 400, 1124, 411, 1126, 410, 1125, 457, 1135, 468, 1137, 480, 1135, 489, 1127, 498, 1114, 506, 1091, 512, 1061, 513, 913, 513, 912, 503, 939, 455, 961, 455, 962, 284, 939, 279, 924, 269, 923, 262)
 
 [connection signal="timeout" from="Necessities/Timer" to="Necessities" method="_on_timer_timeout"]
-[connection signal="pressed" from="MinigamesPanel/WalkToTarget/WalkToTargetButton" to="MinigamesPanel/WalkToTarget" method="_on_walk_to_target_button_pressed"]
-[connection signal="pressed" from="MinigamesPanel/CatHop/CatHopButton" to="MinigamesPanel/WalkToTarget" method="_on_walk_to_target_button_pressed"]
+[connection signal="pressed" from="MinigamesPanel/WalkToTarget/WalkToTargetButton" to="MinigamesPanel" method="_on_walk_to_target_button_pressed"]
+[connection signal="pressed" from="MinigamesPanel/CatHop/CatHopButton" to="MinigamesPanel" method="_on_cat_hop_button_pressed"]
 [connection signal="pressed" from="MinigameButton/Button" to="MinigameButton" method="_on_button_pressed"]
 [connection signal="input_event" from="Bowl" to="Bowl" method="_on_input_event"]
 [connection signal="mouse_entered" from="Bowl" to="Bowl" method="_on_mouse_entered"]

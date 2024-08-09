@@ -1,0 +1,40 @@
+[gd_scene load_steps=5 format=3 uid="uid://bffk6gcxnpl8r"]
+
+[ext_resource type="Script" path="res://Scenes/Prefabs/Platform.gd" id="1_r2p0t"]
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_n6vk8"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_nn8ec"]
+size = Vector2(163, 18)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_b0078"]
+size = Vector2(163, 1)
+
+[node name="Platform" type="RigidBody2D"]
+freeze = true
+max_contacts_reported = 30
+contact_monitor = true
+script = ExtResource("1_r2p0t")
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(81.5, 8.94494)
+scale = Vector2(162, 17.11)
+texture = SubResource("CanvasTexture_n6vk8")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(81.5, 9)
+shape = SubResource("RectangleShape2D_nn8ec")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(81.5, 0.5)
+shape = SubResource("RectangleShape2D_b0078")
+debug_color = Color(0.857939, 0.000718496, 0.880792, 0.42)
+
+[node name="RemoveTimer" type="Timer" parent="."]
+one_shot = true
+
+[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
+[connection signal="timeout" from="RemoveTimer" to="." method="_on_remove_timer_timeout"]
