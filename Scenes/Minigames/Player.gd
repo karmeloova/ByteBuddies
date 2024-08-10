@@ -21,8 +21,6 @@ func _physics_process(delta):
 		velocity.y = JUMP_VELOCITY
 	
 	if(position.y < max_height) : max_height = position.y
-	#if(position.y < 0) :
-		#$Camera2D.enabled = true;
 
 	var direction = Input.get_axis("ui_left", "ui_right")
 	if direction:
@@ -32,3 +30,8 @@ func _physics_process(delta):
 	
 	move_and_slide()
 
+
+
+func _on_area_2d_area_entered(area):
+	if not VariableManager.moved :
+		VariableManager.moved = true

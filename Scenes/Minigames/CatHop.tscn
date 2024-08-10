@@ -1,8 +1,10 @@
-[gd_scene load_steps=10 format=3 uid="uid://x5i72wcl8spx"]
+[gd_scene load_steps=12 format=3 uid="uid://x5i72wcl8spx"]
 
 [ext_resource type="Script" path="res://Scenes/Minigames/Player.gd" id="1_76w8l"]
 [ext_resource type="Script" path="res://Scenes/Minigames/CameraCatHop.gd" id="2_ebytp"]
 [ext_resource type="Script" path="res://Scenes/Minigames/Platforms.gd" id="2_w0emf"]
+[ext_resource type="FontFile" uid="uid://ccgpsjqwwow8o" path="res://Fonts/Bubblegum.ttf" id="4_v2enh"]
+[ext_resource type="Script" path="res://Scenes/Minigames/Points.gd" id="5_of3sl"]
 
 [sub_resource type="CanvasTexture" id="CanvasTexture_wclep"]
 
@@ -47,9 +49,25 @@ offset = Vector2(0, -275)
 process_callback = 0
 limit_left = 0
 limit_right = 1152
-position_smoothing_enabled = true
 position_smoothing_speed = 1.0
 script = ExtResource("2_ebytp")
+
+[node name="Points" type="Label" parent="Camera2D"]
+clip_contents = true
+layout_direction = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -553.0
+offset_top = -598.0
+offset_right = -255.0
+offset_bottom = -544.0
+grow_horizontal = 0
+theme_override_fonts/font = ExtResource("4_v2enh")
+theme_override_font_sizes/font_size = 50
+text = "SSSSS"
+script = ExtResource("5_of3sl")
+metadata/_edit_use_anchors_ = true
 
 [node name="Walls" type="RigidBody2D" parent="."]
 position = Vector2(-14, 624)
@@ -75,3 +93,5 @@ shape = SubResource("RectangleShape2D_4q8i2")
 
 [node name="Platforms" type="Node2D" parent="."]
 script = ExtResource("2_w0emf")
+
+[connection signal="area_entered" from="Player/Area2D" to="Player" method="_on_area_2d_area_entered"]

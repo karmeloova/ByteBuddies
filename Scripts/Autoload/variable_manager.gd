@@ -19,3 +19,4 @@ var code;
 
 var platform_size
 var player_size
+var moved : bool = false

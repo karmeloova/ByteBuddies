@@ -7,6 +7,7 @@ signal startGameAfterPause()
 signal restartGame()
 signal loseLife()
 signal nextLevel()
+signal add_point()
 
 # GO TO TARGET
 signal makeMove(instructions)
