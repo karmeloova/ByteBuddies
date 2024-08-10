@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://br5jh3sh28ig4"]
+[gd_scene load_steps=22 format=3 uid="uid://br5jh3sh28ig4"]
 
 [ext_resource type="Texture2D" uid="uid://ddmrcvq0prt24" path="res://Images/Backgrounds/Tlov1.png" id="1_5tq1h"]
 [ext_resource type="Texture2D" uid="uid://ch30i3jkm2643" path="res://Images/Accessories/Drapak3.png" id="2_rsjqa"]
@@ -14,6 +14,12 @@
 [ext_resource type="Script" path="res://Scripts/Minigames/MinigameButton.gd" id="11_37ado"]
 [ext_resource type="Script" path="res://Scripts/Items/Bowl.gd" id="13_gxamd"]
 [ext_resource type="Script" path="res://Scripts/Items/Scratching_post.gd" id="14_7xxgu"]
+[ext_resource type="Script" path="res://Scenes/Rooms/ShopPanel.gd" id="15_4go0m"]
+[ext_resource type="Script" path="res://Scenes/Rooms/ShopButton.gd" id="16_0rb47"]
+[ext_resource type="Resource" uid="uid://j6obbfxvtx6v" path="res://Resources/Food/Apple.tres" id="16_bd6oq"]
+[ext_resource type="Resource" uid="uid://t42e4xahewyu" path="res://Resources/Food/Orange.tres" id="17_7cdb2"]
+[ext_resource type="Resource" uid="uid://b88t70enboo4q" path="res://Resources/Food/Pineapple.tres" id="18_m58wg"]
+[ext_resource type="Resource" uid="uid://1hv57gh0dnvf" path="res://Resources/Food/Banana.tres" id="19_wcutm"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_03gin"]
 font_size = 250
@@ -151,6 +157,7 @@ texture_under = ExtResource("8_ic1ir")
 texture_progress = ExtResource("9_mdr1f")
 
 [node name="MinigamesPanel" type="Node2D" parent="."]
+visible = false
 position = Vector2(581, 324)
 script = ExtResource("10_j240k")
 
@@ -247,6 +254,44 @@ texture = ExtResource("2_rsjqa")
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Scratching_post"]
 polygon = PackedVector2Array(919, 245, 932, 226, 965, 216, 1004, 218, 1033, 230, 1039, 246, 1035, 261, 1035, 270, 1019, 281, 995, 286, 994, 454, 1024, 454, 1023, 407, 1025, 393, 1044, 380, 1074, 374, 1098, 376, 1117, 386, 1125, 400, 1124, 411, 1126, 410, 1125, 457, 1135, 468, 1137, 480, 1135, 489, 1127, 498, 1114, 506, 1091, 512, 1061, 513, 913, 513, 912, 503, 939, 455, 961, 455, 962, 284, 939, 279, 924, 269, 923, 262)
 
+[node name="ShopPanel" type="Node2D" parent="."]
+position = Vector2(581, 324)
+script = ExtResource("15_4go0m")
+_food_resources = Array[Resource("res://Scripts/Resources/Food.gd")]([ExtResource("16_bd6oq"), ExtResource("17_7cdb2"), ExtResource("18_m58wg"), ExtResource("19_wcutm")])
+
+[node name="Sprite2D" type="Sprite2D" parent="ShopPanel"]
+modulate = Color(1, 1, 1, 0.392157)
+texture = ExtResource("10_1xqql")
+
+[node name="Food" type="Node2D" parent="ShopPanel"]
+
+[node name="FoodButton" type="Button" parent="ShopPanel/Food"]
+offset_left = -345.0
+offset_top = -224.0
+offset_right = -183.0
+offset_bottom = -130.0
+theme_override_font_sizes/font_size = 50
+text = "Food"
+
+[node name="Foods" type="Node2D" parent="ShopPanel"]
+visible = false
+
+[node name="BackButton" type="Button" parent="ShopPanel/Foods"]
+offset_left = -356.0
+offset_top = -238.0
+offset_right = -311.0
+offset_bottom = -196.0
+
+[node name="ShopButton" type="Node2D" parent="."]
+position = Vector2(1100, 596)
+script = ExtResource("16_0rb47")
+
+[node name="Button" type="Button" parent="ShopButton"]
+offset_left = -110.0
+offset_top = -29.0
+offset_right = -38.0
+offset_bottom = 43.0
+
 [connection signal="timeout" from="Necessities/Timer" to="Necessities" method="_on_timer_timeout"]
 [connection signal="pressed" from="MinigamesPanel/WalkToTarget/WalkToTargetButton" to="MinigamesPanel" method="_on_walk_to_target_button_pressed"]
 [connection signal="pressed" from="MinigamesPanel/CatHop/CatHopButton" to="MinigamesPanel" method="_on_cat_hop_button_pressed"]
@@ -258,3 +303,6 @@ polygon = PackedVector2Array(919, 245, 932, 226, 965, 216, 1004, 218, 1033, 230,
 [connection signal="input_event" from="Scratching_post" to="Scratching_post" method="_on_input_event"]
 [connection signal="mouse_entered" from="Scratching_post" to="Scratching_post" method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="Scratching_post" to="Scratching_post" method="_on_mouse_exited"]
+[connection signal="pressed" from="ShopPanel/Food/FoodButton" to="ShopPanel" method="_on_food_button_pressed"]
+[connection signal="pressed" from="ShopPanel/Foods/BackButton" to="ShopPanel" method="_on_back_button_pressed"]
+[connection signal="pressed" from="ShopButton/Button" to="ShopButton" method="_on_button_pressed"]
