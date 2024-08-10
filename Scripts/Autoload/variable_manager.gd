@@ -12,3 +12,11 @@ var tile_size;
 var start_position;
 
 var code;
+
+#------------- MINI-GAMES ---------------
+
+#------------- CAT JUMP ----------------
+
+var platform_size
+var player_size
+var moved : bool = false

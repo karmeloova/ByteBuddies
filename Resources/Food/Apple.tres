@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="Food_Resource" load_steps=2 format=3 uid="uid://j6obbfxvtx6v"]
+
+[ext_resource type="Script" path="res://Scripts/Resources/Food.gd" id="1_5h4ka"]
+
+[resource]
+script = ExtResource("1_5h4ka")
+id = 0
+food_name = "Apple"
+hungry_points = 0
+price = 0
+amount = 0

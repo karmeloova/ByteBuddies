@@ -1,0 +1,57 @@
+[gd_scene load_steps=8 format=3 uid="uid://x5i72wcl8spx"]
+
+[ext_resource type="Script" path="res://Scenes/Minigames/Player.gd" id="1_76w8l"]
+[ext_resource type="Script" path="res://Scenes/Minigames/Platforms.gd" id="2_w0emf"]
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_wclep"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8535r"]
+size = Vector2(59, 52)
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_3hfeu"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_nxcys"]
+size = Vector2(1164, 22)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4q8i2"]
+size = Vector2(2, 637)
+
+[node name="CatHop" type="Node2D"]
+
+[node name="Player" type="CharacterBody2D" parent="."]
+position = Vector2(557, 598)
+disable_mode = 2
+script = ExtResource("1_76w8l")
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="Player"]
+scale = Vector2(57.5, 50.5)
+texture = SubResource("CanvasTexture_wclep")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
+shape = SubResource("RectangleShape2D_8535r")
+
+[node name="Walls" type="RigidBody2D" parent="."]
+position = Vector2(-14, 624)
+disable_mode = 1
+freeze = true
+
+[node name="Sprite2D" type="Sprite2D" parent="Walls"]
+position = Vector2(575.25, 10.25)
+scale = Vector2(1151.5, 21.5)
+texture = SubResource("CanvasTexture_3hfeu")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Walls"]
+position = Vector2(572, 12)
+shape = SubResource("RectangleShape2D_nxcys")
+
+[node name="LeftWall" type="CollisionShape2D" parent="Walls"]
+position = Vector2(14, -308.5)
+shape = SubResource("RectangleShape2D_4q8i2")
+
+[node name="RightWall" type="CollisionShape2D" parent="Walls"]
+position = Vector2(1166, -307)
+shape = SubResource("RectangleShape2D_4q8i2")
+
+[node name="Platforms" type="Node2D" parent="."]
+script = ExtResource("2_w0emf")
