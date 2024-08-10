@@ -6,6 +6,6 @@
 script = ExtResource("1_5h4ka")
 id = 0
 food_name = "Apple"
-hungry_points = 0
-price = 0
+hungry_points = 10
+price = 11
 amount = 0

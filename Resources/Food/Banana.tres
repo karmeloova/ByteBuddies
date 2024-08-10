@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="Food_Resource" load_steps=2 format=3 uid="uid://1hv57gh0dnvf"]
+
+[ext_resource type="Script" path="res://Scripts/Resources/Food.gd" id="1_i37hr"]
+
+[resource]
+script = ExtResource("1_i37hr")
+id = 3
+food_name = "Banana"
+hungry_points = 11
+price = 100
+amount = 0
