@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bcghi5003ch4b"
-path="res://.godot/imported/Necessity.png-33cc4a218dd909ba5d2ab2b375031e46.ctex"
+uid="uid://dh1afs752fy4n"
+path="res://.godot/imported/Pause.png-1f74a5410acc6aaf5a8c26e8abbd721e.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Images/UI/Necessity.png"
-dest_files=["res://.godot/imported/Necessity.png-33cc4a218dd909ba5d2ab2b375031e46.ctex"]
+source_file="res://Images/UI/Buttons/Pause.png"
+dest_files=["res://.godot/imported/Pause.png-1f74a5410acc6aaf5a8c26e8abbd721e.ctex"]
 
 [params]
 

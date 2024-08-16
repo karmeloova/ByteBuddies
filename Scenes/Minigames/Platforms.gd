@@ -1,7 +1,10 @@
 extends Node2D
 @onready var platforms_node = self;
+
 var Platform = preload("res://Scenes/Prefabs/Platform.tscn");
+
 var platform_instance;
+
 var platform_size
 var player_size;
 var y_distance;
@@ -27,6 +30,7 @@ func _ready():
 	platform_size = VariableManager.platform_size
 	
 	SignalManager.add_platform.connect(_on_add_platform)
+	SignalManager.restartGame.connect(_on_restart_game)
 	
 	generate_board();
 
@@ -35,13 +39,18 @@ func generate_board() -> void:
 		# Losujemy po której stronie ma się pojawić platforma 
 		if(generate_platform()) :
 			count_platforms += 1
-		
+		if(count_platforms % 3 == 0) : 
+			SignalManager.generate_coin.emit(last_position, platform_size)
+
 func _on_add_platform() -> void:
 	generated = false
 	while not generated :
 		if(generate_platform()) :
+			count_platforms += 1
 			generated = true;
-
+	if(count_platforms % 3 == 0) : SignalManager.generate_coin.emit(last_position, platform_size)
+	
+	
 func generate_platform() -> bool:
 	direction = randi_range(0,1)
 	match direction :
@@ -60,3 +69,19 @@ func generate_platform() -> bool:
 		last_position = platform_instance.position;
 		return true
 	return false
+
+func _on_restart_game() -> void:
+	for i in platforms_node.get_children():
+		i.queue_free()
+	count_platforms = 0
+	
+	platform_instance = Platform.instantiate();
+	platforms_node.add_child(platform_instance);
+	platform_size = VariableManager.platform_size
+	random_x_position = randi_range(margin+platform_size/2, 1152-platform_size/2-margin)
+	
+	platform_instance.position = Vector2(random_x_position, 598-y_distance)
+	last_position = platform_instance.position;
+	platform_size = VariableManager.platform_size
+	
+	generate_board()

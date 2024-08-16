@@ -10,4 +10,4 @@ func _on_mouse_exited():
 
 func _on_input_event(viewport, event, shape_idx):
 	if(Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT)) :
-		get_tree().change_scene_to_file("res://Scenes/ScratchingPost.tscn");
+		get_tree().change_scene_to_file("res://Scenes/Items/ScratchingPost.tscn");

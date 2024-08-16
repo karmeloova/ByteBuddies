@@ -1,14 +1,17 @@
-[gd_scene load_steps=2 format=3 uid="uid://duud7w53gf6rp"]
+[gd_scene load_steps=3 format=3 uid="uid://cjnamwk0mbts2"]
+
+[ext_resource type="Script" path="res://Scenes/ItemScene.gd" id="1_34ek1"]
 
 [sub_resource type="CanvasTexture" id="CanvasTexture_0wf03"]
 
 [node name="ItemScene" type="Node2D"]
+script = ExtResource("1_34ek1")
 
 [node name="Price" type="Label" parent="."]
-offset_left = 521.0
-offset_top = 6.0
-offset_right = 610.0
-offset_bottom = 48.0
+offset_left = 446.0
+offset_top = 26.0
+offset_right = 535.0
+offset_bottom = 68.0
 theme_override_font_sizes/font_size = 30
 text = "10"
 horizontal_alignment = 2
@@ -27,10 +30,10 @@ theme_override_font_sizes/font_size = 40
 text = "Name"
 
 [node name="Buy" type="Button" parent="."]
-offset_left = 627.0
-offset_top = 9.0
-offset_right = 698.0
-offset_bottom = 45.0
+offset_left = 545.0
+offset_top = 31.0
+offset_right = 616.0
+offset_bottom = 67.0
 theme_override_font_sizes/font_size = 20
 text = "Kup"
 
@@ -41,3 +44,5 @@ offset_right = 170.0
 offset_bottom = 94.0
 theme_override_font_sizes/font_size = 20
 text = "AAAA"
+
+[connection signal="pressed" from="Buy" to="." method="_on_buy_pressed"]

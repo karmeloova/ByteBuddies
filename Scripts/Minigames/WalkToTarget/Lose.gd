@@ -8,11 +8,11 @@ func _ready():
 
 func _on_lose_game() :
 	visible = true;
-	$LoseLabel.text = "Przegrałeś"
+	$LoseLabel.text = "You lose"
 	
 func _on_restart_button_pressed():
 	SignalManager.restartGame.emit()
 	visible = false;
 
 func _on_back_button_pressed():
-	get_tree().change_scene_to_file("res://Scenes/MainRoom.tscn")
+	get_tree().change_scene_to_file("res://Scenes/Rooms/MainRoom.tscn")

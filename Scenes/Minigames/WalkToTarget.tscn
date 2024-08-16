@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://d4bs4i6ftyij1"]
+[gd_scene load_steps=14 format=3 uid="uid://d4bs4i6ftyij1"]
 
 [ext_resource type="Script" path="res://Scripts/Minigames/WalkToTarget/CodeArea.gd" id="1_dto5f"]
 [ext_resource type="Texture2D" uid="uid://dl8dw08og2gr8" path="res://Images/Backgrounds/Placeholder_backgorund_minigames.jpg" id="2_jbpt1"]
@@ -10,9 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://b417hifsytge3" path="res://Images/Accessories/Miska.png" id="8_sigdh"]
 [ext_resource type="Script" path="res://Scripts/Minigames/WalkToTarget/Layout.gd" id="9_mabsa"]
 [ext_resource type="Script" path="res://Scripts/Minigames/WalkToTarget/Lives.gd" id="10_1r340"]
-[ext_resource type="Script" path="res://Scripts/Minigames/WalkToTarget/Lose.gd" id="11_m3308"]
-[ext_resource type="FontFile" uid="uid://ccgpsjqwwow8o" path="res://Fonts/Bubblegum.ttf" id="12_pdcmy"]
-[ext_resource type="Texture2D" uid="uid://o332hh7r7y4y" path="res://Images/UI/Button.png" id="12_ri7d6"]
+[ext_resource type="PackedScene" uid="uid://doyyhye04gaml" path="res://Scenes/LoseUI.tscn" id="11_nlonb"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_qkeyp"]
 radius = 30.0167
@@ -108,75 +106,6 @@ offset_bottom = 45.0
 theme_override_font_sizes/font_size = 30
 text = "Życia: "
 
-[node name="Lose" type="Node2D" parent="Layout"]
-script = ExtResource("11_m3308")
-
-[node name="Menu" type="Sprite2D" parent="Layout/Lose"]
-modulate = Color(1, 1, 1, 0.392157)
-position = Vector2(580.609, 336)
-scale = Vector2(1.31535, 1.0898)
-texture = ExtResource("2_jbpt1")
-
-[node name="LoseLabel" type="Label" parent="Layout/Lose"]
-offset_left = 182.0
-offset_top = 151.0
-offset_right = 926.0
-offset_bottom = 288.0
-theme_override_colors/font_outline_color = Color(0.490196, 0, 0, 1)
-theme_override_constants/outline_size = 7
-theme_override_fonts/font = ExtResource("12_pdcmy")
-theme_override_font_sizes/font_size = 100
-text = "Przegrales"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="BackButton" type="Button" parent="Layout/Lose"]
-offset_left = 108.0
-offset_top = 77.0
-offset_right = 210.0
-offset_bottom = 128.0
-theme_override_font_sizes/font_size = 25
-text = "Powrót"
-
-[node name="RestartButton" type="TextureButton" parent="Layout/Lose"]
-offset_left = 380.0
-offset_top = 271.0
-offset_right = 3430.0
-offset_bottom = 1251.0
-scale = Vector2(0.1, 0.1)
-texture_normal = ExtResource("12_ri7d6")
-ignore_texture_size = true
-
-[node name="RestartButtonLabel" type="Label" parent="Layout/Lose"]
-offset_left = 442.0
-offset_top = 299.0
-offset_right = 656.0
-offset_bottom = 348.0
-theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.67451)
-theme_override_constants/shadow_offset_x = 3
-theme_override_constants/shadow_offset_y = 2
-theme_override_fonts/font = ExtResource("12_pdcmy")
-theme_override_font_sizes/font_size = 45
-text = "Restart"
-
-[node name="RestartButton2" type="TextureButton" parent="Layout/Lose"]
-offset_left = 92.0
-offset_top = 64.0
-offset_right = 3142.0
-offset_bottom = 1044.0
-scale = Vector2(0.08, 0.1)
-texture_normal = ExtResource("12_ri7d6")
-ignore_texture_size = true
-
-[node name="RestartButtonLabel2" type="Label" parent="Layout/Lose"]
-offset_left = 133.0
-offset_top = 91.0
-offset_right = 347.0
-offset_bottom = 140.0
-theme_override_fonts/font = ExtResource("12_pdcmy")
-theme_override_font_sizes/font_size = 45
-text = "Powrot"
-
 [node name="Pause" type="Node2D" parent="Layout"]
 
 [node name="PauseButton" type="Button" parent="Layout/Pause"]
@@ -225,6 +154,8 @@ theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_font_sizes/font_size = 30
 text = "Wyjdź"
 
+[node name="Lose" parent="Layout" instance=ExtResource("11_nlonb")]
+
 [connection signal="text_changed" from="CodeArea/CodeField" to="CodeArea" method="_on_code_field_text_changed"]
 [connection signal="pressed" from="CodeArea/ExecuteButton" to="CodeArea" method="_on_execute_button_pressed"]
 [connection signal="area_entered" from="Player" to="Player" method="_on_area_entered"]
@@ -233,9 +164,6 @@ text = "Wyjdź"
 [connection signal="timeout" from="Player/TweenWaiter" to="Player" method="_on_tween_waiter_timeout"]
 [connection signal="timeout" from="Player/RestartWaiter" to="Player" method="_on_restart_waiter_timeout"]
 [connection signal="timeout" from="Player/NextLevelWaiter" to="Player" method="_on_next_level_waiter_timeout"]
-[connection signal="pressed" from="Layout/Lose/BackButton" to="Layout/Lose" method="_on_back_button_pressed"]
-[connection signal="pressed" from="Layout/Lose/RestartButton" to="Layout/Lose" method="_on_restart_button_pressed"]
-[connection signal="pressed" from="Layout/Lose/RestartButton2" to="Layout/Lose" method="_on_restart_button_pressed"]
 [connection signal="pressed" from="Layout/Pause/PauseButton" to="Layout" method="_on_pause_button_pressed"]
 [connection signal="pressed" from="Layout/Pause/PauseMenu/BackButton" to="Layout" method="_on_back_button_pressed"]
 [connection signal="pressed" from="Layout/Pause/PauseMenu/RestartButton" to="Layout" method="_on_restart_button_pressed"]

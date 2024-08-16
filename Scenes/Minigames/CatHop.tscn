@@ -1,10 +1,13 @@
-[gd_scene load_steps=12 format=3 uid="uid://x5i72wcl8spx"]
+[gd_scene load_steps=15 format=3 uid="uid://x5i72wcl8spx"]
 
 [ext_resource type="Script" path="res://Scenes/Minigames/Player.gd" id="1_76w8l"]
 [ext_resource type="Script" path="res://Scenes/Minigames/CameraCatHop.gd" id="2_ebytp"]
 [ext_resource type="Script" path="res://Scenes/Minigames/Platforms.gd" id="2_w0emf"]
 [ext_resource type="FontFile" uid="uid://ccgpsjqwwow8o" path="res://Fonts/Bubblegum.ttf" id="4_v2enh"]
+[ext_resource type="Script" path="res://Scenes/Minigames/CoinsLabel.gd" id="5_4fi6x"]
 [ext_resource type="Script" path="res://Scenes/Minigames/Points.gd" id="5_of3sl"]
+[ext_resource type="PackedScene" uid="uid://doyyhye04gaml" path="res://Scenes/LoseUI.tscn" id="6_wbr14"]
+[ext_resource type="Script" path="res://Scenes/Minigames/Coins.gd" id="6_x1t1n"]
 
 [sub_resource type="CanvasTexture" id="CanvasTexture_wclep"]
 
@@ -43,31 +46,7 @@ position = Vector2(-557, -598)
 position = Vector2(558, 598.5)
 shape = SubResource("RectangleShape2D_wr8xv")
 
-[node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2(557, 598)
-offset = Vector2(0, -275)
-process_callback = 0
-limit_left = 0
-limit_right = 1152
-position_smoothing_speed = 1.0
-script = ExtResource("2_ebytp")
-
-[node name="Points" type="Label" parent="Camera2D"]
-clip_contents = true
-layout_direction = 1
-anchors_preset = 1
-anchor_left = 1.0
-anchor_right = 1.0
-offset_left = -553.0
-offset_top = -598.0
-offset_right = -255.0
-offset_bottom = -544.0
-grow_horizontal = 0
-theme_override_fonts/font = ExtResource("4_v2enh")
-theme_override_font_sizes/font_size = 50
-text = "SSSSS"
-script = ExtResource("5_of3sl")
-metadata/_edit_use_anchors_ = true
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="Player"]
 
 [node name="Walls" type="RigidBody2D" parent="."]
 position = Vector2(-14, 624)
@@ -94,4 +73,53 @@ shape = SubResource("RectangleShape2D_4q8i2")
 [node name="Platforms" type="Node2D" parent="."]
 script = ExtResource("2_w0emf")
 
+[node name="Coins" type="Node2D" parent="."]
+script = ExtResource("6_x1t1n")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(557, 598)
+offset = Vector2(0, -275)
+process_callback = 0
+limit_left = 0
+limit_right = 1152
+position_smoothing_speed = 1.0
+script = ExtResource("2_ebytp")
+
+[node name="Points" type="Label" parent="Camera2D"]
+clip_contents = true
+layout_direction = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -553.0
+offset_top = -598.0
+offset_right = -255.0
+offset_bottom = -544.0
+grow_horizontal = 0
+theme_override_fonts/font = ExtResource("4_v2enh")
+theme_override_font_sizes/font_size = 50
+text = "SSSSS"
+script = ExtResource("5_of3sl")
+metadata/_edit_use_anchors_ = true
+
+[node name="Coins" type="Label" parent="Camera2D"]
+clip_contents = true
+layout_direction = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -553.0
+offset_top = -543.0
+offset_right = -255.0
+offset_bottom = -489.0
+grow_horizontal = 0
+theme_override_fonts/font = ExtResource("4_v2enh")
+theme_override_font_sizes/font_size = 50
+text = "SSSSS"
+script = ExtResource("5_4fi6x")
+metadata/_edit_use_anchors_ = true
+
+[node name="Lose" parent="Camera2D" instance=ExtResource("6_wbr14")]
+
 [connection signal="area_entered" from="Player/Area2D" to="Player" method="_on_area_2d_area_entered"]
+[connection signal="screen_exited" from="Player/VisibleOnScreenNotifier2D" to="Player" method="_on_visible_on_screen_notifier_2d_screen_exited"]

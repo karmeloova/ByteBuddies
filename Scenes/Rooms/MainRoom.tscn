@@ -1,34 +1,42 @@
-[gd_scene load_steps=22 format=3 uid="uid://br5jh3sh28ig4"]
+[gd_scene load_steps=33 format=3 uid="uid://br5jh3sh28ig4"]
 
 [ext_resource type="Texture2D" uid="uid://ddmrcvq0prt24" path="res://Images/Backgrounds/Tlov1.png" id="1_5tq1h"]
+[ext_resource type="Script" path="res://Scenes/Rooms/Currency.gd" id="2_heemv"]
 [ext_resource type="Texture2D" uid="uid://ch30i3jkm2643" path="res://Images/Accessories/Drapak3.png" id="2_rsjqa"]
-[ext_resource type="Texture2D" uid="uid://l6wdj1q4e36q" path="res://Images/UI/Prawypanel.png" id="3_p1fni"]
 [ext_resource type="Texture2D" uid="uid://cjcm8dskr3xnv" path="res://Images/UI/Currency.png" id="4_omybp"]
 [ext_resource type="Texture2D" uid="uid://b417hifsytge3" path="res://Images/Accessories/Miska.png" id="5_qahp6"]
 [ext_resource type="Script" path="res://Scripts/CatNeeds/Necessity.gd" id="6_1vdjr"]
-[ext_resource type="Texture2D" uid="uid://bcghi5003ch4b" path="res://Images/UI/Necessity.png" id="7_0qgfc"]
-[ext_resource type="Texture2D" uid="uid://ckfgt3ibsoco4" path="res://Images/UI/Under.png" id="8_ic1ir"]
-[ext_resource type="Texture2D" uid="uid://c4oxc1n8q8k35" path="res://Images/UI/Progress.png" id="9_mdr1f"]
+[ext_resource type="Texture2D" uid="uid://f4m7ukvlblan" path="res://Images/UI/LevelBackground.png" id="6_6w25j"]
+[ext_resource type="Texture2D" uid="uid://do1bwllt3b1yy" path="res://Images/UI/Needs/BgFull2.png" id="7_8l0el"]
+[ext_resource type="FontFile" uid="uid://ccgpsjqwwow8o" path="res://Fonts/Bubblegum.ttf" id="7_8rg5e"]
+[ext_resource type="Texture2D" uid="uid://ch1nxcb838mta" path="res://Images/UI/Needs/BgEmpty.png" id="8_kmuo1"]
+[ext_resource type="Texture2D" uid="uid://cf0reij86duo7" path="res://Images/UI/Needs/Food.png" id="8_onvnt"]
 [ext_resource type="Texture2D" uid="uid://dl8dw08og2gr8" path="res://Images/Backgrounds/Placeholder_backgorund_minigames.jpg" id="10_1xqql"]
 [ext_resource type="Script" path="res://Scripts/Minigames/MinigamesPanel.gd" id="10_j240k"]
-[ext_resource type="Script" path="res://Scripts/Minigames/MinigameButton.gd" id="11_37ado"]
+[ext_resource type="Texture2D" uid="uid://2rpmid1gnwur" path="res://Images/UI/Buttons/RoundButton.png" id="11_5i28f"]
+[ext_resource type="Script" path="res://Scripts/UI/Button.gd" id="11_g216v"]
+[ext_resource type="Texture2D" uid="uid://bfmqiquhk2rc2" path="res://Images/UI/Buttons/Settings.png" id="12_p2wc3"]
 [ext_resource type="Script" path="res://Scripts/Items/Bowl.gd" id="13_gxamd"]
+[ext_resource type="Script" path="res://Scenes/Rooms/Fridge.gd" id="14_6pba1"]
 [ext_resource type="Script" path="res://Scripts/Items/Scratching_post.gd" id="14_7xxgu"]
+[ext_resource type="Texture2D" uid="uid://cvasldtrdpjfl" path="res://Images/UI/Buttons/Game.png" id="14_84fhf"]
 [ext_resource type="Script" path="res://Scenes/Rooms/ShopPanel.gd" id="15_4go0m"]
-[ext_resource type="Script" path="res://Scenes/Rooms/ShopButton.gd" id="16_0rb47"]
+[ext_resource type="Texture2D" uid="uid://d3mk4lq24jssi" path="res://Images/UI/Buttons/Shop.png" id="15_n537x"]
+[ext_resource type="Script" path="res://Scripts/UI/ExitButton.gd" id="16_1gejr"]
 [ext_resource type="Resource" uid="uid://j6obbfxvtx6v" path="res://Resources/Food/Apple.tres" id="16_bd6oq"]
-[ext_resource type="Resource" uid="uid://t42e4xahewyu" path="res://Resources/Food/Orange.tres" id="17_7cdb2"]
-[ext_resource type="Resource" uid="uid://b88t70enboo4q" path="res://Resources/Food/Pineapple.tres" id="18_m58wg"]
-[ext_resource type="Resource" uid="uid://1hv57gh0dnvf" path="res://Resources/Food/Banana.tres" id="19_wcutm"]
+[ext_resource type="Texture2D" uid="uid://dj5an2o6yuccm" path="res://Images/UI/Buttons/Exit.png" id="16_qpekd"]
+[ext_resource type="Resource" uid="uid://iunttbf6n5hq" path="res://Resources/Food/Orange.tres" id="17_7cdb2"]
+[ext_resource type="Resource" uid="uid://c6lobf5d5a0ah" path="res://Resources/Food/Pineapple.tres" id="18_m58wg"]
+[ext_resource type="Resource" uid="uid://b8qtspxh2opu6" path="res://Resources/Food/Banana.tres" id="19_wcutm"]
+[ext_resource type="Script" path="res://Scenes/Rooms/Button.gd" id="23_ek1bj"]
+[ext_resource type="Texture2D" uid="uid://6adv5bnfl4ff" path="res://Images/UI/Buttons/Back.png" id="24_srg2u"]
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_nyw1b"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_03gin"]
 font_size = 250
 
 [node name="MainRoom" type="Node2D"]
-
-[node name="Level" type="Node2D" parent="."]
-position = Vector2(934, 11)
-scale = Vector2(0.190099, 0.190099)
 
 [node name="Scene" type="Node2D" parent="."]
 
@@ -36,183 +44,353 @@ scale = Vector2(0.190099, 0.190099)
 position = Vector2(577, 322)
 texture = ExtResource("1_5tq1h")
 
-[node name="Cat" type="Node2D" parent="."]
+[node name="UI" type="Node2D" parent="."]
 
-[node name="Sprite2D" type="Sprite2D" parent="Cat"]
+[node name="Background" type="Sprite2D" parent="UI"]
+modulate = Color(1, 1, 1, 0.286275)
+position = Vector2(574.75, 50.75)
+scale = Vector2(1150.5, 102.5)
+texture = SubResource("CanvasTexture_nyw1b")
 
-[node name="Currency" type="Node2D" parent="."]
-position = Vector2(1074, 45.1406)
+[node name="Needs" type="Node2D" parent="UI"]
+position = Vector2(389, 45)
+scale = Vector2(0.249311, 0.249311)
+script = ExtResource("6_1vdjr")
+metadata/_edit_group_ = true
+
+[node name="Timer" type="Timer" parent="UI/Needs"]
+
+[node name="Hungry" type="Node2D" parent="UI/Needs"]
+position = Vector2(28.0774, 28.0774)
+scale = Vector2(0.9, 0.9)
+metadata/_edit_group_ = true
+
+[node name="TextureProgressBar" type="TextureProgressBar" parent="UI/Needs/Hungry"]
+offset_left = -245.0
+offset_top = -205.0
+offset_right = 193.0
+offset_bottom = 201.0
+fill_mode = 3
+nine_patch_stretch = true
+texture_progress = ExtResource("7_8l0el")
+
+[node name="Food" type="Sprite2D" parent="UI/Needs/Hungry"]
+position = Vector2(-28.0774, 0)
+scale = Vector2(0.637435, 0.629913)
+texture = ExtResource("8_kmuo1")
+
+[node name="Food2" type="Sprite2D" parent="UI/Needs/Hungry"]
+position = Vector2(-28.0773, -5.72205e-06)
+scale = Vector2(0.592143, 0.57825)
+texture = ExtResource("8_onvnt")
+
+[node name="Play" type="Node2D" parent="UI/Needs"]
+position = Vector2(397.094, 28.0774)
+scale = Vector2(0.9, 0.9)
+metadata/_edit_group_ = true
+
+[node name="TextureProgressBar" type="TextureProgressBar" parent="UI/Needs/Play"]
+offset_left = -245.0
+offset_top = -205.0
+offset_right = 193.0
+offset_bottom = 201.0
+fill_mode = 3
+nine_patch_stretch = true
+texture_progress = ExtResource("7_8l0el")
+
+[node name="Food" type="Sprite2D" parent="UI/Needs/Play"]
+position = Vector2(-28.0774, 0)
+scale = Vector2(0.637435, 0.629913)
+texture = ExtResource("8_kmuo1")
+
+[node name="Scratch" type="Node2D" parent="UI/Needs"]
+position = Vector2(762.1, 28.0774)
+scale = Vector2(0.9, 0.9)
+metadata/_edit_group_ = true
+
+[node name="TextureProgressBar" type="TextureProgressBar" parent="UI/Needs/Scratch"]
+offset_left = -245.0
+offset_top = -205.0
+offset_right = 193.0
+offset_bottom = 201.0
+fill_mode = 3
+nine_patch_stretch = true
+texture_progress = ExtResource("7_8l0el")
+
+[node name="Food" type="Sprite2D" parent="UI/Needs/Scratch"]
+position = Vector2(-28.0774, 0)
+scale = Vector2(0.637435, 0.629913)
+texture = ExtResource("8_kmuo1")
+
+[node name="Sleep" type="Node2D" parent="UI/Needs"]
+position = Vector2(1127.11, 28.0774)
+scale = Vector2(0.9, 0.9)
+metadata/_edit_group_ = true
+
+[node name="TextureProgressBar" type="TextureProgressBar" parent="UI/Needs/Sleep"]
+offset_left = -245.0
+offset_top = -205.0
+offset_right = 193.0
+offset_bottom = 201.0
+fill_mode = 3
+nine_patch_stretch = true
+texture_progress = ExtResource("7_8l0el")
+
+[node name="Food" type="Sprite2D" parent="UI/Needs/Sleep"]
+position = Vector2(-28.0774, 0)
+scale = Vector2(0.637435, 0.629913)
+texture = ExtResource("8_kmuo1")
+
+[node name="Clean" type="Node2D" parent="UI/Needs"]
+position = Vector2(1504.15, 28.0774)
+scale = Vector2(0.9, 0.9)
+metadata/_edit_group_ = true
+
+[node name="TextureProgressBar" type="TextureProgressBar" parent="UI/Needs/Clean"]
+offset_left = -245.0
+offset_top = -205.0
+offset_right = 193.0
+offset_bottom = 201.0
+fill_mode = 3
+nine_patch_stretch = true
+texture_progress = ExtResource("7_8l0el")
+
+[node name="Food" type="Sprite2D" parent="UI/Needs/Clean"]
+position = Vector2(-28.0774, 0)
+scale = Vector2(0.637435, 0.629913)
+texture = ExtResource("8_kmuo1")
+
+[node name="Level" type="Node2D" parent="UI"]
+position = Vector2(934, 11)
 scale = Vector2(0.190099, 0.190099)
 
-[node name="CurrencyBackground" type="Sprite2D" parent="Currency"]
-texture = ExtResource("3_p1fni")
+[node name="LevelBackground" type="Sprite2D" parent="UI/Level"]
+position = Vector2(789.062, 199.896)
+scale = Vector2(0.705027, 0.705027)
+texture = ExtResource("6_6w25j")
 
-[node name="CurrencyIcon" type="Sprite2D" parent="Currency"]
-position = Vector2(210.417, -6.00017)
+[node name="CurrentLevel" type="Label" parent="UI/Level"]
+offset_left = 584.0
+offset_top = 95.0
+offset_right = 984.0
+offset_bottom = 430.0
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.552941)
+theme_override_constants/shadow_offset_x = 15
+theme_override_constants/shadow_offset_y = 10
+theme_override_fonts/font = ExtResource("7_8rg5e")
+theme_override_font_sizes/font_size = 275
+text = "1"
+horizontal_alignment = 1
+
+[node name="Currency" type="Node2D" parent="UI"]
+position = Vector2(169, 53)
+scale = Vector2(0.190099, 0.190099)
+script = ExtResource("2_heemv")
+
+[node name="CurrencyIcon" type="Sprite2D" parent="UI/Currency"]
+position = Vector2(-641.771, -21.0417)
 scale = Vector2(0.886122, 0.886122)
 texture = ExtResource("4_omybp")
 
-[node name="Money" type="Label" parent="Currency"]
-offset_left = -736.459
-offset_top = -179.594
-offset_right = 31.5413
-offset_bottom = 162.406
+[node name="Money" type="Label" parent="UI/Currency"]
+offset_left = -426.094
+offset_top = -126.25
+offset_right = 329.906
+offset_bottom = 140.75
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 10
+theme_override_constants/shadow_offset_y = 10
+theme_override_fonts/font = ExtResource("7_8rg5e")
+theme_override_font_sizes/font_size = 20
 text = "10000"
 label_settings = SubResource("LabelSettings_03gin")
 
-[node name="Necessities" type="Node2D" parent="."]
-position = Vector2(376, 48)
-scale = Vector2(0.249311, 0.249311)
-script = ExtResource("6_1vdjr")
+[node name="Buttons" type="Node2D" parent="UI"]
+position = Vector2(574.75, 50.75)
+scale = Vector2(1150.5, 102.5)
 
-[node name="Timer" type="Timer" parent="Necessities"]
+[node name="SettingsButton" type="Node2D" parent="UI/Buttons" node_paths=PackedStringArray("template")]
+position = Vector2(-0.499565, 0.158537)
+scale = Vector2(0.000782269, 0.00878049)
+script = ExtResource("11_g216v")
+template = NodePath("../../Panels/PanelTemplate")
 
-[node name="Hungry" type="Node2D" parent="Necessities"]
+[node name="Button" type="TextureButton" parent="UI/Buttons/SettingsButton"]
+offset_left = -2.0
+offset_top = 546.0
+offset_right = 104.0
+offset_bottom = 646.0
+texture_normal = ExtResource("11_5i28f")
+texture_pressed = ExtResource("11_5i28f")
+ignore_texture_size = true
+stretch_mode = 0
+metadata/_edit_use_anchors_ = true
 
-[node name="Necessity" type="Sprite2D" parent="Necessities/Hungry"]
-texture = ExtResource("7_0qgfc")
+[node name="Icon" type="Sprite2D" parent="UI/Buttons/SettingsButton"]
+position = Vector2(51, 595)
+scale = Vector2(0.124325, 0.124325)
+texture = ExtResource("12_p2wc3")
 
-[node name="TextureProgressBar" type="TextureProgressBar" parent="Necessities/Hungry"]
-offset_left = -168.464
-offset_top = -164.453
-offset_right = 172.536
-offset_bottom = 176.547
-allow_greater = true
-allow_lesser = true
-fill_mode = 2
-nine_patch_stretch = true
-texture_under = ExtResource("8_ic1ir")
-texture_progress = ExtResource("9_mdr1f")
+[node name="MingamesButton" type="Node2D" parent="UI/Buttons" node_paths=PackedStringArray("template", "panel")]
+position = Vector2(0.420904, 0.158537)
+scale = Vector2(0.000782269, 0.00878049)
+script = ExtResource("11_g216v")
+template = NodePath("../../Panels/PanelTemplate")
+panel = NodePath("../../Panels/Minigames")
 
-[node name="Play" type="Node2D" parent="Necessities"]
-position = Vector2(409.128, 0)
+[node name="Button" type="TextureButton" parent="UI/Buttons/MingamesButton"]
+offset_left = -2.0
+offset_top = 546.0
+offset_right = 104.0
+offset_bottom = 646.0
+texture_normal = ExtResource("11_5i28f")
+texture_pressed = ExtResource("11_5i28f")
+ignore_texture_size = true
+stretch_mode = 0
 
-[node name="Necessity" type="Sprite2D" parent="Necessities/Play"]
-texture = ExtResource("7_0qgfc")
+[node name="Icon" type="Sprite2D" parent="UI/Buttons/MingamesButton"]
+position = Vector2(51, 595)
+scale = Vector2(0.124325, 0.124325)
+texture = ExtResource("14_84fhf")
 
-[node name="TextureProgressBar" type="TextureProgressBar" parent="Necessities/Play"]
-offset_left = -168.464
-offset_top = -164.453
-offset_right = 172.536
-offset_bottom = 176.547
-allow_greater = true
-allow_lesser = true
-fill_mode = 2
-nine_patch_stretch = true
-texture_under = ExtResource("8_ic1ir")
-texture_progress = ExtResource("9_mdr1f")
+[node name="ShopButton" type="Node2D" parent="UI/Buttons" node_paths=PackedStringArray("template", "panel")]
+position = Vector2(0.349631, 0.158537)
+scale = Vector2(0.000782269, 0.00878049)
+script = ExtResource("11_g216v")
+template = NodePath("../../Panels/PanelTemplate")
+panel = NodePath("../../Panels/Shop")
 
-[node name="Scratch" type="Node2D" parent="Necessities"]
-position = Vector2(810.233, 0)
+[node name="Button" type="TextureButton" parent="UI/Buttons/ShopButton"]
+offset_left = -2.0
+offset_top = 546.0
+offset_right = 104.0
+offset_bottom = 646.0
+texture_normal = ExtResource("11_5i28f")
+texture_pressed = ExtResource("11_5i28f")
+ignore_texture_size = true
+stretch_mode = 0
 
-[node name="Necessity" type="Sprite2D" parent="Necessities/Scratch"]
-texture = ExtResource("7_0qgfc")
+[node name="Icon" type="Sprite2D" parent="UI/Buttons/ShopButton"]
+position = Vector2(51, 595)
+scale = Vector2(0.124325, 0.124325)
+texture = ExtResource("15_n537x")
 
-[node name="TextureProgressBar" type="TextureProgressBar" parent="Necessities/Scratch"]
-offset_left = -168.464
-offset_top = -164.453
-offset_right = 172.536
-offset_bottom = 176.547
-allow_greater = true
-allow_lesser = true
-fill_mode = 2
-nine_patch_stretch = true
-texture_under = ExtResource("8_ic1ir")
-texture_progress = ExtResource("9_mdr1f")
+[node name="Panels" type="Node2D" parent="UI"]
 
-[node name="Sleep" type="Node2D" parent="Necessities"]
-position = Vector2(1223.37, 0)
+[node name="PanelTemplate" type="Node2D" parent="UI/Panels"]
+visible = false
 
-[node name="Necessity" type="Sprite2D" parent="Necessities/Sleep"]
-texture = ExtResource("7_0qgfc")
+[node name="Background" type="Sprite2D" parent="UI/Panels/PanelTemplate"]
+modulate = Color(1, 1, 1, 0.392157)
+position = Vector2(571, 364.25)
+scale = Vector2(0.87415, 1.01122)
+texture = ExtResource("10_1xqql")
 
-[node name="TextureProgressBar" type="TextureProgressBar" parent="Necessities/Sleep"]
-offset_left = -168.464
-offset_top = -164.453
-offset_right = 172.536
-offset_bottom = 176.547
-allow_greater = true
-allow_lesser = true
-fill_mode = 2
-nine_patch_stretch = true
-texture_under = ExtResource("8_ic1ir")
-texture_progress = ExtResource("9_mdr1f")
+[node name="Exit" type="Node2D" parent="UI/Panels/PanelTemplate" node_paths=PackedStringArray("panels_node", "buttons_node")]
+position = Vector2(254, -264)
+scale = Vector2(0.7, 0.7)
+script = ExtResource("16_1gejr")
+panels_node = NodePath("../..")
+buttons_node = NodePath("../../../Buttons")
+metadata/_edit_group_ = true
 
-[node name="Cleanliness" type="Node2D" parent="Necessities"]
-position = Vector2(1628.49, 0)
+[node name="Button" type="TextureButton" parent="UI/Panels/PanelTemplate/Exit"]
+offset_left = -2.0
+offset_top = 546.0
+offset_right = 104.0
+offset_bottom = 646.0
+texture_normal = ExtResource("11_5i28f")
+texture_pressed = ExtResource("11_5i28f")
+ignore_texture_size = true
+stretch_mode = 0
 
-[node name="Necessity" type="Sprite2D" parent="Necessities/Cleanliness"]
-texture = ExtResource("7_0qgfc")
+[node name="Icon" type="Sprite2D" parent="UI/Panels/PanelTemplate/Exit"]
+position = Vector2(51, 595)
+scale = Vector2(0.124325, 0.124325)
+texture = ExtResource("16_qpekd")
 
-[node name="TextureProgressBar" type="TextureProgressBar" parent="Necessities/Cleanliness"]
-offset_left = -168.464
-offset_top = -164.453
-offset_right = 172.536
-offset_bottom = 176.547
-allow_greater = true
-allow_lesser = true
-fill_mode = 2
-nine_patch_stretch = true
-texture_under = ExtResource("8_ic1ir")
-texture_progress = ExtResource("9_mdr1f")
-
-[node name="MinigamesPanel" type="Node2D" parent="."]
+[node name="Minigames" type="Node2D" parent="UI/Panels"]
 visible = false
 position = Vector2(581, 324)
 script = ExtResource("10_j240k")
 
-[node name="Sprite2D" type="Sprite2D" parent="MinigamesPanel"]
-modulate = Color(1, 1, 1, 0.392157)
-texture = ExtResource("10_1xqql")
+[node name="WalkToTarget" type="Node2D" parent="UI/Panels/Minigames"]
 
-[node name="WalkToTarget" type="Node2D" parent="MinigamesPanel"]
-
-[node name="WalkToTargetLabel" type="Label" parent="MinigamesPanel/WalkToTarget"]
-offset_left = -338.0
-offset_top = -217.0
-offset_right = -298.0
-offset_bottom = -194.0
+[node name="WalkToTargetLabel" type="Label" parent="UI/Panels/Minigames/WalkToTarget"]
+offset_left = -306.0
+offset_top = -135.0
+offset_right = -33.0
+offset_bottom = -77.0
 scale = Vector2(0.99523, 1.03372)
 theme_override_font_sizes/font_size = 42
 text = "Dojdź do celu"
 
-[node name="WalkToTargetButton" type="Button" parent="MinigamesPanel/WalkToTarget"]
-offset_left = 257.0
-offset_top = -212.0
-offset_right = 325.0
-offset_bottom = -162.0
+[node name="WalkToTargetButton" type="Button" parent="UI/Panels/Minigames/WalkToTarget"]
+offset_left = 226.0
+offset_top = -144.0
+offset_right = 294.0
+offset_bottom = -94.0
 theme_override_font_sizes/font_size = 30
 text = "Graj"
 
-[node name="CatHop" type="Node2D" parent="MinigamesPanel"]
+[node name="CatHop" type="Node2D" parent="UI/Panels/Minigames"]
 
-[node name="CatHopLabel" type="Label" parent="MinigamesPanel/CatHop"]
-offset_left = -338.0
-offset_top = -147.0
-offset_right = -65.0
-offset_bottom = -89.0
+[node name="CatHopLabel" type="Label" parent="UI/Panels/Minigames/CatHop"]
+offset_left = -306.0
+offset_top = -81.0
+offset_right = -33.0
+offset_bottom = -23.0
 scale = Vector2(0.99523, 1.03372)
 theme_override_font_sizes/font_size = 42
 text = "CatHop
 "
 
-[node name="CatHopButton" type="Button" parent="MinigamesPanel/CatHop"]
-offset_left = 257.0
-offset_top = -153.0
-offset_right = 325.0
-offset_bottom = -103.0
+[node name="CatHopButton" type="Button" parent="UI/Panels/Minigames/CatHop"]
+offset_left = 229.0
+offset_top = -80.0
+offset_right = 297.0
+offset_bottom = -30.0
 theme_override_font_sizes/font_size = 30
 text = "Graj"
 
-[node name="MinigameButton" type="Node2D" parent="."]
-position = Vector2(1100, 596)
-script = ExtResource("11_37ado")
+[node name="Shop" type="Node2D" parent="UI/Panels"]
+visible = false
+position = Vector2(581, 324)
+script = ExtResource("15_4go0m")
+_food_resources = Array[Resource("res://Scripts/Resources/Food.gd")]([ExtResource("16_bd6oq"), ExtResource("17_7cdb2"), ExtResource("18_m58wg"), ExtResource("19_wcutm")])
 
-[node name="Button" type="Button" parent="MinigameButton"]
-offset_left = -31.0
-offset_top = -30.0
-offset_right = 41.0
-offset_bottom = 42.0
+[node name="Food" type="Node2D" parent="UI/Panels/Shop"]
+
+[node name="FoodButton" type="Button" parent="UI/Panels/Shop/Food"]
+offset_left = -294.0
+offset_top = -126.0
+offset_right = -131.0
+offset_bottom = -40.0
+theme_override_font_sizes/font_size = 50
+text = "Food"
+
+[node name="Foods" type="Node2D" parent="UI/Panels/Shop"]
+visible = false
+
+[node name="Back" type="Node2D" parent="UI/Panels/Shop/Foods"]
+position = Vector2(-327, -588)
+scale = Vector2(0.7, 0.7)
+metadata/_edit_group_ = true
+
+[node name="BackButton" type="TextureButton" parent="UI/Panels/Shop/Foods/Back"]
+offset_left = -2.0
+offset_top = 546.0
+offset_right = 104.0
+offset_bottom = 646.0
+texture_normal = ExtResource("11_5i28f")
+texture_pressed = ExtResource("11_5i28f")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="Icon" type="Sprite2D" parent="UI/Panels/Shop/Foods/Back"]
+position = Vector2(51, 595)
+scale = Vector2(0.124325, 0.124325)
+texture = ExtResource("24_srg2u")
 
 [node name="Bowl" type="Area2D" parent="."]
 script = ExtResource("13_gxamd")
@@ -227,21 +405,41 @@ texture = ExtResource("5_qahp6")
 visible = false
 polygon = PackedVector2Array(172, 454, 185, 447, 212, 443, 236, 444, 254, 451, 260, 458, 265, 478, 268, 488, 267, 495, 258, 501, 245, 506, 212, 509, 180, 504, 165, 496, 163, 486)
 
-[node name="Fridge" type="Node2D" parent="."]
+[node name="AnimTimer" type="Timer" parent="Bowl"]
+one_shot = true
+
+[node name="Fridge" type="Control" parent="."]
 visible = false
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("14_6pba1")
 
 [node name="Fridge" type="Sprite2D" parent="Fridge"]
 modulate = Color(1, 1, 1, 0.392157)
-position = Vector2(564, 333)
+position = Vector2(561, 324)
 texture = ExtResource("10_1xqql")
 
 [node name="BackButton" type="Button" parent="Fridge"]
-offset_left = 843.0
-offset_top = 93.0
-offset_right = 925.0
-offset_bottom = 130.0
+layout_mode = 0
+offset_left = 860.0
+offset_top = 99.0
+offset_right = 942.0
+offset_bottom = 136.0
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 text = "POWRÓT"
+
+[node name="ScrollContainer" type="ScrollContainer" parent="Fridge"]
+layout_mode = 0
+offset_left = 213.0
+offset_top = 138.0
+offset_right = 948.0
+offset_bottom = 581.0
+horizontal_scroll_mode = 0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Fridge/ScrollContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/separation = 150
 
 [node name="Scratching_post" type="Area2D" parent="."]
 script = ExtResource("14_7xxgu")
@@ -254,55 +452,39 @@ texture = ExtResource("2_rsjqa")
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Scratching_post"]
 polygon = PackedVector2Array(919, 245, 932, 226, 965, 216, 1004, 218, 1033, 230, 1039, 246, 1035, 261, 1035, 270, 1019, 281, 995, 286, 994, 454, 1024, 454, 1023, 407, 1025, 393, 1044, 380, 1074, 374, 1098, 376, 1117, 386, 1125, 400, 1124, 411, 1126, 410, 1125, 457, 1135, 468, 1137, 480, 1135, 489, 1127, 498, 1114, 506, 1091, 512, 1061, 513, 913, 513, 912, 503, 939, 455, 961, 455, 962, 284, 939, 279, 924, 269, 923, 262)
 
-[node name="ShopPanel" type="Node2D" parent="."]
-position = Vector2(581, 324)
-script = ExtResource("15_4go0m")
-_food_resources = Array[Resource("res://Scripts/Resources/Food.gd")]([ExtResource("16_bd6oq"), ExtResource("17_7cdb2"), ExtResource("18_m58wg"), ExtResource("19_wcutm")])
+[node name="Button" type="Button" parent="."]
+offset_left = 16.0
+offset_top = 245.0
+offset_right = 119.0
+offset_bottom = 293.0
+text = "HAJSSSSS"
+script = ExtResource("23_ek1bj")
 
-[node name="Sprite2D" type="Sprite2D" parent="ShopPanel"]
-modulate = Color(1, 1, 1, 0.392157)
-texture = ExtResource("10_1xqql")
-
-[node name="Food" type="Node2D" parent="ShopPanel"]
-
-[node name="FoodButton" type="Button" parent="ShopPanel/Food"]
-offset_left = -345.0
-offset_top = -224.0
-offset_right = -183.0
-offset_bottom = -130.0
-theme_override_font_sizes/font_size = 50
-text = "Food"
-
-[node name="Foods" type="Node2D" parent="ShopPanel"]
-visible = false
-
-[node name="BackButton" type="Button" parent="ShopPanel/Foods"]
-offset_left = -356.0
-offset_top = -238.0
-offset_right = -311.0
-offset_bottom = -196.0
-
-[node name="ShopButton" type="Node2D" parent="."]
-position = Vector2(1100, 596)
-script = ExtResource("16_0rb47")
-
-[node name="Button" type="Button" parent="ShopButton"]
-offset_left = -110.0
-offset_top = -29.0
-offset_right = -38.0
-offset_bottom = 43.0
-
-[connection signal="timeout" from="Necessities/Timer" to="Necessities" method="_on_timer_timeout"]
-[connection signal="pressed" from="MinigamesPanel/WalkToTarget/WalkToTargetButton" to="MinigamesPanel" method="_on_walk_to_target_button_pressed"]
-[connection signal="pressed" from="MinigamesPanel/CatHop/CatHopButton" to="MinigamesPanel" method="_on_cat_hop_button_pressed"]
-[connection signal="pressed" from="MinigameButton/Button" to="MinigameButton" method="_on_button_pressed"]
+[connection signal="timeout" from="UI/Needs/Timer" to="UI/Needs" method="_on_timer_timeout"]
+[connection signal="mouse_entered" from="UI/Buttons/SettingsButton/Button" to="UI/Buttons/SettingsButton" method="_on_button_mouse_entered"]
+[connection signal="mouse_exited" from="UI/Buttons/SettingsButton/Button" to="UI/Buttons/SettingsButton" method="_on_button_mouse_exited"]
+[connection signal="pressed" from="UI/Buttons/SettingsButton/Button" to="UI/Buttons/SettingsButton" method="_on_button_pressed"]
+[connection signal="mouse_entered" from="UI/Buttons/MingamesButton/Button" to="UI/Buttons/MingamesButton" method="_on_button_mouse_entered"]
+[connection signal="mouse_exited" from="UI/Buttons/MingamesButton/Button" to="UI/Buttons/MingamesButton" method="_on_button_mouse_exited"]
+[connection signal="pressed" from="UI/Buttons/MingamesButton/Button" to="UI/Buttons/MingamesButton" method="_on_button_pressed"]
+[connection signal="mouse_entered" from="UI/Buttons/ShopButton/Button" to="UI/Buttons/ShopButton" method="_on_button_mouse_entered"]
+[connection signal="mouse_exited" from="UI/Buttons/ShopButton/Button" to="UI/Buttons/ShopButton" method="_on_button_mouse_exited"]
+[connection signal="pressed" from="UI/Buttons/ShopButton/Button" to="UI/Buttons/ShopButton" method="_on_button_pressed"]
+[connection signal="mouse_entered" from="UI/Panels/PanelTemplate/Exit/Button" to="UI/Panels/PanelTemplate/Exit" method="_on_button_mouse_entered"]
+[connection signal="mouse_exited" from="UI/Panels/PanelTemplate/Exit/Button" to="UI/Panels/PanelTemplate/Exit" method="_on_button_mouse_exited"]
+[connection signal="pressed" from="UI/Panels/PanelTemplate/Exit/Button" to="UI/Panels/PanelTemplate/Exit" method="_on_button_pressed"]
+[connection signal="pressed" from="UI/Panels/Minigames/WalkToTarget/WalkToTargetButton" to="UI/Panels/Minigames" method="_on_walk_to_target_button_pressed"]
+[connection signal="pressed" from="UI/Panels/Minigames/CatHop/CatHopButton" to="UI/Panels/Minigames" method="_on_cat_hop_button_pressed"]
+[connection signal="pressed" from="UI/Panels/Shop/Food/FoodButton" to="UI/Panels/Shop" method="_on_food_button_pressed"]
+[connection signal="mouse_entered" from="UI/Panels/Shop/Foods/Back/BackButton" to="UI/Panels/Shop/Foods/Back" method="_on_button_mouse_entered"]
+[connection signal="mouse_exited" from="UI/Panels/Shop/Foods/Back/BackButton" to="UI/Panels/Shop/Foods/Back" method="_on_button_mouse_exited"]
+[connection signal="pressed" from="UI/Panels/Shop/Foods/Back/BackButton" to="UI/Panels/Shop" method="_on_back_button_pressed"]
 [connection signal="input_event" from="Bowl" to="Bowl" method="_on_input_event"]
 [connection signal="mouse_entered" from="Bowl" to="Bowl" method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="Bowl" to="Bowl" method="_on_mouse_exited"]
+[connection signal="timeout" from="Bowl/AnimTimer" to="Bowl" method="_on_anim_timer_timeout"]
 [connection signal="pressed" from="Fridge/BackButton" to="Bowl" method="_on_back_button_pressed"]
 [connection signal="input_event" from="Scratching_post" to="Scratching_post" method="_on_input_event"]
 [connection signal="mouse_entered" from="Scratching_post" to="Scratching_post" method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="Scratching_post" to="Scratching_post" method="_on_mouse_exited"]
-[connection signal="pressed" from="ShopPanel/Food/FoodButton" to="ShopPanel" method="_on_food_button_pressed"]
-[connection signal="pressed" from="ShopPanel/Foods/BackButton" to="ShopPanel" method="_on_back_button_pressed"]
-[connection signal="pressed" from="ShopButton/Button" to="ShopButton" method="_on_button_pressed"]
+[connection signal="pressed" from="Button" to="Button" method="_on_pressed"]

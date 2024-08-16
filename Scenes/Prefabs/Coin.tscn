@@ -1,0 +1,23 @@
+[gd_scene load_steps=4 format=3 uid="uid://dfucdw2umtev3"]
+
+[ext_resource type="Script" path="res://Scenes/Prefabs/Coin.gd" id="1_mesv7"]
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_vmyex"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4nqc6"]
+size = Vector2(35, 34.5)
+
+[node name="Coin" type="Area2D"]
+script = ExtResource("1_mesv7")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+self_modulate = Color(1, 0.556863, 1, 1)
+position = Vector2(21.1875, 18.9375)
+scale = Vector2(33.625, 32.125)
+texture = SubResource("CanvasTexture_vmyex")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(21.5, 18.75)
+shape = SubResource("RectangleShape2D_4nqc6")
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]

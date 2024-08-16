@@ -17,7 +17,7 @@ func _ready():
 	necessities["play"] = $Play/TextureProgressBar;
 	necessities["scratch"] = $Scratch/TextureProgressBar;
 	necessities["sleep"] = $Sleep/TextureProgressBar;
-	necessities["clean"] = $Cleanliness/TextureProgressBar;
+	necessities["clean"] = $Clean/TextureProgressBar;
 	
 	for i in necessities :
 		necessities[i].value = VariableManager.needs[i];

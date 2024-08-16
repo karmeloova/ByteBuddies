@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="Food_Resource" load_steps=2 format=3 uid="uid://t42e4xahewyu"]
+[gd_resource type="Resource" script_class="Food_Resource" load_steps=2 format=3 uid="uid://iunttbf6n5hq"]
 
 [ext_resource type="Script" path="res://Scripts/Resources/Food.gd" id="1_e2bnm"]
 

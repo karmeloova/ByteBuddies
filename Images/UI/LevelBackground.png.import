@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://l6wdj1q4e36q"
-path="res://.godot/imported/Prawypanel.png-8f6718fcc22605daf4cde6ab03ad0759.ctex"
+uid="uid://f4m7ukvlblan"
+path="res://.godot/imported/LevelBackground.png-76b376fd6ef68b6e4757f58651821b01.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Images/UI/Prawypanel.png"
-dest_files=["res://.godot/imported/Prawypanel.png-8f6718fcc22605daf4cde6ab03ad0759.ctex"]
+source_file="res://Images/UI/LevelBackground.png"
+dest_files=["res://.godot/imported/LevelBackground.png-76b376fd6ef68b6e4757f58651821b01.ctex"]
 
 [params]
 

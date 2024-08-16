@@ -1,4 +1,4 @@
-extends Node2D
+extends Button
 
 
 # Called when the node enters the scene tree for the first time.
@@ -11,5 +11,6 @@ func _process(delta):
 	pass
 
 
-func _on_button_pressed():
-	$"../ShopPanel".visible = !$"../ShopPanel".visible
+func _on_pressed():
+	VariableManager.coins += 100
+	SignalManager.change_money.emit()

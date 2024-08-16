@@ -2,11 +2,12 @@ extends Node
 var save_game;
 var save_path = "user://GameSave.save"
 var save_data = {
-	"hungry" : 0,
-	"play" : 0,
-	"scratch" : 0,
-	"sleep" : 0,
-	"clean" : 0
+	"hungry" : 100,
+	"play" : 100,
+	"scratch" : 100,
+	"sleep" : 100,
+	"clean" : 100,
+	"coins" : 0
 }
 
 # Called when the node enters the scene tree for the first time.
@@ -20,6 +21,7 @@ func _ready():
 	VariableManager.needs["scratch"] = save_data["scratch"];
 	VariableManager.needs["sleep"] = save_data["sleep"];
 	VariableManager.needs["clean"] = save_data["clean"];
+	VariableManager.coins = save_data["coins"];
 	
 func create_save():
 	# Otwieramy plik do zapisu
@@ -46,5 +48,6 @@ func _notification(what):
 		save("scratch", VariableManager.needs["scratch"]);
 		save("sleep", VariableManager.needs["sleep"]);
 		save("clean", VariableManager.needs["clean"]);
+		save("coins", VariableManager.coins)
 
 #ścieżka do pliku - C:\Users\xxfea\AppData\Roaming\Godot\app_userdata\ByteBuddies

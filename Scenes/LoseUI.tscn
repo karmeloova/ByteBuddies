@@ -1,0 +1,72 @@
+[gd_scene load_steps=5 format=3 uid="uid://doyyhye04gaml"]
+
+[ext_resource type="Script" path="res://Scripts/Minigames/WalkToTarget/Lose.gd" id="1_shpas"]
+[ext_resource type="Texture2D" uid="uid://dl8dw08og2gr8" path="res://Images/Backgrounds/Placeholder_backgorund_minigames.jpg" id="2_tji6x"]
+[ext_resource type="FontFile" uid="uid://ccgpsjqwwow8o" path="res://Fonts/Bubblegum.ttf" id="3_adf35"]
+[ext_resource type="Texture2D" uid="uid://o332hh7r7y4y" path="res://Images/UI/Button.png" id="4_880pk"]
+
+[node name="Lose" type="Node2D"]
+visible = false
+position = Vector2(-557, -598)
+script = ExtResource("1_shpas")
+
+[node name="Menu" type="Sprite2D" parent="."]
+modulate = Color(1, 1, 1, 0.392157)
+position = Vector2(580.609, 336)
+scale = Vector2(1.31535, 1.0898)
+texture = ExtResource("2_tji6x")
+
+[node name="LoseLabel" type="Label" parent="."]
+offset_left = 182.0
+offset_top = 151.0
+offset_right = 926.0
+offset_bottom = 288.0
+theme_override_colors/font_outline_color = Color(0.490196, 0, 0, 1)
+theme_override_constants/outline_size = 7
+theme_override_fonts/font = ExtResource("3_adf35")
+theme_override_font_sizes/font_size = 100
+text = "Przegrales"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="RestartButton" type="TextureButton" parent="."]
+offset_left = 380.0
+offset_top = 271.0
+offset_right = 3430.0
+offset_bottom = 1251.0
+scale = Vector2(0.1, 0.1)
+texture_normal = ExtResource("4_880pk")
+ignore_texture_size = true
+
+[node name="RestartButtonLabel" type="Label" parent="."]
+offset_left = 442.0
+offset_top = 299.0
+offset_right = 656.0
+offset_bottom = 348.0
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.67451)
+theme_override_constants/shadow_offset_x = 3
+theme_override_constants/shadow_offset_y = 2
+theme_override_fonts/font = ExtResource("3_adf35")
+theme_override_font_sizes/font_size = 45
+text = "Restart"
+
+[node name="BackButton" type="TextureButton" parent="."]
+offset_left = 92.0
+offset_top = 64.0
+offset_right = 3142.0
+offset_bottom = 1044.0
+scale = Vector2(0.08, 0.1)
+texture_normal = ExtResource("4_880pk")
+ignore_texture_size = true
+
+[node name="RestartButtonLabel2" type="Label" parent="."]
+offset_left = 133.0
+offset_top = 91.0
+offset_right = 347.0
+offset_bottom = 140.0
+theme_override_fonts/font = ExtResource("3_adf35")
+theme_override_font_sizes/font_size = 45
+text = "Powrot"
+
+[connection signal="pressed" from="RestartButton" to="." method="_on_restart_button_pressed"]
+[connection signal="pressed" from="BackButton" to="." method="_on_back_button_pressed"]
