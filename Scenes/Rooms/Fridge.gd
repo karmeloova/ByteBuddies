@@ -2,6 +2,9 @@ extends Control
 
 var food_list : Array[Food_Resource]
 var is_in_array : bool = false
+var added_to_bowl : bool = false
+
+@export var panel : Node2D
 
 var Food = preload("res://Scenes/FridgePosition.tscn")
 var food_instance
@@ -14,7 +17,7 @@ var last_pos = Vector2.ZERO
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	SignalManager.add_to_fridge.connect(_on_add_to_fridge)
-
+	SignalManager.add_to_bowl.connect(_on_add_to_bowl)
 func _on_add_to_fridge(item) :
 	is_in_array = false
 	for i in range(food_list.size()) :
@@ -42,3 +45,27 @@ func update_fridge(item : Food_Resource, is_in_the_fridge : bool, food : String)
 			if(i.get_node("Name").text == food) :
 				i.get_node("Amount").text = str(item.amount)
 	
+func _on_feed_mouse_entered():
+	$Feed.modulate = Color("b2b2b2")
+
+func _on_feed_mouse_exited():
+	$Feed.modulate = Color("ffffff")
+
+func _on_feed_pressed():
+	
+	if added_to_bowl :
+		visible = false
+		panel.visible = false
+		added_to_bowl = false
+		if(VariableManager.needs["hungry"] < 50) :
+			# Czas animacji podejścia kota do miski (może taka będzie)
+			$AnimTimer.start(5)
+
+func _on_add_to_bowl(hungry_points) :
+	VariableManager.hungry_points_in_bowl += hungry_points.to_int()
+	if not added_to_bowl :
+		# Oznacza to, że dodaliśmy do miski cokolwiek
+		added_to_bowl = true
+
+func _on_anim_timer_timeout():
+	SignalManager.eat.emit();

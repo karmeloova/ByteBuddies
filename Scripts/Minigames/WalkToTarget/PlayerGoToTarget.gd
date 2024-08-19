@@ -13,8 +13,6 @@ func _ready():
 	position = VariableManager.start_position
 	
 	SignalManager.restartGame.connect(_on_restart_game_)
-	SignalManager.stopGame.connect(_on_stop_game)
-	SignalManager.startGameAfterPause.connect(_on_start_game_after_pause)
 	SignalManager.makeMove.connect(_on_make_move)
 
 func _on_make_move(tab_of_instructions) :
@@ -78,16 +76,3 @@ func restart() :
 func _on_next_level_waiter_timeout():
 	SignalManager.nextLevel.emit();
 	restart();
-
-func _on_stop_game() :
-	if(moved) :
-		$TweenWaiter.stop();
-		tween.pause();
-	game_pause = true;
-
-func _on_start_game_after_pause():
-	if(moved) :
-		$TweenWaiter.start();
-		print($TweenWaiter.time_left);
-		tween.play();
-	game_pause = false;

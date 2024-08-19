@@ -22,7 +22,6 @@ var tile = preload("res://Scenes/Prefabs/Tiles.tscn");
 func _ready():
 	generateBoard();
 	SignalManager.nextLevel.connect(_on_next_level)
-	SignalManager.restartGame.connect(_on_restart_game)
 
 func generateBoard() :
 	tile_instance = tile.instantiate();
@@ -159,5 +158,3 @@ func _on_next_level() :
 
 # W przypadku gdy gracz chce zrestować grę (zagraj ponownie/restart) również
 # generujemy nową planszę
-func _on_restart_game() :
-	generate_board_again()

@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://x5i72wcl8spx"]
+[gd_scene load_steps=16 format=3 uid="uid://x5i72wcl8spx"]
 
 [ext_resource type="Script" path="res://Scenes/Minigames/Player.gd" id="1_76w8l"]
 [ext_resource type="Script" path="res://Scenes/Minigames/CameraCatHop.gd" id="2_ebytp"]
@@ -6,8 +6,9 @@
 [ext_resource type="FontFile" uid="uid://ccgpsjqwwow8o" path="res://Fonts/Bubblegum.ttf" id="4_v2enh"]
 [ext_resource type="Script" path="res://Scenes/Minigames/CoinsLabel.gd" id="5_4fi6x"]
 [ext_resource type="Script" path="res://Scenes/Minigames/Points.gd" id="5_of3sl"]
-[ext_resource type="PackedScene" uid="uid://doyyhye04gaml" path="res://Scenes/LoseUI.tscn" id="6_wbr14"]
+[ext_resource type="PackedScene" uid="uid://doyyhye04gaml" path="res://Scenes/Prefabs/UI/LoseUI.tscn" id="6_wbr14"]
 [ext_resource type="Script" path="res://Scenes/Minigames/Coins.gd" id="6_x1t1n"]
+[ext_resource type="PackedScene" uid="uid://cyn346855vab8" path="res://Scenes/Prefabs/UI/PauseUI.tscn" id="9_sdip7"]
 
 [sub_resource type="CanvasTexture" id="CanvasTexture_wclep"]
 
@@ -92,9 +93,9 @@ anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
 offset_left = -553.0
-offset_top = -598.0
+offset_top = -486.0
 offset_right = -255.0
-offset_bottom = -544.0
+offset_bottom = -432.0
 grow_horizontal = 0
 theme_override_fonts/font = ExtResource("4_v2enh")
 theme_override_font_sizes/font_size = 50
@@ -109,9 +110,9 @@ anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
 offset_left = -553.0
-offset_top = -543.0
+offset_top = -431.0
 offset_right = -255.0
-offset_bottom = -489.0
+offset_bottom = -377.0
 grow_horizontal = 0
 theme_override_fonts/font = ExtResource("4_v2enh")
 theme_override_font_sizes/font_size = 50
@@ -120,6 +121,10 @@ script = ExtResource("5_4fi6x")
 metadata/_edit_use_anchors_ = true
 
 [node name="Lose" parent="Camera2D" instance=ExtResource("6_wbr14")]
+position = Vector2(-566, -612)
+
+[node name="Pause" parent="Camera2D" instance=ExtResource("9_sdip7")]
+position = Vector2(-553, -592)
 
 [connection signal="area_entered" from="Player/Area2D" to="Player" method="_on_area_2d_area_entered"]
 [connection signal="screen_exited" from="Player/VisibleOnScreenNotifier2D" to="Player" method="_on_visible_on_screen_notifier_2d_screen_exited"]

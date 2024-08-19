@@ -6,9 +6,9 @@
 [ext_resource type="Texture2D" uid="uid://o332hh7r7y4y" path="res://Images/UI/Button.png" id="4_880pk"]
 
 [node name="Lose" type="Node2D"]
-visible = false
-position = Vector2(-557, -598)
+position = Vector2(-10, -13)
 script = ExtResource("1_shpas")
+metadata/_edit_group_ = true
 
 [node name="Menu" type="Sprite2D" parent="."]
 modulate = Color(1, 1, 1, 0.392157)

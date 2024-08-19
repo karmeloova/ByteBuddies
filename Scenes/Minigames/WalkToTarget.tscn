@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://d4bs4i6ftyij1"]
+[gd_scene load_steps=13 format=3 uid="uid://d4bs4i6ftyij1"]
 
 [ext_resource type="Script" path="res://Scripts/Minigames/WalkToTarget/CodeArea.gd" id="1_dto5f"]
 [ext_resource type="Texture2D" uid="uid://dl8dw08og2gr8" path="res://Images/Backgrounds/Placeholder_backgorund_minigames.jpg" id="2_jbpt1"]
@@ -8,14 +8,12 @@
 [ext_resource type="Script" path="res://Scripts/Minigames/WalkToTarget/PlayerGoToTarget.gd" id="6_uoexw"]
 [ext_resource type="Texture2D" uid="uid://xr24310ei2bc" path="res://Images/Backgrounds/LACMTA_Circle_Purple_Line.svg.png" id="7_g0173"]
 [ext_resource type="Texture2D" uid="uid://b417hifsytge3" path="res://Images/Accessories/Miska.png" id="8_sigdh"]
-[ext_resource type="Script" path="res://Scripts/Minigames/WalkToTarget/Layout.gd" id="9_mabsa"]
 [ext_resource type="Script" path="res://Scripts/Minigames/WalkToTarget/Lives.gd" id="10_1r340"]
-[ext_resource type="PackedScene" uid="uid://doyyhye04gaml" path="res://Scenes/LoseUI.tscn" id="11_nlonb"]
+[ext_resource type="PackedScene" uid="uid://cyn346855vab8" path="res://Scenes/Prefabs/UI/PauseUI.tscn" id="11_cltnc"]
+[ext_resource type="PackedScene" uid="uid://doyyhye04gaml" path="res://Scenes/Prefabs/UI/LoseUI.tscn" id="11_nlonb"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_qkeyp"]
 radius = 30.0167
-
-[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_1wdm2"]
 
 [node name="WalkToTarget" type="Node2D"]
 
@@ -93,7 +91,6 @@ scale = Vector2(0.0583366, 0.0583366)
 texture = ExtResource("8_sigdh")
 
 [node name="Layout" type="Node2D" parent="."]
-script = ExtResource("9_mabsa")
 
 [node name="Lives" type="Node2D" parent="Layout"]
 script = ExtResource("10_1r340")
@@ -106,55 +103,10 @@ offset_bottom = 45.0
 theme_override_font_sizes/font_size = 30
 text = "Życia: "
 
-[node name="Pause" type="Node2D" parent="Layout"]
-
-[node name="PauseButton" type="Button" parent="Layout/Pause"]
-offset_left = 12.0
-offset_top = 10.0
-offset_right = 52.0
-offset_bottom = 48.0
-
-[node name="PauseMenu" type="Node2D" parent="Layout/Pause"]
-visible = false
-
-[node name="Menu" type="Sprite2D" parent="Layout/Pause/PauseMenu"]
-modulate = Color(1, 1, 1, 0.392157)
-position = Vector2(572.486, 312.906)
-scale = Vector2(0.401748, 0.673087)
-texture = ExtResource("2_jbpt1")
-
-[node name="BackButton" type="Button" parent="Layout/Pause/PauseMenu"]
-modulate = Color(0, 0, 0, 0.623529)
-material = SubResource("CanvasItemMaterial_1wdm2")
-offset_left = 486.0
-offset_top = 220.812
-offset_right = 661.0
-offset_bottom = 275.813
-theme_override_font_sizes/font_size = 30
-text = "Wróć"
-
-[node name="RestartButton" type="Button" parent="Layout/Pause/PauseMenu"]
-modulate = Color(0, 0, 0, 0.623529)
-material = SubResource("CanvasItemMaterial_1wdm2")
-offset_left = 486.0
-offset_top = 286.813
-offset_right = 661.0
-offset_bottom = 341.813
-theme_override_font_sizes/font_size = 30
-text = "Restart"
-
-[node name="QuitButton" type="Button" parent="Layout/Pause/PauseMenu"]
-modulate = Color(0, 0, 0, 0.623529)
-material = SubResource("CanvasItemMaterial_1wdm2")
-offset_left = 486.0
-offset_top = 354.813
-offset_right = 661.0
-offset_bottom = 409.813
-theme_override_colors/font_color = Color(1, 1, 1, 1)
-theme_override_font_sizes/font_size = 30
-text = "Wyjdź"
+[node name="Pause" parent="Layout" instance=ExtResource("11_cltnc")]
 
 [node name="Lose" parent="Layout" instance=ExtResource("11_nlonb")]
+position = Vector2(-5, -7)
 
 [connection signal="text_changed" from="CodeArea/CodeField" to="CodeArea" method="_on_code_field_text_changed"]
 [connection signal="pressed" from="CodeArea/ExecuteButton" to="CodeArea" method="_on_execute_button_pressed"]
@@ -164,7 +116,3 @@ text = "Wyjdź"
 [connection signal="timeout" from="Player/TweenWaiter" to="Player" method="_on_tween_waiter_timeout"]
 [connection signal="timeout" from="Player/RestartWaiter" to="Player" method="_on_restart_waiter_timeout"]
 [connection signal="timeout" from="Player/NextLevelWaiter" to="Player" method="_on_next_level_waiter_timeout"]
-[connection signal="pressed" from="Layout/Pause/PauseButton" to="Layout" method="_on_pause_button_pressed"]
-[connection signal="pressed" from="Layout/Pause/PauseMenu/BackButton" to="Layout" method="_on_back_button_pressed"]
-[connection signal="pressed" from="Layout/Pause/PauseMenu/RestartButton" to="Layout" method="_on_restart_button_pressed"]
-[connection signal="pressed" from="Layout/Pause/PauseMenu/QuitButton" to="Layout" method="_on_quit_button_pressed"]

@@ -30,7 +30,6 @@ func _ready():
 	platform_size = VariableManager.platform_size
 	
 	SignalManager.add_platform.connect(_on_add_platform)
-	SignalManager.restartGame.connect(_on_restart_game)
 	
 	generate_board();
 
@@ -49,7 +48,6 @@ func _on_add_platform() -> void:
 			count_platforms += 1
 			generated = true;
 	if(count_platforms % 3 == 0) : SignalManager.generate_coin.emit(last_position, platform_size)
-	
 	
 func generate_platform() -> bool:
 	direction = randi_range(0,1)
@@ -70,18 +68,4 @@ func generate_platform() -> bool:
 		return true
 	return false
 
-func _on_restart_game() -> void:
-	for i in platforms_node.get_children():
-		i.queue_free()
-	count_platforms = 0
-	
-	platform_instance = Platform.instantiate();
-	platforms_node.add_child(platform_instance);
-	platform_size = VariableManager.platform_size
-	random_x_position = randi_range(margin+platform_size/2, 1152-platform_size/2-margin)
-	
-	platform_instance.position = Vector2(random_x_position, 598-y_distance)
-	last_position = platform_instance.position;
-	platform_size = VariableManager.platform_size
-	
-	generate_board()
+

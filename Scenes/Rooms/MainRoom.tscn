@@ -1,4 +1,4 @@
-[gd_scene load_steps=33 format=3 uid="uid://br5jh3sh28ig4"]
+[gd_scene load_steps=35 format=3 uid="uid://br5jh3sh28ig4"]
 
 [ext_resource type="Texture2D" uid="uid://ddmrcvq0prt24" path="res://Images/Backgrounds/Tlov1.png" id="1_5tq1h"]
 [ext_resource type="Script" path="res://Scenes/Rooms/Currency.gd" id="2_heemv"]
@@ -30,6 +30,8 @@
 [ext_resource type="Resource" uid="uid://b8qtspxh2opu6" path="res://Resources/Food/Banana.tres" id="19_wcutm"]
 [ext_resource type="Script" path="res://Scenes/Rooms/Button.gd" id="23_ek1bj"]
 [ext_resource type="Texture2D" uid="uid://6adv5bnfl4ff" path="res://Images/UI/Buttons/Back.png" id="24_srg2u"]
+[ext_resource type="Texture2D" uid="uid://bowy12qgsf8t3" path="res://Images/UI/Buttons/Button.png" id="28_7d6xq"]
+[ext_resource type="Texture2D" uid="uid://uhifpi6dj3ce" path="res://Images/Cats/Cat.png" id="32_3rwvs"]
 
 [sub_resource type="CanvasTexture" id="CanvasTexture_nyw1b"]
 
@@ -275,6 +277,23 @@ position = Vector2(51, 595)
 scale = Vector2(0.124325, 0.124325)
 texture = ExtResource("15_n537x")
 
+[node name="Bowl" type="Area2D" parent="UI/Buttons" node_paths=PackedStringArray("fridge", "panel_template")]
+position = Vector2(-0.499565, -0.495122)
+scale = Vector2(0.000869187, 0.0097561)
+script = ExtResource("13_gxamd")
+fridge = NodePath("../../Panels/Fridge")
+panel_template = NodePath("../../Panels/PanelTemplate")
+
+[node name="Miska" type="Sprite2D" parent="UI/Buttons/Bowl"]
+self_modulate = Color(0.99558, 0.99558, 0.99558, 1)
+position = Vector2(214, 477)
+scale = Vector2(0.0879788, 0.0879788)
+texture = ExtResource("5_qahp6")
+
+[node name="Collision" type="CollisionPolygon2D" parent="UI/Buttons/Bowl"]
+visible = false
+polygon = PackedVector2Array(172, 454, 185, 447, 212, 443, 236, 444, 254, 451, 260, 458, 265, 478, 268, 488, 267, 495, 258, 501, 245, 506, 212, 509, 180, 504, 165, 496, 163, 486)
+
 [node name="Panels" type="Node2D" parent="UI"]
 
 [node name="PanelTemplate" type="Node2D" parent="UI/Panels"]
@@ -392,54 +411,51 @@ position = Vector2(51, 595)
 scale = Vector2(0.124325, 0.124325)
 texture = ExtResource("24_srg2u")
 
-[node name="Bowl" type="Area2D" parent="."]
-script = ExtResource("13_gxamd")
-
-[node name="Miska" type="Sprite2D" parent="Bowl"]
-self_modulate = Color(0.99558, 0.99558, 0.99558, 1)
-position = Vector2(214, 477)
-scale = Vector2(0.0879788, 0.0879788)
-texture = ExtResource("5_qahp6")
-
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Bowl"]
-visible = false
-polygon = PackedVector2Array(172, 454, 185, 447, 212, 443, 236, 444, 254, 451, 260, 458, 265, 478, 268, 488, 267, 495, 258, 501, 245, 506, 212, 509, 180, 504, 165, 496, 163, 486)
-
-[node name="AnimTimer" type="Timer" parent="Bowl"]
-one_shot = true
-
-[node name="Fridge" type="Control" parent="."]
+[node name="Fridge" type="Control" parent="UI/Panels" node_paths=PackedStringArray("panel")]
 visible = false
 layout_mode = 3
 anchors_preset = 0
 script = ExtResource("14_6pba1")
+panel = NodePath("../PanelTemplate")
 
-[node name="Fridge" type="Sprite2D" parent="Fridge"]
-modulate = Color(1, 1, 1, 0.392157)
-position = Vector2(561, 324)
-texture = ExtResource("10_1xqql")
+[node name="AnimTimer" type="Timer" parent="UI/Panels/Fridge"]
+one_shot = true
 
-[node name="BackButton" type="Button" parent="Fridge"]
+[node name="ScrollContainer" type="ScrollContainer" parent="UI/Panels/Fridge"]
 layout_mode = 0
-offset_left = 860.0
-offset_top = 99.0
-offset_right = 942.0
-offset_bottom = 136.0
-theme_override_colors/font_color = Color(1, 1, 1, 1)
-text = "POWRÓT"
-
-[node name="ScrollContainer" type="ScrollContainer" parent="Fridge"]
-layout_mode = 0
-offset_left = 213.0
-offset_top = 138.0
-offset_right = 948.0
-offset_bottom = 581.0
+offset_left = 260.0
+offset_top = 197.0
+offset_right = 883.0
+offset_bottom = 613.0
 horizontal_scroll_mode = 0
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Fridge/ScrollContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="UI/Panels/Fridge/ScrollContainer"]
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_constants/separation = 150
+
+[node name="Feed" type="TextureButton" parent="UI/Panels/Fridge"]
+layout_mode = 0
+offset_left = 682.0
+offset_top = 123.0
+offset_right = 893.0
+offset_bottom = 190.0
+texture_normal = ExtResource("28_7d6xq")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="Label" type="Label" parent="UI/Panels/Fridge/Feed"]
+layout_mode = 0
+offset_left = 39.0
+offset_top = 15.0
+offset_right = 179.0
+offset_bottom = 53.0
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.588235)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_fonts/font = ExtResource("7_8rg5e")
+theme_override_font_sizes/font_size = 33
+text = "Nakarm"
 
 [node name="Scratching_post" type="Area2D" parent="."]
 script = ExtResource("14_7xxgu")
@@ -460,6 +476,13 @@ offset_bottom = 293.0
 text = "HAJSSSSS"
 script = ExtResource("23_ek1bj")
 
+[node name="Cat" type="Node2D" parent="."]
+
+[node name="Cat2" type="Sprite2D" parent="."]
+position = Vector2(591, 385)
+scale = Vector2(0.262121, 0.262121)
+texture = ExtResource("32_3rwvs")
+
 [connection signal="timeout" from="UI/Needs/Timer" to="UI/Needs" method="_on_timer_timeout"]
 [connection signal="mouse_entered" from="UI/Buttons/SettingsButton/Button" to="UI/Buttons/SettingsButton" method="_on_button_mouse_entered"]
 [connection signal="mouse_exited" from="UI/Buttons/SettingsButton/Button" to="UI/Buttons/SettingsButton" method="_on_button_mouse_exited"]
@@ -470,6 +493,9 @@ script = ExtResource("23_ek1bj")
 [connection signal="mouse_entered" from="UI/Buttons/ShopButton/Button" to="UI/Buttons/ShopButton" method="_on_button_mouse_entered"]
 [connection signal="mouse_exited" from="UI/Buttons/ShopButton/Button" to="UI/Buttons/ShopButton" method="_on_button_mouse_exited"]
 [connection signal="pressed" from="UI/Buttons/ShopButton/Button" to="UI/Buttons/ShopButton" method="_on_button_pressed"]
+[connection signal="input_event" from="UI/Buttons/Bowl" to="UI/Buttons/Bowl" method="_on_input_event"]
+[connection signal="mouse_entered" from="UI/Buttons/Bowl" to="UI/Buttons/Bowl" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="UI/Buttons/Bowl" to="UI/Buttons/Bowl" method="_on_mouse_exited"]
 [connection signal="mouse_entered" from="UI/Panels/PanelTemplate/Exit/Button" to="UI/Panels/PanelTemplate/Exit" method="_on_button_mouse_entered"]
 [connection signal="mouse_exited" from="UI/Panels/PanelTemplate/Exit/Button" to="UI/Panels/PanelTemplate/Exit" method="_on_button_mouse_exited"]
 [connection signal="pressed" from="UI/Panels/PanelTemplate/Exit/Button" to="UI/Panels/PanelTemplate/Exit" method="_on_button_pressed"]
@@ -479,11 +505,10 @@ script = ExtResource("23_ek1bj")
 [connection signal="mouse_entered" from="UI/Panels/Shop/Foods/Back/BackButton" to="UI/Panels/Shop/Foods/Back" method="_on_button_mouse_entered"]
 [connection signal="mouse_exited" from="UI/Panels/Shop/Foods/Back/BackButton" to="UI/Panels/Shop/Foods/Back" method="_on_button_mouse_exited"]
 [connection signal="pressed" from="UI/Panels/Shop/Foods/Back/BackButton" to="UI/Panels/Shop" method="_on_back_button_pressed"]
-[connection signal="input_event" from="Bowl" to="Bowl" method="_on_input_event"]
-[connection signal="mouse_entered" from="Bowl" to="Bowl" method="_on_mouse_entered"]
-[connection signal="mouse_exited" from="Bowl" to="Bowl" method="_on_mouse_exited"]
-[connection signal="timeout" from="Bowl/AnimTimer" to="Bowl" method="_on_anim_timer_timeout"]
-[connection signal="pressed" from="Fridge/BackButton" to="Bowl" method="_on_back_button_pressed"]
+[connection signal="timeout" from="UI/Panels/Fridge/AnimTimer" to="UI/Panels/Fridge" method="_on_anim_timer_timeout"]
+[connection signal="mouse_entered" from="UI/Panels/Fridge/Feed" to="UI/Panels/Fridge" method="_on_feed_mouse_entered"]
+[connection signal="mouse_exited" from="UI/Panels/Fridge/Feed" to="UI/Panels/Fridge" method="_on_feed_mouse_exited"]
+[connection signal="pressed" from="UI/Panels/Fridge/Feed" to="UI/Panels/Fridge" method="_on_feed_pressed"]
 [connection signal="input_event" from="Scratching_post" to="Scratching_post" method="_on_input_event"]
 [connection signal="mouse_entered" from="Scratching_post" to="Scratching_post" method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="Scratching_post" to="Scratching_post" method="_on_mouse_exited"]

@@ -8,7 +8,11 @@ func _on_button_pressed():
 			i.visible = false
 	
 	for i in buttons_node.get_children() :
-		i.get_node("Button").disabled = false
+		if(i.has_node("Button")) :
+			i.get_node("Button").disabled = false
+		else :
+			if(i.has_node("Collision")) :
+				i.get_node("Collision").disabled = false
 
 func _on_button_mouse_entered():
 	$Button.modulate = Color("b2b2b2")
