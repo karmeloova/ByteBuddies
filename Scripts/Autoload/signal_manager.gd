@@ -27,9 +27,11 @@ signal scratch(value)
 signal changed_needs()
 signal add_to_bowl(hungry_points)
 signal eat()
-signal remove_from_fridge(what : String)
+signal remove_from_fridge(what : Food_Resource)
 
 #------------------ ANOTHER ---------------------------------
 signal change_money()
 signal add_to_fridge(item : Food_Resource)
 signal add_coin(value)
+signal go_to_bowl()
+signal eat_end()

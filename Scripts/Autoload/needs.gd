@@ -35,16 +35,15 @@ func _on_scratch(howMany) :
 	SignalManager.changed_needs.emit();
 
 func _on_eat() :
-	print("XDDDDD")
 	eat_timer.start()
 
 func _on_eat_timer_timeout() :
 	if(VariableManager.needs["hungry"] < 100 and VariableManager.hungry_points_in_bowl > 0) : 
-		print("jem")
 		VariableManager.needs["hungry"] += 5
 		VariableManager.hungry_points_in_bowl -= 1
 		SignalManager.changed_needs.emit()
 		eat_timer.start()
 	else : 
 		eat_timer.stop()
+		SignalManager.eat_end.emit()
 	

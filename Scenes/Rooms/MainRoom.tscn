@@ -1,16 +1,16 @@
-[gd_scene load_steps=35 format=3 uid="uid://br5jh3sh28ig4"]
+[gd_scene load_steps=38 format=3 uid="uid://br5jh3sh28ig4"]
 
 [ext_resource type="Texture2D" uid="uid://ddmrcvq0prt24" path="res://Images/Backgrounds/Tlov1.png" id="1_5tq1h"]
 [ext_resource type="Script" path="res://Scenes/Rooms/Currency.gd" id="2_heemv"]
 [ext_resource type="Texture2D" uid="uid://ch30i3jkm2643" path="res://Images/Accessories/Drapak3.png" id="2_rsjqa"]
 [ext_resource type="Texture2D" uid="uid://cjcm8dskr3xnv" path="res://Images/UI/Currency.png" id="4_omybp"]
-[ext_resource type="Texture2D" uid="uid://b417hifsytge3" path="res://Images/Accessories/Miska.png" id="5_qahp6"]
 [ext_resource type="Script" path="res://Scripts/CatNeeds/Necessity.gd" id="6_1vdjr"]
 [ext_resource type="Texture2D" uid="uid://f4m7ukvlblan" path="res://Images/UI/LevelBackground.png" id="6_6w25j"]
 [ext_resource type="Texture2D" uid="uid://do1bwllt3b1yy" path="res://Images/UI/Needs/BgFull2.png" id="7_8l0el"]
 [ext_resource type="FontFile" uid="uid://ccgpsjqwwow8o" path="res://Fonts/Bubblegum.ttf" id="7_8rg5e"]
 [ext_resource type="Texture2D" uid="uid://ch1nxcb838mta" path="res://Images/UI/Needs/BgEmpty.png" id="8_kmuo1"]
 [ext_resource type="Texture2D" uid="uid://cf0reij86duo7" path="res://Images/UI/Needs/Food.png" id="8_onvnt"]
+[ext_resource type="Script" path="res://Scenes/Rooms/Level.gd" id="8_vwgn7"]
 [ext_resource type="Texture2D" uid="uid://dl8dw08og2gr8" path="res://Images/Backgrounds/Placeholder_backgorund_minigames.jpg" id="10_1xqql"]
 [ext_resource type="Script" path="res://Scripts/Minigames/MinigamesPanel.gd" id="10_j240k"]
 [ext_resource type="Texture2D" uid="uid://2rpmid1gnwur" path="res://Images/UI/Buttons/RoundButton.png" id="11_5i28f"]
@@ -26,12 +26,15 @@
 [ext_resource type="Resource" uid="uid://j6obbfxvtx6v" path="res://Resources/Food/Apple.tres" id="16_bd6oq"]
 [ext_resource type="Texture2D" uid="uid://dj5an2o6yuccm" path="res://Images/UI/Buttons/Exit.png" id="16_qpekd"]
 [ext_resource type="Resource" uid="uid://iunttbf6n5hq" path="res://Resources/Food/Orange.tres" id="17_7cdb2"]
+[ext_resource type="Texture2D" uid="uid://cu0aeijd1ek4e" path="res://Images/Accessories/Bowl/EmptyBowl.png" id="18_4lmds"]
 [ext_resource type="Resource" uid="uid://c6lobf5d5a0ah" path="res://Resources/Food/Pineapple.tres" id="18_m58wg"]
+[ext_resource type="Texture2D" uid="uid://dwwahex67somt" path="res://Images/Accessories/Bowl/Food.png" id="19_kh8nr"]
 [ext_resource type="Resource" uid="uid://b8qtspxh2opu6" path="res://Resources/Food/Banana.tres" id="19_wcutm"]
 [ext_resource type="Script" path="res://Scenes/Rooms/Button.gd" id="23_ek1bj"]
 [ext_resource type="Texture2D" uid="uid://6adv5bnfl4ff" path="res://Images/UI/Buttons/Back.png" id="24_srg2u"]
 [ext_resource type="Texture2D" uid="uid://bowy12qgsf8t3" path="res://Images/UI/Buttons/Button.png" id="28_7d6xq"]
 [ext_resource type="Texture2D" uid="uid://uhifpi6dj3ce" path="res://Images/Cats/Cat.png" id="32_3rwvs"]
+[ext_resource type="Script" path="res://Scenes/Rooms/Cat.gd" id="32_38vco"]
 
 [sub_resource type="CanvasTexture" id="CanvasTexture_nyw1b"]
 
@@ -45,6 +48,19 @@ font_size = 250
 [node name="Background" type="Sprite2D" parent="Scene"]
 position = Vector2(577, 322)
 texture = ExtResource("1_5tq1h")
+
+[node name="Cat" type="Node2D" parent="."]
+position = Vector2(594, 404)
+scale = Vector2(0.262, 0.262)
+script = ExtResource("32_38vco")
+metadata/_edit_group_ = true
+
+[node name="Image" type="Sprite2D" parent="Cat"]
+position = Vector2(0, 3.05176e-05)
+texture = ExtResource("32_3rwvs")
+
+[node name="EatTimer" type="Timer" parent="Cat"]
+one_shot = true
 
 [node name="UI" type="Node2D" parent="."]
 
@@ -162,20 +178,23 @@ position = Vector2(-28.0774, 0)
 scale = Vector2(0.637435, 0.629913)
 texture = ExtResource("8_kmuo1")
 
-[node name="Level" type="Node2D" parent="UI"]
-position = Vector2(934, 11)
+[node name="Level" type="Area2D" parent="UI" node_paths=PackedStringArray("panel_template")]
+position = Vector2(1097, 54)
 scale = Vector2(0.190099, 0.190099)
+script = ExtResource("8_vwgn7")
+panel_template = NodePath("../Panels/PanelTemplate")
+metadata/_edit_group_ = true
 
 [node name="LevelBackground" type="Sprite2D" parent="UI/Level"]
-position = Vector2(789.062, 199.896)
+position = Vector2(-3.48865, -17.5896)
 scale = Vector2(0.705027, 0.705027)
 texture = ExtResource("6_6w25j")
 
 [node name="CurrentLevel" type="Label" parent="UI/Level"]
-offset_left = 584.0
-offset_top = 95.0
-offset_right = 984.0
-offset_bottom = 430.0
+offset_left = -208.551
+offset_top = -122.486
+offset_right = 191.449
+offset_bottom = 212.514
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.552941)
 theme_override_constants/shadow_offset_x = 15
 theme_override_constants/shadow_offset_y = 10
@@ -183,6 +202,9 @@ theme_override_fonts/font = ExtResource("7_8rg5e")
 theme_override_font_sizes/font_size = 275
 text = "1"
 horizontal_alignment = 1
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="UI/Level"]
+polygon = PackedVector2Array(-210.417, -26.3021, -226.198, -73.6458, -231.458, -126.25, -220.938, -189.375, -199.896, -247.24, -178.854, -252.5, -142.031, -241.979, -105.208, -215.677, -68.3853, -173.594, -63.125, -168.333, -42.083, -178.854, -10.5205, -184.115, 21.042, -184.115, 52.6045, -173.594, 63.125, -168.333, 73.646, -189.375, 94.6875, -210.417, 120.99, -231.458, 152.552, -247.24, 178.854, -252.5, 194.636, -247.24, 205.156, -226.198, 215.677, -194.635, 220.938, -157.813, 226.198, -120.99, 220.938, -78.9063, 205.156, -26.3021, 220.938, 15.7813, 226.198, 52.6042, 220.938, 89.4271, 210.417, 126.25, 184.115, 163.073, 142.031, 194.635, 94.6875, 210.417, 31.5625, 220.938, -21.0415, 220.938, -78.9063, 215.677, -142.031, 194.635, -189.375, 163.073, -215.677, 120.99, -231.458, 68.3854, -226.198, 15.7813)
 
 [node name="Currency" type="Node2D" parent="UI"]
 position = Vector2(169, 53)
@@ -278,20 +300,28 @@ scale = Vector2(0.124325, 0.124325)
 texture = ExtResource("15_n537x")
 
 [node name="Bowl" type="Area2D" parent="UI/Buttons" node_paths=PackedStringArray("fridge", "panel_template")]
-position = Vector2(-0.499565, -0.495122)
+position = Vector2(-0.300521, 4.04146)
 scale = Vector2(0.000869187, 0.0097561)
 script = ExtResource("13_gxamd")
 fridge = NodePath("../../Panels/Fridge")
 panel_template = NodePath("../../Panels/PanelTemplate")
 
 [node name="Miska" type="Sprite2D" parent="UI/Buttons/Bowl"]
+modulate = Color(1, 0.819608, 0.862745, 1)
 self_modulate = Color(0.99558, 0.99558, 0.99558, 1)
-position = Vector2(214, 477)
+position = Vector2(-1.50012, -2.19997)
 scale = Vector2(0.0879788, 0.0879788)
-texture = ExtResource("5_qahp6")
+texture = ExtResource("18_4lmds")
+
+[node name="Food" type="Sprite2D" parent="UI/Buttons/Bowl"]
+visible = false
+position = Vector2(-2.00003, -2)
+scale = Vector2(0.088, 0.088)
+texture = ExtResource("19_kh8nr")
 
 [node name="Collision" type="CollisionPolygon2D" parent="UI/Buttons/Bowl"]
 visible = false
+position = Vector2(-215.5, -479.2)
 polygon = PackedVector2Array(172, 454, 185, 447, 212, 443, 236, 444, 254, 451, 260, 458, 265, 478, 268, 488, 267, 495, 258, 501, 245, 506, 212, 509, 180, 504, 165, 496, 163, 486)
 
 [node name="Panels" type="Node2D" parent="UI"]
@@ -355,10 +385,10 @@ text = "Graj"
 [node name="CatHop" type="Node2D" parent="UI/Panels/Minigames"]
 
 [node name="CatHopLabel" type="Label" parent="UI/Panels/Minigames/CatHop"]
-offset_left = -306.0
-offset_top = -81.0
-offset_right = -33.0
-offset_bottom = -23.0
+offset_left = -307.0
+offset_top = -78.0
+offset_right = -34.0
+offset_bottom = -20.0
 scale = Vector2(0.99523, 1.03372)
 theme_override_font_sizes/font_size = 42
 text = "CatHop
@@ -369,6 +399,26 @@ offset_left = 229.0
 offset_top = -80.0
 offset_right = 297.0
 offset_bottom = -30.0
+theme_override_font_sizes/font_size = 30
+text = "Graj"
+
+[node name="DragAndDrop" type="Node2D" parent="UI/Panels/Minigames"]
+
+[node name="DragAndDropLabel" type="Label" parent="UI/Panels/Minigames/DragAndDrop"]
+offset_left = -306.0
+offset_top = -17.0
+offset_right = -33.0
+offset_bottom = 41.0
+scale = Vector2(0.99523, 1.03372)
+theme_override_font_sizes/font_size = 42
+text = "CatHop
+"
+
+[node name="DragAndDropButton" type="Button" parent="UI/Panels/Minigames/DragAndDrop"]
+offset_left = 229.0
+offset_top = -14.0
+offset_right = 297.0
+offset_bottom = 36.0
 theme_override_font_sizes/font_size = 30
 text = "Graj"
 
@@ -418,9 +468,6 @@ anchors_preset = 0
 script = ExtResource("14_6pba1")
 panel = NodePath("../PanelTemplate")
 
-[node name="AnimTimer" type="Timer" parent="UI/Panels/Fridge"]
-one_shot = true
-
 [node name="ScrollContainer" type="ScrollContainer" parent="UI/Panels/Fridge"]
 layout_mode = 0
 offset_left = 260.0
@@ -469,21 +516,18 @@ texture = ExtResource("2_rsjqa")
 polygon = PackedVector2Array(919, 245, 932, 226, 965, 216, 1004, 218, 1033, 230, 1039, 246, 1035, 261, 1035, 270, 1019, 281, 995, 286, 994, 454, 1024, 454, 1023, 407, 1025, 393, 1044, 380, 1074, 374, 1098, 376, 1117, 386, 1125, 400, 1124, 411, 1126, 410, 1125, 457, 1135, 468, 1137, 480, 1135, 489, 1127, 498, 1114, 506, 1091, 512, 1061, 513, 913, 513, 912, 503, 939, 455, 961, 455, 962, 284, 939, 279, 924, 269, 923, 262)
 
 [node name="Button" type="Button" parent="."]
-offset_left = 16.0
-offset_top = 245.0
-offset_right = 119.0
-offset_bottom = 293.0
+offset_left = 13.0
+offset_top = 118.0
+offset_right = 116.0
+offset_bottom = 166.0
 text = "HAJSSSSS"
 script = ExtResource("23_ek1bj")
 
-[node name="Cat" type="Node2D" parent="."]
-
-[node name="Cat2" type="Sprite2D" parent="."]
-position = Vector2(591, 385)
-scale = Vector2(0.262121, 0.262121)
-texture = ExtResource("32_3rwvs")
-
+[connection signal="timeout" from="Cat/EatTimer" to="Cat" method="_on_eat_timer_timeout"]
 [connection signal="timeout" from="UI/Needs/Timer" to="UI/Needs" method="_on_timer_timeout"]
+[connection signal="input_event" from="UI/Level" to="UI/Level" method="_on_input_event"]
+[connection signal="mouse_entered" from="UI/Level" to="UI/Level" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="UI/Level" to="UI/Level" method="_on_mouse_exited"]
 [connection signal="mouse_entered" from="UI/Buttons/SettingsButton/Button" to="UI/Buttons/SettingsButton" method="_on_button_mouse_entered"]
 [connection signal="mouse_exited" from="UI/Buttons/SettingsButton/Button" to="UI/Buttons/SettingsButton" method="_on_button_mouse_exited"]
 [connection signal="pressed" from="UI/Buttons/SettingsButton/Button" to="UI/Buttons/SettingsButton" method="_on_button_pressed"]
@@ -501,11 +545,11 @@ texture = ExtResource("32_3rwvs")
 [connection signal="pressed" from="UI/Panels/PanelTemplate/Exit/Button" to="UI/Panels/PanelTemplate/Exit" method="_on_button_pressed"]
 [connection signal="pressed" from="UI/Panels/Minigames/WalkToTarget/WalkToTargetButton" to="UI/Panels/Minigames" method="_on_walk_to_target_button_pressed"]
 [connection signal="pressed" from="UI/Panels/Minigames/CatHop/CatHopButton" to="UI/Panels/Minigames" method="_on_cat_hop_button_pressed"]
+[connection signal="pressed" from="UI/Panels/Minigames/DragAndDrop/DragAndDropButton" to="UI/Panels/Minigames" method="_on_drag_and_drop_button_pressed"]
 [connection signal="pressed" from="UI/Panels/Shop/Food/FoodButton" to="UI/Panels/Shop" method="_on_food_button_pressed"]
 [connection signal="mouse_entered" from="UI/Panels/Shop/Foods/Back/BackButton" to="UI/Panels/Shop/Foods/Back" method="_on_button_mouse_entered"]
 [connection signal="mouse_exited" from="UI/Panels/Shop/Foods/Back/BackButton" to="UI/Panels/Shop/Foods/Back" method="_on_button_mouse_exited"]
 [connection signal="pressed" from="UI/Panels/Shop/Foods/Back/BackButton" to="UI/Panels/Shop" method="_on_back_button_pressed"]
-[connection signal="timeout" from="UI/Panels/Fridge/AnimTimer" to="UI/Panels/Fridge" method="_on_anim_timer_timeout"]
 [connection signal="mouse_entered" from="UI/Panels/Fridge/Feed" to="UI/Panels/Fridge" method="_on_feed_mouse_entered"]
 [connection signal="mouse_exited" from="UI/Panels/Fridge/Feed" to="UI/Panels/Fridge" method="_on_feed_mouse_exited"]
 [connection signal="pressed" from="UI/Panels/Fridge/Feed" to="UI/Panels/Fridge" method="_on_feed_pressed"]
