@@ -1,3 +1,50 @@
-[gd_scene format=3 uid="uid://2q5dqmbag8tm"]
+[gd_scene load_steps=5 format=3 uid="uid://2q5dqmbag8tm"]
+
+[ext_resource type="Script" path="res://Scenes/Minigames/InstructionNode.gd" id="1_pr2fo"]
+[ext_resource type="Script" path="res://Scenes/Minigames/CheckButton.gd" id="2_am64q"]
+[ext_resource type="Texture2D" uid="uid://bowy12qgsf8t3" path="res://Images/UI/Buttons/Button.png" id="2_mlmjo"]
+[ext_resource type="FontFile" uid="uid://ccgpsjqwwow8o" path="res://Fonts/Bubblegum.ttf" id="3_5qsjs"]
 
 [node name="DragAndDrop" type="Node2D"]
+
+[node name="InstructionNode" type="Node2D" parent="."]
+script = ExtResource("1_pr2fo")
+
+[node name="CheckButton" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 859.0
+offset_top = -8.0
+offset_right = 1230.0
+offset_bottom = 136.0
+scale = Vector2(0.8, 0.8)
+script = ExtResource("2_am64q")
+metadata/_edit_group_ = true
+
+[node name="TextureButton" type="TextureButton" parent="CheckButton"]
+offset_left = 8.75
+offset_top = 17.5
+offset_right = 374.75
+offset_bottom = 137.5
+texture_normal = ExtResource("2_mlmjo")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="Label" type="Label" parent="CheckButton"]
+layout_mode = 0
+offset_left = 30.2499
+offset_top = 45.0
+offset_right = 351.25
+offset_bottom = 104.0
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_fonts/font = ExtResource("3_5qsjs")
+theme_override_font_sizes/font_size = 50
+text = "Sprawdz"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[connection signal="mouse_entered" from="CheckButton/TextureButton" to="CheckButton" method="_on_texture_button_mouse_entered"]
+[connection signal="mouse_exited" from="CheckButton/TextureButton" to="CheckButton" method="_on_texture_button_mouse_exited"]
+[connection signal="pressed" from="CheckButton/TextureButton" to="CheckButton" method="_on_texture_button_pressed"]

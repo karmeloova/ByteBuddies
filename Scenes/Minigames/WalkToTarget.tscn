@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://d4bs4i6ftyij1"]
+[gd_scene load_steps=14 format=3 uid="uid://d4bs4i6ftyij1"]
 
 [ext_resource type="Script" path="res://Scripts/Minigames/WalkToTarget/CodeArea.gd" id="1_dto5f"]
 [ext_resource type="Texture2D" uid="uid://dl8dw08og2gr8" path="res://Images/Backgrounds/Placeholder_backgorund_minigames.jpg" id="2_jbpt1"]
@@ -7,7 +7,8 @@
 [ext_resource type="Script" path="res://Scripts/Minigames/WalkToTarget/GenerateBoard.gd" id="5_y7m5q"]
 [ext_resource type="Script" path="res://Scripts/Minigames/WalkToTarget/PlayerGoToTarget.gd" id="6_uoexw"]
 [ext_resource type="Texture2D" uid="uid://xr24310ei2bc" path="res://Images/Backgrounds/LACMTA_Circle_Purple_Line.svg.png" id="7_g0173"]
-[ext_resource type="Texture2D" uid="uid://b417hifsytge3" path="res://Images/Accessories/Miska.png" id="8_sigdh"]
+[ext_resource type="Texture2D" uid="uid://cu0aeijd1ek4e" path="res://Images/Accessories/Bowl/EmptyBowl.png" id="8_1riy0"]
+[ext_resource type="Texture2D" uid="uid://dwwahex67somt" path="res://Images/Accessories/Bowl/Food.png" id="9_y3dwg"]
 [ext_resource type="Script" path="res://Scripts/Minigames/WalkToTarget/Lives.gd" id="10_1r340"]
 [ext_resource type="PackedScene" uid="uid://cyn346855vab8" path="res://Scenes/Prefabs/UI/PauseUI.tscn" id="11_cltnc"]
 [ext_resource type="PackedScene" uid="uid://doyyhye04gaml" path="res://Scenes/Prefabs/UI/LoseUI.tscn" id="11_nlonb"]
@@ -88,7 +89,11 @@ one_shot = true
 [node name="Miska" type="Sprite2D" parent="Bowl"]
 position = Vector2(1.19209e-07, -1)
 scale = Vector2(0.0583366, 0.0583366)
-texture = ExtResource("8_sigdh")
+texture = ExtResource("8_1riy0")
+
+[node name="Food" type="Sprite2D" parent="Bowl"]
+scale = Vector2(0.058, 0.058)
+texture = ExtResource("9_y3dwg")
 
 [node name="Layout" type="Node2D" parent="."]
 

@@ -21,6 +21,13 @@ SaveManager="*res://Scripts/Autoload/save_manager.gd"
 SignalManager="*res://Scripts/Autoload/signal_manager.gd"
 VariableManager="*res://Scripts/Autoload/variable_manager.gd"
 Needs="*res://Scripts/Autoload/needs.gd"
+LevelManager="*res://level_manager.gd"
+
+[file_customization]
+
+folder_colors={
+"res://Resources/Levels/": "teal"
+}
 
 [layer_names]
 

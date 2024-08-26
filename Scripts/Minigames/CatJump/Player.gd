@@ -12,8 +12,6 @@ func _ready():
 	VariableManager.moved = false
 	start_position = position
 	VariableManager.player_size = $Sprite2D.scale.x
-	
-	SignalManager.restartGame.connect(_on_restart_game)
 
 func _physics_process(delta):
 	# Add the gravity.
@@ -38,7 +36,3 @@ func _on_area_2d_area_entered(area):
 
 func _on_visible_on_screen_notifier_2d_screen_exited():
 	SignalManager.loseGame.emit()
-
-func _on_restart_game() :
-	position = start_position
-	VariableManager.moved = false

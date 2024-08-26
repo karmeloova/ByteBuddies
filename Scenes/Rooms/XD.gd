@@ -1,4 +1,4 @@
-extends Area2D
+extends Node2D
 
 
 # Called when the node enters the scene tree for the first time.
@@ -11,5 +11,9 @@ func _process(delta):
 	pass
 
 
-func _on_area_shape_entered(area_rid, area, area_shape_index, local_shape_index):
-	print("XDDDDDDDDDDDDDD")
+func _on_button_pressed():
+	VariableManager.coins += 100
+	SignalManager.change_money.emit()
+
+func _on_button_2_pressed():
+	SignalManager.add_exp.emit(20)

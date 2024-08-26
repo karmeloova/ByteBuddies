@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="Level" load_steps=2 format=3 uid="uid://didtxc40kdu0n"]
+
+[ext_resource type="Script" path="res://Scripts/Resources/Levels.gd" id="1_8pjwx"]
+
+[resource]
+script = ExtResource("1_8pjwx")
+level = 3
+need_exp = 200
+money_prize = 150
+unlock_something = false

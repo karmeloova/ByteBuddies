@@ -28,3 +28,7 @@ var moved : bool = false
 #------------- SHOP ------------------
 
 var food_item : Food_Resource
+
+#------------- LEVEL -----------------
+var current_exp : int = 0
+var can_be_promoted : bool = true

@@ -11,6 +11,4 @@ func _process(delta):
 	pass
 
 
-func _on_pressed():
-	VariableManager.coins += 100
-	SignalManager.change_money.emit()
+

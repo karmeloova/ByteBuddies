@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b417hifsytge3"
-path="res://.godot/imported/Miska.png-660f431bd07b7021d544dd1a5e5918b3.ctex"
+uid="uid://n0e7hgqbf46c"
+path="res://.godot/imported/s.png-19d9f90b20418dc5588dda37da674233.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Images/Accessories/Miska.png"
-dest_files=["res://.godot/imported/Miska.png-660f431bd07b7021d544dd1a5e5918b3.ctex"]
+source_file="res://Scripts/Minigames/CatJump/s.png"
+dest_files=["res://.godot/imported/s.png-19d9f90b20418dc5588dda37da674233.ctex"]
 
 [params]
 

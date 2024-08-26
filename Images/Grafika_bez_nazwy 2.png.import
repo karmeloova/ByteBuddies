@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bbamkp1ups61q"
-path="res://.godot/imported/LevelBackground.png-96556b6835d2b91d20bc087ac1f23da0.ctex"
+uid="uid://0xgk2wwhegqt"
+path="res://.godot/imported/Grafika_bez_nazwy 2.png-44ec33170cea87f1fb08c1411270faad.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Scripts/Autoload/LevelBackground.png"
-dest_files=["res://.godot/imported/LevelBackground.png-96556b6835d2b91d20bc087ac1f23da0.ctex"]
+source_file="res://Images/Grafika_bez_nazwy 2.png"
+dest_files=["res://.godot/imported/Grafika_bez_nazwy 2.png-44ec33170cea87f1fb08c1411270faad.ctex"]
 
 [params]
 

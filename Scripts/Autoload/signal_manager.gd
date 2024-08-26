@@ -22,6 +22,11 @@ signal remove_platform(camera_pos)
 signal add_platform()
 signal generate_coin(last_position, platform_size)
 
+# CODE GAME
+signal check_field()
+signal added_data_to_field(data : String)
+signal removed_data_from_field(data : String)
+
 #------------------ ANIMAL NEEDS ----------------------------
 signal scratch(value)
 signal changed_needs()
@@ -35,3 +40,6 @@ signal add_to_fridge(item : Food_Resource)
 signal add_coin(value)
 signal go_to_bowl()
 signal eat_end()
+
+#------------------ LEVEL -----------------------------------
+signal add_exp(value)

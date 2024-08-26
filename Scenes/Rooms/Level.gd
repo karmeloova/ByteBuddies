@@ -11,3 +11,4 @@ func _on_mouse_exited():
 func _on_input_event(viewport, event, shape_idx):
 	if(Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT)) : 
 		panel_template.visible = true
+		level.visible = true

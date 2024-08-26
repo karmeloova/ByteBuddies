@@ -1,0 +1,42 @@
+[gd_scene load_steps=8 format=3 uid="uid://k2t0np43srls"]
+
+[ext_resource type="Script" path="res://Scenes/Prefabs/LevelPrefab.gd" id="1_cat67"]
+[ext_resource type="Resource" uid="uid://drrfn7u42bggg" path="res://Resources/Levels/Level2.tres" id="2_8aj07"]
+[ext_resource type="Resource" uid="uid://didtxc40kdu0n" path="res://Resources/Levels/Level3.tres" id="3_w4pu6"]
+[ext_resource type="Resource" uid="uid://brnl2nxe8wt0c" path="res://Resources/Levels/Level4.tres" id="4_qi5c2"]
+[ext_resource type="Resource" uid="uid://dcvtl45kugnag" path="res://Resources/Levels/Level5.tres" id="5_2wsh1"]
+[ext_resource type="Texture2D" uid="uid://dl8dw08og2gr8" path="res://Images/Backgrounds/Placeholder_backgorund_minigames.jpg" id="6_6we7l"]
+[ext_resource type="FontFile" uid="uid://ccgpsjqwwow8o" path="res://Fonts/Bubblegum.ttf" id="7_aeqlx"]
+
+[node name="LevelPrefab" type="Node2D"]
+script = ExtResource("1_cat67")
+levels = Array[Resource("res://Scripts/Resources/Levels.gd")]([ExtResource("2_8aj07"), ExtResource("3_w4pu6"), ExtResource("4_qi5c2"), ExtResource("5_2wsh1")])
+
+[node name="Exp" type="TextureProgressBar" parent="."]
+modulate = Color(0.578851, 0.429316, 0.41306, 1)
+offset_left = 7.0
+offset_top = 90.0
+offset_right = 524.0
+offset_bottom = 117.0
+nine_patch_stretch = true
+texture_progress = ExtResource("6_6we7l")
+
+[node name="Level" type="Label" parent="."]
+offset_left = 117.0
+offset_top = 5.0
+offset_right = 356.0
+offset_bottom = 80.0
+theme_override_fonts/font = ExtResource("7_aeqlx")
+theme_override_font_sizes/font_size = 70
+text = "AA"
+horizontal_alignment = 1
+
+[node name="CurrentExp" type="Label" parent="."]
+offset_left = 305.0
+offset_top = 125.0
+offset_right = 544.0
+offset_bottom = 171.0
+theme_override_fonts/font = ExtResource("7_aeqlx")
+theme_override_font_sizes/font_size = 40
+text = "AAAAA"
+horizontal_alignment = 2
