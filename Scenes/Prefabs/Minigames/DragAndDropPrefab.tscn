@@ -1,20 +1,47 @@
-[gd_scene load_steps=5 format=3 uid="uid://uljnqiww4oqr"]
+[gd_scene load_steps=6 format=3 uid="uid://uljnqiww4oqr"]
 
 [ext_resource type="Texture2D" uid="uid://c2vj27x4l7mfl" path="res://Images/Grafika_bez_nazwy (1).png" id="1_miwle"]
 [ext_resource type="Script" path="res://Scenes/Prefabs/Minigames/Instruction.gd" id="1_rex6f"]
 [ext_resource type="Script" path="res://Scenes/Prefabs/Minigames/Field.gd" id="2_ypt7q"]
 [ext_resource type="Texture2D" uid="uid://0xgk2wwhegqt" path="res://Images/Grafika_bez_nazwy 2.png" id="3_7bllx"]
+[ext_resource type="Script" path="res://Scenes/Prefabs/Minigames/StartField.gd" id="3_no43m"]
 
 [node name="DragAndDropPrefab" type="Node2D"]
 
-[node name="Control" type="Control" parent="."]
+[node name="StartField" type="TextureRect" parent="." node_paths=PackedStringArray("instruction", "instruction_texture", "dragged_object")]
+offset_left = 18.0
+offset_top = 195.0
+offset_right = 134.0
+offset_bottom = 237.0
+texture = ExtResource("3_7bllx")
+script = ExtResource("3_no43m")
+instruction = NodePath("../Control/Label")
+instruction_texture = NodePath("../Control/Instruction")
+dragged_object = NodePath("../Control")
+
+[node name="Field" type="TextureRect" parent="." node_paths=PackedStringArray("instruction", "instruction_texture", "start_field", "dragged_object")]
+offset_left = 18.0
+offset_top = 195.0
+offset_right = 134.0
+offset_bottom = 237.0
+texture = ExtResource("3_7bllx")
+script = ExtResource("2_ypt7q")
+instruction = NodePath("../Control/Label")
+instruction_texture = NodePath("../Control/Instruction")
+start_field = NodePath("../StartField")
+dragged_object = NodePath("../Control")
+
+[node name="Control" type="Control" parent="." node_paths=PackedStringArray("start_field", "drop_data_timer")]
+z_index = 1
 layout_mode = 3
 anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
 script = ExtResource("1_rex6f")
+start_field = NodePath("../StartField")
+drop_data_timer = NodePath("../DropDataTimer")
+metadata/_edit_group_ = true
 
 [node name="Instruction" type="TextureRect" parent="Control"]
+layout_mode = 0
 offset_left = 2.0
 offset_top = 2.0
 offset_right = 118.0
@@ -31,14 +58,9 @@ text = "LALALALA"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Field" type="TextureRect" parent="." node_paths=PackedStringArray("instruction", "instruction_texture")]
-offset_left = 31.0
-offset_top = 179.0
-offset_right = 147.0
-offset_bottom = 221.0
-texture = ExtResource("3_7bllx")
-script = ExtResource("2_ypt7q")
-instruction = NodePath("../Control/Label")
-instruction_texture = NodePath("../Control/Instruction")
+[node name="DropDataTimer" type="Timer" parent="."]
+one_shot = true
 
+[connection signal="child_exiting_tree" from="StartField" to="StartField" method="_on_child_exiting_tree"]
 [connection signal="child_exiting_tree" from="Field" to="Field" method="_on_child_exiting_tree"]
+[connection signal="timeout" from="DropDataTimer" to="Control" method="_on_drop_data_timer_timeout"]

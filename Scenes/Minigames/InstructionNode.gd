@@ -1,10 +1,15 @@
 extends Node2D
-var tab : Array[String] = ["for", "i", "in range", "10", "\n", "print",
-						  "XD"]
+@export var tasks : Array[Code_Task]
+var random_task : Code_Task
+var tab : Array[String] = []
 var instruction_node = self
 var Instruction = preload("res://Scenes/Prefabs/Minigames/DragAndDropPrefab.tscn")
 var instruction_instance;
+var random_instruction 
 
+var instruction_tab : Array
+var field_tab : Array
+var start_field_tab : Array
 var instruction_pos = Vector2(30,30)
 var field_pos = Vector2(30,204)
 
@@ -18,16 +23,24 @@ var tab_size : int = 100
 @export var all_field_has_data : bool = false
 
 func _ready():
+	
+	random_task = tasks.pick_random()
+	tab = random_task.instructions
+	
 	for i in range(tab.size()) :
-		if(tab[i] != "\n") :
+		if(tab[i] != "enter") :
 			instruction_instance = Instruction.instantiate()
 			instruction_node.call_deferred("add_child", instruction_instance)
 			instruction_instance.get_node("Control/Label").text = tab[i]
+			instruction_tab.append(instruction_instance.get_node("Control"))
+			field_tab.append(instruction_instance)
+			start_field_tab.append(instruction_instance.get_node("StartField"))
 			set_elements_pos(instruction_instance, is_first)
 		else :
 			make_enter = true
 		is_first = false
 
+	set_instructions_pos()
 	SignalManager.added_data_to_field.connect(_on_added_data) 
 	
 func _on_added_data(text) :
@@ -40,9 +53,6 @@ func _on_added_data(text) :
 func set_elements_pos(instruction_instance, is_first : bool) :
 	instruction = instruction_instance.get_node("Control")
 	field = instruction_instance.get_node("Field")
-	
-	instruction.position = instruction_pos
-	instruction_pos.x += 120
 	
 	if(is_first) :
 		field.position = field_pos
@@ -63,3 +73,27 @@ func set_elements_pos(instruction_instance, is_first : bool) :
 		else : 
 			field_pos.x += 120
 			field.position = field_pos
+
+func set_instructions_pos() :
+	random_instruction = field_tab.pick_random()
+	random_instruction.get_node("Control").draggable = false
+	random_instruction.get_node("Field").drawned()
+	random_instruction.get_node("StartField").visible = false
+	
+	for i in range(instruction_tab.size()) :
+		if(random_instruction == field_tab[i]) :
+			instruction_tab.remove_at(i)
+			field_tab.remove_at(i)
+			start_field_tab.remove_at(i)
+			break;
+	
+	field_tab.shuffle()
+
+	for i in range(instruction_tab.size()) :
+		field_tab[i].get_node("Control").position = instruction_pos
+		field_tab[i].get_node("Control").start_pos = field_tab[i].get_node("Control").position
+		field_tab[i].get_node("StartField").position = instruction_pos
+		instruction_pos.x += 120
+		
+	for i in range(start_field_tab.size()) :
+		start_field_tab[i].set_right_instruction_pos()

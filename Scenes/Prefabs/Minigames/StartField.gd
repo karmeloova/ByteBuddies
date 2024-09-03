@@ -3,40 +3,33 @@ extends Control
 @export var instruction : Label
 @export var instruction_texture : TextureRect
 @export var drawn : bool = false
-@export var start_field : TextureRect
-
+@export var back_to_pos : bool
 var pos = Vector2(0,0)
 @export var dragged_object : Control
 var instruction_text
-
-func _ready():
-	SignalManager.check_field.connect(_on_check_field)
+var tween : Tween
 
 func _can_drop_data(at_position, data):
+	print(have_data)
 	if not have_data : 
 		return true
 	else :
 		return false
 
 func _drop_data(at_position, data):
+	print(at_position)
 	data.get_parent().remove_child(data)
 	add_child(data)
 	data.position = Vector2(-2,-2)
+	print(data.position)
 	have_data = true
 	instruction_text = data.get_node("Label").text
 	SignalManager.added_data_to_field.emit(instruction_text)
-
-func _on_check_field() :
-	if(instruction_text == instruction.text) :
-		instruction_texture.modulate = Color("96ffa1")
-		dragged_object.draggable = false
-	else :
-		instruction_texture.modulate = Color("b6274b")
-		dragged_object.apparent_move()
 
 func _on_child_exiting_tree(node):
 	have_data = false
 	SignalManager.removed_data_from_field.emit(instruction_text)
 
-func drawned() :
-	_drop_data(pos, dragged_object)
+func set_right_instruction_pos() :
+	_drop_data(Vector2(-2,-2), dragged_object)
+

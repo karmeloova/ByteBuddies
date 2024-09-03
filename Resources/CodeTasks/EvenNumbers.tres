@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="Code_Task" load_steps=2 format=3 uid="uid://ff6b51p3w4it"]
+
+[ext_resource type="Script" path="res://Scripts/Resources/CodeTask.gd" id="1_a1q6x"]
+
+[resource]
+script = ExtResource("1_a1q6x")
+description = "Twoim zadaniem jest ułożyć kafelki tak, aby sprawdzić czy liczba (n) jest patrzysta i zwrócić odpowiedni wynik"
+instructions = Array[String](["if", "n%2==0", "enter", "return", "true", "enter", "else", "enter", "return", "false"])

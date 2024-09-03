@@ -26,6 +26,7 @@ signal generate_coin(last_position, platform_size)
 signal check_field()
 signal added_data_to_field(data : String)
 signal removed_data_from_field(data : String)
+signal was_drawn()
 
 #------------------ ANIMAL NEEDS ----------------------------
 signal scratch(value)
