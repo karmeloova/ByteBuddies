@@ -1,0 +1,96 @@
+[gd_scene load_steps=10 format=3 uid="uid://dib34b5lx5xna"]
+
+[ext_resource type="PackedScene" uid="uid://cyn346855vab8" path="res://Scenes/Prefabs/UI/PauseUI.tscn" id="1_mpm76"]
+[ext_resource type="Texture2D" uid="uid://dl8dw08og2gr8" path="res://Images/Backgrounds/Placeholder_backgorund_minigames.jpg" id="1_vjgyn"]
+[ext_resource type="Script" path="res://Scenes/Minigames/LogicTetrisGame.gd" id="2_4gkkt"]
+[ext_resource type="PackedScene" uid="uid://1hcsxrldd1qt" path="res://Scenes/Prefabs/Minigames/LogicTetris/Blocks/BlockI.tscn" id="3_c7fwm"]
+[ext_resource type="Texture2D" uid="uid://rmsyg0p4edha" path="res://Images/Backgrounds/Grafika_bez_nazwy (3).png" id="3_ppur3"]
+[ext_resource type="PackedScene" uid="uid://meqcacjgtxbk" path="res://Scenes/Prefabs/Minigames/LogicTetris/Blocks/BlockO.tscn" id="4_8m3kb"]
+[ext_resource type="PackedScene" uid="uid://bqlm0u63lsjeg" path="res://Scenes/Prefabs/Minigames/LogicTetris/Blocks/BlockS.tscn" id="8_l1r17"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_omuh8"]
+size = Vector2(451, 10)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_uamu3"]
+size = Vector2(36, 626.5)
+
+[node name="LogicTetris" type="Node2D"]
+
+[node name="ControlPanel" type="Node2D" parent="."]
+
+[node name="Background" type="Sprite2D" parent="ControlPanel"]
+modulate = Color(0.613746, 0.609757, 0.714397, 1)
+position = Vector2(169.5, 326.5)
+scale = Vector2(0.463946, 1.33265)
+texture = ExtResource("1_vjgyn")
+
+[node name="Label" type="Label" parent="ControlPanel"]
+offset_left = 47.0
+offset_top = 92.0
+offset_right = 282.0
+offset_bottom = 169.0
+theme_override_font_sizes/font_size = 40
+text = "A = 0, B = 0"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label2" type="Label" parent="ControlPanel"]
+offset_left = 59.0
+offset_top = 171.0
+offset_right = 263.0
+offset_bottom = 200.0
+text = "Dobre zmienne - naciśnij 1"
+
+[node name="Label3" type="Label" parent="ControlPanel"]
+offset_left = 59.0
+offset_top = 206.0
+offset_right = 263.0
+offset_bottom = 235.0
+text = "Złe zmienne - naciśnij 2"
+
+[node name="Label4" type="Label" parent="ControlPanel"]
+offset_left = 59.0
+offset_top = 237.0
+offset_right = 263.0
+offset_bottom = 266.0
+text = "Akceptacja - spacja"
+
+[node name="GamePanel" type="Node2D" parent="."]
+script = ExtResource("2_4gkkt")
+blocks = Array[PackedScene]([ExtResource("3_c7fwm"), ExtResource("8_l1r17"), ExtResource("4_8m3kb")])
+
+[node name="Sprite2D" type="Sprite2D" parent="GamePanel"]
+position = Vector2(565, 325.75)
+scale = Vector2(1, 1.04048)
+texture = ExtResource("3_ppur3")
+
+[node name="Floor" type="Area2D" parent="GamePanel"]
+position = Vector2(-1, 2)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="GamePanel/Floor"]
+position = Vector2(564, 641)
+shape = SubResource("RectangleShape2D_omuh8")
+debug_color = Color(0.990112, 0, 0.282349, 0.42)
+
+[node name="Blocks" type="Node2D" parent="GamePanel"]
+
+[node name="WallLeft" type="Area2D" parent="GamePanel"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="GamePanel/WallLeft"]
+position = Vector2(341, 318.5)
+shape = SubResource("RectangleShape2D_uamu3")
+
+[node name="WallRight" type="Area2D" parent="GamePanel"]
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="GamePanel/WallRight"]
+position = Vector2(790, 321.75)
+shape = SubResource("RectangleShape2D_uamu3")
+
+[node name="Pause" parent="." instance=ExtResource("1_mpm76")]
+
+[node name="Timer" type="Timer" parent="."]
+one_shot = true
+
+[connection signal="area_exited" from="GamePanel/WallLeft" to="GamePanel" method="_on_walls_area_exited"]
+[connection signal="area_exited" from="GamePanel/WallRight" to="GamePanel" method="_on_wall_right_area_exited"]
+[connection signal="timeout" from="Timer" to="GamePanel" method="_on_timer_timeout"]

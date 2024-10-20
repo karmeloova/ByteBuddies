@@ -1,0 +1,72 @@
+[gd_scene load_steps=7 format=3 uid="uid://1hcsxrldd1qt"]
+
+[ext_resource type="Script" path="res://Scenes/Prefabs/Minigames/Block.gd" id="1_17h67"]
+[ext_resource type="Texture2D" uid="uid://d0fl26aop586k" path="res://Images/Grafika_bez_nazwy-1.png" id="2_ee1sw"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_yo6p1"]
+size = Vector2(30, 4.71875)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_q4pe8"]
+size = Vector2(11, 167)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0c76p"]
+size = Vector2(31, 4)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_tktti"]
+size = Vector2(10.5, 167)
+
+[node name="Block" type="Node2D" node_paths=PackedStringArray("floor_collision", "block_collision")]
+position = Vector2(23, 114)
+scale = Vector2(-1, 1)
+script = ExtResource("1_17h67")
+height = 4
+can_rotate = true
+how_many_rotate = 2
+floor_collision = NodePath("Elements/FloorCollision")
+block_collision = NodePath("Elements/BlockCollision")
+scalee = Array[Vector2]([Vector2(1, 1), Vector2(-1, 1)])
+
+[node name="Elements" type="Node2D" parent="."]
+position = Vector2(21, 65)
+
+[node name="Element1" type="Sprite2D" parent="Elements"]
+position = Vector2(-21.5, -155.5)
+texture = ExtResource("2_ee1sw")
+
+[node name="Element2" type="Sprite2D" parent="Elements"]
+position = Vector2(-21.5, -110.5)
+texture = ExtResource("2_ee1sw")
+
+[node name="Element3" type="Sprite2D" parent="Elements"]
+position = Vector2(-21.5, -65.5)
+texture = ExtResource("2_ee1sw")
+
+[node name="Element4" type="Sprite2D" parent="Elements"]
+position = Vector2(-21.5, -21)
+texture = ExtResource("2_ee1sw")
+
+[node name="FloorCollision" type="Area2D" parent="Elements"]
+
+[node name="FloorCollisionDeg00" type="CollisionShape2D" parent="Elements/FloorCollision"]
+position = Vector2(-22, -0.640625)
+shape = SubResource("RectangleShape2D_yo6p1")
+
+[node name="FloorCollisionDeg90" type="CollisionShape2D" parent="Elements/FloorCollision"]
+position = Vector2(-6, -89)
+shape = SubResource("RectangleShape2D_q4pe8")
+
+[node name="BlockCollision" type="Area2D" parent="Elements"]
+
+[node name="BlockCollisionDeg00" type="CollisionShape2D" parent="Elements/BlockCollision"]
+position = Vector2(-21.5, -176)
+shape = SubResource("RectangleShape2D_0c76p")
+debug_color = Color(0.920586, 5.86233e-05, 0.69434, 0.42)
+
+[node name="BlockCollisionDeg90" type="CollisionShape2D" parent="Elements/BlockCollision"]
+position = Vector2(-39, -89)
+shape = SubResource("RectangleShape2D_tktti")
+disabled = true
+debug_color = Color(0.858436, 0.000709062, 0.879563, 0.42)
+
+[connection signal="area_entered" from="Elements/FloorCollision" to="." method="_on_floor_collision_area_entered"]
+[connection signal="area_entered" from="Elements/BlockCollision" to="." method="_on_block_collision_area_entered"]

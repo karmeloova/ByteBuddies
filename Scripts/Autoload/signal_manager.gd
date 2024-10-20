@@ -28,6 +28,10 @@ signal added_data_to_field(data : String)
 signal removed_data_from_field(data : String)
 signal was_drawn()
 
+#LOGIC TETRIS
+signal grounded()
+signal new_blok_needed(current_x_position, current_y_pos)
+
 #------------------ ANIMAL NEEDS ----------------------------
 signal scratch(value)
 signal changed_needs()

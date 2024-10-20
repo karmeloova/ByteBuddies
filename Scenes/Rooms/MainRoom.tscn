@@ -414,10 +414,32 @@ offset_right = -33.0
 offset_bottom = 41.0
 scale = Vector2(0.99523, 1.03372)
 theme_override_font_sizes/font_size = 42
-text = "CatHop
+text = "DragAndDrop
 "
 
 [node name="DragAndDropButton" type="Button" parent="UI/Panels/Minigames/DragAndDrop"]
+offset_left = 229.0
+offset_top = -14.0
+offset_right = 297.0
+offset_bottom = 36.0
+theme_override_font_sizes/font_size = 30
+text = "Graj"
+
+[node name="LogicTetris" type="Node2D" parent="UI/Panels/Minigames"]
+position = Vector2(0, 61)
+metadata/_edit_group_ = true
+
+[node name="LogicTetrisLabel" type="Label" parent="UI/Panels/Minigames/LogicTetris"]
+offset_left = -306.0
+offset_top = -17.0
+offset_right = -33.0
+offset_bottom = 41.0
+scale = Vector2(0.99523, 1.03372)
+theme_override_font_sizes/font_size = 42
+text = "Logic Tetris
+"
+
+[node name="LogicTetrisButton" type="Button" parent="UI/Panels/Minigames/LogicTetris"]
 offset_left = 229.0
 offset_top = -14.0
 offset_right = 297.0
@@ -564,6 +586,7 @@ text = "EXPPPPP"
 [connection signal="pressed" from="UI/Panels/Minigames/WalkToTarget/WalkToTargetButton" to="UI/Panels/Minigames" method="_on_walk_to_target_button_pressed"]
 [connection signal="pressed" from="UI/Panels/Minigames/CatHop/CatHopButton" to="UI/Panels/Minigames" method="_on_cat_hop_button_pressed"]
 [connection signal="pressed" from="UI/Panels/Minigames/DragAndDrop/DragAndDropButton" to="UI/Panels/Minigames" method="_on_drag_and_drop_button_pressed"]
+[connection signal="pressed" from="UI/Panels/Minigames/LogicTetris/LogicTetrisButton" to="UI/Panels/Minigames" method="_on_logic_tetris_button_pressed"]
 [connection signal="pressed" from="UI/Panels/Shop/Food/FoodButton" to="UI/Panels/Shop" method="_on_food_button_pressed"]
 [connection signal="mouse_entered" from="UI/Panels/Shop/Foods/Back/BackButton" to="UI/Panels/Shop/Foods/Back" method="_on_button_mouse_entered"]
 [connection signal="mouse_exited" from="UI/Panels/Shop/Foods/Back/BackButton" to="UI/Panels/Shop/Foods/Back" method="_on_button_mouse_exited"]

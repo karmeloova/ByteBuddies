@@ -1,0 +1,63 @@
+[gd_scene load_steps=6 format=3 uid="uid://dib34b5lx5xna"]
+
+[ext_resource type="PackedScene" uid="uid://cyn346855vab8" path="res://Scenes/Prefabs/UI/PauseUI.tscn" id="1_mpm76"]
+[ext_resource type="Texture2D" uid="uid://dl8dw08og2gr8" path="res://Images/Backgrounds/Placeholder_backgorund_minigames.jpg" id="1_vjgyn"]
+[ext_resource type="Script" path="res://Scenes/Minigames/LogicTetrisGame.gd" id="2_4gkkt"]
+[ext_resource type="Texture2D" uid="uid://rmsyg0p4edha" path="res://Images/Backgrounds/Grafika_bez_nazwy (3).png" id="3_ppur3"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_omuh8"]
+size = Vector2(451, 16)
+
+[node name="LogicTetris" type="Node2D"]
+
+[node name="ControlPanel" type="Node2D" parent="."]
+
+[node name="Background" type="Sprite2D" parent="ControlPanel"]
+modulate = Color(0.613746, 0.609757, 0.714397, 1)
+position = Vector2(169.5, 326.5)
+scale = Vector2(0.463946, 1.33265)
+texture = ExtResource("1_vjgyn")
+
+[node name="GoodVariables" type="Button" parent="ControlPanel"]
+offset_left = 68.0
+offset_top = 185.0
+offset_right = 266.0
+offset_bottom = 233.0
+text = "Dobre zmienne"
+
+[node name="BadVariables" type="Button" parent="ControlPanel"]
+offset_left = 68.0
+offset_top = 246.0
+offset_right = 266.0
+offset_bottom = 294.0
+text = "Złe zmienne"
+
+[node name="Label" type="Label" parent="ControlPanel"]
+offset_left = 47.0
+offset_top = 92.0
+offset_right = 282.0
+offset_bottom = 169.0
+theme_override_font_sizes/font_size = 40
+text = "A = 0, B = 0"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="GamePanel" type="Node2D" parent="." node_paths=PackedStringArray("block_node")]
+script = ExtResource("2_4gkkt")
+block_node = NodePath("Blocks")
+
+[node name="Sprite2D" type="Sprite2D" parent="GamePanel"]
+position = Vector2(564, 326.5)
+scale = Vector2(1, 1.03651)
+texture = ExtResource("3_ppur3")
+
+[node name="Floor" type="Area2D" parent="GamePanel"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="GamePanel/Floor"]
+position = Vector2(564, 638)
+shape = SubResource("RectangleShape2D_omuh8")
+debug_color = Color(0.990112, 0, 0.282349, 0.42)
+
+[node name="Blocks" type="Node2D" parent="GamePanel"]
+
+[node name="Pause" parent="." instance=ExtResource("1_mpm76")]
