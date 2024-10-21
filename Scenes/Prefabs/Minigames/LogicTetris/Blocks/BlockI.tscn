@@ -1,30 +1,33 @@
-[gd_scene load_steps=7 format=3 uid="uid://1hcsxrldd1qt"]
+[gd_scene load_steps=8 format=3 uid="uid://1hcsxrldd1qt"]
 
 [ext_resource type="Script" path="res://Scenes/Prefabs/Minigames/Block.gd" id="1_17h67"]
 [ext_resource type="Texture2D" uid="uid://d0fl26aop586k" path="res://Images/Grafika_bez_nazwy-1.png" id="2_ee1sw"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_yo6p1"]
-size = Vector2(30, 4.71875)
-
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_q4pe8"]
-size = Vector2(11, 167)
+size = Vector2(39, 176)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_0c76p"]
-size = Vector2(31, 4)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3kb8w"]
+size = Vector2(3, 179)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_tktti"]
-size = Vector2(10.5, 167)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4bvx1"]
+size = Vector2(45, 2)
 
-[node name="Block" type="Node2D" node_paths=PackedStringArray("floor_collision", "block_collision")]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_yqkh5"]
+size = Vector2(3.00002, 179)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_tc6u6"]
+size = Vector2(45, 2)
+
+[node name="Block" type="Node2D" node_paths=PackedStringArray("edges_left", "edges_right")]
 position = Vector2(23, 114)
 scale = Vector2(-1, 1)
 script = ExtResource("1_17h67")
-height = 4
 can_rotate = true
 how_many_rotate = 2
-floor_collision = NodePath("Elements/FloorCollision")
-block_collision = NodePath("Elements/BlockCollision")
 scalee = Array[Vector2]([Vector2(1, 1), Vector2(-1, 1)])
+move_tab = Array[int]([0, 0])
+edges_left = NodePath("Elements/EdgesLeft")
+edges_right = NodePath("Elements/EdgesRight")
 
 [node name="Elements" type="Node2D" parent="."]
 position = Vector2(21, 65)
@@ -45,28 +48,44 @@ texture = ExtResource("2_ee1sw")
 position = Vector2(-21.5, -21)
 texture = ExtResource("2_ee1sw")
 
-[node name="FloorCollision" type="Area2D" parent="Elements"]
-
-[node name="FloorCollisionDeg00" type="CollisionShape2D" parent="Elements/FloorCollision"]
-position = Vector2(-22, -0.640625)
-shape = SubResource("RectangleShape2D_yo6p1")
-
-[node name="FloorCollisionDeg90" type="CollisionShape2D" parent="Elements/FloorCollision"]
-position = Vector2(-6, -89)
-shape = SubResource("RectangleShape2D_q4pe8")
-
 [node name="BlockCollision" type="Area2D" parent="Elements"]
 
-[node name="BlockCollisionDeg00" type="CollisionShape2D" parent="Elements/BlockCollision"]
-position = Vector2(-21.5, -176)
-shape = SubResource("RectangleShape2D_0c76p")
-debug_color = Color(0.920586, 5.86233e-05, 0.69434, 0.42)
+[node name="FloorCollisionDeg90" type="CollisionShape2D" parent="Elements/BlockCollision"]
+position = Vector2(-21.5, -88)
+shape = SubResource("RectangleShape2D_q4pe8")
 
-[node name="BlockCollisionDeg90" type="CollisionShape2D" parent="Elements/BlockCollision"]
-position = Vector2(-39, -89)
-shape = SubResource("RectangleShape2D_tktti")
+[node name="EdgesRight" type="Area2D" parent="Elements"]
+
+[node name="EdgeRightDeg00" type="CollisionShape2D" parent="Elements/EdgesRight"]
+position = Vector2(-43.5, -88.5)
+shape = SubResource("RectangleShape2D_3kb8w")
+debug_color = Color(0.907149, 0.000125525, 0.740999, 0.42)
+
+[node name="EdgeRightDeg90" type="CollisionShape2D" parent="Elements/EdgesRight"]
+position = Vector2(-21.5, -177)
+shape = SubResource("RectangleShape2D_4bvx1")
 disabled = true
-debug_color = Color(0.858436, 0.000709062, 0.879563, 0.42)
+debug_color = Color(0.892524, 0.0141787, 0.782519, 0.42)
 
-[connection signal="area_entered" from="Elements/FloorCollision" to="." method="_on_floor_collision_area_entered"]
-[connection signal="area_entered" from="Elements/BlockCollision" to="." method="_on_block_collision_area_entered"]
+[node name="EdgesLeft" type="Area2D" parent="Elements"]
+
+[node name="EdgeLeftDeg00" type="CollisionShape2D" parent="Elements/EdgesLeft"]
+position = Vector2(0.499992, -88.5)
+shape = SubResource("RectangleShape2D_yqkh5")
+debug_color = Color(0.335528, 0.622245, 0, 0.42)
+
+[node name="EdgeLeftDeg90" type="CollisionShape2D" parent="Elements/EdgesLeft"]
+position = Vector2(-21.5, 1)
+shape = SubResource("RectangleShape2D_tc6u6")
+disabled = true
+debug_color = Color(0.384384, 0.6124, 1.15514e-06, 0.42)
+
+[node name="MoveY" type="Timer" parent="."]
+one_shot = true
+
+[connection signal="area_entered" from="Elements/BlockCollision" to="." method="_on_floor_collision_area_entered"]
+[connection signal="area_entered" from="Elements/EdgesRight" to="." method="_on_edges_right_area_entered"]
+[connection signal="area_exited" from="Elements/EdgesRight" to="." method="_on_edges_right_area_exited"]
+[connection signal="area_entered" from="Elements/EdgesLeft" to="." method="_on_edges_left_area_entered"]
+[connection signal="area_exited" from="Elements/EdgesLeft" to="." method="_on_edges_left_area_exited"]
+[connection signal="timeout" from="MoveY" to="." method="_on_move_y_timeout"]

@@ -1,13 +1,16 @@
-[gd_scene load_steps=5 format=3 uid="uid://meqcacjgtxbk"]
+[gd_scene load_steps=6 format=3 uid="uid://meqcacjgtxbk"]
 
 [ext_resource type="Script" path="res://Scenes/Prefabs/Minigames/Block.gd" id="1_tmkng"]
 [ext_resource type="Texture2D" uid="uid://d0fl26aop586k" path="res://Images/Grafika_bez_nazwy-1.png" id="2_wgfl0"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_yo6p1"]
-size = Vector2(78, 10.4375)
+size = Vector2(86, 88)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_0c76p"]
-size = Vector2(78, 11.375)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_am4gs"]
+size = Vector2(2, 88)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_g334g"]
+size = Vector2(2, 88)
 
 [node name="Block" type="Node2D"]
 position = Vector2(66, 68)
@@ -32,18 +35,32 @@ texture = ExtResource("2_wgfl0")
 position = Vector2(67.5, -22.5)
 texture = ExtResource("2_wgfl0")
 
-[node name="FloorCollision" type="Area2D" parent="Elements"]
-
-[node name="FloorCollisionDeg0" type="CollisionShape2D" parent="Elements/FloorCollision"]
-position = Vector2(45, -5.21875)
-shape = SubResource("RectangleShape2D_yo6p1")
-
 [node name="BlockCollision" type="Area2D" parent="Elements"]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Elements/BlockCollision"]
-position = Vector2(46, -84.3125)
-shape = SubResource("RectangleShape2D_0c76p")
-debug_color = Color(0.920586, 5.86233e-05, 0.69434, 0.42)
+[node name="FloorCollisionDeg0" type="CollisionShape2D" parent="Elements/BlockCollision"]
+position = Vector2(45, -46)
+shape = SubResource("RectangleShape2D_yo6p1")
 
-[connection signal="area_entered" from="Elements/FloorCollision" to="." method="_on_floor_collision_area_entered"]
-[connection signal="area_entered" from="Elements/BlockCollision" to="." method="_on_block_collision_area_entered"]
+[node name="EdgesRight" type="Area2D" parent="Elements"]
+position = Vector2(89, -44)
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Elements/EdgesRight"]
+shape = SubResource("RectangleShape2D_am4gs")
+debug_color = Color(0.902832, 0.000149975, 0.755042, 0.42)
+
+[node name="EdgesLeft" type="Area2D" parent="Elements"]
+
+[node name="CollisionPolygon2D" type="CollisionShape2D" parent="Elements/EdgesLeft"]
+position = Vector2(1, -44)
+shape = SubResource("RectangleShape2D_g334g")
+debug_color = Color(0.919137, 0.141405, 0.607046, 0.42)
+
+[node name="MoveY" type="Timer" parent="."]
+one_shot = true
+
+[connection signal="area_entered" from="Elements/BlockCollision" to="." method="_on_floor_collision_area_entered"]
+[connection signal="area_entered" from="Elements/EdgesRight" to="." method="_on_edges_right_area_entered"]
+[connection signal="area_exited" from="Elements/EdgesRight" to="." method="_on_edges_right_area_exited"]
+[connection signal="area_entered" from="Elements/EdgesLeft" to="." method="_on_edges_left_area_entered"]
+[connection signal="area_exited" from="Elements/EdgesLeft" to="." method="_on_edges_left_area_exited"]
+[connection signal="timeout" from="MoveY" to="." method="_on_move_y_timeout"]

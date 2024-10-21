@@ -3,23 +3,27 @@
 [ext_resource type="Script" path="res://Scenes/Prefabs/Minigames/Block.gd" id="1_ukfue"]
 [ext_resource type="Texture2D" uid="uid://d0fl26aop586k" path="res://Images/Grafika_bez_nazwy-1.png" id="2_v23hp"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_yo6p1"]
-size = Vector2(36, 10.4375)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_m2rpy"]
+size = Vector2(2, 45.5)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_u3aca"]
-size = Vector2(32, 9)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qfjrd"]
+size = Vector2(135, 2)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_0c76p"]
-size = Vector2(119, 11.375)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_mpmqq"]
+size = Vector2(45.5, 2)
 
-[node name="Block" type="Node2D"]
-position = Vector2(0, 90)
+[node name="Block" type="Node2D" node_paths=PackedStringArray("edges_left", "edges_right")]
+position = Vector2(67, 23)
 script = ExtResource("1_ukfue")
 can_rotate = true
 how_many_rotate = 4
-metadata/_edit_group_ = true
+scalee = Array[Vector2]([Vector2(1, 1), Vector2(1, 1), Vector2(1, 1), Vector2(1, 1)])
+move_tab = Array[int]([-135, -90, 0, 0])
+edges_left = NodePath("Elements/EdgesLeft")
+edges_right = NodePath("Elements/EdgesRight")
 
 [node name="Elements" type="Node2D" parent="."]
+position = Vector2(-67, 67)
 
 [node name="Element1" type="Sprite2D" parent="Elements"]
 position = Vector2(67.5, -67.5)
@@ -37,26 +41,113 @@ texture = ExtResource("2_v23hp")
 position = Vector2(67.5, -22.5)
 texture = ExtResource("2_v23hp")
 
-[node name="FloorCollision" type="Area2D" parent="."]
+[node name="BlockCollision" type="Area2D" parent="Elements"]
 
-[node name="FloorCollisionDeg0-1" type="CollisionShape2D" parent="FloorCollision"]
-position = Vector2(68, -5.21875)
-shape = SubResource("RectangleShape2D_yo6p1")
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Elements/BlockCollision"]
+polygon = PackedVector2Array(47, -2, 47, -47, 2, -47, 2, -88, 133, -88, 133, -47, 88, -47, 88, -2)
 
-[node name="FloorCollisionDeg0-2" type="CollisionShape2D" parent="FloorCollision"]
-position = Vector2(113, -49.5)
-shape = SubResource("RectangleShape2D_u3aca")
+[node name="EdgesRight" type="Area2D" parent="Elements"]
 
-[node name="FloorCollisionDeg0-3" type="CollisionShape2D" parent="FloorCollision"]
-position = Vector2(22.5, -49.5)
-shape = SubResource("RectangleShape2D_u3aca")
+[node name="RightEdgeDeg00-1" type="CollisionShape2D" parent="Elements/EdgesRight"]
+position = Vector2(89, -23)
+shape = SubResource("RectangleShape2D_m2rpy")
+debug_color = Color(0.92281, 5.11149e-05, 0.686129, 0.42)
 
-[node name="BlockCollision" type="Area2D" parent="."]
+[node name="RightEdgeDeg00-2" type="CollisionShape2D" parent="Elements/EdgesRight"]
+position = Vector2(134, -67.75)
+shape = SubResource("RectangleShape2D_m2rpy")
+debug_color = Color(0.92281, 5.11149e-05, 0.686129, 0.42)
 
-[node name="BlockCollisionDeg0-1" type="CollisionShape2D" parent="BlockCollision"]
-position = Vector2(65.5, -84.3125)
-shape = SubResource("RectangleShape2D_0c76p")
-debug_color = Color(0.920586, 5.86233e-05, 0.69434, 0.42)
+[node name="RightEdgeDeg90" type="CollisionShape2D" parent="Elements/EdgesRight"]
+position = Vector2(67.5, -89)
+shape = SubResource("RectangleShape2D_qfjrd")
+disabled = true
+debug_color = Color(0.920768, 5.69868e-05, 0.693672, 0.42)
 
-[connection signal="area_entered" from="FloorCollision" to="." method="_on_floor_collision_area_entered"]
-[connection signal="area_entered" from="BlockCollision" to="." method="_on_block_collision_area_entered"]
+[node name="RightEdgeDeg180-1" type="CollisionShape2D" parent="Elements/EdgesRight"]
+position = Vector2(46, -23)
+shape = SubResource("RectangleShape2D_m2rpy")
+disabled = true
+debug_color = Color(0.861219, 0.000655156, 0.872631, 0.42)
+
+[node name="RightEdgeDeg180-2" type="CollisionShape2D" parent="Elements/EdgesRight"]
+position = Vector2(1, -67)
+shape = SubResource("RectangleShape2D_m2rpy")
+disabled = true
+debug_color = Color(0.861219, 0.000655156, 0.872631, 0.42)
+
+[node name="RightEdgeDeg270-1" type="CollisionShape2D" parent="Elements/EdgesRight"]
+position = Vector2(23.5, -46)
+shape = SubResource("RectangleShape2D_mpmqq")
+disabled = true
+debug_color = Color(0.869744, 0.000507683, 0.850763, 0.42)
+
+[node name="RightEdgeDeg270-2" type="CollisionShape2D" parent="Elements/EdgesRight"]
+position = Vector2(67.75, -1)
+shape = SubResource("RectangleShape2D_mpmqq")
+disabled = true
+debug_color = Color(0.869744, 0.000507683, 0.850763, 0.42)
+
+[node name="RightEdgeDeg270-3" type="CollisionShape2D" parent="Elements/EdgesRight"]
+position = Vector2(111, -46)
+shape = SubResource("RectangleShape2D_mpmqq")
+disabled = true
+debug_color = Color(0.869744, 0.000507683, 0.850763, 0.42)
+
+[node name="EdgesLeft" type="Area2D" parent="Elements"]
+
+[node name="LeftEdgeDeg00-1" type="CollisionShape2D" parent="Elements/EdgesLeft"]
+position = Vector2(46, -23)
+shape = SubResource("RectangleShape2D_m2rpy")
+debug_color = Color(0.604911, 0.541354, 7.70092e-07, 0.42)
+
+[node name="LeftEdgeDeg00-2" type="CollisionShape2D" parent="Elements/EdgesLeft"]
+position = Vector2(1, -67)
+shape = SubResource("RectangleShape2D_m2rpy")
+debug_color = Color(0.523517, 0.573415, 0, 0.42)
+
+[node name="LeftEdgeDeg90-1" type="CollisionShape2D" parent="Elements/EdgesLeft"]
+position = Vector2(23.5, -46)
+shape = SubResource("RectangleShape2D_mpmqq")
+disabled = true
+debug_color = Color(0.600831, 0.543157, 3.85046e-07, 0.42)
+
+[node name="LeftEdgeDeg90-2" type="CollisionShape2D" parent="Elements/EdgesLeft"]
+position = Vector2(67.75, -1)
+shape = SubResource("RectangleShape2D_mpmqq")
+disabled = true
+debug_color = Color(0.600831, 0.543157, 3.85046e-07, 0.42)
+
+[node name="LeftEdgeDeg90-3" type="CollisionShape2D" parent="Elements/EdgesLeft"]
+position = Vector2(111, -46)
+shape = SubResource("RectangleShape2D_mpmqq")
+disabled = true
+debug_color = Color(0.600831, 0.543157, 3.85046e-07, 0.42)
+
+[node name="LeftEdgeDeg180-1" type="CollisionShape2D" parent="Elements/EdgesLeft"]
+position = Vector2(89, -23)
+shape = SubResource("RectangleShape2D_m2rpy")
+disabled = true
+debug_color = Color(0.559409, 0.560251, 3.85046e-07, 0.42)
+
+[node name="LeftEdgeDeg180-2" type="CollisionShape2D" parent="Elements/EdgesLeft"]
+position = Vector2(134, -67.75)
+shape = SubResource("RectangleShape2D_m2rpy")
+disabled = true
+debug_color = Color(0.559409, 0.560251, 3.85046e-07, 0.42)
+
+[node name="LeftEdgeDeg270" type="CollisionShape2D" parent="Elements/EdgesLeft"]
+position = Vector2(67.5, -89)
+shape = SubResource("RectangleShape2D_qfjrd")
+disabled = true
+debug_color = Color(0.622974, 0.533097, 1.92523e-07, 0.42)
+
+[node name="MoveY" type="Timer" parent="."]
+one_shot = true
+
+[connection signal="area_entered" from="Elements/BlockCollision" to="." method="_on_floor_collision_area_entered"]
+[connection signal="area_entered" from="Elements/EdgesRight" to="." method="_on_edges_right_area_entered"]
+[connection signal="area_exited" from="Elements/EdgesRight" to="." method="_on_edges_right_area_exited"]
+[connection signal="area_entered" from="Elements/EdgesLeft" to="." method="_on_edges_left_area_entered"]
+[connection signal="area_exited" from="Elements/EdgesLeft" to="." method="_on_edges_left_area_exited"]
+[connection signal="timeout" from="MoveY" to="." method="_on_move_y_timeout"]

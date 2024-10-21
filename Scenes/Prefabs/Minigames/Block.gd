@@ -3,51 +3,56 @@ extends Node2D
 var can_fall = false
 @export var can_move = false
 var grounded = false
-@export var height : int
 var fixing = false
 var was_collision = false
 @export var can_rotate : bool
 @export var how_many_rotate : int;
-@export var floor_collision : Area2D
-@export var block_collision : Area2D
 var left_wall = false;
 var right_wall = false;
-var key_pressed
 @export var scalee : Array[Vector2]
 @export var move_tab : Array[int]
 var move_block = 0
+@export var edges_left : Area2D
+@export var edges_right : Area2D
+var edge_bool = false
 
 func _ready():
 	global_position.x = 587
 
-func _process(delta):
-	if(can_move and !grounded) :
-		position.y += 200*delta
-
 func _input(event): 
 	if(Input.is_key_pressed(KEY_SPACE)) :
 		can_move = true;
+		$MoveY.start(1)
+		print($MoveY.time_left)
 	
 	if(can_move and !grounded) :
 		if(Input.is_key_pressed(KEY_RIGHT) and !right_wall) :
 			position.x += 45
-			print("DDDD")
 		if(Input.is_key_pressed(KEY_LEFT) and !left_wall) :
 			position.x -= 45
-			print("AAAA")
 		
 	if(Input.is_key_pressed(KEY_W) and can_rotate and !grounded) :
 		match how_many_rotate :
 			2:
 				if(rotation_degrees == 0) : 
-					set_correctly("90", scalee[0])
+					set_correctly("90", scalee[0], move_tab[0])
 					rotation_degrees = 90
 				else : 
-					set_correctly("00", scalee[1])
+					set_correctly("00", scalee[1], move_tab[1])
 					rotation_degrees = 0
 			4:
-				if(rotation_degrees == 270) : rotation_degrees = 0
-				else : rotation_degrees += 90
+				if(rotation_degrees == 0) : 
+					set_correctly("90", scalee[0], move_tab[0])
+					rotation_degrees = 90
+				elif(rotation_degrees == 90) : 
+					set_correctly("180", scalee[1], move_tab[1])
+					rotation_degrees = 180
+				elif(rotation_degrees == 180) : 
+					set_correctly("270", scalee[2], move_tab[2])
+					rotation_degrees = 270
+				else : 
+					set_correctly("00", scalee[3], move_tab[3])
+					rotation_degrees = 0
 
 func _on_floor_collision_area_entered(area):
 	if(area.name=="Floor") :
@@ -59,10 +64,9 @@ func _on_floor_collision_area_entered(area):
 		right_wall = true
 	if(area.name.contains("WallLeft")) :
 		left_wall = true
-
-func _on_block_collision_area_entered(area):
+	
 	var curr_bloc = area.get_node("../..")
-	if(area.name.contains("Floor") and !curr_bloc.was_collision) :
+	if(area.name.contains("Block") and !curr_bloc.grounded) :
 		curr_bloc.was_collision = true
 		curr_bloc.can_move = false;
 		curr_bloc.grounded = true
@@ -72,19 +76,47 @@ func _on_block_collision_area_entered(area):
 		right_wall = true
 	if(area.name.contains("WallLeft")) :
 		left_wall = true
-	
+
 func fix_pos(curr_pos) -> int:
 	fixing = true
 	var how_many = 648-curr_pos.y
 	var multiply = ceil(how_many/45)
 	return 648-multiply*45
 
-func set_correctly(deg : String, myscale : Vector2) :
+func set_correctly(deg : String, myscale : Vector2, move_y : int) :
 	scale = myscale
-	for shape in floor_collision.get_children() :
-		if(shape.name.contains(deg)) : shape.disabled = false;
-		else : shape.disabled = true;
-	
-	for shape in block_collision.get_children() :
-		if(shape.name.contains(deg)) : shape.disabled = false;
-		else : shape.disabled = true;
+	move_block = move_y
+	for edge in edges_left.get_children() :
+		if(edge.name.contains(deg)) :
+			edge.disabled = false
+		else : 
+			edge.disabled = true
+		
+	for edge in edges_right.get_children() :
+		if(edge.name.contains(deg)) :
+			edge.disabled = false
+		else : 
+			edge.disabled = true
+
+func _on_edges_left_area_entered(area):
+	if(area.name.contains("Edges")) :
+		area.get_node("../..").right_wall = true
+
+func _on_edges_right_area_entered(area):
+	if(area.name.contains("Edge")) :
+		area.get_node("../..").left_wall = true;
+
+func _on_edges_right_area_exited(area):
+	if(area.name.contains("Edges")) :
+		area.get_node("../..").left_wall = false
+
+func _on_edges_left_area_exited(area):
+	if(area.name.contains("Edge")) :
+		area.get_node("../..").right_wall = false
+
+func _on_move_y_timeout():
+	print("XD")
+	if(can_move and !grounded) :
+		position.y += 45
+		$MoveY.start(1)
+	else : $MoveY.stop()

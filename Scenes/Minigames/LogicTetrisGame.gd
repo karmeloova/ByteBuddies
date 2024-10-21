@@ -26,7 +26,6 @@ func _generate_block() :
 		block_instance.position.x = 340
 
 func _on_new_block_needed(current_x_pos, current_y_pos) :
-	print("idzie nowy bloczek")
 	if(!move_down) :
 		#print(current_x_pos, " + ", current_y_pos)
 		#pos_tab[int(current_y_pos/45-2)][int(current_x_pos/45)] = block_instance
