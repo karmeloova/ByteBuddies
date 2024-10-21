@@ -12,9 +12,10 @@ size = Vector2(2, 88)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_g334g"]
 size = Vector2(2, 88)
 
-[node name="Block" type="Node2D"]
+[node name="Block" type="Node2D" node_paths=PackedStringArray("blocks")]
 position = Vector2(66, 68)
 script = ExtResource("1_tmkng")
+blocks = [NodePath("Elements/Element1"), NodePath("Elements/Element2"), NodePath("Elements/Element3"), NodePath("Elements/Element4")]
 
 [node name="Elements" type="Node2D" parent="."]
 position = Vector2(-66, 22)

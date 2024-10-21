@@ -12,6 +12,7 @@ var right_wall = false;
 @export var scalee : Array[Vector2]
 @export var move_tab : Array[int]
 var move_block = 0
+@export var blocks : Array[Sprite2D]
 @export var edges_left : Area2D
 @export var edges_right : Area2D
 var edge_bool = false
@@ -22,14 +23,15 @@ func _ready():
 func _input(event): 
 	if(Input.is_key_pressed(KEY_SPACE)) :
 		can_move = true;
-		$MoveY.start(1)
-		print($MoveY.time_left)
+		$MoveY.start(0.5)
 	
 	if(can_move and !grounded) :
 		if(Input.is_key_pressed(KEY_RIGHT) and !right_wall) :
 			position.x += 45
+			print(position.x)
 		if(Input.is_key_pressed(KEY_LEFT) and !left_wall) :
 			position.x -= 45
+			print(position.x)
 		
 	if(Input.is_key_pressed(KEY_W) and can_rotate and !grounded) :
 		match how_many_rotate :
@@ -37,22 +39,28 @@ func _input(event):
 				if(rotation_degrees == 0) : 
 					set_correctly("90", scalee[0], move_tab[0])
 					rotation_degrees = 90
+					cheeeck()
 				else : 
 					set_correctly("00", scalee[1], move_tab[1])
 					rotation_degrees = 0
+					cheeeck()
 			4:
 				if(rotation_degrees == 0) : 
 					set_correctly("90", scalee[0], move_tab[0])
 					rotation_degrees = 90
+					cheeeck()
 				elif(rotation_degrees == 90) : 
 					set_correctly("180", scalee[1], move_tab[1])
 					rotation_degrees = 180
+					cheeeck()
 				elif(rotation_degrees == 180) : 
 					set_correctly("270", scalee[2], move_tab[2])
 					rotation_degrees = 270
+					cheeeck()
 				else : 
 					set_correctly("00", scalee[3], move_tab[3])
 					rotation_degrees = 0
+					cheeeck()
 
 func _on_floor_collision_area_entered(area):
 	if(area.name=="Floor") :
@@ -115,8 +123,17 @@ func _on_edges_left_area_exited(area):
 		area.get_node("../..").right_wall = false
 
 func _on_move_y_timeout():
-	print("XD")
 	if(can_move and !grounded) :
 		position.y += 45
-		$MoveY.start(1)
+		$MoveY.start(0.5)
 	else : $MoveY.stop()
+
+func cheeeck() :
+	for i in blocks.size() :
+		print(blocks[i].global_position.x)
+		if(blocks[i].global_position.x < 362) :
+			print("AB")
+			position.x = 362
+		elif(blocks[i].position.x > 812) :
+			print("DEEEFGGG")
+			position.x = 812

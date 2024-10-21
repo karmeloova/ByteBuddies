@@ -15,13 +15,14 @@ size = Vector2(2, 135)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_m6oa8"]
 size = Vector2(90, 2)
 
-[node name="Block" type="Node2D" node_paths=PackedStringArray("edges_left", "edges_right")]
+[node name="Block" type="Node2D" node_paths=PackedStringArray("blocks", "edges_left", "edges_right")]
 position = Vector2(22, 113)
 script = ExtResource("1_iwl1k")
 can_rotate = true
 how_many_rotate = 4
 scalee = Array[Vector2]([Vector2(1, 1), Vector2(1, 1), Vector2(1, 1), Vector2(1, 1)])
 move_tab = Array[int]([-90, -135, 0, 0])
+blocks = [NodePath("Elements/Element1"), NodePath("Elements/Element2"), NodePath("Elements/Element3"), NodePath("Elements/Element4")]
 edges_left = NodePath("Elements/EdgesLeft")
 edges_right = NodePath("Elements/EdgesRight")
 
