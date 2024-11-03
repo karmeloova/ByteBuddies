@@ -23,6 +23,7 @@ func _on_back_button_mouse_exited():
 func _on_restart_button_pressed():
 	get_tree().paused = false
 	get_tree().reload_current_scene()
+	SignalManager.restartGame.emit()
 
 func _on_restart_button_mouse_entered():
 	$PauseMenu/RestartButton.modulate = Color("b2b2b2")
@@ -31,6 +32,7 @@ func _on_restart_button_mouse_exited():
 	$PauseMenu/RestartButton.modulate = Color("ffffff")
 
 func _on_quit_button_pressed():
+	SignalManager.save_data.emit()
 	get_tree().paused = false
 	get_tree().change_scene_to_file("res://Scenes/Rooms/MainRoom.tscn")
 

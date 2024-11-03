@@ -8,6 +8,7 @@ signal restartGame()
 signal loseLife()
 signal nextLevel()
 signal add_point()
+signal save_data()
 
 
 # GO TO TARGET
@@ -15,6 +16,7 @@ signal makeMove(instructions)
 signal code_to_make()
 signal set_player_pos(position)
 signal moveEnd()
+signal calculate_score(lines)
 
 # CAT JUMP
 signal move_camera()
@@ -45,6 +47,7 @@ signal add_to_fridge(item : Food_Resource)
 signal add_coin(value)
 signal go_to_bowl()
 signal eat_end()
+signal set_correct_instruction(what)
 
 #------------------ LEVEL -----------------------------------
 signal add_exp(value)
