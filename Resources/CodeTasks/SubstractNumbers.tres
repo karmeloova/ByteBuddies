@@ -1,8 +1,0 @@
-[gd_resource type="Resource" script_class="Code_Task" load_steps=2 format=3 uid="uid://dj8sw4o4qk1wp"]
-
-[ext_resource type="Script" path="res://Scripts/Resources/CodeTask.gd" id="1_euxqi"]
-
-[resource]
-script = ExtResource("1_euxqi")
-description = "Twoim zadaniem jest ułożyć kafelki w ten sposób, aby zdefiniować funkcję odejmowania"
-instructions = Array[String](["def", "substract_numbers", "(a,b)", "enter", "return", "a-b"])

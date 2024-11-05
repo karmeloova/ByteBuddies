@@ -4,6 +4,7 @@ extends Control
 @export var instruction_texture : TextureRect
 @export var drawn : bool = false
 @export var start_field : TextureRect
+@export var is_good : bool = false
 
 var pos = Vector2(0,0)
 @export var dragged_object : Control
@@ -30,9 +31,11 @@ func _on_check_field() :
 	if(instruction_text == instruction.text) :
 		instruction_texture.modulate = Color("96ffa1")
 		dragged_object.draggable = false
+		is_good = true
 	else :
 		instruction_texture.modulate = Color("b6274b")
 		dragged_object.apparent_move()
+		is_good = false
 
 func _on_child_exiting_tree(node):
 	have_data = false

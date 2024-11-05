@@ -31,6 +31,12 @@ func _set_correct_instruction(game_name) :
 		"Snack Navigator" :
 			$SnackNavigator.visible = true
 			instruction = $SnackNavigator
+		"Cat Jump" :
+			$CatJump.visible = true
+			instruction= $CatJump
+		"Pet Code" :
+			$CodePet.visible = true
+			instruction = $CodePet
 	set_pages()
 
 func set_pages() :
@@ -39,6 +45,8 @@ func set_pages() :
 	pages[0].visible = true
 	for i in range(1,pages.size()) :
 		pages[i].visible = false
+	
+	if(pages.size() <= 1) : $Next.visible = false
 
 func _on_back_button_pressed():
 	is_previous = true

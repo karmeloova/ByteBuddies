@@ -11,9 +11,11 @@ func _ready():
 func set_high_score() :
 	match game_name :
 		"Snack Navigator" :
-			$Panel/Record.text = "Record: " + str(VariableManager.snack_navigator_high_score)
+			$Panel/Record.text = "Rekord: " + str(VariableManager.snack_navigator_high_score)
 		"Cat Jump":
-			$Panel/Record.text = "Record: " + str(VariableManager.cat_jump_high_score)
+			$Panel/Record.text = "Rekord: " + str(VariableManager.cat_jump_high_score)
+		"Pet Code":
+			$Panel/Record.text = "Rekord: " + str(VariableManager.pet_code_high_score)
 
 func _on_restart_game() :
 	visible = false

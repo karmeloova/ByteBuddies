@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="Code_Task" load_steps=2 format=3 uid="uid://cm5d32kcy0jb"]
+
+[ext_resource type="Script" path="res://Scripts/Resources/CodeTask.gd" id="1_o2nfu"]
+
+[resource]
+script = ExtResource("1_o2nfu")
+description = "Ułóż bloczki tak, aby napoić zwierzaka do pełnego zadowolenia"
+instructions = Array[String](["while", "irrigation", "< 100", "enter", "irrigation", "+=1"])
+difficulty = 0

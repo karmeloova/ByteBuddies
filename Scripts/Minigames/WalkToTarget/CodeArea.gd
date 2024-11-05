@@ -12,7 +12,6 @@ func _ready():
 
 func _on_execute_button_pressed():
 	execute_counts += 1
-	print(execute_counts)
 	$CodeField.editable = false;
 	lines += $CodeField.get_line_count();
 	VariableManager.lines_couner = lines

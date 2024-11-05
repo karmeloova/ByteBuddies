@@ -15,10 +15,8 @@ func _on_calculate_score(lines) :
 	if(VariableManager.lines_couner <= lines+1) :
 		score += 20
 	elif(VariableManager.lines_couner - (lines+1) <= 5) :
-		print("IDKlsowoeoeoee")
 		score += randi_range(10, 19)
 	elif(VariableManager.lines_couner - (lines+1) <= 10) :
-		print("eerererer3")
 		score += randi_range(1,9)
 	
 	# Punkty za ilość wykonań
@@ -30,7 +28,7 @@ func _on_calculate_score(lines) :
 		score += 5
 	
 	update_score()
-		
+
 func update_score() :
 	$Score.text = "Wynik: " + str(score)
 

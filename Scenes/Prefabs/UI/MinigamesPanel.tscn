@@ -16,8 +16,8 @@ script = ExtResource("1_hj3fy")
 
 [node name="GameBackgorund" type="Sprite2D" parent="."]
 modulate = Color(0.32549, 0.568627, 0.447059, 1)
-position = Vector2(572.25, 325)
-scale = Vector2(1.56667, 1.32245)
+position = Vector2(583.749, 330.5)
+scale = Vector2(1.59796, 1.44694)
 texture = ExtResource("1_g5r1r")
 
 [node name="Background" type="Sprite2D" parent="."]
@@ -173,7 +173,33 @@ rotation = 3.14159
 scale = Vector2(0.124325, 0.124325)
 texture = ExtResource("5_eyy1f")
 
+[node name="CatJump" type="Node2D" parent="HowToPlay"]
+visible = false
+
+[node name="Page1" type="RichTextLabel" parent="HowToPlay/CatJump"]
+offset_left = 282.0
+offset_top = 161.0
+offset_right = 893.0
+offset_bottom = 619.0
+theme_override_font_sizes/normal_font_size = 20
+theme_override_font_sizes/bold_font_size = 20
+theme_override_font_sizes/italics_font_size = 20
+theme_override_font_sizes/bold_italics_font_size = 20
+theme_override_font_sizes/mono_font_size = 20
+bbcode_enabled = true
+text = "Twoim celem jest wspinać się jak najwyżej, skacząc po platformach. Im wyżej dojdziesz, tym więcej punktów zdobędziesz! Sterowanie:
+ [b]- Spacja –[/b] Naciśnij, aby skoczyć w górę.
+ [b]- Strzałka w lewo –[/b] Przesuń się w lewo.
+ [b]- Strzałka w prawo –[/b] Przesuń się w prawo.
+
+Unikaj upadku – Jeśli spadniesz na dół, gra się kończy.
+
+Spróbuj pobić swój rekord wysokości i zdobyć jak najwięcej punktów! Baw się dobrze i zobacz, jak wysoko możesz się wspiąć!
+"
+autowrap_mode = 2
+
 [node name="SnackNavigator" type="Node2D" parent="HowToPlay"]
+visible = false
 
 [node name="Page1" type="RichTextLabel" parent="HowToPlay/SnackNavigator"]
 offset_left = 282.0
@@ -220,6 +246,67 @@ Aby przejść 4 kafelki do przodu, a potem skręcić w lewo i przejść 2 kafelk
 	left(2)[/b]
 
 Pamiętaj, by wpisywać komendy dokładnie tak, jak pokazano. Powodzenia! 🚀"
+autowrap_mode = 2
+
+[node name="CodePet" type="Node2D" parent="HowToPlay"]
+visible = false
+
+[node name="Page1" type="RichTextLabel" parent="HowToPlay/CodePet"]
+visible = false
+offset_left = 282.0
+offset_top = 161.0
+offset_right = 893.0
+offset_bottom = 516.0
+theme_override_font_sizes/normal_font_size = 20
+theme_override_font_sizes/bold_font_size = 20
+theme_override_font_sizes/italics_font_size = 20
+theme_override_font_sizes/bold_italics_font_size = 20
+theme_override_font_sizes/mono_font_size = 20
+bbcode_enabled = true
+text = "Twoim zadaniem jest pomóc w opiece nad wirtualnym kotkiem, rozwiązując zadania kodowania. Poprawne ułożenie bloczków kodu umożliwia przejście na kolejne poziomy i rozwijanie umiejętności programowania. Każde zadanie to inny fragment logicznego myślenia, który pomaga Ci lepiej zrozumieć opiekę nad kotkiem.
+
+[b]Jak grać:
+1. [/b]Przeczytaj zadanie – Na każdym poziomie pojawia się zadanie związane z opieką nad kotkiem, np.: „Ułóż bloczki, aby kotek był najedzony” lub „Zwiększ poziom energii poprzez odpowiednią liczbę porcji”.
+"
+autowrap_mode = 2
+
+[node name="Page2" type="RichTextLabel" parent="HowToPlay/CodePet"]
+offset_left = 285.0
+offset_top = 149.0
+offset_right = 913.0
+offset_bottom = 569.0
+theme_override_font_sizes/normal_font_size = 20
+theme_override_font_sizes/bold_font_size = 20
+theme_override_font_sizes/italics_font_size = 20
+theme_override_font_sizes/bold_italics_font_size = 20
+theme_override_font_sizes/mono_font_size = 20
+bbcode_enabled = true
+text = "[b]2. Układaj bloczki kodu –[/b] W każdym zadaniu masz do dyspozycji bloczki kodu, które możesz łączyć:
+	[b]- Pętle –[/b] Powtarzaj czynności, np. dodawanie punktów energii 			   lub zwiększanie liczby porcji.
+	[b]- Warunki –[/b] Wybierz odpowiednie działania w zależności od stanu zadania.
+	[b]- Operacje matematyczne –[/b] Zwiększaj lub zmniejszaj poziom wybranych parametrów, by spełnić cel zadania.
+[b]3. Rozwiązuj logiczne wyzwania – [/b] Ułóż bloczki, aby kod spełniał warunki zadania. Przykłady:
+	- Użyj [b]pętli for[/b], by dodać porcje karmy, aż licznik osiągnie 3.
+ 	- Stwórz [b]warunek if[/b], który sprawdza, czy poziom energii jest poniżej progu i odpowiednio go zwiększa.
+
+"
+autowrap_mode = 2
+
+[node name="Page3" type="RichTextLabel" parent="HowToPlay/CodePet"]
+visible = false
+offset_left = 285.0
+offset_top = 149.0
+offset_right = 913.0
+offset_bottom = 569.0
+theme_override_font_sizes/normal_font_size = 20
+theme_override_font_sizes/bold_font_size = 20
+theme_override_font_sizes/italics_font_size = 20
+theme_override_font_sizes/bold_italics_font_size = 20
+theme_override_font_sizes/mono_font_size = 20
+bbcode_enabled = true
+text = "[b]4. Sprawdź swoje rozwiązanie –[/b] Po ułożeniu bloczków naciśnij „Sprawdź”, aby zobaczyć, czy poprawnie ułożyłeś bloczki. Pomyślne ułożenie bloczków pozwoli Ci przejść do kolejnego zadania!
+
+[b]Powodzenia![/b]"
 autowrap_mode = 2
 
 [connection signal="mouse_entered" from="Back/BackButton" to="Back" method="_on_back_button_mouse_entered"]

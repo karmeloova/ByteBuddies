@@ -11,4 +11,5 @@ func _on_add_point() :
 	text = "Score: " + str(points)
 
 func _on_lose_game() :
+	VariableManager.cat_jump_high_score = points
 	SignalManager.add_exp.emit(points*0.25)

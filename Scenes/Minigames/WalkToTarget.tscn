@@ -24,7 +24,7 @@ radius = 30.0167
 script = ExtResource("1_dto5f")
 
 [node name="Background" type="Sprite2D" parent="CodeArea"]
-modulate = Color(0.700903, 0.635903, 0.549619, 1)
+modulate = Color(0.708848, 0.644184, 0.558376, 1)
 position = Vector2(253.75, 324.5)
 scale = Vector2(0.689116, 1.32041)
 texture = ExtResource("2_jbpt1")

@@ -40,3 +40,4 @@ var can_be_promoted : bool = true
 #----------- HIGH-SCORES ------------
 var snack_navigator_high_score : int = 0
 var cat_jump_high_score : int = 0
+var pet_code_high_score : int = 0

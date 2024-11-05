@@ -1,8 +1,0 @@
-[gd_resource type="Resource" script_class="Code_Task" load_steps=2 format=3 uid="uid://cl0u7xjpfrpy7"]
-
-[ext_resource type="Script" path="res://Scripts/Resources/CodeTask.gd" id="1_6oo52"]
-
-[resource]
-script = ExtResource("1_6oo52")
-description = "Twoim zadaniem jest ułożyć kafelki tak, aby zrobić sumę 10"
-instructions = Array[String](["for", "i", "in range", "10", "enter", "sum += 1"])

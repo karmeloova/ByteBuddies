@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="Code_Task" load_steps=2 format=3 uid="uid://ikx558mnu4en"]
+
+[ext_resource type="Script" path="res://Scripts/Resources/CodeTask.gd" id="1_1yxet"]
+
+[resource]
+script = ExtResource("1_1yxet")
+description = "Zabierz zwierzaka na spacer, dopóki energia nie spadnie poniżej 3, ponieważ później zwierzak musi odpocząć"
+instructions = Array[String](["while", "energy", "> 3", "enter", "energy", "-= 1"])
+difficulty = 0
