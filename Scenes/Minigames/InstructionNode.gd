@@ -10,8 +10,8 @@ var random_instruction
 var instruction_tab : Array
 var field_tab : Array
 var start_field_tab : Array
-var instruction_pos = Vector2(30,30)
-var field_pos = Vector2(30,150)
+var instruction_pos = Vector2(300,150)
+var field_pos = Vector2(300,270)
 
 var field
 var instruction
@@ -19,7 +19,7 @@ var instruction
 var make_enter : bool = false
 var remove_tab : bool = false
 var is_first : bool = true
-var tab_size : int = 100
+var tab_size : int = 370
 @export var all_field_has_data : bool = false
 
 func _ready():
@@ -52,12 +52,14 @@ func set_elements_pos(instruction_instance, is_first : bool) :
 			else :
 				remove_tab = false
 				make_enter = false
-				field_pos.x = 30
+				field_pos.x = 300
 				field_pos.y += 50
 				field.position = field_pos
 		else : 
 			field_pos.x += 120
 			field.position = field_pos
+	
+	print(field.position)
 
 func set_instructions_pos() :
 	random_instruction = field_tab.pick_random()
@@ -77,6 +79,7 @@ func set_instructions_pos() :
 	for i in range(instruction_tab.size()) :
 		field_tab[i].get_node("Control").position = instruction_pos
 		field_tab[i].get_node("Control").start_pos = field_tab[i].get_node("Control").position
+		print(field_tab[i].get_node("Control").global_position)
 		field_tab[i].get_node("StartField").position = instruction_pos
 		instruction_pos.x += 120
 		
@@ -91,8 +94,8 @@ func _on_next_level() :
 	instruction_tab = []
 	field_tab = []
 	start_field_tab = []
-	instruction_pos = Vector2(30,30)
-	field_pos = Vector2(30,150)
+	instruction_pos = Vector2(300,150)
+	field_pos = Vector2(240,270)
 	is_first = true
 	make_enter = false
 	remove_tab = false

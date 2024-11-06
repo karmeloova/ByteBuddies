@@ -29,8 +29,6 @@ scale = Vector2(0.395698, 1.46672)
 texture = ExtResource("1_q4qfm")
 
 [node name="InstructionNode" type="Node2D" parent="."]
-position = Vector2(254, 152)
-scale = Vector2(1, 1)
 script = ExtResource("1_pr2fo")
 tasks = Array[Resource("res://Scripts/Resources/CodeTask.gd")]([ExtResource("3_2hkys"), ExtResource("4_78n7r"), ExtResource("5_4t1jl"), ExtResource("6_73bo2"), ExtResource("7_sxg87")])
 

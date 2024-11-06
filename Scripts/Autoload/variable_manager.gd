@@ -9,6 +9,7 @@ var needs = {
 }
 
 var hungry_points_in_bowl : int = 0
+var code_pet_start_pos : Vector2
 
 var tile_size;
 var start_position;

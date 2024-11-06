@@ -28,6 +28,7 @@ func _get_drag_data(at_position):
 		return self
 
 func apparent_move() :
+	print(start_pos)
 	tween = self.create_tween()
 	tween.tween_property(self, "global_position", Vector2(start_pos.x-2,start_pos.y-2), 2)
 	drop_data_timer.start(2)

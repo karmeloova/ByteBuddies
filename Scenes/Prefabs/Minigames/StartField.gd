@@ -17,11 +17,9 @@ func _can_drop_data(at_position, data):
 		return false
 
 func _drop_data(at_position, data):
-	print(at_position)
 	data.get_parent().remove_child(data)
 	add_child(data)
 	data.position = Vector2(-2,-2)
-	print(data.position)
 	have_data = true
 	instruction_text = data.get_node("Label").text
 	SignalManager.added_data_to_field.emit(instruction_text)
