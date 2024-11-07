@@ -5,5 +5,5 @@
 [resource]
 script = ExtResource("1_f0brg")
 description = "Pobaw się ze zwierzakiem, aż jego poziom zadowolenia osiągnie 10"
-instructions = Array[String](["while", "happy ", "< 10", "enter", "happy", "+=1"])
+instructions = Array[String](["while", "happy", "< 10", "enter", "happy", "+=1"])
 difficulty = 0

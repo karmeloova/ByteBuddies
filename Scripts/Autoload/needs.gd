@@ -30,7 +30,7 @@ func _on_timeout() :
 		if(VariableManager.needs[i] > 0) : VariableManager.needs[i] -= 1;
 	SignalManager.changed_needs.emit();
 
-func _on_scratch(howMany) :
+func _on_scratch(_howMany) :
 	if(VariableManager.needs["scratch"] < 100) : VariableManager.needs["scratch"] += 5;
 	SignalManager.changed_needs.emit();
 

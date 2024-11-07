@@ -20,20 +20,24 @@ var make_enter : bool = false
 var remove_tab : bool = false
 var is_first : bool = true
 var tab_size : int = 370
+var next_level : bool = false
 @export var all_field_has_data : bool = false
 
 func _ready():
 	set_level()
 	SignalManager.added_data_to_field.connect(_on_added_data) 
 	SignalManager.nextLevel.connect(_on_next_level)
-	$"../Label".text = random_task.description
+	SignalManager.bad_field.connect(_on_bad_field)
 	
 func _on_added_data(text) :
-	all_field_has_data = true
-	for i in instruction_node.get_children() :
-		if !i.get_node("Field").have_data :
-			all_field_has_data = false
-			break
+	if(!next_level) :
+		all_field_has_data = true
+		for i in instruction_node.get_children() :
+			if !i.get_node("Field").have_data :
+				all_field_has_data = false
+				break
+	else :
+		all_field_has_data = false
 
 func set_elements_pos(instruction_instance, is_first : bool) :
 	instruction = instruction_instance.get_node("Control")
@@ -58,8 +62,6 @@ func set_elements_pos(instruction_instance, is_first : bool) :
 		else : 
 			field_pos.x += 120
 			field.position = field_pos
-	
-	print(field.position)
 
 func set_instructions_pos() :
 	random_instruction = field_tab.pick_random()
@@ -79,7 +81,6 @@ func set_instructions_pos() :
 	for i in range(instruction_tab.size()) :
 		field_tab[i].get_node("Control").position = instruction_pos
 		field_tab[i].get_node("Control").start_pos = field_tab[i].get_node("Control").position
-		print(field_tab[i].get_node("Control").global_position)
 		field_tab[i].get_node("StartField").position = instruction_pos
 		instruction_pos.x += 120
 		
@@ -87,6 +88,17 @@ func set_instructions_pos() :
 		start_field_tab[i].set_right_instruction_pos()
 
 func _on_next_level() :
+	VariableManager.code_pet_score = self.get_children().size() + 5
+	SignalManager.add_point.emit()
+	
+	if(random_task.difficulty == Code_Task.Difficulty.Easy) :
+		SignalManager.add_coin.emit(5)
+	elif(random_task.difficulty == Code_Task.Difficulty.Medium) :
+		SignalManager.add_coin.emit(10)
+	else :
+		SignalManager.add_coin.emit(15)
+		
+	next_level = true
 	if($".".get_child_count() > 0) :
 		for i in self.get_children() :
 			i.queue_free()
@@ -95,13 +107,15 @@ func _on_next_level() :
 	field_tab = []
 	start_field_tab = []
 	instruction_pos = Vector2(300,150)
-	field_pos = Vector2(240,270)
+	field_pos = Vector2(300,270)
 	is_first = true
 	make_enter = false
 	remove_tab = false
 	all_field_has_data = false
 	set_level()
-
+	for i in instruction_node.get_children() :
+		i.get_node("Field").have_data = false
+			
 func set_level() :
 	random_task = tasks.pick_random()
 	tab = random_task.instructions
@@ -118,5 +132,12 @@ func set_level() :
 		else :
 			make_enter = true
 		is_first = false
+	
 
 	set_instructions_pos()
+	$"../Label".text = random_task.description
+	#_set_indexes()
+	next_level = false
+
+func _on_bad_field() :
+	all_field_has_data = false

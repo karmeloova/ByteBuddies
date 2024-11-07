@@ -6,11 +6,11 @@ extends Control
 @export var back_to_pos : bool
 var pos = Vector2(0,0)
 @export var dragged_object : Control
+var moved_object
 var instruction_text
 var tween : Tween
 
-func _can_drop_data(at_position, data):
-	print(have_data)
+func _can_drop_data(_at_position, data):
 	if not have_data : 
 		return true
 	else :

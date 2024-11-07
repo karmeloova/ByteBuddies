@@ -1,5 +1,6 @@
 extends Control
 var win : bool = true
+var current_field
 
 func _on_texture_button_mouse_entered():
 	if not $TextureButton.disabled :
@@ -10,7 +11,8 @@ func _on_texture_button_mouse_exited():
 
 func _on_texture_button_pressed():
 	if($"../InstructionNode".all_field_has_data) :
-		SignalManager.check_field.emit()
+		for i in $"../InstructionNode".get_children() :
+			SignalManager.check_field.emit()
 		win_or_lose()
 
 func win_or_lose() :
@@ -23,3 +25,6 @@ func win_or_lose() :
 		SignalManager.nextLevel.emit()
 	else : 
 		SignalManager.loseLife.emit()
+
+func check_field(field) :
+	field.get_node("Field").check_field()

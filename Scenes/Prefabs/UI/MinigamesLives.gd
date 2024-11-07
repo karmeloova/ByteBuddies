@@ -13,5 +13,6 @@ func _on_lose_life() :
 		lives[i].texture = lose_life_sprite;
 		lives[i].rotation = 0
 	if(lives_count == 0) : 
+		get_tree().paused = true
 		SignalManager.loseGame.emit()
 		return

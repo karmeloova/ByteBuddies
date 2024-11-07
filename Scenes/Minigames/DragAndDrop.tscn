@@ -4,15 +4,15 @@
 [ext_resource type="Texture2D" uid="uid://dl8dw08og2gr8" path="res://Images/Backgrounds/Placeholder_backgorund_minigames.jpg" id="1_q4qfm"]
 [ext_resource type="Script" path="res://Scenes/Minigames/CheckButton.gd" id="2_am64q"]
 [ext_resource type="Texture2D" uid="uid://bowy12qgsf8t3" path="res://Images/UI/Buttons/Button.png" id="2_mlmjo"]
-[ext_resource type="Resource" uid="uid://c4w4b86be8og5" path="res://Resources/CodeTasks/FeedPet.tres" id="3_2hkys"]
 [ext_resource type="FontFile" uid="uid://ccgpsjqwwow8o" path="res://Fonts/Bubblegum.ttf" id="3_5qsjs"]
-[ext_resource type="Resource" uid="uid://b3sn8b1s5p05o" path="res://Resources/CodeTasks/PetHealth.tres" id="4_78n7r"]
 [ext_resource type="Resource" uid="uid://cm5d32kcy0jb" path="res://Resources/CodeTasks/PetIrrigation.tres" id="5_4t1jl"]
 [ext_resource type="Resource" uid="uid://ikx558mnu4en" path="res://Resources/CodeTasks/PetWalking.tres" id="6_73bo2"]
 [ext_resource type="Resource" uid="uid://bm5vldwuqfl7e" path="res://Resources/CodeTasks/PlayWithPet.tres" id="7_sxg87"]
+[ext_resource type="Script" path="res://Scenes/Minigames/GameStatePetCode.gd" id="9_x7c5n"]
 [ext_resource type="PackedScene" uid="uid://dluxwfsypbvws" path="res://Scenes/Prefabs/UI/MinigamesLives.tscn" id="12_a2gxt"]
 [ext_resource type="PackedScene" uid="uid://cyn346855vab8" path="res://Scenes/Prefabs/UI/PauseUI.tscn" id="13_mgrwr"]
 [ext_resource type="PackedScene" uid="uid://bpck4nf2x81gt" path="res://Scenes/Prefabs/UI/MinigamesPanel.tscn" id="14_d0lr8"]
+[ext_resource type="PackedScene" uid="uid://doyyhye04gaml" path="res://Scenes/Prefabs/UI/LoseUI.tscn" id="14_hht7t"]
 
 [node name="DragAndDrop" type="Node2D"]
 
@@ -30,7 +30,7 @@ texture = ExtResource("1_q4qfm")
 
 [node name="InstructionNode" type="Node2D" parent="."]
 script = ExtResource("1_pr2fo")
-tasks = Array[Resource("res://Scripts/Resources/CodeTask.gd")]([ExtResource("3_2hkys"), ExtResource("4_78n7r"), ExtResource("5_4t1jl"), ExtResource("6_73bo2"), ExtResource("7_sxg87")])
+tasks = Array[Resource("res://Scripts/Resources/CodeTask.gd")]([ExtResource("7_sxg87"), ExtResource("5_4t1jl"), ExtResource("6_73bo2")])
 
 [node name="CheckButton" type="Control" parent="."]
 layout_mode = 3
@@ -79,6 +79,7 @@ autowrap_mode = 2
 
 [node name="GameState" type="Node2D" parent="."]
 position = Vector2(12, 20)
+script = ExtResource("9_x7c5n")
 
 [node name="Score" type="Label" parent="GameState"]
 offset_left = 9.0
@@ -107,6 +108,9 @@ z_index = 2
 [node name="MinigamesPanel" parent="." instance=ExtResource("14_d0lr8")]
 z_index = 2
 game_name = "Pet Code"
+
+[node name="Lose" parent="." instance=ExtResource("14_hht7t")]
+z_index = 2
 
 [connection signal="mouse_entered" from="CheckButton/TextureButton" to="CheckButton" method="_on_texture_button_mouse_entered"]
 [connection signal="mouse_exited" from="CheckButton/TextureButton" to="CheckButton" method="_on_texture_button_mouse_exited"]

@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://o332hh7r7y4y" path="res://Images/UI/Button.png" id="4_880pk"]
 
 [node name="Lose" type="Node2D"]
+process_mode = 3
 position = Vector2(-10, -13)
 script = ExtResource("1_shpas")
 metadata/_edit_group_ = true
@@ -30,6 +31,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="RestartButton" type="TextureButton" parent="."]
+process_mode = 3
 offset_left = 380.0
 offset_top = 271.0
 offset_right = 3430.0
@@ -51,6 +53,7 @@ theme_override_font_sizes/font_size = 45
 text = "Restart"
 
 [node name="BackButton" type="TextureButton" parent="."]
+process_mode = 3
 offset_left = 92.0
 offset_top = 64.0
 offset_right = 3142.0
