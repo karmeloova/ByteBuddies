@@ -1,11 +1,16 @@
-[gd_scene load_steps=5 format=3 uid="uid://chwa6iprveskn"]
+[gd_scene load_steps=8 format=3 uid="uid://chwa6iprveskn"]
 
 [ext_resource type="Texture2D" uid="uid://ddmrcvq0prt24" path="res://Images/Backgrounds/Tlov1.png" id="1_8y4lk"]
 [ext_resource type="Script" path="res://Scripts/Items/ScratchingPostMiniGame.gd" id="1_eut25"]
 [ext_resource type="Texture2D" uid="uid://ch30i3jkm2643" path="res://Images/Accessories/Drapak3.png" id="2_jci16"]
+[ext_resource type="Texture2D" uid="uid://dl8dw08og2gr8" path="res://Images/Backgrounds/Placeholder_backgorund_minigames.jpg" id="4_sp006"]
+[ext_resource type="Texture2D" uid="uid://b1idsi4afsqjc" path="res://Images/UI/Buttons/Resume.png" id="5_dsxqi"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_woekr"]
 size = Vector2(1150, 645)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_x6kc3"]
+size = Vector2(108, 37)
 
 [node name="ScratchingPost" type="Node2D"]
 
@@ -22,17 +27,45 @@ position = Vector2(575, 321.5)
 shape = SubResource("RectangleShape2D_woekr")
 
 [node name="Drapak3" type="Sprite2D" parent="Scene"]
-position = Vector2(777, 290)
-scale = Vector2(0.350296, 0.350296)
+position = Vector2(953, 356)
+scale = Vector2(0.25, 0.25)
 texture = ExtResource("2_jci16")
 
-[node name="BackButton" type="Button" parent="Scene"]
+[node name="Sprite2D2" type="Sprite2D" parent="."]
+modulate = Color(0.815686, 0.921569, 1, 1)
+self_modulate = Color(0.737193, 0.737193, 0.737193, 1)
+position = Vector2(176.053, 321.058)
+scale = Vector2(0.478768, 1.31405)
+texture = ExtResource("4_sp006")
+
+[node name="BackButton" type="Button" parent="."]
 offset_left = 12.0
-offset_top = 582.0
-offset_right = 128.0
-offset_bottom = 637.0
+offset_top = 569.0
+offset_right = 116.0
+offset_bottom = 636.0
 theme_override_font_sizes/font_size = 27
 text = "Powrót"
 
+[node name="Sprite2D" type="Sprite2D" parent="."]
+modulate = Color(0.843137, 0.788235, 0.662745, 1)
+position = Vector2(184, 320)
+scale = Vector2(0.146567, 1.00587)
+texture = ExtResource("4_sp006")
+
+[node name="PlayerScratching" type="Area2D" parent="."]
+
+[node name="Resume" type="Sprite2D" parent="PlayerScratching"]
+position = Vector2(110, 91)
+scale = Vector2(0.0856528, 0.0856528)
+texture = ExtResource("5_dsxqi")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerScratching"]
+position = Vector2(184, 91.5)
+shape = SubResource("RectangleShape2D_x6kc3")
+
+[node name="ScratchNode" type="Node2D" parent="."]
+
 [connection signal="input_event" from="Scene" to="Scene" method="_on_input_event"]
-[connection signal="pressed" from="Scene/BackButton" to="Scene" method="_on_back_button_pressed"]
+[connection signal="pressed" from="BackButton" to="Scene" method="_on_back_button_pressed"]
+[connection signal="mouse_entered" from="PlayerScratching" to="Scene" method="_on_player_scratching_mouse_entered"]
+[connection signal="mouse_exited" from="PlayerScratching" to="Scene" method="_on_player_scratching_mouse_exited"]

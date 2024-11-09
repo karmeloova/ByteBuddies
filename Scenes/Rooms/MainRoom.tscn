@@ -1,4 +1,4 @@
-[gd_scene load_steps=39 format=3 uid="uid://br5jh3sh28ig4"]
+[gd_scene load_steps=42 format=3 uid="uid://br5jh3sh28ig4"]
 
 [ext_resource type="Texture2D" uid="uid://ddmrcvq0prt24" path="res://Images/Backgrounds/Tlov1.png" id="1_5tq1h"]
 [ext_resource type="Script" path="res://Scenes/Rooms/Currency.gd" id="2_heemv"]
@@ -36,6 +36,11 @@
 [ext_resource type="Script" path="res://Scenes/Rooms/Cat.gd" id="32_38vco"]
 [ext_resource type="PackedScene" uid="uid://k2t0np43srls" path="res://Scenes/Prefabs/LevelPrefab.tscn" id="33_0i3x0"]
 [ext_resource type="Script" path="res://Scenes/Rooms/XD.gd" id="36_iupy0"]
+[ext_resource type="Script" path="res://Scripts/Items/ScratchingPostMiniGame.gd" id="37_vvil0"]
+[ext_resource type="Texture2D" uid="uid://b1idsi4afsqjc" path="res://Images/UI/Buttons/Resume.png" id="38_mtuig"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_e8mf3"]
+size = Vector2(108, 37.5)
 
 [sub_resource type="CanvasTexture" id="CanvasTexture_nyw1b"]
 
@@ -44,205 +49,41 @@ font_size = 250
 
 [node name="MainRoom" type="Node2D"]
 
-[node name="Scene" type="Node2D" parent="."]
+[node name="Room" type="Node2D" parent="."]
 
-[node name="Background" type="Sprite2D" parent="Scene"]
+[node name="Scene" type="Node2D" parent="Room"]
+
+[node name="Background" type="Sprite2D" parent="Room/Scene"]
 position = Vector2(577, 322)
 texture = ExtResource("1_5tq1h")
 
-[node name="Cat" type="Node2D" parent="."]
+[node name="Cat" type="Node2D" parent="Room"]
 position = Vector2(594, 404)
 scale = Vector2(0.262, 0.262)
 script = ExtResource("32_38vco")
 metadata/_edit_group_ = true
 
-[node name="Image" type="Sprite2D" parent="Cat"]
+[node name="Image" type="Sprite2D" parent="Room/Cat"]
 texture_filter = 1
 position = Vector2(0, 3.05176e-05)
 texture = ExtResource("32_3rwvs")
 
-[node name="EatTimer" type="Timer" parent="Cat"]
+[node name="EatTimer" type="Timer" parent="Room/Cat"]
 one_shot = true
 
-[node name="UI" type="Node2D" parent="."]
+[node name="UI" type="Node2D" parent="Room"]
 
-[node name="Background" type="Sprite2D" parent="UI"]
-modulate = Color(1, 1, 1, 0.286275)
-position = Vector2(574.75, 50.75)
-scale = Vector2(1150.5, 102.5)
-texture = SubResource("CanvasTexture_nyw1b")
-
-[node name="Needs" type="Node2D" parent="UI"]
-position = Vector2(389, 45)
-scale = Vector2(0.249311, 0.249311)
-script = ExtResource("6_1vdjr")
-metadata/_edit_group_ = true
-
-[node name="Timer" type="Timer" parent="UI/Needs"]
-
-[node name="Hungry" type="Node2D" parent="UI/Needs"]
-position = Vector2(28.0774, 28.0774)
-scale = Vector2(0.9, 0.9)
-metadata/_edit_group_ = true
-
-[node name="TextureProgressBar" type="TextureProgressBar" parent="UI/Needs/Hungry"]
-offset_left = -245.0
-offset_top = -205.0
-offset_right = 193.0
-offset_bottom = 201.0
-fill_mode = 3
-nine_patch_stretch = true
-texture_progress = ExtResource("7_8l0el")
-
-[node name="Food" type="Sprite2D" parent="UI/Needs/Hungry"]
-position = Vector2(-28.0774, 0)
-scale = Vector2(0.637435, 0.629913)
-texture = ExtResource("8_kmuo1")
-
-[node name="Food2" type="Sprite2D" parent="UI/Needs/Hungry"]
-position = Vector2(-28.0773, -5.72205e-06)
-scale = Vector2(0.592143, 0.57825)
-texture = ExtResource("8_onvnt")
-
-[node name="Play" type="Node2D" parent="UI/Needs"]
-position = Vector2(397.094, 28.0774)
-scale = Vector2(0.9, 0.9)
-metadata/_edit_group_ = true
-
-[node name="TextureProgressBar" type="TextureProgressBar" parent="UI/Needs/Play"]
-offset_left = -245.0
-offset_top = -205.0
-offset_right = 193.0
-offset_bottom = 201.0
-fill_mode = 3
-nine_patch_stretch = true
-texture_progress = ExtResource("7_8l0el")
-
-[node name="Food" type="Sprite2D" parent="UI/Needs/Play"]
-position = Vector2(-28.0774, 0)
-scale = Vector2(0.637435, 0.629913)
-texture = ExtResource("8_kmuo1")
-
-[node name="Scratch" type="Node2D" parent="UI/Needs"]
-position = Vector2(762.1, 28.0774)
-scale = Vector2(0.9, 0.9)
-metadata/_edit_group_ = true
-
-[node name="TextureProgressBar" type="TextureProgressBar" parent="UI/Needs/Scratch"]
-offset_left = -245.0
-offset_top = -205.0
-offset_right = 193.0
-offset_bottom = 201.0
-fill_mode = 3
-nine_patch_stretch = true
-texture_progress = ExtResource("7_8l0el")
-
-[node name="Food" type="Sprite2D" parent="UI/Needs/Scratch"]
-position = Vector2(-28.0774, 0)
-scale = Vector2(0.637435, 0.629913)
-texture = ExtResource("8_kmuo1")
-
-[node name="Sleep" type="Node2D" parent="UI/Needs"]
-position = Vector2(1127.11, 28.0774)
-scale = Vector2(0.9, 0.9)
-metadata/_edit_group_ = true
-
-[node name="TextureProgressBar" type="TextureProgressBar" parent="UI/Needs/Sleep"]
-offset_left = -245.0
-offset_top = -205.0
-offset_right = 193.0
-offset_bottom = 201.0
-fill_mode = 3
-nine_patch_stretch = true
-texture_progress = ExtResource("7_8l0el")
-
-[node name="Food" type="Sprite2D" parent="UI/Needs/Sleep"]
-position = Vector2(-28.0774, 0)
-scale = Vector2(0.637435, 0.629913)
-texture = ExtResource("8_kmuo1")
-
-[node name="Clean" type="Node2D" parent="UI/Needs"]
-position = Vector2(1504.15, 28.0774)
-scale = Vector2(0.9, 0.9)
-metadata/_edit_group_ = true
-
-[node name="TextureProgressBar" type="TextureProgressBar" parent="UI/Needs/Clean"]
-offset_left = -245.0
-offset_top = -205.0
-offset_right = 193.0
-offset_bottom = 201.0
-fill_mode = 3
-nine_patch_stretch = true
-texture_progress = ExtResource("7_8l0el")
-
-[node name="Food" type="Sprite2D" parent="UI/Needs/Clean"]
-position = Vector2(-28.0774, 0)
-scale = Vector2(0.637435, 0.629913)
-texture = ExtResource("8_kmuo1")
-
-[node name="Level" type="Area2D" parent="UI" node_paths=PackedStringArray("panel_template", "level")]
-position = Vector2(1097, 54)
-scale = Vector2(0.190099, 0.190099)
-script = ExtResource("8_vwgn7")
-panel_template = NodePath("../Panels/PanelTemplate")
-level = NodePath("../Panels/LevelPrefab")
-metadata/_edit_group_ = true
-
-[node name="LevelBackground" type="Sprite2D" parent="UI/Level"]
-position = Vector2(-3.48865, -17.5896)
-scale = Vector2(0.705027, 0.705027)
-texture = ExtResource("6_6w25j")
-
-[node name="CurrentLevel" type="Label" parent="UI/Level"]
-offset_left = -208.551
-offset_top = -122.486
-offset_right = 191.449
-offset_bottom = 212.514
-theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.552941)
-theme_override_constants/shadow_offset_x = 15
-theme_override_constants/shadow_offset_y = 10
-theme_override_fonts/font = ExtResource("7_8rg5e")
-theme_override_font_sizes/font_size = 275
-text = "1"
-horizontal_alignment = 1
-
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="UI/Level"]
-polygon = PackedVector2Array(-210.417, -26.3021, -226.198, -73.6458, -231.458, -126.25, -220.938, -189.375, -199.896, -247.24, -178.854, -252.5, -142.031, -241.979, -105.208, -215.677, -68.3853, -173.594, -63.125, -168.333, -42.083, -178.854, -10.5205, -184.115, 21.042, -184.115, 52.6045, -173.594, 63.125, -168.333, 73.646, -189.375, 94.6875, -210.417, 120.99, -231.458, 152.552, -247.24, 178.854, -252.5, 194.636, -247.24, 205.156, -226.198, 215.677, -194.635, 220.938, -157.813, 226.198, -120.99, 220.938, -78.9063, 205.156, -26.3021, 220.938, 15.7813, 226.198, 52.6042, 220.938, 89.4271, 210.417, 126.25, 184.115, 163.073, 142.031, 194.635, 94.6875, 210.417, 31.5625, 220.938, -21.0415, 220.938, -78.9063, 215.677, -142.031, 194.635, -189.375, 163.073, -215.677, 120.99, -231.458, 68.3854, -226.198, 15.7813)
-
-[node name="Currency" type="Node2D" parent="UI"]
-position = Vector2(169, 53)
-scale = Vector2(0.190099, 0.190099)
-script = ExtResource("2_heemv")
-
-[node name="CurrencyIcon" type="Sprite2D" parent="UI/Currency"]
-position = Vector2(-641.771, -21.0417)
-scale = Vector2(0.886122, 0.886122)
-texture = ExtResource("4_omybp")
-
-[node name="Money" type="Label" parent="UI/Currency"]
-offset_left = -426.094
-offset_top = -126.25
-offset_right = 329.906
-offset_bottom = 140.75
-theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
-theme_override_constants/shadow_offset_x = 10
-theme_override_constants/shadow_offset_y = 10
-theme_override_fonts/font = ExtResource("7_8rg5e")
-theme_override_font_sizes/font_size = 20
-text = "10000"
-label_settings = SubResource("LabelSettings_03gin")
-
-[node name="Buttons" type="Node2D" parent="UI"]
+[node name="Buttons" type="Node2D" parent="Room/UI"]
 position = Vector2(574.75, 50.75)
 scale = Vector2(1150.5, 102.5)
 
-[node name="SettingsButton" type="Node2D" parent="UI/Buttons" node_paths=PackedStringArray("template")]
+[node name="SettingsButton" type="Node2D" parent="Room/UI/Buttons" node_paths=PackedStringArray("template")]
 position = Vector2(-0.499565, 0.158537)
 scale = Vector2(0.000782269, 0.00878049)
 script = ExtResource("11_g216v")
 template = NodePath("../../Panels/PanelTemplate")
 
-[node name="Button" type="TextureButton" parent="UI/Buttons/SettingsButton"]
+[node name="Button" type="TextureButton" parent="Room/UI/Buttons/SettingsButton"]
 offset_left = -2.0
 offset_top = 546.0
 offset_right = 104.0
@@ -253,19 +94,19 @@ ignore_texture_size = true
 stretch_mode = 0
 metadata/_edit_use_anchors_ = true
 
-[node name="Icon" type="Sprite2D" parent="UI/Buttons/SettingsButton"]
+[node name="Icon" type="Sprite2D" parent="Room/UI/Buttons/SettingsButton"]
 position = Vector2(51, 595)
 scale = Vector2(0.124325, 0.124325)
 texture = ExtResource("12_p2wc3")
 
-[node name="MingamesButton" type="Node2D" parent="UI/Buttons" node_paths=PackedStringArray("template", "panel")]
+[node name="MingamesButton" type="Node2D" parent="Room/UI/Buttons" node_paths=PackedStringArray("template", "panel")]
 position = Vector2(0.420904, 0.158537)
 scale = Vector2(0.000782269, 0.00878049)
 script = ExtResource("11_g216v")
 template = NodePath("../../Panels/PanelTemplate")
 panel = NodePath("../../Panels/Minigames")
 
-[node name="Button" type="TextureButton" parent="UI/Buttons/MingamesButton"]
+[node name="Button" type="TextureButton" parent="Room/UI/Buttons/MingamesButton"]
 offset_left = -2.0
 offset_top = 546.0
 offset_right = 104.0
@@ -275,19 +116,19 @@ texture_pressed = ExtResource("11_5i28f")
 ignore_texture_size = true
 stretch_mode = 0
 
-[node name="Icon" type="Sprite2D" parent="UI/Buttons/MingamesButton"]
+[node name="Icon" type="Sprite2D" parent="Room/UI/Buttons/MingamesButton"]
 position = Vector2(51, 595)
 scale = Vector2(0.124325, 0.124325)
 texture = ExtResource("14_84fhf")
 
-[node name="ShopButton" type="Node2D" parent="UI/Buttons" node_paths=PackedStringArray("template", "panel")]
+[node name="ShopButton" type="Node2D" parent="Room/UI/Buttons" node_paths=PackedStringArray("template", "panel")]
 position = Vector2(0.349631, 0.158537)
 scale = Vector2(0.000782269, 0.00878049)
 script = ExtResource("11_g216v")
 template = NodePath("../../Panels/PanelTemplate")
 panel = NodePath("../../Panels/Shop")
 
-[node name="Button" type="TextureButton" parent="UI/Buttons/ShopButton"]
+[node name="Button" type="TextureButton" parent="Room/UI/Buttons/ShopButton"]
 offset_left = -2.0
 offset_top = 546.0
 offset_right = 104.0
@@ -297,48 +138,48 @@ texture_pressed = ExtResource("11_5i28f")
 ignore_texture_size = true
 stretch_mode = 0
 
-[node name="Icon" type="Sprite2D" parent="UI/Buttons/ShopButton"]
+[node name="Icon" type="Sprite2D" parent="Room/UI/Buttons/ShopButton"]
 position = Vector2(51, 595)
 scale = Vector2(0.124325, 0.124325)
 texture = ExtResource("15_n537x")
 
-[node name="Bowl" type="Area2D" parent="UI/Buttons" node_paths=PackedStringArray("fridge", "panel_template")]
+[node name="Bowl" type="Area2D" parent="Room/UI/Buttons" node_paths=PackedStringArray("fridge", "panel_template")]
 position = Vector2(-0.300521, 4.04146)
 scale = Vector2(0.000869187, 0.0097561)
 script = ExtResource("13_gxamd")
 fridge = NodePath("../../Panels/Fridge")
 panel_template = NodePath("../../Panels/PanelTemplate")
 
-[node name="Miska" type="Sprite2D" parent="UI/Buttons/Bowl"]
+[node name="Miska" type="Sprite2D" parent="Room/UI/Buttons/Bowl"]
 modulate = Color(1, 0.819608, 0.862745, 1)
 self_modulate = Color(0.99558, 0.99558, 0.99558, 1)
 position = Vector2(-1.50012, -2.19997)
 scale = Vector2(0.0879788, 0.0879788)
 texture = ExtResource("18_4lmds")
 
-[node name="Food" type="Sprite2D" parent="UI/Buttons/Bowl"]
+[node name="Food" type="Sprite2D" parent="Room/UI/Buttons/Bowl"]
 visible = false
 position = Vector2(-2.00003, -2)
 scale = Vector2(0.088, 0.088)
 texture = ExtResource("19_kh8nr")
 
-[node name="Collision" type="CollisionPolygon2D" parent="UI/Buttons/Bowl"]
+[node name="Collision" type="CollisionPolygon2D" parent="Room/UI/Buttons/Bowl"]
 visible = false
 position = Vector2(-215.5, -479.2)
 polygon = PackedVector2Array(172, 454, 185, 447, 212, 443, 236, 444, 254, 451, 260, 458, 265, 478, 268, 488, 267, 495, 258, 501, 245, 506, 212, 509, 180, 504, 165, 496, 163, 486)
 
-[node name="Panels" type="Node2D" parent="UI"]
+[node name="Panels" type="Node2D" parent="Room/UI"]
 
-[node name="PanelTemplate" type="Node2D" parent="UI/Panels"]
+[node name="PanelTemplate" type="Node2D" parent="Room/UI/Panels"]
 visible = false
 
-[node name="Background" type="Sprite2D" parent="UI/Panels/PanelTemplate"]
+[node name="Background" type="Sprite2D" parent="Room/UI/Panels/PanelTemplate"]
 modulate = Color(1, 1, 1, 0.392157)
 position = Vector2(571, 364.25)
 scale = Vector2(0.87415, 1.01122)
 texture = ExtResource("10_1xqql")
 
-[node name="Exit" type="Node2D" parent="UI/Panels/PanelTemplate" node_paths=PackedStringArray("panels_node", "buttons_node")]
+[node name="Exit" type="Node2D" parent="Room/UI/Panels/PanelTemplate" node_paths=PackedStringArray("panels_node", "buttons_node")]
 position = Vector2(254, -264)
 scale = Vector2(0.7, 0.7)
 script = ExtResource("16_1gejr")
@@ -346,7 +187,7 @@ panels_node = NodePath("../..")
 buttons_node = NodePath("../../../Buttons")
 metadata/_edit_group_ = true
 
-[node name="Button" type="TextureButton" parent="UI/Panels/PanelTemplate/Exit"]
+[node name="Button" type="TextureButton" parent="Room/UI/Panels/PanelTemplate/Exit"]
 offset_left = -2.0
 offset_top = 546.0
 offset_right = 104.0
@@ -356,19 +197,19 @@ texture_pressed = ExtResource("11_5i28f")
 ignore_texture_size = true
 stretch_mode = 0
 
-[node name="Icon" type="Sprite2D" parent="UI/Panels/PanelTemplate/Exit"]
+[node name="Icon" type="Sprite2D" parent="Room/UI/Panels/PanelTemplate/Exit"]
 position = Vector2(51, 595)
 scale = Vector2(0.124325, 0.124325)
 texture = ExtResource("16_qpekd")
 
-[node name="Minigames" type="Node2D" parent="UI/Panels"]
+[node name="Minigames" type="Node2D" parent="Room/UI/Panels"]
 visible = false
 position = Vector2(581, 324)
 script = ExtResource("10_j240k")
 
-[node name="WalkToTarget" type="Node2D" parent="UI/Panels/Minigames"]
+[node name="WalkToTarget" type="Node2D" parent="Room/UI/Panels/Minigames"]
 
-[node name="WalkToTargetLabel" type="Label" parent="UI/Panels/Minigames/WalkToTarget"]
+[node name="WalkToTargetLabel" type="Label" parent="Room/UI/Panels/Minigames/WalkToTarget"]
 offset_left = -306.0
 offset_top = -135.0
 offset_right = -33.0
@@ -377,7 +218,7 @@ scale = Vector2(0.99523, 1.03372)
 theme_override_font_sizes/font_size = 42
 text = "Snack Navigator"
 
-[node name="WalkToTargetButton" type="Button" parent="UI/Panels/Minigames/WalkToTarget"]
+[node name="WalkToTargetButton" type="Button" parent="Room/UI/Panels/Minigames/WalkToTarget"]
 offset_left = 226.0
 offset_top = -144.0
 offset_right = 294.0
@@ -385,9 +226,9 @@ offset_bottom = -94.0
 theme_override_font_sizes/font_size = 30
 text = "Graj"
 
-[node name="CatHop" type="Node2D" parent="UI/Panels/Minigames"]
+[node name="CatHop" type="Node2D" parent="Room/UI/Panels/Minigames"]
 
-[node name="CatHopLabel" type="Label" parent="UI/Panels/Minigames/CatHop"]
+[node name="CatHopLabel" type="Label" parent="Room/UI/Panels/Minigames/CatHop"]
 offset_left = -307.0
 offset_top = -78.0
 offset_right = -34.0
@@ -397,7 +238,7 @@ theme_override_font_sizes/font_size = 42
 text = "Cat Jump
 "
 
-[node name="CatHopButton" type="Button" parent="UI/Panels/Minigames/CatHop"]
+[node name="CatHopButton" type="Button" parent="Room/UI/Panels/Minigames/CatHop"]
 offset_left = 229.0
 offset_top = -80.0
 offset_right = 297.0
@@ -405,9 +246,9 @@ offset_bottom = -30.0
 theme_override_font_sizes/font_size = 30
 text = "Graj"
 
-[node name="DragAndDrop" type="Node2D" parent="UI/Panels/Minigames"]
+[node name="DragAndDrop" type="Node2D" parent="Room/UI/Panels/Minigames"]
 
-[node name="DragAndDropLabel" type="Label" parent="UI/Panels/Minigames/DragAndDrop"]
+[node name="DragAndDropLabel" type="Label" parent="Room/UI/Panels/Minigames/DragAndDrop"]
 offset_left = -306.0
 offset_top = -17.0
 offset_right = -33.0
@@ -416,7 +257,7 @@ scale = Vector2(0.99523, 1.03372)
 theme_override_font_sizes/font_size = 42
 text = "Pet Code"
 
-[node name="DragAndDropButton" type="Button" parent="UI/Panels/Minigames/DragAndDrop"]
+[node name="DragAndDropButton" type="Button" parent="Room/UI/Panels/Minigames/DragAndDrop"]
 offset_left = 229.0
 offset_top = -14.0
 offset_right = 297.0
@@ -424,15 +265,15 @@ offset_bottom = 36.0
 theme_override_font_sizes/font_size = 30
 text = "Graj"
 
-[node name="Shop" type="Node2D" parent="UI/Panels"]
+[node name="Shop" type="Node2D" parent="Room/UI/Panels"]
 visible = false
 position = Vector2(581, 324)
 script = ExtResource("15_4go0m")
 _food_resources = Array[Resource("res://Scripts/Resources/Food.gd")]([ExtResource("16_bd6oq"), ExtResource("17_7cdb2"), ExtResource("18_m58wg"), ExtResource("19_wcutm")])
 
-[node name="Food" type="Node2D" parent="UI/Panels/Shop"]
+[node name="Food" type="Node2D" parent="Room/UI/Panels/Shop"]
 
-[node name="FoodButton" type="Button" parent="UI/Panels/Shop/Food"]
+[node name="FoodButton" type="Button" parent="Room/UI/Panels/Shop/Food"]
 offset_left = -294.0
 offset_top = -126.0
 offset_right = -131.0
@@ -440,15 +281,15 @@ offset_bottom = -40.0
 theme_override_font_sizes/font_size = 50
 text = "Food"
 
-[node name="Foods" type="Node2D" parent="UI/Panels/Shop"]
+[node name="Foods" type="Node2D" parent="Room/UI/Panels/Shop"]
 visible = false
 
-[node name="Back" type="Node2D" parent="UI/Panels/Shop/Foods"]
+[node name="Back" type="Node2D" parent="Room/UI/Panels/Shop/Foods"]
 position = Vector2(-327, -588)
 scale = Vector2(0.7, 0.7)
 metadata/_edit_group_ = true
 
-[node name="BackButton" type="TextureButton" parent="UI/Panels/Shop/Foods/Back"]
+[node name="BackButton" type="TextureButton" parent="Room/UI/Panels/Shop/Foods/Back"]
 offset_left = -2.0
 offset_top = 546.0
 offset_right = 104.0
@@ -458,19 +299,19 @@ texture_pressed = ExtResource("11_5i28f")
 ignore_texture_size = true
 stretch_mode = 0
 
-[node name="Icon" type="Sprite2D" parent="UI/Panels/Shop/Foods/Back"]
+[node name="Icon" type="Sprite2D" parent="Room/UI/Panels/Shop/Foods/Back"]
 position = Vector2(51, 595)
 scale = Vector2(0.124325, 0.124325)
 texture = ExtResource("24_srg2u")
 
-[node name="Fridge" type="Control" parent="UI/Panels" node_paths=PackedStringArray("panel")]
+[node name="Fridge" type="Control" parent="Room/UI/Panels" node_paths=PackedStringArray("panel")]
 visible = false
 layout_mode = 3
 anchors_preset = 0
 script = ExtResource("14_6pba1")
 panel = NodePath("../PanelTemplate")
 
-[node name="ScrollContainer" type="ScrollContainer" parent="UI/Panels/Fridge"]
+[node name="ScrollContainer" type="ScrollContainer" parent="Room/UI/Panels/Fridge"]
 layout_mode = 0
 offset_left = 260.0
 offset_top = 197.0
@@ -478,12 +319,12 @@ offset_right = 883.0
 offset_bottom = 613.0
 horizontal_scroll_mode = 0
 
-[node name="VBoxContainer" type="VBoxContainer" parent="UI/Panels/Fridge/ScrollContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="Room/UI/Panels/Fridge/ScrollContainer"]
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_constants/separation = 150
 
-[node name="Feed" type="TextureButton" parent="UI/Panels/Fridge"]
+[node name="Feed" type="TextureButton" parent="Room/UI/Panels/Fridge"]
 layout_mode = 0
 offset_left = 682.0
 offset_top = 123.0
@@ -493,7 +334,7 @@ texture_normal = ExtResource("28_7d6xq")
 ignore_texture_size = true
 stretch_mode = 0
 
-[node name="Label" type="Label" parent="UI/Panels/Fridge/Feed"]
+[node name="Label" type="Label" parent="Room/UI/Panels/Fridge/Feed"]
 layout_mode = 0
 offset_left = 39.0
 offset_top = 15.0
@@ -506,76 +347,311 @@ theme_override_fonts/font = ExtResource("7_8rg5e")
 theme_override_font_sizes/font_size = 33
 text = "Nakarm"
 
-[node name="LevelPrefab" parent="UI/Panels" node_paths=PackedStringArray("pop_up_node", "text_level") instance=ExtResource("33_0i3x0")]
+[node name="LevelPrefab" parent="Room/UI/Panels" node_paths=PackedStringArray("pop_up_node", "text_level") instance=ExtResource("33_0i3x0")]
 position = Vector2(298, 200)
 pop_up_node = NodePath("../NextLevelsPopUp")
-text_level = NodePath("../../Level/CurrentLevel")
+text_level = NodePath("../../../../TopPanel/Level/CurrentLevel")
 
-[node name="NextLevelsPopUp" type="Node2D" parent="UI/Panels"]
+[node name="NextLevelsPopUp" type="Node2D" parent="Room/UI/Panels"]
 position = Vector2(230, 152)
 scale = Vector2(1.2, 1.2)
 metadata/_edit_group_ = true
 
-[node name="Scratching_post" type="Area2D" parent="."]
+[node name="Scratching_post" type="Area2D" parent="Room"]
 script = ExtResource("14_7xxgu")
 
-[node name="Sprite" type="Sprite2D" parent="Scratching_post"]
+[node name="Sprite" type="Sprite2D" parent="Room/Scratching_post"]
 position = Vector2(1016, 342)
 scale = Vector2(0.1998, 0.1998)
 texture = ExtResource("2_rsjqa")
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Scratching_post"]
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Room/Scratching_post"]
 polygon = PackedVector2Array(919, 245, 932, 226, 965, 216, 1004, 218, 1033, 230, 1039, 246, 1035, 261, 1035, 270, 1019, 281, 995, 286, 994, 454, 1024, 454, 1023, 407, 1025, 393, 1044, 380, 1074, 374, 1098, 376, 1117, 386, 1125, 400, 1124, 411, 1126, 410, 1125, 457, 1135, 468, 1137, 480, 1135, 489, 1127, 498, 1114, 506, 1091, 512, 1061, 513, 913, 513, 912, 503, 939, 455, 961, 455, 962, 284, 939, 279, 924, 269, 923, 262)
 
-[node name="XD" type="Node2D" parent="."]
+[node name="XD" type="Node2D" parent="Room"]
 script = ExtResource("36_iupy0")
 
-[node name="Button" type="Button" parent="XD"]
+[node name="Button" type="Button" parent="Room/XD"]
 offset_left = 13.0
 offset_top = 118.0
 offset_right = 116.0
 offset_bottom = 166.0
 text = "HAJSSSSS"
 
-[node name="Button2" type="Button" parent="XD"]
+[node name="Button2" type="Button" parent="Room/XD"]
 offset_left = 14.0
 offset_top = 169.0
 offset_right = 115.0
 offset_bottom = 215.0
 text = "EXPPPPP"
 
-[connection signal="timeout" from="Cat/EatTimer" to="Cat" method="_on_eat_timer_timeout"]
-[connection signal="timeout" from="UI/Needs/Timer" to="UI/Needs" method="_on_timer_timeout"]
-[connection signal="input_event" from="UI/Level" to="UI/Level" method="_on_input_event"]
-[connection signal="mouse_entered" from="UI/Level" to="UI/Level" method="_on_mouse_entered"]
-[connection signal="mouse_exited" from="UI/Level" to="UI/Level" method="_on_mouse_exited"]
-[connection signal="mouse_entered" from="UI/Buttons/SettingsButton/Button" to="UI/Buttons/SettingsButton" method="_on_button_mouse_entered"]
-[connection signal="mouse_exited" from="UI/Buttons/SettingsButton/Button" to="UI/Buttons/SettingsButton" method="_on_button_mouse_exited"]
-[connection signal="pressed" from="UI/Buttons/SettingsButton/Button" to="UI/Buttons/SettingsButton" method="_on_button_pressed"]
-[connection signal="mouse_entered" from="UI/Buttons/MingamesButton/Button" to="UI/Buttons/MingamesButton" method="_on_button_mouse_entered"]
-[connection signal="mouse_exited" from="UI/Buttons/MingamesButton/Button" to="UI/Buttons/MingamesButton" method="_on_button_mouse_exited"]
-[connection signal="pressed" from="UI/Buttons/MingamesButton/Button" to="UI/Buttons/MingamesButton" method="_on_button_pressed"]
-[connection signal="mouse_entered" from="UI/Buttons/ShopButton/Button" to="UI/Buttons/ShopButton" method="_on_button_mouse_entered"]
-[connection signal="mouse_exited" from="UI/Buttons/ShopButton/Button" to="UI/Buttons/ShopButton" method="_on_button_mouse_exited"]
-[connection signal="pressed" from="UI/Buttons/ShopButton/Button" to="UI/Buttons/ShopButton" method="_on_button_pressed"]
-[connection signal="input_event" from="UI/Buttons/Bowl" to="UI/Buttons/Bowl" method="_on_input_event"]
-[connection signal="mouse_entered" from="UI/Buttons/Bowl" to="UI/Buttons/Bowl" method="_on_mouse_entered"]
-[connection signal="mouse_exited" from="UI/Buttons/Bowl" to="UI/Buttons/Bowl" method="_on_mouse_exited"]
-[connection signal="mouse_entered" from="UI/Panels/PanelTemplate/Exit/Button" to="UI/Panels/PanelTemplate/Exit" method="_on_button_mouse_entered"]
-[connection signal="mouse_exited" from="UI/Panels/PanelTemplate/Exit/Button" to="UI/Panels/PanelTemplate/Exit" method="_on_button_mouse_exited"]
-[connection signal="pressed" from="UI/Panels/PanelTemplate/Exit/Button" to="UI/Panels/PanelTemplate/Exit" method="_on_button_pressed"]
-[connection signal="pressed" from="UI/Panels/Minigames/WalkToTarget/WalkToTargetButton" to="UI/Panels/Minigames" method="_on_walk_to_target_button_pressed"]
-[connection signal="pressed" from="UI/Panels/Minigames/CatHop/CatHopButton" to="UI/Panels/Minigames" method="_on_cat_hop_button_pressed"]
-[connection signal="pressed" from="UI/Panels/Minigames/DragAndDrop/DragAndDropButton" to="UI/Panels/Minigames" method="_on_drag_and_drop_button_pressed"]
-[connection signal="pressed" from="UI/Panels/Shop/Food/FoodButton" to="UI/Panels/Shop" method="_on_food_button_pressed"]
-[connection signal="mouse_entered" from="UI/Panels/Shop/Foods/Back/BackButton" to="UI/Panels/Shop/Foods/Back" method="_on_button_mouse_entered"]
-[connection signal="mouse_exited" from="UI/Panels/Shop/Foods/Back/BackButton" to="UI/Panels/Shop/Foods/Back" method="_on_button_mouse_exited"]
-[connection signal="pressed" from="UI/Panels/Shop/Foods/Back/BackButton" to="UI/Panels/Shop" method="_on_back_button_pressed"]
-[connection signal="mouse_entered" from="UI/Panels/Fridge/Feed" to="UI/Panels/Fridge" method="_on_feed_mouse_entered"]
-[connection signal="mouse_exited" from="UI/Panels/Fridge/Feed" to="UI/Panels/Fridge" method="_on_feed_mouse_exited"]
-[connection signal="pressed" from="UI/Panels/Fridge/Feed" to="UI/Panels/Fridge" method="_on_feed_pressed"]
-[connection signal="input_event" from="Scratching_post" to="Scratching_post" method="_on_input_event"]
-[connection signal="mouse_entered" from="Scratching_post" to="Scratching_post" method="_on_mouse_entered"]
-[connection signal="mouse_exited" from="Scratching_post" to="Scratching_post" method="_on_mouse_exited"]
-[connection signal="pressed" from="XD/Button" to="XD" method="_on_button_pressed"]
-[connection signal="pressed" from="XD/Button2" to="XD" method="_on_button_2_pressed"]
+[node name="ScratchingPost" type="Node2D" parent="."]
+visible = false
+
+[node name="Scene" type="Node2D" parent="ScratchingPost"]
+script = ExtResource("37_vvil0")
+
+[node name="Background" type="Sprite2D" parent="ScratchingPost/Scene"]
+position = Vector2(577, 322)
+texture = ExtResource("1_5tq1h")
+
+[node name="Drapak3" type="Sprite2D" parent="ScratchingPost/Scene"]
+position = Vector2(953, 356)
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("2_rsjqa")
+
+[node name="Sprite2D2" type="Sprite2D" parent="ScratchingPost"]
+self_modulate = Color(1, 1, 1, 0.32549)
+position = Vector2(176.053, 374.5)
+scale = Vector2(0.478768, 1.11224)
+texture = ExtResource("10_1xqql")
+
+[node name="Sprite2D" type="Sprite2D" parent="ScratchingPost"]
+modulate = Color(0.843137, 0.788235, 0.662745, 1)
+position = Vector2(184, 382)
+scale = Vector2(0.146567, 0.862119)
+texture = ExtResource("10_1xqql")
+
+[node name="PlayerScratching" type="Area2D" parent="ScratchingPost"]
+position = Vector2(1, 29)
+metadata/_edit_group_ = true
+
+[node name="Resume" type="Sprite2D" parent="ScratchingPost/PlayerScratching"]
+position = Vector2(110, 159)
+scale = Vector2(0.0856528, 0.0856528)
+texture = ExtResource("38_mtuig")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ScratchingPost/PlayerScratching"]
+position = Vector2(183, 160.75)
+shape = SubResource("RectangleShape2D_e8mf3")
+
+[node name="ScratchNode" type="Node2D" parent="ScratchingPost"]
+
+[node name="Back" type="Node2D" parent="ScratchingPost"]
+position = Vector2(16, 186)
+scale = Vector2(0.7, 0.7)
+metadata/_edit_group_ = true
+
+[node name="BackButton" type="TextureButton" parent="ScratchingPost/Back"]
+offset_left = -2.0
+offset_top = 546.0
+offset_right = 104.0
+offset_bottom = 646.0
+texture_normal = ExtResource("11_5i28f")
+texture_pressed = ExtResource("11_5i28f")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="Icon" type="Sprite2D" parent="ScratchingPost/Back"]
+position = Vector2(51, 595)
+scale = Vector2(0.124325, 0.124325)
+texture = ExtResource("24_srg2u")
+
+[node name="TopPanel" type="Node2D" parent="."]
+
+[node name="Background" type="Sprite2D" parent="TopPanel"]
+modulate = Color(1, 1, 1, 0.286275)
+position = Vector2(574.75, 50.75)
+scale = Vector2(1150.5, 102.5)
+texture = SubResource("CanvasTexture_nyw1b")
+
+[node name="Needs" type="Node2D" parent="TopPanel"]
+position = Vector2(389, 45)
+scale = Vector2(0.249311, 0.249311)
+script = ExtResource("6_1vdjr")
+metadata/_edit_group_ = true
+
+[node name="Timer" type="Timer" parent="TopPanel/Needs"]
+
+[node name="Hungry" type="Node2D" parent="TopPanel/Needs"]
+position = Vector2(28.0774, 28.0774)
+scale = Vector2(0.9, 0.9)
+metadata/_edit_group_ = true
+
+[node name="TextureProgressBar" type="TextureProgressBar" parent="TopPanel/Needs/Hungry"]
+offset_left = -245.0
+offset_top = -205.0
+offset_right = 193.0
+offset_bottom = 201.0
+fill_mode = 3
+nine_patch_stretch = true
+texture_progress = ExtResource("7_8l0el")
+
+[node name="Food" type="Sprite2D" parent="TopPanel/Needs/Hungry"]
+position = Vector2(-28.0774, 0)
+scale = Vector2(0.637435, 0.629913)
+texture = ExtResource("8_kmuo1")
+
+[node name="Food2" type="Sprite2D" parent="TopPanel/Needs/Hungry"]
+position = Vector2(-28.0773, -5.72205e-06)
+scale = Vector2(0.592143, 0.57825)
+texture = ExtResource("8_onvnt")
+
+[node name="Play" type="Node2D" parent="TopPanel/Needs"]
+position = Vector2(397.094, 28.0774)
+scale = Vector2(0.9, 0.9)
+metadata/_edit_group_ = true
+
+[node name="TextureProgressBar" type="TextureProgressBar" parent="TopPanel/Needs/Play"]
+offset_left = -245.0
+offset_top = -205.0
+offset_right = 193.0
+offset_bottom = 201.0
+fill_mode = 3
+nine_patch_stretch = true
+texture_progress = ExtResource("7_8l0el")
+
+[node name="Food" type="Sprite2D" parent="TopPanel/Needs/Play"]
+position = Vector2(-28.0774, 0)
+scale = Vector2(0.637435, 0.629913)
+texture = ExtResource("8_kmuo1")
+
+[node name="Scratch" type="Node2D" parent="TopPanel/Needs"]
+position = Vector2(762.1, 28.0774)
+scale = Vector2(0.9, 0.9)
+metadata/_edit_group_ = true
+
+[node name="TextureProgressBar" type="TextureProgressBar" parent="TopPanel/Needs/Scratch"]
+offset_left = -245.0
+offset_top = -205.0
+offset_right = 193.0
+offset_bottom = 201.0
+fill_mode = 3
+nine_patch_stretch = true
+texture_progress = ExtResource("7_8l0el")
+
+[node name="Food" type="Sprite2D" parent="TopPanel/Needs/Scratch"]
+position = Vector2(-28.0774, 0)
+scale = Vector2(0.637435, 0.629913)
+texture = ExtResource("8_kmuo1")
+
+[node name="Sleep" type="Node2D" parent="TopPanel/Needs"]
+position = Vector2(1127.11, 28.0774)
+scale = Vector2(0.9, 0.9)
+metadata/_edit_group_ = true
+
+[node name="TextureProgressBar" type="TextureProgressBar" parent="TopPanel/Needs/Sleep"]
+offset_left = -245.0
+offset_top = -205.0
+offset_right = 193.0
+offset_bottom = 201.0
+fill_mode = 3
+nine_patch_stretch = true
+texture_progress = ExtResource("7_8l0el")
+
+[node name="Food" type="Sprite2D" parent="TopPanel/Needs/Sleep"]
+position = Vector2(-28.0774, 0)
+scale = Vector2(0.637435, 0.629913)
+texture = ExtResource("8_kmuo1")
+
+[node name="Clean" type="Node2D" parent="TopPanel/Needs"]
+position = Vector2(1504.15, 28.0774)
+scale = Vector2(0.9, 0.9)
+metadata/_edit_group_ = true
+
+[node name="TextureProgressBar" type="TextureProgressBar" parent="TopPanel/Needs/Clean"]
+offset_left = -245.0
+offset_top = -205.0
+offset_right = 193.0
+offset_bottom = 201.0
+fill_mode = 3
+nine_patch_stretch = true
+texture_progress = ExtResource("7_8l0el")
+
+[node name="Food" type="Sprite2D" parent="TopPanel/Needs/Clean"]
+position = Vector2(-28.0774, 0)
+scale = Vector2(0.637435, 0.629913)
+texture = ExtResource("8_kmuo1")
+
+[node name="Level" type="Area2D" parent="TopPanel" node_paths=PackedStringArray("panel_template", "level")]
+position = Vector2(1097, 54)
+scale = Vector2(0.190099, 0.190099)
+script = ExtResource("8_vwgn7")
+panel_template = NodePath("../../Room/UI/Panels/PanelTemplate")
+level = NodePath("../../Room/UI/Panels/LevelPrefab")
+metadata/_edit_group_ = true
+
+[node name="LevelBackground" type="Sprite2D" parent="TopPanel/Level"]
+position = Vector2(-3.48865, -17.5896)
+scale = Vector2(0.705027, 0.705027)
+texture = ExtResource("6_6w25j")
+
+[node name="CurrentLevel" type="Label" parent="TopPanel/Level"]
+offset_left = -208.551
+offset_top = -122.486
+offset_right = 191.449
+offset_bottom = 212.514
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.552941)
+theme_override_constants/shadow_offset_x = 15
+theme_override_constants/shadow_offset_y = 10
+theme_override_fonts/font = ExtResource("7_8rg5e")
+theme_override_font_sizes/font_size = 275
+text = "1"
+horizontal_alignment = 1
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="TopPanel/Level"]
+polygon = PackedVector2Array(-210.417, -26.3021, -226.198, -73.6458, -231.458, -126.25, -220.938, -189.375, -199.896, -247.24, -178.854, -252.5, -142.031, -241.979, -105.208, -215.677, -68.3853, -173.594, -63.125, -168.333, -42.083, -178.854, -10.5205, -184.115, 21.042, -184.115, 52.6045, -173.594, 63.125, -168.333, 73.646, -189.375, 94.6875, -210.417, 120.99, -231.458, 152.552, -247.24, 178.854, -252.5, 194.636, -247.24, 205.156, -226.198, 215.677, -194.635, 220.938, -157.813, 226.198, -120.99, 220.938, -78.9063, 205.156, -26.3021, 220.938, 15.7813, 226.198, 52.6042, 220.938, 89.4271, 210.417, 126.25, 184.115, 163.073, 142.031, 194.635, 94.6875, 210.417, 31.5625, 220.938, -21.0415, 220.938, -78.9063, 215.677, -142.031, 194.635, -189.375, 163.073, -215.677, 120.99, -231.458, 68.3854, -226.198, 15.7813)
+
+[node name="Currency" type="Node2D" parent="TopPanel"]
+position = Vector2(169, 53)
+scale = Vector2(0.190099, 0.190099)
+script = ExtResource("2_heemv")
+
+[node name="CurrencyIcon" type="Sprite2D" parent="TopPanel/Currency"]
+position = Vector2(-641.771, -21.0417)
+scale = Vector2(0.886122, 0.886122)
+texture = ExtResource("4_omybp")
+
+[node name="Money" type="Label" parent="TopPanel/Currency"]
+offset_left = -426.094
+offset_top = -126.25
+offset_right = 329.906
+offset_bottom = 140.75
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 10
+theme_override_constants/shadow_offset_y = 10
+theme_override_fonts/font = ExtResource("7_8rg5e")
+theme_override_font_sizes/font_size = 20
+text = "10000"
+label_settings = SubResource("LabelSettings_03gin")
+
+[connection signal="timeout" from="Room/Cat/EatTimer" to="Room/Cat" method="_on_eat_timer_timeout"]
+[connection signal="mouse_entered" from="Room/UI/Buttons/SettingsButton/Button" to="Room/UI/Buttons/SettingsButton" method="_on_button_mouse_entered"]
+[connection signal="mouse_exited" from="Room/UI/Buttons/SettingsButton/Button" to="Room/UI/Buttons/SettingsButton" method="_on_button_mouse_exited"]
+[connection signal="pressed" from="Room/UI/Buttons/SettingsButton/Button" to="Room/UI/Buttons/SettingsButton" method="_on_button_pressed"]
+[connection signal="mouse_entered" from="Room/UI/Buttons/MingamesButton/Button" to="Room/UI/Buttons/MingamesButton" method="_on_button_mouse_entered"]
+[connection signal="mouse_exited" from="Room/UI/Buttons/MingamesButton/Button" to="Room/UI/Buttons/MingamesButton" method="_on_button_mouse_exited"]
+[connection signal="pressed" from="Room/UI/Buttons/MingamesButton/Button" to="Room/UI/Buttons/MingamesButton" method="_on_button_pressed"]
+[connection signal="mouse_entered" from="Room/UI/Buttons/ShopButton/Button" to="Room/UI/Buttons/ShopButton" method="_on_button_mouse_entered"]
+[connection signal="mouse_exited" from="Room/UI/Buttons/ShopButton/Button" to="Room/UI/Buttons/ShopButton" method="_on_button_mouse_exited"]
+[connection signal="pressed" from="Room/UI/Buttons/ShopButton/Button" to="Room/UI/Buttons/ShopButton" method="_on_button_pressed"]
+[connection signal="input_event" from="Room/UI/Buttons/Bowl" to="Room/UI/Buttons/Bowl" method="_on_input_event"]
+[connection signal="mouse_entered" from="Room/UI/Buttons/Bowl" to="Room/UI/Buttons/Bowl" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="Room/UI/Buttons/Bowl" to="Room/UI/Buttons/Bowl" method="_on_mouse_exited"]
+[connection signal="mouse_entered" from="Room/UI/Panels/PanelTemplate/Exit/Button" to="Room/UI/Panels/PanelTemplate/Exit" method="_on_button_mouse_entered"]
+[connection signal="mouse_exited" from="Room/UI/Panels/PanelTemplate/Exit/Button" to="Room/UI/Panels/PanelTemplate/Exit" method="_on_button_mouse_exited"]
+[connection signal="pressed" from="Room/UI/Panels/PanelTemplate/Exit/Button" to="Room/UI/Panels/PanelTemplate/Exit" method="_on_button_pressed"]
+[connection signal="pressed" from="Room/UI/Panels/Minigames/WalkToTarget/WalkToTargetButton" to="Room/UI/Panels/Minigames" method="_on_walk_to_target_button_pressed"]
+[connection signal="pressed" from="Room/UI/Panels/Minigames/CatHop/CatHopButton" to="Room/UI/Panels/Minigames" method="_on_cat_hop_button_pressed"]
+[connection signal="pressed" from="Room/UI/Panels/Minigames/DragAndDrop/DragAndDropButton" to="Room/UI/Panels/Minigames" method="_on_drag_and_drop_button_pressed"]
+[connection signal="pressed" from="Room/UI/Panels/Shop/Food/FoodButton" to="Room/UI/Panels/Shop" method="_on_food_button_pressed"]
+[connection signal="mouse_entered" from="Room/UI/Panels/Shop/Foods/Back/BackButton" to="Room/UI/Panels/Shop/Foods/Back" method="_on_button_mouse_entered"]
+[connection signal="mouse_exited" from="Room/UI/Panels/Shop/Foods/Back/BackButton" to="Room/UI/Panels/Shop/Foods/Back" method="_on_button_mouse_exited"]
+[connection signal="pressed" from="Room/UI/Panels/Shop/Foods/Back/BackButton" to="Room/UI/Panels/Shop" method="_on_back_button_pressed"]
+[connection signal="mouse_entered" from="Room/UI/Panels/Fridge/Feed" to="Room/UI/Panels/Fridge" method="_on_feed_mouse_entered"]
+[connection signal="mouse_exited" from="Room/UI/Panels/Fridge/Feed" to="Room/UI/Panels/Fridge" method="_on_feed_mouse_exited"]
+[connection signal="pressed" from="Room/UI/Panels/Fridge/Feed" to="Room/UI/Panels/Fridge" method="_on_feed_pressed"]
+[connection signal="input_event" from="Room/Scratching_post" to="Room/Scratching_post" method="_on_input_event"]
+[connection signal="mouse_entered" from="Room/Scratching_post" to="Room/Scratching_post" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="Room/Scratching_post" to="Room/Scratching_post" method="_on_mouse_exited"]
+[connection signal="pressed" from="Room/XD/Button" to="Room/XD" method="_on_button_pressed"]
+[connection signal="pressed" from="Room/XD/Button2" to="Room/XD" method="_on_button_2_pressed"]
+[connection signal="mouse_entered" from="ScratchingPost/PlayerScratching" to="ScratchingPost/Scene" method="_on_player_scratching_mouse_entered"]
+[connection signal="mouse_exited" from="ScratchingPost/PlayerScratching" to="ScratchingPost/Scene" method="_on_player_scratching_mouse_exited"]
+[connection signal="mouse_entered" from="ScratchingPost/Back/BackButton" to="ScratchingPost/Scene" method="_on_back_button_mouse_entered"]
+[connection signal="mouse_exited" from="ScratchingPost/Back/BackButton" to="ScratchingPost/Scene" method="_on_back_button_mouse_exited"]
+[connection signal="pressed" from="ScratchingPost/Back/BackButton" to="ScratchingPost/Scene" method="_on_back_button_pressed"]
+[connection signal="timeout" from="TopPanel/Needs/Timer" to="TopPanel/Needs" method="_on_timer_timeout"]
+[connection signal="input_event" from="TopPanel/Level" to="TopPanel/Level" method="_on_input_event"]
+[connection signal="mouse_entered" from="TopPanel/Level" to="TopPanel/Level" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="TopPanel/Level" to="TopPanel/Level" method="_on_mouse_exited"]
