@@ -5,6 +5,6 @@
 [resource]
 script = ExtResource("1_it0vh")
 level = 5
-need_exp = 400
+next_level_need_exp = 500
 money_prize = 250
 unlock_something = true

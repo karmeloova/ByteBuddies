@@ -185,7 +185,7 @@ position = Vector2(1097, 54)
 scale = Vector2(0.190099, 0.190099)
 script = ExtResource("8_vwgn7")
 panel_template = NodePath("../Panels/PanelTemplate")
-level = NodePath("../Panels/Level")
+level = NodePath("../Panels/LevelPrefab")
 metadata/_edit_group_ = true
 
 [node name="LevelBackground" type="Sprite2D" parent="UI/Level"]
@@ -506,11 +506,15 @@ theme_override_fonts/font = ExtResource("7_8rg5e")
 theme_override_font_sizes/font_size = 33
 text = "Nakarm"
 
-[node name="Level" type="Node2D" parent="UI/Panels"]
-visible = false
-
-[node name="LevelPrefab" parent="UI/Panels/Level" instance=ExtResource("33_0i3x0")]
+[node name="LevelPrefab" parent="UI/Panels" node_paths=PackedStringArray("pop_up_node", "text_level") instance=ExtResource("33_0i3x0")]
 position = Vector2(298, 200)
+pop_up_node = NodePath("../NextLevelsPopUp")
+text_level = NodePath("../../Level/CurrentLevel")
+
+[node name="NextLevelsPopUp" type="Node2D" parent="UI/Panels"]
+position = Vector2(230, 152)
+scale = Vector2(1.2, 1.2)
+metadata/_edit_group_ = true
 
 [node name="Scratching_post" type="Area2D" parent="."]
 script = ExtResource("14_7xxgu")

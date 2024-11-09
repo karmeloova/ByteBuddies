@@ -1,16 +1,15 @@
-[gd_scene load_steps=8 format=3 uid="uid://k2t0np43srls"]
+[gd_scene load_steps=4 format=3 uid="uid://k2t0np43srls"]
 
 [ext_resource type="Script" path="res://Scenes/Prefabs/LevelPrefab.gd" id="1_cat67"]
-[ext_resource type="Resource" uid="uid://drrfn7u42bggg" path="res://Resources/Levels/Level2.tres" id="2_8aj07"]
-[ext_resource type="Resource" uid="uid://didtxc40kdu0n" path="res://Resources/Levels/Level3.tres" id="3_w4pu6"]
-[ext_resource type="Resource" uid="uid://brnl2nxe8wt0c" path="res://Resources/Levels/Level4.tres" id="4_qi5c2"]
-[ext_resource type="Resource" uid="uid://dcvtl45kugnag" path="res://Resources/Levels/Level5.tres" id="5_2wsh1"]
 [ext_resource type="Texture2D" uid="uid://dl8dw08og2gr8" path="res://Images/Backgrounds/Placeholder_backgorund_minigames.jpg" id="6_6we7l"]
 [ext_resource type="FontFile" uid="uid://ccgpsjqwwow8o" path="res://Fonts/Bubblegum.ttf" id="7_aeqlx"]
 
-[node name="LevelPrefab" type="Node2D"]
+[node name="LevelPrefab" type="Node2D" node_paths=PackedStringArray("exp_bar", "level", "exp")]
+visible = false
 script = ExtResource("1_cat67")
-levels = Array[Resource("res://Scripts/Resources/Levels.gd")]([ExtResource("2_8aj07"), ExtResource("3_w4pu6"), ExtResource("4_qi5c2"), ExtResource("5_2wsh1")])
+exp_bar = NodePath("Exp")
+level = NodePath("Level")
+exp = NodePath("CurrentExp")
 
 [node name="Exp" type="TextureProgressBar" parent="."]
 modulate = Color(0.578851, 0.429316, 0.41306, 1)

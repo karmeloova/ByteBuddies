@@ -5,11 +5,6 @@ extends Node2D
 func _ready():
 	SignalManager.change_money.connect(_on_change_money)
 	$Money.text = str(VariableManager.coins)
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	pass
-
+	
 func _on_change_money() :
 	$Money.text = str(VariableManager.coins)
