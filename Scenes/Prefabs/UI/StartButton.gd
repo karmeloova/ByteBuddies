@@ -7,5 +7,6 @@ func _on_mouse_exited():
 	modulate = Color("ffffff")
 
 func _on_pressed():
+	VariableManager.is_playing = true
 	get_tree().paused = false
 	$"../..".visible = false

@@ -1,7 +1,6 @@
-[gd_scene load_steps=47 format=3 uid="uid://br5jh3sh28ig4"]
+[gd_scene load_steps=42 format=3 uid="uid://br5jh3sh28ig4"]
 
 [ext_resource type="Texture2D" uid="uid://ddmrcvq0prt24" path="res://Images/Backgrounds/Tlov1.png" id="1_5tq1h"]
-[ext_resource type="Script" path="res://Scenes/Rooms/MainRoom.gd" id="1_80uij"]
 [ext_resource type="Script" path="res://Scenes/Rooms/Currency.gd" id="2_heemv"]
 [ext_resource type="Texture2D" uid="uid://ch30i3jkm2643" path="res://Images/Accessories/Drapak3.png" id="2_rsjqa"]
 [ext_resource type="Texture2D" uid="uid://cjcm8dskr3xnv" path="res://Images/UI/Currency.png" id="4_omybp"]
@@ -33,14 +32,10 @@
 [ext_resource type="Resource" uid="uid://b8qtspxh2opu6" path="res://Resources/Food/Banana.tres" id="19_wcutm"]
 [ext_resource type="Texture2D" uid="uid://6adv5bnfl4ff" path="res://Images/UI/Buttons/Back.png" id="24_srg2u"]
 [ext_resource type="Texture2D" uid="uid://bowy12qgsf8t3" path="res://Images/UI/Buttons/Button.png" id="28_7d6xq"]
-[ext_resource type="Texture2D" uid="uid://ci8h24p34ui0e" path="res://Images/UI/Buttons/Grafika_bez_nazwy 3.png" id="31_u0620"]
 [ext_resource type="Texture2D" uid="uid://uhifpi6dj3ce" path="res://Images/Cats/Cat.png" id="32_3rwvs"]
 [ext_resource type="Script" path="res://Scenes/Rooms/Cat.gd" id="32_38vco"]
 [ext_resource type="PackedScene" uid="uid://k2t0np43srls" path="res://Scenes/Prefabs/LevelPrefab.tscn" id="33_0i3x0"]
-[ext_resource type="Texture2D" uid="uid://fxihylphlpos" path="res://Images/UI/Buttons/Grafika_bez_nazwy 1.png" id="35_y0fri"]
-[ext_resource type="Texture2D" uid="uid://obkqk2w3p124" path="res://Images/UI/Buttons/Grafika_bez_nazwy 2.png" id="36_gkpbj"]
 [ext_resource type="Script" path="res://Scenes/Rooms/XD.gd" id="36_iupy0"]
-[ext_resource type="Texture2D" uid="uid://br0k60ldgk6r6" path="res://Images/UI/Buttons/Grafika_bez_nazwy.png" id="37_60h4w"]
 [ext_resource type="Script" path="res://Scripts/Items/ScratchingPostMiniGame.gd" id="37_vvil0"]
 [ext_resource type="Texture2D" uid="uid://b1idsi4afsqjc" path="res://Images/UI/Buttons/Resume.png" id="38_mtuig"]
 
@@ -53,7 +48,6 @@ size = Vector2(108, 37.5)
 font_size = 250
 
 [node name="MainRoom" type="Node2D"]
-script = ExtResource("1_80uij")
 
 [node name="Room" type="Node2D" parent="."]
 
@@ -363,9 +357,8 @@ position = Vector2(230, 152)
 scale = Vector2(1.2, 1.2)
 metadata/_edit_group_ = true
 
-[node name="Scratching_post" type="Area2D" parent="Room" node_paths=PackedStringArray("panel_template")]
+[node name="Scratching_post" type="Area2D" parent="Room"]
 script = ExtResource("14_7xxgu")
-panel_template = NodePath("../UI/Panels/PanelTemplate")
 
 [node name="Sprite" type="Sprite2D" parent="Room/Scratching_post"]
 position = Vector2(1016, 342)
@@ -376,7 +369,6 @@ texture = ExtResource("2_rsjqa")
 polygon = PackedVector2Array(919, 245, 932, 226, 965, 216, 1004, 218, 1033, 230, 1039, 246, 1035, 261, 1035, 270, 1019, 281, 995, 286, 994, 454, 1024, 454, 1023, 407, 1025, 393, 1044, 380, 1074, 374, 1098, 376, 1117, 386, 1125, 400, 1124, 411, 1126, 410, 1125, 457, 1135, 468, 1137, 480, 1135, 489, 1127, 498, 1114, 506, 1091, 512, 1061, 513, 913, 513, 912, 503, 939, 455, 961, 455, 962, 284, 939, 279, 924, 269, 923, 262)
 
 [node name="XD" type="Node2D" parent="Room"]
-visible = false
 script = ExtResource("36_iupy0")
 
 [node name="Button" type="Button" parent="Room/XD"]
@@ -396,9 +388,8 @@ text = "EXPPPPP"
 [node name="ScratchingPost" type="Node2D" parent="."]
 visible = false
 
-[node name="Scene" type="Node2D" parent="ScratchingPost" node_paths=PackedStringArray("information_node")]
+[node name="Scene" type="Node2D" parent="ScratchingPost"]
 script = ExtResource("37_vvil0")
-information_node = NodePath("../Information/InformationNode")
 
 [node name="Background" type="Sprite2D" parent="ScratchingPost/Scene"]
 position = Vector2(577, 322)
@@ -456,49 +447,6 @@ position = Vector2(51, 595)
 scale = Vector2(0.124325, 0.124325)
 texture = ExtResource("24_srg2u")
 
-[node name="Information" type="Node2D" parent="ScratchingPost"]
-position = Vector2(276, 186)
-scale = Vector2(0.7, 0.7)
-
-[node name="InformationButton" type="TextureButton" parent="ScratchingPost/Information"]
-offset_left = -2.0
-offset_top = 546.0
-offset_right = 104.0
-offset_bottom = 646.0
-texture_normal = ExtResource("11_5i28f")
-texture_pressed = ExtResource("11_5i28f")
-ignore_texture_size = true
-stretch_mode = 0
-
-[node name="Icon" type="Sprite2D" parent="ScratchingPost/Information"]
-position = Vector2(51, 595)
-scale = Vector2(0.124325, 0.124325)
-texture = ExtResource("31_u0620")
-
-[node name="InformationNode" type="Node2D" parent="ScratchingPost/Information"]
-visible = false
-position = Vector2(-42.8571, -152.857)
-scale = Vector2(1.4, 1.4)
-metadata/_edit_group_ = true
-
-[node name="Information" type="Sprite2D" parent="ScratchingPost/Information/InformationNode"]
-self_modulate = Color(0.728822, 0.728822, 0.728822, 0.419608)
-position = Vector2(335.714, 439.911)
-scale = Vector2(0.57952, 0.501093)
-texture = ExtResource("10_1xqql")
-
-[node name="RichTextLabel" type="RichTextLabel" parent="ScratchingPost/Information/InformationNode"]
-offset_left = 140.0
-offset_top = 322.857
-offset_right = 544.0
-offset_bottom = 688.857
-bbcode_enabled = true
-text = "[b]1.[/b] Zaczynaj drapanie od góry, przeciągając myszką (przytrzymując odpowiedni klawisz myszy) w dół.
-[b]2.[/b] Strzałka pokazuje, gdzie rozpocząć drapanie i jaki przycisk myszy wcisnąć:
-	[color=\"green\"]-> Zielona strzałka –[/color] drap lewym przyciskiem myszy (LPM).
-	[color=\"red\"]-> Czerwona strzałka –[/color] drap prawym przyciskiem myszy (PPM).
-[b]3.[/b] Jeśli przestaniesz, strzałka wskaże miejsce, od którego wznowić drapanie."
-
 [node name="TopPanel" type="Node2D" parent="."]
 
 [node name="Background" type="Sprite2D" parent="TopPanel"]
@@ -511,6 +459,7 @@ texture = SubResource("CanvasTexture_nyw1b")
 position = Vector2(389, 45)
 scale = Vector2(0.249311, 0.249311)
 script = ExtResource("6_1vdjr")
+metadata/_edit_group_ = true
 
 [node name="Timer" type="Timer" parent="TopPanel/Needs"]
 
@@ -520,7 +469,6 @@ scale = Vector2(0.9, 0.9)
 metadata/_edit_group_ = true
 
 [node name="TextureProgressBar" type="TextureProgressBar" parent="TopPanel/Needs/Hungry"]
-modulate = Color(0.933333, 0.933333, 0.933333, 1)
 offset_left = -245.0
 offset_top = -205.0
 offset_right = 193.0
@@ -536,15 +484,15 @@ texture = ExtResource("8_kmuo1")
 
 [node name="Food2" type="Sprite2D" parent="TopPanel/Needs/Hungry"]
 position = Vector2(-28.0773, -5.72205e-06)
-scale = Vector2(0.6, 0.6)
+scale = Vector2(0.592143, 0.57825)
 texture = ExtResource("8_onvnt")
 
 [node name="Play" type="Node2D" parent="TopPanel/Needs"]
 position = Vector2(397.094, 28.0774)
 scale = Vector2(0.9, 0.9)
+metadata/_edit_group_ = true
 
 [node name="TextureProgressBar" type="TextureProgressBar" parent="TopPanel/Needs/Play"]
-modulate = Color(0.933333, 0.933333, 0.933333, 1)
 offset_left = -245.0
 offset_top = -205.0
 offset_right = 193.0
@@ -553,22 +501,17 @@ fill_mode = 3
 nine_patch_stretch = true
 texture_progress = ExtResource("7_8l0el")
 
-[node name="Play" type="Sprite2D" parent="TopPanel/Needs/Play"]
+[node name="Food" type="Sprite2D" parent="TopPanel/Needs/Play"]
 position = Vector2(-28.0774, 0)
 scale = Vector2(0.637435, 0.629913)
 texture = ExtResource("8_kmuo1")
 
-[node name="PlayIcon" type="Sprite2D" parent="TopPanel/Needs/Play"]
-position = Vector2(-31.1967, -4.45675)
-scale = Vector2(0.55, 0.55)
-texture = ExtResource("14_84fhf")
-
 [node name="Scratch" type="Node2D" parent="TopPanel/Needs"]
 position = Vector2(762.1, 28.0774)
 scale = Vector2(0.9, 0.9)
+metadata/_edit_group_ = true
 
 [node name="TextureProgressBar" type="TextureProgressBar" parent="TopPanel/Needs/Scratch"]
-modulate = Color(0.93408, 0.93408, 0.93408, 1)
 offset_left = -245.0
 offset_top = -205.0
 offset_right = 193.0
@@ -582,17 +525,12 @@ position = Vector2(-28.0774, 0)
 scale = Vector2(0.637435, 0.629913)
 texture = ExtResource("8_kmuo1")
 
-[node name="Sprite2D" type="Sprite2D" parent="TopPanel/Needs/Scratch"]
-position = Vector2(-31.1966, -4.45675)
-scale = Vector2(0.65, 0.65)
-texture = ExtResource("35_y0fri")
-
 [node name="Sleep" type="Node2D" parent="TopPanel/Needs"]
 position = Vector2(1127.11, 28.0774)
 scale = Vector2(0.9, 0.9)
+metadata/_edit_group_ = true
 
 [node name="TextureProgressBar" type="TextureProgressBar" parent="TopPanel/Needs/Sleep"]
-modulate = Color(0.933333, 0.933333, 0.933333, 1)
 offset_left = -245.0
 offset_top = -205.0
 offset_right = 193.0
@@ -606,14 +544,10 @@ position = Vector2(-28.0774, 0)
 scale = Vector2(0.637435, 0.629913)
 texture = ExtResource("8_kmuo1")
 
-[node name="Sprite2D" type="Sprite2D" parent="TopPanel/Needs/Sleep"]
-position = Vector2(-35.6579, 4.45671)
-scale = Vector2(0.6, 0.6)
-texture = ExtResource("36_gkpbj")
-
 [node name="Clean" type="Node2D" parent="TopPanel/Needs"]
 position = Vector2(1504.15, 28.0774)
 scale = Vector2(0.9, 0.9)
+metadata/_edit_group_ = true
 
 [node name="TextureProgressBar" type="TextureProgressBar" parent="TopPanel/Needs/Clean"]
 offset_left = -245.0
@@ -628,11 +562,6 @@ texture_progress = ExtResource("7_8l0el")
 position = Vector2(-28.0774, 0)
 scale = Vector2(0.637435, 0.629913)
 texture = ExtResource("8_kmuo1")
-
-[node name="Sprite2D" type="Sprite2D" parent="TopPanel/Needs/Clean"]
-position = Vector2(-31.2023, -4.45674)
-scale = Vector2(0.65, 0.65)
-texture = ExtResource("37_60h4w")
 
 [node name="Level" type="Area2D" parent="TopPanel" node_paths=PackedStringArray("panel_template", "level")]
 position = Vector2(1097, 54)
@@ -722,8 +651,6 @@ label_settings = SubResource("LabelSettings_03gin")
 [connection signal="mouse_entered" from="ScratchingPost/Back/BackButton" to="ScratchingPost/Scene" method="_on_back_button_mouse_entered"]
 [connection signal="mouse_exited" from="ScratchingPost/Back/BackButton" to="ScratchingPost/Scene" method="_on_back_button_mouse_exited"]
 [connection signal="pressed" from="ScratchingPost/Back/BackButton" to="ScratchingPost/Scene" method="_on_back_button_pressed"]
-[connection signal="mouse_entered" from="ScratchingPost/Information/InformationButton" to="ScratchingPost/Scene" method="_on_information_button_mouse_entered"]
-[connection signal="mouse_exited" from="ScratchingPost/Information/InformationButton" to="ScratchingPost/Scene" method="_on_information_button_mouse_exited"]
 [connection signal="timeout" from="TopPanel/Needs/Timer" to="TopPanel/Needs" method="_on_timer_timeout"]
 [connection signal="input_event" from="TopPanel/Level" to="TopPanel/Level" method="_on_input_event"]
 [connection signal="mouse_entered" from="TopPanel/Level" to="TopPanel/Level" method="_on_mouse_entered"]

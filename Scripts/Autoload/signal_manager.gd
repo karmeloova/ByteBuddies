@@ -41,6 +41,7 @@ signal changed_needs()
 signal add_to_bowl(hungry_points)
 signal eat()
 signal remove_from_fridge(what : Food_Resource)
+signal playing()
 
 #------------------ ANOTHER ---------------------------------
 signal change_money()

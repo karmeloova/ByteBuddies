@@ -9,6 +9,8 @@ func _ready():
 	SignalManager.calculate_score.connect(_on_calculate_score)
 	SignalManager.add_coin.connect(_on_add_coin)
 	SignalManager.save_data.connect(_on_save_data)
+	SignalManager.restartGame.connect(_on_save_data)
+	SignalManager.loseGame.connect(_on_lose_game)
 
 func _on_calculate_score(lines) :
 	# Punkty za długość kodu
@@ -37,6 +39,11 @@ func _on_add_coin(value) :
 	$Money.text = "Kasa: " + str(money)
 
 func _on_save_data() :
+	VariableManager.coins += money
+	SignalManager.add_exp.emit(score/5)
+
+func _on_lose_game() :
 	if(score > VariableManager.snack_navigator_high_score) :
 		VariableManager.snack_navigator_high_score = score
 	VariableManager.coins += money
+	SignalManager.add_exp.emit(score/5)

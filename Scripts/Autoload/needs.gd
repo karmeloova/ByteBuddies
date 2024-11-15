@@ -10,6 +10,7 @@ func _ready():
 	
 	SignalManager.scratch.connect(_on_scratch);
 	SignalManager.eat.connect(_on_eat)
+	SignalManager.playing.connect(_on_playing)
 	
 	timer = Timer.new();
 	timer.set_wait_time(5.0)
@@ -47,3 +48,7 @@ func _on_eat_timer_timeout() :
 		eat_timer.stop()
 		SignalManager.eat_end.emit()
 	
+func _on_playing() :
+	if(VariableManager.needs["play"] < 100) :
+		VariableManager.needs["play"] += 5
+		SignalManager.changed_needs.emit()

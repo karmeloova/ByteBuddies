@@ -4,6 +4,7 @@ var is_mouse_on_scratching_post : bool = false
 var tween
 var current_scratch = 0
 @onready var scratch_node = $"../ScratchNode"
+@export var information_node : Node2D
 
 func _ready():
 	add_scratch()
@@ -59,3 +60,13 @@ func _on_back_button_mouse_entered():
 
 func _on_back_button_mouse_exited():
 	$"../Back".modulate = Color("ffffff")
+
+func _on_information_button_mouse_entered():
+	$"../Information/InformationButton".modulate = Color("b2b2b2")
+	$"../Information/Icon".modulate = Color("b2b2b2")
+	information_node.visible = true
+
+func _on_information_button_mouse_exited():
+	$"../Information/InformationButton".modulate = Color("ffffff")
+	$"../Information/Icon".modulate = Color("ffffff")
+	information_node.visible = false

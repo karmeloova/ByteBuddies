@@ -21,6 +21,7 @@ func _on_back_button_mouse_exited():
 	$PauseMenu/BackButton.modulate = Color("ffffff")
 
 func _on_restart_button_pressed():
+	VariableManager.is_playing = false
 	get_tree().paused = false
 	get_tree().reload_current_scene()
 	SignalManager.restartGame.emit()

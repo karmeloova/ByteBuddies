@@ -21,8 +21,11 @@ func _on_add_coin(value) :
 	$Money.text = "Kasa: " + str(coins)
 
 func _on_lose_game() :
-	VariableManager.pet_code_high_score = score
+	if(VariableManager.pet_code_high_score < score) :
+		VariableManager.pet_code_high_score = score
 	VariableManager.coins += coins
+	SignalManager.add_exp.emit(score/3)
 	
 func _on_save_data() :
 	VariableManager.coins += coins
+	SignalManager.add_exp.emit(score/3)

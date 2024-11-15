@@ -8,6 +8,8 @@ var needs = {
 	"clean" : 0
 }
 
+var is_playing : bool = false
+
 var hungry_points_in_bowl : int = 0
 var code_pet_start_pos : Vector2
 var code_pet_score : int = 0
