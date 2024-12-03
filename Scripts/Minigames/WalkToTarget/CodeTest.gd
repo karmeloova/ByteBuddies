@@ -72,8 +72,8 @@ func checkInstruction(instruction) :
 	if(parameters.size() > 0) :
 		if(checkParametres(parameters)) : conditions[1] = true;
 	# Sprawdzamy czy podano liczbę kroków
-	if(instruction.to_int() > 0) : conditions[2] = true;
-
+	if(instruction.to_int() > 0 && instruction.to_int() <= 100) : conditions[2] = true;
+	
 	if(conditions[0] and conditions[1] and conditions[2]) : return true;
 	else : return false
 

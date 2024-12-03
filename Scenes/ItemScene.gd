@@ -11,3 +11,4 @@ func _on_buy_pressed():
 	SignalManager.change_money.emit()
 	food_type.amount += 1
 	SignalManager.add_to_fridge.emit(food_type)
+	SignalManager.check_buy_possibilities.emit()

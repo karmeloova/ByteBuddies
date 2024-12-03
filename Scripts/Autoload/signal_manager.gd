@@ -57,6 +57,7 @@ signal go_to_bowl()
 signal eat_end()
 signal set_correct_instruction(what)
 signal show_next_pop_up()
+signal check_buy_possibilities()
 
 #------------------ LEVEL -----------------------------------
 signal add_exp(value)

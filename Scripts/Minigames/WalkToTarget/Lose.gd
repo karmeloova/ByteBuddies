@@ -7,6 +7,7 @@ func _ready():
 	SignalManager.loseGame.connect(_on_lose_game)
 
 func _on_lose_game() :
+	get_tree().paused = true
 	visible = true;
 	$LoseLabel.text = "You lose"
 	
