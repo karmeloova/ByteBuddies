@@ -1,0 +1,130 @@
+[gd_scene load_steps=14 format=3 uid="uid://8ht3543k8u8l"]
+
+[ext_resource type="Script" path="res://Scripts/Basket.gd" id="1_w5xul"]
+[ext_resource type="Script" path="res://Scripts/FruitNode.gd" id="2_ebjhj"]
+[ext_resource type="PackedScene" uid="uid://cyn346855vab8" path="res://Scenes/Prefabs/UI/PauseUI.tscn" id="2_mnafx"]
+[ext_resource type="Texture2D" uid="uid://ct7s80l4i6igh" path="res://Images/basket.png" id="2_nux0b"]
+[ext_resource type="PackedScene" uid="uid://dluxwfsypbvws" path="res://Scenes/Prefabs/UI/MinigamesLives.tscn" id="2_xq8fu"]
+[ext_resource type="Script" path="res://Scripts/Text.gd" id="3_efxh8"]
+[ext_resource type="Texture2D" uid="uid://cu38aqp5mo2e6" path="res://Images/backgroung.jpg" id="5_efxct"]
+[ext_resource type="PackedScene" uid="uid://doyyhye04gaml" path="res://Scenes/Prefabs/UI/LoseUI.tscn" id="7_2c0eh"]
+[ext_resource type="PackedScene" uid="uid://bpck4nf2x81gt" path="res://Scenes/Prefabs/UI/MinigamesPanel.tscn" id="7_ubdb5"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_g6epj"]
+size = Vector2(169.219, 15.9297)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_igrkt"]
+size = Vector2(1164, 13)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_j2bv0"]
+size = Vector2(12, 102)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1dnar"]
+size = Vector2(10, 84)
+
+[node name="World" type="Node2D"]
+
+[node name="MinigamesLives" parent="." instance=ExtResource("2_xq8fu")]
+position = Vector2(934, 5)
+
+[node name="Pause" parent="." instance=ExtResource("2_mnafx")]
+
+[node name="Basket" type="Area2D" parent="."]
+position = Vector2(-1, 19)
+scale = Vector2(1.01644, 0.878859)
+collision_priority = 2.0
+script = ExtResource("1_w5xul")
+metadata/_edit_group_ = true
+
+[node name="BasketPicture" type="Sprite2D" parent="Basket"]
+position = Vector2(562, 633)
+texture = ExtResource("2_nux0b")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Basket"]
+position = Vector2(561.767, 618.984)
+shape = SubResource("RectangleShape2D_g6epj")
+
+[node name="Label" type="Label" parent="Basket"]
+offset_left = 494.0
+offset_top = 643.0
+offset_right = 629.0
+offset_bottom = 694.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 20
+horizontal_alignment = 1
+
+[node name="FruitNode" type="Node2D" parent="."]
+script = ExtResource("2_ebjhj")
+
+[node name="FruitTimer" type="Timer" parent="FruitNode"]
+
+[node name="Floor" type="Area2D" parent="."]
+
+[node name="FloorShape" type="CollisionShape2D" parent="Floor"]
+position = Vector2(572, 649)
+shape = SubResource("RectangleShape2D_igrkt")
+
+[node name="Text" type="Node2D" parent="."]
+script = ExtResource("3_efxh8")
+
+[node name="Instruction" type="Label" parent="Text"]
+offset_left = 12.0
+offset_top = 89.0
+offset_right = 450.0
+offset_bottom = 217.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 20
+text = "		1 - Liczby zmiennoprzecinkowe (float, double)
+		2 - Liczby całkowite (int)
+		3 - Łańcuch znaków (string)
+		4 - Znak (char)"
+
+[node name="Score" type="Label" parent="Text"]
+offset_left = 937.0
+offset_top = 83.0
+offset_right = 1142.0
+offset_bottom = 152.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 50
+text = "TEST"
+horizontal_alignment = 2
+
+[node name="Coins" type="Label" parent="Text"]
+offset_left = 939.0
+offset_top = 147.0
+offset_right = 1144.0
+offset_bottom = 216.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 50
+text = "Coins:"
+horizontal_alignment = 2
+
+[node name="Left" type="Area2D" parent="."]
+
+[node name="Left2" type="CollisionShape2D" parent="Left"]
+position = Vector2(-4, 599)
+shape = SubResource("RectangleShape2D_j2bv0")
+
+[node name="Right" type="Area2D" parent="."]
+position = Vector2(-4, 599)
+
+[node name="Right2" type="CollisionShape2D" parent="Right"]
+position = Vector2(1160, 0)
+shape = SubResource("RectangleShape2D_1dnar")
+
+[node name="Backgroung" type="Sprite2D" parent="."]
+z_index = -1
+position = Vector2(570.075, 319.75)
+scale = Vector2(0.664962, 0.680417)
+texture = ExtResource("5_efxct")
+metadata/_edit_lock_ = true
+
+[node name="Lose" parent="." instance=ExtResource("7_2c0eh")]
+visible = false
+
+[node name="MinigamesPanel" parent="." instance=ExtResource("7_ubdb5")]
+game_name = "Fruit Catcher"
+
+[connection signal="area_shape_entered" from="Basket" to="Basket" method="_on_area_shape_entered"]
+[connection signal="area_shape_exited" from="Basket" to="Basket" method="_on_area_shape_exited"]
+[connection signal="timeout" from="FruitNode/FruitTimer" to="FruitNode" method="_on_fruit_timer_timeout"]

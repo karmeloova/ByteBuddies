@@ -271,6 +271,7 @@ text = "Twoim zadaniem jest pomóc w opiece nad wirtualnym kotkiem, rozwiązują
 autowrap_mode = 2
 
 [node name="Page2" type="RichTextLabel" parent="HowToPlay/CodePet"]
+visible = false
 offset_left = 285.0
 offset_top = 149.0
 offset_right = 913.0
@@ -307,6 +308,52 @@ bbcode_enabled = true
 text = "[b]4. Sprawdź swoje rozwiązanie –[/b] Po ułożeniu bloczków naciśnij „Sprawdź”, aby zobaczyć, czy poprawnie ułożyłeś bloczki. Pomyślne ułożenie bloczków pozwoli Ci przejść do kolejnego zadania!
 
 [b]Powodzenia![/b]"
+autowrap_mode = 2
+
+[node name="FruitCatcher" type="Node2D" parent="HowToPlay"]
+visible = false
+
+[node name="Page1" type="RichTextLabel" parent="HowToPlay/FruitCatcher"]
+visible = false
+offset_left = 282.0
+offset_top = 161.0
+offset_right = 893.0
+offset_bottom = 521.0
+theme_override_font_sizes/normal_font_size = 20
+theme_override_font_sizes/bold_font_size = 20
+theme_override_font_sizes/italics_font_size = 20
+theme_override_font_sizes/bold_italics_font_size = 20
+theme_override_font_sizes/mono_font_size = 20
+bbcode_enabled = true
+text = "W grze [b]FruitCatcher[/b] Twoim zadaniem jest złapanie owoców do odpowiednich koszyków:
+
+[b]* Koszyk 1:[/b] Liczby zmiennoprzecinkowe (float) – np. połówka lub półtora owocu.
+[b]* Koszyk 2:[/b] Liczby całkowite (int) – np. cały owoc.
+[b]* Koszyk 3:[/b] Łańcuch znaków (string) – np. nazwa owocu zapisana tekstem.
+[b]* Koszyk 4:[/b] Znaki (char) – np. jedna litera.
+
+Na koszyku znajduje się informacja jaki jest obecnie wybrany"
+autowrap_mode = 2
+
+[node name="Page2" type="RichTextLabel" parent="HowToPlay/FruitCatcher"]
+visible = false
+offset_left = 285.0
+offset_top = 149.0
+offset_right = 913.0
+offset_bottom = 569.0
+theme_override_font_sizes/normal_font_size = 20
+theme_override_font_sizes/bold_font_size = 20
+theme_override_font_sizes/italics_font_size = 20
+theme_override_font_sizes/bold_italics_font_size = 20
+theme_override_font_sizes/mono_font_size = 20
+bbcode_enabled = true
+text = "[b]Jak grać?[/b]
+
+[b]1. [/b] Spadające owoce są różnymi typami danych
+[b]2.[/b] Zmieniaj koszyki za pomocą klawiszy (1, 2, 3, 4), aby ustawić odpowiedni koszyk pod spadającym owocem.
+[b]3.[/b] Dopasuj koszyk do typu owocu i złap go, zanim spadnie!
+
+Powodzenia i baw się dobrze! 🍎🍐✨"
 autowrap_mode = 2
 
 [connection signal="mouse_entered" from="Back/BackButton" to="Back" method="_on_back_button_mouse_entered"]

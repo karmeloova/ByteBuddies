@@ -37,6 +37,10 @@ func _set_correct_instruction(game_name) :
 		"Pet Code" :
 			$CodePet.visible = true
 			instruction = $CodePet
+		"Fruit Catcher" :
+			$FruitCatcher.visible = true
+			instruction = $FruitCatcher
+			
 	set_pages()
 
 func set_pages() :

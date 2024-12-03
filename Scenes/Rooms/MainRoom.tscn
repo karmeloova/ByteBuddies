@@ -255,15 +255,36 @@ text = "Graj"
 [node name="DragAndDrop" type="Node2D" parent="Room/UI/Panels/Minigames"]
 
 [node name="DragAndDropLabel" type="Label" parent="Room/UI/Panels/Minigames/DragAndDrop"]
+offset_left = -307.0
+offset_top = -13.0
+offset_right = -34.0
+offset_bottom = 45.0
+scale = Vector2(0.99523, 1.03372)
+theme_override_font_sizes/font_size = 42
+text = "Pet Code"
+
+[node name="DragAndDropButton" type="Button" parent="Room/UI/Panels/Minigames/DragAndDrop"]
+offset_left = 229.0
+offset_top = -14.0
+offset_right = 297.0
+offset_bottom = 36.0
+theme_override_font_sizes/font_size = 30
+text = "Graj"
+
+[node name="FruitCatcher" type="Node2D" parent="Room/UI/Panels/Minigames"]
+position = Vector2(0, 67)
+metadata/_edit_group_ = true
+
+[node name="FruitCatcherLabel" type="Label" parent="Room/UI/Panels/Minigames/FruitCatcher"]
 offset_left = -306.0
 offset_top = -17.0
 offset_right = -33.0
 offset_bottom = 41.0
 scale = Vector2(0.99523, 1.03372)
 theme_override_font_sizes/font_size = 42
-text = "Pet Code"
+text = "FruitCatcher"
 
-[node name="DragAndDropButton" type="Button" parent="Room/UI/Panels/Minigames/DragAndDrop"]
+[node name="FruitCatcherButton" type="Button" parent="Room/UI/Panels/Minigames/FruitCatcher"]
 offset_left = 229.0
 offset_top = -14.0
 offset_right = 297.0
@@ -705,6 +726,7 @@ label_settings = SubResource("LabelSettings_03gin")
 [connection signal="pressed" from="Room/UI/Panels/Minigames/WalkToTarget/WalkToTargetButton" to="Room/UI/Panels/Minigames" method="_on_walk_to_target_button_pressed"]
 [connection signal="pressed" from="Room/UI/Panels/Minigames/CatHop/CatHopButton" to="Room/UI/Panels/Minigames" method="_on_cat_hop_button_pressed"]
 [connection signal="pressed" from="Room/UI/Panels/Minigames/DragAndDrop/DragAndDropButton" to="Room/UI/Panels/Minigames" method="_on_drag_and_drop_button_pressed"]
+[connection signal="pressed" from="Room/UI/Panels/Minigames/FruitCatcher/FruitCatcherButton" to="Room/UI/Panels/Minigames" method="_on_fruit_catcher_button_pressed"]
 [connection signal="pressed" from="Room/UI/Panels/Shop/Food/FoodButton" to="Room/UI/Panels/Shop" method="_on_food_button_pressed"]
 [connection signal="mouse_entered" from="Room/UI/Panels/Shop/Foods/Back/BackButton" to="Room/UI/Panels/Shop/Foods/Back" method="_on_button_mouse_entered"]
 [connection signal="mouse_exited" from="Room/UI/Panels/Shop/Foods/Back/BackButton" to="Room/UI/Panels/Shop/Foods/Back" method="_on_button_mouse_exited"]

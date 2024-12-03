@@ -10,6 +10,10 @@ signal nextLevel()
 signal add_point()
 signal save_data()
 
+signal fruitColl(what); #właścicielem sygnału jest SignalManager
+signal basketColor(color);
+signal fruitColor(color);
+
 
 # GO TO TARGET
 signal makeMove(instructions)
@@ -34,6 +38,8 @@ signal bad_field()
 #LOGIC TETRIS
 signal grounded()
 signal new_blok_needed(current_x_position, current_y_pos)
+
+
 
 #------------------ ANIMAL NEEDS ----------------------------
 signal scratch(value)

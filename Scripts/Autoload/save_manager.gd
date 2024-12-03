@@ -12,7 +12,8 @@ var save_data = {
 	"level" : 0,
 	"snack_navigator_high_score" : 0,
 	"cat_jump_high_score" : 0,
-	"pet_code_high_score" : 0
+	"pet_code_high_score" : 0,
+	"fruit_catcher_high_score" : 0
 }
 
 # Called when the node enters the scene tree for the first time.
@@ -32,6 +33,7 @@ func _ready():
 	VariableManager.snack_navigator_high_score = save_data["snack_navigator_high_score"]
 	VariableManager.cat_jump_high_score = save_data["cat_jump_high_score"]
 	VariableManager.pet_code_high_score = save_data["pet_code_high_score"]
+	VariableManager.fruit_catcher_high_score = save_data["fruit_catcher_high_score"]
 	
 func create_save():
 	# Otwieramy plik do zapisu
@@ -64,5 +66,6 @@ func _notification(what):
 		save("snack_navigator_high_score", VariableManager.snack_navigator_high_score)
 		save("cat_jump_high_score", VariableManager.cat_jump_high_score)
 		save("pet_code_high_score", VariableManager.pet_code_high_score)
+		save("fruit_catcher_high_score", VariableManager.fruit_catcher_high_score)
 
 #ścieżka do pliku - C:\Users\xxfea\AppData\Roaming\Godot\app_userdata\ByteBuddies
