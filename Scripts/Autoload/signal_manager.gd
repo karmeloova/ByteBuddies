@@ -48,6 +48,8 @@ signal add_to_bowl(hungry_points)
 signal eat()
 signal remove_from_fridge(what : Food_Resource)
 signal playing()
+signal sleeping(is_sleeping)
+signal cleaning(is_cleaning)
 
 #------------------ ANOTHER ---------------------------------
 signal change_money()

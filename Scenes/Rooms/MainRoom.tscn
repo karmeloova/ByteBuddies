@@ -1,4 +1,4 @@
-[gd_scene load_steps=47 format=3 uid="uid://br5jh3sh28ig4"]
+[gd_scene load_steps=56 format=3 uid="uid://br5jh3sh28ig4"]
 
 [ext_resource type="Texture2D" uid="uid://ddmrcvq0prt24" path="res://Images/Backgrounds/Tlov1.png" id="1_5tq1h"]
 [ext_resource type="Script" path="res://Scenes/Rooms/MainRoom.gd" id="1_80uij"]
@@ -9,6 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://f4m7ukvlblan" path="res://Images/UI/LevelBackground.png" id="6_6w25j"]
 [ext_resource type="Texture2D" uid="uid://do1bwllt3b1yy" path="res://Images/UI/Lives/Needs/BgFull2.png" id="7_8l0el"]
 [ext_resource type="FontFile" uid="uid://ccgpsjqwwow8o" path="res://Fonts/Bubblegum.ttf" id="7_8rg5e"]
+[ext_resource type="Script" path="res://Scenes/Rooms/Bath.gd" id="8_4jdki"]
 [ext_resource type="Texture2D" uid="uid://ch1nxcb838mta" path="res://Images/UI/Lives/Needs/BgEmpty.png" id="8_kmuo1"]
 [ext_resource type="Texture2D" uid="uid://cf0reij86duo7" path="res://Images/UI/Lives/Needs/Food.png" id="8_onvnt"]
 [ext_resource type="Script" path="res://Scenes/Rooms/Level.gd" id="8_vwgn7"]
@@ -32,20 +33,35 @@
 [ext_resource type="Texture2D" uid="uid://dwwahex67somt" path="res://Images/Accessories/Bowl/Food.png" id="19_kh8nr"]
 [ext_resource type="Resource" uid="uid://b8qtspxh2opu6" path="res://Resources/Food/Banana.tres" id="19_wcutm"]
 [ext_resource type="Texture2D" uid="uid://6adv5bnfl4ff" path="res://Images/UI/Buttons/Back.png" id="24_srg2u"]
+[ext_resource type="Script" path="res://Scenes/Rooms/Den.gd" id="27_8vvth"]
 [ext_resource type="Texture2D" uid="uid://bowy12qgsf8t3" path="res://Images/UI/Buttons/Button.png" id="28_7d6xq"]
+[ext_resource type="Script" path="res://Scenes/Rooms/BowlNode.gd" id="30_q7oku"]
 [ext_resource type="Texture2D" uid="uid://ci8h24p34ui0e" path="res://Images/UI/Buttons/Grafika_bez_nazwy 3.png" id="31_u0620"]
 [ext_resource type="Texture2D" uid="uid://uhifpi6dj3ce" path="res://Images/Cats/Cat.png" id="32_3rwvs"]
 [ext_resource type="Script" path="res://Scenes/Rooms/Cat.gd" id="32_38vco"]
 [ext_resource type="PackedScene" uid="uid://k2t0np43srls" path="res://Scenes/Prefabs/LevelPrefab.tscn" id="33_0i3x0"]
 [ext_resource type="Texture2D" uid="uid://fxihylphlpos" path="res://Images/UI/Buttons/Grafika_bez_nazwy 1.png" id="35_y0fri"]
 [ext_resource type="Texture2D" uid="uid://obkqk2w3p124" path="res://Images/UI/Buttons/Grafika_bez_nazwy 2.png" id="36_gkpbj"]
+[ext_resource type="Script" path="res://Scenes/Rooms/CatCleaning.gd" id="36_h366k"]
+[ext_resource type="Script" path="res://Scenes/Rooms/Soap.gd" id="36_ie607"]
 [ext_resource type="Script" path="res://Scenes/Rooms/XD.gd" id="36_iupy0"]
 [ext_resource type="Texture2D" uid="uid://br0k60ldgk6r6" path="res://Images/UI/Buttons/Grafika_bez_nazwy.png" id="37_60h4w"]
 [ext_resource type="Script" path="res://Scripts/Items/ScratchingPostMiniGame.gd" id="37_vvil0"]
 [ext_resource type="Texture2D" uid="uid://b1idsi4afsqjc" path="res://Images/UI/Buttons/Resume.png" id="38_mtuig"]
 
+[sub_resource type="CanvasTexture" id="CanvasTexture_7555d"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ymck7"]
+size = Vector2(120, 90)
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_e8mf3"]
 size = Vector2(108, 37.5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qyput"]
+size = Vector2(1049.62, 1717.56)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_lxbu5"]
+size = Vector2(106.5, 67)
 
 [sub_resource type="CanvasTexture" id="CanvasTexture_nyw1b"]
 
@@ -55,13 +71,13 @@ font_size = 250
 [node name="MainRoom" type="Node2D"]
 script = ExtResource("1_80uij")
 
-[node name="Room" type="Node2D" parent="."]
+[node name="Scene" type="Node2D" parent="."]
 
-[node name="Scene" type="Node2D" parent="Room"]
-
-[node name="Background" type="Sprite2D" parent="Room/Scene"]
+[node name="Background" type="Sprite2D" parent="Scene"]
 position = Vector2(577, 322)
 texture = ExtResource("1_5tq1h")
+
+[node name="Room" type="Node2D" parent="."]
 
 [node name="Cat" type="Node2D" parent="Room"]
 position = Vector2(594, 404)
@@ -76,6 +92,87 @@ texture = ExtResource("32_3rwvs")
 
 [node name="EatTimer" type="Timer" parent="Room/Cat"]
 one_shot = true
+
+[node name="Scratching_post" type="Area2D" parent="Room" node_paths=PackedStringArray("panel_template")]
+script = ExtResource("14_7xxgu")
+panel_template = NodePath("../UI/Panels/PanelTemplate")
+
+[node name="Sprite" type="Sprite2D" parent="Room/Scratching_post"]
+position = Vector2(1016, 342)
+scale = Vector2(0.1998, 0.1998)
+texture = ExtResource("2_rsjqa")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Room/Scratching_post"]
+polygon = PackedVector2Array(919, 245, 932, 226, 965, 216, 1004, 218, 1033, 230, 1039, 246, 1035, 261, 1035, 270, 1019, 281, 995, 286, 994, 454, 1024, 454, 1023, 407, 1025, 393, 1044, 380, 1074, 374, 1098, 376, 1117, 386, 1125, 400, 1124, 411, 1126, 410, 1125, 457, 1135, 468, 1137, 480, 1135, 489, 1127, 498, 1114, 506, 1091, 512, 1061, 513, 913, 513, 912, 503, 939, 455, 961, 455, 962, 284, 939, 279, 924, 269, 923, 262)
+
+[node name="XD" type="Node2D" parent="Room"]
+script = ExtResource("36_iupy0")
+
+[node name="Button" type="Button" parent="Room/XD"]
+offset_left = 13.0
+offset_top = 118.0
+offset_right = 116.0
+offset_bottom = 166.0
+text = "HAJSSSSS"
+
+[node name="Button2" type="Button" parent="Room/XD"]
+offset_left = 14.0
+offset_top = 169.0
+offset_right = 115.0
+offset_bottom = 215.0
+text = "EXPPPPP"
+
+[node name="Bath" type="Node2D" parent="Room" node_paths=PackedStringArray("panel_template", "panel_to_show")]
+script = ExtResource("8_4jdki")
+panel_template = NodePath("../UI/Panels/PanelTemplate")
+panel_to_show = NodePath("../../Bath")
+
+[node name="BathObject" type="Node2D" parent="Room/Bath"]
+position = Vector2(-458, -2)
+
+[node name="PlaceholderImageBath" type="Sprite2D" parent="Room/Bath/BathObject"]
+modulate = Color(0.60933, 0.60933, 0.60933, 1)
+position = Vector2(835, 460)
+scale = Vector2(120.125, 89.3911)
+texture = SubResource("CanvasTexture_7555d")
+
+[node name="Label" type="Label" parent="Room/Bath/BathObject"]
+offset_left = 805.0
+offset_top = 448.0
+offset_right = 886.0
+offset_bottom = 471.0
+text = "Wanna"
+
+[node name="Area2D" type="Area2D" parent="Room/Bath"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Room/Bath/Area2D"]
+position = Vector2(378, 459)
+shape = SubResource("RectangleShape2D_ymck7")
+
+[node name="Den" type="Node2D" parent="Room" node_paths=PackedStringArray("panel_template")]
+script = ExtResource("27_8vvth")
+panel_template = NodePath("../UI/Panels/PanelTemplate")
+
+[node name="DenObject" type="Node2D" parent="Room/Den"]
+
+[node name="PlaceholderImageDen" type="Sprite2D" parent="Room/Den/DenObject"]
+modulate = Color(0.60933, 0.60933, 0.60933, 1)
+position = Vector2(835, 460)
+scale = Vector2(120.125, 89.3911)
+texture = SubResource("CanvasTexture_7555d")
+
+[node name="Label" type="Label" parent="Room/Den/DenObject"]
+offset_left = 794.0
+offset_top = 446.0
+offset_right = 875.0
+offset_bottom = 469.0
+text = "Legowisko"
+
+[node name="Area2D" type="Area2D" parent="Room/Den"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Room/Den/Area2D"]
+position = Vector2(835, 460)
+shape = SubResource("RectangleShape2D_ymck7")
 
 [node name="UI" type="Node2D" parent="Room"]
 
@@ -153,8 +250,8 @@ texture = ExtResource("15_n537x")
 position = Vector2(-0.300521, 4.04146)
 scale = Vector2(0.000869187, 0.0097561)
 script = ExtResource("13_gxamd")
-fridge = NodePath("../../Panels/Fridge")
-panel_template = NodePath("../../Panels/PanelTemplate")
+fridge = NodePath("../../../../Bowl/Fridge")
+panel_template = NodePath("../../../../Bowl")
 
 [node name="Miska" type="Sprite2D" parent="Room/UI/Buttons/Bowl"]
 modulate = Color(1, 0.819608, 0.862745, 1)
@@ -331,49 +428,6 @@ position = Vector2(51, 595)
 scale = Vector2(0.124325, 0.124325)
 texture = ExtResource("24_srg2u")
 
-[node name="Fridge" type="Control" parent="Room/UI/Panels" node_paths=PackedStringArray("panel")]
-visible = false
-layout_mode = 3
-anchors_preset = 0
-script = ExtResource("14_6pba1")
-panel = NodePath("../PanelTemplate")
-
-[node name="ScrollContainer" type="ScrollContainer" parent="Room/UI/Panels/Fridge"]
-layout_mode = 0
-offset_left = 260.0
-offset_top = 197.0
-offset_right = 883.0
-offset_bottom = 613.0
-horizontal_scroll_mode = 0
-
-[node name="VBoxContainer" type="VBoxContainer" parent="Room/UI/Panels/Fridge/ScrollContainer"]
-layout_mode = 2
-size_flags_vertical = 3
-theme_override_constants/separation = 150
-
-[node name="Feed" type="TextureButton" parent="Room/UI/Panels/Fridge"]
-layout_mode = 0
-offset_left = 682.0
-offset_top = 123.0
-offset_right = 893.0
-offset_bottom = 190.0
-texture_normal = ExtResource("28_7d6xq")
-ignore_texture_size = true
-stretch_mode = 0
-
-[node name="Label" type="Label" parent="Room/UI/Panels/Fridge/Feed"]
-layout_mode = 0
-offset_left = 39.0
-offset_top = 15.0
-offset_right = 179.0
-offset_bottom = 53.0
-theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.588235)
-theme_override_constants/shadow_offset_x = 2
-theme_override_constants/shadow_offset_y = 2
-theme_override_fonts/font = ExtResource("7_8rg5e")
-theme_override_font_sizes/font_size = 33
-text = "Nakarm"
-
 [node name="LevelPrefab" parent="Room/UI/Panels" node_paths=PackedStringArray("pop_up_node", "text_level") instance=ExtResource("33_0i3x0")]
 position = Vector2(298, 200)
 pop_up_node = NodePath("../NextLevelsPopUp")
@@ -384,45 +438,12 @@ position = Vector2(230, 152)
 scale = Vector2(1.2, 1.2)
 metadata/_edit_group_ = true
 
-[node name="Scratching_post" type="Area2D" parent="Room" node_paths=PackedStringArray("panel_template")]
-script = ExtResource("14_7xxgu")
-panel_template = NodePath("../UI/Panels/PanelTemplate")
-
-[node name="Sprite" type="Sprite2D" parent="Room/Scratching_post"]
-position = Vector2(1016, 342)
-scale = Vector2(0.1998, 0.1998)
-texture = ExtResource("2_rsjqa")
-
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Room/Scratching_post"]
-polygon = PackedVector2Array(919, 245, 932, 226, 965, 216, 1004, 218, 1033, 230, 1039, 246, 1035, 261, 1035, 270, 1019, 281, 995, 286, 994, 454, 1024, 454, 1023, 407, 1025, 393, 1044, 380, 1074, 374, 1098, 376, 1117, 386, 1125, 400, 1124, 411, 1126, 410, 1125, 457, 1135, 468, 1137, 480, 1135, 489, 1127, 498, 1114, 506, 1091, 512, 1061, 513, 913, 513, 912, 503, 939, 455, 961, 455, 962, 284, 939, 279, 924, 269, 923, 262)
-
-[node name="XD" type="Node2D" parent="Room"]
-script = ExtResource("36_iupy0")
-
-[node name="Button" type="Button" parent="Room/XD"]
-offset_left = 13.0
-offset_top = 118.0
-offset_right = 116.0
-offset_bottom = 166.0
-text = "HAJSSSSS"
-
-[node name="Button2" type="Button" parent="Room/XD"]
-offset_left = 14.0
-offset_top = 169.0
-offset_right = 115.0
-offset_bottom = 215.0
-text = "EXPPPPP"
-
 [node name="ScratchingPost" type="Node2D" parent="."]
 visible = false
 
 [node name="Scene" type="Node2D" parent="ScratchingPost" node_paths=PackedStringArray("information_node")]
 script = ExtResource("37_vvil0")
 information_node = NodePath("../Information/InformationNode")
-
-[node name="Background" type="Sprite2D" parent="ScratchingPost/Scene"]
-position = Vector2(577, 322)
-texture = ExtResource("1_5tq1h")
 
 [node name="Drapak3" type="Sprite2D" parent="ScratchingPost/Scene"]
 position = Vector2(953, 356)
@@ -518,6 +539,138 @@ text = "[b]1.[/b] Zaczynaj drapanie od góry, przeciągając myszką (przytrzymu
 	[color=\"green\"]-> Zielona strzałka –[/color] drap lewym przyciskiem myszy (LPM).
 	[color=\"red\"]-> Czerwona strzałka –[/color] drap prawym przyciskiem myszy (PPM).
 [b]3.[/b] Jeśli przestaniesz, strzałka wskaże miejsce, od którego wznowić drapanie."
+
+[node name="Bowl" type="Node2D" parent="."]
+visible = false
+script = ExtResource("30_q7oku")
+
+[node name="BowlSprite" type="Sprite2D" parent="Bowl"]
+position = Vector2(994, 482)
+scale = Vector2(0.20254, 0.20254)
+texture = ExtResource("18_4lmds")
+
+[node name="Background" type="Sprite2D" parent="Bowl"]
+self_modulate = Color(1, 1, 1, 0.32549)
+position = Vector2(294.053, 374.5)
+scale = Vector2(0.799856, 1.11224)
+texture = ExtResource("10_1xqql")
+
+[node name="Fridge" type="Control" parent="Bowl" node_paths=PackedStringArray("panel")]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("14_6pba1")
+panel = NodePath("../../Room/UI/Panels/PanelTemplate")
+
+[node name="ScrollContainer" type="ScrollContainer" parent="Bowl/Fridge"]
+layout_mode = 0
+offset_left = 1.0
+offset_top = 185.0
+offset_right = 588.0
+offset_bottom = 647.0
+horizontal_scroll_mode = 0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Bowl/Fridge/ScrollContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/separation = 150
+
+[node name="Feed" type="TextureButton" parent="Bowl/Fridge"]
+layout_mode = 0
+offset_left = 383.0
+offset_top = 104.0
+offset_right = 594.0
+offset_bottom = 171.0
+texture_normal = ExtResource("28_7d6xq")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="Label" type="Label" parent="Bowl/Fridge/Feed"]
+layout_mode = 0
+offset_left = 39.0
+offset_top = 15.0
+offset_right = 179.0
+offset_bottom = 53.0
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.588235)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_fonts/font = ExtResource("7_8rg5e")
+theme_override_font_sizes/font_size = 33
+text = "Nakarm"
+
+[node name="Back" type="Node2D" parent="Bowl"]
+position = Vector2(16, 186)
+scale = Vector2(0.7, 0.7)
+metadata/_edit_group_ = true
+
+[node name="BackButton" type="TextureButton" parent="Bowl/Back"]
+offset_left = -2.0
+offset_top = 546.0
+offset_right = 104.0
+offset_bottom = 646.0
+texture_normal = ExtResource("11_5i28f")
+texture_pressed = ExtResource("11_5i28f")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="Icon" type="Sprite2D" parent="Bowl/Back"]
+position = Vector2(51, 595)
+scale = Vector2(0.124325, 0.124325)
+texture = ExtResource("24_srg2u")
+
+[node name="Bath" type="Node2D" parent="."]
+visible = false
+
+[node name="Cat" type="Node2D" parent="Bath"]
+position = Vector2(762, 401)
+scale = Vector2(0.262, 0.262)
+script = ExtResource("36_h366k")
+metadata/_edit_group_ = true
+
+[node name="Image" type="Sprite2D" parent="Bath/Cat"]
+texture_filter = 1
+position = Vector2(0, 3.05176e-05)
+texture = ExtResource("32_3rwvs")
+
+[node name="Cat" type="Area2D" parent="Bath/Cat"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Bath/Cat/Cat"]
+position = Vector2(17.175, -22.9009)
+shape = SubResource("RectangleShape2D_qyput")
+
+[node name="Soap" type="Area2D" parent="Bath"]
+position = Vector2(399, 397)
+rotation = -0.785398
+script = ExtResource("36_ie607")
+metadata/_edit_group_ = true
+
+[node name="SoapTexture" type="Sprite2D" parent="Bath/Soap"]
+modulate = Color(0.86375, 0.512772, 0.650642, 1)
+position = Vector2(3.05176e-05, 0)
+scale = Vector2(0.292611, 0.292611)
+texture = ExtResource("37_60h4w")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Bath/Soap"]
+shape = SubResource("RectangleShape2D_lxbu5")
+
+[node name="Back" type="Node2D" parent="Bath"]
+position = Vector2(16, 186)
+scale = Vector2(0.7, 0.7)
+metadata/_edit_group_ = true
+
+[node name="BackButton" type="TextureButton" parent="Bath/Back"]
+offset_left = -2.0
+offset_top = 546.0
+offset_right = 104.0
+offset_bottom = 646.0
+texture_normal = ExtResource("11_5i28f")
+texture_pressed = ExtResource("11_5i28f")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="Icon" type="Sprite2D" parent="Bath/Back"]
+position = Vector2(51, 595)
+scale = Vector2(0.124325, 0.124325)
+texture = ExtResource("24_srg2u")
 
 [node name="TopPanel" type="Node2D" parent="."]
 
@@ -707,6 +860,17 @@ text = "10000"
 label_settings = SubResource("LabelSettings_03gin")
 
 [connection signal="timeout" from="Room/Cat/EatTimer" to="Room/Cat" method="_on_eat_timer_timeout"]
+[connection signal="input_event" from="Room/Scratching_post" to="Room/Scratching_post" method="_on_input_event"]
+[connection signal="mouse_entered" from="Room/Scratching_post" to="Room/Scratching_post" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="Room/Scratching_post" to="Room/Scratching_post" method="_on_mouse_exited"]
+[connection signal="pressed" from="Room/XD/Button" to="Room/XD" method="_on_button_pressed"]
+[connection signal="pressed" from="Room/XD/Button2" to="Room/XD" method="_on_button_2_pressed"]
+[connection signal="input_event" from="Room/Bath/Area2D" to="Room/Bath" method="_on_area_2d_input_event"]
+[connection signal="mouse_entered" from="Room/Bath/Area2D" to="Room/Bath" method="_on_area_2d_mouse_entered"]
+[connection signal="mouse_exited" from="Room/Bath/Area2D" to="Room/Bath" method="_on_area_2d_mouse_exited"]
+[connection signal="input_event" from="Room/Den/Area2D" to="Room/Den" method="_on_area_2d_input_event"]
+[connection signal="mouse_entered" from="Room/Den/Area2D" to="Room/Den" method="_on_area_2d_mouse_entered"]
+[connection signal="mouse_exited" from="Room/Den/Area2D" to="Room/Den" method="_on_area_2d_mouse_exited"]
 [connection signal="mouse_entered" from="Room/UI/Buttons/SettingsButton/Button" to="Room/UI/Buttons/SettingsButton" method="_on_button_mouse_entered"]
 [connection signal="mouse_exited" from="Room/UI/Buttons/SettingsButton/Button" to="Room/UI/Buttons/SettingsButton" method="_on_button_mouse_exited"]
 [connection signal="pressed" from="Room/UI/Buttons/SettingsButton/Button" to="Room/UI/Buttons/SettingsButton" method="_on_button_pressed"]
@@ -730,14 +894,6 @@ label_settings = SubResource("LabelSettings_03gin")
 [connection signal="mouse_entered" from="Room/UI/Panels/Shop/Foods/Back/BackButton" to="Room/UI/Panels/Shop/Foods/Back" method="_on_button_mouse_entered"]
 [connection signal="mouse_exited" from="Room/UI/Panels/Shop/Foods/Back/BackButton" to="Room/UI/Panels/Shop/Foods/Back" method="_on_button_mouse_exited"]
 [connection signal="pressed" from="Room/UI/Panels/Shop/Foods/Back/BackButton" to="Room/UI/Panels/Shop" method="_on_back_button_pressed"]
-[connection signal="mouse_entered" from="Room/UI/Panels/Fridge/Feed" to="Room/UI/Panels/Fridge" method="_on_feed_mouse_entered"]
-[connection signal="mouse_exited" from="Room/UI/Panels/Fridge/Feed" to="Room/UI/Panels/Fridge" method="_on_feed_mouse_exited"]
-[connection signal="pressed" from="Room/UI/Panels/Fridge/Feed" to="Room/UI/Panels/Fridge" method="_on_feed_pressed"]
-[connection signal="input_event" from="Room/Scratching_post" to="Room/Scratching_post" method="_on_input_event"]
-[connection signal="mouse_entered" from="Room/Scratching_post" to="Room/Scratching_post" method="_on_mouse_entered"]
-[connection signal="mouse_exited" from="Room/Scratching_post" to="Room/Scratching_post" method="_on_mouse_exited"]
-[connection signal="pressed" from="Room/XD/Button" to="Room/XD" method="_on_button_pressed"]
-[connection signal="pressed" from="Room/XD/Button2" to="Room/XD" method="_on_button_2_pressed"]
 [connection signal="mouse_entered" from="ScratchingPost/PlayerScratching" to="ScratchingPost/Scene" method="_on_player_scratching_mouse_entered"]
 [connection signal="mouse_exited" from="ScratchingPost/PlayerScratching" to="ScratchingPost/Scene" method="_on_player_scratching_mouse_exited"]
 [connection signal="mouse_entered" from="ScratchingPost/Back/BackButton" to="ScratchingPost/Scene" method="_on_back_button_mouse_entered"]
@@ -745,6 +901,20 @@ label_settings = SubResource("LabelSettings_03gin")
 [connection signal="pressed" from="ScratchingPost/Back/BackButton" to="ScratchingPost/Scene" method="_on_back_button_pressed"]
 [connection signal="mouse_entered" from="ScratchingPost/Information/InformationButton" to="ScratchingPost/Scene" method="_on_information_button_mouse_entered"]
 [connection signal="mouse_exited" from="ScratchingPost/Information/InformationButton" to="ScratchingPost/Scene" method="_on_information_button_mouse_exited"]
+[connection signal="mouse_entered" from="Bowl/Fridge/Feed" to="Bowl/Fridge" method="_on_feed_mouse_entered"]
+[connection signal="mouse_exited" from="Bowl/Fridge/Feed" to="Bowl/Fridge" method="_on_feed_mouse_exited"]
+[connection signal="pressed" from="Bowl/Fridge/Feed" to="Bowl/Fridge" method="_on_feed_pressed"]
+[connection signal="mouse_entered" from="Bowl/Back/BackButton" to="Bowl" method="_on_back_button_mouse_entered"]
+[connection signal="mouse_exited" from="Bowl/Back/BackButton" to="Bowl" method="_on_back_button_mouse_exited"]
+[connection signal="pressed" from="Bowl/Back/BackButton" to="Bowl" method="_on_back_button_pressed"]
+[connection signal="area_entered" from="Bath/Cat/Cat" to="Bath/Cat" method="_on_cat_area_entered"]
+[connection signal="area_exited" from="Bath/Cat/Cat" to="Bath/Cat" method="_on_cat_area_exited"]
+[connection signal="input_event" from="Bath/Soap" to="Bath/Soap" method="_on_input_event"]
+[connection signal="mouse_entered" from="Bath/Soap" to="Bath/Soap" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="Bath/Soap" to="Bath/Soap" method="_on_mouse_exited"]
+[connection signal="mouse_entered" from="Bath/Back/BackButton" to="Bath/Cat" method="_on_back_button_mouse_entered"]
+[connection signal="mouse_exited" from="Bath/Back/BackButton" to="Bath/Cat" method="_on_back_button_mouse_exited"]
+[connection signal="pressed" from="Bath/Back/BackButton" to="Bath/Cat" method="_on_back_button_pressed"]
 [connection signal="timeout" from="TopPanel/Needs/Timer" to="TopPanel/Needs" method="_on_timer_timeout"]
 [connection signal="input_event" from="TopPanel/Level" to="TopPanel/Level" method="_on_input_event"]
 [connection signal="mouse_entered" from="TopPanel/Level" to="TopPanel/Level" method="_on_mouse_entered"]

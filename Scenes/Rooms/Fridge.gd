@@ -58,9 +58,11 @@ func _on_feed_pressed():
 		visible = false
 		panel.visible = false
 		added_to_bowl = false
-		if(VariableManager.needs["hungry"] < 50) :
+		if(VariableManager.needs["hungry"] < 80) :
 			# Czas animacji podejścia kota do miski (może taka będzie)
 			SignalManager.go_to_bowl.emit();
+		$"..".visible = false;
+		$"../../Room".visible = true
 
 func _on_add_to_bowl(hungry_points) :
 	VariableManager.hungry_points_in_bowl += hungry_points.to_int()
