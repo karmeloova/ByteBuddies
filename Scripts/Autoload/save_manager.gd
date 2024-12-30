@@ -1,6 +1,88 @@
 extends Node
 var save_game;
 var save_path = "user://GameSave.save"
+
+var cat_jump = {
+	"name" : "cat_jump",
+	20 : false,
+	50 : false,
+	100 : false,
+	200: false,
+	300: false
+}
+#MAM rysunek jest
+var snack_navigator = {
+	"name" : "snack_navigator",
+	100 : false,
+	250 : false,
+	400 : false,
+	550 : false,
+	700 : false
+}
+#MAM rysunek jest
+var fruit_catcher = {
+	"name" : "fruit_catcher",
+	25 : false,
+	50 : false,
+	100 : false,
+	150 : false,
+	200 : false
+}
+#MAM rysunek jest
+var pet_code = {
+	"name" : "pet_code",
+	30 : false,
+	60 : false,
+	100 : false,
+	150 : false,
+	200 : false
+}
+#MAM rysunek jest
+var eating = {
+	"name" : "eating",
+	1 : false,
+	10 : false,
+	25 : false,
+	50 : false,
+	75 : false
+}
+#MAM rysunek jest 
+var playing_games = {
+	"name" : "playing_games",
+	1 : false,
+	10 : false,
+	25 : false,
+	50 : false,
+	75 : false
+}
+#MAM rysunek jest
+var scratching = {
+	"name" : "scratching",
+	1 : false,
+	10 : false,
+	25 : false,
+	50 : false,
+	75 : false
+}
+#MAM rysunek jest
+var sleeping = {
+	"name" : "sleeping",
+	1 : false,
+	10 : false,
+	25 : false,
+	50 : false,
+	75 : false
+}
+#MAM rysunek jest
+var cleaning = {
+	"name" : "cleaning",
+	1 : false,
+	10 : false,
+	25 : false,
+	50 : false,
+	75 : false
+}
+
 var save_data = {
 	"hungry" : 100,
 	"play" : 100,
@@ -13,7 +95,16 @@ var save_data = {
 	"snack_navigator_high_score" : 0,
 	"cat_jump_high_score" : 0,
 	"pet_code_high_score" : 0,
-	"fruit_catcher_high_score" : 0
+	"fruit_catcher_high_score" : 0,
+	"cat_jump_achievementes" : cat_jump,
+	"snack_navigator_achievementes" : snack_navigator,
+	"fruit_catcher_achievementes" : fruit_catcher,
+	"pet_code_achievementes" : pet_code,
+	"eating_achievementes" : eating,
+	"playing_games_achievementes" : playing_games,
+	"scratching_achievementes" : scratching,
+	"sleeping_achievementes" : sleeping,
+	"cleaning_achievementes" : cleaning
 }
 
 # Called when the node enters the scene tree for the first time.
@@ -34,6 +125,16 @@ func _ready():
 	VariableManager.cat_jump_high_score = save_data["cat_jump_high_score"]
 	VariableManager.pet_code_high_score = save_data["pet_code_high_score"]
 	VariableManager.fruit_catcher_high_score = save_data["fruit_catcher_high_score"]
+	
+	Achievements.cat_jump = save_data["cat_jump_achievementes"]
+	Achievements.snack_navigator = save_data["snack_navigator_achievementes"]
+	Achievements.fruit_catcher = save_data["fruit_catcher_achievementes"]
+	Achievements.pet_code = save_data["pet_code_achievementes"]
+	Achievements.eating = save_data["eating_achievementes"]
+	Achievements.playing_games = save_data["playing_games_achievementes"]
+	Achievements.scratching = save_data["scratching_achievementes"]
+	Achievements.sleeping = save_data["sleeping_achievementes"]
+	Achievements.cleaning = save_data["cleaning_achievementes"]
 	
 func create_save():
 	# Otwieramy plik do zapisu
@@ -67,5 +168,14 @@ func _notification(what):
 		save("cat_jump_high_score", VariableManager.cat_jump_high_score)
 		save("pet_code_high_score", VariableManager.pet_code_high_score)
 		save("fruit_catcher_high_score", VariableManager.fruit_catcher_high_score)
+		save("cat_jump_achievementes", Achievements.cat_jump)
+		save("snack_navigator_achievementes", Achievements.snack_navigator)
+		save("fruit_catcher_achievementes", Achievements.fruit_catcher)
+		save("pet_code_achievementes", Achievements.pet_code)
+		save("eating_achievementes", Achievements.eating)
+		save("playing_games_achievementes", Achievements.playing_games)
+		save("scratching_achievementes", Achievements.scratching)
+		save("sleeping_achievementes", Achievements.scratching)
+		save("cleaning_achievementes", Achievements.cleaning)
 
 #ścieżka do pliku - C:\Users\xxfea\AppData\Roaming\Godot\app_userdata\ByteBuddies

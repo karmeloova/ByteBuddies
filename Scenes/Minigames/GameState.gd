@@ -46,4 +46,5 @@ func _on_lose_game() :
 	if(score > VariableManager.snack_navigator_high_score) :
 		VariableManager.snack_navigator_high_score = score
 	VariableManager.coins += money
+	SignalManager.unlock_achievement.emit(score, "snack_navigator", null)
 	SignalManager.add_exp.emit(score/5)

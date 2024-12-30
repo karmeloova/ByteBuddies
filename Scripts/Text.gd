@@ -30,6 +30,7 @@ func _on_lose_game() :
 	if(points > VariableManager.fruit_catcher_high_score) :
 		VariableManager.fruit_catcher_high_score = points
 	VariableManager.coins += coins;
+	SignalManager.unlock_achievement.emit(points, "fruit_catcher", null)
 	SignalManager.add_exp.emit(points/2)
 
 func _on_save_data() :

@@ -1,4 +1,4 @@
-[gd_scene load_steps=56 format=3 uid="uid://br5jh3sh28ig4"]
+[gd_scene load_steps=59 format=3 uid="uid://br5jh3sh28ig4"]
 
 [ext_resource type="Texture2D" uid="uid://ddmrcvq0prt24" path="res://Images/Backgrounds/Tlov1.png" id="1_5tq1h"]
 [ext_resource type="Script" path="res://Scenes/Rooms/MainRoom.gd" id="1_80uij"]
@@ -35,7 +35,10 @@
 [ext_resource type="Texture2D" uid="uid://6adv5bnfl4ff" path="res://Images/UI/Buttons/Back.png" id="24_srg2u"]
 [ext_resource type="Script" path="res://Scenes/Rooms/Den.gd" id="27_8vvth"]
 [ext_resource type="Texture2D" uid="uid://bowy12qgsf8t3" path="res://Images/UI/Buttons/Button.png" id="28_7d6xq"]
+[ext_resource type="PackedScene" uid="uid://dgupbxjorf75y" path="res://Scenes/Prefabs/UI/Achievement.tscn" id="29_55sfc"]
+[ext_resource type="Script" path="res://Scenes/Rooms/AchievmentesButtons.gd" id="29_aywkh"]
 [ext_resource type="Script" path="res://Scenes/Rooms/BowlNode.gd" id="30_q7oku"]
+[ext_resource type="Script" path="res://Scenes/Rooms/Backach.gd" id="31_3dgfr"]
 [ext_resource type="Texture2D" uid="uid://ci8h24p34ui0e" path="res://Images/UI/Buttons/Grafika_bez_nazwy 3.png" id="31_u0620"]
 [ext_resource type="Texture2D" uid="uid://uhifpi6dj3ce" path="res://Images/Cats/Cat.png" id="32_3rwvs"]
 [ext_resource type="Script" path="res://Scenes/Rooms/Cat.gd" id="32_38vco"]
@@ -271,6 +274,32 @@ visible = false
 position = Vector2(-215.5, -479.2)
 polygon = PackedVector2Array(172, 454, 185, 447, 212, 443, 236, 444, 254, 451, 260, 458, 265, 478, 268, 488, 267, 495, 258, 501, 245, 506, 212, 509, 180, 504, 165, 496, 163, 486)
 
+[node name="AchivementsButton" type="Node2D" parent="Room/UI/Buttons" node_paths=PackedStringArray("template", "panel")]
+position = Vector2(-0.423077, 0.158537)
+scale = Vector2(0.000782269, 0.00878049)
+script = ExtResource("11_g216v")
+template = NodePath("../../Panels/PanelTemplate")
+panel = NodePath("../../Panels/Achievmentes")
+
+[node name="Button" type="TextureButton" parent="Room/UI/Buttons/AchivementsButton"]
+offset_left = -2.0
+offset_top = 546.0
+offset_right = 104.0
+offset_bottom = 646.0
+texture_normal = ExtResource("11_5i28f")
+texture_pressed = ExtResource("11_5i28f")
+ignore_texture_size = true
+stretch_mode = 0
+metadata/_edit_use_anchors_ = true
+
+[node name="Icon" type="Label" parent="Room/UI/Buttons/AchivementsButton"]
+offset_left = 24.4444
+offset_top = 566.666
+offset_right = 77.4444
+offset_bottom = 621.666
+theme_override_font_sizes/font_size = 40
+text = "OS"
+
 [node name="Panels" type="Node2D" parent="Room/UI"]
 
 [node name="PanelTemplate" type="Node2D" parent="Room/UI/Panels"]
@@ -437,6 +466,405 @@ text_level = NodePath("../../../../TopPanel/Level/CurrentLevel")
 position = Vector2(230, 152)
 scale = Vector2(1.2, 1.2)
 metadata/_edit_group_ = true
+
+[node name="Achievmentes" type="Node2D" parent="Room/UI/Panels"]
+visible = false
+
+[node name="AchievementsButtons" type="Node2D" parent="Room/UI/Panels/Achievmentes" node_paths=PackedStringArray("achievmentes_nodes")]
+position = Vector2(15, -19)
+script = ExtResource("29_aywkh")
+achievmentes_nodes = NodePath("../AchievmentesNodes")
+metadata/_edit_group_ = true
+
+[node name="CatJump" type="Button" parent="Room/UI/Panels/Achievmentes/AchievementsButtons"]
+offset_left = 321.0
+offset_top = 196.0
+offset_right = 418.0
+offset_bottom = 249.0
+text = "CatJump"
+
+[node name="SnackNavigator" type="Button" parent="Room/UI/Panels/Achievmentes/AchievementsButtons"]
+offset_left = 438.0
+offset_top = 196.0
+offset_right = 535.0
+offset_bottom = 249.0
+text = "SnackNav"
+
+[node name="PetCode" type="Button" parent="Room/UI/Panels/Achievmentes/AchievementsButtons"]
+offset_left = 558.0
+offset_top = 196.0
+offset_right = 655.0
+offset_bottom = 249.0
+text = "PetCode"
+
+[node name="FruitCatcher" type="Button" parent="Room/UI/Panels/Achievmentes/AchievementsButtons"]
+offset_left = 321.0
+offset_top = 260.0
+offset_right = 418.0
+offset_bottom = 313.0
+text = "FruitCatch"
+
+[node name="Feeding" type="Button" parent="Room/UI/Panels/Achievmentes/AchievementsButtons"]
+offset_left = 437.0
+offset_top = 259.0
+offset_right = 534.0
+offset_bottom = 312.0
+text = "Eating"
+
+[node name="Playing" type="Button" parent="Room/UI/Panels/Achievmentes/AchievementsButtons"]
+offset_left = 557.0
+offset_top = 258.0
+offset_right = 654.0
+offset_bottom = 311.0
+text = "Playing"
+
+[node name="Scratching" type="Button" parent="Room/UI/Panels/Achievmentes/AchievementsButtons"]
+offset_left = 321.0
+offset_top = 323.0
+offset_right = 418.0
+offset_bottom = 376.0
+text = "Scratching"
+
+[node name="Sleeping" type="Button" parent="Room/UI/Panels/Achievmentes/AchievementsButtons"]
+offset_left = 436.0
+offset_top = 322.0
+offset_right = 533.0
+offset_bottom = 375.0
+text = "Sleeping"
+
+[node name="Cleaning" type="Button" parent="Room/UI/Panels/Achievmentes/AchievementsButtons"]
+offset_left = 557.0
+offset_top = 321.0
+offset_right = 654.0
+offset_bottom = 374.0
+text = "Cleaning
+"
+
+[node name="AchievmentesNodes" type="Node2D" parent="Room/UI/Panels/Achievmentes"]
+
+[node name="CatJump" type="Node2D" parent="Room/UI/Panels/Achievmentes/AchievmentesNodes"]
+visible = false
+position = Vector2(35, 3)
+metadata/_edit_group_ = true
+
+[node name="Achievement" parent="Room/UI/Panels/Achievmentes/AchievmentesNodes/CatJump" instance=ExtResource("29_55sfc")]
+position = Vector2(321, 196)
+how_many_points = 20
+
+[node name="Achievement2" parent="Room/UI/Panels/Achievmentes/AchievmentesNodes/CatJump" instance=ExtResource("29_55sfc")]
+position = Vector2(451, 196)
+how_many_points = 50
+achievement_number = 1
+
+[node name="Achievement3" parent="Room/UI/Panels/Achievmentes/AchievmentesNodes/CatJump" instance=ExtResource("29_55sfc")]
+position = Vector2(583, 196)
+how_many_points = 100
+achievement_number = 2
+
+[node name="Achievement4" parent="Room/UI/Panels/Achievmentes/AchievmentesNodes/CatJump" instance=ExtResource("29_55sfc")]
+position = Vector2(715, 196)
+how_many_points = 200
+achievement_number = 3
+
+[node name="Achievement5" parent="Room/UI/Panels/Achievmentes/AchievmentesNodes/CatJump" instance=ExtResource("29_55sfc")]
+position = Vector2(321, 325)
+how_many_points = 300
+achievement_number = 4
+
+[node name="SnackNavigator" type="Node2D" parent="Room/UI/Panels/Achievmentes/AchievmentesNodes"]
+visible = false
+position = Vector2(35, 3)
+metadata/_edit_group_ = true
+
+[node name="Achievement" parent="Room/UI/Panels/Achievmentes/AchievmentesNodes/SnackNavigator" instance=ExtResource("29_55sfc")]
+position = Vector2(321, 196)
+how_many_points = 100
+achivement_category = 1
+
+[node name="Achievement2" parent="Room/UI/Panels/Achievmentes/AchievmentesNodes/SnackNavigator" instance=ExtResource("29_55sfc")]
+position = Vector2(451, 196)
+how_many_points = 250
+achivement_category = 1
+achievement_number = 1
+
+[node name="Achievement3" parent="Room/UI/Panels/Achievmentes/AchievmentesNodes/SnackNavigator" instance=ExtResource("29_55sfc")]
+position = Vector2(583, 196)
+how_many_points = 400
+achivement_category = 1
+achievement_number = 2
+
+[node name="Achievement4" parent="Room/UI/Panels/Achievmentes/AchievmentesNodes/SnackNavigator" instance=ExtResource("29_55sfc")]
+position = Vector2(715, 196)
+how_many_points = 550
+achivement_category = 1
+achievement_number = 3
+
+[node name="Achievement5" parent="Room/UI/Panels/Achievmentes/AchievmentesNodes/SnackNavigator" instance=ExtResource("29_55sfc")]
+position = Vector2(321, 325)
+how_many_points = 700
+achivement_category = 1
+achievement_number = 4
+
+[node name="PetCode" type="Node2D" parent="Room/UI/Panels/Achievmentes/AchievmentesNodes"]
+visible = false
+position = Vector2(35, 3)
+metadata/_edit_group_ = true
+
+[node name="Achievement" parent="Room/UI/Panels/Achievmentes/AchievmentesNodes/PetCode" instance=ExtResource("29_55sfc")]
+position = Vector2(321, 196)
+how_many_points = 30
+achivement_category = 3
+
+[node name="Achievement2" parent="Room/UI/Panels/Achievmentes/AchievmentesNodes/PetCode" instance=ExtResource("29_55sfc")]
+position = Vector2(451, 196)
+how_many_points = 60
+achivement_category = 3
+achievement_number = 1
+
+[node name="Achievement3" parent="Room/UI/Panels/Achievmentes/AchievmentesNodes/PetCode" instance=ExtResource("29_55sfc")]
+position = Vector2(583, 196)
+how_many_points = 100
+achivement_category = 3
+achievement_number = 2
+
+[node name="Achievement4" parent="Room/UI/Panels/Achievmentes/AchievmentesNodes/PetCode" instance=ExtResource("29_55sfc")]
+position = Vector2(715, 196)
+how_many_points = 150
+achivement_category = 3
+achievement_number = 3
+
+[node name="Achievement5" parent="Room/UI/Panels/Achievmentes/AchievmentesNodes/PetCode" instance=ExtResource("29_55sfc")]
+position = Vector2(321, 325)
+how_many_points = 200
+achivement_category = 3
+achievement_number = 4
+
+[node name="FruitCatcher" type="Node2D" parent="Room/UI/Panels/Achievmentes/AchievmentesNodes"]
+visible = false
+position = Vector2(35, 3)
+metadata/_edit_group_ = true
+
+[node name="Achievement" parent="Room/UI/Panels/Achievmentes/AchievmentesNodes/FruitCatcher" instance=ExtResource("29_55sfc")]
+position = Vector2(321, 196)
+how_many_points = 25
+achivement_category = 2
+
+[node name="Achievement2" parent="Room/UI/Panels/Achievmentes/AchievmentesNodes/FruitCatcher" instance=ExtResource("29_55sfc")]
+position = Vector2(451, 196)
+how_many_points = 50
+achivement_category = 2
+achievement_number = 1
+
+[node name="Achievement3" parent="Room/UI/Panels/Achievmentes/AchievmentesNodes/FruitCatcher" instance=ExtResource("29_55sfc")]
+position = Vector2(583, 196)
+how_many_points = 100
+achivement_category = 2
+achievement_number = 2
+
+[node name="Achievement4" parent="Room/UI/Panels/Achievmentes/AchievmentesNodes/FruitCatcher" instance=ExtResource("29_55sfc")]
+position = Vector2(715, 196)
+how_many_points = 150
+achivement_category = 2
+achievement_number = 3
+
+[node name="Achievement5" parent="Room/UI/Panels/Achievmentes/AchievmentesNodes/FruitCatcher" instance=ExtResource("29_55sfc")]
+position = Vector2(321, 325)
+how_many_points = 200
+achivement_category = 2
+achievement_number = 4
+
+[node name="Feeding" type="Node2D" parent="Room/UI/Panels/Achievmentes/AchievmentesNodes"]
+visible = false
+position = Vector2(35, 3)
+metadata/_edit_group_ = true
+
+[node name="Achievement" parent="Room/UI/Panels/Achievmentes/AchievmentesNodes/Feeding" instance=ExtResource("29_55sfc")]
+position = Vector2(321, 196)
+how_many_points = 1
+achivement_category = 4
+
+[node name="Achievement2" parent="Room/UI/Panels/Achievmentes/AchievmentesNodes/Feeding" instance=ExtResource("29_55sfc")]
+position = Vector2(451, 196)
+how_many_points = 10
+achivement_category = 4
+achievement_number = 1
+
+[node name="Achievement3" parent="Room/UI/Panels/Achievmentes/AchievmentesNodes/Feeding" instance=ExtResource("29_55sfc")]
+position = Vector2(583, 196)
+how_many_points = 25
+achivement_category = 4
+achievement_number = 2
+
+[node name="Achievement4" parent="Room/UI/Panels/Achievmentes/AchievmentesNodes/Feeding" instance=ExtResource("29_55sfc")]
+position = Vector2(715, 196)
+how_many_points = 50
+achivement_category = 4
+achievement_number = 3
+
+[node name="Achievement5" parent="Room/UI/Panels/Achievmentes/AchievmentesNodes/Feeding" instance=ExtResource("29_55sfc")]
+position = Vector2(321, 325)
+how_many_points = 75
+achivement_category = 4
+achievement_number = 4
+
+[node name="Playing" type="Node2D" parent="Room/UI/Panels/Achievmentes/AchievmentesNodes"]
+visible = false
+position = Vector2(35, 3)
+metadata/_edit_group_ = true
+
+[node name="Achievement" parent="Room/UI/Panels/Achievmentes/AchievmentesNodes/Playing" instance=ExtResource("29_55sfc")]
+position = Vector2(321, 196)
+how_many_points = 1
+achivement_category = 5
+
+[node name="Achievement2" parent="Room/UI/Panels/Achievmentes/AchievmentesNodes/Playing" instance=ExtResource("29_55sfc")]
+position = Vector2(451, 196)
+how_many_points = 10
+achivement_category = 5
+achievement_number = 1
+
+[node name="Achievement3" parent="Room/UI/Panels/Achievmentes/AchievmentesNodes/Playing" instance=ExtResource("29_55sfc")]
+position = Vector2(583, 196)
+how_many_points = 25
+achivement_category = 5
+achievement_number = 2
+
+[node name="Achievement4" parent="Room/UI/Panels/Achievmentes/AchievmentesNodes/Playing" instance=ExtResource("29_55sfc")]
+position = Vector2(715, 196)
+how_many_points = 50
+achivement_category = 5
+achievement_number = 3
+
+[node name="Achievement5" parent="Room/UI/Panels/Achievmentes/AchievmentesNodes/Playing" instance=ExtResource("29_55sfc")]
+position = Vector2(321, 325)
+how_many_points = 75
+achivement_category = 5
+achievement_number = 4
+
+[node name="Scratching" type="Node2D" parent="Room/UI/Panels/Achievmentes/AchievmentesNodes"]
+visible = false
+position = Vector2(35, 3)
+metadata/_edit_group_ = true
+
+[node name="Achievement" parent="Room/UI/Panels/Achievmentes/AchievmentesNodes/Scratching" instance=ExtResource("29_55sfc")]
+position = Vector2(321, 196)
+how_many_points = 1
+achivement_category = 6
+
+[node name="Achievement2" parent="Room/UI/Panels/Achievmentes/AchievmentesNodes/Scratching" instance=ExtResource("29_55sfc")]
+position = Vector2(451, 196)
+how_many_points = 10
+achivement_category = 6
+achievement_number = 1
+
+[node name="Achievement3" parent="Room/UI/Panels/Achievmentes/AchievmentesNodes/Scratching" instance=ExtResource("29_55sfc")]
+position = Vector2(583, 196)
+how_many_points = 25
+achivement_category = 6
+achievement_number = 2
+
+[node name="Achievement4" parent="Room/UI/Panels/Achievmentes/AchievmentesNodes/Scratching" instance=ExtResource("29_55sfc")]
+position = Vector2(715, 196)
+how_many_points = 50
+achivement_category = 6
+achievement_number = 3
+
+[node name="Achievement5" parent="Room/UI/Panels/Achievmentes/AchievmentesNodes/Scratching" instance=ExtResource("29_55sfc")]
+position = Vector2(321, 325)
+how_many_points = 75
+achivement_category = 6
+achievement_number = 4
+
+[node name="Sleeping" type="Node2D" parent="Room/UI/Panels/Achievmentes/AchievmentesNodes"]
+visible = false
+position = Vector2(35, 3)
+metadata/_edit_group_ = true
+
+[node name="Achievement" parent="Room/UI/Panels/Achievmentes/AchievmentesNodes/Sleeping" instance=ExtResource("29_55sfc")]
+position = Vector2(321, 196)
+how_many_points = 1
+achivement_category = 7
+
+[node name="Achievement2" parent="Room/UI/Panels/Achievmentes/AchievmentesNodes/Sleeping" instance=ExtResource("29_55sfc")]
+position = Vector2(451, 196)
+how_many_points = 10
+achivement_category = 7
+achievement_number = 1
+
+[node name="Achievement3" parent="Room/UI/Panels/Achievmentes/AchievmentesNodes/Sleeping" instance=ExtResource("29_55sfc")]
+position = Vector2(583, 196)
+how_many_points = 25
+achivement_category = 7
+achievement_number = 2
+
+[node name="Achievement4" parent="Room/UI/Panels/Achievmentes/AchievmentesNodes/Sleeping" instance=ExtResource("29_55sfc")]
+position = Vector2(715, 196)
+how_many_points = 50
+achivement_category = 7
+achievement_number = 3
+
+[node name="Achievement5" parent="Room/UI/Panels/Achievmentes/AchievmentesNodes/Sleeping" instance=ExtResource("29_55sfc")]
+position = Vector2(321, 325)
+how_many_points = 75
+achivement_category = 7
+achievement_number = 4
+
+[node name="Cleaning" type="Node2D" parent="Room/UI/Panels/Achievmentes/AchievmentesNodes"]
+visible = false
+position = Vector2(35, 3)
+metadata/_edit_group_ = true
+
+[node name="Achievement" parent="Room/UI/Panels/Achievmentes/AchievmentesNodes/Cleaning" instance=ExtResource("29_55sfc")]
+position = Vector2(321, 196)
+how_many_points = 1
+achivement_category = 8
+
+[node name="Achievement2" parent="Room/UI/Panels/Achievmentes/AchievmentesNodes/Cleaning" instance=ExtResource("29_55sfc")]
+position = Vector2(451, 196)
+how_many_points = 10
+achivement_category = 8
+achievement_number = 1
+
+[node name="Achievement3" parent="Room/UI/Panels/Achievmentes/AchievmentesNodes/Cleaning" instance=ExtResource("29_55sfc")]
+position = Vector2(583, 196)
+how_many_points = 25
+achivement_category = 8
+achievement_number = 2
+
+[node name="Achievement4" parent="Room/UI/Panels/Achievmentes/AchievmentesNodes/Cleaning" instance=ExtResource("29_55sfc")]
+position = Vector2(715, 196)
+how_many_points = 50
+achivement_category = 8
+achievement_number = 3
+
+[node name="Achievement5" parent="Room/UI/Panels/Achievmentes/AchievmentesNodes/Cleaning" instance=ExtResource("29_55sfc")]
+position = Vector2(321, 325)
+how_many_points = 75
+achivement_category = 8
+achievement_number = 4
+
+[node name="Back" type="Node2D" parent="Room/UI/Panels/Achievmentes" node_paths=PackedStringArray("achievements_node")]
+visible = false
+position = Vector2(254, -264)
+scale = Vector2(0.7, 0.7)
+script = ExtResource("31_3dgfr")
+achievements_node = NodePath("../AchievmentesNodes")
+metadata/_edit_group_ = true
+
+[node name="BackButton" type="TextureButton" parent="Room/UI/Panels/Achievmentes/Back"]
+offset_left = -2.0
+offset_top = 546.0
+offset_right = 104.0
+offset_bottom = 646.0
+texture_normal = ExtResource("11_5i28f")
+texture_pressed = ExtResource("11_5i28f")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="Icon" type="Sprite2D" parent="Room/UI/Panels/Achievmentes/Back"]
+position = Vector2(51, 595)
+scale = Vector2(0.124325, 0.124325)
+texture = ExtResource("24_srg2u")
 
 [node name="ScratchingPost" type="Node2D" parent="."]
 visible = false
@@ -694,10 +1122,10 @@ metadata/_edit_group_ = true
 
 [node name="TextureProgressBar" type="TextureProgressBar" parent="TopPanel/Needs/Hungry"]
 modulate = Color(0.933333, 0.933333, 0.933333, 1)
-offset_left = -245.0
-offset_top = -205.0
-offset_right = 193.0
-offset_bottom = 201.0
+offset_left = -241.0
+offset_top = -201.0
+offset_right = 183.0
+offset_bottom = 196.0
 fill_mode = 3
 nine_patch_stretch = true
 texture_progress = ExtResource("7_8l0el")
@@ -718,10 +1146,10 @@ scale = Vector2(0.9, 0.9)
 
 [node name="TextureProgressBar" type="TextureProgressBar" parent="TopPanel/Needs/Play"]
 modulate = Color(0.933333, 0.933333, 0.933333, 1)
-offset_left = -245.0
-offset_top = -205.0
-offset_right = 193.0
-offset_bottom = 201.0
+offset_left = -241.0
+offset_top = -201.0
+offset_right = 183.0
+offset_bottom = 196.0
 fill_mode = 3
 nine_patch_stretch = true
 texture_progress = ExtResource("7_8l0el")
@@ -742,10 +1170,10 @@ scale = Vector2(0.9, 0.9)
 
 [node name="TextureProgressBar" type="TextureProgressBar" parent="TopPanel/Needs/Scratch"]
 modulate = Color(0.93408, 0.93408, 0.93408, 1)
-offset_left = -245.0
-offset_top = -205.0
-offset_right = 193.0
-offset_bottom = 201.0
+offset_left = -241.0
+offset_top = -201.0
+offset_right = 183.0
+offset_bottom = 196.0
 fill_mode = 3
 nine_patch_stretch = true
 texture_progress = ExtResource("7_8l0el")
@@ -883,6 +1311,9 @@ label_settings = SubResource("LabelSettings_03gin")
 [connection signal="input_event" from="Room/UI/Buttons/Bowl" to="Room/UI/Buttons/Bowl" method="_on_input_event"]
 [connection signal="mouse_entered" from="Room/UI/Buttons/Bowl" to="Room/UI/Buttons/Bowl" method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="Room/UI/Buttons/Bowl" to="Room/UI/Buttons/Bowl" method="_on_mouse_exited"]
+[connection signal="mouse_entered" from="Room/UI/Buttons/AchivementsButton/Button" to="Room/UI/Buttons/AchivementsButton" method="_on_button_mouse_entered"]
+[connection signal="mouse_exited" from="Room/UI/Buttons/AchivementsButton/Button" to="Room/UI/Buttons/AchivementsButton" method="_on_button_mouse_exited"]
+[connection signal="pressed" from="Room/UI/Buttons/AchivementsButton/Button" to="Room/UI/Buttons/AchivementsButton" method="_on_button_pressed"]
 [connection signal="mouse_entered" from="Room/UI/Panels/PanelTemplate/Exit/Button" to="Room/UI/Panels/PanelTemplate/Exit" method="_on_button_mouse_entered"]
 [connection signal="mouse_exited" from="Room/UI/Panels/PanelTemplate/Exit/Button" to="Room/UI/Panels/PanelTemplate/Exit" method="_on_button_mouse_exited"]
 [connection signal="pressed" from="Room/UI/Panels/PanelTemplate/Exit/Button" to="Room/UI/Panels/PanelTemplate/Exit" method="_on_button_pressed"]
@@ -891,9 +1322,17 @@ label_settings = SubResource("LabelSettings_03gin")
 [connection signal="pressed" from="Room/UI/Panels/Minigames/DragAndDrop/DragAndDropButton" to="Room/UI/Panels/Minigames" method="_on_drag_and_drop_button_pressed"]
 [connection signal="pressed" from="Room/UI/Panels/Minigames/FruitCatcher/FruitCatcherButton" to="Room/UI/Panels/Minigames" method="_on_fruit_catcher_button_pressed"]
 [connection signal="pressed" from="Room/UI/Panels/Shop/Food/FoodButton" to="Room/UI/Panels/Shop" method="_on_food_button_pressed"]
-[connection signal="mouse_entered" from="Room/UI/Panels/Shop/Foods/Back/BackButton" to="Room/UI/Panels/Shop/Foods/Back" method="_on_button_mouse_entered"]
-[connection signal="mouse_exited" from="Room/UI/Panels/Shop/Foods/Back/BackButton" to="Room/UI/Panels/Shop/Foods/Back" method="_on_button_mouse_exited"]
 [connection signal="pressed" from="Room/UI/Panels/Shop/Foods/Back/BackButton" to="Room/UI/Panels/Shop" method="_on_back_button_pressed"]
+[connection signal="pressed" from="Room/UI/Panels/Achievmentes/AchievementsButtons/CatJump" to="Room/UI/Panels/Achievmentes/AchievementsButtons" method="_on_button_pressed" binds= [0]]
+[connection signal="pressed" from="Room/UI/Panels/Achievmentes/AchievementsButtons/SnackNavigator" to="Room/UI/Panels/Achievmentes/AchievementsButtons" method="_on_button_pressed" binds= [1]]
+[connection signal="pressed" from="Room/UI/Panels/Achievmentes/AchievementsButtons/PetCode" to="Room/UI/Panels/Achievmentes/AchievementsButtons" method="_on_button_pressed" binds= [2]]
+[connection signal="pressed" from="Room/UI/Panels/Achievmentes/AchievementsButtons/FruitCatcher" to="Room/UI/Panels/Achievmentes/AchievementsButtons" method="_on_button_pressed" binds= [3]]
+[connection signal="pressed" from="Room/UI/Panels/Achievmentes/AchievementsButtons/Feeding" to="Room/UI/Panels/Achievmentes/AchievementsButtons" method="_on_button_pressed" binds= [4]]
+[connection signal="pressed" from="Room/UI/Panels/Achievmentes/AchievementsButtons/Playing" to="Room/UI/Panels/Achievmentes/AchievementsButtons" method="_on_button_pressed" binds= [5]]
+[connection signal="pressed" from="Room/UI/Panels/Achievmentes/AchievementsButtons/Scratching" to="Room/UI/Panels/Achievmentes/AchievementsButtons" method="_on_button_pressed" binds= [6]]
+[connection signal="pressed" from="Room/UI/Panels/Achievmentes/AchievementsButtons/Sleeping" to="Room/UI/Panels/Achievmentes/AchievementsButtons" method="_on_button_pressed" binds= [7]]
+[connection signal="pressed" from="Room/UI/Panels/Achievmentes/AchievementsButtons/Cleaning" to="Room/UI/Panels/Achievmentes/AchievementsButtons" method="_on_button_pressed" binds= [8]]
+[connection signal="pressed" from="Room/UI/Panels/Achievmentes/Back/BackButton" to="Room/UI/Panels/Achievmentes/Back" method="_on_back_button_pressed"]
 [connection signal="mouse_entered" from="ScratchingPost/PlayerScratching" to="ScratchingPost/Scene" method="_on_player_scratching_mouse_entered"]
 [connection signal="mouse_exited" from="ScratchingPost/PlayerScratching" to="ScratchingPost/Scene" method="_on_player_scratching_mouse_exited"]
 [connection signal="mouse_entered" from="ScratchingPost/Back/BackButton" to="ScratchingPost/Scene" method="_on_back_button_mouse_entered"]

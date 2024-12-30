@@ -24,6 +24,7 @@ func _on_lose_game() :
 	if(VariableManager.pet_code_high_score < score) :
 		VariableManager.pet_code_high_score = score
 	VariableManager.coins += coins
+	SignalManager.unlock_achievement.emit(score, "pet_code", null)
 	SignalManager.add_exp.emit(score/3)
 	
 func _on_save_data() :

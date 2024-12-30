@@ -39,8 +39,6 @@ signal bad_field()
 signal grounded()
 signal new_blok_needed(current_x_position, current_y_pos)
 
-
-
 #------------------ ANIMAL NEEDS ----------------------------
 signal scratch(value)
 signal changed_needs()
@@ -60,6 +58,10 @@ signal eat_end()
 signal set_correct_instruction(what)
 signal show_next_pop_up()
 signal check_buy_possibilities()
+signal unlock_achievement(points, category, camera : Camera2D)
+signal show_achievement_screen(camera : Camera2D, unlocked_achievmentes : Dictionary, money_prizes : Array, achievements_numbers : Array)
+signal check_achievements_unlocked()
+signal reoder_child()
 
 #------------------ LEVEL -----------------------------------
 signal add_exp(value)

@@ -16,6 +16,7 @@ func _on_lose_game() :
 	if(points > VariableManager.cat_jump_high_score) :
 		VariableManager.cat_jump_high_score = points
 	SignalManager.add_exp.emit(points/2)
+	SignalManager.unlock_achievement.emit(points, "cat_jump", $"..")
 
 func _on_save_data() :
 	SignalManager.add_exp.emit(points/2)

@@ -104,10 +104,6 @@ position = Vector2(90, 0)
 
 [node name="Pause" parent="Layout" instance=ExtResource("11_cltnc")]
 
-[node name="Lose" parent="Layout" instance=ExtResource("11_nlonb")]
-visible = false
-position = Vector2(-5, -7)
-
 [node name="GameState" type="Node2D" parent="Layout"]
 script = ExtResource("13_oqhy5")
 
@@ -126,6 +122,10 @@ offset_right = 181.0
 offset_bottom = 172.0
 theme_override_font_sizes/font_size = 30
 text = "Kasa:"
+
+[node name="Lose" parent="Layout" instance=ExtResource("11_nlonb")]
+visible = false
+position = Vector2(-5, -7)
 
 [node name="MinigamesPanel" parent="." instance=ExtResource("1_2gm7f")]
 game_name = "Snack Navigator"

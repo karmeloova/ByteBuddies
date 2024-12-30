@@ -9,6 +9,7 @@ var needs = {
 }
 
 var is_playing : bool = false
+var is_mouse_moving = false
 
 var hungry_points_in_bowl : int = 0
 var code_pet_start_pos : Vector2
@@ -32,6 +33,7 @@ var coins : int = 0
 var platform_size
 var player_size
 var moved : bool = false
+var camerapos = Vector2.ZERO
 
 #------------- SHOP ------------------
 
@@ -46,3 +48,10 @@ var snack_navigator_high_score : int = 0
 var cat_jump_high_score : int = 0
 var pet_code_high_score : int = 0
 var fruit_catcher_high_score : int = 0
+
+#--------- ANIMAL NEEDS COUNTERS -------------
+var eat_counter : int = 0
+var play_counter : int = 0
+var sleep_counter : int = 0
+var clean_counter : int = 0
+var scratch_counter : int = 0

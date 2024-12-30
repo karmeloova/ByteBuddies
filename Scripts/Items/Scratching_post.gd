@@ -12,3 +12,8 @@ func _on_input_event(viewport, event, shape_idx):
 	if(Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT) && panel_template.visible == false) :
 		$"..".visible = false
 		$"../../ScratchingPost".visible = true
+		if(VariableManager.needs["scratch"] < 80) :
+			Needs.can_count_to_achievement = true
+		else :
+			Needs.can_count_to_achievement = false
+		print(Needs.can_count_to_achievement)

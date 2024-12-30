@@ -23,6 +23,8 @@ VariableManager="*res://Scripts/Autoload/variable_manager.gd"
 Needs="*res://Scripts/Autoload/needs.gd"
 LevelManager="*res://level_manager.gd"
 PlayingMinigames="*res://playing_minigames.gd"
+Achievements="*res://achievements.gd"
+AchievementScene="*res://Scenes/Prefabs/UI/AchievementScene.tscn"
 
 [file_customization]
 
