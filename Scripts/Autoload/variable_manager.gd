@@ -8,6 +8,8 @@ var needs = {
 	"clean" : 0
 }
 
+var food_list : Array[Food_Resource]
+
 var is_playing : bool = false
 var is_mouse_moving = false
 

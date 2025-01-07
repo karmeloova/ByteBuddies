@@ -82,6 +82,7 @@ position = Vector2(577, 322)
 texture = ExtResource("1_5tq1h")
 
 [node name="Room" type="Node2D" parent="."]
+visible = false
 
 [node name="Cat" type="Node2D" parent="Room"]
 position = Vector2(594, 404)
@@ -970,7 +971,6 @@ text = "[b]1.[/b] Zaczynaj drapanie od góry, przeciągając myszką (przytrzymu
 [b]3.[/b] Jeśli przestaniesz, strzałka wskaże miejsce, od którego wznowić drapanie."
 
 [node name="Bowl" type="Node2D" parent="."]
-visible = false
 script = ExtResource("30_q7oku")
 
 [node name="BowlSprite" type="Sprite2D" parent="Bowl"]
@@ -985,20 +985,19 @@ scale = Vector2(0.799856, 1.11224)
 texture = ExtResource("10_1xqql")
 
 [node name="CodeFeed" type="TextureButton" parent="Bowl"]
-offset_left = 88.0
+offset_left = 87.0
 offset_top = 109.0
-offset_right = 313.0
+offset_right = 312.0
 offset_bottom = 176.0
 texture_normal = ExtResource("28_7d6xq")
 ignore_texture_size = true
 stretch_mode = 0
-metadata/_edit_group_ = true
 
 [node name="Label" type="Label" parent="Bowl/CodeFeed"]
 layout_mode = 0
-offset_left = 20.0
+offset_left = 39.0
 offset_top = 15.0
-offset_right = 211.0
+offset_right = 179.0
 offset_bottom = 53.0
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.588235)
 theme_override_constants/shadow_offset_x = 2
@@ -1006,52 +1005,16 @@ theme_override_constants/shadow_offset_y = 2
 theme_override_fonts/font = ExtResource("7_8rg5e")
 theme_override_font_sizes/font_size = 33
 text = "Code Feed"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="NormalFeedButton" type="TextureButton" parent="Bowl"]
-offset_left = 306.0
-offset_top = 109.0
-offset_right = 531.0
-offset_bottom = 176.0
-texture_normal = ExtResource("28_7d6xq")
-ignore_texture_size = true
-stretch_mode = 0
-metadata/_edit_group_ = true
-
-[node name="Label" type="Label" parent="Bowl/NormalFeedButton"]
-layout_mode = 0
-offset_left = 17.0
-offset_top = 15.0
-offset_right = 204.0
-offset_bottom = 53.0
-theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.588235)
-theme_override_constants/shadow_offset_x = 2
-theme_override_constants/shadow_offset_y = 2
-theme_override_fonts/font = ExtResource("7_8rg5e")
-theme_override_font_sizes/font_size = 33
-text = "Normal"
-horizontal_alignment = 1
-vertical_alignment = 1
 
 [node name="CodeFeedNode" type="Node2D" parent="Bowl"]
-visible = false
 script = ExtResource("38_s7xvu")
 
-[node name="CodeWindow" type="CodeEdit" parent="Bowl/CodeFeedNode"]
+[node name="CodeEdit" type="CodeEdit" parent="Bowl/CodeFeedNode"]
 offset_left = 52.0
 offset_top = 271.0
 offset_right = 352.0
-offset_bottom = 380.0
-placeholder_text = "Tutaj wprowadź swój kod..."
+offset_bottom = 538.0
 gutters_draw_line_numbers = true
-
-[node name="Console" type="CodeEdit" parent="Bowl/CodeFeedNode"]
-offset_left = 53.0
-offset_top = 407.0
-offset_right = 353.0
-offset_bottom = 561.0
-editable = false
 
 [node name="TaskLabel" type="Label" parent="Bowl/CodeFeedNode"]
 offset_left = 51.0
@@ -1086,39 +1049,27 @@ texture = ExtResource("31_u0620")
 
 [node name="InformationNode" type="Node2D" parent="Bowl/CodeFeedNode/Information"]
 visible = false
-position = Vector2(291.429, -165.714)
+position = Vector2(-42.8571, -152.857)
 scale = Vector2(1.4, 1.4)
 metadata/_edit_group_ = true
 
 [node name="Information" type="Sprite2D" parent="Bowl/CodeFeedNode/Information/InformationNode"]
 self_modulate = Color(0.728822, 0.728822, 0.728822, 0.419608)
-position = Vector2(335.714, 319.095)
-scale = Vector2(0.57952, 0.994222)
+position = Vector2(335.714, 439.911)
+scale = Vector2(0.57952, 0.501093)
 texture = ExtResource("10_1xqql")
 
 [node name="RichTextLabel" type="RichTextLabel" parent="Bowl/CodeFeedNode/Information/InformationNode"]
-offset_left = 132.0
-offset_top = 85.0
-offset_right = 546.0
-offset_bottom = 559.0
+offset_left = 140.0
+offset_top = 322.857
+offset_right = 544.0
+offset_bottom = 688.857
 bbcode_enabled = true
-text = "Masz do wyboru dwa rodzaje pętli, aby nakarmić kotka:
-
-* [b]Pętla for:[/b] Powtarza zadanie określoną liczbę razy. Idealna, gdy kotek wie, ile jedzenia chce zjeść!
-Przykład:
-	[color=\"red\"]for i in range(2):
-	    eat(apple)[/color]
-Kod sprawia, że kotek zje dokładnie 2 jabłka.
-
-* [b]Pętla while:[/b] Wykonuje zadanie tak długo, jak warunek jest spełniony. Świetna, gdy kotek nie wie, ile chce jeść, ale je, dopóki jest głodny.
-Przykład:
-	[color=\"red\"]while hungry:
-    	eat(apple)[/color]
-Kod sprawia, że kotek będzie jadł, dopóki jest głodny.
-
-Aby nakarmić kotka, użyj funkcji [b]eat(*tu wpisz jedzenie*).[/b] Przykład: [color=\"red\"]eat(apple).[/color]"
-
-[node name="EatTimer" type="Timer" parent="Bowl/CodeFeedNode"]
+text = "[b]1.[/b] Zaczynaj drapanie od góry, przeciągając myszką (przytrzymując odpowiedni klawisz myszy) w dół.
+[b]2.[/b] Strzałka pokazuje, gdzie rozpocząć drapanie i jaki przycisk myszy wcisnąć:
+	[color=\"green\"]-> Zielona strzałka –[/color] drap lewym przyciskiem myszy (LPM).
+	[color=\"red\"]-> Czerwona strzałka –[/color] drap prawym przyciskiem myszy (PPM).
+[b]3.[/b] Jeśli przestaniesz, strzałka wskaże miejsce, od którego wznowić drapanie."
 
 [node name="NormalFeed" type="Control" parent="Bowl" node_paths=PackedStringArray("panel")]
 layout_mode = 3
@@ -1141,10 +1092,10 @@ theme_override_constants/separation = 150
 
 [node name="Feed" type="TextureButton" parent="Bowl/NormalFeed"]
 layout_mode = 0
-offset_left = 183.0
-offset_top = 568.0
-offset_right = 394.0
-offset_bottom = 635.0
+offset_left = 302.0
+offset_top = 108.0
+offset_right = 513.0
+offset_bottom = 175.0
 texture_normal = ExtResource("28_7d6xq")
 ignore_texture_size = true
 stretch_mode = 0
@@ -1481,12 +1432,8 @@ label_settings = SubResource("LabelSettings_03gin")
 [connection signal="mouse_entered" from="Bowl/CodeFeed" to="Bowl/CodeFeedNode" method="_on_code_feed_mouse_entered"]
 [connection signal="mouse_exited" from="Bowl/CodeFeed" to="Bowl/CodeFeedNode" method="_on_code_feed_mouse_exited"]
 [connection signal="pressed" from="Bowl/CodeFeed" to="Bowl/CodeFeedNode" method="_on_code_feed_pressed"]
-[connection signal="mouse_entered" from="Bowl/NormalFeedButton" to="Bowl" method="_on_code_feed_mouse_entered"]
-[connection signal="mouse_exited" from="Bowl/NormalFeedButton" to="Bowl" method="_on_code_feed_mouse_exited"]
-[connection signal="pressed" from="Bowl/NormalFeedButton" to="Bowl" method="_on_code_feed_pressed"]
 [connection signal="mouse_entered" from="Bowl/CodeFeedNode/Information/InformationButton" to="Bowl/CodeFeedNode" method="_on_information_button_mouse_entered"]
 [connection signal="mouse_exited" from="Bowl/CodeFeedNode/Information/InformationButton" to="Bowl/CodeFeedNode" method="_on_information_button_mouse_exited"]
-[connection signal="timeout" from="Bowl/CodeFeedNode/EatTimer" to="Bowl/CodeFeedNode" method="good_code"]
 [connection signal="mouse_entered" from="Bowl/NormalFeed/Feed" to="Bowl/NormalFeed" method="_on_feed_mouse_entered"]
 [connection signal="mouse_exited" from="Bowl/NormalFeed/Feed" to="Bowl/NormalFeed" method="_on_feed_mouse_exited"]
 [connection signal="pressed" from="Bowl/NormalFeed/Feed" to="Bowl/NormalFeed" method="_on_feed_pressed"]

@@ -62,6 +62,7 @@ signal unlock_achievement(points, category, camera : Camera2D)
 signal show_achievement_screen(camera : Camera2D, unlocked_achievmentes : Dictionary, money_prizes : Array, achievements_numbers : Array)
 signal check_achievements_unlocked()
 signal reoder_child()
+signal code_feed()
 
 #------------------ LEVEL -----------------------------------
 signal add_exp(value)
