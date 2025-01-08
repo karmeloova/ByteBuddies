@@ -1,0 +1,374 @@
+[gd_scene load_steps=11 format=3 uid="uid://bpck4nf2x81gt"]
+
+[ext_resource type="Texture2D" uid="uid://dl8dw08og2gr8" path="res://Images/Backgrounds/Placeholder_backgorund_minigames.jpg" id="1_g5r1r"]
+[ext_resource type="Script" path="res://Scenes/Prefabs/UI/MinigamesPanel.gd" id="1_hj3fy"]
+[ext_resource type="FontFile" uid="uid://ccgpsjqwwow8o" path="res://Fonts/Bubblegum.ttf" id="2_a4mhf"]
+[ext_resource type="Script" path="res://Scenes/Prefabs/UI/BackButton.gd" id="3_5cpqd"]
+[ext_resource type="Texture2D" uid="uid://bowy12qgsf8t3" path="res://Images/UI/Buttons/Button.png" id="3_jssi5"]
+[ext_resource type="Texture2D" uid="uid://2rpmid1gnwur" path="res://Images/UI/Buttons/RoundButton.png" id="4_vgte1"]
+[ext_resource type="Script" path="res://Scenes/Prefabs/UI/StartButton.gd" id="4_wha20"]
+[ext_resource type="Script" path="res://Scenes/Prefabs/UI/HowToPlayButton.gd" id="5_6yy22"]
+[ext_resource type="Texture2D" uid="uid://6adv5bnfl4ff" path="res://Images/UI/Buttons/Back.png" id="5_eyy1f"]
+[ext_resource type="Script" path="res://Scenes/Prefabs/UI/HowToPlay.gd" id="10_g1eg1"]
+
+[node name="MinigamesPanel" type="Node2D"]
+script = ExtResource("1_hj3fy")
+
+[node name="GameBackgorund" type="Sprite2D" parent="."]
+modulate = Color(0.32549, 0.568627, 0.447059, 1)
+position = Vector2(583.749, 330.5)
+scale = Vector2(1.59796, 1.44694)
+texture = ExtResource("1_g5r1r")
+
+[node name="Background" type="Sprite2D" parent="."]
+modulate = Color(1, 1, 1, 0.258824)
+position = Vector2(584, 319)
+texture = ExtResource("1_g5r1r")
+
+[node name="Back" type="Node2D" parent="."]
+process_mode = 3
+position = Vector2(220, -305)
+scale = Vector2(0.7, 0.7)
+script = ExtResource("3_5cpqd")
+metadata/_edit_group_ = true
+
+[node name="BackButton" type="TextureButton" parent="Back"]
+offset_left = -2.0
+offset_top = 546.0
+offset_right = 104.0
+offset_bottom = 646.0
+texture_normal = ExtResource("4_vgte1")
+texture_pressed = ExtResource("4_vgte1")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="Icon" type="Sprite2D" parent="Back"]
+position = Vector2(51, 595)
+scale = Vector2(0.124325, 0.124325)
+texture = ExtResource("5_eyy1f")
+
+[node name="Panel" type="Node2D" parent="."]
+
+[node name="MinigameName" type="Label" parent="Panel"]
+offset_left = 218.0
+offset_top = 104.0
+offset_right = 952.0
+offset_bottom = 208.0
+theme_override_fonts/font = ExtResource("2_a4mhf")
+theme_override_font_sizes/font_size = 50
+text = "Minigame name"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Record" type="Label" parent="Panel"]
+offset_left = 215.0
+offset_top = 186.0
+offset_right = 950.0
+offset_bottom = 280.0
+theme_override_fonts/font = ExtResource("2_a4mhf")
+theme_override_font_sizes/font_size = 40
+text = "Record"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="StartButton" type="TextureButton" parent="Panel"]
+process_mode = 3
+offset_left = 448.0
+offset_top = 277.0
+offset_right = 711.0
+offset_bottom = 363.0
+texture_normal = ExtResource("3_jssi5")
+ignore_texture_size = true
+stretch_mode = 0
+script = ExtResource("4_wha20")
+
+[node name="Label" type="Label" parent="Panel/StartButton"]
+layout_mode = 0
+offset_left = 23.0
+offset_top = 17.0
+offset_right = 238.0
+offset_bottom = 65.0
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.556863)
+theme_override_constants/shadow_offset_x = 3
+theme_override_constants/shadow_offset_y = 3
+theme_override_fonts/font = ExtResource("2_a4mhf")
+theme_override_font_sizes/font_size = 35
+text = "Start"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HowToPlayButton" type="TextureButton" parent="Panel"]
+process_mode = 3
+offset_left = 448.0
+offset_top = 357.0
+offset_right = 711.0
+offset_bottom = 443.0
+texture_normal = ExtResource("3_jssi5")
+ignore_texture_size = true
+stretch_mode = 0
+script = ExtResource("5_6yy22")
+metadata/_edit_group_ = true
+
+[node name="Label" type="Label" parent="Panel/HowToPlayButton"]
+layout_mode = 0
+offset_left = 23.0
+offset_top = 17.0
+offset_right = 238.0
+offset_bottom = 65.0
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.556863)
+theme_override_constants/shadow_offset_x = 3
+theme_override_constants/shadow_offset_y = 3
+theme_override_fonts/font = ExtResource("2_a4mhf")
+theme_override_font_sizes/font_size = 35
+text = "Jak grac"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HowToPlay" type="Node2D" parent="."]
+visible = false
+script = ExtResource("10_g1eg1")
+
+[node name="Previous" type="Node2D" parent="HowToPlay"]
+process_mode = 3
+visible = false
+position = Vector2(220, 237)
+scale = Vector2(0.5, 0.5)
+metadata/_edit_group_ = true
+
+[node name="BackButton" type="TextureButton" parent="HowToPlay/Previous"]
+offset_left = -2.0
+offset_top = 546.0
+offset_right = 104.0
+offset_bottom = 646.0
+texture_normal = ExtResource("4_vgte1")
+texture_pressed = ExtResource("4_vgte1")
+ignore_texture_size = true
+stretch_mode = 0
+metadata/_edit_use_anchors_ = true
+
+[node name="Icon" type="Sprite2D" parent="HowToPlay/Previous"]
+position = Vector2(51, 595)
+scale = Vector2(0.124325, 0.124325)
+texture = ExtResource("5_eyy1f")
+
+[node name="Next" type="Node2D" parent="HowToPlay"]
+process_mode = 3
+position = Vector2(898, 238)
+scale = Vector2(0.5, 0.5)
+metadata/_edit_group_ = true
+
+[node name="NextButton" type="TextureButton" parent="HowToPlay/Next"]
+offset_left = -2.0
+offset_top = 546.0
+offset_right = 104.0
+offset_bottom = 646.0
+texture_normal = ExtResource("4_vgte1")
+texture_pressed = ExtResource("4_vgte1")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="Icon" type="Sprite2D" parent="HowToPlay/Next"]
+position = Vector2(51, 595)
+rotation = 3.14159
+scale = Vector2(0.124325, 0.124325)
+texture = ExtResource("5_eyy1f")
+
+[node name="CatJump" type="Node2D" parent="HowToPlay"]
+visible = false
+
+[node name="Page1" type="RichTextLabel" parent="HowToPlay/CatJump"]
+offset_left = 282.0
+offset_top = 161.0
+offset_right = 893.0
+offset_bottom = 619.0
+theme_override_font_sizes/normal_font_size = 20
+theme_override_font_sizes/bold_font_size = 20
+theme_override_font_sizes/italics_font_size = 20
+theme_override_font_sizes/bold_italics_font_size = 20
+theme_override_font_sizes/mono_font_size = 20
+bbcode_enabled = true
+text = "Twoim celem jest wspinać się jak najwyżej, skacząc po platformach. Im wyżej dojdziesz, tym więcej punktów zdobędziesz! Sterowanie:
+ [b]- Spacja –[/b] Naciśnij, aby skoczyć w górę.
+ [b]- Strzałka w lewo –[/b] Przesuń się w lewo.
+ [b]- Strzałka w prawo –[/b] Przesuń się w prawo.
+
+Unikaj upadku – Jeśli spadniesz na dół, gra się kończy.
+
+Spróbuj pobić swój rekord wysokości i zdobyć jak najwięcej punktów! Baw się dobrze i zobacz, jak wysoko możesz się wspiąć!
+"
+autowrap_mode = 2
+
+[node name="SnackNavigator" type="Node2D" parent="HowToPlay"]
+visible = false
+
+[node name="Page1" type="RichTextLabel" parent="HowToPlay/SnackNavigator"]
+offset_left = 282.0
+offset_top = 161.0
+offset_right = 893.0
+offset_bottom = 516.0
+theme_override_font_sizes/normal_font_size = 20
+theme_override_font_sizes/bold_font_size = 20
+theme_override_font_sizes/italics_font_size = 20
+theme_override_font_sizes/bold_italics_font_size = 20
+theme_override_font_sizes/mono_font_size = 20
+bbcode_enabled = true
+text = "Hej, mały programisto! 🎉 Pomóż naszemu zwierzakowi dojść po kafelkach do miski pełnej pyszności! Twoim zadaniem jest wpisanie odpowiednich komend, które poprowadzą zwierzaka do celu.
+[b]Jak grać?[/b]
+Spójrz na kafelki – To jest droga do miski! Określ, ile kroków potrzebujesz w każdym kierunku.
+Wpisz komendy:
+[b]- forward –  [/b] ruch do przodu
+[b]- left –[/b] skręt w lewo
+[b]- right –[/b] skręt w prawo
+[b]- back –[/b] krok w tył
+"
+autowrap_mode = 2
+
+[node name="Page2" type="RichTextLabel" parent="HowToPlay/SnackNavigator"]
+visible = false
+offset_left = 285.0
+offset_top = 149.0
+offset_right = 913.0
+offset_bottom = 569.0
+theme_override_font_sizes/normal_font_size = 20
+theme_override_font_sizes/bold_font_size = 20
+theme_override_font_sizes/italics_font_size = 20
+theme_override_font_sizes/bold_italics_font_size = 20
+theme_override_font_sizes/mono_font_size = 20
+bbcode_enabled = true
+text = "Dodaj liczbę kroków – Po komendzie wpisz w nawiasie, ile kafelków zwierzak ma przejść, np.:
+[b]- forward(3) –[/b] 3 kroki do przodu
+[b]- left(1) –[/b] skręt w lewo o 1 krok
+Po kliknięciu \"Wykonaj\" obserwuj jak zwierzak idzie do miski!
+
+[b]Przykład[/b]
+Aby przejść 4 kafelki do przodu, a potem skręcić w lewo i przejść 2 kafelki, wpisz: 
+	[b]forward(4)
+	left(2)[/b]
+
+Pamiętaj, by wpisywać komendy dokładnie tak, jak pokazano. Powodzenia! 🚀"
+autowrap_mode = 2
+
+[node name="CodePet" type="Node2D" parent="HowToPlay"]
+visible = false
+
+[node name="Page1" type="RichTextLabel" parent="HowToPlay/CodePet"]
+visible = false
+offset_left = 282.0
+offset_top = 161.0
+offset_right = 893.0
+offset_bottom = 516.0
+theme_override_font_sizes/normal_font_size = 20
+theme_override_font_sizes/bold_font_size = 20
+theme_override_font_sizes/italics_font_size = 20
+theme_override_font_sizes/bold_italics_font_size = 20
+theme_override_font_sizes/mono_font_size = 20
+bbcode_enabled = true
+text = "Twoim zadaniem jest pomóc w opiece nad wirtualnym kotkiem, rozwiązując zadania kodowania. Poprawne ułożenie bloczków kodu umożliwia przejście na kolejne poziomy i rozwijanie umiejętności programowania. Każde zadanie to inny fragment logicznego myślenia, który pomaga Ci lepiej zrozumieć opiekę nad kotkiem.
+
+[b]Jak grać:
+1. [/b]Przeczytaj zadanie – Na każdym poziomie pojawia się zadanie związane z opieką nad kotkiem, np.: „Ułóż bloczki, aby kotek był najedzony” lub „Zwiększ poziom energii poprzez odpowiednią liczbę porcji”.
+"
+autowrap_mode = 2
+
+[node name="Page2" type="RichTextLabel" parent="HowToPlay/CodePet"]
+visible = false
+offset_left = 285.0
+offset_top = 149.0
+offset_right = 913.0
+offset_bottom = 569.0
+theme_override_font_sizes/normal_font_size = 20
+theme_override_font_sizes/bold_font_size = 20
+theme_override_font_sizes/italics_font_size = 20
+theme_override_font_sizes/bold_italics_font_size = 20
+theme_override_font_sizes/mono_font_size = 20
+bbcode_enabled = true
+text = "[b]2. Układaj bloczki kodu –[/b] W każdym zadaniu masz do dyspozycji bloczki kodu, które możesz łączyć:
+	[b]- Pętle –[/b] Powtarzaj czynności, np. dodawanie punktów energii 			   lub zwiększanie liczby porcji.
+	[b]- Warunki –[/b] Wybierz odpowiednie działania w zależności od stanu zadania.
+	[b]- Operacje matematyczne –[/b] Zwiększaj lub zmniejszaj poziom wybranych parametrów, by spełnić cel zadania.
+[b]3. Rozwiązuj logiczne wyzwania – [/b] Ułóż bloczki, aby kod spełniał warunki zadania. Przykłady:
+	- Użyj [b]pętli for[/b], by dodać porcje karmy, aż licznik osiągnie 3.
+ 	- Stwórz [b]warunek if[/b], który sprawdza, czy poziom energii jest poniżej progu i odpowiednio go zwiększa.
+
+"
+autowrap_mode = 2
+
+[node name="Page3" type="RichTextLabel" parent="HowToPlay/CodePet"]
+visible = false
+offset_left = 285.0
+offset_top = 149.0
+offset_right = 913.0
+offset_bottom = 569.0
+theme_override_font_sizes/normal_font_size = 20
+theme_override_font_sizes/bold_font_size = 20
+theme_override_font_sizes/italics_font_size = 20
+theme_override_font_sizes/bold_italics_font_size = 20
+theme_override_font_sizes/mono_font_size = 20
+bbcode_enabled = true
+text = "[b]4. Sprawdź swoje rozwiązanie –[/b] Po ułożeniu bloczków naciśnij „Sprawdź”, aby zobaczyć, czy poprawnie ułożyłeś bloczki. Pomyślne ułożenie bloczków pozwoli Ci przejść do kolejnego zadania!
+
+[b]Powodzenia![/b]"
+autowrap_mode = 2
+
+[node name="FruitCatcher" type="Node2D" parent="HowToPlay"]
+visible = false
+
+[node name="Page1" type="RichTextLabel" parent="HowToPlay/FruitCatcher"]
+visible = false
+offset_left = 282.0
+offset_top = 161.0
+offset_right = 893.0
+offset_bottom = 521.0
+theme_override_font_sizes/normal_font_size = 20
+theme_override_font_sizes/bold_font_size = 20
+theme_override_font_sizes/italics_font_size = 20
+theme_override_font_sizes/bold_italics_font_size = 20
+theme_override_font_sizes/mono_font_size = 20
+bbcode_enabled = true
+text = "W grze [b]FruitCatcher[/b] Twoim zadaniem jest złapanie owoców do odpowiednich koszyków:
+
+[b]* Koszyk 1:[/b] Liczby zmiennoprzecinkowe (float) – np. połówka lub półtora owocu.
+[b]* Koszyk 2:[/b] Liczby całkowite (int) – np. cały owoc.
+[b]* Koszyk 3:[/b] Łańcuch znaków (string) – np. nazwa owocu zapisana tekstem.
+[b]* Koszyk 4:[/b] Znaki (char) – np. jedna litera.
+
+Na koszyku znajduje się informacja jaki jest obecnie wybrany"
+autowrap_mode = 2
+
+[node name="Page2" type="RichTextLabel" parent="HowToPlay/FruitCatcher"]
+visible = false
+offset_left = 285.0
+offset_top = 149.0
+offset_right = 913.0
+offset_bottom = 569.0
+theme_override_font_sizes/normal_font_size = 20
+theme_override_font_sizes/bold_font_size = 20
+theme_override_font_sizes/italics_font_size = 20
+theme_override_font_sizes/bold_italics_font_size = 20
+theme_override_font_sizes/mono_font_size = 20
+bbcode_enabled = true
+text = "[b]Jak grać?[/b]
+
+[b]1. [/b] Spadające owoce są różnymi typami danych
+[b]2.[/b] Zmieniaj koszyki za pomocą klawiszy (1, 2, 3, 4), aby ustawić odpowiedni koszyk pod spadającym owocem.
+[b]3.[/b] Dopasuj koszyk do typu owocu i złap go, zanim spadnie!
+
+Powodzenia i baw się dobrze! 🍎🍐✨"
+autowrap_mode = 2
+
+[connection signal="mouse_entered" from="Back/BackButton" to="Back" method="_on_back_button_mouse_entered"]
+[connection signal="mouse_exited" from="Back/BackButton" to="Back" method="_on_back_button_mouse_exited"]
+[connection signal="pressed" from="Back/BackButton" to="Back" method="_on_back_button_pressed"]
+[connection signal="mouse_entered" from="Panel/StartButton" to="Panel/StartButton" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="Panel/StartButton" to="Panel/StartButton" method="_on_mouse_exited"]
+[connection signal="pressed" from="Panel/StartButton" to="Panel/StartButton" method="_on_pressed"]
+[connection signal="mouse_entered" from="Panel/HowToPlayButton" to="Panel/HowToPlayButton" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="Panel/HowToPlayButton" to="Panel/HowToPlayButton" method="_on_mouse_exited"]
+[connection signal="pressed" from="Panel/HowToPlayButton" to="Panel/HowToPlayButton" method="_on_pressed"]
+[connection signal="visibility_changed" from="HowToPlay" to="HowToPlay" method="_on_visibility_changed"]
+[connection signal="mouse_entered" from="HowToPlay/Previous/BackButton" to="HowToPlay" method="_on_back_button_mouse_entered"]
+[connection signal="mouse_exited" from="HowToPlay/Previous/BackButton" to="HowToPlay" method="_on_back_button_mouse_exited"]
+[connection signal="pressed" from="HowToPlay/Previous/BackButton" to="HowToPlay" method="_on_back_button_pressed"]
+[connection signal="mouse_entered" from="HowToPlay/Next/NextButton" to="HowToPlay" method="_on_next_button_mouse_entered"]
+[connection signal="mouse_exited" from="HowToPlay/Next/NextButton" to="HowToPlay" method="_on_next_button_mouse_exited"]
+[connection signal="pressed" from="HowToPlay/Next/NextButton" to="HowToPlay" method="_on_next_button_pressed"]

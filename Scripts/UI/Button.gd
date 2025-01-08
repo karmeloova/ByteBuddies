@@ -26,5 +26,3 @@ func change_disable_another_buttons():
 		else :
 			if(i.has_node("Collision")) :
 				i.get_node("Collision").disabled = true
-			else :
-				print("no i chuj no i dupa ani to ani to")

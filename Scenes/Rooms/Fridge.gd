@@ -47,6 +47,8 @@ func update_fridge(item : Food_Resource, is_in_the_fridge : bool, food : String)
 			if(i.get_node("Name").text == food) :
 				i.get_node("Amount").text = str(item.amount)
 	
+	VariableManager.food_list = food_list
+	
 func _on_feed_mouse_entered():
 	$Feed.modulate = Color("b2b2b2")
 
@@ -54,13 +56,17 @@ func _on_feed_mouse_exited():
 	$Feed.modulate = Color("ffffff")
 
 func _on_feed_pressed():
-	if added_to_bowl :
+	if added_to_bowl && $ScrollContainer.visible == true:
 		visible = false
 		panel.visible = false
 		added_to_bowl = false
-		if(VariableManager.needs["hungry"] < 50) :
+		if(VariableManager.needs["hungry"] < 80) :
 			# Czas animacji podejścia kota do miski (może taka będzie)
 			SignalManager.go_to_bowl.emit();
+		$"..".visible = false;
+		$"../../Room".visible = true
+	if($ScrollContainer.visible == false && $"../CodeFeedNode".visible == true) :
+		SignalManager.code_feed.emit()
 
 func _on_add_to_bowl(hungry_points) :
 	VariableManager.hungry_points_in_bowl += hungry_points.to_int()

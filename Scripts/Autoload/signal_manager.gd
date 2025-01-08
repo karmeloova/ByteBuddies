@@ -8,6 +8,11 @@ signal restartGame()
 signal loseLife()
 signal nextLevel()
 signal add_point()
+signal save_data()
+
+signal fruitColl(what); #właścicielem sygnału jest SignalManager
+signal basketColor(color);
+signal fruitColor(color);
 
 
 # GO TO TARGET
@@ -15,6 +20,7 @@ signal makeMove(instructions)
 signal code_to_make()
 signal set_player_pos(position)
 signal moveEnd()
+signal calculate_score(lines)
 
 # CAT JUMP
 signal move_camera()
@@ -27,6 +33,7 @@ signal check_field()
 signal added_data_to_field(data : String)
 signal removed_data_from_field(data : String)
 signal was_drawn()
+signal bad_field()
 
 #LOGIC TETRIS
 signal grounded()
@@ -38,6 +45,9 @@ signal changed_needs()
 signal add_to_bowl(hungry_points)
 signal eat()
 signal remove_from_fridge(what : Food_Resource)
+signal playing()
+signal sleeping(is_sleeping)
+signal cleaning(is_cleaning)
 
 #------------------ ANOTHER ---------------------------------
 signal change_money()
@@ -45,6 +55,14 @@ signal add_to_fridge(item : Food_Resource)
 signal add_coin(value)
 signal go_to_bowl()
 signal eat_end()
+signal set_correct_instruction(what)
+signal show_next_pop_up()
+signal check_buy_possibilities()
+signal unlock_achievement(points, category, camera : Camera2D)
+signal show_achievement_screen(camera : Camera2D, unlocked_achievmentes : Dictionary, money_prizes : Array, achievements_numbers : Array)
+signal check_achievements_unlocked()
+signal reoder_child()
+signal code_feed()
 
 #------------------ LEVEL -----------------------------------
 signal add_exp(value)

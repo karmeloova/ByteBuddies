@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="Code_Task" load_steps=2 format=3 uid="uid://c4w4b86be8og5"]
+
+[ext_resource type="Script" path="res://Scripts/Resources/CodeTask.gd" id="1_fiedu"]
+
+[resource]
+script = ExtResource("1_fiedu")
+description = "Nakarm zwierzaka kilkoma porcjami jedzenia"
+instructions = Array[String](["for", "i", "in range", "(0,3)", "enter", "hungry", "+= 1"])
+difficulty = 0

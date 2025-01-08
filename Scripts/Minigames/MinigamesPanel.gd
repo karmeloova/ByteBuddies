@@ -14,3 +14,7 @@ func _on_drag_and_drop_button_pressed():
 
 func _on_logic_tetris_button_pressed():
 	get_tree().change_scene_to_file("res://Scenes/Minigames/LogicTetris.tscn");
+
+
+func _on_fruit_catcher_button_pressed():
+	get_tree().change_scene_to_file("res://Scenes/Minigames/FruitCatcher.tscn");

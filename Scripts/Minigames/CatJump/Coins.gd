@@ -2,7 +2,7 @@ extends Node2D
 @onready var coins_node = self
 var Coin = preload("res://Scenes/Prefabs/Coin.tscn")
 var coin_instance
-# Called when the node enters the scene tree for the first time.
+
 func _ready():
 	SignalManager.generate_coin.connect(_on_generate_coin)
 

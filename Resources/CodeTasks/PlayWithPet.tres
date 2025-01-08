@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="Code_Task" load_steps=2 format=3 uid="uid://bm5vldwuqfl7e"]
+
+[ext_resource type="Script" path="res://Scripts/Resources/CodeTask.gd" id="1_f0brg"]
+
+[resource]
+script = ExtResource("1_f0brg")
+description = "Pobaw się ze zwierzakiem, aż jego poziom zadowolenia osiągnie 10"
+instructions = Array[String](["while", "happy", "< 10", "enter", "happy", "+=1"])
+difficulty = 0

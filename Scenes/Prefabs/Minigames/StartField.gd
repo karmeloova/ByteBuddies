@@ -6,22 +6,20 @@ extends Control
 @export var back_to_pos : bool
 var pos = Vector2(0,0)
 @export var dragged_object : Control
+var moved_object
 var instruction_text
 var tween : Tween
 
-func _can_drop_data(at_position, data):
-	print(have_data)
+func _can_drop_data(_at_position, data):
 	if not have_data : 
 		return true
 	else :
 		return false
 
 func _drop_data(at_position, data):
-	print(at_position)
 	data.get_parent().remove_child(data)
 	add_child(data)
 	data.position = Vector2(-2,-2)
-	print(data.position)
 	have_data = true
 	instruction_text = data.get_node("Label").text
 	SignalManager.added_data_to_field.emit(instruction_text)

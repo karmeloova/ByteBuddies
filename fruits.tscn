@@ -1,0 +1,31 @@
+[gd_scene load_steps=4 format=3 uid="uid://55m3xbttblhq"]
+
+[ext_resource type="Script" path="res://Scripts/fruits.gd" id="1_xr0fs"]
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_bnqk3"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_o5fdm"]
+size = Vector2(12, 12)
+
+[node name="Fruits" type="Area2D"]
+collision_layer = 3
+collision_mask = 3
+script = ExtResource("1_xr0fs")
+
+[node name="FruitSprite" type="Sprite2D" parent="."]
+position = Vector2(36.125, 16.125)
+texture = SubResource("CanvasTexture_bnqk3")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(36, 16)
+shape = SubResource("RectangleShape2D_o5fdm")
+
+[node name="Label" type="Label" parent="."]
+offset_right = 40.0
+offset_bottom = 23.0
+scale = Vector2(0.976818, 0.923894)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 30
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
+[connection signal="area_shape_entered" from="." to="." method="_on_area_shape_entered"]

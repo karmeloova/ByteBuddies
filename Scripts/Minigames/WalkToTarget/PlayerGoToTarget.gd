@@ -6,8 +6,8 @@ var instructions_tab = [];
 var steps_counter = 0
 var moved = false;
 var game_pause;
+var level_counter = 1;
 
-# Called when the node enters the scene tree for the first time.
 func _ready():
 	start_position = position
 	position = VariableManager.start_position
@@ -38,6 +38,10 @@ func _on_tween_waiter_timeout():
 			tween.tween_property($".", "position", Vector2(position.x - 
 			VariableManager.tile_size.x, position.y), 0.25)
 			$TweenWaiter.start(0.25)
+		if(instructions_tab[steps_counter] == "back") :
+			tween.tween_property($".", "position", Vector2(position.x, 
+			position.y + VariableManager.tile_size.y), 0.25)
+			$TweenWaiter.start(0.25)
 		$CollWaiter.start(0.15)
 		steps_counter += 1;
 	else : 
@@ -49,15 +53,12 @@ func _on_tween_waiter_timeout():
 func _on_area_entered(area):
 	if(moved) : coll += 1;
 	if(area.name.contains("Last_tile")) : 
-		print("Gratki, doszedłeś do końca!")
 		$NextLevelWaiter.start(1);
 
 func checkColl() :
 	if(steps_counter > coll and not(game_pause)) : 
 		$TweenWaiter.stop();
 		$RestartWaiter.start(1);
-		print("Steps: ", steps_counter, " Coll: ", coll)
-		print("Zle poszedles mordo")
 
 func _on_coll_waiter_timeout():
 	checkColl()
@@ -75,4 +76,5 @@ func restart() :
 
 func _on_next_level_waiter_timeout():
 	SignalManager.nextLevel.emit();
+	level_counter += 1;
 	restart();

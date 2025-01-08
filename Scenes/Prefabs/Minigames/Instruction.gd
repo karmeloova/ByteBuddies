@@ -6,11 +6,12 @@ var instruction_font_size
 var tween : Tween
 @export var start_field : TextureRect
 @export var drop_data_timer : Timer
+var is_good : bool = true
 
 func _ready():
 	instruction_font_size = $Label.get_theme_font_size("font_size")
 
-func _get_drag_data(at_position):
+func _get_drag_data(_at_position):
 	if(draggable) :
 		var drag_data = Control.new()
 		var texture_rect = TextureRect.new()
@@ -29,8 +30,8 @@ func _get_drag_data(at_position):
 
 func apparent_move() :
 	tween = self.create_tween()
-	tween.tween_property(self, "global_position", Vector2(start_pos.x-2,start_pos.y-2), 2)
-	drop_data_timer.start(2)
+	tween.tween_property(self, "global_position", Vector2(start_pos.x-2,start_pos.y-2), 1)
+	drop_data_timer.start(1)
 
 func _on_drop_data_timer_timeout():
 	start_field.set_right_instruction_pos()

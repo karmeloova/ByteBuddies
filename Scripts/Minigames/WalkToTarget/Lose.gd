@@ -7,11 +7,17 @@ func _ready():
 	SignalManager.loseGame.connect(_on_lose_game)
 
 func _on_lose_game() :
+	VariableManager.is_playing = false;
+	get_tree().paused = true
 	visible = true;
 	$LoseLabel.text = "You lose"
 	
 func _on_restart_button_pressed():
+	VariableManager.is_playing = true;
+	get_tree().paused = false
 	get_tree().reload_current_scene()
 
 func _on_back_button_pressed():
+	VariableManager.is_playing = false;
+	get_tree().paused = false
 	get_tree().change_scene_to_file("res://Scenes/Rooms/MainRoom.tscn")

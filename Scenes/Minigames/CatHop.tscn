@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://x5i72wcl8spx"]
+[gd_scene load_steps=17 format=3 uid="uid://x5i72wcl8spx"]
 
 [ext_resource type="Script" path="res://Scripts/Minigames/CatJump/Player.gd" id="1_76w8l"]
 [ext_resource type="Script" path="res://Scripts/Minigames/CatJump/CameraCatHop.gd" id="2_ebytp"]
@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://doyyhye04gaml" path="res://Scenes/Prefabs/UI/LoseUI.tscn" id="6_wbr14"]
 [ext_resource type="Script" path="res://Scripts/Minigames/CatJump/Coins.gd" id="6_x1t1n"]
 [ext_resource type="PackedScene" uid="uid://cyn346855vab8" path="res://Scenes/Prefabs/UI/PauseUI.tscn" id="9_sdip7"]
+[ext_resource type="PackedScene" uid="uid://bpck4nf2x81gt" path="res://Scenes/Prefabs/UI/MinigamesPanel.tscn" id="10_b3i4s"]
 
 [sub_resource type="CanvasTexture" id="CanvasTexture_wclep"]
 
@@ -62,14 +63,6 @@ texture = SubResource("CanvasTexture_3hfeu")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Walls"]
 position = Vector2(572, 12)
 shape = SubResource("RectangleShape2D_nxcys")
-
-[node name="LeftWall" type="CollisionShape2D" parent="Walls"]
-position = Vector2(14, -308.5)
-shape = SubResource("RectangleShape2D_4q8i2")
-
-[node name="RightWall" type="CollisionShape2D" parent="Walls"]
-position = Vector2(1166, -307)
-shape = SubResource("RectangleShape2D_4q8i2")
 
 [node name="Platforms" type="Node2D" parent="."]
 script = ExtResource("2_w0emf")
@@ -125,6 +118,21 @@ position = Vector2(-566, -612)
 
 [node name="Pause" parent="Camera2D" instance=ExtResource("9_sdip7")]
 position = Vector2(-553, -592)
+
+[node name="Area2D" type="RigidBody2D" parent="Camera2D"]
+disable_mode = 1
+freeze = true
+
+[node name="LeftWall" type="CollisionShape2D" parent="Camera2D/Area2D"]
+position = Vector2(-557, -282.5)
+shape = SubResource("RectangleShape2D_4q8i2")
+
+[node name="RightWall" type="CollisionShape2D" parent="Camera2D/Area2D"]
+position = Vector2(595, -281)
+shape = SubResource("RectangleShape2D_4q8i2")
+
+[node name="MinigamesPanel" parent="." instance=ExtResource("10_b3i4s")]
+game_name = "Cat Jump"
 
 [connection signal="area_entered" from="Player/Area2D" to="Player" method="_on_area_2d_area_entered"]
 [connection signal="screen_exited" from="Player/VisibleOnScreenNotifier2D" to="Player" method="_on_visible_on_screen_notifier_2d_screen_exited"]

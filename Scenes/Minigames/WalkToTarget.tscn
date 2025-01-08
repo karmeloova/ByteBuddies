@@ -1,5 +1,6 @@
-[gd_scene load_steps=14 format=3 uid="uid://d4bs4i6ftyij1"]
+[gd_scene load_steps=16 format=3 uid="uid://d4bs4i6ftyij1"]
 
+[ext_resource type="PackedScene" uid="uid://bpck4nf2x81gt" path="res://Scenes/Prefabs/UI/MinigamesPanel.tscn" id="1_2gm7f"]
 [ext_resource type="Script" path="res://Scripts/Minigames/WalkToTarget/CodeArea.gd" id="1_dto5f"]
 [ext_resource type="Texture2D" uid="uid://dl8dw08og2gr8" path="res://Images/Backgrounds/Placeholder_backgorund_minigames.jpg" id="2_jbpt1"]
 [ext_resource type="Texture2D" uid="uid://dpgvthlrc473g" path="res://Images/Tiles/Tile.png" id="3_631bc"]
@@ -9,9 +10,10 @@
 [ext_resource type="Texture2D" uid="uid://xr24310ei2bc" path="res://Images/Backgrounds/LACMTA_Circle_Purple_Line.svg.png" id="7_g0173"]
 [ext_resource type="Texture2D" uid="uid://cu0aeijd1ek4e" path="res://Images/Accessories/Bowl/EmptyBowl.png" id="8_1riy0"]
 [ext_resource type="Texture2D" uid="uid://dwwahex67somt" path="res://Images/Accessories/Bowl/Food.png" id="9_y3dwg"]
-[ext_resource type="Script" path="res://Scripts/Minigames/WalkToTarget/Lives.gd" id="10_1r340"]
+[ext_resource type="PackedScene" uid="uid://dluxwfsypbvws" path="res://Scenes/Prefabs/UI/MinigamesLives.tscn" id="10_aljue"]
 [ext_resource type="PackedScene" uid="uid://cyn346855vab8" path="res://Scenes/Prefabs/UI/PauseUI.tscn" id="11_cltnc"]
 [ext_resource type="PackedScene" uid="uid://doyyhye04gaml" path="res://Scenes/Prefabs/UI/LoseUI.tscn" id="11_nlonb"]
+[ext_resource type="Script" path="res://Scenes/Minigames/GameState.gd" id="13_oqhy5"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_qkeyp"]
 radius = 30.0167
@@ -22,37 +24,37 @@ radius = 30.0167
 script = ExtResource("1_dto5f")
 
 [node name="Background" type="Sprite2D" parent="CodeArea"]
-modulate = Color(0.752094, 0.598877, 0.641279, 1)
+modulate = Color(0.708848, 0.644184, 0.558376, 1)
 position = Vector2(253.75, 324.5)
 scale = Vector2(0.689116, 1.32041)
 texture = ExtResource("2_jbpt1")
 
 [node name="CodeField" type="TextEdit" parent="CodeArea"]
 offset_left = 14.0
-offset_top = 141.0
+offset_top = 197.0
 offset_right = 304.0
-offset_bottom = 514.0
+offset_bottom = 570.0
 
 [node name="ExecuteButton" type="Button" parent="CodeArea"]
 offset_left = 99.0
-offset_top = 527.0
+offset_top = 583.0
 offset_right = 224.0
-offset_bottom = 578.0
+offset_bottom = 634.0
 text = "Wykonaj"
 
 [node name="PlayerCode" type="Label" parent="CodeArea"]
 offset_left = 315.0
-offset_top = 142.0
+offset_top = 194.0
 offset_right = 498.0
-offset_bottom = 577.0
+offset_bottom = 567.0
 theme_override_font_sizes/font_size = 20
 
 [node name="Background" type="Node2D" parent="."]
 
 [node name="GameBackground" type="Sprite2D" parent="Background"]
 modulate = Color(0.468015, 0.897566, 0.49354, 1)
-position = Vector2(830, 325)
-scale = Vector2(0.316, 0.316)
+position = Vector2(828.292, 324.708)
+scale = Vector2(0.317668, 0.315715)
 texture = ExtResource("3_631bc")
 
 [node name="GameArea" type="Node2D" parent="."]
@@ -97,21 +99,36 @@ texture = ExtResource("9_y3dwg")
 
 [node name="Layout" type="Node2D" parent="."]
 
-[node name="Lives" type="Node2D" parent="Layout"]
-script = ExtResource("10_1r340")
-
-[node name="LivesLabel" type="Label" parent="Layout/Lives"]
-offset_left = 153.0
-offset_top = 3.0
-offset_right = 293.0
-offset_bottom = 45.0
-theme_override_font_sizes/font_size = 30
-text = "Życia: "
+[node name="MinigamesLives" parent="Layout" instance=ExtResource("10_aljue")]
+position = Vector2(90, 0)
 
 [node name="Pause" parent="Layout" instance=ExtResource("11_cltnc")]
 
+[node name="GameState" type="Node2D" parent="Layout"]
+script = ExtResource("13_oqhy5")
+
+[node name="Score" type="Label" parent="Layout/GameState"]
+offset_left = 9.0
+offset_top = 79.0
+offset_right = 182.0
+offset_bottom = 127.0
+theme_override_font_sizes/font_size = 30
+text = "Wynik:"
+
+[node name="Money" type="Label" parent="Layout/GameState"]
+offset_left = 8.0
+offset_top = 124.0
+offset_right = 181.0
+offset_bottom = 172.0
+theme_override_font_sizes/font_size = 30
+text = "Kasa:"
+
 [node name="Lose" parent="Layout" instance=ExtResource("11_nlonb")]
+visible = false
 position = Vector2(-5, -7)
+
+[node name="MinigamesPanel" parent="." instance=ExtResource("1_2gm7f")]
+game_name = "Snack Navigator"
 
 [connection signal="text_changed" from="CodeArea/CodeField" to="CodeArea" method="_on_code_field_text_changed"]
 [connection signal="pressed" from="CodeArea/ExecuteButton" to="CodeArea" method="_on_execute_button_pressed"]

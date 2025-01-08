@@ -6,7 +6,12 @@ var last_position;
 var tile_size;
 var tile_instance
 var positions_tab = [];
+var start_positions = []
 var neightbours = 0;
+var how_many_tiles;
+var tiles_counter = 1;
+var zakrety = 0;
+var diiir = 0
 
 var end = false;
 var first = true;
@@ -26,16 +31,30 @@ func _ready():
 func generateBoard() :
 	tile_instance = tile.instantiate();
 	world.add_child(tile_instance)
+	
 	tile_size = VariableManager.tile_size
+	start_positions.append(503+tile_size.x/2)
+	for i in range(1,8) :
+		start_positions.append(start_positions[i-1] + tile_size.x)
+		
 	tile_instance.position.y = 650-tile_size.y/2;
-	tile_instance.position.x = randi_range(430+tile_size.x/2, 1150-tile_size.x/2);
+	tile_instance.position.x = start_positions.pick_random()
 	last_position = Vector2(tile_instance.position.x, tile_instance.position.y)
 	first_pos = Vector2(tile_instance.position.x, tile_instance.position.y);
 	VariableManager.start_position = first_pos
 	positions_tab.append(last_position);
 	
+	if(VariableManager.level_counter < 4) :
+		how_many_tiles = randi_range(5,8)
+	elif(VariableManager.level_counter >= 4 and VariableManager.level_counter < 7) :
+		how_many_tiles = randi_range(9, 12)
+	else :
+		how_many_tiles = randi_range(13, 16)
+	
+	VariableManager.tiles_counter = how_many_tiles;
+	
 	# Generowanie planszy do momentu, gdy nie będziemy przy krańcu ekranu 
-	while(not(end)) :
+	while(tiles_counter < how_many_tiles) :
 		if(first) : 
 			last_direction = 2;
 		else : 
@@ -107,8 +126,14 @@ func random_direction(directions) :
 # Funkcja służąca do generowania kolejnych płytek w zależności od wylosowanego
 # miejsca
 func generate_tile(last_direction) :
+	if((diiir==1 || diiir==-1) && (last_direction==-2 || last_direction == 2)) :
+		zakrety+=1;
+	elif((diiir==2 || diiir==-2) && (last_direction==-1 || last_direction == 1)) :
+		zakrety+=1; 
+	
 	tile_instance = tile.instantiate();
 	world.add_child(tile_instance)
+	
 	match last_direction :
 		-2 : tile_instance.position = Vector2(last_position.x, last_position.y + tile_size.y)
 		-1 : tile_instance.position = Vector2(last_position.x - tile_size.x, last_position.y)
@@ -116,6 +141,8 @@ func generate_tile(last_direction) :
 		2 : tile_instance.position = Vector2(last_position.x, last_position.y - tile_size.y)
 	last_position = Vector2(tile_instance.position.x, tile_instance.position.y)
 	positions_tab.append(last_position);
+	tiles_counter += 1
+	diiir = last_direction
 
 # Sprawdzamy sąsiadów dodając do obecnej pozycji odpowiednie wartości
 func test_tile(position) :
@@ -149,11 +176,23 @@ func generate_board_again() :
 	czy_bylo_zero = false;
 	first = true;
 	niebedeliczyl = 0;
+	tiles_counter = 1
+	zakrety = 0
 	# Generujemy ponownie planszę
 	generateBoard();
 
 # W przypadku gdy gracz przejdzie do kolejnego poziomu, generujemy nową planszę
 func _on_next_level() :
+	if(VariableManager.level_counter < 4) :
+		SignalManager.add_coin.emit(5)
+	elif(VariableManager.level_counter >= 4 and VariableManager.level_counter < 7) :
+		SignalManager.add_coin.emit(10)
+	else :
+		SignalManager.add_coin.emit(15)
+	
+	
+	VariableManager.level_counter += 1
+	SignalManager.calculate_score.emit(zakrety)
 	generate_board_again()
 
 # W przypadku gdy gracz chce zrestować grę (zagraj ponownie/restart) również
