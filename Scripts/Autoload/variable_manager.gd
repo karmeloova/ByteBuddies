@@ -9,6 +9,8 @@ var needs = {
 }
 
 var food_list : Array[Food_Resource]
+var first_start : bool = true
+var cat_name : String
 
 var is_playing : bool = false
 var is_mouse_moving = false
@@ -27,6 +29,7 @@ var execute_counter = 0;
 var code;
 
 var coins : int = 0
+var fishes : int = 0
 
 #------------- MINI-GAMES ---------------
 

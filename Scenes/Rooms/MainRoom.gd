@@ -1,10 +1,14 @@
 extends Node2D
+var cat_name_instance
+@onready var cat_name_scene = load("res://Scenes/Prefabs/UI/SetCatName.tscn")
 
-
-# Called when the node enters the scene tree for the first time.
 func _ready():
+	if(VariableManager.first_start) :
+		set_cat_name()
+		VariableManager.first_start = false
 	VariableManager.is_playing = false
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	pass
+func set_cat_name():
+	cat_name_instance = cat_name_scene.instantiate()
+	self.add_child(cat_name_instance)
+	get_tree().paused = true

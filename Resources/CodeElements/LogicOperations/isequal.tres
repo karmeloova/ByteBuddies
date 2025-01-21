@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="CodeElement" load_steps=2 format=3 uid="uid://dl43ecdltbygx"]
+
+[ext_resource type="Script" path="res://Scripts/Resources/CodeElementRes.gd" id="1_hdcpn"]
+
+[resource]
+script = ExtResource("1_hdcpn")
+code_element_name = "== (is equal)"
+category = 4
+price = 1

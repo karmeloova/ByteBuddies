@@ -5,6 +5,7 @@ extends Node2D
 var lives_count : int = 3
 
 func _ready():
+	SignalManager.add_fishes.connect(_on_add_fishes)
 	SignalManager.loseLife.connect(_on_lose_life)
 
 func _on_lose_life() :
@@ -16,3 +17,7 @@ func _on_lose_life() :
 		get_tree().paused = true
 		SignalManager.loseGame.emit()
 		return
+
+func _on_add_fishes() :
+	VariableManager.fishes += lives_count
+	SignalManager.update_fish_counter.emit()

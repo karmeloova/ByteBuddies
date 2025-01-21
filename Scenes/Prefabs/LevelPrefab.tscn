@@ -5,7 +5,6 @@
 [ext_resource type="FontFile" uid="uid://ccgpsjqwwow8o" path="res://Fonts/Bubblegum.ttf" id="7_aeqlx"]
 
 [node name="LevelPrefab" type="Node2D" node_paths=PackedStringArray("exp_bar", "level", "exp")]
-visible = false
 script = ExtResource("1_cat67")
 exp_bar = NodePath("Exp")
 level = NodePath("Level")
@@ -14,27 +13,27 @@ exp = NodePath("CurrentExp")
 [node name="Exp" type="TextureProgressBar" parent="."]
 modulate = Color(0.578851, 0.429316, 0.41306, 1)
 offset_left = 7.0
-offset_top = 90.0
+offset_top = 75.0
 offset_right = 524.0
-offset_bottom = 117.0
+offset_bottom = 102.0
 nine_patch_stretch = true
 texture_progress = ExtResource("6_6we7l")
 
 [node name="Level" type="Label" parent="."]
-offset_left = 117.0
+offset_left = 151.0
 offset_top = 5.0
-offset_right = 356.0
+offset_right = 390.0
 offset_bottom = 80.0
 theme_override_fonts/font = ExtResource("7_aeqlx")
-theme_override_font_sizes/font_size = 70
+theme_override_font_sizes/font_size = 60
 text = "AA"
 horizontal_alignment = 1
 
 [node name="CurrentExp" type="Label" parent="."]
-offset_left = 305.0
-offset_top = 125.0
-offset_right = 544.0
-offset_bottom = 171.0
+offset_left = 293.0
+offset_top = 118.0
+offset_right = 532.0
+offset_bottom = 164.0
 theme_override_fonts/font = ExtResource("7_aeqlx")
 theme_override_font_sizes/font_size = 40
 text = "AAAAA"

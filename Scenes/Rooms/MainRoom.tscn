@@ -1,4 +1,4 @@
-[gd_scene load_steps=60 format=3 uid="uid://br5jh3sh28ig4"]
+[gd_scene load_steps=68 format=3 uid="uid://br5jh3sh28ig4"]
 
 [ext_resource type="Texture2D" uid="uid://ddmrcvq0prt24" path="res://Images/Backgrounds/Tlov1.png" id="1_5tq1h"]
 [ext_resource type="Script" path="res://Scenes/Rooms/MainRoom.gd" id="1_80uij"]
@@ -32,6 +32,7 @@
 [ext_resource type="Resource" uid="uid://c6lobf5d5a0ah" path="res://Resources/Food/Pineapple.tres" id="18_m58wg"]
 [ext_resource type="Texture2D" uid="uid://dwwahex67somt" path="res://Images/Accessories/Bowl/Food.png" id="19_kh8nr"]
 [ext_resource type="Resource" uid="uid://b8qtspxh2opu6" path="res://Resources/Food/Banana.tres" id="19_wcutm"]
+[ext_resource type="Script" path="res://Scenes/Rooms/PlayerPanelBack.gd" id="20_x0q0y"]
 [ext_resource type="Texture2D" uid="uid://6adv5bnfl4ff" path="res://Images/UI/Buttons/Back.png" id="24_srg2u"]
 [ext_resource type="Script" path="res://Scenes/Rooms/Den.gd" id="27_8vvth"]
 [ext_resource type="Texture2D" uid="uid://bowy12qgsf8t3" path="res://Images/UI/Buttons/Button.png" id="28_7d6xq"]
@@ -43,6 +44,9 @@
 [ext_resource type="Texture2D" uid="uid://uhifpi6dj3ce" path="res://Images/Cats/Cat.png" id="32_3rwvs"]
 [ext_resource type="Script" path="res://Scenes/Rooms/Cat.gd" id="32_38vco"]
 [ext_resource type="PackedScene" uid="uid://k2t0np43srls" path="res://Scenes/Prefabs/LevelPrefab.tscn" id="33_0i3x0"]
+[ext_resource type="Script" path="res://Scenes/Rooms/ButtonInPlayerPanel.gd" id="33_h8ng0"]
+[ext_resource type="Script" path="res://Scenes/Rooms/CatName.gd" id="33_hmu7t"]
+[ext_resource type="Texture2D" uid="uid://b08rtmymx6de5" path="res://Images/UI/Buttons/Achievmentes.png" id="35_gbros"]
 [ext_resource type="Texture2D" uid="uid://fxihylphlpos" path="res://Images/UI/Buttons/Grafika_bez_nazwy 1.png" id="35_y0fri"]
 [ext_resource type="Texture2D" uid="uid://obkqk2w3p124" path="res://Images/UI/Buttons/Grafika_bez_nazwy 2.png" id="36_gkpbj"]
 [ext_resource type="Script" path="res://Scenes/Rooms/CatCleaning.gd" id="36_h366k"]
@@ -50,8 +54,12 @@
 [ext_resource type="Script" path="res://Scenes/Rooms/XD.gd" id="36_iupy0"]
 [ext_resource type="Texture2D" uid="uid://br0k60ldgk6r6" path="res://Images/UI/Buttons/Grafika_bez_nazwy.png" id="37_60h4w"]
 [ext_resource type="Script" path="res://Scripts/Items/ScratchingPostMiniGame.gd" id="37_vvil0"]
+[ext_resource type="Script" path="res://Scenes/Rooms/BoosterButton.gd" id="38_h1u42"]
 [ext_resource type="Texture2D" uid="uid://b1idsi4afsqjc" path="res://Images/UI/Buttons/Resume.png" id="38_mtuig"]
 [ext_resource type="Script" path="res://Scenes/Rooms/CodeFeedNode.gd" id="38_s7xvu"]
+[ext_resource type="Script" path="res://Scenes/Rooms/ShowNeedStatus.gd" id="47_y5i0a"]
+[ext_resource type="Script" path="res://Scenes/Rooms/Fishes.gd" id="58_a3d2p"]
+[ext_resource type="Texture2D" uid="uid://bhcgfqs2j6bx4" path="res://Images/UI/Lives/Life.png" id="58_axfkj"]
 
 [sub_resource type="CanvasTexture" id="CanvasTexture_7555d"]
 
@@ -69,8 +77,8 @@ size = Vector2(106.5, 67)
 
 [sub_resource type="CanvasTexture" id="CanvasTexture_nyw1b"]
 
-[sub_resource type="LabelSettings" id="LabelSettings_03gin"]
-font_size = 250
+[sub_resource type="CircleShape2D" id="CircleShape2D_rd7jc"]
+radius = 186.172
 
 [node name="MainRoom" type="Node2D"]
 script = ExtResource("1_80uij")
@@ -184,28 +192,6 @@ shape = SubResource("RectangleShape2D_ymck7")
 position = Vector2(574.75, 50.75)
 scale = Vector2(1150.5, 102.5)
 
-[node name="SettingsButton" type="Node2D" parent="Room/UI/Buttons" node_paths=PackedStringArray("template")]
-position = Vector2(-0.499565, 0.158537)
-scale = Vector2(0.000782269, 0.00878049)
-script = ExtResource("11_g216v")
-template = NodePath("../../Panels/PanelTemplate")
-
-[node name="Button" type="TextureButton" parent="Room/UI/Buttons/SettingsButton"]
-offset_left = -2.0
-offset_top = 546.0
-offset_right = 104.0
-offset_bottom = 646.0
-texture_normal = ExtResource("11_5i28f")
-texture_pressed = ExtResource("11_5i28f")
-ignore_texture_size = true
-stretch_mode = 0
-metadata/_edit_use_anchors_ = true
-
-[node name="Icon" type="Sprite2D" parent="Room/UI/Buttons/SettingsButton"]
-position = Vector2(51, 595)
-scale = Vector2(0.124325, 0.124325)
-texture = ExtResource("12_p2wc3")
-
 [node name="MingamesButton" type="Node2D" parent="Room/UI/Buttons" node_paths=PackedStringArray("template", "panel")]
 position = Vector2(0.420904, 0.158537)
 scale = Vector2(0.000782269, 0.00878049)
@@ -275,39 +261,13 @@ visible = false
 position = Vector2(-215.5, -479.2)
 polygon = PackedVector2Array(172, 454, 185, 447, 212, 443, 236, 444, 254, 451, 260, 458, 265, 478, 268, 488, 267, 495, 258, 501, 245, 506, 212, 509, 180, 504, 165, 496, 163, 486)
 
-[node name="AchivementsButton" type="Node2D" parent="Room/UI/Buttons" node_paths=PackedStringArray("template", "panel")]
-position = Vector2(-0.423077, 0.158537)
-scale = Vector2(0.000782269, 0.00878049)
-script = ExtResource("11_g216v")
-template = NodePath("../../Panels/PanelTemplate")
-panel = NodePath("../../Panels/Achievmentes")
-
-[node name="Button" type="TextureButton" parent="Room/UI/Buttons/AchivementsButton"]
-offset_left = -2.0
-offset_top = 546.0
-offset_right = 104.0
-offset_bottom = 646.0
-texture_normal = ExtResource("11_5i28f")
-texture_pressed = ExtResource("11_5i28f")
-ignore_texture_size = true
-stretch_mode = 0
-metadata/_edit_use_anchors_ = true
-
-[node name="Icon" type="Label" parent="Room/UI/Buttons/AchivementsButton"]
-offset_left = 24.4444
-offset_top = 566.666
-offset_right = 77.4444
-offset_bottom = 621.666
-theme_override_font_sizes/font_size = 40
-text = "OS"
-
 [node name="Panels" type="Node2D" parent="Room/UI"]
 
 [node name="PanelTemplate" type="Node2D" parent="Room/UI/Panels"]
 visible = false
 
 [node name="Background" type="Sprite2D" parent="Room/UI/Panels/PanelTemplate"]
-modulate = Color(1, 1, 1, 0.392157)
+modulate = Color(1, 1, 1, 0.470588)
 position = Vector2(571, 364.25)
 scale = Vector2(0.87415, 1.01122)
 texture = ExtResource("10_1xqql")
@@ -334,6 +294,28 @@ stretch_mode = 0
 position = Vector2(51, 595)
 scale = Vector2(0.124325, 0.124325)
 texture = ExtResource("16_qpekd")
+
+[node name="Back" type="Node2D" parent="Room/UI/Panels/PanelTemplate"]
+visible = false
+position = Vector2(254, -264)
+scale = Vector2(0.7, 0.7)
+script = ExtResource("20_x0q0y")
+metadata/_edit_group_ = true
+
+[node name="BackButton" type="TextureButton" parent="Room/UI/Panels/PanelTemplate/Back"]
+offset_left = -2.0
+offset_top = 546.0
+offset_right = 104.0
+offset_bottom = 646.0
+texture_normal = ExtResource("11_5i28f")
+texture_pressed = ExtResource("11_5i28f")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="Icon" type="Sprite2D" parent="Room/UI/Panels/PanelTemplate/Back"]
+position = Vector2(51, 595)
+scale = Vector2(0.124325, 0.124325)
+texture = ExtResource("24_srg2u")
 
 [node name="Minigames" type="Node2D" parent="Room/UI/Panels"]
 visible = false
@@ -419,6 +401,18 @@ offset_bottom = 36.0
 theme_override_font_sizes/font_size = 30
 text = "Graj"
 
+[node name="WarningLabel" type="Label" parent="Room/UI/Panels/Minigames"]
+visible = false
+offset_left = -301.0
+offset_top = 147.0
+offset_right = 298.0
+offset_bottom = 170.0
+theme_override_colors/font_color = Color(1, 0, 0, 1)
+theme_override_font_sizes/font_size = 25
+text = "Kotek jest zbyt zmęczony lub głodny aby grać."
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [node name="Shop" type="Node2D" parent="Room/UI/Panels"]
 visible = false
 position = Vector2(581, 324)
@@ -457,11 +451,6 @@ stretch_mode = 0
 position = Vector2(51, 595)
 scale = Vector2(0.124325, 0.124325)
 texture = ExtResource("24_srg2u")
-
-[node name="LevelPrefab" parent="Room/UI/Panels" node_paths=PackedStringArray("pop_up_node", "text_level") instance=ExtResource("33_0i3x0")]
-position = Vector2(298, 200)
-pop_up_node = NodePath("../NextLevelsPopUp")
-text_level = NodePath("../../../../TopPanel/Level/CurrentLevel")
 
 [node name="NextLevelsPopUp" type="Node2D" parent="Room/UI/Panels"]
 position = Vector2(230, 152)
@@ -867,6 +856,163 @@ position = Vector2(51, 595)
 scale = Vector2(0.124325, 0.124325)
 texture = ExtResource("24_srg2u")
 
+[node name="Settings" type="Node2D" parent="Room/UI/Panels"]
+visible = false
+
+[node name="Label" type="Label" parent="Room/UI/Panels/Settings"]
+offset_left = 296.0
+offset_top = 289.0
+offset_right = 868.0
+offset_bottom = 426.0
+theme_override_font_sizes/font_size = 100
+text = "SETTINGSSS"
+
+[node name="Guide" type="Node2D" parent="Room/UI/Panels"]
+visible = false
+
+[node name="Label" type="Label" parent="Room/UI/Panels/Guide"]
+offset_left = 280.0
+offset_top = 278.0
+offset_right = 867.0
+offset_bottom = 415.0
+theme_override_font_sizes/font_size = 100
+text = "GUIDEEEEEE"
+
+[node name="PlayerPanel" type="Node2D" parent="Room/UI/Panels"]
+visible = false
+
+[node name="LevelPrefab" parent="Room/UI/Panels/PlayerPanel" node_paths=PackedStringArray("pop_up_node", "text_level") instance=ExtResource("33_0i3x0")]
+position = Vector2(298, 217)
+pop_up_node = NodePath("../../NextLevelsPopUp")
+text_level = NodePath("../../../../../TopPanel/Level/CurrentLevel")
+
+[node name="CatName" type="Label" parent="Room/UI/Panels/PlayerPanel"]
+offset_left = 249.0
+offset_top = 142.0
+offset_right = 892.0
+offset_bottom = 185.0
+theme_override_fonts/font = ExtResource("7_8rg5e")
+theme_override_font_sizes/font_size = 40
+text = "karmeloova"
+horizontal_alignment = 1
+script = ExtResource("33_hmu7t")
+
+[node name="AchivementsButton" type="Node2D" parent="Room/UI/Panels/PlayerPanel" node_paths=PackedStringArray("node_to_hide", "node_to_show", "exit_button", "back_button")]
+position = Vector2(522, -111)
+scale = Vector2(0.9, 0.9)
+script = ExtResource("33_h8ng0")
+node_to_hide = NodePath("..")
+node_to_show = NodePath("../../Achievmentes")
+exit_button = NodePath("../../PanelTemplate/Exit")
+back_button = NodePath("../../PanelTemplate/Back")
+
+[node name="Button" type="TextureButton" parent="Room/UI/Panels/PlayerPanel/AchivementsButton"]
+offset_left = -1.11113
+offset_top = 552.222
+offset_right = 104.889
+offset_bottom = 652.222
+texture_normal = ExtResource("11_5i28f")
+texture_pressed = ExtResource("11_5i28f")
+ignore_texture_size = true
+stretch_mode = 0
+metadata/_edit_use_anchors_ = true
+
+[node name="Icon" type="Sprite2D" parent="Room/UI/Panels/PlayerPanel/AchivementsButton"]
+position = Vector2(52.2222, 601.111)
+scale = Vector2(0.128903, 0.128903)
+texture = ExtResource("35_gbros")
+
+[node name="Label" type="Label" parent="Room/UI/Panels/PlayerPanel/AchivementsButton"]
+offset_left = -55.5555
+offset_top = 638.889
+offset_right = 147.444
+offset_bottom = 695.889
+theme_override_fonts/font = ExtResource("7_8rg5e")
+theme_override_font_sizes/font_size = 30
+text = "Osiagniecia"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="SettingsButton" type="Node2D" parent="Room/UI/Panels/PlayerPanel" node_paths=PackedStringArray("node_to_hide", "node_to_show", "exit_button", "back_button")]
+position = Vector2(305, -107)
+scale = Vector2(0.9, 0.9)
+script = ExtResource("33_h8ng0")
+node_to_hide = NodePath("..")
+node_to_show = NodePath("../../Settings")
+exit_button = NodePath("../../PanelTemplate/Exit")
+back_button = NodePath("../../PanelTemplate/Back")
+
+[node name="Label" type="Label" parent="Room/UI/Panels/PlayerPanel/SettingsButton"]
+offset_left = -45.5555
+offset_top = 634.444
+offset_right = 157.444
+offset_bottom = 691.444
+theme_override_fonts/font = ExtResource("7_8rg5e")
+theme_override_font_sizes/font_size = 30
+text = "Ustawienia"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Button" type="TextureButton" parent="Room/UI/Panels/PlayerPanel/SettingsButton"]
+offset_left = -2.0
+offset_top = 546.0
+offset_right = 104.0
+offset_bottom = 646.0
+texture_normal = ExtResource("11_5i28f")
+texture_pressed = ExtResource("11_5i28f")
+ignore_texture_size = true
+stretch_mode = 0
+metadata/_edit_use_anchors_ = true
+
+[node name="Icon" type="Sprite2D" parent="Room/UI/Panels/PlayerPanel/SettingsButton"]
+position = Vector2(51, 595)
+scale = Vector2(0.124325, 0.124325)
+texture = ExtResource("12_p2wc3")
+
+[node name="GuideButton" type="Node2D" parent="Room/UI/Panels/PlayerPanel" node_paths=PackedStringArray("node_to_hide", "node_to_show", "exit_button", "back_button")]
+position = Vector2(737, -111)
+scale = Vector2(0.9, 0.9)
+script = ExtResource("33_h8ng0")
+node_to_hide = NodePath("..")
+node_to_show = NodePath("../../Guide")
+exit_button = NodePath("../../PanelTemplate/Exit")
+back_button = NodePath("../../PanelTemplate/Back")
+
+[node name="Button" type="TextureButton" parent="Room/UI/Panels/PlayerPanel/GuideButton"]
+offset_left = -1.11113
+offset_top = 552.222
+offset_right = 104.889
+offset_bottom = 652.222
+texture_normal = ExtResource("11_5i28f")
+texture_pressed = ExtResource("11_5i28f")
+ignore_texture_size = true
+stretch_mode = 0
+metadata/_edit_use_anchors_ = true
+
+[node name="Icon" type="Sprite2D" parent="Room/UI/Panels/PlayerPanel/GuideButton"]
+position = Vector2(51.1111, 601.111)
+scale = Vector2(0.123876, 0.123875)
+texture = ExtResource("31_u0620")
+
+[node name="Label" type="Label" parent="Room/UI/Panels/PlayerPanel/GuideButton"]
+offset_left = -55.5555
+offset_top = 638.889
+offset_right = 147.444
+offset_bottom = 695.889
+theme_override_fonts/font = ExtResource("7_8rg5e")
+theme_override_font_sizes/font_size = 30
+text = "Poradnik"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="BoosterButton" type="Button" parent="Room/UI"]
+offset_left = 12.0
+offset_top = 558.0
+offset_right = 108.0
+offset_bottom = 634.0
+text = "Boosters"
+script = ExtResource("38_h1u42")
+
 [node name="ScratchingPost" type="Node2D" parent="."]
 visible = false
 
@@ -1250,13 +1396,16 @@ texture = SubResource("CanvasTexture_nyw1b")
 position = Vector2(389, 45)
 scale = Vector2(0.249311, 0.249311)
 script = ExtResource("6_1vdjr")
+metadata/_edit_group_ = true
 
 [node name="Timer" type="Timer" parent="TopPanel/Needs"]
 
-[node name="Hungry" type="Node2D" parent="TopPanel/Needs"]
+[node name="Hungry" type="Area2D" parent="TopPanel/Needs" node_paths=PackedStringArray("need_label")]
 position = Vector2(28.0774, 28.0774)
 scale = Vector2(0.9, 0.9)
-metadata/_edit_group_ = true
+script = ExtResource("47_y5i0a")
+need_name = "hungry"
+need_label = NodePath("FoodLabel")
 
 [node name="TextureProgressBar" type="TextureProgressBar" parent="TopPanel/Needs/Hungry"]
 modulate = Color(0.933333, 0.933333, 0.933333, 1)
@@ -1267,6 +1416,7 @@ offset_bottom = 196.0
 fill_mode = 3
 nine_patch_stretch = true
 texture_progress = ExtResource("7_8l0el")
+metadata/_edit_use_anchors_ = true
 
 [node name="Food" type="Sprite2D" parent="TopPanel/Needs/Hungry"]
 position = Vector2(-28.0774, 0)
@@ -1278,9 +1428,27 @@ position = Vector2(-28.0773, -5.72205e-06)
 scale = Vector2(0.6, 0.6)
 texture = ExtResource("8_onvnt")
 
-[node name="Play" type="Node2D" parent="TopPanel/Needs"]
+[node name="FoodLabel" type="Label" parent="TopPanel/Needs/Hungry"]
+visible = false
+offset_left = -201.0
+offset_top = 187.0
+offset_right = 134.0
+offset_bottom = 285.0
+theme_override_fonts/font = ExtResource("7_8rg5e")
+theme_override_font_sizes/font_size = 100
+text = "100%"
+horizontal_alignment = 1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TopPanel/Needs/Hungry"]
+position = Vector2(-31.1971, -4.45674)
+shape = SubResource("CircleShape2D_rd7jc")
+
+[node name="Play" type="Area2D" parent="TopPanel/Needs" node_paths=PackedStringArray("need_label")]
 position = Vector2(397.094, 28.0774)
 scale = Vector2(0.9, 0.9)
+script = ExtResource("47_y5i0a")
+need_name = "play"
+need_label = NodePath("PlayLabel")
 
 [node name="TextureProgressBar" type="TextureProgressBar" parent="TopPanel/Needs/Play"]
 modulate = Color(0.933333, 0.933333, 0.933333, 1)
@@ -1291,6 +1459,7 @@ offset_bottom = 196.0
 fill_mode = 3
 nine_patch_stretch = true
 texture_progress = ExtResource("7_8l0el")
+metadata/_edit_use_anchors_ = true
 
 [node name="Play" type="Sprite2D" parent="TopPanel/Needs/Play"]
 position = Vector2(-28.0774, 0)
@@ -1302,9 +1471,27 @@ position = Vector2(-31.1967, -4.45675)
 scale = Vector2(0.55, 0.55)
 texture = ExtResource("14_84fhf")
 
-[node name="Scratch" type="Node2D" parent="TopPanel/Needs"]
+[node name="PlayLabel" type="Label" parent="TopPanel/Needs/Play"]
+visible = false
+offset_left = -201.0
+offset_top = 187.0
+offset_right = 134.0
+offset_bottom = 285.0
+theme_override_fonts/font = ExtResource("7_8rg5e")
+theme_override_font_sizes/font_size = 100
+text = "100%"
+horizontal_alignment = 1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TopPanel/Needs/Play"]
+position = Vector2(-31.1971, -4.45674)
+shape = SubResource("CircleShape2D_rd7jc")
+
+[node name="Scratch" type="Area2D" parent="TopPanel/Needs" node_paths=PackedStringArray("need_label")]
 position = Vector2(762.1, 28.0774)
 scale = Vector2(0.9, 0.9)
+script = ExtResource("47_y5i0a")
+need_name = "scratch"
+need_label = NodePath("ScratchLabel")
 
 [node name="TextureProgressBar" type="TextureProgressBar" parent="TopPanel/Needs/Scratch"]
 modulate = Color(0.93408, 0.93408, 0.93408, 1)
@@ -1315,6 +1502,7 @@ offset_bottom = 196.0
 fill_mode = 3
 nine_patch_stretch = true
 texture_progress = ExtResource("7_8l0el")
+metadata/_edit_use_anchors_ = true
 
 [node name="Food" type="Sprite2D" parent="TopPanel/Needs/Scratch"]
 position = Vector2(-28.0774, 0)
@@ -1326,9 +1514,27 @@ position = Vector2(-31.1966, -4.45675)
 scale = Vector2(0.65, 0.65)
 texture = ExtResource("35_y0fri")
 
-[node name="Sleep" type="Node2D" parent="TopPanel/Needs"]
+[node name="ScratchLabel" type="Label" parent="TopPanel/Needs/Scratch"]
+visible = false
+offset_left = -201.0
+offset_top = 187.0
+offset_right = 134.0
+offset_bottom = 285.0
+theme_override_fonts/font = ExtResource("7_8rg5e")
+theme_override_font_sizes/font_size = 100
+text = "100%"
+horizontal_alignment = 1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TopPanel/Needs/Scratch"]
+position = Vector2(-31.1971, -4.45674)
+shape = SubResource("CircleShape2D_rd7jc")
+
+[node name="Sleep" type="Area2D" parent="TopPanel/Needs" node_paths=PackedStringArray("need_label")]
 position = Vector2(1127.11, 28.0774)
 scale = Vector2(0.9, 0.9)
+script = ExtResource("47_y5i0a")
+need_name = "sleep"
+need_label = NodePath("SleepLabel")
 
 [node name="TextureProgressBar" type="TextureProgressBar" parent="TopPanel/Needs/Sleep"]
 modulate = Color(0.933333, 0.933333, 0.933333, 1)
@@ -1339,6 +1545,7 @@ offset_bottom = 201.0
 fill_mode = 3
 nine_patch_stretch = true
 texture_progress = ExtResource("7_8l0el")
+metadata/_edit_use_anchors_ = true
 
 [node name="Food" type="Sprite2D" parent="TopPanel/Needs/Sleep"]
 position = Vector2(-28.0774, 0)
@@ -1350,11 +1557,30 @@ position = Vector2(-35.6579, 4.45671)
 scale = Vector2(0.6, 0.6)
 texture = ExtResource("36_gkpbj")
 
-[node name="Clean" type="Node2D" parent="TopPanel/Needs"]
+[node name="SleepLabel" type="Label" parent="TopPanel/Needs/Sleep"]
+visible = false
+offset_left = -201.0
+offset_top = 187.0
+offset_right = 134.0
+offset_bottom = 285.0
+theme_override_fonts/font = ExtResource("7_8rg5e")
+theme_override_font_sizes/font_size = 100
+text = "100%"
+horizontal_alignment = 1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TopPanel/Needs/Sleep"]
+position = Vector2(-31.1971, -4.45674)
+shape = SubResource("CircleShape2D_rd7jc")
+
+[node name="Clean" type="Area2D" parent="TopPanel/Needs" node_paths=PackedStringArray("need_label")]
 position = Vector2(1504.15, 28.0774)
 scale = Vector2(0.9, 0.9)
+script = ExtResource("47_y5i0a")
+need_name = "clean"
+need_label = NodePath("CleanLabel")
 
 [node name="TextureProgressBar" type="TextureProgressBar" parent="TopPanel/Needs/Clean"]
+modulate = Color(0.933333, 0.933333, 0.933333, 1)
 offset_left = -245.0
 offset_top = -205.0
 offset_right = 193.0
@@ -1373,12 +1599,27 @@ position = Vector2(-31.2023, -4.45674)
 scale = Vector2(0.65, 0.65)
 texture = ExtResource("37_60h4w")
 
+[node name="CleanLabel" type="Label" parent="TopPanel/Needs/Clean"]
+visible = false
+offset_left = -201.0
+offset_top = 187.0
+offset_right = 134.0
+offset_bottom = 285.0
+theme_override_fonts/font = ExtResource("7_8rg5e")
+theme_override_font_sizes/font_size = 100
+text = "100%"
+horizontal_alignment = 1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TopPanel/Needs/Clean"]
+position = Vector2(-31.1971, -4.45674)
+shape = SubResource("CircleShape2D_rd7jc")
+
 [node name="Level" type="Area2D" parent="TopPanel" node_paths=PackedStringArray("panel_template", "level")]
 position = Vector2(1097, 54)
 scale = Vector2(0.190099, 0.190099)
 script = ExtResource("8_vwgn7")
 panel_template = NodePath("../../Room/UI/Panels/PanelTemplate")
-level = NodePath("../../Room/UI/Panels/LevelPrefab")
+level = NodePath("../../Room/UI/Panels/PlayerPanel")
 metadata/_edit_group_ = true
 
 [node name="LevelBackground" type="Sprite2D" parent="TopPanel/Level"]
@@ -1408,22 +1649,36 @@ scale = Vector2(0.190099, 0.190099)
 script = ExtResource("2_heemv")
 
 [node name="CurrencyIcon" type="Sprite2D" parent="TopPanel/Currency"]
-position = Vector2(-641.771, -21.0417)
-scale = Vector2(0.886122, 0.886122)
+position = Vector2(-720.677, -136.771)
+scale = Vector2(0.645755, 0.645755)
 texture = ExtResource("4_omybp")
 
 [node name="Money" type="Label" parent="TopPanel/Currency"]
-offset_left = -426.094
-offset_top = -126.25
-offset_right = 329.906
-offset_bottom = 140.75
-theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
-theme_override_constants/shadow_offset_x = 10
-theme_override_constants/shadow_offset_y = 10
+offset_left = -573.0
+offset_top = -241.979
+offset_right = 226.0
+offset_bottom = 4.02083
 theme_override_fonts/font = ExtResource("7_8rg5e")
-theme_override_font_sizes/font_size = 20
-text = "10000"
-label_settings = SubResource("LabelSettings_03gin")
+theme_override_font_sizes/font_size = 230
+text = "1000"
+
+[node name="Fishes" type="Node2D" parent="TopPanel"]
+script = ExtResource("58_a3d2p")
+
+[node name="FishIcon" type="Sprite2D" parent="TopPanel/Fishes"]
+position = Vector2(31, 77)
+rotation = -1.5708
+scale = Vector2(0.0606898, 0.0606898)
+texture = ExtResource("58_axfkj")
+
+[node name="FishCounter" type="Label" parent="TopPanel/Fishes"]
+offset_left = 60.0
+offset_top = 55.0
+offset_right = 140.0
+offset_bottom = 103.0
+theme_override_fonts/font = ExtResource("7_8rg5e")
+theme_override_font_sizes/font_size = 44
+text = "100"
 
 [connection signal="timeout" from="Room/Cat/EatTimer" to="Room/Cat" method="_on_eat_timer_timeout"]
 [connection signal="input_event" from="Room/Scratching_post" to="Room/Scratching_post" method="_on_input_event"]
@@ -1437,9 +1692,6 @@ label_settings = SubResource("LabelSettings_03gin")
 [connection signal="input_event" from="Room/Den/Area2D" to="Room/Den" method="_on_area_2d_input_event"]
 [connection signal="mouse_entered" from="Room/Den/Area2D" to="Room/Den" method="_on_area_2d_mouse_entered"]
 [connection signal="mouse_exited" from="Room/Den/Area2D" to="Room/Den" method="_on_area_2d_mouse_exited"]
-[connection signal="mouse_entered" from="Room/UI/Buttons/SettingsButton/Button" to="Room/UI/Buttons/SettingsButton" method="_on_button_mouse_entered"]
-[connection signal="mouse_exited" from="Room/UI/Buttons/SettingsButton/Button" to="Room/UI/Buttons/SettingsButton" method="_on_button_mouse_exited"]
-[connection signal="pressed" from="Room/UI/Buttons/SettingsButton/Button" to="Room/UI/Buttons/SettingsButton" method="_on_button_pressed"]
 [connection signal="mouse_entered" from="Room/UI/Buttons/MingamesButton/Button" to="Room/UI/Buttons/MingamesButton" method="_on_button_mouse_entered"]
 [connection signal="mouse_exited" from="Room/UI/Buttons/MingamesButton/Button" to="Room/UI/Buttons/MingamesButton" method="_on_button_mouse_exited"]
 [connection signal="pressed" from="Room/UI/Buttons/MingamesButton/Button" to="Room/UI/Buttons/MingamesButton" method="_on_button_pressed"]
@@ -1449,12 +1701,13 @@ label_settings = SubResource("LabelSettings_03gin")
 [connection signal="input_event" from="Room/UI/Buttons/Bowl" to="Room/UI/Buttons/Bowl" method="_on_input_event"]
 [connection signal="mouse_entered" from="Room/UI/Buttons/Bowl" to="Room/UI/Buttons/Bowl" method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="Room/UI/Buttons/Bowl" to="Room/UI/Buttons/Bowl" method="_on_mouse_exited"]
-[connection signal="mouse_entered" from="Room/UI/Buttons/AchivementsButton/Button" to="Room/UI/Buttons/AchivementsButton" method="_on_button_mouse_entered"]
-[connection signal="mouse_exited" from="Room/UI/Buttons/AchivementsButton/Button" to="Room/UI/Buttons/AchivementsButton" method="_on_button_mouse_exited"]
-[connection signal="pressed" from="Room/UI/Buttons/AchivementsButton/Button" to="Room/UI/Buttons/AchivementsButton" method="_on_button_pressed"]
 [connection signal="mouse_entered" from="Room/UI/Panels/PanelTemplate/Exit/Button" to="Room/UI/Panels/PanelTemplate/Exit" method="_on_button_mouse_entered"]
 [connection signal="mouse_exited" from="Room/UI/Panels/PanelTemplate/Exit/Button" to="Room/UI/Panels/PanelTemplate/Exit" method="_on_button_mouse_exited"]
 [connection signal="pressed" from="Room/UI/Panels/PanelTemplate/Exit/Button" to="Room/UI/Panels/PanelTemplate/Exit" method="_on_button_pressed"]
+[connection signal="mouse_entered" from="Room/UI/Panels/PanelTemplate/Back/BackButton" to="Room/UI/Panels/PanelTemplate/Back" method="_on_back_button_mouse_entered"]
+[connection signal="mouse_exited" from="Room/UI/Panels/PanelTemplate/Back/BackButton" to="Room/UI/Panels/PanelTemplate/Back" method="_on_back_button_mouse_exited"]
+[connection signal="pressed" from="Room/UI/Panels/PanelTemplate/Back/BackButton" to="Room/UI/Panels/PanelTemplate/Back" method="_on_back_button_pressed"]
+[connection signal="visibility_changed" from="Room/UI/Panels/Minigames" to="Room/UI/Panels/Minigames" method="_on_visibility_changed"]
 [connection signal="pressed" from="Room/UI/Panels/Minigames/WalkToTarget/WalkToTargetButton" to="Room/UI/Panels/Minigames" method="_on_walk_to_target_button_pressed"]
 [connection signal="pressed" from="Room/UI/Panels/Minigames/CatHop/CatHopButton" to="Room/UI/Panels/Minigames" method="_on_cat_hop_button_pressed"]
 [connection signal="pressed" from="Room/UI/Panels/Minigames/DragAndDrop/DragAndDropButton" to="Room/UI/Panels/Minigames" method="_on_drag_and_drop_button_pressed"]
@@ -1471,6 +1724,16 @@ label_settings = SubResource("LabelSettings_03gin")
 [connection signal="pressed" from="Room/UI/Panels/Achievmentes/AchievementsButtons/Sleeping" to="Room/UI/Panels/Achievmentes/AchievementsButtons" method="_on_button_pressed" binds= [7]]
 [connection signal="pressed" from="Room/UI/Panels/Achievmentes/AchievementsButtons/Cleaning" to="Room/UI/Panels/Achievmentes/AchievementsButtons" method="_on_button_pressed" binds= [8]]
 [connection signal="pressed" from="Room/UI/Panels/Achievmentes/Back/BackButton" to="Room/UI/Panels/Achievmentes/Back" method="_on_back_button_pressed"]
+[connection signal="mouse_entered" from="Room/UI/Panels/PlayerPanel/AchivementsButton/Button" to="Room/UI/Panels/PlayerPanel/AchivementsButton" method="_on_button_mouse_entered"]
+[connection signal="mouse_exited" from="Room/UI/Panels/PlayerPanel/AchivementsButton/Button" to="Room/UI/Panels/PlayerPanel/AchivementsButton" method="_on_button_mouse_exited"]
+[connection signal="pressed" from="Room/UI/Panels/PlayerPanel/AchivementsButton/Button" to="Room/UI/Panels/PlayerPanel/AchivementsButton" method="_on_button_pressed"]
+[connection signal="mouse_entered" from="Room/UI/Panels/PlayerPanel/SettingsButton/Button" to="Room/UI/Panels/PlayerPanel/SettingsButton" method="_on_button_mouse_entered"]
+[connection signal="mouse_exited" from="Room/UI/Panels/PlayerPanel/SettingsButton/Button" to="Room/UI/Panels/PlayerPanel/SettingsButton" method="_on_button_mouse_exited"]
+[connection signal="pressed" from="Room/UI/Panels/PlayerPanel/SettingsButton/Button" to="Room/UI/Panels/PlayerPanel/SettingsButton" method="_on_button_pressed"]
+[connection signal="mouse_entered" from="Room/UI/Panels/PlayerPanel/GuideButton/Button" to="Room/UI/Panels/PlayerPanel/GuideButton" method="_on_button_mouse_entered"]
+[connection signal="mouse_exited" from="Room/UI/Panels/PlayerPanel/GuideButton/Button" to="Room/UI/Panels/PlayerPanel/GuideButton" method="_on_button_mouse_exited"]
+[connection signal="pressed" from="Room/UI/Panels/PlayerPanel/GuideButton/Button" to="Room/UI/Panels/PlayerPanel/GuideButton" method="_on_button_pressed"]
+[connection signal="pressed" from="Room/UI/BoosterButton" to="Room/UI/BoosterButton" method="_on_pressed"]
 [connection signal="mouse_entered" from="ScratchingPost/PlayerScratching" to="ScratchingPost/Scene" method="_on_player_scratching_mouse_entered"]
 [connection signal="mouse_exited" from="ScratchingPost/PlayerScratching" to="ScratchingPost/Scene" method="_on_player_scratching_mouse_exited"]
 [connection signal="mouse_entered" from="ScratchingPost/Back/BackButton" to="ScratchingPost/Scene" method="_on_back_button_mouse_entered"]
@@ -1502,6 +1765,16 @@ label_settings = SubResource("LabelSettings_03gin")
 [connection signal="mouse_exited" from="Bath/Back/BackButton" to="Bath/Cat" method="_on_back_button_mouse_exited"]
 [connection signal="pressed" from="Bath/Back/BackButton" to="Bath/Cat" method="_on_back_button_pressed"]
 [connection signal="timeout" from="TopPanel/Needs/Timer" to="TopPanel/Needs" method="_on_timer_timeout"]
+[connection signal="mouse_entered" from="TopPanel/Needs/Hungry" to="TopPanel/Needs/Hungry" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="TopPanel/Needs/Hungry" to="TopPanel/Needs/Hungry" method="_on_mouse_exited"]
+[connection signal="mouse_entered" from="TopPanel/Needs/Play" to="TopPanel/Needs/Play" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="TopPanel/Needs/Play" to="TopPanel/Needs/Play" method="_on_mouse_exited"]
+[connection signal="mouse_entered" from="TopPanel/Needs/Scratch" to="TopPanel/Needs/Scratch" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="TopPanel/Needs/Scratch" to="TopPanel/Needs/Scratch" method="_on_mouse_exited"]
+[connection signal="mouse_entered" from="TopPanel/Needs/Sleep" to="TopPanel/Needs/Sleep" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="TopPanel/Needs/Sleep" to="TopPanel/Needs/Sleep" method="_on_mouse_exited"]
+[connection signal="mouse_entered" from="TopPanel/Needs/Clean" to="TopPanel/Needs/Clean" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="TopPanel/Needs/Clean" to="TopPanel/Needs/Clean" method="_on_mouse_exited"]
 [connection signal="input_event" from="TopPanel/Level" to="TopPanel/Level" method="_on_input_event"]
 [connection signal="mouse_entered" from="TopPanel/Level" to="TopPanel/Level" method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="TopPanel/Level" to="TopPanel/Level" method="_on_mouse_exited"]

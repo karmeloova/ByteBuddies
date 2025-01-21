@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="CodeElement" load_steps=2 format=3 uid="uid://bjyie5m3by2kj"]
+
+[ext_resource type="Script" path="res://Scripts/Resources/CodeElementRes.gd" id="1_y0v68"]
+
+[resource]
+script = ExtResource("1_y0v68")
+code_element_name = "while"
+category = 1
+price = 2

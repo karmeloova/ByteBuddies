@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="Plan" load_steps=8 format=3 uid="uid://cbrh0bymtpjyj"]
+
+[ext_resource type="Resource" uid="uid://7wbtoa47s3qq" path="res://Resources/CodeElements/Variables/multiplier.tres" id="1_7e7uo"]
+[ext_resource type="Script" path="res://Scripts/Resources/Plansres.gd" id="1_8lbh3"]
+[ext_resource type="Resource" uid="uid://drrfn7u42bggg" path="res://Resources/Levels/Level2.tres" id="1_jg4sa"]
+[ext_resource type="Resource" uid="uid://csuujkn05uxls" path="res://Resources/CodeElements/Variables/games_left.tres" id="2_je8eh"]
+[ext_resource type="Resource" uid="uid://bjyie5m3by2kj" path="res://Resources/CodeElements/Loops/while.tres" id="3_io8ja"]
+[ext_resource type="Resource" uid="uid://cx2giwq6v64sp" path="res://Resources/CodeElements/Variables/earned_exp.tres" id="4_6u406"]
+[ext_resource type="Resource" uid="uid://c8pws17gbms2y" path="res://Resources/CodeElements/Functions/add_exp.tres" id="5_bdlfg"]
+
+[resource]
+script = ExtResource("1_8lbh3")
+plan_name = "double_exp"
+required_level = ExtResource("1_jg4sa")
+price = 5
+needed_code_elements = Array[Resource("res://Scripts/Resources/CodeElementRes.gd")]([ExtResource("1_7e7uo"), ExtResource("2_je8eh"), ExtResource("3_io8ja"), ExtResource("4_6u406"), ExtResource("5_bdlfg")])
+correct_booster = Array[String](["multiplier", "=", "2", "enter", "games_left", "=", "5", "enter", "while", "games_left", ">", "0", "enter", "tab", "earned_exp", "*=", "multiplier", "enter", "add_exp(earned_exp)", "enter", "games_left", "-=", "1"])
+games_duration = 5
+multiplier = 2

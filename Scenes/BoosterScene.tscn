@@ -1,0 +1,832 @@
+[gd_scene load_steps=35 format=3 uid="uid://c826tkspvt4i8"]
+
+[ext_resource type="FontFile" uid="uid://ccgpsjqwwow8o" path="res://Fonts/Bubblegum.ttf" id="1_8ghdf"]
+[ext_resource type="Script" path="res://Scenes/BoosterSceneButton.gd" id="2_1tf8h"]
+[ext_resource type="Script" path="res://Scenes/BackButtonToMainRoom.gd" id="2_8au02"]
+[ext_resource type="Texture2D" uid="uid://2rpmid1gnwur" path="res://Images/UI/Buttons/RoundButton.png" id="2_c63af"]
+[ext_resource type="Texture2D" uid="uid://d3mk4lq24jssi" path="res://Images/UI/Buttons/Shop.png" id="3_tkx36"]
+[ext_resource type="PackedScene" uid="uid://gcy755tp74rl" path="res://Scenes/Prefabs/BoosterPrefab.tscn" id="4_s42u8"]
+[ext_resource type="Resource" uid="uid://cbrh0bymtpjyj" path="res://Resources/Plans/DoubleExp.tres" id="5_1sg3u"]
+[ext_resource type="Script" path="res://Scripts/UI/ExitButton.gd" id="5_f7nr3"]
+[ext_resource type="Texture2D" uid="uid://dj5an2o6yuccm" path="res://Images/UI/Buttons/Exit.png" id="5_sg6fy"]
+[ext_resource type="Script" path="res://Scenes/BackButtonBoosters.gd" id="7_7se2f"]
+[ext_resource type="Texture2D" uid="uid://6adv5bnfl4ff" path="res://Images/UI/Buttons/Back.png" id="7_kpp2h"]
+[ext_resource type="Script" path="res://Scenes/PlansStoragePanel.gd" id="11_l566k"]
+[ext_resource type="Script" path="res://Scenes/PartsStoragePanel.gd" id="12_pv66d"]
+[ext_resource type="PackedScene" uid="uid://efafyn68uv1p" path="res://Scenes/Prefabs/CodeElementShopPrefab.tscn" id="12_xoax1"]
+[ext_resource type="Resource" uid="uid://cx2giwq6v64sp" path="res://Resources/CodeElements/Variables/earned_exp.tres" id="13_6qrfp"]
+[ext_resource type="Resource" uid="uid://csuujkn05uxls" path="res://Resources/CodeElements/Variables/games_left.tres" id="14_d5806"]
+[ext_resource type="Resource" uid="uid://7wbtoa47s3qq" path="res://Resources/CodeElements/Variables/multiplier.tres" id="15_7msek"]
+[ext_resource type="Resource" uid="uid://cbds4qq2k073r" path="res://Resources/CodeElements/Loops/for.tres" id="16_fvve5"]
+[ext_resource type="Resource" uid="uid://bjyie5m3by2kj" path="res://Resources/CodeElements/Loops/while.tres" id="17_pmuaw"]
+[ext_resource type="Resource" uid="uid://by5l6myqrux8b" path="res://Resources/CodeElements/Conditions/if.tres" id="18_xp2om"]
+[ext_resource type="Resource" uid="uid://csx631a3ct1td" path="res://Resources/CodeElements/Conditions/ifelse.tres" id="19_7fkn6"]
+[ext_resource type="Resource" uid="uid://nshygtcityi8" path="res://Resources/CodeElements/MathOperations/add.tres" id="20_5mu1t"]
+[ext_resource type="Resource" uid="uid://btlhsaelgar20" path="res://Resources/CodeElements/MathOperations/divide.tres" id="21_vus5n"]
+[ext_resource type="Resource" uid="uid://bqsi8xv7xaamn" path="res://Resources/CodeElements/MathOperations/multiple.tres" id="22_5ulfp"]
+[ext_resource type="Resource" uid="uid://c3j8m8vkc3jiy" path="res://Resources/CodeElements/MathOperations/substract.tres" id="23_klprx"]
+[ext_resource type="Resource" uid="uid://dl43ecdltbygx" path="res://Resources/CodeElements/LogicOperations/isequal.tres" id="24_s11v5"]
+[ext_resource type="Resource" uid="uid://1pmdga36pq8m" path="res://Resources/CodeElements/LogicOperations/isgreater.tres" id="25_5jk0n"]
+[ext_resource type="Resource" uid="uid://c3qmbu0areirb" path="res://Resources/CodeElements/LogicOperations/isless.tres" id="26_41l2c"]
+[ext_resource type="Resource" uid="uid://c8pws17gbms2y" path="res://Resources/CodeElements/Functions/add_exp.tres" id="27_paa8e"]
+[ext_resource type="Script" path="res://Scenes/PrepareBoosterPanel.gd" id="29_42bir"]
+[ext_resource type="Script" path="res://Scenes/BuildBooster.gd" id="30_phvnv"]
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_x5l5x"]
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_skap4"]
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_ahlo6"]
+
+[node name="BoosterScene" type="Node2D"]
+
+[node name="Background" type="Sprite2D" parent="."]
+modulate = Color(0.44871, 0.428599, 0.352223, 1)
+position = Vector2(579, 335.5)
+scale = Vector2(1218, 695)
+texture = SubResource("CanvasTexture_x5l5x")
+
+[node name="Header" type="Node2D" parent="."]
+position = Vector2(598, 42)
+metadata/_edit_group_ = true
+
+[node name="HeaderBackground" type="Sprite2D" parent="Header"]
+modulate = Color(1, 1, 1, 0.270588)
+position = Vector2(-22.2556, 0)
+scale = Vector2(-1150.89, 86.5452)
+texture = SubResource("CanvasTexture_skap4")
+
+[node name="HeaderLabel" type="Label" parent="Header"]
+offset_left = -598.0
+offset_top = -43.0
+offset_right = 552.0
+offset_bottom = 43.0
+theme_override_fonts/font = ExtResource("1_8ghdf")
+theme_override_font_sizes/font_size = 50
+text = "WARSZTAT"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="BackButton" type="Node2D" parent="Header"]
+position = Vector2(-562, -3)
+script = ExtResource("2_8au02")
+metadata/_edit_group_ = true
+
+[node name="Button" type="TextureButton" parent="Header/BackButton"]
+offset_left = -30.0
+offset_top = -28.0
+offset_right = 32.0
+offset_bottom = 31.0
+texture_normal = ExtResource("2_c63af")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="Icon" type="Sprite2D" parent="Header/BackButton"]
+position = Vector2(1, 1)
+scale = Vector2(0.078357, 0.078357)
+texture = ExtResource("7_kpp2h")
+
+[node name="ShopPart" type="Node2D" parent="."]
+
+[node name="ButtonsContainer" type="Node2D" parent="ShopPart"]
+
+[node name="PlansButton" type="Node2D" parent="ShopPart/ButtonsContainer" node_paths=PackedStringArray("panel_to_show", "panel_container", "button_container")]
+position = Vector2(47, 601)
+script = ExtResource("2_1tf8h")
+panel_to_show = NodePath("../../PanelsContainer/PlansPanel")
+panel_container = NodePath("../../PanelsContainer")
+button_container = NodePath("..")
+metadata/_edit_group_ = true
+
+[node name="Button" type="TextureButton" parent="ShopPart/ButtonsContainer/PlansButton"]
+offset_left = -52.0
+offset_top = -45.0
+offset_right = 50.0
+offset_bottom = 51.0
+texture_normal = ExtResource("2_c63af")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="Icon" type="Label" parent="ShopPart/ButtonsContainer/PlansButton"]
+offset_left = -23.0
+offset_top = -27.0
+offset_right = 25.0
+offset_bottom = 28.0
+theme_override_font_sizes/font_size = 40
+text = "PL"
+
+[node name="ShopButton" type="Node2D" parent="ShopPart/ButtonsContainer" node_paths=PackedStringArray("panel_to_show", "panel_container", "button_container")]
+position = Vector2(133, 601)
+script = ExtResource("2_1tf8h")
+panel_to_show = NodePath("../../PanelsContainer/ShopPanel")
+panel_container = NodePath("../../PanelsContainer")
+button_container = NodePath("..")
+metadata/_edit_group_ = true
+
+[node name="Button" type="TextureButton" parent="ShopPart/ButtonsContainer/ShopButton"]
+offset_left = -52.0
+offset_top = -45.0
+offset_right = 50.0
+offset_bottom = 51.0
+texture_normal = ExtResource("2_c63af")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="Icon" type="Sprite2D" parent="ShopPart/ButtonsContainer/ShopButton"]
+position = Vector2(-0.999997, 2.00003)
+scale = Vector2(0.122048, 0.122048)
+texture = ExtResource("3_tkx36")
+
+[node name="StorageButton" type="Node2D" parent="ShopPart/ButtonsContainer" node_paths=PackedStringArray("panel_to_show", "panel_container", "button_container")]
+position = Vector2(220, 601)
+script = ExtResource("2_1tf8h")
+panel_to_show = NodePath("../../PanelsContainer/StoragePanel")
+panel_container = NodePath("../../PanelsContainer")
+button_container = NodePath("..")
+metadata/_edit_group_ = true
+
+[node name="Button" type="TextureButton" parent="ShopPart/ButtonsContainer/StorageButton"]
+offset_left = -52.0
+offset_top = -45.0
+offset_right = 50.0
+offset_bottom = 51.0
+texture_normal = ExtResource("2_c63af")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="Icon" type="Label" parent="ShopPart/ButtonsContainer/StorageButton"]
+offset_left = -23.0
+offset_top = -27.0
+offset_right = 25.0
+offset_bottom = 28.0
+theme_override_font_sizes/font_size = 40
+text = "M"
+
+[node name="PanelsContainer" type="Node2D" parent="ShopPart"]
+
+[node name="PanelTemplate" type="Node2D" parent="ShopPart/PanelsContainer"]
+visible = false
+
+[node name="PanelBackground" type="Sprite2D" parent="ShopPart/PanelsContainer/PanelTemplate"]
+self_modulate = Color(1, 1, 1, 0.270588)
+position = Vector2(296, 324.5)
+scale = Vector2(562, 455)
+texture = SubResource("CanvasTexture_ahlo6")
+
+[node name="CloseButton" type="Node2D" parent="ShopPart/PanelsContainer/PanelTemplate" node_paths=PackedStringArray("panels_node", "buttons_node")]
+position = Vector2(45, 127)
+script = ExtResource("5_f7nr3")
+panels_node = NodePath("../..")
+buttons_node = NodePath("../../../ButtonsContainer")
+metadata/_edit_group_ = true
+
+[node name="Button" type="TextureButton" parent="ShopPart/PanelsContainer/PanelTemplate/CloseButton"]
+offset_left = -30.0
+offset_top = -28.0
+offset_right = 32.0
+offset_bottom = 31.0
+texture_normal = ExtResource("2_c63af")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="Icon" type="Sprite2D" parent="ShopPart/PanelsContainer/PanelTemplate/CloseButton"]
+position = Vector2(1, 1)
+scale = Vector2(0.078357, 0.078357)
+texture = ExtResource("5_sg6fy")
+
+[node name="BackButton" type="Node2D" parent="ShopPart/PanelsContainer/PanelTemplate" node_paths=PackedStringArray("panel_container")]
+visible = false
+position = Vector2(45, 127)
+script = ExtResource("7_7se2f")
+panel_container = NodePath("../..")
+metadata/_edit_group_ = true
+
+[node name="Button" type="TextureButton" parent="ShopPart/PanelsContainer/PanelTemplate/BackButton"]
+offset_left = -30.0
+offset_top = -28.0
+offset_right = 32.0
+offset_bottom = 31.0
+texture_normal = ExtResource("2_c63af")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="Icon" type="Sprite2D" parent="ShopPart/PanelsContainer/PanelTemplate/BackButton"]
+position = Vector2(1, 1)
+scale = Vector2(0.078357, 0.078357)
+texture = ExtResource("7_kpp2h")
+
+[node name="PlansPanel" type="Node2D" parent="ShopPart/PanelsContainer"]
+visible = false
+
+[node name="Label" type="Label" parent="ShopPart/PanelsContainer/PlansPanel"]
+offset_left = 16.0
+offset_top = 99.0
+offset_right = 577.0
+offset_bottom = 168.0
+theme_override_fonts/font = ExtResource("1_8ghdf")
+theme_override_font_sizes/font_size = 50
+text = "Plany"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="PlanPrefab" parent="ShopPart/PanelsContainer/PlansPanel" instance=ExtResource("4_s42u8")]
+position = Vector2(29, 172)
+plan = ExtResource("5_1sg3u")
+
+[node name="ShopPanel" type="Node2D" parent="ShopPart/PanelsContainer"]
+visible = false
+
+[node name="Label" type="Label" parent="ShopPart/PanelsContainer/ShopPanel"]
+offset_left = 16.0
+offset_top = 99.0
+offset_right = 577.0
+offset_bottom = 169.0
+theme_override_fonts/font = ExtResource("1_8ghdf")
+theme_override_font_sizes/font_size = 50
+text = "SKLEP"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="GridContainer" type="GridContainer" parent="ShopPart/PanelsContainer/ShopPanel"]
+offset_left = 47.0
+offset_top = 177.0
+offset_right = 551.0
+offset_bottom = 526.0
+size_flags_horizontal = 3
+size_flags_vertical = 10
+theme_override_constants/h_separation = 25
+theme_override_constants/v_separation = 25
+columns = 3
+
+[node name="Variables" type="Control" parent="ShopPart/PanelsContainer/ShopPanel/GridContainer"]
+custom_minimum_size = Vector2(150, 50)
+layout_mode = 2
+
+[node name="Variables" type="Node2D" parent="ShopPart/PanelsContainer/ShopPanel/GridContainer/Variables" node_paths=PackedStringArray("panel_to_show", "panel_container")]
+script = ExtResource("2_1tf8h")
+panel_to_show = NodePath("../../../../VariablesShop")
+panel_container = NodePath("../../../..")
+second_level_button = true
+
+[node name="Button" type="Button" parent="ShopPart/PanelsContainer/ShopPanel/GridContainer/Variables/Variables"]
+offset_right = 150.0
+offset_bottom = 50.0
+text = "Zmienne"
+
+[node name="Loops" type="Control" parent="ShopPart/PanelsContainer/ShopPanel/GridContainer"]
+custom_minimum_size = Vector2(150, 50)
+layout_mode = 2
+
+[node name="Loops" type="Node2D" parent="ShopPart/PanelsContainer/ShopPanel/GridContainer/Loops" node_paths=PackedStringArray("panel_to_show", "panel_container")]
+script = ExtResource("2_1tf8h")
+panel_to_show = NodePath("../../../../LoopsShop")
+panel_container = NodePath("../../../..")
+second_level_button = true
+
+[node name="Button" type="Button" parent="ShopPart/PanelsContainer/ShopPanel/GridContainer/Loops/Loops"]
+custom_minimum_size = Vector2(150, 50)
+offset_right = 150.0
+offset_bottom = 50.0
+text = "Pętle"
+
+[node name="Conditions" type="Control" parent="ShopPart/PanelsContainer/ShopPanel/GridContainer"]
+custom_minimum_size = Vector2(150, 50)
+layout_mode = 2
+
+[node name="Conditions" type="Node2D" parent="ShopPart/PanelsContainer/ShopPanel/GridContainer/Conditions" node_paths=PackedStringArray("panel_to_show", "panel_container")]
+script = ExtResource("2_1tf8h")
+panel_to_show = NodePath("../../../../ConditionsShop")
+panel_container = NodePath("../../../..")
+second_level_button = true
+
+[node name="Button" type="Button" parent="ShopPart/PanelsContainer/ShopPanel/GridContainer/Conditions/Conditions"]
+custom_minimum_size = Vector2(150, 50)
+offset_right = 150.0
+offset_bottom = 50.0
+text = "Warunki"
+
+[node name="MathOperations" type="Control" parent="ShopPart/PanelsContainer/ShopPanel/GridContainer"]
+custom_minimum_size = Vector2(150, 50)
+layout_mode = 2
+
+[node name="MathOperations" type="Node2D" parent="ShopPart/PanelsContainer/ShopPanel/GridContainer/MathOperations" node_paths=PackedStringArray("panel_to_show", "panel_container")]
+script = ExtResource("2_1tf8h")
+panel_to_show = NodePath("../../../../MathOperationsShop")
+panel_container = NodePath("../../../..")
+second_level_button = true
+
+[node name="Button" type="Button" parent="ShopPart/PanelsContainer/ShopPanel/GridContainer/MathOperations/MathOperations"]
+custom_minimum_size = Vector2(150, 50)
+offset_right = 150.0
+offset_bottom = 50.0
+text = "Operacje mat"
+
+[node name="LogicOperations" type="Control" parent="ShopPart/PanelsContainer/ShopPanel/GridContainer"]
+custom_minimum_size = Vector2(150, 50)
+layout_mode = 2
+
+[node name="LogicOperations" type="Node2D" parent="ShopPart/PanelsContainer/ShopPanel/GridContainer/LogicOperations" node_paths=PackedStringArray("panel_to_show", "panel_container")]
+script = ExtResource("2_1tf8h")
+panel_to_show = NodePath("../../../../LogicOperationsShop")
+panel_container = NodePath("../../../..")
+second_level_button = true
+
+[node name="Button" type="Button" parent="ShopPart/PanelsContainer/ShopPanel/GridContainer/LogicOperations/LogicOperations"]
+custom_minimum_size = Vector2(150, 50)
+offset_right = 150.0
+offset_bottom = 50.0
+text = "Operacje por"
+
+[node name="Functions" type="Control" parent="ShopPart/PanelsContainer/ShopPanel/GridContainer"]
+custom_minimum_size = Vector2(150, 50)
+layout_mode = 2
+
+[node name="Functions" type="Node2D" parent="ShopPart/PanelsContainer/ShopPanel/GridContainer/Functions" node_paths=PackedStringArray("panel_to_show", "panel_container")]
+script = ExtResource("2_1tf8h")
+panel_to_show = NodePath("../../../../FunctionsShop")
+panel_container = NodePath("../../../..")
+second_level_button = true
+
+[node name="Button" type="Button" parent="ShopPart/PanelsContainer/ShopPanel/GridContainer/Functions/Functions"]
+custom_minimum_size = Vector2(150, 50)
+offset_right = 150.0
+offset_bottom = 50.0
+text = "Funkcje"
+
+[node name="StoragePanel" type="Node2D" parent="ShopPart/PanelsContainer"]
+visible = false
+
+[node name="Label" type="Label" parent="ShopPart/PanelsContainer/StoragePanel"]
+offset_left = 16.0
+offset_top = 99.0
+offset_right = 577.0
+offset_bottom = 165.0
+theme_override_fonts/font = ExtResource("1_8ghdf")
+theme_override_font_sizes/font_size = 50
+text = "Magazyn"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="PlansStorageButton" type="Node2D" parent="ShopPart/PanelsContainer/StoragePanel" node_paths=PackedStringArray("panel_to_show", "panel_container", "button_container")]
+script = ExtResource("2_1tf8h")
+panel_to_show = NodePath("../../PlansStoragePanel")
+panel_container = NodePath("../..")
+button_container = NodePath("../../../ButtonsContainer")
+second_level_button = true
+
+[node name="Button" type="Button" parent="ShopPart/PanelsContainer/StoragePanel/PlansStorageButton"]
+offset_left = 90.0
+offset_top = 179.0
+offset_right = 221.0
+offset_bottom = 233.0
+text = "PLANY"
+
+[node name="PartsStorageButton" type="Node2D" parent="ShopPart/PanelsContainer/StoragePanel" node_paths=PackedStringArray("panel_to_show", "panel_container", "button_container")]
+script = ExtResource("2_1tf8h")
+panel_to_show = NodePath("../../PartsStoragePanel")
+panel_container = NodePath("../..")
+button_container = NodePath("../../../ButtonsContainer")
+second_level_button = true
+
+[node name="Button" type="Button" parent="ShopPart/PanelsContainer/StoragePanel/PartsStorageButton"]
+offset_left = 379.0
+offset_top = 179.0
+offset_right = 510.0
+offset_bottom = 233.0
+text = "CZĘŚCI"
+
+[node name="PlansStoragePanel" type="Node2D" parent="ShopPart/PanelsContainer"]
+visible = false
+script = ExtResource("11_l566k")
+
+[node name="Label" type="Label" parent="ShopPart/PanelsContainer/PlansStoragePanel"]
+offset_left = 16.0
+offset_top = 99.0
+offset_right = 577.0
+offset_bottom = 165.0
+theme_override_fonts/font = ExtResource("1_8ghdf")
+theme_override_font_sizes/font_size = 50
+text = "Twoje plany"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ScrollContainer" type="ScrollContainer" parent="ShopPart/PanelsContainer/PlansStoragePanel"]
+offset_left = 23.0
+offset_top = 163.0
+offset_right = 569.0
+offset_bottom = 552.0
+
+[node name="PlansStorage" type="VBoxContainer" parent="ShopPart/PanelsContainer/PlansStoragePanel/ScrollContainer"]
+layout_mode = 2
+
+[node name="PartsStoragePanel" type="Node2D" parent="ShopPart/PanelsContainer"]
+visible = false
+script = ExtResource("12_pv66d")
+
+[node name="Label" type="Label" parent="ShopPart/PanelsContainer/PartsStoragePanel"]
+offset_left = 16.0
+offset_top = 99.0
+offset_right = 577.0
+offset_bottom = 165.0
+theme_override_fonts/font = ExtResource("1_8ghdf")
+theme_override_font_sizes/font_size = 50
+text = "Twoje Czesci"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ScrollContainer" type="ScrollContainer" parent="ShopPart/PanelsContainer/PartsStoragePanel"]
+offset_left = 23.0
+offset_top = 163.0
+offset_right = 569.0
+offset_bottom = 552.0
+
+[node name="PartsStorage" type="VBoxContainer" parent="ShopPart/PanelsContainer/PartsStoragePanel/ScrollContainer"]
+layout_mode = 2
+
+[node name="VariablesShop" type="Node2D" parent="ShopPart/PanelsContainer"]
+visible = false
+
+[node name="Label" type="Label" parent="ShopPart/PanelsContainer/VariablesShop"]
+offset_left = 16.0
+offset_top = 99.0
+offset_right = 577.0
+offset_bottom = 165.0
+theme_override_fonts/font = ExtResource("1_8ghdf")
+theme_override_font_sizes/font_size = 50
+text = "Zmienne"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ScrollContainer" type="ScrollContainer" parent="ShopPart/PanelsContainer/VariablesShop"]
+offset_left = 23.0
+offset_top = 163.0
+offset_right = 569.0
+offset_bottom = 552.0
+
+[node name="PlansStorage" type="VBoxContainer" parent="ShopPart/PanelsContainer/VariablesShop/ScrollContainer"]
+layout_mode = 2
+
+[node name="CodeElementShopPrefab" parent="ShopPart/PanelsContainer/VariablesShop/ScrollContainer/PlansStorage" instance=ExtResource("12_xoax1")]
+layout_mode = 2
+code_element = ExtResource("13_6qrfp")
+
+[node name="CodeElementShopPrefab2" parent="ShopPart/PanelsContainer/VariablesShop/ScrollContainer/PlansStorage" instance=ExtResource("12_xoax1")]
+layout_mode = 2
+code_element = ExtResource("14_d5806")
+
+[node name="CodeElementShopPrefab3" parent="ShopPart/PanelsContainer/VariablesShop/ScrollContainer/PlansStorage" instance=ExtResource("12_xoax1")]
+layout_mode = 2
+code_element = ExtResource("15_7msek")
+
+[node name="LoopsShop" type="Node2D" parent="ShopPart/PanelsContainer"]
+visible = false
+
+[node name="Label" type="Label" parent="ShopPart/PanelsContainer/LoopsShop"]
+offset_left = 16.0
+offset_top = 99.0
+offset_right = 577.0
+offset_bottom = 165.0
+theme_override_fonts/font = ExtResource("1_8ghdf")
+theme_override_font_sizes/font_size = 50
+text = "Petle"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ScrollContainer" type="ScrollContainer" parent="ShopPart/PanelsContainer/LoopsShop"]
+offset_left = 23.0
+offset_top = 163.0
+offset_right = 569.0
+offset_bottom = 552.0
+
+[node name="PlansStorage" type="VBoxContainer" parent="ShopPart/PanelsContainer/LoopsShop/ScrollContainer"]
+layout_mode = 2
+
+[node name="CodeElementShopPrefab" parent="ShopPart/PanelsContainer/LoopsShop/ScrollContainer/PlansStorage" instance=ExtResource("12_xoax1")]
+layout_mode = 2
+code_element = ExtResource("16_fvve5")
+
+[node name="CodeElementShopPrefab2" parent="ShopPart/PanelsContainer/LoopsShop/ScrollContainer/PlansStorage" instance=ExtResource("12_xoax1")]
+layout_mode = 2
+code_element = ExtResource("17_pmuaw")
+
+[node name="ConditionsShop" type="Node2D" parent="ShopPart/PanelsContainer"]
+visible = false
+
+[node name="Label" type="Label" parent="ShopPart/PanelsContainer/ConditionsShop"]
+offset_left = 16.0
+offset_top = 99.0
+offset_right = 577.0
+offset_bottom = 165.0
+theme_override_fonts/font = ExtResource("1_8ghdf")
+theme_override_font_sizes/font_size = 50
+text = "Warunki"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ScrollContainer" type="ScrollContainer" parent="ShopPart/PanelsContainer/ConditionsShop"]
+offset_left = 23.0
+offset_top = 163.0
+offset_right = 569.0
+offset_bottom = 552.0
+
+[node name="PlansStorage" type="VBoxContainer" parent="ShopPart/PanelsContainer/ConditionsShop/ScrollContainer"]
+layout_mode = 2
+
+[node name="CodeElementShopPrefab" parent="ShopPart/PanelsContainer/ConditionsShop/ScrollContainer/PlansStorage" instance=ExtResource("12_xoax1")]
+layout_mode = 2
+code_element = ExtResource("18_xp2om")
+
+[node name="CodeElementShopPrefab2" parent="ShopPart/PanelsContainer/ConditionsShop/ScrollContainer/PlansStorage" instance=ExtResource("12_xoax1")]
+layout_mode = 2
+code_element = ExtResource("19_7fkn6")
+
+[node name="MathOperationsShop" type="Node2D" parent="ShopPart/PanelsContainer"]
+visible = false
+
+[node name="Label" type="Label" parent="ShopPart/PanelsContainer/MathOperationsShop"]
+offset_left = 16.0
+offset_top = 99.0
+offset_right = 577.0
+offset_bottom = 165.0
+theme_override_fonts/font = ExtResource("1_8ghdf")
+theme_override_font_sizes/font_size = 50
+text = "Operacje Mat"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ScrollContainer" type="ScrollContainer" parent="ShopPart/PanelsContainer/MathOperationsShop"]
+offset_left = 23.0
+offset_top = 163.0
+offset_right = 569.0
+offset_bottom = 552.0
+
+[node name="PlansStorage" type="VBoxContainer" parent="ShopPart/PanelsContainer/MathOperationsShop/ScrollContainer"]
+layout_mode = 2
+
+[node name="CodeElementShopPrefab" parent="ShopPart/PanelsContainer/MathOperationsShop/ScrollContainer/PlansStorage" instance=ExtResource("12_xoax1")]
+layout_mode = 2
+code_element = ExtResource("20_5mu1t")
+
+[node name="CodeElementShopPrefab2" parent="ShopPart/PanelsContainer/MathOperationsShop/ScrollContainer/PlansStorage" instance=ExtResource("12_xoax1")]
+layout_mode = 2
+code_element = ExtResource("21_vus5n")
+
+[node name="CodeElementShopPrefab3" parent="ShopPart/PanelsContainer/MathOperationsShop/ScrollContainer/PlansStorage" instance=ExtResource("12_xoax1")]
+layout_mode = 2
+code_element = ExtResource("22_5ulfp")
+
+[node name="CodeElementShopPrefab4" parent="ShopPart/PanelsContainer/MathOperationsShop/ScrollContainer/PlansStorage" instance=ExtResource("12_xoax1")]
+layout_mode = 2
+code_element = ExtResource("23_klprx")
+
+[node name="LogicOperationsShop" type="Node2D" parent="ShopPart/PanelsContainer"]
+visible = false
+
+[node name="Label" type="Label" parent="ShopPart/PanelsContainer/LogicOperationsShop"]
+offset_left = 16.0
+offset_top = 99.0
+offset_right = 577.0
+offset_bottom = 165.0
+theme_override_fonts/font = ExtResource("1_8ghdf")
+theme_override_font_sizes/font_size = 50
+text = "Operacje por"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ScrollContainer" type="ScrollContainer" parent="ShopPart/PanelsContainer/LogicOperationsShop"]
+offset_left = 23.0
+offset_top = 163.0
+offset_right = 569.0
+offset_bottom = 552.0
+
+[node name="PlansStorage" type="VBoxContainer" parent="ShopPart/PanelsContainer/LogicOperationsShop/ScrollContainer"]
+layout_mode = 2
+
+[node name="CodeElementShopPrefab" parent="ShopPart/PanelsContainer/LogicOperationsShop/ScrollContainer/PlansStorage" instance=ExtResource("12_xoax1")]
+layout_mode = 2
+code_element = ExtResource("24_s11v5")
+
+[node name="CodeElementShopPrefab2" parent="ShopPart/PanelsContainer/LogicOperationsShop/ScrollContainer/PlansStorage" instance=ExtResource("12_xoax1")]
+layout_mode = 2
+code_element = ExtResource("25_5jk0n")
+
+[node name="CodeElementShopPrefab3" parent="ShopPart/PanelsContainer/LogicOperationsShop/ScrollContainer/PlansStorage" instance=ExtResource("12_xoax1")]
+layout_mode = 2
+code_element = ExtResource("26_41l2c")
+
+[node name="FunctionsShop" type="Node2D" parent="ShopPart/PanelsContainer"]
+visible = false
+
+[node name="Label" type="Label" parent="ShopPart/PanelsContainer/FunctionsShop"]
+offset_left = 16.0
+offset_top = 99.0
+offset_right = 577.0
+offset_bottom = 165.0
+theme_override_fonts/font = ExtResource("1_8ghdf")
+theme_override_font_sizes/font_size = 50
+text = "Funkcje"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ScrollContainer" type="ScrollContainer" parent="ShopPart/PanelsContainer/FunctionsShop"]
+offset_left = 23.0
+offset_top = 163.0
+offset_right = 569.0
+offset_bottom = 552.0
+
+[node name="PlansStorage" type="VBoxContainer" parent="ShopPart/PanelsContainer/FunctionsShop/ScrollContainer"]
+layout_mode = 2
+
+[node name="CodeElementShopPrefab" parent="ShopPart/PanelsContainer/FunctionsShop/ScrollContainer/PlansStorage" instance=ExtResource("12_xoax1")]
+layout_mode = 2
+code_element = ExtResource("27_paa8e")
+
+[node name="PrepareBoosterPanel" type="Node2D" parent="."]
+script = ExtResource("29_42bir")
+
+[node name="CurrBoosterButton" type="Node2D" parent="PrepareBoosterPanel"]
+position = Vector2(309, 601)
+metadata/_edit_group_ = true
+
+[node name="CurrButton" type="TextureButton" parent="PrepareBoosterPanel/CurrBoosterButton"]
+offset_left = -52.0
+offset_top = -45.0
+offset_right = 50.0
+offset_bottom = 51.0
+texture_normal = ExtResource("2_c63af")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="Icon" type="Label" parent="PrepareBoosterPanel/CurrBoosterButton"]
+offset_left = -23.0
+offset_top = -27.0
+offset_right = 25.0
+offset_bottom = 28.0
+theme_override_font_sizes/font_size = 40
+text = "B"
+
+[node name="Panel" type="Node2D" parent="PrepareBoosterPanel"]
+visible = false
+position = Vector2(573, 0)
+
+[node name="PanelBackground" type="Sprite2D" parent="PrepareBoosterPanel/Panel"]
+self_modulate = Color(1, 1, 1, 0.270588)
+position = Vector2(289.5, 369.5)
+scale = Vector2(549, 545)
+texture = SubResource("CanvasTexture_ahlo6")
+
+[node name="CloseButton" type="Node2D" parent="PrepareBoosterPanel/Panel"]
+position = Vector2(45, 127)
+metadata/_edit_group_ = true
+
+[node name="Button" type="TextureButton" parent="PrepareBoosterPanel/Panel/CloseButton"]
+offset_left = -30.0
+offset_top = -28.0
+offset_right = 32.0
+offset_bottom = 31.0
+texture_normal = ExtResource("2_c63af")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="Icon" type="Sprite2D" parent="PrepareBoosterPanel/Panel/CloseButton"]
+position = Vector2(1, 1)
+scale = Vector2(0.078357, 0.078357)
+texture = ExtResource("5_sg6fy")
+
+[node name="BoosterName" type="Label" parent="PrepareBoosterPanel/Panel"]
+offset_left = 16.0
+offset_top = 104.0
+offset_right = 564.0
+offset_bottom = 154.0
+theme_override_fonts/font = ExtResource("1_8ghdf")
+theme_override_font_sizes/font_size = 30
+text = "Current Booster : None"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Ingridients" type="Label" parent="PrepareBoosterPanel/Panel"]
+offset_left = 45.0
+offset_top = 174.0
+offset_right = 542.0
+offset_bottom = 560.0
+theme_override_fonts/font = ExtResource("1_8ghdf")
+theme_override_font_sizes/font_size = 25
+text = "Tutaj pojawia sie potrzebne skladniki"
+
+[node name="StartMakeBooster" type="Button" parent="PrepareBoosterPanel/Panel"]
+visible = false
+offset_left = 153.0
+offset_top = 571.0
+offset_right = 422.0
+offset_bottom = 631.0
+text = "Rozpocznij tworzenie boostera"
+
+[node name="BuildBooster" type="Node2D" parent="."]
+visible = false
+script = ExtResource("30_phvnv")
+
+[node name="Panel" type="Node2D" parent="BuildBooster"]
+
+[node name="PanelBackground" type="Sprite2D" parent="BuildBooster/Panel"]
+self_modulate = Color(1, 1, 1, 0.270588)
+position = Vector2(580.5, 369)
+scale = Vector2(1131, 544)
+texture = SubResource("CanvasTexture_ahlo6")
+
+[node name="CloseButton" type="Node2D" parent="BuildBooster/Panel" node_paths=PackedStringArray("panels_node", "buttons_node")]
+position = Vector2(45, 127)
+script = ExtResource("5_f7nr3")
+panels_node = NodePath("../../../ShopPart/PanelsContainer")
+buttons_node = NodePath("../../../ShopPart/ButtonsContainer")
+metadata/_edit_group_ = true
+
+[node name="Button" type="TextureButton" parent="BuildBooster/Panel/CloseButton"]
+offset_left = -30.0
+offset_top = -28.0
+offset_right = 32.0
+offset_bottom = 31.0
+texture_normal = ExtResource("2_c63af")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="Icon" type="Sprite2D" parent="BuildBooster/Panel/CloseButton"]
+position = Vector2(1, 1)
+scale = Vector2(0.078357, 0.078357)
+texture = ExtResource("5_sg6fy")
+
+[node name="BackButton" type="Node2D" parent="BuildBooster/Panel" node_paths=PackedStringArray("panel_container")]
+visible = false
+position = Vector2(45, 127)
+script = ExtResource("7_7se2f")
+panel_container = NodePath("../../../ShopPart/PanelsContainer")
+metadata/_edit_group_ = true
+
+[node name="Button" type="TextureButton" parent="BuildBooster/Panel/BackButton"]
+offset_left = -30.0
+offset_top = -28.0
+offset_right = 32.0
+offset_bottom = 31.0
+texture_normal = ExtResource("2_c63af")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="Icon" type="Sprite2D" parent="BuildBooster/Panel/BackButton"]
+position = Vector2(1, 1)
+scale = Vector2(0.078357, 0.078357)
+texture = ExtResource("7_kpp2h")
+
+[node name="CodeInputNode" type="Node2D" parent="BuildBooster"]
+position = Vector2(643, 154)
+
+[node name="Button" type="Button" parent="BuildBooster"]
+offset_left = 821.0
+offset_top = 558.0
+offset_right = 992.0
+offset_bottom = 610.0
+text = "Sprawdź"
+
+[node name="UseButton" type="Button" parent="BuildBooster"]
+visible = false
+offset_left = 1001.0
+offset_top = 560.0
+offset_right = 1123.0
+offset_bottom = 611.0
+text = "Użyj"
+
+[connection signal="mouse_entered" from="Header/BackButton/Button" to="Header/BackButton" method="_on_button_mouse_entered"]
+[connection signal="mouse_exited" from="Header/BackButton/Button" to="Header/BackButton" method="_on_button_mouse_exited"]
+[connection signal="pressed" from="Header/BackButton/Button" to="Header/BackButton" method="_on_button_pressed"]
+[connection signal="mouse_entered" from="ShopPart/ButtonsContainer/PlansButton/Button" to="ShopPart/ButtonsContainer/PlansButton" method="_on_button_mouse_entered"]
+[connection signal="mouse_exited" from="ShopPart/ButtonsContainer/PlansButton/Button" to="ShopPart/ButtonsContainer/PlansButton" method="_on_button_mouse_exited"]
+[connection signal="pressed" from="ShopPart/ButtonsContainer/PlansButton/Button" to="ShopPart/ButtonsContainer/PlansButton" method="_on_button_pressed"]
+[connection signal="mouse_entered" from="ShopPart/ButtonsContainer/ShopButton/Button" to="ShopPart/ButtonsContainer/ShopButton" method="_on_button_mouse_entered"]
+[connection signal="mouse_exited" from="ShopPart/ButtonsContainer/ShopButton/Button" to="ShopPart/ButtonsContainer/ShopButton" method="_on_button_mouse_exited"]
+[connection signal="pressed" from="ShopPart/ButtonsContainer/ShopButton/Button" to="ShopPart/ButtonsContainer/ShopButton" method="_on_button_pressed"]
+[connection signal="mouse_entered" from="ShopPart/ButtonsContainer/StorageButton/Button" to="ShopPart/ButtonsContainer/StorageButton" method="_on_button_mouse_entered"]
+[connection signal="mouse_exited" from="ShopPart/ButtonsContainer/StorageButton/Button" to="ShopPart/ButtonsContainer/StorageButton" method="_on_button_mouse_exited"]
+[connection signal="pressed" from="ShopPart/ButtonsContainer/StorageButton/Button" to="ShopPart/ButtonsContainer/StorageButton" method="_on_button_pressed"]
+[connection signal="mouse_entered" from="ShopPart/PanelsContainer/PanelTemplate/CloseButton/Button" to="ShopPart/PanelsContainer/PanelTemplate/CloseButton" method="_on_button_mouse_entered"]
+[connection signal="mouse_exited" from="ShopPart/PanelsContainer/PanelTemplate/CloseButton/Button" to="ShopPart/PanelsContainer/PanelTemplate/CloseButton" method="_on_button_mouse_exited"]
+[connection signal="pressed" from="ShopPart/PanelsContainer/PanelTemplate/CloseButton/Button" to="ShopPart/PanelsContainer/PanelTemplate/CloseButton" method="_on_button_pressed"]
+[connection signal="mouse_entered" from="ShopPart/PanelsContainer/PanelTemplate/BackButton/Button" to="ShopPart/PanelsContainer/PanelTemplate/BackButton" method="_on_button_mouse_entered"]
+[connection signal="mouse_exited" from="ShopPart/PanelsContainer/PanelTemplate/BackButton/Button" to="ShopPart/PanelsContainer/PanelTemplate/BackButton" method="_on_button_mouse_exited"]
+[connection signal="pressed" from="ShopPart/PanelsContainer/PanelTemplate/BackButton/Button" to="ShopPart/PanelsContainer/PanelTemplate/BackButton" method="_on_button_pressed"]
+[connection signal="pressed" from="ShopPart/PanelsContainer/ShopPanel/GridContainer/Variables/Variables/Button" to="ShopPart/PanelsContainer/ShopPanel/GridContainer/Variables/Variables" method="_on_button_pressed"]
+[connection signal="pressed" from="ShopPart/PanelsContainer/ShopPanel/GridContainer/Loops/Loops/Button" to="ShopPart/PanelsContainer/ShopPanel/GridContainer/Loops/Loops" method="_on_button_pressed"]
+[connection signal="pressed" from="ShopPart/PanelsContainer/ShopPanel/GridContainer/Conditions/Conditions/Button" to="ShopPart/PanelsContainer/ShopPanel/GridContainer/Conditions/Conditions" method="_on_button_pressed"]
+[connection signal="pressed" from="ShopPart/PanelsContainer/ShopPanel/GridContainer/MathOperations/MathOperations/Button" to="ShopPart/PanelsContainer/ShopPanel/GridContainer/MathOperations/MathOperations" method="_on_button_pressed"]
+[connection signal="pressed" from="ShopPart/PanelsContainer/ShopPanel/GridContainer/LogicOperations/LogicOperations/Button" to="ShopPart/PanelsContainer/ShopPanel/GridContainer/LogicOperations/LogicOperations" method="_on_button_pressed"]
+[connection signal="pressed" from="ShopPart/PanelsContainer/ShopPanel/GridContainer/Functions/Functions/Button" to="ShopPart/PanelsContainer/ShopPanel/GridContainer/Functions/Functions" method="_on_button_pressed"]
+[connection signal="pressed" from="ShopPart/PanelsContainer/StoragePanel/PlansStorageButton/Button" to="ShopPart/PanelsContainer/StoragePanel/PlansStorageButton" method="_on_button_pressed"]
+[connection signal="pressed" from="ShopPart/PanelsContainer/StoragePanel/PartsStorageButton/Button" to="ShopPart/PanelsContainer/StoragePanel/PartsStorageButton" method="_on_button_pressed"]
+[connection signal="pressed" from="PrepareBoosterPanel/CurrBoosterButton/CurrButton" to="PrepareBoosterPanel" method="_on_curr_button_pressed"]
+[connection signal="pressed" from="PrepareBoosterPanel/Panel/CloseButton/Button" to="PrepareBoosterPanel" method="_on_button_pressed"]
+[connection signal="pressed" from="PrepareBoosterPanel/Panel/StartMakeBooster" to="PrepareBoosterPanel" method="_on_start_make_booster_pressed"]
+[connection signal="mouse_entered" from="BuildBooster/Panel/CloseButton/Button" to="BuildBooster/Panel/CloseButton" method="_on_button_mouse_entered"]
+[connection signal="mouse_exited" from="BuildBooster/Panel/CloseButton/Button" to="BuildBooster/Panel/CloseButton" method="_on_button_mouse_exited"]
+[connection signal="pressed" from="BuildBooster/Panel/CloseButton/Button" to="BuildBooster/Panel/CloseButton" method="_on_button_pressed"]
+[connection signal="mouse_entered" from="BuildBooster/Panel/BackButton/Button" to="BuildBooster/Panel/BackButton" method="_on_button_mouse_entered"]
+[connection signal="mouse_exited" from="BuildBooster/Panel/BackButton/Button" to="BuildBooster/Panel/BackButton" method="_on_button_mouse_exited"]
+[connection signal="pressed" from="BuildBooster/Panel/BackButton/Button" to="BuildBooster/Panel/BackButton" method="_on_button_pressed"]
+[connection signal="pressed" from="BuildBooster/Button" to="BuildBooster" method="_on_button_pressed"]
+[connection signal="pressed" from="BuildBooster/UseButton" to="BuildBooster" method="_on_use_button_pressed"]

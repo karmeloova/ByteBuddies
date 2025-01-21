@@ -1,0 +1,75 @@
+[gd_scene load_steps=5 format=3 uid="uid://bf20hpr4l7vhb"]
+
+[ext_resource type="Script" path="res://Scenes/Prefabs/UI/SetCatName.gd" id="1_pa7ks"]
+[ext_resource type="Texture2D" uid="uid://dl8dw08og2gr8" path="res://Images/Backgrounds/Placeholder_backgorund_minigames.jpg" id="1_xp0vg"]
+[ext_resource type="FontFile" uid="uid://ccgpsjqwwow8o" path="res://Fonts/Bubblegum.ttf" id="2_nwg5w"]
+[ext_resource type="Texture2D" uid="uid://bowy12qgsf8t3" path="res://Images/UI/Buttons/Button.png" id="3_quomu"]
+
+[node name="SetCatName" type="Node2D"]
+process_mode = 3
+position = Vector2(580, 348)
+scale = Vector2(1.3, 1.3)
+script = ExtResource("1_pa7ks")
+
+[node name="Background" type="Sprite2D" parent="."]
+modulate = Color(1, 1, 1, 0.392157)
+position = Vector2(0, -12.6874)
+scale = Vector2(0.663435, 0.398724)
+texture = ExtResource("1_xp0vg")
+
+[node name="SetCatNameLabel" type="Label" parent="."]
+offset_left = -243.0
+offset_top = -110.0
+offset_right = 244.0
+offset_bottom = -53.0
+theme_override_fonts/font = ExtResource("2_nwg5w")
+theme_override_font_sizes/font_size = 30
+text = "Wybierz imie dla kotka"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="EnterCatName" type="TextEdit" parent="."]
+modulate = Color(1, 1, 1, 0.694118)
+offset_left = -139.0
+offset_top = -42.0
+offset_right = 140.0
+offset_bottom = -6.0
+
+[node name="AcceptButton" type="Node2D" parent="."]
+
+[node name="TextureButton" type="TextureButton" parent="AcceptButton"]
+offset_left = -103.0
+offset_top = 8.0
+offset_right = 105.0
+offset_bottom = 71.0
+texture_normal = ExtResource("3_quomu")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="Label2" type="Label" parent="AcceptButton"]
+offset_left = -64.0
+offset_top = 25.0
+offset_right = 70.0
+offset_bottom = 52.0
+theme_override_colors/font_shadow_color = Color(0.2484, 0.2484, 0.2484, 1)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_fonts/font = ExtResource("2_nwg5w")
+theme_override_font_sizes/font_size = 25
+text = "Zatwierdz"
+
+[node name="Warningtext" type="Label" parent="."]
+visible = false
+offset_left = -244.0
+offset_top = -67.0
+offset_right = 244.0
+offset_bottom = -44.0
+theme_override_colors/font_color = Color(1, 0, 0, 1)
+theme_override_font_sizes/font_size = 15
+text = "Imię nie może być dłuższe niż 20 znaków"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[connection signal="mouse_entered" from="AcceptButton/TextureButton" to="." method="_on_texture_button_mouse_entered"]
+[connection signal="mouse_exited" from="AcceptButton/TextureButton" to="." method="_on_texture_button_mouse_exited"]
+[connection signal="pressed" from="AcceptButton/TextureButton" to="." method="_on_texture_button_pressed"]

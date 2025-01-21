@@ -48,25 +48,33 @@ func _on_timeout() :
 	SignalManager.changed_needs.emit();
 
 func _on_scratch(_howMany) :
-	if(VariableManager.needs["scratch"] < 100) : 
+	if(VariableManager.needs["scratch"]+25 <= 100) : 
 		VariableManager.needs["scratch"] += 25
 		SignalManager.changed_needs.emit();
-		if(VariableManager.needs["scratch"] >= 100 && can_count_to_achievement) : 
-			can_count_to_achievement = false
-			VariableManager.scratch_counter += 1
-			SignalManager.unlock_achievement.emit(VariableManager.scratch_counter, "scratching", null)
+	else :
+		VariableManager.needs["scratch"] = 100
+		SignalManager.changed_needs.emit();
 
+	if(VariableManager.needs["scratch"] >= 100 && can_count_to_achievement) : 
+		can_count_to_achievement = false
+		VariableManager.scratch_counter += 1
+		SignalManager.unlock_achievement.emit(VariableManager.scratch_counter, "scratching", null)
+			
 func _on_eat() :
 	if(VariableManager.needs["hungry"] < 80) :
 		can_count_to_achievement = true
 	eat_timer.start()
 
 func _on_eat_timer_timeout() :
-	if(VariableManager.needs["hungry"] < 100 and VariableManager.hungry_points_in_bowl > 0) : 
+	if(VariableManager.needs["hungry"] + 5 <= 100 and VariableManager.hungry_points_in_bowl > 0) : 
 		VariableManager.needs["hungry"] += 5
-		VariableManager.hungry_points_in_bowl -= 1
+		VariableManager.hungry_points_in_bowl -= 5
 		SignalManager.changed_needs.emit()
 		eat_timer.start()
+	elif(VariableManager.needs["hungry"] + 5 > 100 and VariableManager.hungry_points_in_bowl > 0) :
+		VariableManager.needs["hungry"] = 100
+		VariableManager.hungry_points_in_bowl -= 5
+		SignalManager.changed_needs.emit();
 	else : 
 		eat_timer.stop()
 		SignalManager.eat_end.emit()
@@ -76,8 +84,11 @@ func _on_eat_timer_timeout() :
 		SignalManager.unlock_achievement.emit(VariableManager.eat_counter, "eating", null)
 	
 func _on_playing() :
-	if(VariableManager.needs["play"] < 100) :
+	if(VariableManager.needs["play"] + 25 <= 100) :
 		VariableManager.needs["play"] += 25
+		SignalManager.changed_needs.emit()
+	elif(VariableManager.needs["play"] + 25 > 100) :
+		VariableManager.needs["play"] = 100
 		SignalManager.changed_needs.emit()
 	if(VariableManager.needs["play"] >= 100 && can_count_to_achievement) : 
 		can_count_to_achievement = false
@@ -94,8 +105,11 @@ func _on_sleeping(state) :
 		sleeping_timer.set_wait_time(2)
 
 func _on_sleeping_timer_timeout() :
-	if(VariableManager.needs["sleep"] < 100) :
+	if(VariableManager.needs["sleep"]+10 <= 100) :
 		VariableManager.needs["sleep"] += 10
+		SignalManager.changed_needs.emit()
+	elif(VariableManager.needs["sleep"]+10 > 100) :
+		VariableManager.needs["sleep"] = 100
 		SignalManager.changed_needs.emit()
 	if(VariableManager.needs["sleep"] >= 100 && can_count_to_achievement) : 
 		can_count_to_achievement = false

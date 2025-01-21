@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="CodeElement" load_steps=2 format=3 uid="uid://c8pws17gbms2y"]
+
+[ext_resource type="Script" path="res://Scripts/Resources/CodeElementRes.gd" id="1_uu0ob"]
+
+[resource]
+script = ExtResource("1_uu0ob")
+code_element_name = "add_exp"
+category = 5
+price = 2

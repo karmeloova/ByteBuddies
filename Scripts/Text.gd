@@ -18,6 +18,7 @@ func _on_add_point() :
 		points += 1;
 		$Score.text = "Wynik: " + str(points);
 		if(points%3 == 0) : add_coin()
+		if(points%10 == 0) : SignalManager.add_fishes.emit()
 	else : SignalManager.loseLife.emit();
 
 func _on_basketColor(color) :

@@ -1,0 +1,52 @@
+[gd_scene load_steps=4 format=3 uid="uid://efafyn68uv1p"]
+
+[ext_resource type="Script" path="res://Scenes/Prefabs/CodeElementShopPrefab.gd" id="1_6hy7h"]
+[ext_resource type="FontFile" uid="uid://ccgpsjqwwow8o" path="res://Fonts/Bubblegum.ttf" id="2_pvuwe"]
+[ext_resource type="Texture2D" uid="uid://bhcgfqs2j6bx4" path="res://Images/UI/Lives/Life.png" id="4_7dh4i"]
+
+[node name="CodeElementShopPrefab" type="Control"]
+custom_minimum_size = Vector2(540, 55)
+layout_mode = 3
+anchors_preset = 0
+offset_right = 553.0
+offset_bottom = 57.0
+scale = Vector2(1.6, 1.6)
+script = ExtResource("1_6hy7h")
+
+[node name="CodeElementName" type="Label" parent="."]
+layout_mode = 0
+offset_left = 2.0
+offset_top = 6.875
+offset_right = 269.0
+offset_bottom = 49.875
+theme_override_fonts/font = ExtResource("2_pvuwe")
+theme_override_font_sizes/font_size = 40
+text = "CoDeElement"
+
+[node name="BuyButton" type="Button" parent="."]
+layout_mode = 0
+offset_left = 443.125
+offset_top = 8.125
+offset_right = 526.125
+offset_bottom = 48.125
+theme_override_font_sizes/font_size = 20
+text = "Kup"
+
+[node name="FishCoinSprite" type="Sprite2D" parent="."]
+position = Vector2(416.25, 27.5)
+rotation = 4.71239
+scale = Vector2(0.0561475, 0.0561475)
+texture = ExtResource("4_7dh4i")
+
+[node name="PriceLabel" type="Label" parent="."]
+layout_mode = 0
+offset_left = 325.0
+offset_top = 11.25
+offset_right = 388.0
+offset_bottom = 46.25
+theme_override_fonts/font = ExtResource("2_pvuwe")
+theme_override_font_sizes/font_size = 32
+text = "0"
+horizontal_alignment = 2
+
+[connection signal="pressed" from="BuyButton" to="." method="_on_buy_button_pressed"]

@@ -190,6 +190,8 @@ func _on_next_level() :
 	else :
 		SignalManager.add_coin.emit(15)
 	
+	if(VariableManager.level_counter%3==0) :
+		SignalManager.add_fishes.emit()
 	
 	VariableManager.level_counter += 1
 	SignalManager.calculate_score.emit(zakrety)

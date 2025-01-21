@@ -15,8 +15,8 @@ func _on_button_mouse_exited():
 
 func _on_button_pressed():
 	if(panel != null and template != null and name != "Exit") :
-		template.visible = !template.visible
-		panel.visible = !panel.visible
+		template.visible = true
+		panel.visible = true
 		change_disable_another_buttons()
 
 func change_disable_another_buttons():

@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="CodeElement" load_steps=2 format=3 uid="uid://btlhsaelgar20"]
+
+[ext_resource type="Script" path="res://Scripts/Resources/CodeElementRes.gd" id="1_imc6f"]
+
+[resource]
+script = ExtResource("1_imc6f")
+code_element_name = "/ (divide)"
+category = 3
+price = 1

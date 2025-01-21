@@ -1,6 +1,7 @@
 extends Control
 var win : bool = true
 var current_field
+var level_counter = 0
 
 func _on_texture_button_mouse_entered():
 	if not $TextureButton.disabled :
@@ -22,6 +23,8 @@ func win_or_lose() :
 		if(!ins.get_node("Field").is_good) : win = false
 	
 	if(win) : 
+		level_counter += 1
+		if(level_counter%5==0) : SignalManager.add_fishes.emit()
 		SignalManager.nextLevel.emit()
 	else : 
 		SignalManager.loseLife.emit()

@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="CodeElement" load_steps=2 format=3 uid="uid://csuujkn05uxls"]
+
+[ext_resource type="Script" path="res://Scripts/Resources/CodeElementRes.gd" id="1_uopvs"]
+
+[resource]
+script = ExtResource("1_uopvs")
+code_element_name = "games_left"
+category = 0
+price = 1

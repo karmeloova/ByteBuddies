@@ -16,7 +16,11 @@ func _ready():
 	SignalManager.add_exp.connect(_on_add_exp)
 
 func _on_add_exp(value):
-	exp += value
+	if(BoosterManager.active_booster != null && BoosterManager.booster_category == MyEnums.BoosterCategory.exp && VariableManager.is_playing) :
+		print("juhu podwójny exp")
+		SignalManager.decrease_booster_uses.emit()
+		exp += value*2
+	else : exp += value
 	if(exp >= current_level.next_level_need_exp) :
 		while(exp >= current_level.next_level_need_exp) :
 			exp -= current_level.next_level_need_exp

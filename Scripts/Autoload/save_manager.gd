@@ -104,7 +104,9 @@ var save_data = {
 	"playing_games_achievementes" : playing_games,
 	"scratching_achievementes" : scratching,
 	"sleeping_achievementes" : sleeping,
-	"cleaning_achievementes" : cleaning
+	"cleaning_achievementes" : cleaning,
+	"first_start" : true,
+	"cat_name" : ""
 }
 
 # Called when the node enters the scene tree for the first time.
@@ -125,6 +127,8 @@ func _ready():
 	VariableManager.cat_jump_high_score = save_data["cat_jump_high_score"]
 	VariableManager.pet_code_high_score = save_data["pet_code_high_score"]
 	VariableManager.fruit_catcher_high_score = save_data["fruit_catcher_high_score"]
+	VariableManager.first_start = save_data["first_start"]
+	VariableManager.cat_name = save_data["cat_name"]
 	
 	Achievements.cat_jump = save_data["cat_jump_achievementes"]
 	Achievements.snack_navigator = save_data["snack_navigator_achievementes"]
@@ -177,5 +181,7 @@ func _notification(what):
 		save("scratching_achievementes", Achievements.scratching)
 		save("sleeping_achievementes", Achievements.scratching)
 		save("cleaning_achievementes", Achievements.cleaning)
+		save("first_start", VariableManager.first_start)
+		save("cat_name", VariableManager.cat_name)
 
 #ścieżka do pliku - C:\Users\xxfea\AppData\Roaming\Godot\app_userdata\ByteBuddies

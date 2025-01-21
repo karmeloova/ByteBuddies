@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://6qc5i7jd7gmy"]
+
+[ext_resource type="Script" path="res://Scenes/Prefabs/CodeElement.gd" id="1_a28c5"]
+[ext_resource type="FontFile" uid="uid://7a16745x5o1t" path="res://Fonts/consola.ttf" id="2_jcb3r"]
+
+[node name="CodeElement" type="Node2D"]
+script = ExtResource("1_a28c5")
+
+[node name="CodeField" type="TextEdit" parent="."]
+offset_right = 17.0
+offset_bottom = 35.0
+theme_override_colors/background_color = Color(0.621524, 0.621524, 0.621524, 1)
+theme_override_constants/line_spacing = 8
+theme_override_fonts/font = ExtResource("2_jcb3r")
