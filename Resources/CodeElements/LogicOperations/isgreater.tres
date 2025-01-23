@@ -5,5 +5,6 @@
 [resource]
 script = ExtResource("1_e0ajp")
 code_element_name = "> (is greater)"
+code_element_description = "Sprawdza, czy jedna wartość jest większa od drugiej - jeśli tak zwraca prawdę, w przeciwnym razie fałsz"
 category = 4
 price = 1

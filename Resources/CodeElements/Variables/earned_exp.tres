@@ -5,5 +5,6 @@
 [resource]
 script = ExtResource("1_pi6g4")
 code_element_name = "earned_exp"
+code_element_description = "Zmienna przechowująca ilość punktów doświadczenia, które zostały zdobyte w mini-grze"
 category = 0
 price = 1

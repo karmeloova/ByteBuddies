@@ -9,14 +9,18 @@ func _ready():
 	SignalManager.add_code_element_to_plan.connect(_on_add_code_element_to_plan)
 
 func _on_set_current_booster(plan : Plan) :
-	$Panel/BoosterName.text = "Current Booster: " + plan.plan_name
-	current_plan = plan
-	
-	for code_element in plan.needed_code_elements :
-		ingridients += code_element.code_element_name + " 0/1\n"
-		ingridients_bool.append(false)
-	
-	$Panel/Ingridients.text = ingridients
+	if(current_plan == null) :
+		$Panel/BoosterName.text = "Current Booster: " + plan.plan_name
+		current_plan = plan
+		
+		for code_element in plan.needed_code_elements :
+			ingridients += code_element.code_element_name + " 0/1\n"
+			ingridients_bool.append(false)
+		
+		$Panel/Ingridients.text = ingridients
+		SignalManager.decrease_plan_counter.emit(current_plan)
+	else :
+		print("JUZ JEST UZYTY BOOSTER")
 
 func _on_button_pressed():
 	$Panel.visible = false
@@ -28,6 +32,7 @@ func _on_add_code_element_to_plan(element : CodeElement):
 	for i in current_plan.needed_code_elements.size() :
 		if(element == current_plan.needed_code_elements[i]) :
 			ingridients_bool[i] = true
+			SignalManager.decrease_code_element_counter.emit(element)
 	update_code_element_list()
 		
 func update_code_element_list():

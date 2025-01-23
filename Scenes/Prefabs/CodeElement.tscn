@@ -10,5 +10,9 @@ script = ExtResource("1_a28c5")
 offset_right = 17.0
 offset_bottom = 35.0
 theme_override_colors/background_color = Color(0.621524, 0.621524, 0.621524, 1)
+theme_override_colors/font_readonly_color = Color(1, 1, 1, 1)
 theme_override_constants/line_spacing = 8
 theme_override_fonts/font = ExtResource("2_jcb3r")
+
+[connection signal="focus_entered" from="CodeField" to="." method="_on_code_field_focus_entered"]
+[connection signal="text_changed" from="CodeField" to="." method="_on_code_field_text_changed"]

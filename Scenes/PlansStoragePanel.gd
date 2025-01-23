@@ -6,6 +6,7 @@ var plan_storage_prefab = load("res://Scenes/Prefabs/BoosterStoragePrefab.tscn")
 
 func _ready():
 	SignalManager.add_plan_booster.connect(_on_add_plan_booster)
+	SignalManager.decrease_plan_counter.connect(_on_decrease_plan_counter)
 
 func _on_add_plan_booster(plan : Plan) :
 	if(plan_node.get_child_count() > 0) :
@@ -17,3 +18,11 @@ func _on_add_plan_booster(plan : Plan) :
 	plan_instance = plan_storage_prefab.instantiate()
 	plan_instance.set_plan_ui(plan)
 	plan_node.add_child(plan_instance)
+
+func _on_decrease_plan_counter(plan : Plan) :
+	if(plan_node.get_child_count() > 0) :
+		for i in plan_node.get_children() :
+			if(plan == i.current_plan) : 
+				i.decrease_plan_quantity()
+				if(i.plan_quantity == 0) : i.queue_free()
+				return

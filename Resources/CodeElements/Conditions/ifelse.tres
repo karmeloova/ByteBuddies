@@ -5,5 +5,6 @@
 [resource]
 script = ExtResource("1_ymrxt")
 code_element_name = "if_else"
+code_element_description = "if [warunek] : co_się_ma_wykonać else : co_ma_się_wykonać_gdy_warunek_niespełniony - to co po \"if\" wykona się gdy warunek będzie spełniony, a to co po \"else\", gdy warunek nie będzie spełniony"
 category = 2
 price = 3

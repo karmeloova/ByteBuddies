@@ -12,17 +12,16 @@ func _on_button_pressed():
 		for child in panel_container.get_children() :
 			if(child.visible == true && child.name != "PanelTemplate") : 
 				previous_panel = child
+	else :
+		for child in panel_container.get_children() :
+			if(child.name == "PanelTemplate" && child.visible == true) : 
+				set_exit_button()
 	
 	for child in panel_container.get_children() :
 		if(child.visible == true) : child.visible = false
 	
 	panel_container.get_child(0).visible = true
 	panel_to_show.visible = true
-	
-	if(!second_level_button) :
-		for child in button_container.get_children() :
-			child.get_child(0).disabled = true
-			modulate = Color("ffffff")
 	
 	if(second_level_button) : set_back_button()
 
@@ -38,3 +37,7 @@ func set_back_button():
 	panel_container.get_child(0).get_child(1).visible = false
 	panel_container.get_child(0).get_child(2).visible = true
 	SignalManager.set_panel_to_show.emit(previous_panel)
+
+func set_exit_button():
+	panel_container.get_child(0).get_child(1).visible = true
+	panel_container.get_child(0).get_child(2).visible = false

@@ -121,6 +121,16 @@ Wstrzymana"
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[node name="BoosterGamesLeft" type="Label" parent="PauseMenu"]
+visible = false
+offset_left = 437.0
+offset_top = 18.0
+offset_right = 1152.0
+offset_bottom = 87.0
+theme_override_fonts/font = ExtResource("5_lavis")
+theme_override_font_sizes/font_size = 20
+text = "Booster nazwa_boostera aktywny. Pozostalo X gier (wliczajac te)."
+
 [connection signal="mouse_entered" from="PauseButton/Button" to="." method="_on_button_mouse_entered"]
 [connection signal="mouse_exited" from="PauseButton/Button" to="." method="_on_button_mouse_exited"]
 [connection signal="pressed" from="PauseButton/Button" to="." method="_on_button_pressed"]

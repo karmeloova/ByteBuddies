@@ -1,4 +1,4 @@
-[gd_scene load_steps=35 format=3 uid="uid://c826tkspvt4i8"]
+[gd_scene load_steps=40 format=3 uid="uid://c826tkspvt4i8"]
 
 [ext_resource type="FontFile" uid="uid://ccgpsjqwwow8o" path="res://Fonts/Bubblegum.ttf" id="1_8ghdf"]
 [ext_resource type="Script" path="res://Scenes/BoosterSceneButton.gd" id="2_1tf8h"]
@@ -11,6 +11,8 @@
 [ext_resource type="Texture2D" uid="uid://dj5an2o6yuccm" path="res://Images/UI/Buttons/Exit.png" id="5_sg6fy"]
 [ext_resource type="Script" path="res://Scenes/BackButtonBoosters.gd" id="7_7se2f"]
 [ext_resource type="Texture2D" uid="uid://6adv5bnfl4ff" path="res://Images/UI/Buttons/Back.png" id="7_kpp2h"]
+[ext_resource type="Script" path="res://Scenes/Description.gd" id="10_mx3yy"]
+[ext_resource type="FontFile" uid="uid://7a16745x5o1t" path="res://Fonts/consola.ttf" id="10_ymans"]
 [ext_resource type="Script" path="res://Scenes/PlansStoragePanel.gd" id="11_l566k"]
 [ext_resource type="Script" path="res://Scenes/PartsStoragePanel.gd" id="12_pv66d"]
 [ext_resource type="PackedScene" uid="uid://efafyn68uv1p" path="res://Scenes/Prefabs/CodeElementShopPrefab.tscn" id="12_xoax1"]
@@ -31,6 +33,9 @@
 [ext_resource type="Resource" uid="uid://c8pws17gbms2y" path="res://Resources/CodeElements/Functions/add_exp.tres" id="27_paa8e"]
 [ext_resource type="Script" path="res://Scenes/PrepareBoosterPanel.gd" id="29_42bir"]
 [ext_resource type="Script" path="res://Scenes/BuildBooster.gd" id="30_phvnv"]
+[ext_resource type="Texture2D" uid="uid://bhcgfqs2j6bx4" path="res://Images/UI/Lives/Life.png" id="31_hid5v"]
+[ext_resource type="Script" path="res://Scenes/CurrencyBooster.gd" id="31_v8no3"]
+[ext_resource type="Script" path="res://Scenes/Congratulations.gd" id="34_jlt3b"]
 
 [sub_resource type="CanvasTexture" id="CanvasTexture_x5l5x"]
 
@@ -214,6 +219,14 @@ stretch_mode = 0
 position = Vector2(1, 1)
 scale = Vector2(0.078357, 0.078357)
 texture = ExtResource("7_kpp2h")
+
+[node name="Description" type="Label" parent="ShopPart/PanelsContainer/PanelTemplate"]
+offset_left = 30.0
+offset_top = 440.0
+offset_right = 559.0
+offset_bottom = 536.0
+autowrap_mode = 2
+script = ExtResource("10_mx3yy")
 
 [node name="PlansPanel" type="Node2D" parent="ShopPart/PanelsContainer"]
 visible = false
@@ -496,7 +509,7 @@ vertical_alignment = 1
 offset_left = 23.0
 offset_top = 163.0
 offset_right = 569.0
-offset_bottom = 552.0
+offset_bottom = 425.0
 
 [node name="PlansStorage" type="VBoxContainer" parent="ShopPart/PanelsContainer/LoopsShop/ScrollContainer"]
 layout_mode = 2
@@ -527,7 +540,7 @@ vertical_alignment = 1
 offset_left = 23.0
 offset_top = 163.0
 offset_right = 569.0
-offset_bottom = 552.0
+offset_bottom = 426.0
 
 [node name="PlansStorage" type="VBoxContainer" parent="ShopPart/PanelsContainer/ConditionsShop/ScrollContainer"]
 layout_mode = 2
@@ -558,7 +571,7 @@ vertical_alignment = 1
 offset_left = 23.0
 offset_top = 163.0
 offset_right = 569.0
-offset_bottom = 552.0
+offset_bottom = 423.0
 
 [node name="PlansStorage" type="VBoxContainer" parent="ShopPart/PanelsContainer/MathOperationsShop/ScrollContainer"]
 layout_mode = 2
@@ -597,7 +610,7 @@ vertical_alignment = 1
 offset_left = 23.0
 offset_top = 163.0
 offset_right = 569.0
-offset_bottom = 552.0
+offset_bottom = 422.0
 
 [node name="PlansStorage" type="VBoxContainer" parent="ShopPart/PanelsContainer/LogicOperationsShop/ScrollContainer"]
 layout_mode = 2
@@ -632,7 +645,7 @@ vertical_alignment = 1
 offset_left = 23.0
 offset_top = 163.0
 offset_right = 569.0
-offset_bottom = 552.0
+offset_bottom = 417.0
 
 [node name="PlansStorage" type="VBoxContainer" parent="ShopPart/PanelsContainer/FunctionsShop/ScrollContainer"]
 layout_mode = 2
@@ -641,10 +654,29 @@ layout_mode = 2
 layout_mode = 2
 code_element = ExtResource("27_paa8e")
 
+[node name="Currency" type="Node2D" parent="ShopPart"]
+script = ExtResource("31_v8no3")
+
+[node name="Label" type="Label" parent="ShopPart/Currency"]
+offset_left = 347.0
+offset_top = 582.332
+offset_right = 585.0
+offset_bottom = 636.332
+theme_override_fonts/font = ExtResource("1_8ghdf")
+theme_override_font_sizes/font_size = 50
+text = "10000"
+
+[node name="Sprite2D" type="Sprite2D" parent="ShopPart/Currency"]
+position = Vector2(306, 605.332)
+rotation = 4.71239
+scale = Vector2(0.0872654, 0.0872654)
+texture = ExtResource("31_hid5v")
+
 [node name="PrepareBoosterPanel" type="Node2D" parent="."]
 script = ExtResource("29_42bir")
 
 [node name="CurrBoosterButton" type="Node2D" parent="PrepareBoosterPanel"]
+visible = false
 position = Vector2(309, 601)
 metadata/_edit_group_ = true
 
@@ -666,7 +698,6 @@ theme_override_font_sizes/font_size = 40
 text = "B"
 
 [node name="Panel" type="Node2D" parent="PrepareBoosterPanel"]
-visible = false
 position = Vector2(573, 0)
 
 [node name="PanelBackground" type="Sprite2D" parent="PrepareBoosterPanel/Panel"]
@@ -674,24 +705,6 @@ self_modulate = Color(1, 1, 1, 0.270588)
 position = Vector2(289.5, 369.5)
 scale = Vector2(549, 545)
 texture = SubResource("CanvasTexture_ahlo6")
-
-[node name="CloseButton" type="Node2D" parent="PrepareBoosterPanel/Panel"]
-position = Vector2(45, 127)
-metadata/_edit_group_ = true
-
-[node name="Button" type="TextureButton" parent="PrepareBoosterPanel/Panel/CloseButton"]
-offset_left = -30.0
-offset_top = -28.0
-offset_right = 32.0
-offset_bottom = 31.0
-texture_normal = ExtResource("2_c63af")
-ignore_texture_size = true
-stretch_mode = 0
-
-[node name="Icon" type="Sprite2D" parent="PrepareBoosterPanel/Panel/CloseButton"]
-position = Vector2(1, 1)
-scale = Vector2(0.078357, 0.078357)
-texture = ExtResource("5_sg6fy")
 
 [node name="BoosterName" type="Label" parent="PrepareBoosterPanel/Panel"]
 offset_left = 16.0
@@ -704,14 +717,21 @@ text = "Current Booster : None"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Ingridients" type="Label" parent="PrepareBoosterPanel/Panel"]
-offset_left = 45.0
-offset_top = 174.0
-offset_right = 542.0
-offset_bottom = 560.0
-theme_override_fonts/font = ExtResource("1_8ghdf")
-theme_override_font_sizes/font_size = 25
-text = "Tutaj pojawia sie potrzebne skladniki"
+[node name="Ingridients" type="RichTextLabel" parent="PrepareBoosterPanel/Panel"]
+offset_left = 46.0
+offset_top = 168.0
+offset_right = 543.0
+offset_bottom = 633.0
+bbcode_enabled = true
+text = "Witaj w warsztacie! Tutaj możesz tworzyć specjalne boostery, które pomogą Ci w mini-grach. Oto, co musisz zrobić:
+
+[color=\"FFB74D\"][b]1. Kup plan boostera:[/b][/color] W sklepie znajdziesz plany boosterów. Wybierz interesujący Cię plan i kup go.
+[color=\"FFB74D\"][b]2. Wybierz plan w magazynie:[/b][/color] Przejdź do magazynu, otwórz sekcję „Plany” i wybierz plan, którego chcesz użyć. Po jego wyborze zobaczysz listę potrzebnych części.
+[color=\"FFB74D\"][b]3. Zdobądź części:[/b][/color] Wejdź do sklepu i kup wszystkie wymagane składniki.
+[color=\"FFB74D\"][b]4. Użyj części:[/b][/color] Wróć do magazynu, wybierz zakupione części i przypisz je do boostera. Każda użyta część zmieni status z „0/1” na „1/1”.
+[color=\"FFB74D\"][b]5. Twórz booster:[/b][/color] Gdy wszystkie części są gotowe, kliknij „Rozpocznij tworzenie boostera” i przejdź do kodowania, aby ukończyć swój projekt!
+Powodzenia i baw się świetnie, tworząc ulepszenia! 😊"
+autowrap_mode = 2
 
 [node name="StartMakeBooster" type="Button" parent="PrepareBoosterPanel/Panel"]
 visible = false
@@ -733,65 +753,110 @@ position = Vector2(580.5, 369)
 scale = Vector2(1131, 544)
 texture = SubResource("CanvasTexture_ahlo6")
 
-[node name="CloseButton" type="Node2D" parent="BuildBooster/Panel" node_paths=PackedStringArray("panels_node", "buttons_node")]
-position = Vector2(45, 127)
-script = ExtResource("5_f7nr3")
-panels_node = NodePath("../../../ShopPart/PanelsContainer")
-buttons_node = NodePath("../../../ShopPart/ButtonsContainer")
-metadata/_edit_group_ = true
-
-[node name="Button" type="TextureButton" parent="BuildBooster/Panel/CloseButton"]
-offset_left = -30.0
-offset_top = -28.0
-offset_right = 32.0
-offset_bottom = 31.0
-texture_normal = ExtResource("2_c63af")
-ignore_texture_size = true
-stretch_mode = 0
-
-[node name="Icon" type="Sprite2D" parent="BuildBooster/Panel/CloseButton"]
-position = Vector2(1, 1)
-scale = Vector2(0.078357, 0.078357)
-texture = ExtResource("5_sg6fy")
-
-[node name="BackButton" type="Node2D" parent="BuildBooster/Panel" node_paths=PackedStringArray("panel_container")]
-visible = false
-position = Vector2(45, 127)
-script = ExtResource("7_7se2f")
-panel_container = NodePath("../../../ShopPart/PanelsContainer")
-metadata/_edit_group_ = true
-
-[node name="Button" type="TextureButton" parent="BuildBooster/Panel/BackButton"]
-offset_left = -30.0
-offset_top = -28.0
-offset_right = 32.0
-offset_bottom = 31.0
-texture_normal = ExtResource("2_c63af")
-ignore_texture_size = true
-stretch_mode = 0
-
-[node name="Icon" type="Sprite2D" parent="BuildBooster/Panel/BackButton"]
-position = Vector2(1, 1)
-scale = Vector2(0.078357, 0.078357)
-texture = ExtResource("7_kpp2h")
-
 [node name="CodeInputNode" type="Node2D" parent="BuildBooster"]
-position = Vector2(643, 154)
+position = Vector2(588, 125)
 
 [node name="Button" type="Button" parent="BuildBooster"]
-offset_left = 821.0
-offset_top = 558.0
-offset_right = 992.0
-offset_bottom = 610.0
+offset_left = 1034.0
+offset_top = 393.0
+offset_right = 1135.0
+offset_bottom = 445.0
 text = "Sprawdź"
 
 [node name="UseButton" type="Button" parent="BuildBooster"]
 visible = false
-offset_left = 1001.0
-offset_top = 560.0
-offset_right = 1123.0
-offset_bottom = 611.0
+offset_left = 1047.0
+offset_top = 456.0
+offset_right = 1124.0
+offset_bottom = 507.0
 text = "Użyj"
+
+[node name="DoubleExpInformation" type="RichTextLabel" parent="BuildBooster"]
+visible = false
+offset_left = 34.0
+offset_top = 150.0
+offset_right = 543.0
+offset_bottom = 630.0
+bbcode_enabled = true
+text = "[color=\"FFB74D\"][b]1. Ustawienie wartości początkowych:[/b][/color]
+*	Zainicjalizuj zmienną multiplier z wartością 2. To będzie mnożnik punktów doświadczenia.
+*	Zainicjalizuj zmienną games_left z wartością 5. Określa ona liczbę gier, przez które będzie działał booster.
+[color=\"FFB74D\"][b]2. Rozpoczęcie pętli:[/b][/color]
+*	Użyj pętli while, aby wykonywać instrukcje, dopóki wartość games_left jest większa niż 0.
+[color=\"FFB74D\"][b]3.Modyfikowanie doświadczenia:[/b][/color]
+*	Wewnątrz pętli pomnóż zdobyte doświadczenie (earned_exp) przez multiplier (zastosuj *= - mnoży obecną wartość liczby przez podaną liczbę/zmienną)
+[color=\"FFB74D\"][b]4. Dodanie doświadczenia:[/b][/color]
+*	Wywołaj funkcję add_exp, przekazując zaktualizowaną wartość earned_exp.
+[color=\"FFB74D\"][b]5. Zmniejszenie liczby pozostałych gier:[/b][/color]
+*	Wewnątrz pętli zmniejsz wartość games_left o 1, aby odliczać rozegrane gry (zastosuj -= - odejmuje liczbę od obecnej wartości zmiennej)"
+
+[node name="HowToCodeBoosterText" type="Label" parent="BuildBooster"]
+offset_left = 16.0
+offset_top = 102.0
+offset_right = 549.0
+offset_bottom = 142.0
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 2
+theme_override_font_sizes/font_size = 20
+text = "Instrukcja jak napisać booster"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="BoosterConsole" type="CodeEdit" parent="BuildBooster"]
+offset_left = 590.0
+offset_top = 393.0
+offset_right = 1023.0
+offset_bottom = 631.0
+theme_override_colors/background_color = Color(0.568627, 0.54902, 0.529412, 1)
+theme_override_colors/line_number_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("10_ymans")
+editable = false
+gutters_draw_line_numbers = true
+
+[node name="ConsoleText" type="Label" parent="BuildBooster"]
+offset_left = 915.0
+offset_top = 364.0
+offset_right = 1021.0
+offset_bottom = 391.0
+theme_override_fonts/font = ExtResource("1_8ghdf")
+theme_override_font_sizes/font_size = 25
+text = "Konsola"
+
+[node name="FuncTimer" type="Timer" parent="BuildBooster"]
+
+[node name="Congratulations" type="Node2D" parent="."]
+visible = false
+script = ExtResource("34_jlt3b")
+
+[node name="Panel" type="Node2D" parent="Congratulations"]
+
+[node name="PanelBackground" type="Sprite2D" parent="Congratulations/Panel"]
+self_modulate = Color(1, 1, 1, 0.270588)
+position = Vector2(580.5, 369)
+scale = Vector2(1131, 544)
+texture = SubResource("CanvasTexture_ahlo6")
+
+[node name="Description" type="Label" parent="Congratulations"]
+offset_left = 38.0
+offset_top = 342.0
+offset_right = 1115.0
+offset_bottom = 424.0
+theme_override_font_sizes/font_size = 20
+text = "Teraz, przez nastepnych 5 rozegranych mini-gier Twoje punkty doswiadczenia beda podwajane! Dobra robota! 
+Mozesz wrocic do ekranu glownego klikajac strzalke na gorze."
+horizontal_alignment = 1
+autowrap_mode = 2
+
+[node name="Title" type="Label" parent="Congratulations"]
+offset_left = 16.0
+offset_top = 240.0
+offset_right = 1146.0
+offset_bottom = 386.0
+theme_override_fonts/font = ExtResource("1_8ghdf")
+theme_override_font_sizes/font_size = 30
+text = "Gratulacje! Udalo Ci sie zbudowac i aktywowac booster "
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [connection signal="mouse_entered" from="Header/BackButton/Button" to="Header/BackButton" method="_on_button_mouse_entered"]
 [connection signal="mouse_exited" from="Header/BackButton/Button" to="Header/BackButton" method="_on_button_mouse_exited"]
@@ -820,13 +885,7 @@ text = "Użyj"
 [connection signal="pressed" from="ShopPart/PanelsContainer/StoragePanel/PlansStorageButton/Button" to="ShopPart/PanelsContainer/StoragePanel/PlansStorageButton" method="_on_button_pressed"]
 [connection signal="pressed" from="ShopPart/PanelsContainer/StoragePanel/PartsStorageButton/Button" to="ShopPart/PanelsContainer/StoragePanel/PartsStorageButton" method="_on_button_pressed"]
 [connection signal="pressed" from="PrepareBoosterPanel/CurrBoosterButton/CurrButton" to="PrepareBoosterPanel" method="_on_curr_button_pressed"]
-[connection signal="pressed" from="PrepareBoosterPanel/Panel/CloseButton/Button" to="PrepareBoosterPanel" method="_on_button_pressed"]
 [connection signal="pressed" from="PrepareBoosterPanel/Panel/StartMakeBooster" to="PrepareBoosterPanel" method="_on_start_make_booster_pressed"]
-[connection signal="mouse_entered" from="BuildBooster/Panel/CloseButton/Button" to="BuildBooster/Panel/CloseButton" method="_on_button_mouse_entered"]
-[connection signal="mouse_exited" from="BuildBooster/Panel/CloseButton/Button" to="BuildBooster/Panel/CloseButton" method="_on_button_mouse_exited"]
-[connection signal="pressed" from="BuildBooster/Panel/CloseButton/Button" to="BuildBooster/Panel/CloseButton" method="_on_button_pressed"]
-[connection signal="mouse_entered" from="BuildBooster/Panel/BackButton/Button" to="BuildBooster/Panel/BackButton" method="_on_button_mouse_entered"]
-[connection signal="mouse_exited" from="BuildBooster/Panel/BackButton/Button" to="BuildBooster/Panel/BackButton" method="_on_button_mouse_exited"]
-[connection signal="pressed" from="BuildBooster/Panel/BackButton/Button" to="BuildBooster/Panel/BackButton" method="_on_button_pressed"]
 [connection signal="pressed" from="BuildBooster/Button" to="BuildBooster" method="_on_button_pressed"]
 [connection signal="pressed" from="BuildBooster/UseButton" to="BuildBooster" method="_on_use_button_pressed"]
+[connection signal="timeout" from="BuildBooster/FuncTimer" to="BuildBooster" method="_on_func_timer_timeout"]

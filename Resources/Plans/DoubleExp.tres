@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="Plan" load_steps=8 format=3 uid="uid://cbrh0bymtpjyj"]
+[gd_resource type="Resource" script_class="Plan" load_steps=32 format=3 uid="uid://cbrh0bymtpjyj"]
 
 [ext_resource type="Resource" uid="uid://7wbtoa47s3qq" path="res://Resources/CodeElements/Variables/multiplier.tres" id="1_7e7uo"]
 [ext_resource type="Script" path="res://Scripts/Resources/Plansres.gd" id="1_8lbh3"]
@@ -7,13 +7,132 @@
 [ext_resource type="Resource" uid="uid://bjyie5m3by2kj" path="res://Resources/CodeElements/Loops/while.tres" id="3_io8ja"]
 [ext_resource type="Resource" uid="uid://cx2giwq6v64sp" path="res://Resources/CodeElements/Variables/earned_exp.tres" id="4_6u406"]
 [ext_resource type="Resource" uid="uid://c8pws17gbms2y" path="res://Resources/CodeElements/Functions/add_exp.tres" id="5_bdlfg"]
+[ext_resource type="Script" path="res://Scripts/Resources/CorrectCodeElementRes.gd" id="8_kj1ne"]
+
+[sub_resource type="Resource" id="Resource_a0xlu"]
+script = ExtResource("8_kj1ne")
+correct_instruction = "multiplier"
+instruction_category = 0
+
+[sub_resource type="Resource" id="Resource_0xsc8"]
+script = ExtResource("8_kj1ne")
+correct_instruction = "="
+instruction_category = 6
+
+[sub_resource type="Resource" id="Resource_ye3tj"]
+script = ExtResource("8_kj1ne")
+correct_instruction = "2"
+instruction_category = 7
+
+[sub_resource type="Resource" id="Resource_22pnr"]
+script = ExtResource("8_kj1ne")
+correct_instruction = "enter"
+instruction_category = 0
+
+[sub_resource type="Resource" id="Resource_k53nk"]
+script = ExtResource("8_kj1ne")
+correct_instruction = "games_left"
+instruction_category = 0
+
+[sub_resource type="Resource" id="Resource_5rho1"]
+script = ExtResource("8_kj1ne")
+correct_instruction = "="
+instruction_category = 6
+
+[sub_resource type="Resource" id="Resource_sd373"]
+script = ExtResource("8_kj1ne")
+correct_instruction = "5"
+instruction_category = 7
+
+[sub_resource type="Resource" id="Resource_mdefq"]
+script = ExtResource("8_kj1ne")
+correct_instruction = "enter"
+instruction_category = 0
+
+[sub_resource type="Resource" id="Resource_ikde2"]
+script = ExtResource("8_kj1ne")
+correct_instruction = "while"
+instruction_category = 1
+
+[sub_resource type="Resource" id="Resource_2x6o5"]
+script = ExtResource("8_kj1ne")
+correct_instruction = "games_left"
+instruction_category = 0
+
+[sub_resource type="Resource" id="Resource_70vgj"]
+script = ExtResource("8_kj1ne")
+correct_instruction = ">"
+instruction_category = 6
+
+[sub_resource type="Resource" id="Resource_riikp"]
+script = ExtResource("8_kj1ne")
+correct_instruction = "0"
+instruction_category = 7
+
+[sub_resource type="Resource" id="Resource_ur2by"]
+script = ExtResource("8_kj1ne")
+correct_instruction = "enter"
+instruction_category = 0
+
+[sub_resource type="Resource" id="Resource_ubxyx"]
+script = ExtResource("8_kj1ne")
+correct_instruction = "tab"
+instruction_category = 0
+
+[sub_resource type="Resource" id="Resource_v427p"]
+script = ExtResource("8_kj1ne")
+correct_instruction = "earned_exp"
+instruction_category = 0
+
+[sub_resource type="Resource" id="Resource_ljav3"]
+script = ExtResource("8_kj1ne")
+correct_instruction = "*="
+instruction_category = 6
+
+[sub_resource type="Resource" id="Resource_ev56s"]
+script = ExtResource("8_kj1ne")
+correct_instruction = "multiplier"
+instruction_category = 0
+
+[sub_resource type="Resource" id="Resource_bbdhc"]
+script = ExtResource("8_kj1ne")
+correct_instruction = "enter"
+instruction_category = 0
+
+[sub_resource type="Resource" id="Resource_ly4ys"]
+script = ExtResource("8_kj1ne")
+correct_instruction = "add_exp(earned_exp)"
+instruction_category = 5
+
+[sub_resource type="Resource" id="Resource_5836i"]
+script = ExtResource("8_kj1ne")
+correct_instruction = "enter"
+instruction_category = 0
+
+[sub_resource type="Resource" id="Resource_ole5c"]
+script = ExtResource("8_kj1ne")
+correct_instruction = "games_left"
+instruction_category = 0
+
+[sub_resource type="Resource" id="Resource_srgvu"]
+script = ExtResource("8_kj1ne")
+correct_instruction = "-="
+instruction_category = 6
+
+[sub_resource type="Resource" id="Resource_jj1sj"]
+script = ExtResource("8_kj1ne")
+correct_instruction = "1"
+instruction_category = 7
 
 [resource]
 script = ExtResource("1_8lbh3")
 plan_name = "double_exp"
+booster_category = 0
+booster_description = "Double Exp: Podwaja zdobyte punkty doświadczenia przez 5 następnych mini-gier. Potrzebne materiały: "
 required_level = ExtResource("1_jg4sa")
 price = 5
 needed_code_elements = Array[Resource("res://Scripts/Resources/CodeElementRes.gd")]([ExtResource("1_7e7uo"), ExtResource("2_je8eh"), ExtResource("3_io8ja"), ExtResource("4_6u406"), ExtResource("5_bdlfg")])
-correct_booster = Array[String](["multiplier", "=", "2", "enter", "games_left", "=", "5", "enter", "while", "games_left", ">", "0", "enter", "tab", "earned_exp", "*=", "multiplier", "enter", "add_exp(earned_exp)", "enter", "games_left", "-=", "1"])
+text = Array[ExtResource("8_kj1ne")]([])
+correct_booster = Array[ExtResource("8_kj1ne")]([SubResource("Resource_a0xlu"), SubResource("Resource_0xsc8"), SubResource("Resource_ye3tj"), SubResource("Resource_22pnr"), SubResource("Resource_k53nk"), SubResource("Resource_5rho1"), SubResource("Resource_sd373"), SubResource("Resource_mdefq"), SubResource("Resource_ikde2"), SubResource("Resource_2x6o5"), SubResource("Resource_70vgj"), SubResource("Resource_riikp"), SubResource("Resource_ur2by"), SubResource("Resource_ubxyx"), SubResource("Resource_v427p"), SubResource("Resource_ljav3"), SubResource("Resource_ev56s"), SubResource("Resource_bbdhc"), SubResource("Resource_ly4ys"), SubResource("Resource_5836i"), SubResource("Resource_ole5c"), SubResource("Resource_srgvu"), SubResource("Resource_jj1sj")])
 games_duration = 5
 multiplier = 2

@@ -134,6 +134,13 @@ offset_right = 115.0
 offset_bottom = 215.0
 text = "EXPPPPP"
 
+[node name="Button3" type="Button" parent="Room/XD"]
+offset_left = 14.0
+offset_top = 216.0
+offset_right = 115.0
+offset_bottom = 262.0
+text = "ŁYBKI"
+
 [node name="Bath" type="Node2D" parent="Room" node_paths=PackedStringArray("panel_template", "panel_to_show")]
 script = ExtResource("8_4jdki")
 panel_template = NodePath("../UI/Panels/PanelTemplate")
@@ -1686,6 +1693,7 @@ text = "100"
 [connection signal="mouse_exited" from="Room/Scratching_post" to="Room/Scratching_post" method="_on_mouse_exited"]
 [connection signal="pressed" from="Room/XD/Button" to="Room/XD" method="_on_button_pressed"]
 [connection signal="pressed" from="Room/XD/Button2" to="Room/XD" method="_on_button_2_pressed"]
+[connection signal="pressed" from="Room/XD/Button3" to="Room/XD" method="_on_button_3_pressed"]
 [connection signal="input_event" from="Room/Bath/Area2D" to="Room/Bath" method="_on_area_2d_input_event"]
 [connection signal="mouse_entered" from="Room/Bath/Area2D" to="Room/Bath" method="_on_area_2d_mouse_entered"]
 [connection signal="mouse_exited" from="Room/Bath/Area2D" to="Room/Bath" method="_on_area_2d_mouse_exited"]

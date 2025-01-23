@@ -6,3 +6,7 @@ func _on_button_pressed():
 
 func _on_button_2_pressed():
 	SignalManager.add_exp.emit(20)
+
+func _on_button_3_pressed():
+	VariableManager.fishes += 10
+	SignalManager.update_fish_counter.emit()

@@ -5,5 +5,6 @@
 [resource]
 script = ExtResource("1_g8qo1")
 code_element_name = "- (substract)"
+code_element_description = "Operator służący do odejmowania dwóch liczb. Np. 6-5 = 1"
 category = 3
 price = 1

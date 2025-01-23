@@ -1,4 +1,6 @@
 extends Node2D
+var booster_text : String
+
 
 func _on_button_mouse_entered():
 	$PauseButton.modulate = Color("b2b2b2")
@@ -9,9 +11,11 @@ func _on_button_mouse_exited():
 func _on_button_pressed():
 	get_tree().paused = true
 	$PauseMenu.visible = true
+	check_active_booster()
 
 func _on_back_button_pressed():
 	get_tree().paused = false
+	$PauseMenu/BoosterGamesLeft.visible = false
 	$PauseMenu.visible = false
 
 func _on_back_button_mouse_entered():
@@ -44,3 +48,9 @@ func _on_quit_button_mouse_entered():
 
 func _on_quit_button_mouse_exited():
 	$PauseMenu/QuitButton.modulate = Color("ffffff")
+
+func check_active_booster() :
+	if(BoosterManager.active_booster != null && !$PauseMenu/BoosterGamesLeft.visible) :
+		booster_text = "Booster " + BoosterManager.active_booster.plan_name + " aktywny. Pozostalo " + str(BoosterManager.games_duration) + " gier (wliczajac te)."
+		$PauseMenu/BoosterGamesLeft.text = booster_text
+		$PauseMenu/BoosterGamesLeft.visible = true

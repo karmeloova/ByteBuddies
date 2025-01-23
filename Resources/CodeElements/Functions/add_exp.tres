@@ -5,5 +5,6 @@
 [resource]
 script = ExtResource("1_uu0ob")
 code_element_name = "add_exp"
+code_element_description = "Funkcja, która dodaje punkty doświadczenia zdobyte w mini-grze do Twoich obecnych punktów doświadczenia"
 category = 5
 price = 2

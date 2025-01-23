@@ -14,7 +14,9 @@ enum CodeElementsCategories {
 	condition,
 	math_operation,
 	logic_operation,
-	function
+	function,
+	operator,
+	number
 }
 
 enum BoosterCategory {

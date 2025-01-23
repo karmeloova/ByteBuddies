@@ -124,6 +124,16 @@ text = "Jak grac"
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[node name="BoosterGamesLeft" type="Label" parent="Panel"]
+visible = false
+offset_left = 240.0
+offset_top = 528.0
+offset_right = 955.0
+offset_bottom = 597.0
+theme_override_fonts/font = ExtResource("2_a4mhf")
+theme_override_font_sizes/font_size = 20
+text = "Booster nazwa_boostera aktywny. Pozostalo X gier (wliczajac te)."
+
 [node name="HowToPlay" type="Node2D" parent="."]
 visible = false
 script = ExtResource("10_g1eg1")
