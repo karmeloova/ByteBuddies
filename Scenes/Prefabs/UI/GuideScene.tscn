@@ -1,0 +1,240 @@
+[gd_scene load_steps=10 format=3 uid="uid://j5n5k1sy7ohu"]
+
+[ext_resource type="Texture2D" uid="uid://dl8dw08og2gr8" path="res://Images/Backgrounds/Placeholder_backgorund_minigames.jpg" id="1_wuiel"]
+[ext_resource type="Script" path="res://Scripts/UI/ExitButton.gd" id="2_3t0y1"]
+[ext_resource type="Texture2D" uid="uid://2rpmid1gnwur" path="res://Images/UI/Buttons/RoundButton.png" id="3_risqv"]
+[ext_resource type="Texture2D" uid="uid://dj5an2o6yuccm" path="res://Images/UI/Buttons/Exit.png" id="4_pc411"]
+[ext_resource type="Script" path="res://Scenes/Rooms/PlayerPanelBack.gd" id="5_a0kou"]
+[ext_resource type="Texture2D" uid="uid://6adv5bnfl4ff" path="res://Images/UI/Buttons/Back.png" id="6_8md52"]
+[ext_resource type="FontFile" uid="uid://ccgpsjqwwow8o" path="res://Fonts/Bubblegum.ttf" id="7_bw6jb"]
+[ext_resource type="Script" path="res://Scripts/UI/Guides/Variables.gd" id="8_81jod"]
+[ext_resource type="FontFile" uid="uid://7a16745x5o1t" path="res://Fonts/consola.ttf" id="8_rl26j"]
+
+[node name="GuideScene" type="Node2D"]
+
+[node name="PanelTemplate" type="Node2D" parent="."]
+position = Vector2(-250, -118)
+metadata/_edit_group_ = true
+
+[node name="Background" type="Sprite2D" parent="PanelTemplate"]
+modulate = Color(1, 1, 1, 0.470588)
+position = Vector2(571, 364.25)
+scale = Vector2(0.87415, 1.01122)
+texture = ExtResource("1_wuiel")
+
+[node name="Exit" type="Node2D" parent="PanelTemplate"]
+position = Vector2(254, -264)
+scale = Vector2(0.7, 0.7)
+script = ExtResource("2_3t0y1")
+metadata/_edit_group_ = true
+
+[node name="Button" type="TextureButton" parent="PanelTemplate/Exit"]
+offset_left = -2.0
+offset_top = 546.0
+offset_right = 104.0
+offset_bottom = 646.0
+texture_normal = ExtResource("3_risqv")
+texture_pressed = ExtResource("3_risqv")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="Icon" type="Sprite2D" parent="PanelTemplate/Exit"]
+position = Vector2(51, 595)
+scale = Vector2(0.124325, 0.124325)
+texture = ExtResource("4_pc411")
+
+[node name="Back" type="Node2D" parent="PanelTemplate"]
+visible = false
+position = Vector2(254, -264)
+scale = Vector2(0.7, 0.7)
+script = ExtResource("5_a0kou")
+metadata/_edit_group_ = true
+
+[node name="BackButton" type="TextureButton" parent="PanelTemplate/Back"]
+offset_left = -2.0
+offset_top = 546.0
+offset_right = 104.0
+offset_bottom = 646.0
+texture_normal = ExtResource("3_risqv")
+texture_pressed = ExtResource("3_risqv")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="Icon" type="Sprite2D" parent="PanelTemplate/Back"]
+position = Vector2(51, 595)
+scale = Vector2(0.124325, 0.124325)
+texture = ExtResource("6_8md52")
+
+[node name="MainNode" type="Node2D" parent="."]
+visible = false
+
+[node name="GridContainer" type="GridContainer" parent="MainNode"]
+offset_left = 49.0
+offset_top = 98.0
+offset_right = 594.0
+offset_bottom = 492.0
+theme_override_constants/h_separation = 10
+theme_override_constants/v_separation = 10
+columns = 3
+
+[node name="Variables" type="Button" parent="MainNode/GridContainer"]
+custom_minimum_size = Vector2(175, 50)
+layout_mode = 2
+text = "Zmienne"
+
+[node name="Functions" type="Button" parent="MainNode/GridContainer"]
+custom_minimum_size = Vector2(175, 50)
+layout_mode = 2
+text = "Funkcje"
+
+[node name="Loops" type="Button" parent="MainNode/GridContainer"]
+custom_minimum_size = Vector2(175, 50)
+layout_mode = 2
+text = "Pętle"
+
+[node name="Conditions" type="Button" parent="MainNode/GridContainer"]
+custom_minimum_size = Vector2(175, 50)
+layout_mode = 2
+text = "Operacje logiczne"
+
+[node name="Operators" type="Button" parent="MainNode/GridContainer"]
+custom_minimum_size = Vector2(175, 50)
+layout_mode = 2
+text = "Operatory"
+
+[node name="DataTypes" type="Button" parent="MainNode/GridContainer"]
+custom_minimum_size = Vector2(175, 50)
+layout_mode = 2
+text = "Typy danych"
+
+[node name="Label2" type="Label" parent="MainNode"]
+offset_left = 55.0
+offset_top = 8.0
+offset_right = 616.0
+offset_bottom = 74.0
+theme_override_fonts/font = ExtResource("7_bw6jb")
+theme_override_font_sizes/font_size = 50
+text = "Programowanie"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="GuidesNode" type="Node2D" parent="."]
+
+[node name="Variables" type="Node2D" parent="GuidesNode"]
+script = ExtResource("8_81jod")
+
+[node name="CodeEdit" type="CodeEdit" parent="GuidesNode/Variables"]
+offset_left = 379.0
+offset_top = 262.0
+offset_right = 626.0
+offset_bottom = 484.0
+editable = false
+gutters_draw_line_numbers = true
+
+[node name="VariablesLabel" type="Label" parent="GuidesNode/Variables"]
+offset_left = 55.0
+offset_top = 8.0
+offset_right = 616.0
+offset_bottom = 74.0
+theme_override_fonts/font = ExtResource("7_bw6jb")
+theme_override_font_sizes/font_size = 50
+text = "Zmienne"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="RichTextLabel" type="RichTextLabel" parent="GuidesNode/Variables"]
+offset_left = 20.0
+offset_top = 89.0
+offset_right = 620.0
+offset_bottom = 484.0
+bbcode_enabled = true
+text = "[color=\"red\"]Zmienne[/color] w programowaniu są \"pudełkami\", w których przechowuje się dane. Można je wykorzystywać w swoim programie w każdym miejscu i modyfikować ich zawartość. Przykład:
+								Zmienna x przechowuje liczbę 5.
+
+
+Przetestuj to sam!"
+
+[node name="Example" type="Label" parent="GuidesNode/Variables"]
+offset_left = 27.0
+offset_top = 158.0
+offset_right = 142.0
+offset_bottom = 199.0
+theme_override_fonts/font = ExtResource("8_rl26j")
+theme_override_font_sizes/font_size = 40
+text = "x = 5"
+
+[node name="TextEdit" type="TextEdit" parent="GuidesNode/Variables"]
+offset_left = 106.0
+offset_top = 259.0
+offset_right = 202.0
+offset_bottom = 299.0
+theme_override_colors/background_color = Color(0.489622, 0.489622, 0.489622, 1)
+
+[node name="x=" type="Label" parent="GuidesNode/Variables"]
+offset_left = 25.0
+offset_top = 259.0
+offset_right = 113.0
+offset_bottom = 309.0
+theme_override_fonts/font = ExtResource("8_rl26j")
+theme_override_font_sizes/font_size = 40
+text = "x = "
+
+[node name="Ins1" type="Label" parent="GuidesNode/Variables"]
+offset_left = 17.0
+offset_top = 310.0
+offset_right = 327.0
+offset_bottom = 359.0
+text = "Po wprowadzeniu wartości wciśnij enter
+Program, który się wykona:"
+
+[node name="Code" type="Label" parent="GuidesNode/Variables"]
+offset_left = 19.0
+offset_top = 369.0
+offset_right = 337.0
+offset_bottom = 426.0
+theme_override_fonts/font = ExtResource("8_rl26j")
+theme_override_font_sizes/font_size = 17
+text = "x = [twoja_wartość_którą_wpiszesz]
+print(x)"
+
+[node name="Ins2" type="Label" parent="GuidesNode/Variables"]
+offset_left = 23.0
+offset_top = 416.0
+offset_right = 354.0
+offset_bottom = 491.0
+text = "Obserwuj wynik działania w konsoli obok!
+print(x) - oznacza wypisanie wartości x w konsoli"
+autowrap_mode = 2
+
+[node name="Functions" type="Node2D" parent="GuidesNode"]
+visible = false
+
+[node name="VariablesLabel" type="Label" parent="GuidesNode/Functions"]
+offset_left = 55.0
+offset_top = 8.0
+offset_right = 616.0
+offset_bottom = 74.0
+theme_override_fonts/font = ExtResource("7_bw6jb")
+theme_override_font_sizes/font_size = 50
+text = "Funkcje"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="RichTextLabel" type="RichTextLabel" parent="GuidesNode/Functions"]
+offset_left = 20.0
+offset_top = 89.0
+offset_right = 620.0
+offset_bottom = 484.0
+bbcode_enabled = true
+text = "[color=\"red\"]Funkcje[/color] w programowaniu są \"kawałkami kodu\", które wykonują konkretne zadania. W nawiasach przyjmują określone zmienne, na których wykonywana jest operacja. Można je wywoływać w dowolnym miejscu w programie, zamiast wielokrotnie powtarzać ten sam kod.
+Przykład:"
+
+[node name="Label" type="Label" parent="GuidesNode/Functions"]
+offset_left = 23.0
+offset_top = 211.0
+offset_right = 272.0
+offset_bottom = 343.0
+text = "def add_numbers(a, b):
+     return a+b"
+
+[connection signal="text_changed" from="GuidesNode/Variables/TextEdit" to="GuidesNode/Variables" method="_on_text_edit_text_changed"]
