@@ -87,6 +87,7 @@ script = ExtResource("1_80uij")
 [node name="Scene" type="Node2D" parent="."]
 
 [node name="Background" type="Sprite2D" parent="Scene"]
+texture_filter = 2
 position = Vector2(577, 322)
 texture = ExtResource("1_5tq1h")
 
@@ -94,13 +95,13 @@ texture = ExtResource("1_5tq1h")
 
 [node name="Cat" type="Node2D" parent="Room"]
 position = Vector2(594, 404)
-scale = Vector2(0.262, 0.262)
 script = ExtResource("32_38vco")
 metadata/_edit_group_ = true
 
 [node name="Image" type="Sprite2D" parent="Room/Cat"]
-texture_filter = 1
+texture_filter = 2
 position = Vector2(0, 3.05176e-05)
+scale = Vector2(0.262, 0.262)
 texture = ExtResource("32_3rwvs")
 
 [node name="EatTimer" type="Timer" parent="Room/Cat"]

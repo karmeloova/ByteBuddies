@@ -28,6 +28,10 @@ AchievementScene="*res://Scenes/Prefabs/UI/AchievementScene.tscn"
 MyEnums="*res://Scripts/MyEnums.gd"
 BoosterManager="*res://Scripts/Autoload/booster_manager.gd"
 
+[display]
+
+window/stretch/mode="canvas_items"
+
 [editor_plugins]
 
 enabled=PackedStringArray("res://addons/nv.gd.file_system-4d95494a83b9c2f5292c20301bb4d0408dfcb579/nv.gd.file_system-4d95494a83b9c2f5292c20301bb4d0408dfcb579/addons/nv.file_system/plugin.cfg")
@@ -50,3 +54,7 @@ move_item={
 
 2d_physics/layer_1="World"
 2d_physics/layer_2="Board"
+
+[rendering]
+
+anti_aliasing/quality/msaa_2d=3
