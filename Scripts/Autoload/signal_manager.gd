@@ -81,6 +81,12 @@ signal show_description(description: String)
 signal hide_description()
 signal decrease_plan_counter(plan : Plan)
 signal decrease_code_element_counter(code_element : CodeElement)
+signal set_console_text(text_to_set : String)
+signal set_text_using_loops(how_many_iteration: int, text_to_set : String)
+signal set_text_using_while_loop(max_number: int, text_to_set : String)
+signal set_text_edit_editable()
+signal hide_back_button()
+
 
 #------------------ LEVEL -----------------------------------
 signal add_exp(value)

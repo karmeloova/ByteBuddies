@@ -1,4 +1,4 @@
-[gd_scene load_steps=68 format=3 uid="uid://br5jh3sh28ig4"]
+[gd_scene load_steps=69 format=3 uid="uid://br5jh3sh28ig4"]
 
 [ext_resource type="Texture2D" uid="uid://ddmrcvq0prt24" path="res://Images/Backgrounds/Tlov1.png" id="1_5tq1h"]
 [ext_resource type="Script" path="res://Scenes/Rooms/MainRoom.gd" id="1_80uij"]
@@ -56,6 +56,7 @@
 [ext_resource type="Script" path="res://Scripts/Items/ScratchingPostMiniGame.gd" id="37_vvil0"]
 [ext_resource type="Script" path="res://Scenes/Rooms/BoosterButton.gd" id="38_h1u42"]
 [ext_resource type="Texture2D" uid="uid://b1idsi4afsqjc" path="res://Images/UI/Buttons/Resume.png" id="38_mtuig"]
+[ext_resource type="PackedScene" uid="uid://j5n5k1sy7ohu" path="res://Scenes/Prefabs/UI/GuideScene.tscn" id="38_r2qal"]
 [ext_resource type="Script" path="res://Scenes/Rooms/CodeFeedNode.gd" id="38_s7xvu"]
 [ext_resource type="Script" path="res://Scenes/Rooms/ShowNeedStatus.gd" id="47_y5i0a"]
 [ext_resource type="Script" path="res://Scenes/Rooms/Fishes.gd" id="58_a3d2p"]
@@ -874,16 +875,10 @@ offset_bottom = 426.0
 theme_override_font_sizes/font_size = 100
 text = "SETTINGSSS"
 
-[node name="Guide" type="Node2D" parent="Room/UI/Panels"]
+[node name="GuideScene" parent="Room/UI/Panels" node_paths=PackedStringArray("back_button") instance=ExtResource("38_r2qal")]
 visible = false
-
-[node name="Label" type="Label" parent="Room/UI/Panels/Guide"]
-offset_left = 280.0
-offset_top = 278.0
-offset_right = 867.0
-offset_bottom = 415.0
-theme_override_font_sizes/font_size = 100
-text = "GUIDEEEEEE"
+position = Vector2(250, 118)
+back_button = NodePath("../PanelTemplate/Back")
 
 [node name="PlayerPanel" type="Node2D" parent="Room/UI/Panels"]
 visible = false
@@ -981,7 +976,7 @@ position = Vector2(737, -111)
 scale = Vector2(0.9, 0.9)
 script = ExtResource("33_h8ng0")
 node_to_hide = NodePath("..")
-node_to_show = NodePath("../../Guide")
+node_to_show = NodePath("../../GuideScene")
 exit_button = NodePath("../../PanelTemplate/Exit")
 back_button = NodePath("../../PanelTemplate/Back")
 

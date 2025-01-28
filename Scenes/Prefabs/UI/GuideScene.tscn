@@ -1,0 +1,762 @@
+[gd_scene load_steps=16 format=3 uid="uid://j5n5k1sy7ohu"]
+
+[ext_resource type="Script" path="res://Scenes/Prefabs/UI/GuideScene.gd" id="1_78l6u"]
+[ext_resource type="Texture2D" uid="uid://2rpmid1gnwur" path="res://Images/UI/Buttons/RoundButton.png" id="3_risqv"]
+[ext_resource type="Texture2D" uid="uid://6adv5bnfl4ff" path="res://Images/UI/Buttons/Back.png" id="6_8md52"]
+[ext_resource type="Script" path="res://Scripts/UI/Guides/GuideButtons.gd" id="7_21prb"]
+[ext_resource type="FontFile" uid="uid://ccgpsjqwwow8o" path="res://Fonts/Bubblegum.ttf" id="7_bw6jb"]
+[ext_resource type="Script" path="res://Scenes/Prefabs/UI/BackGuide.gd" id="7_ljto6"]
+[ext_resource type="Script" path="res://Scripts/UI/Guides/Variables.gd" id="8_81jod"]
+[ext_resource type="FontFile" uid="uid://7a16745x5o1t" path="res://Fonts/consola.ttf" id="8_rl26j"]
+[ext_resource type="Script" path="res://Scripts/UI/Guides/Console.gd" id="8_yhaqs"]
+[ext_resource type="Script" path="res://Scripts/UI/Guides/Functions.gd" id="10_1iwx4"]
+[ext_resource type="Script" path="res://Scripts/UI/Guides/Loops.gd" id="12_fuwsn"]
+[ext_resource type="Script" path="res://Scripts/UI/Guides/Conditions.gd" id="13_xdlgc"]
+[ext_resource type="Script" path="res://Scripts/UI/Guides/Operators.gd" id="14_yc1po"]
+[ext_resource type="Script" path="res://Scripts/UI/Guides/DataTypes.gd" id="15_26v0m"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_eka6r"]
+line_spacing = 0.5
+font_size = 13
+
+[node name="GuideScene" type="Node2D"]
+script = ExtResource("1_78l6u")
+
+[node name="MainNode" type="Node2D" parent="." node_paths=PackedStringArray("guide_node")]
+script = ExtResource("7_21prb")
+guide_node = NodePath("../GuidesNode")
+
+[node name="GridContainer" type="GridContainer" parent="MainNode"]
+offset_left = 49.0
+offset_top = 98.0
+offset_right = 594.0
+offset_bottom = 492.0
+theme_override_constants/h_separation = 10
+theme_override_constants/v_separation = 10
+columns = 3
+
+[node name="Variables" type="Button" parent="MainNode/GridContainer"]
+custom_minimum_size = Vector2(175, 50)
+layout_mode = 2
+text = "Zmienne"
+
+[node name="Functions" type="Button" parent="MainNode/GridContainer"]
+custom_minimum_size = Vector2(175, 50)
+layout_mode = 2
+text = "Funkcje"
+
+[node name="Loops" type="Button" parent="MainNode/GridContainer"]
+custom_minimum_size = Vector2(175, 50)
+layout_mode = 2
+text = "Pętle"
+
+[node name="Conditions" type="Button" parent="MainNode/GridContainer"]
+custom_minimum_size = Vector2(175, 50)
+layout_mode = 2
+text = "Operacje logiczne"
+
+[node name="Operators" type="Button" parent="MainNode/GridContainer"]
+custom_minimum_size = Vector2(175, 50)
+layout_mode = 2
+text = "Operatory"
+
+[node name="DataTypes" type="Button" parent="MainNode/GridContainer"]
+custom_minimum_size = Vector2(175, 50)
+layout_mode = 2
+text = "Typy danych"
+
+[node name="Label2" type="Label" parent="MainNode"]
+offset_left = 55.0
+offset_top = 8.0
+offset_right = 616.0
+offset_bottom = 74.0
+theme_override_fonts/font = ExtResource("7_bw6jb")
+theme_override_font_sizes/font_size = 50
+text = "Programowanie"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="GuidesNode" type="Node2D" parent="."]
+visible = false
+
+[node name="Back" type="Node2D" parent="GuidesNode"]
+position = Vector2(4, -382)
+scale = Vector2(0.7, 0.7)
+script = ExtResource("7_ljto6")
+metadata/_edit_group_ = true
+
+[node name="BackButton" type="TextureButton" parent="GuidesNode/Back"]
+offset_left = -2.0
+offset_top = 546.0
+offset_right = 104.0
+offset_bottom = 646.0
+texture_normal = ExtResource("3_risqv")
+texture_pressed = ExtResource("3_risqv")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="Icon" type="Sprite2D" parent="GuidesNode/Back"]
+position = Vector2(51, 595)
+scale = Vector2(0.124325, 0.124325)
+texture = ExtResource("6_8md52")
+
+[node name="Console" type="CodeEdit" parent="GuidesNode"]
+offset_left = 379.0
+offset_top = 241.0
+offset_right = 626.0
+offset_bottom = 463.0
+editable = false
+gutters_draw_line_numbers = true
+script = ExtResource("8_yhaqs")
+
+[node name="Variables" type="Node2D" parent="GuidesNode"]
+script = ExtResource("8_81jod")
+
+[node name="VariablesLabel" type="Label" parent="GuidesNode/Variables"]
+offset_left = 55.0
+offset_top = 8.0
+offset_right = 616.0
+offset_bottom = 74.0
+theme_override_fonts/font = ExtResource("7_bw6jb")
+theme_override_font_sizes/font_size = 50
+text = "Zmienne"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="RichTextLabel" type="RichTextLabel" parent="GuidesNode/Variables"]
+offset_left = 20.0
+offset_top = 89.0
+offset_right = 620.0
+offset_bottom = 484.0
+bbcode_enabled = true
+text = "[color=\"red\"]Zmienne[/color] w programowaniu są \"pudełkami\", w których przechowuje się dane. Można je wykorzystywać w swoim programie w każdym miejscu i modyfikować ich zawartość. Przykład (zmienna x przechowuje liczbę 5)
+[font_size=3][color=\"Transparent\"]PRZERWA[/color][/font_size]
+[font=res://Fonts/consola.ttf][font_size=30]	x = 5[/font_size][/font]"
+
+[node name="TextEdit" type="TextEdit" parent="GuidesNode/Variables"]
+offset_left = 93.0
+offset_top = 254.0
+offset_right = 189.0
+offset_bottom = 294.0
+theme_override_colors/background_color = Color(0.489622, 0.489622, 0.489622, 1)
+
+[node name="Label" type="Label" parent="GuidesNode/Variables"]
+offset_left = 18.0
+offset_top = 227.0
+offset_right = 158.0
+offset_bottom = 250.0
+text = "Przetestuj to sam!"
+
+[node name="x=" type="Label" parent="GuidesNode/Variables"]
+offset_left = 25.0
+offset_top = 259.0
+offset_right = 113.0
+offset_bottom = 309.0
+theme_override_fonts/font = ExtResource("8_rl26j")
+theme_override_font_sizes/font_size = 30
+text = "x = "
+
+[node name="Ins1" type="Label" parent="GuidesNode/Variables"]
+offset_left = 17.0
+offset_top = 303.0
+offset_right = 327.0
+offset_bottom = 352.0
+text = "Po wprowadzeniu wartości wciśnij enter
+Program, który się wykona:"
+
+[node name="Code" type="Label" parent="GuidesNode/Variables"]
+offset_left = 18.0
+offset_top = 367.0
+offset_right = 336.0
+offset_bottom = 424.0
+theme_override_fonts/font = ExtResource("8_rl26j")
+theme_override_font_sizes/font_size = 17
+text = "x = [twoja_wartość_którą_wpiszesz]
+print(x)"
+
+[node name="Ins2" type="RichTextLabel" parent="GuidesNode/Variables"]
+offset_left = 17.0
+offset_top = 421.0
+offset_right = 348.0
+offset_bottom = 496.0
+bbcode_enabled = true
+text = "Obserwuj wynik działania w konsoli obok!
+[font_size=3][color=\"Transparent\"]PRZERWA[/color][/font_size]
+[font_size=13]print(x) - oznacza wypisanie wartości x w konsoli[/font_size]"
+autowrap_mode = 2
+
+[node name="Functions" type="Node2D" parent="GuidesNode"]
+visible = false
+script = ExtResource("10_1iwx4")
+
+[node name="VariablesLabel" type="Label" parent="GuidesNode/Functions"]
+offset_left = 55.0
+offset_top = 8.0
+offset_right = 616.0
+offset_bottom = 74.0
+theme_override_fonts/font = ExtResource("7_bw6jb")
+theme_override_font_sizes/font_size = 50
+text = "Funkcje"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="RichTextLabel" type="RichTextLabel" parent="GuidesNode/Functions"]
+offset_left = 20.0
+offset_top = 89.0
+offset_right = 633.0
+offset_bottom = 231.0
+bbcode_enabled = true
+text = "[color=\"red\"]Funkcje[/color] w programowaniu są \"kawałkami kodu\", które wykonują konkretne zadania. W nawiasach przyjmują określone zmienne, na których wykonywana jest operacja. Można je wywoływać w dowolnym miejscu w programie, zamiast wielokrotnie powtarzać ten sam kod. Return zwraca wynik funkcji oraz kończy jej działanie, przekazując wynik do miejsca, w którym funkcja została wywołana.
+Przykład (funkcja zwracająca sumę dwóch liczb): [font_size=10][color=\"Transparent\"]
+eeeee[/color][/font_size]
+[font=res://Fonts/consola.ttf][font_size=20]	def add_numbers(a, b):
+		return a+b"
+
+[node name="Label" type="RichTextLabel" parent="GuidesNode/Functions"]
+offset_left = 19.0
+offset_top = 239.0
+offset_right = 375.0
+offset_bottom = 483.0
+bbcode_enabled = true
+text = "[font_size=16]Spróbuj sam! Uzupełnij parametry funkcji (dwukrotnie, po każdym razie wciśnij enter), a następnie obserwuj wynik w konsoli
+[color=\"Transparent\"][font_size=10]przerwa[/font_size][/color]
+[font=res://Fonts/consola.ttf][font_size=20]add_numbers(    ,    )[/font_size]"
+autowrap_mode = 2
+
+[node name="Code" type="RichTextLabel" parent="GuidesNode/Functions"]
+offset_left = 19.0
+offset_top = 380.0
+offset_right = 375.0
+offset_bottom = 483.0
+theme_override_fonts/normal_font = ExtResource("8_rl26j")
+bbcode_enabled = true
+text = "print(add_numbers([twoje_zmienne]))
+print(\"Teraz drugi raz\")
+print(add_numbers([twoje_zmienne2]))
+
+def add_numbers(a,b)
+	return a+b"
+autowrap_mode = 2
+
+[node name="Var1" type="TextEdit" parent="GuidesNode/Functions"]
+offset_left = 152.0
+offset_top = 317.0
+offset_right = 193.0
+offset_bottom = 347.0
+focus_next = NodePath("../Var2")
+focus_previous = NodePath(".")
+theme_override_colors/background_color = Color(0.490196, 0.490196, 0.490196, 1)
+theme_override_font_sizes/font_size = 13
+autowrap_mode = 1
+
+[node name="Var2" type="TextEdit" parent="GuidesNode/Functions"]
+offset_left = 209.0
+offset_top = 317.0
+offset_right = 250.0
+offset_bottom = 347.0
+theme_override_colors/background_color = Color(0.490196, 0.490196, 0.490196, 1)
+theme_override_font_sizes/font_size = 13
+
+[node name="Loops" type="Node2D" parent="GuidesNode"]
+visible = false
+script = ExtResource("12_fuwsn")
+
+[node name="LoopsLabel" type="Label" parent="GuidesNode/Loops"]
+offset_left = 55.0
+offset_top = 8.0
+offset_right = 616.0
+offset_bottom = 74.0
+theme_override_fonts/font = ExtResource("7_bw6jb")
+theme_override_font_sizes/font_size = 50
+text = "Petle"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="RichTextLabel" type="RichTextLabel" parent="GuidesNode/Loops"]
+offset_left = 20.0
+offset_top = 89.0
+offset_right = 633.0
+offset_bottom = 210.0
+bbcode_enabled = true
+text = "[color=\"red\"]Pętle[/color] pozwalają przetwarzać kod określoną liczbę razy lub dopóki spełniony jest warunek. Wyróżnia się kilka rodzajów pętli, a najważniejsze z nich to:
+- [b]for[/b] - wykonuje kod określoną liczbę razy. Posiada w sobie zmienną (iterator), która pozwala sprawdzać na którym kroku obecnie jest pętla.
+- [b]while[/b] - wykonuje kod dopóki warunek jest spełniony 
+Przykład dla pętli \"for\" - wypisuje liczby od 0 do 4 (ponieważ pętla zaczyna się od i=0): [font_size=10][color=\"Transparent\"]
+eeeee[/color][/font_size]
+[font=res://Fonts/consola.ttf][font_size=20]	for i in range(5):
+		print(i)[/font_size][/font] [font_size=10][color=\"Transparent\"]
+eeeee[/color][/font_size]
+Przykład dla pętli \"while\" - najpierw wypisuje obecną wartość zmiennej \"number\", a następnie dodaje do niej 1, dopóki będzie ona mniejsza lub równa 5 [font_size=10][color=\"Transparent\"]
+eeeee[/color][/font_size]
+[font=res://Fonts/consola.ttf][font_size=20]	number = 1
+	while number <=5:
+		print(number)
+		number += 1
+		print(i)[/font_size][/font]"
+
+[node name="Label" type="Label" parent="GuidesNode/Loops"]
+offset_left = 18.0
+offset_top = 227.0
+offset_right = 417.0
+offset_bottom = 254.0
+text = "Przetestuj to sam! "
+autowrap_mode = 2
+
+[node name="LoopsButtonContainer" type="HBoxContainer" parent="GuidesNode/Loops"]
+offset_top = 444.0
+offset_right = 379.0
+offset_bottom = 484.0
+theme_override_constants/separation = 50
+alignment = 1
+
+[node name="For" type="Button" parent="GuidesNode/Loops/LoopsButtonContainer"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+text = "For"
+
+[node name="While" type="Button" parent="GuidesNode/Loops/LoopsButtonContainer"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+text = "While"
+
+[node name="ForLoop" type="Node2D" parent="GuidesNode/Loops"]
+
+[node name="Label" type="Label" parent="GuidesNode/Loops/ForLoop"]
+offset_left = 19.0
+offset_top = 257.0
+offset_right = 376.0
+offset_bottom = 332.0
+text = "Wprowadź dowolną liczbę całkowitą i wciśnij enter. To będzie ilość kroków, które ma wykonać pętla."
+autowrap_mode = 2
+
+[node name="RichTextLabel" type="RichTextLabel" parent="GuidesNode/Loops/ForLoop"]
+offset_left = 30.0
+offset_top = 345.0
+offset_right = 361.0
+offset_bottom = 411.0
+theme_override_fonts/normal_font = ExtResource("8_rl26j")
+text = "for i in range([twoja_liczba]):
+	print(\"Krok nr \", i)
+	time.sleep(1)"
+
+[node name="var" type="TextEdit" parent="GuidesNode/Loops/ForLoop"]
+offset_left = 144.0
+offset_top = 307.0
+offset_right = 185.0
+offset_bottom = 337.0
+theme_override_colors/background_color = Color(0.490196, 0.490196, 0.490196, 1)
+theme_override_font_sizes/font_size = 13
+autowrap_mode = 1
+
+[node name="WhileLoop" type="Node2D" parent="GuidesNode/Loops"]
+visible = false
+
+[node name="Label" type="Label" parent="GuidesNode/Loops/WhileLoop"]
+offset_left = 18.0
+offset_top = 254.0
+offset_right = 371.0
+offset_bottom = 329.0
+text = "Wpisz wartość (liczba całkowita) do jakiej ma być zwiększana liczba i wciśnij enter"
+autowrap_mode = 2
+
+[node name="RichTextLabel" type="RichTextLabel" parent="GuidesNode/Loops/WhileLoop"]
+offset_left = 30.0
+offset_top = 313.0
+offset_right = 370.0
+offset_bottom = 411.0
+theme_override_fonts/normal_font = ExtResource("8_rl26j")
+text = "number = 1
+while number < [twoja_liczba]:
+	print(\"Obecna wartosc: \", number)
+	number = number * 2
+	time.sleep(1)"
+
+[node name="var" type="TextEdit" parent="GuidesNode/Loops/WhileLoop"]
+offset_left = 320.0
+offset_top = 283.0
+offset_right = 361.0
+offset_bottom = 313.0
+theme_override_colors/background_color = Color(0.490196, 0.490196, 0.490196, 1)
+theme_override_font_sizes/font_size = 13
+autowrap_mode = 1
+
+[node name="Label2" type="Label" parent="GuidesNode/Loops"]
+offset_left = 21.0
+offset_top = 404.0
+offset_right = 357.0
+offset_bottom = 450.0
+text = "time.sleep(1) - czeka 1 sekundę przed następnym krokiem"
+label_settings = SubResource("LabelSettings_eka6r")
+autowrap_mode = 2
+
+[node name="Conditions" type="Node2D" parent="GuidesNode"]
+visible = false
+script = ExtResource("13_xdlgc")
+
+[node name="ConditionsLabel" type="Label" parent="GuidesNode/Conditions"]
+offset_left = 55.0
+offset_top = 8.0
+offset_right = 616.0
+offset_bottom = 74.0
+theme_override_fonts/font = ExtResource("7_bw6jb")
+theme_override_font_sizes/font_size = 50
+text = "Warunki (if/else)"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="RichTextLabel" type="RichTextLabel" parent="GuidesNode/Conditions"]
+offset_left = 20.0
+offset_top = 89.0
+offset_right = 633.0
+offset_bottom = 210.0
+bbcode_enabled = true
+text = "[color=\"red\"]Warunki[/color] pozwalają podejmować decyzje w kodzie. W zależności od spełnienia warunku program wykonuyje odpowiednie działania. Składa się z następujących części:
+[b]- if[/b] - jeżeli warunek będzie spełniony wykonaj to co po if
+[b]- else[/b] (opcjonalne) - co ma się stać, gdy warunek nie będzie spełniony
+Przykład - gdy liczba będzie większa od 10 (if x > 10) to w konsoli wyświetli się tekst \"Liczba większa niz 10\", a jeżeli będzie mniejsza lub równa 10 (else), to wyświetli się \"Liczba mniejsza lub równa 10\" 
+[font_size=10][color=\"Transparent\"]PRZERWA[/color][/font_size]
+[font=res://Fonts/consola.ttf][font_size=20]	if x > 10:
+		print(\"Liczba większa niż 10\")
+	else :
+		print(\"Liczba mniejsza lub równa 10\")[/font_size][/font]"
+
+[node name="Label" type="Label" parent="GuidesNode/Conditions"]
+offset_left = 19.0
+offset_top = 233.0
+offset_right = 379.0
+offset_bottom = 308.0
+text = "Przetestuj to sam! 
+Wprowadź dowolną liczbę całkowitą i naciśnij enter."
+autowrap_mode = 2
+
+[node name="RichTextLabel2" type="RichTextLabel" parent="GuidesNode/Conditions"]
+offset_left = 31.0
+offset_top = 323.0
+offset_right = 362.0
+offset_bottom = 399.0
+theme_override_fonts/normal_font = ExtResource("8_rl26j")
+text = "if [twoja_liczba]%2==0 :
+	print(\"Liczba parzysta\")
+else:
+	print(\"Liczba nieparzysta\")"
+
+[node name="Label2" type="Label" parent="GuidesNode/Conditions"]
+offset_left = 18.0
+offset_top = 405.0
+offset_right = 374.0
+offset_bottom = 486.0
+theme_override_font_sizes/font_size = 13
+text = "x%2 - oznacza resztę z dzielnia przez 2 (dla liczb nieparzystych będzie to 1). \"==\" oznacza sprawdzenie czy reszta ta wynosi 0, jeśli tak zwraca prawdę, jeśli nie zwraca fałsz"
+autowrap_mode = 2
+
+[node name="var" type="TextEdit" parent="GuidesNode/Conditions"]
+offset_left = 73.0
+offset_top = 283.0
+offset_right = 114.0
+offset_bottom = 313.0
+theme_override_colors/background_color = Color(0.490196, 0.490196, 0.490196, 1)
+theme_override_font_sizes/font_size = 13
+autowrap_mode = 1
+
+[node name="Operators" type="Node2D" parent="GuidesNode"]
+visible = false
+script = ExtResource("14_yc1po")
+
+[node name="OperatorsLabel" type="Label" parent="GuidesNode/Operators"]
+offset_left = 55.0
+offset_top = 8.0
+offset_right = 616.0
+offset_bottom = 74.0
+theme_override_fonts/font = ExtResource("7_bw6jb")
+theme_override_font_sizes/font_size = 50
+text = "Operatory
+"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="RichTextLabel" type="RichTextLabel" parent="GuidesNode/Operators"]
+offset_left = 16.0
+offset_top = 89.0
+offset_right = 638.0
+offset_bottom = 209.0
+bbcode_enabled = true
+text = "[color=\"red\"]Operatory[/color] pozwalają wykonywać różne operacje na danych, takie jak np. dodawanie czy porównywanie. Wyróżniamy 3 typy operatorów:
+[b]- Arytmetyczne[/b]
+	[b]• Dodawanie (+) -[/b] dodaje do siebie dwie liczby, np. 2+2=4 
+	[b]• Odejmowanie (-) -[/b] odejmuje od siebie dwie liczby, np. 5-3=2
+	[b]• Mnożenie (*) -[/b] mnoży przez siebie dwie liczby, np. 2*3=6
+	[b]• Dzielenie (/) -[/b] dzieli przez siebie dwie liczby, np. 9/3=3. W języku Python 
+	operator \"/\" zwraca wynik w postaci liczby rzeczywistej. Istnieje jednak 
+	możliwość aby uzyskać wynik w postaci liczby całkowitej (np. 5/2 = 2) - należy 
+	użyć operatora \"//\"
+	[b]• Reszta z dzielenia (%) -[/b] zwraca resztę z dzielenia dwóch liczb, np. 5%3 = 2
+[b]- Porównania[/b]
+	[b]• Czy równe sobie (==) -[/b] porównuje czy wartości są sobie równe np. 
+	6 == 6 -> prawda
+	[b]• Czy różne od siebie (!=) -[/b] sprawdza, czy wartości są od siebie różne np. 
+	2!=2 -> fałsz 
+	[b]• Czy mniejsze/większe (</>) -[/b] sprawdza czy jedna wartość jest mniejsza/
+	większa od drugiej np. 6 < 2 -> fałsz, 6 > 2 - prawda), 
+	[b]• Czy mniejsze/większe lub równe (<=/>=) -[/b] sprawdza czy jedna wartość jest 
+	mniejsza/większa lub równa drugiej np. 2<=3 -> prawda, 2<=2 -> prawda), 
+	2 >= 3 -> fałsz, 3 >= 3 - prawda)
+[b]- Logiczne[/b]
+	[b]• Logiczne and -[/b] zwraca prawdę, jeżeli oba warunki będą spełnione, gdy 
+	przynajmniej jeden z warunków nie jest prawdziwy, zwraca fałsz np. 
+	10 > 0 and 10 < 20 -> prawda
+	[b]• Logiczne or -[/b] zwraca prawdę, gdy przynajmniej jeden warunek jest prawdą, 
+	gdy oba będą nieprawdą, to operator zwraca fałsz np. np. 10 > 0 or 10 > 20 
+	zwróci prawdę, mimo że drugie wyrażenie (10 > 20) to fałsz
+	[b]• Logiczne not -[/b] zwraca wartość przeciwną do tej, która została podana np. 
+	not(10 > 0) da fałsz, ponieważ 10 > 0 jest prawdą"
+
+[node name="OperatorsButtonContainer" type="HBoxContainer" parent="GuidesNode/Operators"]
+offset_top = 444.0
+offset_right = 379.0
+offset_bottom = 484.0
+theme_override_constants/separation = 20
+alignment = 1
+
+[node name="Aritmetic" type="Button" parent="GuidesNode/Operators/OperatorsButtonContainer"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+text = "Arytmet."
+
+[node name="Comparing" type="Button" parent="GuidesNode/Operators/OperatorsButtonContainer"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+text = "Porównania"
+
+[node name="Logic" type="Button" parent="GuidesNode/Operators/OperatorsButtonContainer"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+text = "Logiczne"
+
+[node name="OperatorsExamples" type="Node2D" parent="GuidesNode/Operators"]
+
+[node name="Aritmetic" type="Node2D" parent="GuidesNode/Operators/OperatorsExamples"]
+
+[node name="Code" type="RichTextLabel" parent="GuidesNode/Operators/OperatorsExamples/Aritmetic"]
+offset_left = 44.0
+offset_top = 334.0
+offset_right = 186.0
+offset_bottom = 419.0
+theme_override_fonts/normal_font = ExtResource("8_rl26j")
+bbcode_enabled = true
+text = "print(a+b)
+print(a-b)
+print(a*b)
+print(a/b)
+print(a%b)"
+autowrap_mode = 2
+
+[node name="Comparing" type="Node2D" parent="GuidesNode/Operators/OperatorsExamples"]
+visible = false
+
+[node name="Code" type="RichTextLabel" parent="GuidesNode/Operators/OperatorsExamples/Comparing"]
+offset_left = 44.0
+offset_top = 325.0
+offset_right = 186.0
+offset_bottom = 435.0
+theme_override_fonts/normal_font = ExtResource("8_rl26j")
+bbcode_enabled = true
+text = "print(a==b)
+print(a!=b)
+print(a>b)
+print(a<b)
+print(a>=b)
+print(a<=b)"
+autowrap_mode = 2
+
+[node name="Logic" type="Node2D" parent="GuidesNode/Operators/OperatorsExamples"]
+visible = false
+
+[node name="Code" type="RichTextLabel" parent="GuidesNode/Operators/OperatorsExamples/Logic"]
+offset_left = 34.0
+offset_top = 324.0
+offset_right = 385.0
+offset_bottom = 434.0
+theme_override_fonts/normal_font = ExtResource("8_rl26j")
+bbcode_enabled = true
+text = "print(a>b and a*b==10)
+# Sprawdza, czy  a większe od b i czy a*b równe 10
+print(a*b<1000 or a>b)
+# Czy a*b < 1000 lub a większe od b
+print(not(a>b*2))"
+autowrap_mode = 2
+
+[node name="InstructionText" type="Label" parent="GuidesNode/Operators"]
+offset_left = 14.0
+offset_top = 237.0
+offset_right = 263.0
+offset_bottom = 312.0
+text = "Sprawdź sam! Podaj dwie liczby i zobacz wyniki operacji na nich (po wpisaniu kliknij enter)"
+autowrap_mode = 2
+
+[node name="Var1" type="TextEdit" parent="GuidesNode/Operators"]
+offset_left = 271.0
+offset_top = 283.0
+offset_right = 312.0
+offset_bottom = 313.0
+theme_override_colors/background_color = Color(0.490196, 0.490196, 0.490196, 1)
+theme_override_font_sizes/font_size = 13
+autowrap_mode = 1
+
+[node name="Var2" type="TextEdit" parent="GuidesNode/Operators"]
+offset_left = 328.0
+offset_top = 283.0
+offset_right = 369.0
+offset_bottom = 313.0
+theme_override_colors/background_color = Color(0.490196, 0.490196, 0.490196, 1)
+theme_override_font_sizes/font_size = 13
+
+[node name="A" type="Label" parent="GuidesNode/Operators"]
+offset_left = 271.0
+offset_top = 261.0
+offset_right = 312.0
+offset_bottom = 284.0
+text = "a"
+horizontal_alignment = 1
+
+[node name="B" type="Label" parent="GuidesNode/Operators"]
+offset_left = 328.0
+offset_top = 261.0
+offset_right = 369.0
+offset_bottom = 284.0
+text = "b"
+horizontal_alignment = 1
+
+[node name="DataTypes" type="Node2D" parent="GuidesNode"]
+visible = false
+script = ExtResource("15_26v0m")
+
+[node name="OperatorsLabel" type="Label" parent="GuidesNode/DataTypes"]
+offset_left = 55.0
+offset_top = 8.0
+offset_right = 616.0
+offset_bottom = 74.0
+theme_override_fonts/font = ExtResource("7_bw6jb")
+theme_override_font_sizes/font_size = 50
+text = "Typy danych
+"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="RichTextLabel" type="RichTextLabel" parent="GuidesNode/DataTypes"]
+offset_left = 16.0
+offset_top = 89.0
+offset_right = 638.0
+offset_bottom = 229.0
+bbcode_enabled = true
+text = "[color=\"red\"]Typy danych[/color] określają, jakie wartości przechowuje dana zmienna. Wyróżnia się następujące typy danych:
+	[b]• int -[/b] liczby całkowite, np. 4, 25, 98, 100
+	[b]• float -[/b] liczby rzeczywiste (z miejscami po przecinku) np. 2.5, 100.34
+	[b]• str (string) -[/b] łańcuch znaków, czyli po prostu tekst, np. \"Hello world\". 
+	Wartość zawsze należy podawać w cudzysłowie
+	[b]• bool -[/b] typ logiczny, może przyjmować tylko dwie wartości: true (prawda) 
+	oraz false (fałsz). 
+
+Python automatycznie rozpoznaje typ zmiennej na podstawie wartości (np. x = 10 - python sam wie, że zmienna x jest typu int), ale można go też jawnie określić:
+[font_size=3][color=\"Transparent\"]PRZERWA[/color][/font_size]
+[font=res://Fonts/consola.ttf][font_size=20]	
+	a : int = 10
+[font_size=3][color=\"Transparent\"]PRZERWA[/color][/font_size]
+	# Nie podajemy wartości początkowej - również 
+	poprawnie 
+[font_size=3][color=\"Transparent\"]PRZERWA[/color][/font_size]
+	b : int 
+	y : float = 2.5
+	hello_world : str = \"Hello world\"
+[font_size=3][color=\"Transparent\"]PRZERWA[/color][/font_size]
+	# Również nie podajemy wartości, ale program wie, że 
+	zmienna \"name\" jest łańcuchem znaków i przypisuje do 
+	niej pusty łańcuch \"\"
+[font_size=3][color=\"Transparent\"]PRZERWA[/color][/font_size]
+	name : str
+	is_good : bool = true[/font_size][/font]
+[font_size=10][color=\"Transparent\"]PRZERWA[/color][/font_size]
+
+Podobnie jak zmienne, funkcje mogą również mieć określone typy zwracanych wartości. Domyślnie funkcja nie musi nic zwracać.
+[font_size=10][color=\"Transparent\"]PRZERWA[/color][/font_size]
+[font=res://Fonts/consola.ttf][font_size=20]	
+	#Funkcja zwraca (return) wynik mnożenia a przez b (a*b), który jest typu int
+[font_size=10][color=\"Transparent\"]PRZERWA[/color][/font_size]
+	def multiple_numbers(a: int, b: int) -> int:
+		return a * b 
+[font_size=10][color=\"Transparent\"]PRZERWA[/color][/font_size]
+	#Funkcja zwraca true, gdy podana liczba jest większa 
+	niż 10 (gdy a > 10, wyrażenie \"a > 10\" zwraca wartość 
+	true, w przeciwnym razie zwraca false)
+[font_size=10][color=\"Transparent\"]PRZERWA[/color][/font_size]
+	def is_bigger_than_10(a: int) -> bool:
+		return a > 10 "
+
+[node name="var" type="TextEdit" parent="GuidesNode/DataTypes"]
+offset_left = 54.0
+offset_top = 299.0
+offset_right = 259.0
+offset_bottom = 329.0
+theme_override_colors/background_color = Color(0.490196, 0.490196, 0.490196, 1)
+theme_override_font_sizes/font_size = 13
+autowrap_mode = 1
+
+[node name="InstructionText" type="Label" parent="GuidesNode/DataTypes"]
+offset_left = 19.0
+offset_top = 239.0
+offset_right = 382.0
+offset_bottom = 292.0
+text = "Wpisz dowolną wartość, a program rozpozna jaki wpisałeś typ.  Po wpisaniu wciśnij enter."
+autowrap_mode = 2
+
+[node name="x" type="Label" parent="GuidesNode/DataTypes"]
+offset_left = 19.0
+offset_top = 298.0
+offset_right = 59.0
+offset_bottom = 326.0
+theme_override_font_sizes/font_size = 20
+text = "x = "
+
+[node name="Code" type="RichTextLabel" parent="GuidesNode/DataTypes"]
+offset_left = 18.0
+offset_top = 339.0
+offset_right = 360.0
+offset_bottom = 402.0
+theme_override_fonts/normal_font = ExtResource("8_rl26j")
+bbcode_enabled = true
+text = "x = [twoja_wartosc]
+print(\"Wartość x: \", x)
+print(\"Typ x: \", type(x))"
+autowrap_mode = 2
+
+[node name="Label2" type="Label" parent="GuidesNode/DataTypes"]
+offset_left = 20.0
+offset_top = 403.0
+offset_right = 356.0
+offset_bottom = 428.0
+text = "type(x) - sprawdza typ zmiennej."
+label_settings = SubResource("LabelSettings_eka6r")
+autowrap_mode = 2
+
+[connection signal="pressed" from="MainNode/GridContainer/Variables" to="MainNode" method="_on_button_pressed" binds= ["Variables"]]
+[connection signal="pressed" from="MainNode/GridContainer/Functions" to="MainNode" method="_on_button_pressed" binds= ["Functions"]]
+[connection signal="pressed" from="MainNode/GridContainer/Loops" to="MainNode" method="_on_button_pressed" binds= ["Loops"]]
+[connection signal="pressed" from="MainNode/GridContainer/Conditions" to="MainNode" method="_on_button_pressed" binds= ["Conditions"]]
+[connection signal="pressed" from="MainNode/GridContainer/Operators" to="MainNode" method="_on_button_pressed" binds= ["Operators"]]
+[connection signal="pressed" from="MainNode/GridContainer/DataTypes" to="MainNode" method="_on_button_pressed" binds= ["DataTypes"]]
+[connection signal="mouse_entered" from="GuidesNode/Back/BackButton" to="GuidesNode/Back" method="_on_back_button_mouse_entered"]
+[connection signal="mouse_exited" from="GuidesNode/Back/BackButton" to="GuidesNode/Back" method="_on_back_button_mouse_exited"]
+[connection signal="pressed" from="GuidesNode/Back/BackButton" to="GuidesNode/Back" method="_on_back_button_pressed"]
+[connection signal="text_changed" from="GuidesNode/Variables/TextEdit" to="GuidesNode/Variables" method="_on_text_edit_text_changed"]
+[connection signal="text_changed" from="GuidesNode/Functions/Var1" to="GuidesNode/Functions" method="_on_var_1_text_changed"]
+[connection signal="text_changed" from="GuidesNode/Functions/Var2" to="GuidesNode/Functions" method="_on_var_1_text_changed"]
+[connection signal="pressed" from="GuidesNode/Loops/LoopsButtonContainer/For" to="GuidesNode/Loops" method="_on_for_pressed"]
+[connection signal="pressed" from="GuidesNode/Loops/LoopsButtonContainer/While" to="GuidesNode/Loops" method="_on_while_pressed"]
+[connection signal="text_changed" from="GuidesNode/Loops/ForLoop/var" to="GuidesNode/Loops" method="_on_var_text_changed"]
+[connection signal="text_changed" from="GuidesNode/Loops/WhileLoop/var" to="GuidesNode/Loops" method="_on_var_text_changed"]
+[connection signal="text_changed" from="GuidesNode/Conditions/var" to="GuidesNode/Conditions" method="_on_var_text_changed"]
+[connection signal="pressed" from="GuidesNode/Operators/OperatorsButtonContainer/Aritmetic" to="GuidesNode/Operators" method="_on_aritmetic_pressed"]
+[connection signal="pressed" from="GuidesNode/Operators/OperatorsButtonContainer/Comparing" to="GuidesNode/Operators" method="_on_comparing_pressed"]
+[connection signal="pressed" from="GuidesNode/Operators/OperatorsButtonContainer/Logic" to="GuidesNode/Operators" method="_on_logic_pressed"]
+[connection signal="text_changed" from="GuidesNode/Operators/Var1" to="GuidesNode/Operators" method="_on_var_1_text_changed"]
+[connection signal="text_changed" from="GuidesNode/Operators/Var2" to="GuidesNode/Operators" method="_on_var_1_text_changed"]
+[connection signal="text_changed" from="GuidesNode/DataTypes/var" to="GuidesNode/DataTypes" method="_on_var_text_changed"]
