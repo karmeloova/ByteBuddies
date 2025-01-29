@@ -86,7 +86,11 @@ signal set_text_using_loops(how_many_iteration: int, text_to_set : String)
 signal set_text_using_while_loop(max_number: int, text_to_set : String)
 signal set_text_edit_editable()
 signal hide_back_button()
-
+signal play_music()
+signal play_sfx()
+signal save_settings(saving : bool)
+signal show_pop_up()
+signal hide_settings_panel()
 
 #------------------ LEVEL -----------------------------------
 signal add_exp(value)

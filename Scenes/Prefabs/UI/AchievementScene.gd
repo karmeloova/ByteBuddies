@@ -4,6 +4,8 @@ var start_pos
 var achievements;
 var money_prizes
 var achievements_numbers;
+var is_camera
+var my_parent
 
 var achievements_colors = [Color("ffffff"), Color("569DAA"), Color("E76F51"), Color("8A9A5B"), Color("855C9C"), Color("DDA448")]
 
@@ -36,6 +38,7 @@ var achievements_images_dic = {
 }
 
 func _ready():
+	my_parent = get_parent()
 	visible = false
 	start_pos = position
 	SignalManager.show_achievement_screen.connect(_on_show_achievement_screen)
@@ -47,15 +50,23 @@ func _on_show_achievement_screen(camera, unlocked_achievmentes, money, numbers) 
 	money_prizes = money
 	achievements_numbers = numbers
 	find_achievement(achievements)
-	var screen_size = get_viewport().size
-	if(camera != null) : position = Vector2(camera.position.x-screen_size.x/2+10, camera.position.y-screen_size.y+35)
-	else : position = start_pos
+	var screen_size = DisplayServer.window_get_size()
+	if(camera != null) :
+		reparent(camera)
+		#camera.add_child(self)
+		position = Vector2(-566, -612)
+		is_camera = true
+	else :
+		position = start_pos
 	visible = true;
 
 func _on_button_pressed():
 	index -= 1
 	if(index < 0) :
 		visible = false
+		if(is_camera) : 
+			reparent(my_parent)
+			is_camera = false
 		Achievements.clear_achievmentes()
 	else :
 		find_achievement(achievements)

@@ -15,6 +15,10 @@ run/main_scene="res://Scenes/Rooms/MainRoom.tscn"
 config/features=PackedStringArray("4.2", "Forward Plus")
 config/icon="res://icon.svg"
 
+[audio]
+
+buses/default_bus_layout="res://Audio.tres"
+
 [autoload]
 
 SaveManager="*res://Scripts/Autoload/save_manager.gd"
@@ -27,9 +31,12 @@ Achievements="*res://achievements.gd"
 AchievementScene="*res://Scenes/Prefabs/UI/AchievementScene.tscn"
 MyEnums="*res://Scripts/MyEnums.gd"
 BoosterManager="*res://Scripts/Autoload/booster_manager.gd"
+Audio="*res://Scenes/Audio.tscn"
 
 [display]
 
+window/size/mode=3
+window/size/always_on_top=true
 window/stretch/mode="canvas_items"
 
 [editor_plugins]

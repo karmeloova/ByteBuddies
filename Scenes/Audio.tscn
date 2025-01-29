@@ -1,0 +1,15 @@
+[gd_scene load_steps=2 format=3 uid="uid://bwnyobp8hvorv"]
+
+[ext_resource type="Script" path="res://Scenes/Audio.gd" id="1_13y0m"]
+
+[node name="Audio" type="Node2D"]
+process_mode = 3
+script = ExtResource("1_13y0m")
+
+[node name="Master" type="AudioStreamPlayer" parent="."]
+
+[node name="Music" type="AudioStreamPlayer" parent="."]
+bus = &"Music"
+
+[node name="SFX" type="AudioStreamPlayer" parent="."]
+bus = &"SFX"
