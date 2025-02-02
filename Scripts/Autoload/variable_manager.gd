@@ -60,3 +60,8 @@ var play_counter : int = 0
 var sleep_counter : int = 0
 var clean_counter : int = 0
 var scratch_counter : int = 0
+
+#-------- SETTINGS ---------------------------
+var volumes_levels = [1,1,1]
+var resolution = 0
+var is_full_screen = true

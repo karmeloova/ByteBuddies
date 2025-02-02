@@ -107,7 +107,10 @@ var save_data = {
 	"cleaning_achievementes" : cleaning,
 	"first_start" : true,
 	"cat_name" : "",
-	"fishes" : 0
+	"fishes" : 0,
+	"audio_volumes" : [1,1,1],
+	"full_screen" : true,
+	"resolution" : 0
 }
 
 # Called when the node enters the scene tree for the first time.
@@ -131,6 +134,9 @@ func _ready():
 	VariableManager.first_start = save_data["first_start"]
 	VariableManager.cat_name = save_data["cat_name"]
 	VariableManager.fishes = save_data["fishes"]
+	VariableManager.volumes_levels = save_data["audio_volumes"]
+	VariableManager.is_full_screen = save_data["full_screen"]
+	VariableManager.resolution = save_data["resolution"]
 	
 	Achievements.cat_jump = save_data["cat_jump_achievementes"]
 	Achievements.snack_navigator = save_data["snack_navigator_achievementes"]
@@ -181,10 +187,13 @@ func _notification(what):
 		save("eating_achievementes", Achievements.eating)
 		save("playing_games_achievementes", Achievements.playing_games)
 		save("scratching_achievementes", Achievements.scratching)
-		save("sleeping_achievementes", Achievements.scratching)
+		save("sleeping_achievementes", Achievements.sleeping)
 		save("cleaning_achievementes", Achievements.cleaning)
 		save("first_start", VariableManager.first_start)
 		save("cat_name", VariableManager.cat_name)
 		save("fishes", VariableManager.fishes)
+		save("audio_volumes", VariableManager.volumes_levels)
+		save("full_screen", VariableManager.is_full_screen)
+		save("resolution", VariableManager.resolution)
 
 #ścieżka do pliku - C:\Users\xxfea\AppData\Roaming\Godot\app_userdata\ByteBuddies

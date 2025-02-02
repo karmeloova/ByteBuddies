@@ -3,7 +3,8 @@ var cat_name_instance
 @onready var cat_name_scene = load("res://Scenes/Prefabs/UI/SetCatName.tscn")
 
 func _ready():
-	if(VariableManager.first_start) :
+	SignalManager.play_music.emit(load("res://Audio/BackgroundMusic.mp3"))
+	if(VariableManager.cat_name.length() < 1) :
 		set_cat_name()
 		VariableManager.first_start = false
 	VariableManager.is_playing = false

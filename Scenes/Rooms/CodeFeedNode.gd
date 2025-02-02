@@ -53,7 +53,7 @@ func set_code_task():
 		$HintsLabel.text = "Elementy do użycia: \nwhile \nhungry \neat(" + what_to_eat.food_name.to_lower() + ")"
 
 func _on_code_feed() :
-	if($CodeWindow.text != null) :
+	if($CodeWindow.text.length() > 0) :
 		user_code = $CodeWindow.text
 		user_code += " "
 		split_user_code()
@@ -101,9 +101,6 @@ func good_code() :
 			$EatTimer.stop()
 
 func show_errors() :
-	print(user_instructions)
-	print(expected_code)
-	
 	var lines = 1
 	while user_instructions.size() < expected_code.size() :
 		user_instructions.append("")

@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://j5n5k1sy7ohu"]
+[gd_scene load_steps=25 format=3 uid="uid://j5n5k1sy7ohu"]
 
 [ext_resource type="Script" path="res://Scenes/Prefabs/UI/GuideScene.gd" id="1_78l6u"]
 [ext_resource type="Texture2D" uid="uid://2rpmid1gnwur" path="res://Images/UI/Buttons/RoundButton.png" id="3_risqv"]
@@ -6,14 +6,28 @@
 [ext_resource type="Script" path="res://Scripts/UI/Guides/GuideButtons.gd" id="7_21prb"]
 [ext_resource type="FontFile" uid="uid://ccgpsjqwwow8o" path="res://Fonts/Bubblegum.ttf" id="7_bw6jb"]
 [ext_resource type="Script" path="res://Scenes/Prefabs/UI/BackGuide.gd" id="7_ljto6"]
+[ext_resource type="StyleBox" uid="uid://d32dm3665drok" path="res://Scenes/Rooms/MiniButton.stylebox" id="8_8t3p3"]
 [ext_resource type="Script" path="res://Scripts/UI/Guides/Variables.gd" id="8_81jod"]
 [ext_resource type="FontFile" uid="uid://7a16745x5o1t" path="res://Fonts/consola.ttf" id="8_rl26j"]
 [ext_resource type="Script" path="res://Scripts/UI/Guides/Console.gd" id="8_yhaqs"]
+[ext_resource type="Script" path="res://Scenes/Rooms/ButtonModulate.gd" id="9_6x0sl"]
 [ext_resource type="Script" path="res://Scripts/UI/Guides/Functions.gd" id="10_1iwx4"]
+[ext_resource type="StyleBox" uid="uid://cqxmxvk085km8" path="res://Scenes/Prefabs/UI/ConsoleStyle.stylebox" id="12_2xmh2"]
 [ext_resource type="Script" path="res://Scripts/UI/Guides/Loops.gd" id="12_fuwsn"]
 [ext_resource type="Script" path="res://Scripts/UI/Guides/Conditions.gd" id="13_xdlgc"]
 [ext_resource type="Script" path="res://Scripts/UI/Guides/Operators.gd" id="14_yc1po"]
 [ext_resource type="Script" path="res://Scripts/UI/Guides/DataTypes.gd" id="15_26v0m"]
+[ext_resource type="StyleBox" uid="uid://c3d7d8lwbm7iw" path="res://Scenes/Prefabs/UI/TextEditStyleBox.tres" id="16_2tvkc"]
+[ext_resource type="FontFile" uid="uid://sjhlfawq34if" path="res://Fonts/Coolvetica Rg.otf" id="16_46alq"]
+[ext_resource type="StyleBox" uid="uid://bg31ipbbfl2dp" path="res://Scenes/Prefabs/UI/CodeExamples.tres" id="18_862ro"]
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_60hwr"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_36ymj"]
+texture = SubResource("CanvasTexture_60hwr")
+modulate_color = Color(0.968627, 0.8, 0.815686, 1)
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_gcxxg"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_eka6r"]
 line_spacing = 0.5
@@ -23,64 +37,180 @@ font_size = 13
 script = ExtResource("1_78l6u")
 
 [node name="MainNode" type="Node2D" parent="." node_paths=PackedStringArray("guide_node")]
+position = Vector2(36, -5)
 script = ExtResource("7_21prb")
 guide_node = NodePath("../GuidesNode")
 
 [node name="GridContainer" type="GridContainer" parent="MainNode"]
-offset_left = 49.0
-offset_top = 98.0
-offset_right = 594.0
+offset_left = 29.0
+offset_top = 84.0
+offset_right = 649.0
 offset_bottom = 492.0
-theme_override_constants/h_separation = 10
-theme_override_constants/v_separation = 10
+theme_override_constants/h_separation = 15
+theme_override_constants/v_separation = 15
 columns = 3
 
 [node name="Variables" type="Button" parent="MainNode/GridContainer"]
-custom_minimum_size = Vector2(175, 50)
+custom_minimum_size = Vector2(200, 50)
 layout_mode = 2
+theme_override_styles/normal = ExtResource("8_8t3p3")
+theme_override_styles/hover = ExtResource("8_8t3p3")
+theme_override_styles/pressed = ExtResource("8_8t3p3")
+theme_override_styles/disabled = ExtResource("8_8t3p3")
+theme_override_styles/focus = ExtResource("8_8t3p3")
+script = ExtResource("9_6x0sl")
+
+[node name="Label" type="Label" parent="MainNode/GridContainer/Variables"]
+layout_mode = 0
+offset_left = 1.0
+offset_right = 201.0
+offset_bottom = 52.0
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.6)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_fonts/font = ExtResource("7_bw6jb")
+theme_override_font_sizes/font_size = 27
 text = "Zmienne"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="Functions" type="Button" parent="MainNode/GridContainer"]
-custom_minimum_size = Vector2(175, 50)
+custom_minimum_size = Vector2(200, 50)
 layout_mode = 2
+theme_override_styles/normal = ExtResource("8_8t3p3")
+theme_override_styles/hover = ExtResource("8_8t3p3")
+theme_override_styles/pressed = ExtResource("8_8t3p3")
+theme_override_styles/disabled = ExtResource("8_8t3p3")
+theme_override_styles/focus = ExtResource("8_8t3p3")
+script = ExtResource("9_6x0sl")
+
+[node name="Label" type="Label" parent="MainNode/GridContainer/Functions"]
+layout_mode = 0
+offset_left = 1.0
+offset_right = 201.0
+offset_bottom = 52.0
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.6)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_fonts/font = ExtResource("7_bw6jb")
+theme_override_font_sizes/font_size = 27
 text = "Funkcje"
-
-[node name="Loops" type="Button" parent="MainNode/GridContainer"]
-custom_minimum_size = Vector2(175, 50)
-layout_mode = 2
-text = "Pętle"
-
-[node name="Conditions" type="Button" parent="MainNode/GridContainer"]
-custom_minimum_size = Vector2(175, 50)
-layout_mode = 2
-text = "Operacje logiczne"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="Operators" type="Button" parent="MainNode/GridContainer"]
-custom_minimum_size = Vector2(175, 50)
+custom_minimum_size = Vector2(200, 50)
 layout_mode = 2
+theme_override_styles/normal = ExtResource("8_8t3p3")
+theme_override_styles/hover = ExtResource("8_8t3p3")
+theme_override_styles/pressed = ExtResource("8_8t3p3")
+theme_override_styles/disabled = ExtResource("8_8t3p3")
+theme_override_styles/focus = ExtResource("8_8t3p3")
+script = ExtResource("9_6x0sl")
+
+[node name="Label" type="Label" parent="MainNode/GridContainer/Operators"]
+layout_mode = 0
+offset_left = 1.0
+offset_right = 201.0
+offset_bottom = 52.0
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.6)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_fonts/font = ExtResource("7_bw6jb")
+theme_override_font_sizes/font_size = 27
 text = "Operatory"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="DataTypes" type="Button" parent="MainNode/GridContainer"]
-custom_minimum_size = Vector2(175, 50)
+custom_minimum_size = Vector2(200, 50)
 layout_mode = 2
-text = "Typy danych"
+theme_override_styles/normal = ExtResource("8_8t3p3")
+theme_override_styles/hover = ExtResource("8_8t3p3")
+theme_override_styles/pressed = ExtResource("8_8t3p3")
+theme_override_styles/disabled = ExtResource("8_8t3p3")
+theme_override_styles/focus = ExtResource("8_8t3p3")
+script = ExtResource("9_6x0sl")
 
-[node name="Label2" type="Label" parent="MainNode"]
-offset_left = 55.0
-offset_top = 8.0
-offset_right = 616.0
-offset_bottom = 74.0
+[node name="Label" type="Label" parent="MainNode/GridContainer/DataTypes"]
+layout_mode = 0
+offset_right = 201.0
+offset_bottom = 52.0
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.6)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
 theme_override_fonts/font = ExtResource("7_bw6jb")
-theme_override_font_sizes/font_size = 50
-text = "Programowanie"
+theme_override_font_sizes/font_size = 27
+text = "Typy danych"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Conditions" type="Button" parent="MainNode/GridContainer"]
+custom_minimum_size = Vector2(200, 50)
+layout_mode = 2
+theme_override_styles/normal = ExtResource("8_8t3p3")
+theme_override_styles/hover = ExtResource("8_8t3p3")
+theme_override_styles/pressed = ExtResource("8_8t3p3")
+theme_override_styles/disabled = ExtResource("8_8t3p3")
+theme_override_styles/focus = ExtResource("8_8t3p3")
+text = " "
+script = ExtResource("9_6x0sl")
+
+[node name="Label" type="Label" parent="MainNode/GridContainer/Conditions"]
+layout_mode = 0
+offset_right = 201.0
+offset_bottom = 52.0
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.6)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_fonts/font = ExtResource("7_bw6jb")
+theme_override_font_sizes/font_size = 27
+text = "Warunki"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Loops" type="Button" parent="MainNode/GridContainer"]
+custom_minimum_size = Vector2(200, 50)
+layout_mode = 2
+theme_override_styles/normal = ExtResource("8_8t3p3")
+theme_override_styles/hover = ExtResource("8_8t3p3")
+theme_override_styles/pressed = ExtResource("8_8t3p3")
+theme_override_styles/disabled = ExtResource("8_8t3p3")
+theme_override_styles/focus = ExtResource("8_8t3p3")
+script = ExtResource("9_6x0sl")
+
+[node name="Label" type="Label" parent="MainNode/GridContainer/Loops"]
+layout_mode = 0
+offset_left = 1.0
+offset_right = 201.0
+offset_bottom = 52.0
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.6)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_fonts/font = ExtResource("7_bw6jb")
+theme_override_font_sizes/font_size = 27
+text = "Petle"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="GuidesLabel" type="Label" parent="MainNode"]
+offset_left = 44.0
+offset_top = 11.0
+offset_right = 655.0
+offset_bottom = 65.0
+theme_override_fonts/font = ExtResource("7_bw6jb")
+theme_override_font_sizes/font_size = 45
+theme_override_styles/normal = SubResource("StyleBoxTexture_36ymj")
+text = "Elementy programowania"
 horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="GuidesNode" type="Node2D" parent="."]
 visible = false
+position = Vector2(35, 0)
 
 [node name="Back" type="Node2D" parent="GuidesNode"]
-position = Vector2(4, -382)
+position = Vector2(-36, -384)
 scale = Vector2(0.7, 0.7)
 script = ExtResource("7_ljto6")
 metadata/_edit_group_ = true
@@ -100,135 +230,305 @@ position = Vector2(51, 595)
 scale = Vector2(0.124325, 0.124325)
 texture = ExtResource("6_8md52")
 
-[node name="Console" type="CodeEdit" parent="GuidesNode"]
-offset_left = 379.0
-offset_top = 241.0
-offset_right = 626.0
-offset_bottom = 463.0
+[node name="Console" type="Node2D" parent="GuidesNode"]
+visible = false
+position = Vector2(-35, 0)
+
+[node name="Frames" type="Control" parent="GuidesNode/Console"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Margin" type="TextureRect" parent="GuidesNode/Console/Frames"]
+modulate = Color(0.952941, 0.796078, 0.709804, 1)
+layout_mode = 0
+offset_left = 456.0
+offset_top = 246.0
+offset_right = 688.0
+offset_bottom = 251.0
+rotation = 1.5708
+texture = SubResource("CanvasTexture_gcxxg")
+expand_mode = 1
+
+[node name="Top" type="TextureRect" parent="GuidesNode/Console/Frames"]
+modulate = Color(0.756863, 0.596078, 0.698039, 1)
+layout_mode = 0
+offset_left = 451.0
+offset_top = 246.0
+offset_right = 708.0
+offset_bottom = 251.0
+texture = SubResource("CanvasTexture_gcxxg")
+expand_mode = 1
+
+[node name="Bottom" type="TextureRect" parent="GuidesNode/Console/Frames"]
+modulate = Color(0.756863, 0.596078, 0.698039, 1)
+layout_mode = 0
+offset_left = 451.0
+offset_top = 473.0
+offset_right = 708.0
+offset_bottom = 478.0
+texture = SubResource("CanvasTexture_gcxxg")
+expand_mode = 1
+
+[node name="Left" type="TextureRect" parent="GuidesNode/Console/Frames"]
+modulate = Color(0.756863, 0.596078, 0.698039, 1)
+layout_mode = 0
+offset_left = 451.0
+offset_top = 246.0
+offset_right = 683.0
+offset_bottom = 251.0
+rotation = 1.5708
+texture = SubResource("CanvasTexture_gcxxg")
+expand_mode = 1
+
+[node name="Right" type="TextureRect" parent="GuidesNode/Console/Frames"]
+modulate = Color(0.756863, 0.596078, 0.698039, 1)
+layout_mode = 0
+offset_left = 708.0
+offset_top = 246.0
+offset_right = 940.0
+offset_bottom = 251.0
+rotation = 1.5708
+texture = SubResource("CanvasTexture_gcxxg")
+expand_mode = 1
+
+[node name="Console" type="CodeEdit" parent="GuidesNode/Console"]
+offset_left = 456.0
+offset_top = 251.0
+offset_right = 703.0
+offset_bottom = 473.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_readonly_color = Color(1, 1, 1, 1)
+theme_override_colors/line_number_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("8_rl26j")
+theme_override_font_sizes/font_size = 20
+theme_override_styles/normal = ExtResource("12_2xmh2")
+theme_override_styles/focus = ExtResource("12_2xmh2")
+theme_override_styles/read_only = ExtResource("12_2xmh2")
+theme_override_styles/completion = ExtResource("12_2xmh2")
 editable = false
 gutters_draw_line_numbers = true
 script = ExtResource("8_yhaqs")
 
+[node name="ConsoleText" type="Label" parent="GuidesNode/Console"]
+offset_left = 446.0
+offset_top = 223.0
+offset_right = 531.0
+offset_bottom = 246.0
+theme_override_fonts/font = ExtResource("7_bw6jb")
+theme_override_font_sizes/font_size = 20
+text = "Konsola"
+vertical_alignment = 2
+
 [node name="Variables" type="Node2D" parent="GuidesNode"]
+visible = false
 script = ExtResource("8_81jod")
 
 [node name="VariablesLabel" type="Label" parent="GuidesNode/Variables"]
-offset_left = 55.0
+offset_left = 247.0
 offset_top = 8.0
-offset_right = 616.0
-offset_bottom = 74.0
+offset_right = 461.0
+offset_bottom = 62.0
 theme_override_fonts/font = ExtResource("7_bw6jb")
-theme_override_font_sizes/font_size = 50
+theme_override_font_sizes/font_size = 45
+theme_override_styles/normal = SubResource("StyleBoxTexture_36ymj")
 text = "Zmienne"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="RichTextLabel" type="RichTextLabel" parent="GuidesNode/Variables"]
-offset_left = 20.0
-offset_top = 89.0
-offset_right = 620.0
-offset_bottom = 484.0
+[node name="Tutorial" type="ScrollContainer" parent="GuidesNode/Variables"]
+offset_left = 25.0
+offset_top = 65.0
+offset_right = 660.0
+offset_bottom = 462.0
+vertical_scroll_mode = 3
+
+[node name="Tutorial" type="VBoxContainer" parent="GuidesNode/Variables/Tutorial"]
+custom_minimum_size = Vector2(630, 0)
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="Explain" type="RichTextLabel" parent="GuidesNode/Variables/Tutorial/Tutorial"]
+custom_minimum_size = Vector2(0, 80)
+layout_mode = 2
+theme_override_fonts/normal_font = ExtResource("16_46alq")
+theme_override_font_sizes/normal_font_size = 20
 bbcode_enabled = true
-text = "[color=\"red\"]Zmienne[/color] w programowaniu są \"pudełkami\", w których przechowuje się dane. Można je wykorzystywać w swoim programie w każdym miejscu i modyfikować ich zawartość. Przykład (zmienna x przechowuje liczbę 5)
-[font_size=3][color=\"Transparent\"]PRZERWA[/color][/font_size]
-[font=res://Fonts/consola.ttf][font_size=30]	x = 5[/font_size][/font]"
+text = "[fill][color=\"red\"]Zmienne[/color] w programowaniu są \"pudełkami\", w których przechowuje się dane. Można je wykorzystywać w swoim programie w każdym miejscu i modyfikować ich zawartość. Przykład (zmienna x przechowuje liczbę 5)[/fill]
+[font_size=3][color=\"Transparent\"]PRZERWA[/color][/font_size]"
+metadata/_edit_group_ = true
 
-[node name="TextEdit" type="TextEdit" parent="GuidesNode/Variables"]
-offset_left = 93.0
-offset_top = 254.0
-offset_right = 189.0
-offset_bottom = 294.0
-theme_override_colors/background_color = Color(0.489622, 0.489622, 0.489622, 1)
+[node name="Example" type="Label" parent="GuidesNode/Variables/Tutorial/Tutorial"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("8_rl26j")
+theme_override_font_sizes/font_size = 20
+theme_override_styles/normal = ExtResource("18_862ro")
+text = "x = 5"
 
-[node name="Label" type="Label" parent="GuidesNode/Variables"]
-offset_left = 18.0
-offset_top = 227.0
-offset_right = 158.0
-offset_bottom = 250.0
+[node name="TestLabel" type="Label" parent="GuidesNode/Variables/Tutorial/Tutorial"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("16_46alq")
+theme_override_font_sizes/font_size = 20
+text = "Kliknij \"ESC\" aby przetestować!"
+
+[node name="TestNode" type="Node2D" parent="GuidesNode/Variables"]
+visible = false
+
+[node name="TestIt!" type="Label" parent="GuidesNode/Variables/TestNode"]
+offset_left = 25.0
+offset_top = 223.0
+offset_right = 181.0
+offset_bottom = 248.0
+theme_override_fonts/font = ExtResource("16_46alq")
+theme_override_font_sizes/font_size = 20
 text = "Przetestuj to sam!"
 
-[node name="x=" type="Label" parent="GuidesNode/Variables"]
+[node name="TextEdit" type="TextEdit" parent="GuidesNode/Variables/TestNode"]
+offset_left = 94.0
+offset_top = 259.0
+offset_right = 192.0
+offset_bottom = 291.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/caret_color = Color(1, 1, 1, 1)
+theme_override_constants/line_spacing = 1
+theme_override_styles/normal = ExtResource("16_2tvkc")
+theme_override_styles/focus = ExtResource("16_2tvkc")
+theme_override_styles/read_only = ExtResource("16_2tvkc")
+placeholder_text = " "
+scroll_fit_content_height = true
+
+[node name="x=" type="Label" parent="GuidesNode/Variables/TestNode"]
 offset_left = 25.0
 offset_top = 259.0
-offset_right = 113.0
-offset_bottom = 309.0
+offset_right = 94.0
+offset_bottom = 290.0
 theme_override_fonts/font = ExtResource("8_rl26j")
 theme_override_font_sizes/font_size = 30
 text = "x = "
 
-[node name="Ins1" type="Label" parent="GuidesNode/Variables"]
-offset_left = 17.0
-offset_top = 303.0
-offset_right = 327.0
-offset_bottom = 352.0
-text = "Po wprowadzeniu wartości wciśnij enter
-Program, który się wykona:"
+[node name="EnterxD" type="RichTextLabel" parent="GuidesNode/Variables/TestNode"]
+offset_left = 212.0
+offset_top = 249.0
+offset_right = 397.0
+offset_bottom = 310.0
+theme_override_fonts/normal_font = ExtResource("16_46alq")
+theme_override_font_sizes/normal_font_size = 20
+bbcode_enabled = true
+text = "Po wprowadzeniu wartości wciśnij enter"
 
-[node name="Code" type="Label" parent="GuidesNode/Variables"]
-offset_left = 18.0
-offset_top = 367.0
-offset_right = 336.0
-offset_bottom = 424.0
+[node name="Ins1" type="Label" parent="GuidesNode/Variables/TestNode"]
+offset_left = 25.0
+offset_top = 309.0
+offset_right = 335.0
+offset_bottom = 334.0
+theme_override_fonts/font = ExtResource("16_46alq")
+theme_override_font_sizes/font_size = 20
+text = "Program, który się wykona:"
+
+[node name="Code" type="Label" parent="GuidesNode/Variables/TestNode"]
+offset_left = 25.0
+offset_top = 341.0
+offset_right = 359.0
+offset_bottom = 398.0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 0
 theme_override_fonts/font = ExtResource("8_rl26j")
 theme_override_font_sizes/font_size = 17
+theme_override_styles/normal = ExtResource("18_862ro")
 text = "x = [twoja_wartość_którą_wpiszesz]
 print(x)"
 
-[node name="Ins2" type="RichTextLabel" parent="GuidesNode/Variables"]
-offset_left = 17.0
-offset_top = 421.0
-offset_right = 348.0
-offset_bottom = 496.0
+[node name="Ins2" type="RichTextLabel" parent="GuidesNode/Variables/TestNode"]
+offset_left = 25.0
+offset_top = 407.0
+offset_right = 383.0
+offset_bottom = 461.0
+theme_override_fonts/normal_font = ExtResource("16_46alq")
+theme_override_font_sizes/normal_font_size = 20
 bbcode_enabled = true
 text = "Obserwuj wynik działania w konsoli obok!
 [font_size=3][color=\"Transparent\"]PRZERWA[/color][/font_size]
-[font_size=13]print(x) - oznacza wypisanie wartości x w konsoli[/font_size]"
+[font_size=16]print(x) - oznacza wypisanie wartości x w konsoli[/font_size]"
 autowrap_mode = 2
 
 [node name="Functions" type="Node2D" parent="GuidesNode"]
 visible = false
 script = ExtResource("10_1iwx4")
 
-[node name="VariablesLabel" type="Label" parent="GuidesNode/Functions"]
-offset_left = 55.0
-offset_top = 8.0
-offset_right = 616.0
-offset_bottom = 74.0
+[node name="FunctionLabel" type="Label" parent="GuidesNode/Functions"]
+offset_left = 243.0
+offset_top = 5.0
+offset_right = 457.0
+offset_bottom = 59.0
 theme_override_fonts/font = ExtResource("7_bw6jb")
-theme_override_font_sizes/font_size = 50
+theme_override_font_sizes/font_size = 45
+theme_override_styles/normal = SubResource("StyleBoxTexture_36ymj")
 text = "Funkcje"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="RichTextLabel" type="RichTextLabel" parent="GuidesNode/Functions"]
-offset_left = 20.0
-offset_top = 89.0
-offset_right = 633.0
-offset_bottom = 231.0
-bbcode_enabled = true
-text = "[color=\"red\"]Funkcje[/color] w programowaniu są \"kawałkami kodu\", które wykonują konkretne zadania. W nawiasach przyjmują określone zmienne, na których wykonywana jest operacja. Można je wywoływać w dowolnym miejscu w programie, zamiast wielokrotnie powtarzać ten sam kod. Return zwraca wynik funkcji oraz kończy jej działanie, przekazując wynik do miejsca, w którym funkcja została wywołana.
-Przykład (funkcja zwracająca sumę dwóch liczb): [font_size=10][color=\"Transparent\"]
-eeeee[/color][/font_size]
-[font=res://Fonts/consola.ttf][font_size=20]	def add_numbers(a, b):
-		return a+b"
+[node name="Tutorial" type="ScrollContainer" parent="GuidesNode/Functions"]
+offset_left = 25.0
+offset_top = 65.0
+offset_right = 660.0
+offset_bottom = 462.0
+vertical_scroll_mode = 3
 
-[node name="Label" type="RichTextLabel" parent="GuidesNode/Functions"]
-offset_left = 19.0
-offset_top = 239.0
-offset_right = 375.0
-offset_bottom = 483.0
+[node name="Tutorial" type="VBoxContainer" parent="GuidesNode/Functions/Tutorial"]
+custom_minimum_size = Vector2(630, 0)
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="Explain" type="RichTextLabel" parent="GuidesNode/Functions/Tutorial/Tutorial"]
+custom_minimum_size = Vector2(0, 180)
+layout_mode = 2
+theme_override_fonts/normal_font = ExtResource("16_46alq")
+theme_override_font_sizes/normal_font_size = 20
 bbcode_enabled = true
-text = "[font_size=16]Spróbuj sam! Uzupełnij parametry funkcji (dwukrotnie, po każdym razie wciśnij enter), a następnie obserwuj wynik w konsoli
+text = "[fill][color=\"red\"]Funkcje[/color] w programowaniu są \"kawałkami kodu\", które wykonują konkretne zadania. W nawiasach przyjmują określone zmienne, na których wykonywana jest operacja. Można je wywoływać w dowolnym miejscu w programie, zamiast wielokrotnie powtarzać ten sam kod. Return zwraca wynik funkcji oraz kończy jej działanie, przekazując wynik do miejsca, w którym funkcja została wywołana.[/fill]
+Przykład (funkcja zwracająca sumę dwóch liczb):
+"
+metadata/_edit_group_ = true
+
+[node name="Example" type="Label" parent="GuidesNode/Functions/Tutorial/Tutorial"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("8_rl26j")
+theme_override_font_sizes/font_size = 20
+theme_override_styles/normal = ExtResource("18_862ro")
+text = "def add_numbers(a, b):
+   return a+b"
+
+[node name="TestLabel" type="Label" parent="GuidesNode/Functions/Tutorial/Tutorial"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("16_46alq")
+theme_override_font_sizes/font_size = 20
+text = "Kliknij \"ESC\" aby przetestować!"
+
+[node name="TestNode" type="Node2D" parent="GuidesNode/Functions"]
+visible = false
+
+[node name="Label" type="RichTextLabel" parent="GuidesNode/Functions/TestNode"]
+offset_left = 25.0
+offset_top = 246.0
+offset_right = 394.0
+offset_bottom = 370.0
+theme_override_fonts/normal_font = ExtResource("16_46alq")
+theme_override_font_sizes/normal_font_size = 20
+bbcode_enabled = true
+text = "[fill]Spróbuj sam! Uzupełnij parametry funkcji (dwukrotnie, po każdym razie wciśnij enter)[/fill]
 [color=\"Transparent\"][font_size=10]przerwa[/font_size][/color]
 [font=res://Fonts/consola.ttf][font_size=20]add_numbers(    ,    )[/font_size]"
 autowrap_mode = 2
 
-[node name="Code" type="RichTextLabel" parent="GuidesNode/Functions"]
-offset_left = 19.0
-offset_top = 380.0
-offset_right = 375.0
-offset_bottom = 483.0
+[node name="Code" type="RichTextLabel" parent="GuidesNode/Functions/TestNode"]
+offset_left = 25.0
+offset_top = 343.0
+offset_right = 381.0
+offset_bottom = 460.0
 theme_override_fonts/normal_font = ExtResource("8_rl26j")
+theme_override_styles/focus = ExtResource("18_862ro")
+theme_override_styles/normal = ExtResource("18_862ro")
 bbcode_enabled = true
 text = "print(add_numbers([twoje_zmienne]))
 print(\"Teraz drugi raz\")
@@ -238,153 +538,262 @@ def add_numbers(a,b)
 	return a+b"
 autowrap_mode = 2
 
-[node name="Var1" type="TextEdit" parent="GuidesNode/Functions"]
-offset_left = 152.0
-offset_top = 317.0
-offset_right = 193.0
-offset_bottom = 347.0
+[node name="Var1" type="TextEdit" parent="GuidesNode/Functions/TestNode"]
+offset_left = 157.0
+offset_top = 305.0
+offset_right = 198.0
+offset_bottom = 335.0
 focus_next = NodePath("../Var2")
 focus_previous = NodePath(".")
-theme_override_colors/background_color = Color(0.490196, 0.490196, 0.490196, 1)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/caret_color = Color(1, 1, 1, 1)
 theme_override_font_sizes/font_size = 13
+theme_override_styles/normal = ExtResource("16_2tvkc")
+theme_override_styles/focus = ExtResource("16_2tvkc")
+theme_override_styles/read_only = ExtResource("16_2tvkc")
 autowrap_mode = 1
 
-[node name="Var2" type="TextEdit" parent="GuidesNode/Functions"]
-offset_left = 209.0
-offset_top = 317.0
-offset_right = 250.0
-offset_bottom = 347.0
-theme_override_colors/background_color = Color(0.490196, 0.490196, 0.490196, 1)
+[node name="Var2" type="TextEdit" parent="GuidesNode/Functions/TestNode"]
+offset_left = 214.0
+offset_top = 305.0
+offset_right = 255.0
+offset_bottom = 335.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/caret_color = Color(1, 1, 1, 1)
 theme_override_font_sizes/font_size = 13
+theme_override_styles/normal = ExtResource("16_2tvkc")
+theme_override_styles/focus = ExtResource("16_2tvkc")
+theme_override_styles/read_only = ExtResource("16_2tvkc")
 
 [node name="Loops" type="Node2D" parent="GuidesNode"]
 visible = false
 script = ExtResource("12_fuwsn")
 
 [node name="LoopsLabel" type="Label" parent="GuidesNode/Loops"]
-offset_left = 55.0
-offset_top = 8.0
-offset_right = 616.0
-offset_bottom = 74.0
+offset_left = 243.0
+offset_top = 5.0
+offset_right = 457.0
+offset_bottom = 59.0
 theme_override_fonts/font = ExtResource("7_bw6jb")
-theme_override_font_sizes/font_size = 50
-text = "Petle"
+theme_override_font_sizes/font_size = 45
+theme_override_styles/normal = SubResource("StyleBoxTexture_36ymj")
+text = "PETLE"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="RichTextLabel" type="RichTextLabel" parent="GuidesNode/Loops"]
-offset_left = 20.0
-offset_top = 89.0
-offset_right = 633.0
-offset_bottom = 210.0
-bbcode_enabled = true
-text = "[color=\"red\"]Pętle[/color] pozwalają przetwarzać kod określoną liczbę razy lub dopóki spełniony jest warunek. Wyróżnia się kilka rodzajów pętli, a najważniejsze z nich to:
-- [b]for[/b] - wykonuje kod określoną liczbę razy. Posiada w sobie zmienną (iterator), która pozwala sprawdzać na którym kroku obecnie jest pętla.
-- [b]while[/b] - wykonuje kod dopóki warunek jest spełniony 
-Przykład dla pętli \"for\" - wypisuje liczby od 0 do 4 (ponieważ pętla zaczyna się od i=0): [font_size=10][color=\"Transparent\"]
-eeeee[/color][/font_size]
-[font=res://Fonts/consola.ttf][font_size=20]	for i in range(5):
-		print(i)[/font_size][/font] [font_size=10][color=\"Transparent\"]
-eeeee[/color][/font_size]
-Przykład dla pętli \"while\" - najpierw wypisuje obecną wartość zmiennej \"number\", a następnie dodaje do niej 1, dopóki będzie ona mniejsza lub równa 5 [font_size=10][color=\"Transparent\"]
-eeeee[/color][/font_size]
-[font=res://Fonts/consola.ttf][font_size=20]	number = 1
-	while number <=5:
-		print(number)
-		number += 1
-		print(i)[/font_size][/font]"
+[node name="Tutorial" type="ScrollContainer" parent="GuidesNode/Loops"]
+offset_left = 25.0
+offset_top = 65.0
+offset_right = 660.0
+offset_bottom = 462.0
+vertical_scroll_mode = 3
 
-[node name="Label" type="Label" parent="GuidesNode/Loops"]
-offset_left = 18.0
-offset_top = 227.0
-offset_right = 417.0
-offset_bottom = 254.0
+[node name="Tutorial" type="VBoxContainer" parent="GuidesNode/Loops/Tutorial"]
+custom_minimum_size = Vector2(630, 0)
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="Explain" type="RichTextLabel" parent="GuidesNode/Loops/Tutorial/Tutorial"]
+custom_minimum_size = Vector2(0, 187)
+layout_mode = 2
+theme_override_fonts/normal_font = ExtResource("16_46alq")
+theme_override_font_sizes/normal_font_size = 20
+bbcode_enabled = true
+text = "[fill][color=\"red\"]Pętle[/color] pozwalają przetwarzać kod określoną liczbę razy lub dopóki spełniony jest warunek. Wyróżnia się kilka rodzajów pętli, a najważniejsze z nich to:[/fill]
+- [b]for[/b] - wykonuje kod określoną liczbę razy. Posiada w sobie zmienną (iterator), która pozwala sprawdzać na którym kroku obecnie jest pętla.
+- [b]while[/b] - wykonuje kod dopóki warunek jest spełniony [font_size=7]
+[color=\"Transparent\"]PRZERWA][/color][/font_size]
+[fill]Przykład dla pętli \"for\" - wypisuje liczby od 0 do 4 (ponieważ pętla zaczyna się od i=0): "
+metadata/_edit_group_ = true
+
+[node name="Example" type="Label" parent="GuidesNode/Loops/Tutorial/Tutorial"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("8_rl26j")
+theme_override_font_sizes/font_size = 20
+theme_override_styles/normal = ExtResource("18_862ro")
+text = "for i in range(5):
+   print(i)"
+
+[node name="NestExampleText" type="RichTextLabel" parent="GuidesNode/Loops/Tutorial/Tutorial"]
+custom_minimum_size = Vector2(0, 75)
+layout_mode = 2
+theme_override_fonts/normal_font = ExtResource("16_46alq")
+theme_override_font_sizes/normal_font_size = 20
+bbcode_enabled = true
+text = "[fill]Przykład dla pętli \"while\" - najpierw wypisuje obecną wartość zmiennej \"number\", a następnie dodaje do niej 1, dopóki będzie ona mniejsza lub równa 5:"
+metadata/_edit_group_ = true
+
+[node name="Example2" type="Label" parent="GuidesNode/Loops/Tutorial/Tutorial"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("8_rl26j")
+theme_override_font_sizes/font_size = 20
+theme_override_styles/normal = ExtResource("18_862ro")
+text = "number = 1
+while number <=5:
+   print(number)
+   number += 1
+   print(i)"
+
+[node name="TestLabel" type="Label" parent="GuidesNode/Loops/Tutorial/Tutorial"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("16_46alq")
+theme_override_font_sizes/font_size = 20
+text = "Kliknij \"ESC\" aby przetestować!"
+
+[node name="TestNode" type="Node2D" parent="GuidesNode/Loops"]
+visible = false
+
+[node name="Label" type="Label" parent="GuidesNode/Loops/TestNode"]
+offset_left = 25.0
+offset_top = 246.0
+offset_right = 411.0
+offset_bottom = 273.0
+theme_override_fonts/font = ExtResource("16_46alq")
+theme_override_font_sizes/font_size = 20
 text = "Przetestuj to sam! "
 autowrap_mode = 2
 
-[node name="LoopsButtonContainer" type="HBoxContainer" parent="GuidesNode/Loops"]
-offset_top = 444.0
-offset_right = 379.0
-offset_bottom = 484.0
-theme_override_constants/separation = 50
-alignment = 1
+[node name="LoopsButtonContainer" type="HBoxContainer" parent="GuidesNode/Loops/TestNode"]
+offset_left = 25.0
+offset_top = 437.0
+offset_right = 258.0
+offset_bottom = 477.0
+theme_override_constants/separation = 10
 
-[node name="For" type="Button" parent="GuidesNode/Loops/LoopsButtonContainer"]
-custom_minimum_size = Vector2(100, 0)
+[node name="For" type="Button" parent="GuidesNode/Loops/TestNode/LoopsButtonContainer"]
+custom_minimum_size = Vector2(110, 0)
 layout_mode = 2
+theme_override_styles/normal = ExtResource("8_8t3p3")
+theme_override_styles/hover = ExtResource("8_8t3p3")
+theme_override_styles/pressed = ExtResource("8_8t3p3")
+theme_override_styles/disabled = ExtResource("8_8t3p3")
+theme_override_styles/focus = ExtResource("8_8t3p3")
 text = "For"
+script = ExtResource("9_6x0sl")
 
-[node name="While" type="Button" parent="GuidesNode/Loops/LoopsButtonContainer"]
-custom_minimum_size = Vector2(100, 0)
+[node name="Label" type="Label" parent="GuidesNode/Loops/TestNode/LoopsButtonContainer/For"]
+layout_mode = 0
+offset_left = 1.0
+offset_right = 110.0
+offset_bottom = 42.0
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.6)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_fonts/font = ExtResource("7_bw6jb")
+theme_override_font_sizes/font_size = 25
+text = "For"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="While" type="Button" parent="GuidesNode/Loops/TestNode/LoopsButtonContainer"]
+custom_minimum_size = Vector2(110, 0)
 layout_mode = 2
+theme_override_styles/normal = ExtResource("8_8t3p3")
+theme_override_styles/hover = ExtResource("8_8t3p3")
+theme_override_styles/pressed = ExtResource("8_8t3p3")
+theme_override_styles/disabled = ExtResource("8_8t3p3")
+theme_override_styles/focus = ExtResource("8_8t3p3")
 text = "While"
+script = ExtResource("9_6x0sl")
 
-[node name="ForLoop" type="Node2D" parent="GuidesNode/Loops"]
+[node name="Label" type="Label" parent="GuidesNode/Loops/TestNode/LoopsButtonContainer/While"]
+layout_mode = 0
+offset_top = -4.0
+offset_right = 110.0
+offset_bottom = 46.0
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.6)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_fonts/font = ExtResource("7_bw6jb")
+theme_override_font_sizes/font_size = 25
+text = "While"
+horizontal_alignment = 1
+vertical_alignment = 1
 
-[node name="Label" type="Label" parent="GuidesNode/Loops/ForLoop"]
-offset_left = 19.0
-offset_top = 257.0
-offset_right = 376.0
-offset_bottom = 332.0
+[node name="ForLoop" type="Node2D" parent="GuidesNode/Loops/TestNode"]
+
+[node name="Label" type="Label" parent="GuidesNode/Loops/TestNode/ForLoop"]
+offset_left = 24.0
+offset_top = 272.0
+offset_right = 393.0
+offset_bottom = 353.0
+theme_override_fonts/font = ExtResource("16_46alq")
+theme_override_font_sizes/font_size = 20
 text = "Wprowadź dowolną liczbę całkowitą i wciśnij enter. To będzie ilość kroków, które ma wykonać pętla."
+horizontal_alignment = 3
 autowrap_mode = 2
 
-[node name="RichTextLabel" type="RichTextLabel" parent="GuidesNode/Loops/ForLoop"]
-offset_left = 30.0
-offset_top = 345.0
-offset_right = 361.0
-offset_bottom = 411.0
+[node name="RichTextLabel" type="RichTextLabel" parent="GuidesNode/Loops/TestNode/ForLoop"]
+offset_left = 25.0
+offset_top = 361.0
+offset_right = 356.0
+offset_bottom = 430.0
 theme_override_fonts/normal_font = ExtResource("8_rl26j")
+theme_override_styles/focus = ExtResource("18_862ro")
+theme_override_styles/normal = ExtResource("18_862ro")
 text = "for i in range([twoja_liczba]):
 	print(\"Krok nr \", i)
 	time.sleep(1)"
 
-[node name="var" type="TextEdit" parent="GuidesNode/Loops/ForLoop"]
-offset_left = 144.0
-offset_top = 307.0
-offset_right = 185.0
-offset_bottom = 337.0
-theme_override_colors/background_color = Color(0.490196, 0.490196, 0.490196, 1)
+[node name="var" type="TextEdit" parent="GuidesNode/Loops/TestNode/ForLoop"]
+offset_left = 158.0
+offset_top = 326.0
+offset_right = 199.0
+offset_bottom = 356.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_readonly_color = Color(0.670588, 0.670588, 0.670588, 1)
+theme_override_colors/caret_color = Color(1, 1, 1, 1)
 theme_override_font_sizes/font_size = 13
+theme_override_styles/normal = ExtResource("16_2tvkc")
+theme_override_styles/focus = ExtResource("16_2tvkc")
+theme_override_styles/read_only = ExtResource("16_2tvkc")
 autowrap_mode = 1
 
-[node name="WhileLoop" type="Node2D" parent="GuidesNode/Loops"]
+[node name="WhileLoop" type="Node2D" parent="GuidesNode/Loops/TestNode"]
 visible = false
 
-[node name="Label" type="Label" parent="GuidesNode/Loops/WhileLoop"]
-offset_left = 18.0
-offset_top = 254.0
-offset_right = 371.0
-offset_bottom = 329.0
+[node name="Label" type="Label" parent="GuidesNode/Loops/TestNode/WhileLoop"]
+offset_left = 25.0
+offset_top = 267.0
+offset_right = 373.0
+offset_bottom = 342.0
+theme_override_fonts/font = ExtResource("16_46alq")
+theme_override_font_sizes/font_size = 20
 text = "Wpisz wartość (liczba całkowita) do jakiej ma być zwiększana liczba i wciśnij enter"
+horizontal_alignment = 3
 autowrap_mode = 2
 
-[node name="RichTextLabel" type="RichTextLabel" parent="GuidesNode/Loops/WhileLoop"]
-offset_left = 30.0
-offset_top = 313.0
-offset_right = 370.0
-offset_bottom = 411.0
+[node name="RichTextLabel" type="RichTextLabel" parent="GuidesNode/Loops/TestNode/WhileLoop"]
+offset_left = 25.0
+offset_top = 327.0
+offset_right = 368.0
+offset_bottom = 429.0
 theme_override_fonts/normal_font = ExtResource("8_rl26j")
+theme_override_styles/focus = ExtResource("18_862ro")
+theme_override_styles/normal = ExtResource("18_862ro")
 text = "number = 1
 while number < [twoja_liczba]:
 	print(\"Obecna wartosc: \", number)
 	number = number * 2
 	time.sleep(1)"
 
-[node name="var" type="TextEdit" parent="GuidesNode/Loops/WhileLoop"]
-offset_left = 320.0
-offset_top = 283.0
-offset_right = 361.0
-offset_bottom = 313.0
-theme_override_colors/background_color = Color(0.490196, 0.490196, 0.490196, 1)
+[node name="var" type="TextEdit" parent="GuidesNode/Loops/TestNode/WhileLoop"]
+offset_left = 358.0
+offset_top = 294.0
+offset_right = 399.0
+offset_bottom = 324.0
 theme_override_font_sizes/font_size = 13
+theme_override_styles/normal = ExtResource("16_2tvkc")
+theme_override_styles/focus = ExtResource("16_2tvkc")
+theme_override_styles/read_only = ExtResource("16_2tvkc")
 autowrap_mode = 1
 
-[node name="Label2" type="Label" parent="GuidesNode/Loops"]
-offset_left = 21.0
-offset_top = 404.0
-offset_right = 357.0
-offset_bottom = 450.0
+[node name="Label2" type="Label" parent="GuidesNode/Loops/TestNode"]
+offset_left = 261.0
+offset_top = 431.0
+offset_right = 410.0
+offset_bottom = 482.0
+theme_override_fonts/font = ExtResource("16_46alq")
 text = "time.sleep(1) - czeka 1 sekundę przed następnym krokiem"
 label_settings = SubResource("LabelSettings_eka6r")
 autowrap_mode = 2
@@ -394,91 +803,141 @@ visible = false
 script = ExtResource("13_xdlgc")
 
 [node name="ConditionsLabel" type="Label" parent="GuidesNode/Conditions"]
-offset_left = 55.0
-offset_top = 8.0
-offset_right = 616.0
-offset_bottom = 74.0
+offset_left = 136.0
+offset_top = 5.0
+offset_right = 562.0
+offset_bottom = 59.0
 theme_override_fonts/font = ExtResource("7_bw6jb")
-theme_override_font_sizes/font_size = 50
+theme_override_font_sizes/font_size = 45
+theme_override_styles/normal = SubResource("StyleBoxTexture_36ymj")
 text = "Warunki (if/else)"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="RichTextLabel" type="RichTextLabel" parent="GuidesNode/Conditions"]
-offset_left = 20.0
-offset_top = 89.0
-offset_right = 633.0
-offset_bottom = 210.0
+[node name="Tutorial" type="ScrollContainer" parent="GuidesNode/Conditions"]
+offset_left = 25.0
+offset_top = 65.0
+offset_right = 660.0
+offset_bottom = 462.0
+vertical_scroll_mode = 3
+
+[node name="Tutorial" type="VBoxContainer" parent="GuidesNode/Conditions/Tutorial"]
+custom_minimum_size = Vector2(630, 0)
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="Explain" type="RichTextLabel" parent="GuidesNode/Conditions/Tutorial/Tutorial"]
+custom_minimum_size = Vector2(0, 211)
+layout_mode = 2
+theme_override_fonts/normal_font = ExtResource("16_46alq")
+theme_override_font_sizes/normal_font_size = 20
 bbcode_enabled = true
-text = "[color=\"red\"]Warunki[/color] pozwalają podejmować decyzje w kodzie. W zależności od spełnienia warunku program wykonuyje odpowiednie działania. Składa się z następujących części:
+text = "[fill][color=\"red\"]Warunki[/color] pozwalają podejmować decyzje w kodzie. W zależności od spełnienia warunku program wykonuje odpowiednie działania. Składa się z następujących części:[/fill]
 [b]- if[/b] - jeżeli warunek będzie spełniony wykonaj to co po if
 [b]- else[/b] (opcjonalne) - co ma się stać, gdy warunek nie będzie spełniony
-Przykład - gdy liczba będzie większa od 10 (if x > 10) to w konsoli wyświetli się tekst \"Liczba większa niz 10\", a jeżeli będzie mniejsza lub równa 10 (else), to wyświetli się \"Liczba mniejsza lub równa 10\" 
-[font_size=10][color=\"Transparent\"]PRZERWA[/color][/font_size]
-[font=res://Fonts/consola.ttf][font_size=20]	if x > 10:
-		print(\"Liczba większa niż 10\")
-	else :
-		print(\"Liczba mniejsza lub równa 10\")[/font_size][/font]"
+[font_size=8][color=\"Transparent\"]PRZERWA[/color][/font_size]
+[fill]Przykład - gdy liczba będzie większa od 10 (if x > 10) to w konsoli wyświetli się tekst \"Liczba większa niz 10\", a jeżeli będzie mniejsza lub równa 10 (else), to wyświetli się \"Liczba mniejsza lub równa 10\"[/fill]"
+metadata/_edit_group_ = true
 
-[node name="Label" type="Label" parent="GuidesNode/Conditions"]
-offset_left = 19.0
-offset_top = 233.0
-offset_right = 379.0
-offset_bottom = 308.0
+[node name="Example" type="Label" parent="GuidesNode/Conditions/Tutorial/Tutorial"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("8_rl26j")
+theme_override_font_sizes/font_size = 20
+theme_override_styles/normal = ExtResource("18_862ro")
+text = "if x > 10:
+   print(\"Liczba większa niż 10\")
+else :
+   print(\"Liczba mniejsza lub równa 10\")"
+
+[node name="TestLabel" type="Label" parent="GuidesNode/Conditions/Tutorial/Tutorial"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("16_46alq")
+theme_override_font_sizes/font_size = 20
+text = "Kliknij \"ESC\" aby przetestować!"
+
+[node name="TestNode" type="Node2D" parent="GuidesNode/Conditions"]
+visible = false
+
+[node name="Label" type="Label" parent="GuidesNode/Conditions/TestNode"]
+offset_left = 25.0
+offset_top = 246.0
+offset_right = 419.0
+offset_bottom = 327.0
+theme_override_fonts/font = ExtResource("16_46alq")
+theme_override_font_sizes/font_size = 20
 text = "Przetestuj to sam! 
 Wprowadź dowolną liczbę całkowitą i naciśnij enter."
 autowrap_mode = 2
 
-[node name="RichTextLabel2" type="RichTextLabel" parent="GuidesNode/Conditions"]
-offset_left = 31.0
-offset_top = 323.0
-offset_right = 362.0
-offset_bottom = 399.0
+[node name="var" type="TextEdit" parent="GuidesNode/Conditions/TestNode"]
+offset_left = 84.0
+offset_top = 303.0
+offset_right = 125.0
+offset_bottom = 333.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/caret_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 13
+theme_override_styles/normal = ExtResource("16_2tvkc")
+theme_override_styles/focus = ExtResource("16_2tvkc")
+theme_override_styles/read_only = ExtResource("16_2tvkc")
+autowrap_mode = 1
+
+[node name="RichTextLabel2" type="RichTextLabel" parent="GuidesNode/Conditions/TestNode"]
+offset_left = 25.0
+offset_top = 342.0
+offset_right = 356.0
+offset_bottom = 426.0
 theme_override_fonts/normal_font = ExtResource("8_rl26j")
+theme_override_styles/focus = ExtResource("18_862ro")
+theme_override_styles/normal = ExtResource("18_862ro")
 text = "if [twoja_liczba]%2==0 :
 	print(\"Liczba parzysta\")
 else:
 	print(\"Liczba nieparzysta\")"
 
-[node name="Label2" type="Label" parent="GuidesNode/Conditions"]
-offset_left = 18.0
-offset_top = 405.0
-offset_right = 374.0
-offset_bottom = 486.0
+[node name="Label2" type="Label" parent="GuidesNode/Conditions/TestNode"]
+offset_left = 25.0
+offset_top = 435.0
+offset_right = 411.0
+offset_bottom = 472.0
+theme_override_fonts/font = ExtResource("16_46alq")
 theme_override_font_sizes/font_size = 13
-text = "x%2 - oznacza resztę z dzielnia przez 2 (dla liczb nieparzystych będzie to 1). \"==\" oznacza sprawdzenie czy reszta ta wynosi 0, jeśli tak zwraca prawdę, jeśli nie zwraca fałsz"
+text = "\"x%a\" - reszta z dzielnia przez a, \"==\" - porównanie dwóch wartości, jeżeli są równe zwraca true (prawda), w przeciwnym razie false (fałsz)"
 autowrap_mode = 2
-
-[node name="var" type="TextEdit" parent="GuidesNode/Conditions"]
-offset_left = 73.0
-offset_top = 283.0
-offset_right = 114.0
-offset_bottom = 313.0
-theme_override_colors/background_color = Color(0.490196, 0.490196, 0.490196, 1)
-theme_override_font_sizes/font_size = 13
-autowrap_mode = 1
 
 [node name="Operators" type="Node2D" parent="GuidesNode"]
 visible = false
 script = ExtResource("14_yc1po")
 
 [node name="OperatorsLabel" type="Label" parent="GuidesNode/Operators"]
-offset_left = 55.0
-offset_top = 8.0
-offset_right = 616.0
-offset_bottom = 74.0
+offset_left = 200.0
+offset_top = 5.0
+offset_right = 471.0
+offset_bottom = 59.0
 theme_override_fonts/font = ExtResource("7_bw6jb")
-theme_override_font_sizes/font_size = 50
-text = "Operatory
-"
+theme_override_font_sizes/font_size = 45
+theme_override_styles/normal = SubResource("StyleBoxTexture_36ymj")
+text = "Operatory"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="RichTextLabel" type="RichTextLabel" parent="GuidesNode/Operators"]
-offset_left = 16.0
-offset_top = 89.0
-offset_right = 638.0
-offset_bottom = 209.0
+[node name="Tutorial" type="ScrollContainer" parent="GuidesNode/Operators"]
+offset_left = 25.0
+offset_top = 65.0
+offset_right = 660.0
+offset_bottom = 462.0
+vertical_scroll_mode = 3
+
+[node name="Tutorial" type="VBoxContainer" parent="GuidesNode/Operators/Tutorial"]
+custom_minimum_size = Vector2(630, 0)
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="Explain" type="RichTextLabel" parent="GuidesNode/Operators/Tutorial/Tutorial"]
+custom_minimum_size = Vector2(0, 794)
+layout_mode = 2
+theme_override_fonts/normal_font = ExtResource("16_46alq")
+theme_override_font_sizes/normal_font_size = 20
 bbcode_enabled = true
 text = "[color=\"red\"]Operatory[/color] pozwalają wykonywać różne operacje na danych, takie jak np. dodawanie czy porównywanie. Wyróżniamy 3 typy operatorów:
 [b]- Arytmetyczne[/b]
@@ -487,8 +946,8 @@ text = "[color=\"red\"]Operatory[/color] pozwalają wykonywać różne operacje 
 	[b]• Mnożenie (*) -[/b] mnoży przez siebie dwie liczby, np. 2*3=6
 	[b]• Dzielenie (/) -[/b] dzieli przez siebie dwie liczby, np. 9/3=3. W języku Python 
 	operator \"/\" zwraca wynik w postaci liczby rzeczywistej. Istnieje jednak 
-	możliwość aby uzyskać wynik w postaci liczby całkowitej (np. 5/2 = 2) - należy 
-	użyć operatora \"//\"
+	możliwość aby uzyskać wynik w postaci liczby całkowitej (np. 5/2 = 2) - 
+	należy użyć operatora \"//\"
 	[b]• Reszta z dzielenia (%) -[/b] zwraca resztę z dzielenia dwóch liczb, np. 5%3 = 2
 [b]- Porównania[/b]
 	[b]• Czy równe sobie (==) -[/b] porównuje czy wartości są sobie równe np. 
@@ -497,51 +956,122 @@ text = "[color=\"red\"]Operatory[/color] pozwalają wykonywać różne operacje 
 	2!=2 -> fałsz 
 	[b]• Czy mniejsze/większe (</>) -[/b] sprawdza czy jedna wartość jest mniejsza/
 	większa od drugiej np. 6 < 2 -> fałsz, 6 > 2 - prawda), 
-	[b]• Czy mniejsze/większe lub równe (<=/>=) -[/b] sprawdza czy jedna wartość jest 
-	mniejsza/większa lub równa drugiej np. 2<=3 -> prawda, 2<=2 -> prawda), 
-	2 >= 3 -> fałsz, 3 >= 3 - prawda)
+	[b]• Czy mniejsze/większe lub równe (<=/>=) -[/b] sprawdza czy jedna wartość 
+	jest mniejsza/większa lub równa drugiej np. 2<=3 -> prawda, 2<=2 ->
+	prawda), 2 >= 3 -> fałsz, 3 >= 3 - prawda)
 [b]- Logiczne[/b]
-	[b]• Logiczne and -[/b] zwraca prawdę, jeżeli oba warunki będą spełnione, gdy 
+	[b]• Logiczne and (i) -[/b] zwraca prawdę, jeżeli oba warunki będą spełnione, gdy 
 	przynajmniej jeden z warunków nie jest prawdziwy, zwraca fałsz np. 
 	10 > 0 and 10 < 20 -> prawda
-	[b]• Logiczne or -[/b] zwraca prawdę, gdy przynajmniej jeden warunek jest prawdą, 
-	gdy oba będą nieprawdą, to operator zwraca fałsz np. np. 10 > 0 or 10 > 20 
-	zwróci prawdę, mimo że drugie wyrażenie (10 > 20) to fałsz
-	[b]• Logiczne not -[/b] zwraca wartość przeciwną do tej, która została podana np. 
-	not(10 > 0) da fałsz, ponieważ 10 > 0 jest prawdą"
+	[b]• Logiczne or (lub) -[/b] zwraca prawdę, gdy przynajmniej jeden warunek jest 
+	prawdą, gdy oba będą nieprawdą, to operator zwraca fałsz np. np. 10 > 0 
+	or 10 > 20 zwróci prawdę, mimo że drugie wyrażenie (10 > 20) to fałsz
+	[b]• Logiczne not (nie)-[/b] zwraca wartość przeciwną do tej, która została 
+	podana np. not(10 > 0) da fałsz, ponieważ 10 > 0 jest prawdą
 
-[node name="OperatorsButtonContainer" type="HBoxContainer" parent="GuidesNode/Operators"]
-offset_top = 444.0
-offset_right = 379.0
-offset_bottom = 484.0
-theme_override_constants/separation = 20
+Kliknij \"ESC\" aby przetestować!"
+metadata/_edit_group_ = true
+
+[node name="TestLabel" type="Label" parent="GuidesNode/Operators/Tutorial/Tutorial"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("16_46alq")
+theme_override_font_sizes/font_size = 20
+
+[node name="TestNode" type="Node2D" parent="GuidesNode/Operators"]
+visible = false
+
+[node name="OperatorsButtonContainer" type="HBoxContainer" parent="GuidesNode/Operators/TestNode"]
+offset_left = 25.0
+offset_top = 435.0
+offset_right = 395.0
+offset_bottom = 475.0
+theme_override_constants/separation = 5
 alignment = 1
 
-[node name="Aritmetic" type="Button" parent="GuidesNode/Operators/OperatorsButtonContainer"]
-custom_minimum_size = Vector2(100, 0)
+[node name="Aritmetic" type="Button" parent="GuidesNode/Operators/TestNode/OperatorsButtonContainer"]
+custom_minimum_size = Vector2(120, 0)
 layout_mode = 2
-text = "Arytmet."
+theme_override_styles/normal = ExtResource("8_8t3p3")
+theme_override_styles/hover = ExtResource("8_8t3p3")
+theme_override_styles/pressed = ExtResource("8_8t3p3")
+theme_override_styles/disabled = ExtResource("8_8t3p3")
+theme_override_styles/focus = ExtResource("8_8t3p3")
+script = ExtResource("9_6x0sl")
 
-[node name="Comparing" type="Button" parent="GuidesNode/Operators/OperatorsButtonContainer"]
-custom_minimum_size = Vector2(100, 0)
+[node name="Label" type="Label" parent="GuidesNode/Operators/TestNode/OperatorsButtonContainer/Aritmetic"]
+layout_mode = 0
+offset_left = 1.0
+offset_right = 121.0
+offset_bottom = 42.0
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.6)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_fonts/font = ExtResource("7_bw6jb")
+theme_override_font_sizes/font_size = 25
+text = "Arytm."
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Comparing" type="Button" parent="GuidesNode/Operators/TestNode/OperatorsButtonContainer"]
+custom_minimum_size = Vector2(120, 0)
 layout_mode = 2
-text = "Porównania"
+theme_override_styles/normal = ExtResource("8_8t3p3")
+theme_override_styles/hover = ExtResource("8_8t3p3")
+theme_override_styles/pressed = ExtResource("8_8t3p3")
+theme_override_styles/disabled = ExtResource("8_8t3p3")
+theme_override_styles/focus = ExtResource("8_8t3p3")
+script = ExtResource("9_6x0sl")
 
-[node name="Logic" type="Button" parent="GuidesNode/Operators/OperatorsButtonContainer"]
-custom_minimum_size = Vector2(100, 0)
+[node name="Label" type="Label" parent="GuidesNode/Operators/TestNode/OperatorsButtonContainer/Comparing"]
+layout_mode = 0
+offset_left = 1.0
+offset_right = 121.0
+offset_bottom = 42.0
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.6)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_fonts/font = ExtResource("7_bw6jb")
+theme_override_font_sizes/font_size = 25
+text = "Por."
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Logic" type="Button" parent="GuidesNode/Operators/TestNode/OperatorsButtonContainer"]
+custom_minimum_size = Vector2(120, 0)
 layout_mode = 2
-text = "Logiczne"
+theme_override_styles/normal = ExtResource("8_8t3p3")
+theme_override_styles/hover = ExtResource("8_8t3p3")
+theme_override_styles/pressed = ExtResource("8_8t3p3")
+theme_override_styles/disabled = ExtResource("8_8t3p3")
+theme_override_styles/focus = ExtResource("8_8t3p3")
+script = ExtResource("9_6x0sl")
 
-[node name="OperatorsExamples" type="Node2D" parent="GuidesNode/Operators"]
+[node name="Label" type="Label" parent="GuidesNode/Operators/TestNode/OperatorsButtonContainer/Logic"]
+layout_mode = 0
+offset_left = 1.0
+offset_right = 121.0
+offset_bottom = 42.0
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.6)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_fonts/font = ExtResource("7_bw6jb")
+theme_override_font_sizes/font_size = 25
+text = "Log."
+horizontal_alignment = 1
+vertical_alignment = 1
 
-[node name="Aritmetic" type="Node2D" parent="GuidesNode/Operators/OperatorsExamples"]
+[node name="OperatorsExamples" type="Node2D" parent="GuidesNode/Operators/TestNode"]
 
-[node name="Code" type="RichTextLabel" parent="GuidesNode/Operators/OperatorsExamples/Aritmetic"]
-offset_left = 44.0
-offset_top = 334.0
-offset_right = 186.0
-offset_bottom = 419.0
+[node name="Aritmetic" type="Node2D" parent="GuidesNode/Operators/TestNode/OperatorsExamples"]
+
+[node name="Code" type="RichTextLabel" parent="GuidesNode/Operators/TestNode/OperatorsExamples/Aritmetic"]
+offset_left = 25.0
+offset_top = 328.0
+offset_right = 400.0
+offset_bottom = 426.0
 theme_override_fonts/normal_font = ExtResource("8_rl26j")
+theme_override_styles/focus = ExtResource("18_862ro")
+theme_override_styles/normal = ExtResource("18_862ro")
 bbcode_enabled = true
 text = "print(a+b)
 print(a-b)
@@ -550,79 +1080,105 @@ print(a/b)
 print(a%b)"
 autowrap_mode = 2
 
-[node name="Comparing" type="Node2D" parent="GuidesNode/Operators/OperatorsExamples"]
+[node name="Comparing" type="Node2D" parent="GuidesNode/Operators/TestNode/OperatorsExamples"]
 visible = false
 
-[node name="Code" type="RichTextLabel" parent="GuidesNode/Operators/OperatorsExamples/Comparing"]
-offset_left = 44.0
-offset_top = 325.0
-offset_right = 186.0
-offset_bottom = 435.0
+[node name="Code" type="RichTextLabel" parent="GuidesNode/Operators/TestNode/OperatorsExamples/Comparing"]
+offset_left = 25.0
+offset_top = 330.0
+offset_right = 399.0
+offset_bottom = 395.0
 theme_override_fonts/normal_font = ExtResource("8_rl26j")
+theme_override_styles/focus = ExtResource("18_862ro")
+theme_override_styles/normal = ExtResource("18_862ro")
 bbcode_enabled = true
-text = "print(a==b)
-print(a!=b)
-print(a>b)
-print(a<b)
-print(a>=b)
-print(a<=b)"
+text = "print(a==b, \"\\n\", a!=b)
+print(a>b, \"\\n\", a<b)
+print(a>=b, \"\\n\", a<=b)"
 autowrap_mode = 2
 
-[node name="Logic" type="Node2D" parent="GuidesNode/Operators/OperatorsExamples"]
+[node name="Label2" type="Label" parent="GuidesNode/Operators/TestNode/OperatorsExamples/Comparing"]
+offset_left = 25.0
+offset_top = 407.0
+offset_right = 390.0
+offset_bottom = 424.0
+theme_override_fonts/font = ExtResource("16_46alq")
+theme_override_font_sizes/font_size = 13
+text = "\"\\n\" - dodaje enter w tekście wyświetlanym w konsoli"
+autowrap_mode = 2
+
+[node name="Logic" type="Node2D" parent="GuidesNode/Operators/TestNode/OperatorsExamples"]
 visible = false
 
-[node name="Code" type="RichTextLabel" parent="GuidesNode/Operators/OperatorsExamples/Logic"]
-offset_left = 34.0
-offset_top = 324.0
-offset_right = 385.0
-offset_bottom = 434.0
+[node name="Code" type="RichTextLabel" parent="GuidesNode/Operators/TestNode/OperatorsExamples/Logic"]
+offset_left = 25.0
+offset_top = 323.0
+offset_right = 396.0
+offset_bottom = 429.0
 theme_override_fonts/normal_font = ExtResource("8_rl26j")
+theme_override_styles/focus = ExtResource("18_862ro")
+theme_override_styles/normal = ExtResource("18_862ro")
 bbcode_enabled = true
-text = "print(a>b and a*b==10)
-# Sprawdza, czy  a większe od b i czy a*b równe 10
-print(a*b<1000 or a>b)
-# Czy a*b < 1000 lub a większe od b
+text = "print(a>b and a*b==10) # Sprawdza, czy a większe od b i czy a*b równe 10 
+[font_size=3][color=\"Transparent\"]PRZERWA[/color][/font_size]
+print(a*b<1000 or a>b) # Czy a*b < 1000 lub a większe od b
+[font_size=3][color=\"Transparent\"]PRZERWA[/color][/font_size]
 print(not(a>b*2))"
 autowrap_mode = 2
 
-[node name="InstructionText" type="Label" parent="GuidesNode/Operators"]
-offset_left = 14.0
+[node name="InstructionText" type="Label" parent="GuidesNode/Operators/TestNode"]
+offset_left = 25.0
 offset_top = 237.0
-offset_right = 263.0
-offset_bottom = 312.0
+offset_right = 289.0
+offset_bottom = 346.0
+theme_override_fonts/font = ExtResource("16_46alq")
+theme_override_font_sizes/font_size = 20
 text = "Sprawdź sam! Podaj dwie liczby i zobacz wyniki operacji na nich (po wpisaniu kliknij enter)"
+horizontal_alignment = 3
 autowrap_mode = 2
 
-[node name="Var1" type="TextEdit" parent="GuidesNode/Operators"]
-offset_left = 271.0
-offset_top = 283.0
-offset_right = 312.0
-offset_bottom = 313.0
-theme_override_colors/background_color = Color(0.490196, 0.490196, 0.490196, 1)
+[node name="Var1" type="TextEdit" parent="GuidesNode/Operators/TestNode"]
+offset_left = 307.0
+offset_top = 277.0
+offset_right = 348.0
+offset_bottom = 307.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/caret_color = Color(1, 1, 1, 1)
 theme_override_font_sizes/font_size = 13
+theme_override_styles/normal = ExtResource("16_2tvkc")
+theme_override_styles/focus = ExtResource("16_2tvkc")
+theme_override_styles/read_only = ExtResource("16_2tvkc")
 autowrap_mode = 1
 
-[node name="Var2" type="TextEdit" parent="GuidesNode/Operators"]
-offset_left = 328.0
-offset_top = 283.0
-offset_right = 369.0
-offset_bottom = 313.0
-theme_override_colors/background_color = Color(0.490196, 0.490196, 0.490196, 1)
+[node name="Var2" type="TextEdit" parent="GuidesNode/Operators/TestNode"]
+offset_left = 358.0
+offset_top = 277.0
+offset_right = 399.0
+offset_bottom = 307.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/caret_color = Color(1, 1, 1, 1)
 theme_override_font_sizes/font_size = 13
+theme_override_styles/normal = ExtResource("16_2tvkc")
+theme_override_styles/focus = ExtResource("16_2tvkc")
+theme_override_styles/read_only = ExtResource("16_2tvkc")
 
-[node name="A" type="Label" parent="GuidesNode/Operators"]
-offset_left = 271.0
-offset_top = 261.0
-offset_right = 312.0
-offset_bottom = 284.0
+[node name="A" type="Label" parent="GuidesNode/Operators/TestNode"]
+offset_left = 307.0
+offset_top = 251.0
+offset_right = 348.0
+offset_bottom = 276.0
+theme_override_fonts/font = ExtResource("16_46alq")
+theme_override_font_sizes/font_size = 20
 text = "a"
 horizontal_alignment = 1
 
-[node name="B" type="Label" parent="GuidesNode/Operators"]
-offset_left = 328.0
-offset_top = 261.0
-offset_right = 369.0
-offset_bottom = 284.0
+[node name="B" type="Label" parent="GuidesNode/Operators/TestNode"]
+offset_left = 358.0
+offset_top = 251.0
+offset_right = 399.0
+offset_bottom = 276.0
+theme_override_fonts/font = ExtResource("16_46alq")
+theme_override_font_sizes/font_size = 20
 text = "b"
 horizontal_alignment = 1
 
@@ -630,15 +1186,15 @@ horizontal_alignment = 1
 visible = false
 script = ExtResource("15_26v0m")
 
-[node name="OperatorsLabel" type="Label" parent="GuidesNode/DataTypes"]
-offset_left = 55.0
-offset_top = 8.0
-offset_right = 616.0
-offset_bottom = 74.0
+[node name="DataTypesLabel" type="Label" parent="GuidesNode/DataTypes"]
+offset_left = 197.0
+offset_top = 5.0
+offset_right = 504.0
+offset_bottom = 59.0
 theme_override_fonts/font = ExtResource("7_bw6jb")
-theme_override_font_sizes/font_size = 50
-text = "Typy danych
-"
+theme_override_font_sizes/font_size = 45
+theme_override_styles/normal = SubResource("StyleBoxTexture_36ymj")
+text = "Typy Danych"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -648,6 +1204,25 @@ offset_top = 89.0
 offset_right = 638.0
 offset_bottom = 229.0
 bbcode_enabled = true
+
+[node name="Tutorial" type="ScrollContainer" parent="GuidesNode/DataTypes"]
+offset_left = 25.0
+offset_top = 65.0
+offset_right = 657.0
+offset_bottom = 462.0
+vertical_scroll_mode = 3
+
+[node name="Tutorial" type="VBoxContainer" parent="GuidesNode/DataTypes/Tutorial"]
+custom_minimum_size = Vector2(600, 0)
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="Explain" type="RichTextLabel" parent="GuidesNode/DataTypes/Tutorial/Tutorial"]
+custom_minimum_size = Vector2(200, 330)
+layout_mode = 2
+theme_override_fonts/normal_font = ExtResource("16_46alq")
+theme_override_font_sizes/normal_font_size = 20
+bbcode_enabled = true
 text = "[color=\"red\"]Typy danych[/color] określają, jakie wartości przechowuje dana zmienna. Wyróżnia się następujące typy danych:
 	[b]• int -[/b] liczby całkowite, np. 4, 25, 98, 100
 	[b]• float -[/b] liczby rzeczywiste (z miejscami po przecinku) np. 2.5, 100.34
@@ -656,10 +1231,14 @@ text = "[color=\"red\"]Typy danych[/color] określają, jakie wartości przechow
 	[b]• bool -[/b] typ logiczny, może przyjmować tylko dwie wartości: true (prawda) 
 	oraz false (fałsz). 
 
-Python automatycznie rozpoznaje typ zmiennej na podstawie wartości (np. x = 10 - python sam wie, że zmienna x jest typu int), ale można go też jawnie określić:
-[font_size=3][color=\"Transparent\"]PRZERWA[/color][/font_size]
-[font=res://Fonts/consola.ttf][font_size=20]	
-	a : int = 10
+Python automatycznie rozpoznaje typ zmiennej na podstawie wartości (np. x = 10 - python sam wie, że zmienna x jest typu int), ale można go też jawnie określić:"
+
+[node name="Example" type="RichTextLabel" parent="GuidesNode/DataTypes/Tutorial/Tutorial"]
+custom_minimum_size = Vector2(0, 262)
+layout_mode = 2
+theme_override_styles/normal = ExtResource("18_862ro")
+bbcode_enabled = true
+text = "[font=res://Fonts/consola.ttf][font_size=20]	a : int = 10
 [font_size=3][color=\"Transparent\"]PRZERWA[/color][/font_size]
 	# Nie podajemy wartości początkowej - również 
 	poprawnie 
@@ -673,13 +1252,23 @@ Python automatycznie rozpoznaje typ zmiennej na podstawie wartości (np. x = 10 
 	niej pusty łańcuch \"\"
 [font_size=3][color=\"Transparent\"]PRZERWA[/color][/font_size]
 	name : str
-	is_good : bool = true[/font_size][/font]
-[font_size=10][color=\"Transparent\"]PRZERWA[/color][/font_size]
+	is_good : bool = true[/font_size][/font]"
 
-Podobnie jak zmienne, funkcje mogą również mieć określone typy zwracanych wartości. Domyślnie funkcja nie musi nic zwracać.
-[font_size=10][color=\"Transparent\"]PRZERWA[/color][/font_size]
-[font=res://Fonts/consola.ttf][font_size=20]	
-	#Funkcja zwraca (return) wynik mnożenia a przez b (a*b), który jest typu int
+[node name="Label" type="Label" parent="GuidesNode/DataTypes/Tutorial/Tutorial"]
+custom_minimum_size = Vector2(630, 0)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("16_46alq")
+theme_override_font_sizes/font_size = 20
+text = "Podobnie jak zmienne, funkcje mogą również mieć określone typy zwracanych wartości. Domyślnie funkcja nie musi nic zwracać."
+horizontal_alignment = 3
+autowrap_mode = 2
+
+[node name="Example2" type="RichTextLabel" parent="GuidesNode/DataTypes/Tutorial/Tutorial"]
+custom_minimum_size = Vector2(0, 236)
+layout_mode = 2
+theme_override_styles/normal = ExtResource("18_862ro")
+bbcode_enabled = true
+text = "[font=res://Fonts/consola.ttf][font_size=20]	#Funkcja zwraca (return) wynik mnożenia a przez b (a*b), który jest typu int
 [font_size=10][color=\"Transparent\"]PRZERWA[/color][/font_size]
 	def multiple_numbers(a: int, b: int) -> int:
 		return a * b 
@@ -691,72 +1280,95 @@ Podobnie jak zmienne, funkcje mogą również mieć określone typy zwracanych w
 	def is_bigger_than_10(a: int) -> bool:
 		return a > 10 "
 
-[node name="var" type="TextEdit" parent="GuidesNode/DataTypes"]
-offset_left = 54.0
-offset_top = 299.0
-offset_right = 259.0
-offset_bottom = 329.0
-theme_override_colors/background_color = Color(0.490196, 0.490196, 0.490196, 1)
-theme_override_font_sizes/font_size = 13
-autowrap_mode = 1
+[node name="TestLabel" type="Label" parent="GuidesNode/DataTypes/Tutorial/Tutorial"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("16_46alq")
+theme_override_font_sizes/font_size = 20
+text = "Kliknij \"ESC\" aby przetestować!"
 
-[node name="InstructionText" type="Label" parent="GuidesNode/DataTypes"]
-offset_left = 19.0
+[node name="TestNode" type="Node2D" parent="GuidesNode/DataTypes"]
+visible = false
+
+[node name="InstructionText" type="Label" parent="GuidesNode/DataTypes/TestNode"]
+offset_left = 25.0
 offset_top = 239.0
-offset_right = 382.0
-offset_bottom = 292.0
-text = "Wpisz dowolną wartość, a program rozpozna jaki wpisałeś typ.  Po wpisaniu wciśnij enter."
+offset_right = 389.0
+offset_bottom = 320.0
+theme_override_fonts/font = ExtResource("16_46alq")
+theme_override_font_sizes/font_size = 20
+text = "Wpisz dowolną wartość, a program rozpozna typ, który wpisałeś.  Po wpisaniu wciśnij enter."
+horizontal_alignment = 3
 autowrap_mode = 2
 
-[node name="x" type="Label" parent="GuidesNode/DataTypes"]
-offset_left = 19.0
-offset_top = 298.0
-offset_right = 59.0
-offset_bottom = 326.0
+[node name="var" type="TextEdit" parent="GuidesNode/DataTypes/TestNode"]
+offset_left = 71.0
+offset_top = 327.0
+offset_right = 276.0
+offset_bottom = 357.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_readonly_color = Color(0.670689, 0.67069, 0.67069, 1)
+theme_override_colors/caret_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 13
+theme_override_styles/normal = ExtResource("16_2tvkc")
+theme_override_styles/focus = ExtResource("16_2tvkc")
+theme_override_styles/read_only = ExtResource("16_2tvkc")
+text = "Text"
+editable = false
+autowrap_mode = 1
+
+[node name="x" type="Label" parent="GuidesNode/DataTypes/TestNode"]
+offset_left = 25.0
+offset_top = 332.0
+offset_right = 69.0
+offset_bottom = 353.0
+theme_override_fonts/font = ExtResource("8_rl26j")
 theme_override_font_sizes/font_size = 20
 text = "x = "
 
-[node name="Code" type="RichTextLabel" parent="GuidesNode/DataTypes"]
-offset_left = 18.0
-offset_top = 339.0
-offset_right = 360.0
-offset_bottom = 402.0
+[node name="Code" type="RichTextLabel" parent="GuidesNode/DataTypes/TestNode"]
+offset_left = 25.0
+offset_top = 366.0
+offset_right = 393.0
+offset_bottom = 434.0
 theme_override_fonts/normal_font = ExtResource("8_rl26j")
+theme_override_styles/focus = ExtResource("18_862ro")
+theme_override_styles/normal = ExtResource("18_862ro")
 bbcode_enabled = true
 text = "x = [twoja_wartosc]
 print(\"Wartość x: \", x)
 print(\"Typ x: \", type(x))"
 autowrap_mode = 2
 
-[node name="Label2" type="Label" parent="GuidesNode/DataTypes"]
-offset_left = 20.0
-offset_top = 403.0
-offset_right = 356.0
-offset_bottom = 428.0
+[node name="Label2" type="Label" parent="GuidesNode/DataTypes/TestNode"]
+offset_left = 25.0
+offset_top = 443.0
+offset_right = 361.0
+offset_bottom = 468.0
+theme_override_fonts/font = ExtResource("16_46alq")
 text = "type(x) - sprawdza typ zmiennej."
 label_settings = SubResource("LabelSettings_eka6r")
 autowrap_mode = 2
 
 [connection signal="pressed" from="MainNode/GridContainer/Variables" to="MainNode" method="_on_button_pressed" binds= ["Variables"]]
 [connection signal="pressed" from="MainNode/GridContainer/Functions" to="MainNode" method="_on_button_pressed" binds= ["Functions"]]
-[connection signal="pressed" from="MainNode/GridContainer/Loops" to="MainNode" method="_on_button_pressed" binds= ["Loops"]]
-[connection signal="pressed" from="MainNode/GridContainer/Conditions" to="MainNode" method="_on_button_pressed" binds= ["Conditions"]]
 [connection signal="pressed" from="MainNode/GridContainer/Operators" to="MainNode" method="_on_button_pressed" binds= ["Operators"]]
 [connection signal="pressed" from="MainNode/GridContainer/DataTypes" to="MainNode" method="_on_button_pressed" binds= ["DataTypes"]]
+[connection signal="pressed" from="MainNode/GridContainer/Conditions" to="MainNode" method="_on_button_pressed" binds= ["Conditions"]]
+[connection signal="pressed" from="MainNode/GridContainer/Loops" to="MainNode" method="_on_button_pressed" binds= ["Loops"]]
 [connection signal="mouse_entered" from="GuidesNode/Back/BackButton" to="GuidesNode/Back" method="_on_back_button_mouse_entered"]
 [connection signal="mouse_exited" from="GuidesNode/Back/BackButton" to="GuidesNode/Back" method="_on_back_button_mouse_exited"]
 [connection signal="pressed" from="GuidesNode/Back/BackButton" to="GuidesNode/Back" method="_on_back_button_pressed"]
-[connection signal="text_changed" from="GuidesNode/Variables/TextEdit" to="GuidesNode/Variables" method="_on_text_edit_text_changed"]
-[connection signal="text_changed" from="GuidesNode/Functions/Var1" to="GuidesNode/Functions" method="_on_var_1_text_changed"]
-[connection signal="text_changed" from="GuidesNode/Functions/Var2" to="GuidesNode/Functions" method="_on_var_1_text_changed"]
-[connection signal="pressed" from="GuidesNode/Loops/LoopsButtonContainer/For" to="GuidesNode/Loops" method="_on_for_pressed"]
-[connection signal="pressed" from="GuidesNode/Loops/LoopsButtonContainer/While" to="GuidesNode/Loops" method="_on_while_pressed"]
-[connection signal="text_changed" from="GuidesNode/Loops/ForLoop/var" to="GuidesNode/Loops" method="_on_var_text_changed"]
-[connection signal="text_changed" from="GuidesNode/Loops/WhileLoop/var" to="GuidesNode/Loops" method="_on_var_text_changed"]
-[connection signal="text_changed" from="GuidesNode/Conditions/var" to="GuidesNode/Conditions" method="_on_var_text_changed"]
-[connection signal="pressed" from="GuidesNode/Operators/OperatorsButtonContainer/Aritmetic" to="GuidesNode/Operators" method="_on_aritmetic_pressed"]
-[connection signal="pressed" from="GuidesNode/Operators/OperatorsButtonContainer/Comparing" to="GuidesNode/Operators" method="_on_comparing_pressed"]
-[connection signal="pressed" from="GuidesNode/Operators/OperatorsButtonContainer/Logic" to="GuidesNode/Operators" method="_on_logic_pressed"]
-[connection signal="text_changed" from="GuidesNode/Operators/Var1" to="GuidesNode/Operators" method="_on_var_1_text_changed"]
-[connection signal="text_changed" from="GuidesNode/Operators/Var2" to="GuidesNode/Operators" method="_on_var_1_text_changed"]
-[connection signal="text_changed" from="GuidesNode/DataTypes/var" to="GuidesNode/DataTypes" method="_on_var_text_changed"]
+[connection signal="text_changed" from="GuidesNode/Variables/TestNode/TextEdit" to="GuidesNode/Variables" method="_on_text_edit_text_changed"]
+[connection signal="text_changed" from="GuidesNode/Functions/TestNode/Var1" to="GuidesNode/Functions" method="_on_var_1_text_changed"]
+[connection signal="text_changed" from="GuidesNode/Functions/TestNode/Var2" to="GuidesNode/Functions" method="_on_var_1_text_changed"]
+[connection signal="pressed" from="GuidesNode/Loops/TestNode/LoopsButtonContainer/For" to="GuidesNode/Loops" method="_on_for_pressed"]
+[connection signal="pressed" from="GuidesNode/Loops/TestNode/LoopsButtonContainer/While" to="GuidesNode/Loops" method="_on_while_pressed"]
+[connection signal="text_changed" from="GuidesNode/Loops/TestNode/ForLoop/var" to="GuidesNode/Loops" method="_on_var_text_changed"]
+[connection signal="text_changed" from="GuidesNode/Loops/TestNode/WhileLoop/var" to="GuidesNode/Loops" method="_on_var_text_changed"]
+[connection signal="text_changed" from="GuidesNode/Conditions/TestNode/var" to="GuidesNode/Conditions" method="_on_var_text_changed"]
+[connection signal="pressed" from="GuidesNode/Operators/TestNode/OperatorsButtonContainer/Aritmetic" to="GuidesNode/Operators" method="_on_aritmetic_pressed"]
+[connection signal="pressed" from="GuidesNode/Operators/TestNode/OperatorsButtonContainer/Comparing" to="GuidesNode/Operators" method="_on_comparing_pressed"]
+[connection signal="pressed" from="GuidesNode/Operators/TestNode/OperatorsButtonContainer/Logic" to="GuidesNode/Operators" method="_on_logic_pressed"]
+[connection signal="text_changed" from="GuidesNode/Operators/TestNode/Var1" to="GuidesNode/Operators" method="_on_var_1_text_changed"]
+[connection signal="text_changed" from="GuidesNode/Operators/TestNode/Var2" to="GuidesNode/Operators" method="_on_var_1_text_changed"]
+[connection signal="text_changed" from="GuidesNode/DataTypes/TestNode/var" to="GuidesNode/DataTypes" method="_on_var_text_changed"]

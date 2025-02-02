@@ -5,6 +5,7 @@ var tween
 var current_scratch = 0
 @onready var scratch_node = $"../ScratchNode"
 @export var information_node : Node2D
+@export var panels_node : Node2D
 
 func _ready():
 	add_scratch()
@@ -30,6 +31,9 @@ func _on_back_button_pressed():
 	$"../PlayerScratching/Resume".modulate = Color("77DD77")
 	$"..".visible = false
 	$"../../Room".visible = true
+	for p in panels_node.get_children() :
+		if(p.name != "NextLevelsPopUp") :
+			p.visible = false
 
 func _on_player_scratching_mouse_entered():
 	is_mouse_on_scratching_post = true

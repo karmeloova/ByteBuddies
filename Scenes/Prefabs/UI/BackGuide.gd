@@ -4,6 +4,7 @@ func _on_back_button_pressed():
 	$"../../MainNode".visible = true
 	$"..".visible = false
 	SignalManager.set_console_text.emit("")
+	SignalManager.hide_test_node.emit()
 	get_parent().get_parent().back_button.visible = true
 
 func _on_back_button_mouse_entered():

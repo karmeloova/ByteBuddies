@@ -62,15 +62,15 @@ var scratching = {
 	50 : false,
 	75 : false
 }
-#MAM rysunek jest
+#MAM rysunek jestS
 var sleeping = {
 	"name" : "sleeping",
 	1 : false,
 	10 : false,
 	25 : false,
-	50 : false,
 	75 : false
 }
+
 #MAM rysunek jest
 var cleaning = {
 	"name" : "cleaning",
@@ -95,6 +95,7 @@ func _ready():
 	SignalManager.unlock_achievement.connect(_on_unlock_achievement)
 	SignalManager.loseGame.connect(_on_lose_game)
 	
+	category_tab.append(sleeping)
 	category_tab.append(cat_jump)
 	category_tab.append(snack_navigator)
 	category_tab.append(fruit_catcher)
@@ -102,7 +103,6 @@ func _ready():
 	category_tab.append(eating)
 	category_tab.append(playing_games)
 	category_tab.append(scratching)
-	category_tab.append(sleeping)
 	category_tab.append(cleaning)
 	
 func _on_unlock_achievement(points, category : String, camera) :

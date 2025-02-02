@@ -1,0 +1,606 @@
+[gd_scene load_steps=37 format=3 uid="uid://beq5bpbed2ls6"]
+
+[ext_resource type="Script" path="res://Scenes/Prefabs/UI/Settings.gd" id="1_djqak"]
+[ext_resource type="Texture2D" uid="uid://2rpmid1gnwur" path="res://Images/UI/Buttons/RoundButton.png" id="3_eqj71"]
+[ext_resource type="Texture2D" uid="uid://6adv5bnfl4ff" path="res://Images/UI/Buttons/Back.png" id="6_u5sf3"]
+[ext_resource type="FontFile" uid="uid://ccgpsjqwwow8o" path="res://Fonts/Bubblegum.ttf" id="7_rpfsf"]
+[ext_resource type="StyleBox" uid="uid://d32dm3665drok" path="res://Scenes/Rooms/MiniButton.stylebox" id="7_wasfa"]
+[ext_resource type="Script" path="res://Scenes/Prefabs/UI/GraphicsSettings.gd" id="7_yw05g"]
+[ext_resource type="Script" path="res://Scenes/Prefabs/UI/AudioSettings.gd" id="8_movmu"]
+[ext_resource type="Script" path="res://Scenes/Rooms/ButtonModulate.gd" id="8_w853d"]
+[ext_resource type="Script" path="res://Scenes/Prefabs/UI/BackSettings.gd" id="9_2u8pj"]
+[ext_resource type="Script" path="res://Scenes/Prefabs/UI/SavePopUp.gd" id="10_0gr64"]
+[ext_resource type="Texture2D" uid="uid://bx2qyq2e8pcq7" path="res://Images/Backgrounds/KulkaDoSlidera.png" id="11_vvko0"]
+[ext_resource type="StyleBox" uid="uid://bgecjvl04p8n5" path="res://Scenes/Prefabs/UI/Slider.tres" id="12_st4m2"]
+[ext_resource type="StyleBox" uid="uid://dodex07bk71rl" path="res://Scenes/Prefabs/UI/GrabberAreaSlider.tres" id="12_vicqo"]
+[ext_resource type="StyleBox" uid="uid://jg2ifeclhrmt" path="res://Scenes/Prefabs/UI/FocusGrabberAreaSlider.tres" id="13_x41xy"]
+[ext_resource type="Texture2D" uid="uid://dpf4o2mjyrdwt" path="res://Images/Backgrounds/CheckedCheckBox.png" id="15_clrad"]
+[ext_resource type="Texture2D" uid="uid://dbeltclmcbo7m" path="res://Images/Backgrounds/CheckBox.png" id="15_sch2t"]
+[ext_resource type="StyleBox" uid="uid://de6y4o1ajd8is" path="res://Scenes/Prefabs/UI/DropDownStyle.tres" id="18_5r0cc"]
+[ext_resource type="Texture2D" uid="uid://bysrspfftm2e1" path="res://Scenes/Prefabs/UI/RadioButtonChecked.png" id="18_wga24"]
+[ext_resource type="Texture2D" uid="uid://yngi6d888q54" path="res://Scenes/Prefabs/UI/RadioButtonUnChecked.png" id="19_8rr6l"]
+[ext_resource type="Texture2D" uid="uid://bc0tua7hlc08r" path="res://Images/Backgrounds/ArrowDown.png" id="20_n4k6d"]
+[ext_resource type="Script" path="res://Scenes/Prefabs/UI/ResolutionDropDown.gd" id="21_yiad6"]
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_qrtas"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_vq5qd"]
+texture = SubResource("CanvasTexture_qrtas")
+modulate_color = Color(0.968627, 0.8, 0.815686, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wapp2"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_u7txe"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0v17t"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_r13d1"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+shadow_color = Color(0, 0, 0, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_u12wc"]
+content_margin_left = 5.0
+content_margin_top = 0.0
+content_margin_right = 0.0
+content_margin_bottom = 5.0
+bg_color = Color(0.921569, 0.768627, 0.686275, 1)
+border_width_left = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.756863, 0.596078, 0.698039, 1)
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_5yqpj"]
+
+[sub_resource type="Theme" id="Theme_3nsxv"]
+default_font_size = 20
+PopupMenu/colors/font_color = Color(1, 1, 1, 1)
+PopupMenu/colors/font_hover_color = Color(0.894923, 0.894922, 0.894922, 1)
+PopupMenu/constants/item_end_padding = 5
+PopupMenu/constants/v_separation = 8
+PopupMenu/font_sizes/font_size = 23
+PopupMenu/fonts/font = ExtResource("7_rpfsf")
+PopupMenu/icons/radio_checked = ExtResource("18_wga24")
+PopupMenu/icons/radio_unchecked = ExtResource("19_8rr6l")
+PopupMenu/icons/submenu = ExtResource("20_n4k6d")
+PopupMenu/styles/hover = SubResource("StyleBoxFlat_r13d1")
+PopupMenu/styles/panel = SubResource("StyleBoxFlat_u12wc")
+ScrollContainer/styles/panel = SubResource("StyleBoxEmpty_5yqpj")
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_neo6u"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_cgwwb"]
+content_margin_left = 15.0
+content_margin_top = 4.0
+bg_color = Color(0.921569, 0.768627, 0.686275, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_color = Color(0.756863, 0.596078, 0.698039, 1)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1wxpb"]
+content_margin_left = 15.0
+content_margin_top = 5.0
+content_margin_right = 10.0
+bg_color = Color(0.756878, 0.650697, 0.592546, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.717095, 0.545298, 0.65509, 1)
+corner_radius_top_left = 100
+corner_radius_top_right = 100
+corner_radius_bottom_right = 100
+corner_radius_bottom_left = 100
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_c5uev"]
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_a5un4"]
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_hwvr2"]
+
+[node name="Settings" type="Node2D" node_paths=PackedStringArray("audio_panel", "graphics_panel", "main_panel", "back_button")]
+script = ExtResource("1_djqak")
+audio_panel = NodePath("AudioSettings")
+graphics_panel = NodePath("GraphicsSettings")
+main_panel = NodePath("MainNode")
+back_button = NodePath("Back")
+
+[node name="MainNode" type="Node2D" parent="."]
+
+[node name="SettingsLabel" type="Label" parent="MainNode"]
+offset_left = 440.0
+offset_top = 123.0
+offset_right = 736.0
+offset_bottom = 177.0
+theme_override_fonts/font = ExtResource("7_rpfsf")
+theme_override_font_sizes/font_size = 45
+theme_override_styles/normal = SubResource("StyleBoxTexture_vq5qd")
+text = "Ustawienia"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="VBoxContainer" type="HBoxContainer" parent="MainNode"]
+offset_left = 246.0
+offset_top = 205.0
+offset_right = 923.0
+offset_bottom = 255.0
+theme_override_constants/separation = 70
+alignment = 1
+
+[node name="Audio" type="Button" parent="MainNode/VBoxContainer" groups=["Button"]]
+custom_minimum_size = Vector2(175, 50)
+layout_mode = 2
+theme_override_styles/normal = ExtResource("7_wasfa")
+theme_override_styles/hover = ExtResource("7_wasfa")
+theme_override_styles/pressed = ExtResource("7_wasfa")
+theme_override_styles/disabled = ExtResource("7_wasfa")
+theme_override_styles/focus = ExtResource("7_wasfa")
+script = ExtResource("8_w853d")
+
+[node name="Label" type="Label" parent="MainNode/VBoxContainer/Audio"]
+layout_mode = 0
+offset_right = 176.0
+offset_bottom = 52.0
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.6)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_fonts/font = ExtResource("7_rpfsf")
+theme_override_font_sizes/font_size = 30
+text = "Audio"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Graphics" type="Button" parent="MainNode/VBoxContainer" groups=["Button"]]
+custom_minimum_size = Vector2(175, 50)
+layout_mode = 2
+theme_override_styles/normal = ExtResource("7_wasfa")
+theme_override_styles/hover = ExtResource("7_wasfa")
+theme_override_styles/pressed = ExtResource("7_wasfa")
+theme_override_styles/disabled = ExtResource("7_wasfa")
+theme_override_styles/focus = ExtResource("7_wasfa")
+script = ExtResource("8_w853d")
+
+[node name="Label" type="Label" parent="MainNode/VBoxContainer/Graphics"]
+layout_mode = 0
+offset_right = 176.0
+offset_bottom = 52.0
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.6)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_fonts/font = ExtResource("7_rpfsf")
+theme_override_font_sizes/font_size = 30
+text = "grafika"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="AudioSettings" type="Control" parent="." node_paths=PackedStringArray("sliders_tab")]
+visible = false
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("8_movmu")
+sliders_tab = [NodePath("ContentContainer/SliderContainer/MasterSlider"), NodePath("ContentContainer/SliderContainer/MusicSlider"), NodePath("ContentContainer/SliderContainer/SFXSlider")]
+
+[node name="AudioLabel" type="Label" parent="AudioSettings"]
+layout_mode = 0
+offset_left = 514.0
+offset_top = 123.0
+offset_right = 673.0
+offset_bottom = 177.0
+theme_override_fonts/font = ExtResource("7_rpfsf")
+theme_override_font_sizes/font_size = 45
+theme_override_styles/normal = SubResource("StyleBoxTexture_vq5qd")
+text = "Audio"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ContentContainer" type="HBoxContainer" parent="AudioSettings"]
+layout_mode = 0
+offset_left = 246.0
+offset_top = 207.0
+offset_right = 923.0
+offset_bottom = 365.0
+theme_override_constants/separation = 25
+alignment = 1
+
+[node name="LabelsContainer" type="VBoxContainer" parent="AudioSettings/ContentContainer"]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="MasterLabel" type="Label" parent="AudioSettings/ContentContainer/LabelsContainer"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("7_rpfsf")
+theme_override_font_sizes/font_size = 35
+text = "Master"
+vertical_alignment = 1
+
+[node name="MusicLabel" type="Label" parent="AudioSettings/ContentContainer/LabelsContainer"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("7_rpfsf")
+theme_override_font_sizes/font_size = 35
+text = "Music"
+vertical_alignment = 1
+
+[node name="SFXLabel" type="Label" parent="AudioSettings/ContentContainer/LabelsContainer"]
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("7_rpfsf")
+theme_override_font_sizes/font_size = 35
+text = "SFX"
+vertical_alignment = 1
+
+[node name="SliderContainer" type="VBoxContainer" parent="AudioSettings/ContentContainer"]
+layout_mode = 2
+
+[node name="MasterSlider" type="HSlider" parent="AudioSettings/ContentContainer/SliderContainer"]
+custom_minimum_size = Vector2(300, 50)
+layout_mode = 2
+theme_override_icons/grabber = ExtResource("11_vvko0")
+theme_override_icons/grabber_highlight = ExtResource("11_vvko0")
+theme_override_icons/grabber_disabled = ExtResource("11_vvko0")
+theme_override_icons/tick = ExtResource("11_vvko0")
+theme_override_styles/slider = ExtResource("12_vicqo")
+theme_override_styles/grabber_area = ExtResource("12_st4m2")
+theme_override_styles/grabber_area_highlight = ExtResource("13_x41xy")
+max_value = 1.0
+step = 0.01
+value = 1.0
+
+[node name="MusicSlider" type="HSlider" parent="AudioSettings/ContentContainer/SliderContainer"]
+custom_minimum_size = Vector2(300, 50)
+layout_mode = 2
+theme_override_icons/grabber = ExtResource("11_vvko0")
+theme_override_icons/grabber_highlight = ExtResource("11_vvko0")
+theme_override_icons/grabber_disabled = ExtResource("11_vvko0")
+theme_override_icons/tick = ExtResource("11_vvko0")
+theme_override_styles/slider = ExtResource("12_vicqo")
+theme_override_styles/grabber_area = ExtResource("12_st4m2")
+theme_override_styles/grabber_area_highlight = ExtResource("13_x41xy")
+max_value = 1.0
+step = 0.01
+
+[node name="SFXSlider" type="HSlider" parent="AudioSettings/ContentContainer/SliderContainer"]
+custom_minimum_size = Vector2(300, 50)
+layout_mode = 2
+theme_override_icons/grabber = ExtResource("11_vvko0")
+theme_override_icons/grabber_highlight = ExtResource("11_vvko0")
+theme_override_icons/grabber_disabled = ExtResource("11_vvko0")
+theme_override_icons/tick = ExtResource("11_vvko0")
+theme_override_styles/slider = ExtResource("12_vicqo")
+theme_override_styles/grabber_area = ExtResource("12_st4m2")
+theme_override_styles/grabber_area_highlight = ExtResource("13_x41xy")
+max_value = 1.0
+step = 0.01
+
+[node name="CheckboxContainer" type="VBoxContainer" parent="AudioSettings/ContentContainer"]
+layout_mode = 2
+size_flags_vertical = 4
+alignment = 2
+
+[node name="MasterCheckBox" type="CheckBox" parent="AudioSettings/ContentContainer/CheckboxContainer" groups=["Button"]]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_pressed_color = Color(1, 1, 1, 1)
+theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
+theme_override_colors/font_hover_pressed_color = Color(1, 1, 1, 1)
+theme_override_colors/font_focus_color = Color(1, 1, 1, 1)
+theme_override_colors/font_disabled_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("7_rpfsf")
+theme_override_icons/checked = ExtResource("15_clrad")
+theme_override_icons/unchecked = ExtResource("15_sch2t")
+theme_override_styles/focus = SubResource("StyleBoxFlat_wapp2")
+text = " Wycisz"
+
+[node name="MusicCheckBox" type="CheckBox" parent="AudioSettings/ContentContainer/CheckboxContainer" groups=["Button"]]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_pressed_color = Color(1, 1, 1, 1)
+theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
+theme_override_colors/font_hover_pressed_color = Color(1, 1, 1, 1)
+theme_override_colors/font_focus_color = Color(1, 1, 1, 1)
+theme_override_colors/font_disabled_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("7_rpfsf")
+theme_override_icons/checked = ExtResource("15_clrad")
+theme_override_icons/unchecked = ExtResource("15_sch2t")
+theme_override_styles/focus = SubResource("StyleBoxFlat_u7txe")
+text = " Wycisz"
+
+[node name="SFXCheckBox" type="CheckBox" parent="AudioSettings/ContentContainer/CheckboxContainer" groups=["Button"]]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_pressed_color = Color(1, 1, 1, 1)
+theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
+theme_override_colors/font_hover_pressed_color = Color(1, 1, 1, 1)
+theme_override_colors/font_focus_color = Color(1, 1, 1, 1)
+theme_override_colors/font_disabled_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("7_rpfsf")
+theme_override_icons/checked = ExtResource("15_clrad")
+theme_override_icons/unchecked = ExtResource("15_sch2t")
+theme_override_styles/focus = SubResource("StyleBoxFlat_0v17t")
+text = " Wycisz"
+
+[node name="GraphicsSettings" type="Control" parent="." node_paths=PackedStringArray("resolution_dropdown", "full_screen_check_box")]
+visible = false
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("7_yw05g")
+resolution_dropdown = NodePath("ContentContainer/MarginContainer/ControlsContainer/ResolutionDropDown")
+full_screen_check_box = NodePath("ContentContainer/MarginContainer/ControlsContainer/CheckBox")
+
+[node name="AudioLabel" type="Label" parent="GraphicsSettings"]
+layout_mode = 0
+offset_left = 475.0
+offset_top = 123.0
+offset_right = 682.0
+offset_bottom = 177.0
+theme_override_fonts/font = ExtResource("7_rpfsf")
+theme_override_font_sizes/font_size = 45
+theme_override_styles/normal = SubResource("StyleBoxTexture_vq5qd")
+text = "GRafika"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ContentContainer" type="HBoxContainer" parent="GraphicsSettings"]
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 0
+offset_left = 245.0
+offset_top = 218.0
+offset_right = 923.0
+offset_bottom = 339.0
+theme_override_constants/separation = 30
+alignment = 1
+
+[node name="LabelsContainer" type="VBoxContainer" parent="GraphicsSettings/ContentContainer"]
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 2
+
+[node name="ResolutionLabel" type="Label" parent="GraphicsSettings/ContentContainer/LabelsContainer"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("7_rpfsf")
+theme_override_font_sizes/font_size = 35
+text = "Rozdzielczosc
+"
+
+[node name="QualityLabel" type="Label" parent="GraphicsSettings/ContentContainer/LabelsContainer"]
+visible = false
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("7_rpfsf")
+theme_override_font_sizes/font_size = 35
+text = "Jakość"
+
+[node name="FullScreenLabel" type="Label" parent="GraphicsSettings/ContentContainer/LabelsContainer"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("7_rpfsf")
+theme_override_font_sizes/font_size = 35
+text = "Pelny ekran"
+
+[node name="MarginContainer" type="MarginContainer" parent="GraphicsSettings/ContentContainer"]
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 2
+
+[node name="ControlsContainer" type="VBoxContainer" parent="GraphicsSettings/ContentContainer/MarginContainer"]
+custom_minimum_size = Vector2(0, 100)
+layout_direction = 1
+layout_mode = 2
+size_flags_vertical = 0
+theme_override_constants/separation = 8
+
+[node name="ResolutionDropDown" type="OptionButton" parent="GraphicsSettings/ContentContainer/MarginContainer/ControlsContainer"]
+custom_minimum_size = Vector2(200, 40)
+layout_mode = 2
+theme = SubResource("Theme_3nsxv")
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_pressed_color = Color(1, 1, 1, 1)
+theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
+theme_override_colors/font_hover_pressed_color = Color(1, 1, 1, 1)
+theme_override_colors/font_focus_color = Color(1, 1, 1, 1)
+theme_override_constants/arrow_margin = 10
+theme_override_fonts/font = ExtResource("7_rpfsf")
+theme_override_font_sizes/font_size = 25
+theme_override_icons/arrow = ExtResource("20_n4k6d")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_neo6u")
+theme_override_styles/normal = ExtResource("18_5r0cc")
+theme_override_styles/hover = ExtResource("18_5r0cc")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_cgwwb")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_1wxpb")
+script = ExtResource("21_yiad6")
+
+[node name="QualityDropDown" type="OptionButton" parent="GraphicsSettings/ContentContainer/MarginContainer/ControlsContainer"]
+visible = false
+custom_minimum_size = Vector2(150, 50)
+layout_mode = 2
+
+[node name="CheckBox" type="CheckBox" parent="GraphicsSettings/ContentContainer/MarginContainer/ControlsContainer" groups=["Button"]]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+theme_override_icons/checked = ExtResource("15_clrad")
+theme_override_icons/unchecked = ExtResource("15_sch2t")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_c5uev")
+
+[node name="Back" type="Node2D" parent="." groups=["Button"]]
+visible = false
+position = Vector2(208, -266)
+scale = Vector2(0.7, 0.7)
+script = ExtResource("9_2u8pj")
+metadata/_edit_group_ = true
+
+[node name="BackButton" type="TextureButton" parent="Back"]
+offset_left = -2.0
+offset_top = 546.0
+offset_right = 104.0
+offset_bottom = 646.0
+texture_normal = ExtResource("3_eqj71")
+texture_pressed = ExtResource("3_eqj71")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="Icon" type="Sprite2D" parent="Back"]
+position = Vector2(51, 595)
+scale = Vector2(0.124325, 0.124325)
+texture = ExtResource("6_u5sf3")
+
+[node name="SavePopUp" type="Node2D" parent="."]
+visible = false
+position = Vector2(399, 283)
+script = ExtResource("10_0gr64")
+
+[node name="Sprite2D" type="Sprite2D" parent="SavePopUp"]
+modulate = Color(0.921569, 0.768627, 0.686275, 1)
+position = Vector2(183.25, 86.75)
+scale = Vector2(367.5, 174.5)
+texture = SubResource("CanvasTexture_a5un4")
+
+[node name="Frames" type="Node2D" parent="SavePopUp"]
+
+[node name="Sprite2D2" type="Sprite2D" parent="SavePopUp/Frames"]
+modulate = Color(0.756863, 0.596078, 0.698039, 1)
+position = Vector2(15.125, 85)
+scale = Vector2(6.25, 146)
+texture = SubResource("CanvasTexture_hwvr2")
+
+[node name="Sprite2D3" type="Sprite2D" parent="SavePopUp/Frames"]
+modulate = Color(0.756863, 0.596078, 0.698039, 1)
+position = Vector2(182.555, 15.1255)
+rotation = 1.5708
+scale = Vector2(6.25, 340.376)
+texture = SubResource("CanvasTexture_hwvr2")
+
+[node name="Sprite2D4" type="Sprite2D" parent="SavePopUp/Frames"]
+modulate = Color(0.756863, 0.596078, 0.698039, 1)
+position = Vector2(350, 85)
+scale = Vector2(6.25, 146)
+texture = SubResource("CanvasTexture_hwvr2")
+
+[node name="Sprite2D5" type="Sprite2D" parent="SavePopUp/Frames"]
+modulate = Color(0.756863, 0.596078, 0.698039, 1)
+position = Vector2(182.555, 159)
+rotation = 1.5708
+scale = Vector2(6.25, 340.376)
+texture = SubResource("CanvasTexture_hwvr2")
+
+[node name="Label" type="Label" parent="SavePopUp"]
+offset_left = 18.0
+offset_top = 30.0
+offset_right = 347.0
+offset_bottom = 99.0
+theme_override_fonts/font = ExtResource("7_rpfsf")
+theme_override_font_sizes/font_size = 30
+text = "Chcesz zapisac zmiany?"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="SavePopUp"]
+offset_left = 18.0
+offset_top = 113.0
+offset_right = 347.0
+offset_bottom = 146.0
+theme_override_constants/separation = 15
+alignment = 1
+
+[node name="YesButton" type="Button" parent="SavePopUp/HBoxContainer" groups=["Button"]]
+custom_minimum_size = Vector2(75, 30)
+layout_mode = 2
+theme_override_styles/normal = ExtResource("7_wasfa")
+theme_override_styles/hover = ExtResource("7_wasfa")
+theme_override_styles/pressed = ExtResource("7_wasfa")
+theme_override_styles/disabled = ExtResource("7_wasfa")
+theme_override_styles/focus = ExtResource("7_wasfa")
+script = ExtResource("8_w853d")
+
+[node name="Label" type="Label" parent="SavePopUp/HBoxContainer/YesButton"]
+layout_mode = 0
+offset_right = 76.0
+offset_bottom = 34.0
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.6)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_fonts/font = ExtResource("7_rpfsf")
+theme_override_font_sizes/font_size = 20
+text = "Tak"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="NoButton" type="Button" parent="SavePopUp/HBoxContainer" groups=["Button"]]
+custom_minimum_size = Vector2(75, 30)
+layout_mode = 2
+theme_override_styles/normal = ExtResource("7_wasfa")
+theme_override_styles/hover = ExtResource("7_wasfa")
+theme_override_styles/pressed = ExtResource("7_wasfa")
+theme_override_styles/disabled = ExtResource("7_wasfa")
+theme_override_styles/focus = ExtResource("7_wasfa")
+script = ExtResource("8_w853d")
+
+[node name="Label" type="Label" parent="SavePopUp/HBoxContainer/NoButton"]
+layout_mode = 0
+offset_right = 76.0
+offset_bottom = 35.0
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.6)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_fonts/font = ExtResource("7_rpfsf")
+theme_override_font_sizes/font_size = 20
+text = "NIe"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Cancel" type="Button" parent="SavePopUp/HBoxContainer" groups=["Button"]]
+custom_minimum_size = Vector2(110, 30)
+layout_mode = 2
+theme_override_styles/normal = ExtResource("7_wasfa")
+theme_override_styles/hover = ExtResource("7_wasfa")
+theme_override_styles/pressed = ExtResource("7_wasfa")
+theme_override_styles/disabled = ExtResource("7_wasfa")
+theme_override_styles/focus = ExtResource("7_wasfa")
+script = ExtResource("8_w853d")
+
+[node name="Label" type="Label" parent="SavePopUp/HBoxContainer/Cancel"]
+layout_mode = 0
+offset_right = 111.0
+offset_bottom = 33.0
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.6)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_fonts/font = ExtResource("7_rpfsf")
+theme_override_font_sizes/font_size = 20
+text = "Anuluj"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[connection signal="pressed" from="MainNode/VBoxContainer/Audio" to="." method="_on_audio_pressed"]
+[connection signal="pressed" from="MainNode/VBoxContainer/Graphics" to="." method="_on_graphics_pressed"]
+[connection signal="focus_exited" from="AudioSettings/ContentContainer/SliderContainer/MasterSlider" to="AudioSettings" method="_on_master_slider_focus_exited"]
+[connection signal="mouse_exited" from="AudioSettings/ContentContainer/SliderContainer/MasterSlider" to="AudioSettings" method="_on_slider_mouse_exited"]
+[connection signal="value_changed" from="AudioSettings/ContentContainer/SliderContainer/MasterSlider" to="AudioSettings" method="_on_slider_value_changed" binds= [0]]
+[connection signal="mouse_exited" from="AudioSettings/ContentContainer/SliderContainer/MusicSlider" to="AudioSettings" method="_on_slider_mouse_exited"]
+[connection signal="value_changed" from="AudioSettings/ContentContainer/SliderContainer/MusicSlider" to="AudioSettings" method="_on_slider_value_changed" binds= [1]]
+[connection signal="mouse_exited" from="AudioSettings/ContentContainer/SliderContainer/SFXSlider" to="AudioSettings" method="_on_slider_mouse_exited"]
+[connection signal="value_changed" from="AudioSettings/ContentContainer/SliderContainer/SFXSlider" to="AudioSettings" method="_on_slider_value_changed" binds= [2]]
+[connection signal="toggled" from="AudioSettings/ContentContainer/CheckboxContainer/MasterCheckBox" to="AudioSettings" method="_on_check_box_toggled" binds= [0]]
+[connection signal="toggled" from="AudioSettings/ContentContainer/CheckboxContainer/MusicCheckBox" to="AudioSettings" method="_on_check_box_toggled" binds= [1]]
+[connection signal="toggled" from="AudioSettings/ContentContainer/CheckboxContainer/SFXCheckBox" to="AudioSettings" method="_on_check_box_toggled" binds= [2]]
+[connection signal="item_selected" from="GraphicsSettings/ContentContainer/MarginContainer/ControlsContainer/ResolutionDropDown" to="GraphicsSettings" method="_on_resolution_drop_down_item_selected"]
+[connection signal="pressed" from="GraphicsSettings/ContentContainer/MarginContainer/ControlsContainer/ResolutionDropDown" to="GraphicsSettings/ContentContainer/MarginContainer/ControlsContainer/ResolutionDropDown" method="_on_pressed"]
+[connection signal="toggled" from="GraphicsSettings/ContentContainer/MarginContainer/ControlsContainer/CheckBox" to="GraphicsSettings" method="_on_check_box_toggled"]
+[connection signal="mouse_entered" from="Back/BackButton" to="Back" method="_on_back_button_mouse_entered"]
+[connection signal="mouse_exited" from="Back/BackButton" to="Back" method="_on_back_button_mouse_exited"]
+[connection signal="pressed" from="Back/BackButton" to="Back" method="_on_back_button_pressed"]
+[connection signal="pressed" from="SavePopUp/HBoxContainer/YesButton" to="SavePopUp" method="_on_yes_button_pressed"]
+[connection signal="pressed" from="SavePopUp/HBoxContainer/NoButton" to="SavePopUp" method="_on_no_button_pressed"]
+[connection signal="pressed" from="SavePopUp/HBoxContainer/Cancel" to="SavePopUp" method="_on_cancel_pressed"]

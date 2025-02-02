@@ -1,7 +1,7 @@
-extends Node2D
+extends Control
 
 enum AchievementsCat {cat_jump, snack_navigator, fruit_catcher, pet_code, eating, playing_games,
-scratching, sleeping, cleaning}
+scratching, sleeping, cleaning, ochujchodzi}
 
 enum AchievementNumber {first, second, third, fourth, fifth}
 

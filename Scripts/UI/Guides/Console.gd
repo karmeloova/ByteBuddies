@@ -30,3 +30,8 @@ func _on_set_text_using_while_loop(max_number : int, text_to_set : String) :
 		await get_tree().create_timer(1.0).timeout
 	
 	SignalManager.set_text_edit_editable.emit()
+
+func _input(event):
+	if(Input.is_key_pressed(KEY_ESCAPE)) :
+		$"..".visible = !$"..".visible
+		SignalManager.show_test_node.emit()

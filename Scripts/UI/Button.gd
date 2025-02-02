@@ -2,6 +2,7 @@ extends Node
 
 @export var template : Node2D
 @export var panel : Node2D
+@export var panels_node : Node2D
 @onready var buttons_panel = $".."
 
 func _on_button_mouse_entered():
@@ -14,15 +15,12 @@ func _on_button_mouse_exited():
 	$Icon.modulate = Color("ffffff")
 
 func _on_button_pressed():
+	for p in panels_node.get_children() :
+		if(p.name != "NextLevelsPopUp") :
+			p.visible = false
+	
 	if(panel != null and template != null and name != "Exit") :
 		template.visible = true
 		panel.visible = true
-		change_disable_another_buttons()
-
-func change_disable_another_buttons():
-	for i in buttons_panel.get_children() :
-		if(i.has_node("Button")) :
-			i.get_node("Button").disabled = true
-		else :
-			if(i.has_node("Collision")) :
-				i.get_node("Collision").disabled = true
+		template.get_node("Exit").visible = true
+		template.get_node("Back").visible = false

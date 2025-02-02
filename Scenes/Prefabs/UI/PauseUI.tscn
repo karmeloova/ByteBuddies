@@ -1,11 +1,14 @@
-[gd_scene load_steps=7 format=3 uid="uid://cyn346855vab8"]
+[gd_scene load_steps=8 format=3 uid="uid://cyn346855vab8"]
 
 [ext_resource type="Texture2D" uid="uid://2rpmid1gnwur" path="res://Images/UI/Buttons/RoundButton.png" id="1_2whgx"]
-[ext_resource type="Texture2D" uid="uid://dl8dw08og2gr8" path="res://Images/Backgrounds/Placeholder_backgorund_minigames.jpg" id="1_28ehc"]
 [ext_resource type="Script" path="res://Scenes/Prefabs/UI/PauseUI.gd" id="1_h2l0n"]
 [ext_resource type="Texture2D" uid="uid://dh1afs752fy4n" path="res://Images/UI/Buttons/Pause.png" id="2_jmlmm"]
 [ext_resource type="Texture2D" uid="uid://bowy12qgsf8t3" path="res://Images/UI/Buttons/Button.png" id="4_wwndn"]
 [ext_resource type="FontFile" uid="uid://ccgpsjqwwow8o" path="res://Fonts/Bubblegum.ttf" id="5_lavis"]
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_7jdyl"]
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_ofcb1"]
 
 [node name="Pause" type="Node2D"]
 process_mode = 3
@@ -31,11 +34,40 @@ texture = ExtResource("2_jmlmm")
 [node name="PauseMenu" type="Node2D" parent="."]
 visible = false
 
-[node name="Menu" type="Sprite2D" parent="PauseMenu"]
-modulate = Color(1, 1, 1, 0.392157)
-position = Vector2(570.74, 324.563)
-scale = Vector2(0.393849, 0.720663)
-texture = ExtResource("1_28ehc")
+[node name="PanelTemplate" type="Node2D" parent="PauseMenu"]
+position = Vector2(0, -54)
+
+[node name="Background" type="Sprite2D" parent="PauseMenu/PanelTemplate"]
+modulate = Color(0.968627, 0.8, 0.815686, 1)
+position = Vector2(569, 376)
+scale = Vector2(352, 416)
+texture = SubResource("CanvasTexture_7jdyl")
+
+[node name="Sprite2D" type="Sprite2D" parent="PauseMenu/PanelTemplate"]
+modulate = Color(0.756863, 0.596078, 0.698039, 1)
+position = Vector2(422, 379)
+scale = Vector2(6.25, 354)
+texture = SubResource("CanvasTexture_ofcb1")
+
+[node name="Sprite2D2" type="Sprite2D" parent="PauseMenu/PanelTemplate"]
+modulate = Color(0.756863, 0.596078, 0.698039, 1)
+position = Vector2(567.237, 199)
+rotation = 1.5708
+scale = Vector2(6.25, 296.738)
+texture = SubResource("CanvasTexture_ofcb1")
+
+[node name="Sprite2D3" type="Sprite2D" parent="PauseMenu/PanelTemplate"]
+modulate = Color(0.756863, 0.596078, 0.698039, 1)
+position = Vector2(718, 377.75)
+scale = Vector2(6.25, 364.5)
+texture = SubResource("CanvasTexture_ofcb1")
+
+[node name="Sprite2D4" type="Sprite2D" parent="PauseMenu/PanelTemplate"]
+modulate = Color(0.756863, 0.596078, 0.698039, 1)
+position = Vector2(570.116, 558)
+rotation = 1.5708
+scale = Vector2(6.25, 302.232)
+texture = SubResource("CanvasTexture_ofcb1")
 
 [node name="BackButton" type="TextureButton" parent="PauseMenu"]
 offset_left = 457.74

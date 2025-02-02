@@ -1,8 +1,11 @@
-[gd_scene load_steps=4 format=3 uid="uid://k2t0np43srls"]
+[gd_scene load_steps=5 format=3 uid="uid://k2t0np43srls"]
 
 [ext_resource type="Script" path="res://Scenes/Prefabs/LevelPrefab.gd" id="1_cat67"]
-[ext_resource type="Texture2D" uid="uid://dl8dw08og2gr8" path="res://Images/Backgrounds/Placeholder_backgorund_minigames.jpg" id="6_6we7l"]
 [ext_resource type="FontFile" uid="uid://ccgpsjqwwow8o" path="res://Fonts/Bubblegum.ttf" id="7_aeqlx"]
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_5aid1"]
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_5qtmc"]
 
 [node name="LevelPrefab" type="Node2D" node_paths=PackedStringArray("exp_bar", "level", "exp")]
 script = ExtResource("1_cat67")
@@ -10,19 +13,59 @@ exp_bar = NodePath("Exp")
 level = NodePath("Level")
 exp = NodePath("CurrentExp")
 
+[node name="Frame" type="Node2D" parent="."]
+position = Vector2(0, 11)
+
+[node name="Bottom" type="TextureRect" parent="Frame"]
+modulate = Color(0.756863, 0.596078, 0.698039, 1)
+offset_left = -1.0
+offset_top = 124.0
+offset_bottom = 125.0
+scale = Vector2(610, 8)
+texture = SubResource("CanvasTexture_5aid1")
+
+[node name="Left" type="TextureRect" parent="Frame"]
+modulate = Color(0.756863, 0.596078, 0.698039, 1)
+offset_left = 6.0
+offset_top = 66.0
+offset_right = 7.0
+offset_bottom = 67.0
+rotation = 1.5708
+scale = Vector2(66, 8)
+texture = SubResource("CanvasTexture_5aid1")
+
+[node name="Right" type="TextureRect" parent="Frame"]
+modulate = Color(0.756863, 0.596078, 0.698039, 1)
+offset_left = 614.0
+offset_top = 66.0
+offset_right = 615.0
+offset_bottom = 67.0
+rotation = 1.5708
+scale = Vector2(66, 8)
+texture = SubResource("CanvasTexture_5aid1")
+
+[node name="Top" type="TextureRect" parent="Frame"]
+modulate = Color(0.756863, 0.596078, 0.698039, 1)
+offset_left = 1.0
+offset_top = 66.0
+offset_right = 2.0
+offset_bottom = 67.0
+scale = Vector2(610, 8)
+texture = SubResource("CanvasTexture_5aid1")
+
 [node name="Exp" type="TextureProgressBar" parent="."]
-modulate = Color(0.578851, 0.429316, 0.41306, 1)
-offset_left = 7.0
-offset_top = 75.0
-offset_right = 524.0
-offset_bottom = 102.0
+modulate = Color(0.894118, 0.745098, 0.666667, 1)
+offset_left = 6.0
+offset_top = 85.0
+offset_right = 606.0
+offset_bottom = 135.0
 nine_patch_stretch = true
-texture_progress = ExtResource("6_6we7l")
+texture_progress = SubResource("CanvasTexture_5qtmc")
 
 [node name="Level" type="Label" parent="."]
-offset_left = 151.0
+offset_left = -1.0
 offset_top = 5.0
-offset_right = 390.0
+offset_right = 614.0
 offset_bottom = 80.0
 theme_override_fonts/font = ExtResource("7_aeqlx")
 theme_override_font_sizes/font_size = 60
@@ -30,10 +73,10 @@ text = "AA"
 horizontal_alignment = 1
 
 [node name="CurrentExp" type="Label" parent="."]
-offset_left = 293.0
-offset_top = 118.0
-offset_right = 532.0
-offset_bottom = 164.0
+offset_left = 376.0
+offset_top = 152.0
+offset_right = 615.0
+offset_bottom = 198.0
 theme_override_fonts/font = ExtResource("7_aeqlx")
 theme_override_font_sizes/font_size = 40
 text = "AAAAA"

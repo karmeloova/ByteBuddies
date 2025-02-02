@@ -10,7 +10,6 @@ func _on_lose_game() :
 	VariableManager.is_playing = false;
 	get_tree().paused = true
 	visible = true;
-	$LoseLabel.text = "You lose"
 	
 func _on_restart_button_pressed():
 	VariableManager.is_playing = true;
@@ -21,3 +20,15 @@ func _on_back_button_pressed():
 	VariableManager.is_playing = false;
 	get_tree().paused = false
 	get_tree().change_scene_to_file("res://Scenes/Rooms/MainRoom.tscn")
+
+func _on_back_button_mouse_entered():
+	$Back.modulate = Color("b2b2b2")
+
+func _on_back_button_mouse_exited():
+	$Back.modulate = Color("ffffff")
+
+func _on_restart_button_mouse_entered():
+	$RestartButton.modulate = Color("b2b2b2")
+
+func _on_restart_button_mouse_exited():
+	$RestartButton.modulate = Color("ffffff")
