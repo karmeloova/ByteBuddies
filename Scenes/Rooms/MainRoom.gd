@@ -4,7 +4,7 @@ var cat_name_instance
 
 func _ready():
 	SignalManager.play_music.emit(load("res://Audio/BackgroundMusic.mp3"))
-	if(VariableManager.first_start) :
+	if(VariableManager.cat_name.length() < 1) :
 		set_cat_name()
 		VariableManager.first_start = false
 	VariableManager.is_playing = false

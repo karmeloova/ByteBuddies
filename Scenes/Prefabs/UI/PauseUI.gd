@@ -54,3 +54,9 @@ func check_active_booster() :
 		booster_text = "Booster " + BoosterManager.active_booster.plan_name + " aktywny. Pozostalo " + str(BoosterManager.games_duration) + " gier (wliczajac te)."
 		$PauseMenu/BoosterGamesLeft.text = booster_text
 		$PauseMenu/BoosterGamesLeft.visible = true
+
+func _input(event):
+	if(Input.is_key_pressed(KEY_ESCAPE)) :
+		$PauseMenu.visible = !$PauseMenu.visible
+		get_tree().paused = !get_tree().paused
+		check_active_booster()

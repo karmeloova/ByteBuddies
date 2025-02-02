@@ -187,7 +187,7 @@ func _notification(what):
 		save("eating_achievementes", Achievements.eating)
 		save("playing_games_achievementes", Achievements.playing_games)
 		save("scratching_achievementes", Achievements.scratching)
-		save("sleeping_achievementes", Achievements.scratching)
+		save("sleeping_achievementes", Achievements.sleeping)
 		save("cleaning_achievementes", Achievements.cleaning)
 		save("first_start", VariableManager.first_start)
 		save("cat_name", VariableManager.cat_name)

@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://bpck4nf2x81gt"]
+[gd_scene load_steps=13 format=3 uid="uid://bpck4nf2x81gt"]
 
 [ext_resource type="Texture2D" uid="uid://dl8dw08og2gr8" path="res://Images/Backgrounds/Placeholder_backgorund_minigames.jpg" id="1_g5r1r"]
 [ext_resource type="Script" path="res://Scenes/Prefabs/UI/MinigamesPanel.gd" id="1_hj3fy"]
@@ -11,23 +11,57 @@
 [ext_resource type="Texture2D" uid="uid://6adv5bnfl4ff" path="res://Images/UI/Buttons/Back.png" id="5_eyy1f"]
 [ext_resource type="Script" path="res://Scenes/Prefabs/UI/HowToPlay.gd" id="10_g1eg1"]
 
+[sub_resource type="CanvasTexture" id="CanvasTexture_x3egb"]
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_aijda"]
+
 [node name="MinigamesPanel" type="Node2D"]
 script = ExtResource("1_hj3fy")
 
 [node name="GameBackgorund" type="Sprite2D" parent="."]
-modulate = Color(0.32549, 0.568627, 0.447059, 1)
-position = Vector2(583.749, 330.5)
-scale = Vector2(1.59796, 1.44694)
+modulate = Color(0.756863, 0.596078, 0.698039, 1)
+position = Vector2(583.749, 335)
+scale = Vector2(1.59796, 1.42857)
 texture = ExtResource("1_g5r1r")
 
-[node name="Background" type="Sprite2D" parent="."]
-modulate = Color(1, 1, 1, 0.258824)
-position = Vector2(584, 319)
-texture = ExtResource("1_g5r1r")
+[node name="PanelTemplate" type="Node2D" parent="."]
+position = Vector2(0, -54)
+
+[node name="Background" type="Sprite2D" parent="PanelTemplate"]
+modulate = Color(0.968627, 0.8, 0.815686, 1)
+position = Vector2(584, 376.5)
+scale = Vector2(750, 517)
+texture = SubResource("CanvasTexture_x3egb")
+
+[node name="Sprite2D" type="Sprite2D" parent="PanelTemplate"]
+modulate = Color(0.756863, 0.596078, 0.698039, 1)
+position = Vector2(243, 382.438)
+scale = Vector2(6.25, 451.125)
+texture = SubResource("CanvasTexture_aijda")
+
+[node name="Sprite2D2" type="Sprite2D" parent="PanelTemplate"]
+modulate = Color(0.756863, 0.596078, 0.698039, 1)
+position = Vector2(588.56, 150)
+rotation = 1.5708
+scale = Vector2(6.25, 680.744)
+texture = SubResource("CanvasTexture_aijda")
+
+[node name="Sprite2D3" type="Sprite2D" parent="PanelTemplate"]
+modulate = Color(0.756863, 0.596078, 0.698039, 1)
+position = Vector2(926, 377.438)
+scale = Vector2(6.25, 461.125)
+texture = SubResource("CanvasTexture_aijda")
+
+[node name="Sprite2D4" type="Sprite2D" parent="PanelTemplate"]
+modulate = Color(0.756863, 0.596078, 0.698039, 1)
+position = Vector2(584.793, 605)
+rotation = 1.5708
+scale = Vector2(6.25, 688.741)
+texture = SubResource("CanvasTexture_aijda")
 
 [node name="Back" type="Node2D" parent="."]
 process_mode = 3
-position = Vector2(220, -305)
+position = Vector2(209, -318)
 scale = Vector2(0.7, 0.7)
 script = ExtResource("3_5cpqd")
 metadata/_edit_group_ = true
@@ -62,9 +96,9 @@ vertical_alignment = 1
 
 [node name="Record" type="Label" parent="Panel"]
 offset_left = 215.0
-offset_top = 186.0
+offset_top = 200.0
 offset_right = 950.0
-offset_bottom = 280.0
+offset_bottom = 294.0
 theme_override_fonts/font = ExtResource("2_a4mhf")
 theme_override_font_sizes/font_size = 40
 text = "Record"
@@ -74,9 +108,9 @@ vertical_alignment = 1
 [node name="StartButton" type="TextureButton" parent="Panel"]
 process_mode = 3
 offset_left = 448.0
-offset_top = 277.0
+offset_top = 301.0
 offset_right = 711.0
-offset_bottom = 363.0
+offset_bottom = 387.0
 texture_normal = ExtResource("3_jssi5")
 ignore_texture_size = true
 stretch_mode = 0
@@ -100,9 +134,9 @@ vertical_alignment = 1
 [node name="HowToPlayButton" type="TextureButton" parent="Panel"]
 process_mode = 3
 offset_left = 448.0
-offset_top = 357.0
+offset_top = 381.0
 offset_right = 711.0
-offset_bottom = 443.0
+offset_bottom = 467.0
 texture_normal = ExtResource("3_jssi5")
 ignore_texture_size = true
 stretch_mode = 0

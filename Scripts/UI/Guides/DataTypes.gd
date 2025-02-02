@@ -7,18 +7,22 @@ var is_good
 var code_to_set : String
 var console_text_to_set : String
 
+func _ready():
+	SignalManager.show_test_node.connect(_on_show_test_node)
+	SignalManager.hide_test_node.connect(_on_hide_test_node)
+
 func _input(event):
 	if($".".visible == true) :
 		if(Input.is_key_pressed(KEY_ENTER)) :
 			is_enter = true
-			if($var.text.length() > 0) : 
-				current_text = $var.text
+			if($TestNode/var.text.length() > 0) : 
+				current_text = $TestNode/var.text
 				identify_type()
 		else : is_enter = false
 
 func _on_var_text_changed():
 	if(is_enter) :
-		$var.text = ""
+		$TestNode/var.text = ""
 	
 func identify_type():
 	is_good = false
@@ -59,10 +63,22 @@ func set_code_text() :
 	code_to_set += "x = " + str(current_text) + "\n"
 	code_to_set += "print(\"Wartość x: \", x)" + "\n"
 	code_to_set += "print(\"Typ x: \", type(x))"
-	$Code.text = code_to_set
+	$TestNode/Code.text = code_to_set
 
 func set_console_text() :
 	console_text_to_set = ""
 	console_text_to_set += "Wartość x: " + current_text + "\n"
 	console_text_to_set += "Typ x: " + identified_type
 	SignalManager.set_console_text.emit(console_text_to_set)
+
+func _on_show_test_node() :
+	if($".".visible==true) :
+		$TestNode.visible = !$TestNode.visible 
+	if(!$TestNode.visible) :
+		$Tutorial.size.y = 397
+	else :
+		$Tutorial.size.y = 147
+
+func _on_hide_test_node() :
+	$TestNode.visible = false
+	$Tutorial.size.y = 397

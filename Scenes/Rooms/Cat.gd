@@ -19,4 +19,4 @@ func _on_eat_end() :
 	tween = self.create_tween()
 	tween.set_parallel()
 	tween.tween_property(self, "scale", Vector2(1, 1), 3)
-	tween.tween_property(self, "position", Vector2(590, 320), 3)
+	tween.tween_property(self, "position", Vector2(593, 408), 3)

@@ -1,11 +1,16 @@
-[gd_scene load_steps=6 format=3 uid="uid://doyyhye04gaml"]
+[gd_scene load_steps=9 format=3 uid="uid://doyyhye04gaml"]
 
 [ext_resource type="Script" path="res://Scripts/Minigames/WalkToTarget/Lose.gd" id="1_shpas"]
-[ext_resource type="Texture2D" uid="uid://dl8dw08og2gr8" path="res://Images/Backgrounds/Placeholder_backgorund_minigames.jpg" id="2_tji6x"]
+[ext_resource type="Texture2D" uid="uid://2rpmid1gnwur" path="res://Images/UI/Buttons/RoundButton.png" id="2_mi0mo"]
 [ext_resource type="FontFile" uid="uid://ccgpsjqwwow8o" path="res://Fonts/Bubblegum.ttf" id="3_adf35"]
+[ext_resource type="Texture2D" uid="uid://6adv5bnfl4ff" path="res://Images/UI/Buttons/Back.png" id="3_vriyc"]
 [ext_resource type="Texture2D" uid="uid://o332hh7r7y4y" path="res://Images/UI/Button.png" id="4_880pk"]
 
 [sub_resource type="CanvasTexture" id="CanvasTexture_r286d"]
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_rt1bn"]
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_ndkj7"]
 
 [node name="Lose" type="Node2D"]
 process_mode = 3
@@ -13,70 +18,110 @@ script = ExtResource("1_shpas")
 metadata/_edit_group_ = true
 
 [node name="Background" type="Sprite2D" parent="."]
-modulate = Color(0.32549, 0.568627, 0.447059, 1)
+modulate = Color(0.756863, 0.596078, 0.698039, 1)
 position = Vector2(581.989, 335.512)
 rotation = 3.14159
 scale = Vector2(1162.98, -672.024)
 texture = SubResource("CanvasTexture_r286d")
 
-[node name="BackgroundUI" type="Sprite2D" parent="."]
-modulate = Color(0.501961, 0.678431, 0.588235, 1)
-position = Vector2(584, 319)
-texture = ExtResource("2_tji6x")
+[node name="PanelTemplate" type="Node2D" parent="."]
+position = Vector2(0, -54)
+
+[node name="Background" type="Sprite2D" parent="PanelTemplate"]
+modulate = Color(0.968627, 0.8, 0.815686, 1)
+position = Vector2(584, 376.5)
+scale = Vector2(750, 517)
+texture = SubResource("CanvasTexture_rt1bn")
+
+[node name="Sprite2D" type="Sprite2D" parent="PanelTemplate"]
+modulate = Color(0.756863, 0.596078, 0.698039, 1)
+position = Vector2(243, 382.438)
+scale = Vector2(6.25, 451.125)
+texture = SubResource("CanvasTexture_ndkj7")
+
+[node name="Sprite2D2" type="Sprite2D" parent="PanelTemplate"]
+modulate = Color(0.756863, 0.596078, 0.698039, 1)
+position = Vector2(588.56, 150)
+rotation = 1.5708
+scale = Vector2(6.25, 680.744)
+texture = SubResource("CanvasTexture_ndkj7")
+
+[node name="Sprite2D3" type="Sprite2D" parent="PanelTemplate"]
+modulate = Color(0.756863, 0.596078, 0.698039, 1)
+position = Vector2(926, 377.438)
+scale = Vector2(6.25, 461.125)
+texture = SubResource("CanvasTexture_ndkj7")
+
+[node name="Sprite2D4" type="Sprite2D" parent="PanelTemplate"]
+modulate = Color(0.756863, 0.596078, 0.698039, 1)
+position = Vector2(584.793, 605)
+rotation = 1.5708
+scale = Vector2(6.25, 688.741)
+texture = SubResource("CanvasTexture_ndkj7")
+
+[node name="Back" type="Node2D" parent="."]
+process_mode = 3
+position = Vector2(209, -318)
+scale = Vector2(0.7, 0.7)
+metadata/_edit_group_ = true
+
+[node name="BackButton" type="TextureButton" parent="Back"]
+offset_left = -2.0
+offset_top = 546.0
+offset_right = 104.0
+offset_bottom = 646.0
+texture_normal = ExtResource("2_mi0mo")
+texture_pressed = ExtResource("2_mi0mo")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="Icon" type="Sprite2D" parent="Back"]
+position = Vector2(51, 595)
+scale = Vector2(0.124325, 0.124325)
+texture = ExtResource("3_vriyc")
 
 [node name="LoseLabel" type="Label" parent="."]
-offset_left = 210.0
+offset_left = 246.0
 offset_top = 109.0
-offset_right = 954.0
+offset_right = 923.0
 offset_bottom = 246.0
 theme_override_colors/font_outline_color = Color(0.490196, 0, 0, 1)
-theme_override_constants/outline_size = 7
 theme_override_fonts/font = ExtResource("3_adf35")
 theme_override_font_sizes/font_size = 70
 text = "Przegrales"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="RestartButton" type="TextureButton" parent="."]
+[node name="RestartButton" type="Node2D" parent="."]
+
+[node name="RestartButton" type="TextureButton" parent="RestartButton"]
 process_mode = 3
-offset_left = 418.0
+offset_left = 425.0
 offset_top = 246.0
-offset_right = 3468.0
-offset_bottom = 1226.0
+offset_right = 3351.0
+offset_bottom = 1186.0
 scale = Vector2(0.1, 0.1)
 texture_normal = ExtResource("4_880pk")
 ignore_texture_size = true
+stretch_mode = 0
 
-[node name="RestartButtonLabel" type="Label" parent="."]
-offset_left = 477.0
-offset_top = 277.0
-offset_right = 691.0
-offset_bottom = 326.0
+[node name="RestartButtonLabel" type="Label" parent="RestartButton"]
+offset_left = 429.0
+offset_top = 260.0
+offset_right = 714.0
+offset_bottom = 323.0
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.67451)
 theme_override_constants/shadow_offset_x = 3
 theme_override_constants/shadow_offset_y = 2
 theme_override_fonts/font = ExtResource("3_adf35")
 theme_override_font_sizes/font_size = 45
 text = "Restart"
+horizontal_alignment = 1
+vertical_alignment = 1
 
-[node name="BackButton" type="TextureButton" parent="."]
-process_mode = 3
-offset_left = 217.0
-offset_top = 458.0
-offset_right = 3267.0
-offset_bottom = 1438.0
-scale = Vector2(0.08, 0.1)
-texture_normal = ExtResource("4_880pk")
-ignore_texture_size = true
-
-[node name="RestartButtonLabel2" type="Label" parent="."]
-offset_left = 253.0
-offset_top = 487.0
-offset_right = 467.0
-offset_bottom = 536.0
-theme_override_fonts/font = ExtResource("3_adf35")
-theme_override_font_sizes/font_size = 45
-text = "Powrot"
-
-[connection signal="pressed" from="RestartButton" to="." method="_on_restart_button_pressed"]
-[connection signal="pressed" from="BackButton" to="." method="_on_back_button_pressed"]
+[connection signal="mouse_entered" from="Back/BackButton" to="." method="_on_back_button_mouse_entered"]
+[connection signal="mouse_exited" from="Back/BackButton" to="." method="_on_back_button_mouse_exited"]
+[connection signal="pressed" from="Back/BackButton" to="." method="_on_back_button_pressed"]
+[connection signal="mouse_entered" from="RestartButton/RestartButton" to="." method="_on_restart_button_mouse_entered"]
+[connection signal="mouse_exited" from="RestartButton/RestartButton" to="." method="_on_restart_button_mouse_exited"]
+[connection signal="pressed" from="RestartButton/RestartButton" to="." method="_on_restart_button_pressed"]

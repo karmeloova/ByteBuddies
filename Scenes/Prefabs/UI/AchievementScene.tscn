@@ -1,28 +1,61 @@
-[gd_scene load_steps=8 format=3 uid="uid://bw88wjxtv4ru8"]
+[gd_scene load_steps=9 format=3 uid="uid://bw88wjxtv4ru8"]
 
 [ext_resource type="Script" path="res://Scenes/Prefabs/UI/AchievementScene.gd" id="1_j568m"]
 [ext_resource type="FontFile" uid="uid://ccgpsjqwwow8o" path="res://Fonts/Bubblegum.ttf" id="1_paljv"]
-[ext_resource type="Texture2D" uid="uid://dl8dw08og2gr8" path="res://Images/Backgrounds/Placeholder_backgorund_minigames.jpg" id="2_ht7o6"]
 [ext_resource type="Texture2D" uid="uid://2rpmid1gnwur" path="res://Images/UI/Buttons/RoundButton.png" id="3_kbp3x"]
 [ext_resource type="Texture2D" uid="uid://dj5an2o6yuccm" path="res://Images/UI/Buttons/Exit.png" id="4_0uldr"]
 [ext_resource type="Texture2D" uid="uid://8td7rg4p53o3" path="res://Images/UI/Achievmentes/Playing_minigames.png" id="6_nu02i"]
 [ext_resource type="Texture2D" uid="uid://dw80yvjvyjm2e" path="res://Images/UI/Achievmentes/Ramka.png" id="7_0eyop"]
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_qeuli"]
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_3fmem"]
 
 [node name="AchievementScene" type="Node2D"]
 process_mode = 3
 z_index = 4096
 script = ExtResource("1_j568m")
 
-[node name="BackgroundUI" type="Sprite2D" parent="."]
-modulate = Color(0.501961, 0.678431, 0.588235, 1)
-position = Vector2(584, 319)
-texture = ExtResource("2_ht7o6")
+[node name="PanelTemplate" type="Node2D" parent="."]
+position = Vector2(0, -54)
+
+[node name="Background" type="Sprite2D" parent="PanelTemplate"]
+modulate = Color(0.968627, 0.8, 0.815686, 1)
+position = Vector2(584, 376.5)
+scale = Vector2(750, 517)
+texture = SubResource("CanvasTexture_qeuli")
+
+[node name="Sprite2D" type="Sprite2D" parent="PanelTemplate"]
+modulate = Color(0.756863, 0.596078, 0.698039, 1)
+position = Vector2(243, 382.438)
+scale = Vector2(6.25, 451.125)
+texture = SubResource("CanvasTexture_3fmem")
+
+[node name="Sprite2D2" type="Sprite2D" parent="PanelTemplate"]
+modulate = Color(0.756863, 0.596078, 0.698039, 1)
+position = Vector2(588.56, 150)
+rotation = 1.5708
+scale = Vector2(6.25, 680.744)
+texture = SubResource("CanvasTexture_3fmem")
+
+[node name="Sprite2D3" type="Sprite2D" parent="PanelTemplate"]
+modulate = Color(0.756863, 0.596078, 0.698039, 1)
+position = Vector2(926, 377.438)
+scale = Vector2(6.25, 461.125)
+texture = SubResource("CanvasTexture_3fmem")
+
+[node name="Sprite2D4" type="Sprite2D" parent="PanelTemplate"]
+modulate = Color(0.756863, 0.596078, 0.698039, 1)
+position = Vector2(584.793, 605)
+rotation = 1.5708
+scale = Vector2(6.25, 688.741)
+texture = SubResource("CanvasTexture_3fmem")
 
 [node name="AchievementText" type="Label" parent="."]
 offset_left = 218.0
-offset_top = 99.0
+offset_top = 133.0
 offset_right = 952.0
-offset_bottom = 231.0
+offset_bottom = 265.0
 theme_override_fonts/font = ExtResource("1_paljv")
 theme_override_font_sizes/font_size = 50
 text = "Odblokowales nowe osiagniecie!"
@@ -31,25 +64,25 @@ autowrap_mode = 2
 
 [node name="PrizeText" type="Label" parent="."]
 offset_left = 504.0
-offset_top = 428.0
+offset_top = 462.0
 offset_right = 654.0
-offset_bottom = 467.0
+offset_bottom = 501.0
 theme_override_fonts/font = ExtResource("1_paljv")
 theme_override_font_sizes/font_size = 30
 text = "Nagroda:"
 
 [node name="MoneyText" type="Label" parent="."]
 offset_left = 499.0
-offset_top = 459.0
+offset_top = 493.0
 offset_right = 649.0
-offset_bottom = 498.0
+offset_bottom = 532.0
 theme_override_fonts/font = ExtResource("1_paljv")
 theme_override_font_sizes/font_size = 30
 horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="Exit" type="Node2D" parent="."]
-position = Vector2(220, -306)
+position = Vector2(208, -321)
 scale = Vector2(0.7, 0.7)
 metadata/_edit_group_ = true
 
@@ -69,7 +102,7 @@ scale = Vector2(0.124325, 0.124325)
 texture = ExtResource("4_0uldr")
 
 [node name="AchievementImage" type="Node2D" parent="."]
-position = Vector2(539, 351)
+position = Vector2(539, 385)
 
 [node name="AchievementImage" type="Sprite2D" parent="AchievementImage"]
 position = Vector2(37.3333, -37)

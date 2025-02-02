@@ -2,6 +2,7 @@ extends Area2D
 var added_to_bowl : bool = false
 @export var fridge : Control
 @export var panel_template : Node2D
+@export var panels_node : Node2D
 
 func _ready():
 	fridge.visible = false;
@@ -15,10 +16,13 @@ func _on_mouse_exited():
 	modulate = Color("ffffff");
 
 func _on_input_event(viewport, event, shape_idx):
-	if(Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT) && panel_template.visible == false) : 
+	if(Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT)) : 
 		panel_template.visible = true
 		fridge.visible = true;
 		$"../../..".visible = false;
+		for p in panels_node.get_children() :
+			if(p.name != "NextLevelsPopUp") :
+				p.visible = false
 
 func _on_go_to_bowl() :
 	$Food.visible = true;

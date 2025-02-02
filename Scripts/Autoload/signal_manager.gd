@@ -91,6 +91,8 @@ signal play_sfx()
 signal save_settings(saving : bool)
 signal show_pop_up()
 signal hide_settings_panel()
+signal show_test_node()
+signal hide_test_node()
 
 #------------------ LEVEL -----------------------------------
 signal add_exp(value)
