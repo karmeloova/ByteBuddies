@@ -1,66 +1,58 @@
-[gd_scene load_steps=6 format=3 uid="uid://bf6baqi0v0mld"]
+[gd_scene load_steps=7 format=3 uid="uid://bf6baqi0v0mld"]
 
 [ext_resource type="Script" path="res://Scenes/Prefabs/UI/NextLevelPopUp.gd" id="1_l0o4g"]
 [ext_resource type="FontFile" uid="uid://ccgpsjqwwow8o" path="res://Fonts/Bubblegum.ttf" id="1_tlpdj"]
-[ext_resource type="Texture2D" uid="uid://dl8dw08og2gr8" path="res://Images/Backgrounds/Placeholder_backgorund_minigames.jpg" id="2_5dyco"]
 [ext_resource type="Texture2D" uid="uid://2rpmid1gnwur" path="res://Images/UI/Buttons/RoundButton.png" id="4_acmto"]
 [ext_resource type="Texture2D" uid="uid://dj5an2o6yuccm" path="res://Images/UI/Buttons/Exit.png" id="5_tjr38"]
 
+[sub_resource type="CanvasTexture" id="CanvasTexture_um6fo"]
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_1fsf2"]
+
 [node name="NextLevelPopUp" type="Node2D"]
+position = Vector2(169, 45)
 script = ExtResource("1_l0o4g")
-
-[node name="WinText" type="Label" parent="."]
-offset_left = 51.0
-offset_top = 48.0
-offset_right = 528.0
-offset_bottom = 127.0
-theme_override_fonts/font = ExtResource("1_tlpdj")
-theme_override_font_sizes/font_size = 35
-text = "Gratulacje, awansowales na poziom: "
-horizontal_alignment = 1
-autowrap_mode = 2
-
-[node name="LevelText" type="Label" parent="."]
-offset_left = 243.0
-offset_top = 143.0
-offset_right = 316.0
-offset_bottom = 223.0
-theme_override_colors/font_color = Color(1, 1, 1, 1)
-theme_override_fonts/font = ExtResource("1_tlpdj")
-theme_override_font_sizes/font_size = 90
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="PrizeText" type="Label" parent="."]
-offset_left = 207.0
-offset_top = 244.0
-offset_right = 365.0
-offset_bottom = 283.0
-theme_override_fonts/font = ExtResource("1_tlpdj")
-theme_override_font_sizes/font_size = 30
-text = "Nagroda:"
-
-[node name="Prize" type="Label" parent="."]
-offset_left = 188.0
-offset_top = 282.0
-offset_right = 372.0
-offset_bottom = 321.0
-theme_override_fonts/font = ExtResource("1_tlpdj")
-theme_override_font_sizes/font_size = 30
 
 [node name="PanelTemplate" type="Node2D" parent="."]
 
 [node name="Background" type="Sprite2D" parent="PanelTemplate"]
-modulate = Color(1, 1, 1, 0.392157)
-position = Vector2(283.875, 169.626)
-scale = Vector2(0.770408, 0.691324)
-texture = ExtResource("2_5dyco")
+modulate = Color(0.968627, 0.8, 0.815686, 1)
+position = Vector2(375, 258.5)
+scale = Vector2(750, 517)
+texture = SubResource("CanvasTexture_um6fo")
+
+[node name="Sprite2D" type="Sprite2D" parent="PanelTemplate"]
+modulate = Color(0.756863, 0.596078, 0.698039, 1)
+position = Vector2(34, 264.438)
+scale = Vector2(6.25, 451.125)
+texture = SubResource("CanvasTexture_1fsf2")
+
+[node name="Sprite2D2" type="Sprite2D" parent="PanelTemplate"]
+modulate = Color(0.756863, 0.596078, 0.698039, 1)
+position = Vector2(379.56, 32)
+rotation = 1.5708
+scale = Vector2(6.25, 680.744)
+texture = SubResource("CanvasTexture_1fsf2")
+
+[node name="Sprite2D3" type="Sprite2D" parent="PanelTemplate"]
+modulate = Color(0.756863, 0.596078, 0.698039, 1)
+position = Vector2(717, 259.438)
+scale = Vector2(6.25, 461.125)
+texture = SubResource("CanvasTexture_1fsf2")
+
+[node name="Sprite2D4" type="Sprite2D" parent="PanelTemplate"]
+modulate = Color(0.756863, 0.596078, 0.698039, 1)
+position = Vector2(375.793, 487)
+rotation = 1.5708
+scale = Vector2(6.25, 688.741)
+texture = SubResource("CanvasTexture_1fsf2")
 
 [node name="Exit" type="Node2D" parent="PanelTemplate"]
-position = Vector2(1, -271)
-scale = Vector2(0.5, 0.5)
+position = Vector2(-1, -384)
+scale = Vector2(0.7, 0.7)
+metadata/_edit_group_ = true
 
-[node name="Button" type="TextureButton" parent="PanelTemplate/Exit"]
+[node name="Button" type="TextureButton" parent="PanelTemplate/Exit" groups=["Button"]]
 offset_left = -2.0
 offset_top = 546.0
 offset_right = 104.0
@@ -74,6 +66,50 @@ stretch_mode = 0
 position = Vector2(51, 595)
 scale = Vector2(0.124325, 0.124325)
 texture = ExtResource("5_tjr38")
+
+[node name="WinText" type="Label" parent="."]
+offset_left = 38.0
+offset_top = 82.0
+offset_right = 713.0
+offset_bottom = 183.0
+theme_override_fonts/font = ExtResource("1_tlpdj")
+theme_override_font_sizes/font_size = 45
+text = "Gratulacje, awansowales na poziom: "
+horizontal_alignment = 1
+autowrap_mode = 2
+
+[node name="LevelText" type="Label" parent="."]
+offset_left = 37.0
+offset_top = 209.0
+offset_right = 714.0
+offset_bottom = 306.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("1_tlpdj")
+theme_override_font_sizes/font_size = 90
+text = "3"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="PrizeText" type="Label" parent="."]
+offset_left = 37.0
+offset_top = 332.0
+offset_right = 714.0
+offset_bottom = 371.0
+theme_override_fonts/font = ExtResource("1_tlpdj")
+theme_override_font_sizes/font_size = 30
+text = "Nagroda:"
+horizontal_alignment = 1
+
+[node name="Prize" type="Label" parent="."]
+offset_left = 37.0
+offset_top = 368.0
+offset_right = 714.0
+offset_bottom = 407.0
+theme_override_fonts/font = ExtResource("1_tlpdj")
+theme_override_font_sizes/font_size = 30
+text = "1234"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [connection signal="mouse_entered" from="PanelTemplate/Exit/Button" to="." method="_on_button_mouse_entered"]
 [connection signal="mouse_exited" from="PanelTemplate/Exit/Button" to="." method="_on_button_mouse_exited"]

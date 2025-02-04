@@ -23,3 +23,9 @@ enum BoosterCategory {
 	exp,
 	coins
 }
+
+enum StorageItems {
+	food,
+	codeparts,
+	plans
+}

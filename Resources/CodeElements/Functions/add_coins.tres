@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="CodeElement" load_steps=2 format=3 uid="uid://dkwtvgh056h42"]
+
+[ext_resource type="Script" path="res://Scripts/Resources/CodeElementRes.gd" id="1_6wbon"]
+
+[resource]
+script = ExtResource("1_6wbon")
+code_element_name = "add_coins"
+res_name = "add_coins_res"
+code_element_description = "Funkcja, która dodaje łapki (monety) zdobyte w mini-grze do Twoich obecnych łapek (monet)"
+category = 5
+price = 2

@@ -39,12 +39,20 @@ func _on_add_coin(value) :
 	$Money.text = "Kasa: " + str(money)
 
 func _on_save_data() :
-	VariableManager.coins += money
+	add_coins()
 	SignalManager.add_exp.emit(score/5)
 
 func _on_lose_game() :
+	SignalManager.set_lose_score.emit(score)
 	if(score > VariableManager.snack_navigator_high_score) :
 		VariableManager.snack_navigator_high_score = score
-	VariableManager.coins += money
+	add_coins()
 	SignalManager.unlock_achievement.emit(score, "snack_navigator", null)
 	SignalManager.add_exp.emit(score/5)
+
+func add_coins() :
+	if(BoosterManager.active_booster != null && BoosterManager.active_booster.booster_category == MyEnums.BoosterCategory.coins && VariableManager.is_playing) :
+		VariableManager.coins += money*BoosterManager.multiplier
+		SignalManager.decrease_booster_uses.emit()
+	else :
+		VariableManager.coins += money

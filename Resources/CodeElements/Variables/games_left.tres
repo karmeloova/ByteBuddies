@@ -5,6 +5,7 @@
 [resource]
 script = ExtResource("1_uopvs")
 code_element_name = "games_left"
+res_name = "games_left_res"
 code_element_description = "Zmienna mówiąca o tym przez ile gier będzie działać booster. Np. games_left = 5 - oznacza, że booster będzie działać przez 5 następnych rozgrywek z mini-gry, co każdą rozgrywkę jego wartość musi zmniejszać się o 1."
 category = 0
 price = 1

@@ -19,13 +19,13 @@ var ins_counter = 0
 var current_field = 0
 var iterator = 4
 var user_code_elements : Array[String]
-var check_click_counter = 0
+var lives = 3
 
 var field_colors = {
-	MyEnums.CodeElementsCategories.variable : Color("8BA17D"),
+	MyEnums.CodeElementsCategories.variable : Color("d0ae9b"),
 	MyEnums.CodeElementsCategories.loop : Color("D9A679"),
-	MyEnums.CodeElementsCategories.condition : Color("BDA0C2"),
-	MyEnums.CodeElementsCategories.operator : Color("A6978F"),
+	MyEnums.CodeElementsCategories.condition : Color("D9A679"),
+	MyEnums.CodeElementsCategories.operator : Color("c198b2"),
 	MyEnums.CodeElementsCategories.function : Color("A3BEC9"),
 	MyEnums.CodeElementsCategories.number : Color("C7B476")
 }
@@ -33,6 +33,8 @@ var field_colors = {
 func _ready():
 	SignalManager.start_build_booster.connect(_on_start_build_booster)
 	SignalManager.check_if_is_good.connect(_on_check_if_is_good)
+	SignalManager.loseGame.connect(_on_lose_game)
+	load_booster_lives()
 
 func _on_start_build_booster(plan : Plan) :
 	$".".visible = true
@@ -42,6 +44,7 @@ func _on_start_build_booster(plan : Plan) :
 	
 	set_booster_template()
 	set_booster_instruction()
+	save_booster_build()
 
 func set_booster_template() :
 	for i in range(0, instruction_tab.size()) :
@@ -73,25 +76,31 @@ func set_booster_template() :
 func _on_button_pressed():
 	user_code_elements.clear()
 	check_counter = 0
-	check_click_counter += 1
+	is_booster_correct = true
 	$BoosterConsole.text = ""
 	SignalManager.check_booster_build.emit()
 
 func _on_check_if_is_good(is_good : bool, code : String) :
 	check_counter += 1
 	user_code_elements.append(code)
-	
 	if(is_booster_correct) : is_booster_correct = is_good
+	print(is_booster_correct)
 	if(check_counter == ins_counter) : 
 		if(is_booster_correct) : 
 			iterator = current_booster.games_duration-1
 			$UseButton.visible = true
 			booster_is_good()
 		else : 
+			if(lives > 0) : 
+				lives -= 1
+				VariableManager.booster_lives = lives
+				SignalManager.loseLife.emit()
 			booster_is_bad()
 
 func _on_use_button_pressed():
-	SignalManager.use_booster.emit(current_booster)
+	VariableManager.try_to_build_booster = false
+	VariableManager.booster_lives = 3
+	SignalManager.use_booster.emit(current_booster, lives)
 
 func _input(event):
 	if(code_field_node.get_child_count() > 0) :
@@ -107,25 +116,46 @@ func _input(event):
 func set_booster_instruction() :
 	if(current_booster.plan_name == "double_exp") :
 		$DoubleExpInformation.visible = true
+	if(current_booster.plan_name == "double_coins") :
+		$DoubleCoinsInformation.visible = true
 
 func booster_is_good():
 	if(iterator == current_booster.games_duration - 1) :
 		if(current_booster.booster_category == MyEnums.BoosterCategory.exp) :
 			$BoosterConsole.text += "Podwajam exp zdobyty w grze. Pozostało gier: " + str(iterator)
-			$FuncTimer.start()
+		elif(current_booster.booster_category == MyEnums.BoosterCategory.coins) :
+			$BoosterConsole.text += "Podwajam monety zdobyte w grze. Pozostało gier: " + str(iterator)
+		$FuncTimer.start()
 	elif(iterator >= 0) :
 		if(current_booster.booster_category == MyEnums.BoosterCategory.exp) :
 			$BoosterConsole.text += "\nPodwajam exp zdobyty w grze. Pozostało gier: " + str(iterator)
+		elif(current_booster.booster_category == MyEnums.BoosterCategory.coins) :
+			$BoosterConsole.text += "Podwajam monety zdobyte w grze. Pozostało gier: " + str(iterator)
 
 func _on_func_timer_timeout():
 	iterator -= 1
 	booster_is_good()
 
 func booster_is_bad():
+	var line_number = 0
 	for i in clear_instruction_tab.size():
 		if(user_code_elements[i] != clear_instruction_tab[i]) :
-			if(i==0) : 
+			if(line_number==0) : 
 				$BoosterConsole.text += "Błąd w polu nr " + str(i)
 			else : $BoosterConsole.text += "\nBłąd w polu nr " + str(i)
-			if(check_click_counter>=3) :
+			line_number += 1
+			if(lives == 0) :
 				$BoosterConsole.text += "\n\tOczekiwano: " + clear_instruction_tab[i] + " Otrzymano: " + user_code_elements[i]
+
+func _on_lose_game() :
+	get_tree().paused = false
+
+func save_booster_build() :
+	VariableManager.try_to_build_booster = true
+	VariableManager.booster_lives = lives
+
+func load_booster_lives() :
+	if(VariableManager.try_to_build_booster) :
+		lives = VariableManager.booster_lives
+		for i in 3-VariableManager.booster_lives :
+			SignalManager.loseLife.emit()

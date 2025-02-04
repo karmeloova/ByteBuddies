@@ -8,21 +8,19 @@
 script = ExtResource("1_lywnr")
 lives = [NodePath("Live3"), NodePath("Live2"), NodePath("Live1")]
 lose_life_sprite = ExtResource("3_lvfm5")
+live_sprite = ExtResource("1_2pphh")
 
 [node name="Live1" type="Sprite2D" parent="."]
 position = Vector2(39, 37)
-rotation = 4.71239
 scale = Vector2(0.1, 0.1)
 texture = ExtResource("1_2pphh")
 
 [node name="Live2" type="Sprite2D" parent="."]
 position = Vector2(104, 37)
-rotation = 4.71239
 scale = Vector2(0.1, 0.1)
 texture = ExtResource("1_2pphh")
 
 [node name="Live3" type="Sprite2D" parent="."]
 position = Vector2(172, 37)
-rotation = 4.71239
 scale = Vector2(0.1, 0.1)
 texture = ExtResource("1_2pphh")

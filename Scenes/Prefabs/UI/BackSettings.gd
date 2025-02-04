@@ -5,6 +5,7 @@ func _on_back_button_pressed():
 	$"../AudioSettings".visible = false
 	$"../GraphicsSettings".visible = false
 	visible = false
+	#process_mode = Node.PROCESS_MODE_INHERIT
 	get_parent().exit_button.visible = true
 
 func _on_back_button_mouse_entered():

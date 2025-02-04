@@ -34,10 +34,10 @@ func _on_button_mouse_exited():
 		modulate = Color("ffffff")
 
 func set_back_button():
-	panel_container.get_child(0).get_child(1).visible = false
-	panel_container.get_child(0).get_child(2).visible = true
+	panel_container.get_child(0).get_child(5).visible = false
+	panel_container.get_child(0).get_child(6).visible = true
 	SignalManager.set_panel_to_show.emit(previous_panel)
 
 func set_exit_button():
-	panel_container.get_child(0).get_child(1).visible = true
-	panel_container.get_child(0).get_child(2).visible = false
+	panel_container.get_child(0).get_child(5).visible = true
+	panel_container.get_child(0).get_child(6).visible = false

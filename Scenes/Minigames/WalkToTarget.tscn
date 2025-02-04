@@ -125,7 +125,6 @@ text = "Kasa:"
 
 [node name="Lose" parent="Layout" instance=ExtResource("11_nlonb")]
 visible = false
-position = Vector2(-5, -7)
 
 [node name="MinigamesPanel" parent="." instance=ExtResource("1_2gm7f")]
 game_name = "Snack Navigator"

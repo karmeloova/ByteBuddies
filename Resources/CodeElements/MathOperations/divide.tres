@@ -5,6 +5,7 @@
 [resource]
 script = ExtResource("1_imc6f")
 code_element_name = "/ (divide)"
+res_name = "divide_res"
 code_element_description = "Operator służący do dzielenia dwóch liczb. Np. 6/3 = 2"
 category = 3
 price = 1

@@ -83,6 +83,8 @@ var cleaning = {
 	75 : false
 }
 
+var food_resource : Array[storage_resource]
+
 var save_data = {
 	"hungry" : 100,
 	"play" : 100,
@@ -110,9 +112,19 @@ var save_data = {
 	"fishes" : 0,
 	"audio_volumes" : [1,1,1],
 	"full_screen" : true,
-	"resolution" : 0
+	"resolution" : 0,
+	"food_resource" : [],
+	"plans_resource" : [],
+	"parts_resource" : [],
+	"current_plan" : "",
+	"current_plan_parts" : [],
+	"hungry_points_in_bowl" : 0,
+	"active_booster" : "",
+	"games_left" : 0,
+	"try_to_build_booster" : false,
+	"booster_lives" : 3
 }
-
+ 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	if not FileAccess.file_exists(save_path) :
@@ -137,6 +149,9 @@ func _ready():
 	VariableManager.volumes_levels = save_data["audio_volumes"]
 	VariableManager.is_full_screen = save_data["full_screen"]
 	VariableManager.resolution = save_data["resolution"]
+	VariableManager.hungry_points_in_bowl = save_data["hungry_points_in_bowl"]
+	VariableManager.try_to_build_booster = save_data["try_to_build_booster"]
+	VariableManager.booster_lives = save_data["booster_lives"]
 	
 	Achievements.cat_jump = save_data["cat_jump_achievementes"]
 	Achievements.snack_navigator = save_data["snack_navigator_achievementes"]
@@ -147,6 +162,32 @@ func _ready():
 	Achievements.scratching = save_data["scratching_achievementes"]
 	Achievements.sleeping = save_data["sleeping_achievementes"]
 	Achievements.cleaning = save_data["cleaning_achievementes"]
+	
+	load_resource(VariableManager.food_resource, "food_resource")
+	load_resource(VariableManager.plans_resource, "plans_resource")
+	load_resource(VariableManager.parts_resource, "parts_resource")
+	
+	if(save_data["current_plan"] != null) :
+		var loaded_item = ResourceLoader.load(save_data["current_plan"])
+		var cur_plan = Plan.new()
+		cur_plan = loaded_item
+		VariableManager.current_plan = cur_plan
+		VariableManager.plan_parts = save_data["current_plan_parts"]
+	else :
+		VariableManager.current_plan = null
+		VariableManager.plan_parts = []
+	
+	if(save_data["active_booster"] != null) :
+		var loaded_item = ResourceLoader.load(save_data["active_booster"])
+		var cur_booster = Plan.new()
+		cur_booster = loaded_item
+		BoosterManager.active_booster = cur_booster
+		BoosterManager.games_duration = save_data["games_left"]
+	else :
+		BoosterManager.active_booster = null
+		BoosterManager.games_duration = 0
+	
+	#print(VariableManager.current_plan.res_name, " ", VariableManager.plan_parts)
 	
 func create_save():
 	# Otwieramy plik do zapisu
@@ -195,5 +236,52 @@ func _notification(what):
 		save("audio_volumes", VariableManager.volumes_levels)
 		save("full_screen", VariableManager.is_full_screen)
 		save("resolution", VariableManager.resolution)
+		save("hungry_points_in_bowl", VariableManager.hungry_points_in_bowl)
+		save("try_to_build_booster", VariableManager.try_to_build_booster)
+		save("booster_lives", VariableManager.booster_lives)
+		
+		save_resource(VariableManager.food_resource, "food_resource")
+		save_resource(VariableManager.plans_resource, "plans_resource")
+		save_resource(VariableManager.parts_resource, "parts_resource")
+		
+		var serializable_plan
+		if(VariableManager.current_plan != null) :
+			var item_path = "user://current_plan.tres"
+			ResourceSaver.save(VariableManager.current_plan,item_path,ResourceSaver.FLAG_CHANGE_PATH)
+			serializable_plan = item_path
+		else :
+			serializable_plan = null
+			
+		save("current_plan", serializable_plan)
+		save("current_plan_parts", VariableManager.plan_parts)
+		
+		if(BoosterManager.active_booster != null) :
+			var item_path = "user://active_booster.tres"
+			ResourceSaver.save(BoosterManager.active_booster, item_path, ResourceSaver.FLAG_CHANGE_PATH)
+			serializable_plan = item_path
+		else :
+			serializable_plan = null
+		
+		save("active_booster", serializable_plan)
+		save("games_left", BoosterManager.games_duration)
+
+func save_resource(res_to_save : Array[storage_resource], res_string : String) :
+	var serializable_array = []
+	for item in res_to_save :
+		var item_path = "user://item_" + item.item.res_name + ".tres"
+		ResourceSaver.save(item.item, item_path, ResourceSaver.FLAG_CHANGE_PATH)
+		serializable_array.append({
+			"item_path" : item_path,
+			"amount" : item.amount
+		})
+	save(res_string, serializable_array)
+
+func load_resource(res_to_load : Array[storage_resource], res_string : String) :
+	for item in save_data[res_string] :
+		var loaded_item = ResourceLoader.load(item["item_path"])
+		var storage = storage_resource.new()
+		storage.item = loaded_item
+		storage.amount = item["amount"]
+		res_to_load.append(storage)
 
 #ścieżka do pliku - C:\Users\xxfea\AppData\Roaming\Godot\app_userdata\ByteBuddies

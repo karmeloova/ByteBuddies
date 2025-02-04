@@ -5,7 +5,7 @@
 [resource]
 script = ExtResource("1_vq5dq")
 id = 2
+res_name = "pineapple_res"
 food_name = "Pineapple"
 hungry_points = 13
 price = 12
-amount = 0

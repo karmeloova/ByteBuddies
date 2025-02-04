@@ -5,6 +5,7 @@
 [resource]
 script = ExtResource("1_y0v68")
 code_element_name = "while"
+res_name = "while_res"
 code_element_description = "while [warunek] : co_ma_się_wykonać - wykonuje \"co_ma_się_wykonać\" do momentu, gdy [warunek] jest prawdą. Gdy [warunek] przestaje być prawdą, pętla kończy swoje działanie"
 category = 1
 price = 2

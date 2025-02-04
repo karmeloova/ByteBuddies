@@ -28,16 +28,24 @@ func _on_fruitColor(color) :
 	fruitColor = color;
 
 func _on_lose_game() :
+	SignalManager.set_lose_score.emit(points)
 	if(points > VariableManager.fruit_catcher_high_score) :
 		VariableManager.fruit_catcher_high_score = points
-	VariableManager.coins += coins;
+	add_coins()
 	SignalManager.unlock_achievement.emit(points, "fruit_catcher", null)
 	SignalManager.add_exp.emit(points/2)
 
 func _on_save_data() :
 	SignalManager.add_exp.emit(points/2)
-	VariableManager.coins += coins;
+	add_coins()
 
 func add_coin() :
 	coins += 1;
 	$Coins.text = "Coins: " + str(coins)
+
+func add_coins() :
+	if(BoosterManager.active_booster != null && BoosterManager.active_booster.booster_category == MyEnums.BoosterCategory.coins && VariableManager.is_playing) :
+		VariableManager.coins += coins*BoosterManager.multiplier
+		SignalManager.decrease_booster_uses.emit()
+	else :
+		VariableManager.coins += coins

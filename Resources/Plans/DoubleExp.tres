@@ -127,6 +127,7 @@ instruction_category = 7
 [resource]
 script = ExtResource("1_8lbh3")
 plan_name = "double_exp"
+res_name = "double_exp_res"
 booster_category = 0
 booster_description = "Double Exp: Podwaja zdobyte punkty doświadczenia przez 5 następnych mini-gier. Potrzebne materiały: "
 required_level = ExtResource("1_jg4sa")

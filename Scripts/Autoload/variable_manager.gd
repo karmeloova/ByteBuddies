@@ -31,6 +31,8 @@ var code;
 var coins : int = 0
 var fishes : int = 0
 
+var is_soap_on_cat = false
+
 #------------- MINI-GAMES ---------------
 
 #------------- CAT JUMP ----------------
@@ -65,3 +67,15 @@ var scratch_counter : int = 0
 var volumes_levels = [1,1,1]
 var resolution = 0
 var is_full_screen = true
+
+#----------- RESOURCES -----------------------
+var food_resource : Array[storage_resource]
+var plans_resource : Array[storage_resource]
+var parts_resource : Array[storage_resource]
+
+var current_plan : Plan
+var plan_parts = []
+
+#------------- BOOSTER LIVES -----------------
+var try_to_build_booster = false
+var booster_lives = 3

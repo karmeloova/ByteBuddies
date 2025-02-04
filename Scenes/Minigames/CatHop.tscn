@@ -117,7 +117,7 @@ metadata/_edit_use_anchors_ = true
 position = Vector2(-553, -592)
 
 [node name="Lose" parent="Camera2D" instance=ExtResource("6_wbr14")]
-position = Vector2(-566, -612)
+position = Vector2(-557, -598)
 
 [node name="Area2D" type="RigidBody2D" parent="Camera2D"]
 disable_mode = 1

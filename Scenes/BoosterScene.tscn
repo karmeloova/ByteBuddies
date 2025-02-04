@@ -1,4 +1,4 @@
-[gd_scene load_steps=40 format=3 uid="uid://c826tkspvt4i8"]
+[gd_scene load_steps=59 format=3 uid="uid://c826tkspvt4i8"]
 
 [ext_resource type="FontFile" uid="uid://ccgpsjqwwow8o" path="res://Fonts/Bubblegum.ttf" id="1_8ghdf"]
 [ext_resource type="Script" path="res://Scenes/BoosterSceneButton.gd" id="2_1tf8h"]
@@ -17,8 +17,12 @@
 [ext_resource type="Script" path="res://Scenes/PartsStoragePanel.gd" id="12_pv66d"]
 [ext_resource type="PackedScene" uid="uid://efafyn68uv1p" path="res://Scenes/Prefabs/CodeElementShopPrefab.tscn" id="12_xoax1"]
 [ext_resource type="Resource" uid="uid://cx2giwq6v64sp" path="res://Resources/CodeElements/Variables/earned_exp.tres" id="13_6qrfp"]
+[ext_resource type="StyleBox" uid="uid://d32dm3665drok" path="res://Scenes/Rooms/MiniButton.stylebox" id="13_o127n"]
 [ext_resource type="Resource" uid="uid://csuujkn05uxls" path="res://Resources/CodeElements/Variables/games_left.tres" id="14_d5806"]
+[ext_resource type="Resource" uid="uid://4xnqxd8r6ujq" path="res://Resources/Plans/DoubleCoins.tres" id="14_hyrnx"]
+[ext_resource type="StyleBox" uid="uid://5akr847h57wb" path="res://Scenes/DisabledMiniButton.tres" id="14_nu0ma"]
 [ext_resource type="Resource" uid="uid://7wbtoa47s3qq" path="res://Resources/CodeElements/Variables/multiplier.tres" id="15_7msek"]
+[ext_resource type="Script" path="res://Scenes/Rooms/ButtonModulate.gd" id="15_sitvh"]
 [ext_resource type="Resource" uid="uid://cbds4qq2k073r" path="res://Resources/CodeElements/Loops/for.tres" id="16_fvve5"]
 [ext_resource type="Resource" uid="uid://bjyie5m3by2kj" path="res://Resources/CodeElements/Loops/while.tres" id="17_pmuaw"]
 [ext_resource type="Resource" uid="uid://by5l6myqrux8b" path="res://Resources/CodeElements/Conditions/if.tres" id="18_xp2om"]
@@ -27,6 +31,7 @@
 [ext_resource type="Resource" uid="uid://btlhsaelgar20" path="res://Resources/CodeElements/MathOperations/divide.tres" id="21_vus5n"]
 [ext_resource type="Resource" uid="uid://bqsi8xv7xaamn" path="res://Resources/CodeElements/MathOperations/multiple.tres" id="22_5ulfp"]
 [ext_resource type="Resource" uid="uid://c3j8m8vkc3jiy" path="res://Resources/CodeElements/MathOperations/substract.tres" id="23_klprx"]
+[ext_resource type="Resource" uid="uid://djr2yd3j1lfqs" path="res://Resources/CodeElements/Variables/earned_coins.tres" id="23_rmyr0"]
 [ext_resource type="Resource" uid="uid://dl43ecdltbygx" path="res://Resources/CodeElements/LogicOperations/isequal.tres" id="24_s11v5"]
 [ext_resource type="Resource" uid="uid://1pmdga36pq8m" path="res://Resources/CodeElements/LogicOperations/isgreater.tres" id="25_5jk0n"]
 [ext_resource type="Resource" uid="uid://c3qmbu0areirb" path="res://Resources/CodeElements/LogicOperations/isless.tres" id="26_41l2c"]
@@ -36,17 +41,40 @@
 [ext_resource type="Texture2D" uid="uid://bhcgfqs2j6bx4" path="res://Images/UI/Lives/Life.png" id="31_hid5v"]
 [ext_resource type="Script" path="res://Scenes/CurrencyBooster.gd" id="31_v8no3"]
 [ext_resource type="Script" path="res://Scenes/Congratulations.gd" id="34_jlt3b"]
+[ext_resource type="Resource" uid="uid://dkwtvgh056h42" path="res://Resources/CodeElements/Functions/add_coins.tres" id="36_wjf6p"]
+[ext_resource type="StyleBox" uid="uid://cqxmxvk085km8" path="res://Scenes/Prefabs/UI/ConsoleStyle.stylebox" id="39_ynvke"]
+[ext_resource type="StyleBox" uid="uid://dbi84npb1fcqm" path="res://Scenes/Prefabs/UI/ConsoleStyleReadOnly.stylebox" id="40_6yk7k"]
+[ext_resource type="PackedScene" uid="uid://dluxwfsypbvws" path="res://Scenes/Prefabs/UI/MinigamesLives.tscn" id="41_wcn2p"]
+[ext_resource type="Script" path="res://Scenes/BoosterInformation.gd" id="42_acb2g"]
+[ext_resource type="Texture2D" uid="uid://ci8h24p34ui0e" path="res://Images/UI/Buttons/Grafika_bez_nazwy 3.png" id="43_skidl"]
+[ext_resource type="FontFile" uid="uid://sjhlfawq34if" path="res://Fonts/Coolvetica Rg.otf" id="44_ewtis"]
 
 [sub_resource type="CanvasTexture" id="CanvasTexture_x5l5x"]
 
 [sub_resource type="CanvasTexture" id="CanvasTexture_skap4"]
 
+[sub_resource type="CanvasTexture" id="CanvasTexture_lui1c"]
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_j58ud"]
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_u1hxd"]
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_wlgti"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_666uj"]
+texture = SubResource("CanvasTexture_wlgti")
+modulate_color = Color(0.968627, 0.8, 0.815686, 1)
+
 [sub_resource type="CanvasTexture" id="CanvasTexture_ahlo6"]
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_81qsm"]
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_7roh4"]
 
 [node name="BoosterScene" type="Node2D"]
 
 [node name="Background" type="Sprite2D" parent="."]
-modulate = Color(0.44871, 0.428599, 0.352223, 1)
+modulate = Color(0.733333, 0.603922, 0.694118, 1)
 position = Vector2(579, 335.5)
 scale = Vector2(1218, 695)
 texture = SubResource("CanvasTexture_x5l5x")
@@ -56,8 +84,8 @@ position = Vector2(598, 42)
 metadata/_edit_group_ = true
 
 [node name="HeaderBackground" type="Sprite2D" parent="Header"]
-modulate = Color(1, 1, 1, 0.270588)
-position = Vector2(-22.2556, 0)
+modulate = Color(0.968627, 0.8, 0.815686, 1)
+position = Vector2(-22, -2)
 scale = Vector2(-1150.89, 86.5452)
 texture = SubResource("CanvasTexture_skap4")
 
@@ -93,7 +121,16 @@ texture = ExtResource("7_kpp2h")
 
 [node name="ShopPart" type="Node2D" parent="."]
 
+[node name="TextureRect" type="TextureRect" parent="ShopPart"]
+modulate = Color(0.968627, 0.8, 0.815686, 1)
+offset_left = 16.0
+offset_top = 556.0
+offset_right = 578.0
+offset_bottom = 659.0
+texture = SubResource("CanvasTexture_lui1c")
+
 [node name="ButtonsContainer" type="Node2D" parent="ShopPart"]
+position = Vector2(24, -3)
 
 [node name="PlansButton" type="Node2D" parent="ShopPart/ButtonsContainer" node_paths=PackedStringArray("panel_to_show", "panel_container", "button_container")]
 position = Vector2(47, 601)
@@ -168,18 +205,46 @@ theme_override_font_sizes/font_size = 40
 text = "M"
 
 [node name="PanelsContainer" type="Node2D" parent="ShopPart"]
+position = Vector2(0, -6)
 
 [node name="PanelTemplate" type="Node2D" parent="ShopPart/PanelsContainer"]
 visible = false
+position = Vector2(-193, -20)
 
-[node name="PanelBackground" type="Sprite2D" parent="ShopPart/PanelsContainer/PanelTemplate"]
-self_modulate = Color(1, 1, 1, 0.270588)
-position = Vector2(296, 324.5)
+[node name="Background" type="Sprite2D" parent="ShopPart/PanelsContainer/PanelTemplate"]
+modulate = Color(0.968627, 0.8, 0.815686, 1)
+position = Vector2(490, 345.5)
 scale = Vector2(562, 455)
-texture = SubResource("CanvasTexture_ahlo6")
+texture = SubResource("CanvasTexture_j58ud")
+
+[node name="Sprite2D" type="Sprite2D" parent="ShopPart/PanelsContainer/PanelTemplate"]
+modulate = Color(0.756863, 0.596078, 0.698039, 1)
+position = Vector2(242.529, 356.5)
+scale = Vector2(6.25, 367)
+texture = SubResource("CanvasTexture_u1hxd")
+
+[node name="Sprite2D2" type="Sprite2D" parent="ShopPart/PanelsContainer/PanelTemplate"]
+modulate = Color(0.756863, 0.596078, 0.698039, 1)
+position = Vector2(502.693, 149.092)
+rotation = 1.5708
+scale = Vector2(6.25, 481.838)
+texture = SubResource("CanvasTexture_u1hxd")
+
+[node name="Sprite2D3" type="Sprite2D" parent="ShopPart/PanelsContainer/PanelTemplate"]
+modulate = Color(0.756863, 0.596078, 0.698039, 1)
+position = Vector2(740, 344.219)
+scale = Vector2(6.25, 393.562)
+texture = SubResource("CanvasTexture_u1hxd")
+
+[node name="Sprite2D4" type="Sprite2D" parent="ShopPart/PanelsContainer/PanelTemplate"]
+modulate = Color(0.756863, 0.596078, 0.698039, 1)
+position = Vector2(488.902, 538)
+rotation = 1.5708
+scale = Vector2(6.25, 498.545)
+texture = SubResource("CanvasTexture_u1hxd")
 
 [node name="CloseButton" type="Node2D" parent="ShopPart/PanelsContainer/PanelTemplate" node_paths=PackedStringArray("panels_node", "buttons_node")]
-position = Vector2(45, 127)
+position = Vector2(242, 149)
 script = ExtResource("5_f7nr3")
 panels_node = NodePath("../..")
 buttons_node = NodePath("../../../ButtonsContainer")
@@ -201,7 +266,7 @@ texture = ExtResource("5_sg6fy")
 
 [node name="BackButton" type="Node2D" parent="ShopPart/PanelsContainer/PanelTemplate" node_paths=PackedStringArray("panel_container")]
 visible = false
-position = Vector2(45, 127)
+position = Vector2(242, 149)
 script = ExtResource("7_7se2f")
 panel_container = NodePath("../..")
 metadata/_edit_group_ = true
@@ -221,54 +286,63 @@ scale = Vector2(0.078357, 0.078357)
 texture = ExtResource("7_kpp2h")
 
 [node name="Description" type="Label" parent="ShopPart/PanelsContainer/PanelTemplate"]
-offset_left = 30.0
-offset_top = 440.0
-offset_right = 559.0
-offset_bottom = 536.0
+offset_left = 258.0
+offset_top = 394.0
+offset_right = 727.0
+offset_bottom = 526.0
+theme_override_fonts/font = ExtResource("44_ewtis")
+theme_override_font_sizes/font_size = 20
+horizontal_alignment = 3
+vertical_alignment = 2
 autowrap_mode = 2
 script = ExtResource("10_mx3yy")
 
 [node name="PlansPanel" type="Node2D" parent="ShopPart/PanelsContainer"]
 visible = false
+position = Vector2(30, -2)
 
-[node name="Label" type="Label" parent="ShopPart/PanelsContainer/PlansPanel"]
-offset_left = 16.0
-offset_top = 99.0
-offset_right = 577.0
-offset_bottom = 168.0
+[node name="PlansLabel" type="Label" parent="ShopPart/PanelsContainer/PlansPanel"]
+offset_left = 187.0
+offset_top = 104.0
+offset_right = 353.0
+offset_bottom = 158.0
 theme_override_fonts/font = ExtResource("1_8ghdf")
-theme_override_font_sizes/font_size = 50
+theme_override_font_sizes/font_size = 45
+theme_override_styles/normal = SubResource("StyleBoxTexture_666uj")
 text = "Plany"
 horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="PlanPrefab" parent="ShopPart/PanelsContainer/PlansPanel" instance=ExtResource("4_s42u8")]
-position = Vector2(29, 172)
+position = Vector2(33, 172)
 plan = ExtResource("5_1sg3u")
+
+[node name="PlanPrefab2" parent="ShopPart/PanelsContainer/PlansPanel" instance=ExtResource("4_s42u8")]
+position = Vector2(33, 236)
+plan = ExtResource("14_hyrnx")
 
 [node name="ShopPanel" type="Node2D" parent="ShopPart/PanelsContainer"]
 visible = false
 
-[node name="Label" type="Label" parent="ShopPart/PanelsContainer/ShopPanel"]
-offset_left = 16.0
-offset_top = 99.0
-offset_right = 577.0
-offset_bottom = 169.0
+[node name="ShopLabel" type="Label" parent="ShopPart/PanelsContainer/ShopPanel"]
+offset_left = 213.0
+offset_top = 104.0
+offset_right = 379.0
+offset_bottom = 158.0
 theme_override_fonts/font = ExtResource("1_8ghdf")
-theme_override_font_sizes/font_size = 50
-text = "SKLEP"
+theme_override_font_sizes/font_size = 45
+theme_override_styles/normal = SubResource("StyleBoxTexture_666uj")
+text = "Sklep"
 horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="GridContainer" type="GridContainer" parent="ShopPart/PanelsContainer/ShopPanel"]
-offset_left = 47.0
+offset_left = 69.0
 offset_top = 177.0
-offset_right = 551.0
+offset_right = 530.0
 offset_bottom = 526.0
 size_flags_horizontal = 3
 size_flags_vertical = 10
-theme_override_constants/h_separation = 25
-theme_override_constants/v_separation = 25
 columns = 3
 
 [node name="Variables" type="Control" parent="ShopPart/PanelsContainer/ShopPanel/GridContainer"]
@@ -282,9 +356,28 @@ panel_container = NodePath("../../../..")
 second_level_button = true
 
 [node name="Button" type="Button" parent="ShopPart/PanelsContainer/ShopPanel/GridContainer/Variables/Variables"]
-offset_right = 150.0
-offset_bottom = 50.0
+custom_minimum_size = Vector2(0, 45)
+offset_right = 140.0
+offset_bottom = 40.0
+theme_override_styles/normal = ExtResource("13_o127n")
+theme_override_styles/hover = ExtResource("13_o127n")
+theme_override_styles/pressed = ExtResource("13_o127n")
+theme_override_styles/disabled = ExtResource("14_nu0ma")
+theme_override_styles/focus = ExtResource("14_nu0ma")
+script = ExtResource("15_sitvh")
+
+[node name="Label" type="Label" parent="ShopPart/PanelsContainer/ShopPanel/GridContainer/Variables/Variables/Button"]
+layout_mode = 0
+offset_right = 141.0
+offset_bottom = 46.0
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.6)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_fonts/font = ExtResource("1_8ghdf")
+theme_override_font_sizes/font_size = 23
 text = "Zmienne"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="Loops" type="Control" parent="ShopPart/PanelsContainer/ShopPanel/GridContainer"]
 custom_minimum_size = Vector2(150, 50)
@@ -297,10 +390,30 @@ panel_container = NodePath("../../../..")
 second_level_button = true
 
 [node name="Button" type="Button" parent="ShopPart/PanelsContainer/ShopPanel/GridContainer/Loops/Loops"]
-custom_minimum_size = Vector2(150, 50)
-offset_right = 150.0
-offset_bottom = 50.0
-text = "Pętle"
+custom_minimum_size = Vector2(140, 45)
+offset_right = 140.0
+offset_bottom = 40.0
+theme_override_styles/normal = ExtResource("13_o127n")
+theme_override_styles/hover = ExtResource("13_o127n")
+theme_override_styles/pressed = ExtResource("13_o127n")
+theme_override_styles/disabled = ExtResource("14_nu0ma")
+theme_override_styles/focus = ExtResource("14_nu0ma")
+script = ExtResource("15_sitvh")
+
+[node name="Label" type="Label" parent="ShopPart/PanelsContainer/ShopPanel/GridContainer/Loops/Loops/Button"]
+layout_mode = 0
+offset_left = 1.0
+offset_top = 1.0
+offset_right = 141.0
+offset_bottom = 46.0
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.6)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_fonts/font = ExtResource("1_8ghdf")
+theme_override_font_sizes/font_size = 23
+text = "Petle"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="Conditions" type="Control" parent="ShopPart/PanelsContainer/ShopPanel/GridContainer"]
 custom_minimum_size = Vector2(150, 50)
@@ -313,12 +426,33 @@ panel_container = NodePath("../../../..")
 second_level_button = true
 
 [node name="Button" type="Button" parent="ShopPart/PanelsContainer/ShopPanel/GridContainer/Conditions/Conditions"]
-custom_minimum_size = Vector2(150, 50)
-offset_right = 150.0
-offset_bottom = 50.0
+custom_minimum_size = Vector2(140, 45)
+offset_right = 140.0
+offset_bottom = 40.0
+theme_override_styles/normal = ExtResource("13_o127n")
+theme_override_styles/hover = ExtResource("13_o127n")
+theme_override_styles/pressed = ExtResource("13_o127n")
+theme_override_styles/disabled = ExtResource("14_nu0ma")
+theme_override_styles/focus = ExtResource("14_nu0ma")
+script = ExtResource("15_sitvh")
+
+[node name="Label" type="Label" parent="ShopPart/PanelsContainer/ShopPanel/GridContainer/Conditions/Conditions/Button"]
+layout_mode = 0
+offset_left = 1.0
+offset_top = 1.0
+offset_right = 141.0
+offset_bottom = 46.0
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.6)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_fonts/font = ExtResource("1_8ghdf")
+theme_override_font_sizes/font_size = 23
 text = "Warunki"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="MathOperations" type="Control" parent="ShopPart/PanelsContainer/ShopPanel/GridContainer"]
+visible = false
 custom_minimum_size = Vector2(150, 50)
 layout_mode = 2
 
@@ -329,12 +463,33 @@ panel_container = NodePath("../../../..")
 second_level_button = true
 
 [node name="Button" type="Button" parent="ShopPart/PanelsContainer/ShopPanel/GridContainer/MathOperations/MathOperations"]
-custom_minimum_size = Vector2(150, 50)
+custom_minimum_size = Vector2(150, 45)
 offset_right = 150.0
-offset_bottom = 50.0
+offset_bottom = 40.0
+theme_override_styles/normal = ExtResource("13_o127n")
+theme_override_styles/hover = ExtResource("13_o127n")
+theme_override_styles/pressed = ExtResource("13_o127n")
+theme_override_styles/disabled = ExtResource("14_nu0ma")
+theme_override_styles/focus = ExtResource("14_nu0ma")
 text = "Operacje mat"
+script = ExtResource("15_sitvh")
+
+[node name="Label" type="Label" parent="ShopPart/PanelsContainer/ShopPanel/GridContainer/MathOperations/MathOperations/Button"]
+layout_mode = 0
+offset_top = 2.0
+offset_right = 75.0
+offset_bottom = 43.0
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.6)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_fonts/font = ExtResource("1_8ghdf")
+theme_override_font_sizes/font_size = 23
+text = "KUP"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="LogicOperations" type="Control" parent="ShopPart/PanelsContainer/ShopPanel/GridContainer"]
+visible = false
 custom_minimum_size = Vector2(150, 50)
 layout_mode = 2
 
@@ -345,10 +500,30 @@ panel_container = NodePath("../../../..")
 second_level_button = true
 
 [node name="Button" type="Button" parent="ShopPart/PanelsContainer/ShopPanel/GridContainer/LogicOperations/LogicOperations"]
-custom_minimum_size = Vector2(150, 50)
+custom_minimum_size = Vector2(150, 45)
 offset_right = 150.0
-offset_bottom = 50.0
+offset_bottom = 40.0
+theme_override_styles/normal = ExtResource("13_o127n")
+theme_override_styles/hover = ExtResource("13_o127n")
+theme_override_styles/pressed = ExtResource("13_o127n")
+theme_override_styles/disabled = ExtResource("14_nu0ma")
+theme_override_styles/focus = ExtResource("14_nu0ma")
 text = "Operacje por"
+script = ExtResource("15_sitvh")
+
+[node name="Label" type="Label" parent="ShopPart/PanelsContainer/ShopPanel/GridContainer/LogicOperations/LogicOperations/Button"]
+layout_mode = 0
+offset_top = 2.0
+offset_right = 75.0
+offset_bottom = 43.0
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.6)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_fonts/font = ExtResource("1_8ghdf")
+theme_override_font_sizes/font_size = 23
+text = "KUP"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="Functions" type="Control" parent="ShopPart/PanelsContainer/ShopPanel/GridContainer"]
 custom_minimum_size = Vector2(150, 50)
@@ -361,21 +536,41 @@ panel_container = NodePath("../../../..")
 second_level_button = true
 
 [node name="Button" type="Button" parent="ShopPart/PanelsContainer/ShopPanel/GridContainer/Functions/Functions"]
-custom_minimum_size = Vector2(150, 50)
-offset_right = 150.0
-offset_bottom = 50.0
+custom_minimum_size = Vector2(140, 45)
+offset_right = 140.0
+offset_bottom = 40.0
+theme_override_styles/normal = ExtResource("13_o127n")
+theme_override_styles/hover = ExtResource("13_o127n")
+theme_override_styles/pressed = ExtResource("13_o127n")
+theme_override_styles/disabled = ExtResource("14_nu0ma")
+theme_override_styles/focus = ExtResource("14_nu0ma")
+script = ExtResource("15_sitvh")
+
+[node name="Label" type="Label" parent="ShopPart/PanelsContainer/ShopPanel/GridContainer/Functions/Functions/Button"]
+layout_mode = 0
+offset_top = 1.0
+offset_right = 141.0
+offset_bottom = 46.0
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.6)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_fonts/font = ExtResource("1_8ghdf")
+theme_override_font_sizes/font_size = 23
 text = "Funkcje"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="StoragePanel" type="Node2D" parent="ShopPart/PanelsContainer"]
 visible = false
 
-[node name="Label" type="Label" parent="ShopPart/PanelsContainer/StoragePanel"]
-offset_left = 16.0
-offset_top = 99.0
-offset_right = 577.0
-offset_bottom = 165.0
+[node name="ShopLabel" type="Label" parent="ShopPart/PanelsContainer/StoragePanel"]
+offset_left = 186.0
+offset_top = 102.0
+offset_right = 419.0
+offset_bottom = 156.0
 theme_override_fonts/font = ExtResource("1_8ghdf")
-theme_override_font_sizes/font_size = 50
+theme_override_font_sizes/font_size = 45
+theme_override_styles/normal = SubResource("StyleBoxTexture_666uj")
 text = "Magazyn"
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -390,9 +585,28 @@ second_level_button = true
 [node name="Button" type="Button" parent="ShopPart/PanelsContainer/StoragePanel/PlansStorageButton"]
 offset_left = 90.0
 offset_top = 179.0
-offset_right = 221.0
+offset_right = 225.0
 offset_bottom = 233.0
-text = "PLANY"
+theme_override_styles/normal = ExtResource("13_o127n")
+theme_override_styles/hover = ExtResource("13_o127n")
+theme_override_styles/pressed = ExtResource("13_o127n")
+theme_override_styles/disabled = ExtResource("13_o127n")
+theme_override_styles/focus = ExtResource("13_o127n")
+script = ExtResource("15_sitvh")
+
+[node name="Label" type="Label" parent="ShopPart/PanelsContainer/StoragePanel/PlansStorageButton/Button"]
+layout_mode = 0
+offset_left = 1.0
+offset_right = 136.0
+offset_bottom = 55.0
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.6)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_fonts/font = ExtResource("1_8ghdf")
+theme_override_font_sizes/font_size = 30
+text = "Plany"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="PartsStorageButton" type="Node2D" parent="ShopPart/PanelsContainer/StoragePanel" node_paths=PackedStringArray("panel_to_show", "panel_container", "button_container")]
 script = ExtResource("2_1tf8h")
@@ -404,54 +618,86 @@ second_level_button = true
 [node name="Button" type="Button" parent="ShopPart/PanelsContainer/StoragePanel/PartsStorageButton"]
 offset_left = 379.0
 offset_top = 179.0
-offset_right = 510.0
+offset_right = 514.0
 offset_bottom = 233.0
-text = "CZĘŚCI"
+theme_override_styles/normal = ExtResource("13_o127n")
+theme_override_styles/hover = ExtResource("13_o127n")
+theme_override_styles/pressed = ExtResource("13_o127n")
+theme_override_styles/disabled = ExtResource("13_o127n")
+theme_override_styles/focus = ExtResource("13_o127n")
+script = ExtResource("15_sitvh")
+
+[node name="Label" type="Label" parent="ShopPart/PanelsContainer/StoragePanel/PartsStorageButton/Button"]
+layout_mode = 0
+offset_left = 2.0
+offset_right = 136.0
+offset_bottom = 55.0
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.6)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_fonts/font = ExtResource("1_8ghdf")
+theme_override_font_sizes/font_size = 30
+text = "Czesci"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="PlansStoragePanel" type="Node2D" parent="ShopPart/PanelsContainer"]
 visible = false
 script = ExtResource("11_l566k")
 
-[node name="Label" type="Label" parent="ShopPart/PanelsContainer/PlansStoragePanel"]
-offset_left = 16.0
-offset_top = 99.0
-offset_right = 577.0
-offset_bottom = 165.0
+[node name="ShopLabel" type="Label" parent="ShopPart/PanelsContainer/PlansStoragePanel"]
+offset_left = 149.0
+offset_top = 102.0
+offset_right = 456.0
+offset_bottom = 156.0
 theme_override_fonts/font = ExtResource("1_8ghdf")
-theme_override_font_sizes/font_size = 50
+theme_override_font_sizes/font_size = 45
+theme_override_styles/normal = SubResource("StyleBoxTexture_666uj")
 text = "Twoje plany"
 horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="ScrollContainer" type="ScrollContainer" parent="ShopPart/PanelsContainer/PlansStoragePanel"]
-offset_left = 23.0
+offset_left = 63.0
 offset_top = 163.0
-offset_right = 569.0
-offset_bottom = 552.0
+offset_right = 543.0
+offset_bottom = 507.0
 
 [node name="PlansStorage" type="VBoxContainer" parent="ShopPart/PanelsContainer/PlansStoragePanel/ScrollContainer"]
 layout_mode = 2
+
+[node name="ActiveBoosterInformation" type="Label" parent="ShopPart/PanelsContainer/PlansStoragePanel"]
+offset_left = 64.0
+offset_top = 424.0
+offset_right = 534.0
+offset_bottom = 509.0
+theme_override_fonts/font = ExtResource("44_ewtis")
+theme_override_font_sizes/font_size = 20
+text = "Masz obecnie aktywny booster, zatem nie możesz zbudować kolejnego. Wróć tu, gdy aktywny booster się skończy."
+horizontal_alignment = 3
+autowrap_mode = 2
 
 [node name="PartsStoragePanel" type="Node2D" parent="ShopPart/PanelsContainer"]
 visible = false
 script = ExtResource("12_pv66d")
 
-[node name="Label" type="Label" parent="ShopPart/PanelsContainer/PartsStoragePanel"]
-offset_left = 16.0
-offset_top = 99.0
-offset_right = 577.0
-offset_bottom = 165.0
+[node name="ShopLabel" type="Label" parent="ShopPart/PanelsContainer/PartsStoragePanel"]
+offset_left = 141.0
+offset_top = 102.0
+offset_right = 463.0
+offset_bottom = 156.0
 theme_override_fonts/font = ExtResource("1_8ghdf")
-theme_override_font_sizes/font_size = 50
+theme_override_font_sizes/font_size = 45
+theme_override_styles/normal = SubResource("StyleBoxTexture_666uj")
 text = "Twoje Czesci"
 horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="ScrollContainer" type="ScrollContainer" parent="ShopPart/PanelsContainer/PartsStoragePanel"]
-offset_left = 23.0
+offset_left = 63.0
 offset_top = 163.0
-offset_right = 569.0
-offset_bottom = 552.0
+offset_right = 543.0
+offset_bottom = 507.0
 
 [node name="PartsStorage" type="VBoxContainer" parent="ShopPart/PanelsContainer/PartsStoragePanel/ScrollContainer"]
 layout_mode = 2
@@ -459,22 +705,23 @@ layout_mode = 2
 [node name="VariablesShop" type="Node2D" parent="ShopPart/PanelsContainer"]
 visible = false
 
-[node name="Label" type="Label" parent="ShopPart/PanelsContainer/VariablesShop"]
-offset_left = 16.0
-offset_top = 99.0
-offset_right = 577.0
-offset_bottom = 165.0
+[node name="ShopLabel" type="Label" parent="ShopPart/PanelsContainer/VariablesShop"]
+offset_left = 192.0
+offset_top = 102.0
+offset_right = 402.0
+offset_bottom = 156.0
 theme_override_fonts/font = ExtResource("1_8ghdf")
-theme_override_font_sizes/font_size = 50
+theme_override_font_sizes/font_size = 45
+theme_override_styles/normal = SubResource("StyleBoxTexture_666uj")
 text = "Zmienne"
 horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="ScrollContainer" type="ScrollContainer" parent="ShopPart/PanelsContainer/VariablesShop"]
-offset_left = 23.0
+offset_left = 60.0
 offset_top = 163.0
-offset_right = 569.0
-offset_bottom = 552.0
+offset_right = 540.0
+offset_bottom = 416.0
 
 [node name="PlansStorage" type="VBoxContainer" parent="ShopPart/PanelsContainer/VariablesShop/ScrollContainer"]
 layout_mode = 2
@@ -491,25 +738,30 @@ code_element = ExtResource("14_d5806")
 layout_mode = 2
 code_element = ExtResource("15_7msek")
 
+[node name="CodeElementShopPrefab4" parent="ShopPart/PanelsContainer/VariablesShop/ScrollContainer/PlansStorage" instance=ExtResource("12_xoax1")]
+layout_mode = 2
+code_element = ExtResource("23_rmyr0")
+
 [node name="LoopsShop" type="Node2D" parent="ShopPart/PanelsContainer"]
 visible = false
 
-[node name="Label" type="Label" parent="ShopPart/PanelsContainer/LoopsShop"]
-offset_left = 16.0
-offset_top = 99.0
-offset_right = 577.0
-offset_bottom = 165.0
+[node name="ShopLabel" type="Label" parent="ShopPart/PanelsContainer/LoopsShop"]
+offset_left = 212.0
+offset_top = 102.0
+offset_right = 383.0
+offset_bottom = 156.0
 theme_override_fonts/font = ExtResource("1_8ghdf")
-theme_override_font_sizes/font_size = 50
+theme_override_font_sizes/font_size = 45
+theme_override_styles/normal = SubResource("StyleBoxTexture_666uj")
 text = "Petle"
 horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="ScrollContainer" type="ScrollContainer" parent="ShopPart/PanelsContainer/LoopsShop"]
-offset_left = 23.0
+offset_left = 60.0
 offset_top = 163.0
-offset_right = 569.0
-offset_bottom = 425.0
+offset_right = 540.0
+offset_bottom = 416.0
 
 [node name="PlansStorage" type="VBoxContainer" parent="ShopPart/PanelsContainer/LoopsShop/ScrollContainer"]
 layout_mode = 2
@@ -525,22 +777,23 @@ code_element = ExtResource("17_pmuaw")
 [node name="ConditionsShop" type="Node2D" parent="ShopPart/PanelsContainer"]
 visible = false
 
-[node name="Label" type="Label" parent="ShopPart/PanelsContainer/ConditionsShop"]
-offset_left = 16.0
-offset_top = 99.0
-offset_right = 577.0
-offset_bottom = 165.0
+[node name="ShopLabel" type="Label" parent="ShopPart/PanelsContainer/ConditionsShop"]
+offset_left = 184.0
+offset_top = 102.0
+offset_right = 415.0
+offset_bottom = 156.0
 theme_override_fonts/font = ExtResource("1_8ghdf")
-theme_override_font_sizes/font_size = 50
+theme_override_font_sizes/font_size = 45
+theme_override_styles/normal = SubResource("StyleBoxTexture_666uj")
 text = "Warunki"
 horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="ScrollContainer" type="ScrollContainer" parent="ShopPart/PanelsContainer/ConditionsShop"]
-offset_left = 23.0
+offset_left = 60.0
 offset_top = 163.0
-offset_right = 569.0
-offset_bottom = 426.0
+offset_right = 540.0
+offset_bottom = 416.0
 
 [node name="PlansStorage" type="VBoxContainer" parent="ShopPart/PanelsContainer/ConditionsShop/ScrollContainer"]
 layout_mode = 2
@@ -630,22 +883,23 @@ code_element = ExtResource("26_41l2c")
 [node name="FunctionsShop" type="Node2D" parent="ShopPart/PanelsContainer"]
 visible = false
 
-[node name="Label" type="Label" parent="ShopPart/PanelsContainer/FunctionsShop"]
-offset_left = 16.0
-offset_top = 99.0
-offset_right = 577.0
-offset_bottom = 165.0
+[node name="ShopLabel" type="Label" parent="ShopPart/PanelsContainer/FunctionsShop"]
+offset_left = 193.0
+offset_top = 102.0
+offset_right = 413.0
+offset_bottom = 156.0
 theme_override_fonts/font = ExtResource("1_8ghdf")
-theme_override_font_sizes/font_size = 50
+theme_override_font_sizes/font_size = 45
+theme_override_styles/normal = SubResource("StyleBoxTexture_666uj")
 text = "Funkcje"
 horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="ScrollContainer" type="ScrollContainer" parent="ShopPart/PanelsContainer/FunctionsShop"]
-offset_left = 23.0
+offset_left = 60.0
 offset_top = 163.0
-offset_right = 569.0
-offset_bottom = 417.0
+offset_right = 540.0
+offset_bottom = 416.0
 
 [node name="PlansStorage" type="VBoxContainer" parent="ShopPart/PanelsContainer/FunctionsShop/ScrollContainer"]
 layout_mode = 2
@@ -654,7 +908,12 @@ layout_mode = 2
 layout_mode = 2
 code_element = ExtResource("27_paa8e")
 
+[node name="CodeElementShopPrefab2" parent="ShopPart/PanelsContainer/FunctionsShop/ScrollContainer/PlansStorage" instance=ExtResource("12_xoax1")]
+layout_mode = 2
+code_element = ExtResource("36_wjf6p")
+
 [node name="Currency" type="Node2D" parent="ShopPart"]
+position = Vector2(64, 0)
 script = ExtResource("31_v8no3")
 
 [node name="Label" type="Label" parent="ShopPart/Currency"]
@@ -668,7 +927,6 @@ text = "10000"
 
 [node name="Sprite2D" type="Sprite2D" parent="ShopPart/Currency"]
 position = Vector2(306, 605.332)
-rotation = 4.71239
 scale = Vector2(0.0872654, 0.0872654)
 texture = ExtResource("31_hid5v")
 
@@ -701,45 +959,94 @@ text = "B"
 position = Vector2(573, 0)
 
 [node name="PanelBackground" type="Sprite2D" parent="PrepareBoosterPanel/Panel"]
-self_modulate = Color(1, 1, 1, 0.270588)
-position = Vector2(289.5, 369.5)
-scale = Vector2(549, 545)
+modulate = Color(0.968627, 0.8, 0.815686, 1)
+position = Vector2(289.5, 377)
+scale = Vector2(549, 570)
 texture = SubResource("CanvasTexture_ahlo6")
 
+[node name="Sprite2D" type="Sprite2D" parent="PrepareBoosterPanel/Panel"]
+modulate = Color(0.756863, 0.596078, 0.698039, 1)
+position = Vector2(47, 372)
+scale = Vector2(6.25, 488)
+texture = SubResource("CanvasTexture_u1hxd")
+
+[node name="Sprite2D2" type="Sprite2D" parent="PrepareBoosterPanel/Panel"]
+modulate = Color(0.756863, 0.596078, 0.698039, 1)
+position = Vector2(286.482, 126)
+rotation = 1.5708
+scale = Vector2(6.25, 485.227)
+texture = SubResource("CanvasTexture_u1hxd")
+
+[node name="Sprite2D3" type="Sprite2D" parent="PrepareBoosterPanel/Panel"]
+modulate = Color(0.756863, 0.596078, 0.698039, 1)
+position = Vector2(526, 373.055)
+scale = Vector2(6.25, 489.891)
+texture = SubResource("CanvasTexture_u1hxd")
+
+[node name="Sprite2D4" type="Sprite2D" parent="PrepareBoosterPanel/Panel"]
+modulate = Color(0.756863, 0.596078, 0.698039, 1)
+position = Vector2(286.462, 616)
+rotation = 1.5708
+scale = Vector2(6.25, 485.135)
+texture = SubResource("CanvasTexture_u1hxd")
+
 [node name="BoosterName" type="Label" parent="PrepareBoosterPanel/Panel"]
-offset_left = 16.0
-offset_top = 104.0
-offset_right = 564.0
+offset_left = 149.0
+offset_top = 97.0
+offset_right = 428.0
 offset_bottom = 154.0
 theme_override_fonts/font = ExtResource("1_8ghdf")
-theme_override_font_sizes/font_size = 30
-text = "Current Booster : None"
+theme_override_font_sizes/font_size = 25
+theme_override_styles/normal = SubResource("StyleBoxTexture_666uj")
+text = "Budowany booster: Zaden"
 horizontal_alignment = 1
 vertical_alignment = 1
+autowrap_mode = 2
 
 [node name="Ingridients" type="RichTextLabel" parent="PrepareBoosterPanel/Panel"]
-offset_left = 46.0
-offset_top = 168.0
-offset_right = 543.0
-offset_bottom = 633.0
+offset_left = 66.0
+offset_top = 159.0
+offset_right = 511.0
+offset_bottom = 601.0
+theme_override_fonts/normal_font = ExtResource("44_ewtis")
+theme_override_fonts/bold_font = ExtResource("44_ewtis")
+theme_override_font_sizes/normal_font_size = 20
+theme_override_font_sizes/bold_font_size = 20
 bbcode_enabled = true
-text = "Witaj w warsztacie! Tutaj możesz tworzyć specjalne boostery, które pomogą Ci w mini-grach. Oto, co musisz zrobić:
-
-[color=\"FFB74D\"][b]1. Kup plan boostera:[/b][/color] W sklepie znajdziesz plany boosterów. Wybierz interesujący Cię plan i kup go.
-[color=\"FFB74D\"][b]2. Wybierz plan w magazynie:[/b][/color] Przejdź do magazynu, otwórz sekcję „Plany” i wybierz plan, którego chcesz użyć. Po jego wyborze zobaczysz listę potrzebnych części.
-[color=\"FFB74D\"][b]3. Zdobądź części:[/b][/color] Wejdź do sklepu i kup wszystkie wymagane składniki.
-[color=\"FFB74D\"][b]4. Użyj części:[/b][/color] Wróć do magazynu, wybierz zakupione części i przypisz je do boostera. Każda użyta część zmieni status z „0/1” na „1/1”.
-[color=\"FFB74D\"][b]5. Twórz booster:[/b][/color] Gdy wszystkie części są gotowe, kliknij „Rozpocznij tworzenie boostera” i przejdź do kodowania, aby ukończyć swój projekt!
-Powodzenia i baw się świetnie, tworząc ulepszenia! 😊"
+text = "[fill]Witaj w warsztacie! Tutaj możesz tworzyć specjalne ulepszenia, które pomogą Ci w mini-grach. Oto, co musisz zrobić:
+[color=\"B1849F\"][b]1. Kup plan boostera:[/b][/color] W sklepie znajdziesz plany boosterów. Wybierz interesujący Cię plan i kup go.
+[color=\"B1849F\"][b]2. Wybierz plan w magazynie:[/b][/color] Przejdź do magazynu, otwórz sekcję „Plany” i wybierz plan, którego chcesz użyć. Po jego wyborze zobaczysz listę potrzebnych części.
+[color=\"B1849F\"][b]3. Zdobądź części:[/b][/color] Wejdź do sklepu i kup wszystkie wymagane składniki.
+[color=\"B1849F\"][b]4. Użyj części:[/b][/color] Wróć do magazynu, wybierz zakupione części i przypisz je do boostera. Każda użyta część zmieni status z „0/1” na „1/1”.
+[color=\"B1849F\"][b]5. Twórz booster:[/b][/color] Gdy wszystkie części są gotowe, kliknij „START” i przejdź do kodowania, aby ukończyć swój projekt! Powodzeenia i baw się dobrze! "
 autowrap_mode = 2
 
 [node name="StartMakeBooster" type="Button" parent="PrepareBoosterPanel/Panel"]
 visible = false
-offset_left = 153.0
-offset_top = 571.0
-offset_right = 422.0
-offset_bottom = 631.0
-text = "Rozpocznij tworzenie boostera"
+offset_left = 382.0
+offset_top = 549.0
+offset_right = 518.0
+offset_bottom = 596.0
+theme_override_styles/normal = ExtResource("13_o127n")
+theme_override_styles/hover = ExtResource("13_o127n")
+theme_override_styles/pressed = ExtResource("13_o127n")
+theme_override_styles/disabled = ExtResource("14_nu0ma")
+theme_override_styles/focus = ExtResource("14_nu0ma")
+
+[node name="Label" type="Label" parent="PrepareBoosterPanel/Panel/StartMakeBooster"]
+layout_mode = 0
+offset_left = 1.0
+offset_top = 1.0
+offset_right = 137.0
+offset_bottom = 46.0
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.6)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_fonts/font = ExtResource("1_8ghdf")
+theme_override_font_sizes/font_size = 30
+text = "Start"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="BuildBooster" type="Node2D" parent="."]
 visible = false
@@ -748,53 +1055,150 @@ script = ExtResource("30_phvnv")
 [node name="Panel" type="Node2D" parent="BuildBooster"]
 
 [node name="PanelBackground" type="Sprite2D" parent="BuildBooster/Panel"]
-self_modulate = Color(1, 1, 1, 0.270588)
+modulate = Color(0.968627, 0.8, 0.815686, 1)
 position = Vector2(580.5, 369)
 scale = Vector2(1131, 544)
 texture = SubResource("CanvasTexture_ahlo6")
 
+[node name="Sprite2D" type="Sprite2D" parent="BuildBooster/Panel"]
+modulate = Color(0.756863, 0.596078, 0.698039, 1)
+position = Vector2(51, 370)
+scale = Vector2(6.25, 480)
+texture = SubResource("CanvasTexture_u1hxd")
+
+[node name="Sprite2D2" type="Sprite2D" parent="BuildBooster/Panel"]
+modulate = Color(0.756863, 0.596078, 0.698039, 1)
+position = Vector2(581.421, 133.001)
+rotation = 1.5708
+scale = Vector2(6.25, 1066.68)
+texture = SubResource("CanvasTexture_u1hxd")
+
+[node name="Sprite2D3" type="Sprite2D" parent="BuildBooster/Panel"]
+modulate = Color(0.756863, 0.596078, 0.698039, 1)
+position = Vector2(1112, 369.109)
+scale = Vector2(6.25, 477.781)
+texture = SubResource("CanvasTexture_u1hxd")
+
+[node name="Sprite2D4" type="Sprite2D" parent="BuildBooster/Panel"]
+modulate = Color(0.756863, 0.596078, 0.698039, 1)
+position = Vector2(581.476, 608.001)
+rotation = 1.5708
+scale = Vector2(6.25, 1067.5)
+texture = SubResource("CanvasTexture_u1hxd")
+
 [node name="CodeInputNode" type="Node2D" parent="BuildBooster"]
-position = Vector2(588, 125)
+position = Vector2(616, 158)
 
 [node name="Button" type="Button" parent="BuildBooster"]
-offset_left = 1034.0
-offset_top = 393.0
-offset_right = 1135.0
-offset_bottom = 445.0
-text = "Sprawdź"
+offset_left = 967.0
+offset_top = 419.0
+offset_right = 1100.0
+offset_bottom = 464.0
+theme_override_styles/normal = ExtResource("13_o127n")
+theme_override_styles/hover = ExtResource("13_o127n")
+theme_override_styles/pressed = ExtResource("13_o127n")
+theme_override_styles/disabled = ExtResource("14_nu0ma")
+theme_override_styles/focus = ExtResource("13_o127n")
+script = ExtResource("15_sitvh")
+
+[node name="Label" type="Label" parent="BuildBooster/Button"]
+layout_mode = 0
+offset_left = 1.0
+offset_right = 132.0
+offset_bottom = 45.0
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.6)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_fonts/font = ExtResource("1_8ghdf")
+theme_override_font_sizes/font_size = 23
+text = "Sprawdz"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="UseButton" type="Button" parent="BuildBooster"]
 visible = false
-offset_left = 1047.0
-offset_top = 456.0
-offset_right = 1124.0
-offset_bottom = 507.0
-text = "Użyj"
+offset_left = 988.0
+offset_top = 471.0
+offset_right = 1078.0
+offset_bottom = 516.0
+theme_override_styles/normal = ExtResource("13_o127n")
+theme_override_styles/hover = ExtResource("13_o127n")
+theme_override_styles/pressed = ExtResource("13_o127n")
+theme_override_styles/disabled = ExtResource("13_o127n")
+theme_override_styles/focus = ExtResource("13_o127n")
+script = ExtResource("15_sitvh")
+
+[node name="Label" type="Label" parent="BuildBooster/UseButton"]
+layout_mode = 0
+offset_top = 1.0
+offset_right = 88.0
+offset_bottom = 46.0
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.6)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_fonts/font = ExtResource("1_8ghdf")
+theme_override_font_sizes/font_size = 23
+text = "uzyj"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="DoubleExpInformation" type="RichTextLabel" parent="BuildBooster"]
 visible = false
-offset_left = 34.0
-offset_top = 150.0
-offset_right = 543.0
-offset_bottom = 630.0
+offset_left = 75.0
+offset_top = 158.0
+offset_right = 597.0
+offset_bottom = 600.0
+theme_override_fonts/normal_font = ExtResource("44_ewtis")
+theme_override_fonts/bold_font = ExtResource("44_ewtis")
+theme_override_font_sizes/normal_font_size = 20
+theme_override_font_sizes/bold_font_size = 20
 bbcode_enabled = true
-text = "[color=\"FFB74D\"][b]1. Ustawienie wartości początkowych:[/b][/color]
-*	Zainicjalizuj zmienną multiplier z wartością 2. To będzie mnożnik punktów doświadczenia.
-*	Zainicjalizuj zmienną games_left z wartością 5. Określa ona liczbę gier, przez które będzie działał booster.
-[color=\"FFB74D\"][b]2. Rozpoczęcie pętli:[/b][/color]
+text = "[color=\"B1849F\"][b]1. Ustawienie wartości początkowych:[/b][/color]
+*	Zainicjalizuj zmienną multiplier wartością 2, a games_left wartością 5. To będzie mnożnik punktów doświadczenia i liczba gier, przez które będzie działał booster
+[color=\"B1849F\"][b]2. Rozpoczęcie pętli:[/b][/color]
 *	Użyj pętli while, aby wykonywać instrukcje, dopóki wartość games_left jest większa niż 0.
-[color=\"FFB74D\"][b]3.Modyfikowanie doświadczenia:[/b][/color]
-*	Wewnątrz pętli pomnóż zdobyte doświadczenie (earned_exp) przez multiplier (zastosuj *= - mnoży obecną wartość liczby przez podaną liczbę/zmienną)
-[color=\"FFB74D\"][b]4. Dodanie doświadczenia:[/b][/color]
+[color=\"B1849F\"][b]3. Modyfikowanie doświadczenia:[/b][/color]
+*	Wewnątrz pętli pomnóż zdobyte doświadczenie (earned_exp) przez multiplier (zastosuj *= - mnoży obecną wartość liczby przez podaną wartość)
+[color=\"B1849F\"][b]4. Dodanie doświadczenia:[/b][/color]
 *	Wywołaj funkcję add_exp, przekazując zaktualizowaną wartość earned_exp.
-[color=\"FFB74D\"][b]5. Zmniejszenie liczby pozostałych gier:[/b][/color]
-*	Wewnątrz pętli zmniejsz wartość games_left o 1, aby odliczać rozegrane gry (zastosuj -= - odejmuje liczbę od obecnej wartości zmiennej)"
+[color=\"B1849F\"][b]5. Zmniejszenie liczby pozostałych gier:[/b][/color]
+*	Wewnątrz pętli zmniejsz wartość games_left o 1, aby odliczać rozegrane gry (zastosuj -=)"
+
+[node name="DoubleCoinsInformation" type="RichTextLabel" parent="BuildBooster"]
+visible = false
+offset_left = 75.0
+offset_top = 158.0
+offset_right = 597.0
+offset_bottom = 600.0
+theme_override_fonts/normal_font = ExtResource("44_ewtis")
+theme_override_fonts/bold_font = ExtResource("44_ewtis")
+theme_override_font_sizes/normal_font_size = 20
+theme_override_font_sizes/bold_font_size = 20
+bbcode_enabled = true
+text = "[color=\"B1849F\"][b]1. Ustawienie wartości początkowych:[/b][/color]
+*	Zainicjalizuj zmienną multiplier wartością 2, a games_left wartością 5. To będzie mnożnik punktów doświadczenia i liczba gier, przez które będzie działał booster
+[color=\"B1849F\"][b]2. Rozpoczęcie pętli:[/b][/color]
+*	Użyj pętli while, aby wykonywać instrukcje, dopóki wartość games_left jest większa niż 0.
+[color=\"B1849F\"][b]3. Modyfikowanie doświadczenia:[/b][/color]
+*	Wewnątrz pętli pomnóż zdobyte łapki (monety) (earned_coins) przez multiplier (zastosuj *= - mnoży obecną wartość liczby przez podaną wartość)
+[color=\"B1849F\"][b]4. Dodanie doświadczenia:[/b][/color]
+*	Wywołaj funkcję add_coins, przekazując zaktualizowaną wartość earned_coins
+[color=\"B1849F\"][b]5. Zmniejszenie liczby pozostałych gier:[/b][/color]
+*	Wewnątrz pętli zmniejsz wartość games_left o 1, aby odliczać rozegrane gry (zastosuj -=)"
+
+[node name="LabelBackgorund" type="TextureRect" parent="BuildBooster"]
+modulate = Color(0.968627, 0.8, 0.815686, 1)
+offset_left = 158.0
+offset_top = 116.0
+offset_right = 472.0
+offset_bottom = 150.0
+texture = SubResource("CanvasTexture_81qsm")
 
 [node name="HowToCodeBoosterText" type="Label" parent="BuildBooster"]
-offset_left = 16.0
-offset_top = 102.0
-offset_right = 549.0
-offset_bottom = 142.0
+offset_left = 50.0
+offset_top = 111.0
+offset_right = 583.0
+offset_bottom = 151.0
 theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
 theme_override_constants/outline_size = 2
 theme_override_font_sizes/font_size = 20
@@ -803,26 +1207,117 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="BoosterConsole" type="CodeEdit" parent="BuildBooster"]
-offset_left = 590.0
-offset_top = 393.0
-offset_right = 1023.0
-offset_bottom = 631.0
-theme_override_colors/background_color = Color(0.568627, 0.54902, 0.529412, 1)
+offset_left = 616.0
+offset_top = 417.0
+offset_right = 958.0
+offset_bottom = 594.0
+theme_override_colors/font_readonly_color = Color(1, 1, 1, 1)
 theme_override_colors/line_number_color = Color(1, 1, 1, 1)
 theme_override_fonts/font = ExtResource("10_ymans")
+theme_override_styles/normal = ExtResource("39_ynvke")
+theme_override_styles/focus = ExtResource("40_6yk7k")
+theme_override_styles/read_only = ExtResource("40_6yk7k")
+theme_override_styles/completion = ExtResource("39_ynvke")
 editable = false
 gutters_draw_line_numbers = true
 
 [node name="ConsoleText" type="Label" parent="BuildBooster"]
-offset_left = 915.0
-offset_top = 364.0
-offset_right = 1021.0
-offset_bottom = 391.0
+offset_left = 852.0
+offset_top = 389.0
+offset_right = 958.0
+offset_bottom = 416.0
 theme_override_fonts/font = ExtResource("1_8ghdf")
 theme_override_font_sizes/font_size = 25
 text = "Konsola"
 
+[node name="MinigamesLives" parent="BuildBooster" instance=ExtResource("41_wcn2p")]
+position = Vector2(853, 145)
+scale = Vector2(0.85, 0.85)
+
 [node name="FuncTimer" type="Timer" parent="BuildBooster"]
+
+[node name="Information" type="Node2D" parent="BuildBooster"]
+position = Vector2(752, -251)
+scale = Vector2(0.7, 0.7)
+script = ExtResource("42_acb2g")
+
+[node name="Information" type="Sprite2D" parent="BuildBooster/Information"]
+visible = false
+modulate = Color(0.968627, 0.8, 0.815686, 1)
+position = Vector2(884.286, 278.571)
+scale = Vector2(694.286, 734.286)
+texture = SubResource("CanvasTexture_7roh4")
+
+[node name="InformationButton" type="TextureButton" parent="BuildBooster/Information"]
+offset_left = 404.286
+offset_top = 558.571
+offset_right = 510.286
+offset_bottom = 658.571
+texture_normal = ExtResource("2_c63af")
+texture_pressed = ExtResource("2_c63af")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="Icon" type="Sprite2D" parent="BuildBooster/Information"]
+position = Vector2(457.286, 607.571)
+scale = Vector2(0.124325, 0.124325)
+texture = ExtResource("43_skidl")
+
+[node name="InformationNode" type="Node2D" parent="BuildBooster/Information"]
+visible = false
+position = Vector2(-598.571, 394.286)
+scale = Vector2(1.42857, 1.42857)
+
+[node name="Panel" type="Node2D" parent="BuildBooster/Information/InformationNode"]
+
+[node name="Background" type="Sprite2D" parent="BuildBooster/Information/InformationNode/Panel"]
+modulate = Color(0.956863, 0.8, 0.713726, 1)
+position = Vector2(488.5, 381)
+scale = Vector2(557, 372)
+texture = SubResource("CanvasTexture_j58ud")
+
+[node name="Sprite2D" type="Sprite2D" parent="BuildBooster/Information/InformationNode/Panel"]
+modulate = Color(0.756863, 0.596078, 0.698039, 1)
+position = Vector2(242.529, 385)
+scale = Vector2(6.25, 310)
+texture = SubResource("CanvasTexture_u1hxd")
+
+[node name="Sprite2D2" type="Sprite2D" parent="BuildBooster/Information/InformationNode/Panel"]
+modulate = Color(0.756863, 0.596078, 0.698039, 1)
+position = Vector2(488.853, 232)
+rotation = 1.5708
+scale = Vector2(6.25, 498.132)
+texture = SubResource("CanvasTexture_u1hxd")
+
+[node name="Sprite2D3" type="Sprite2D" parent="BuildBooster/Information/InformationNode/Panel"]
+modulate = Color(0.756863, 0.596078, 0.698039, 1)
+position = Vector2(740, 385)
+scale = Vector2(6.25, 312)
+texture = SubResource("CanvasTexture_u1hxd")
+
+[node name="Sprite2D4" type="Sprite2D" parent="BuildBooster/Information/InformationNode/Panel"]
+modulate = Color(0.756863, 0.596078, 0.698039, 1)
+position = Vector2(488.902, 538)
+rotation = 1.5708
+scale = Vector2(6.25, 498.545)
+texture = SubResource("CanvasTexture_u1hxd")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="BuildBooster/Information/InformationNode"]
+offset_left = 258.0
+offset_top = 246.0
+offset_right = 725.0
+offset_bottom = 522.0
+theme_override_fonts/normal_font = ExtResource("44_ewtis")
+theme_override_font_sizes/normal_font_size = 20
+bbcode_enabled = true
+text = "Twoim zadaniem jest odpowiednio uzupełnić pola. Różne kolory oznaczają inne części kodu:
+[color=\"d0ae9b\"]• Beżowy - [/color]oznacza zmienne
+[color=\"d9a679\"]• Pomarańczowy -[/color] oznacza pętle bądź warunki
+[color=\"c198b2\"]• Fioletowy -[/color] oznacza operatory
+[color=\"a3bec9\"]• Niebieski -[/color] oznacza funkcje
+[color=\"c7b476\"]• Żółty -[/color] oznacza liczby
+
+Jeżeli uda Ci się poprawnie napisać booster w 3 pierwszych próbach dostaniesz dodatkowe gry, przez które będzie działał stworzony booster! Powodzenia 😁"
 
 [node name="Congratulations" type="Node2D" parent="."]
 visible = false
@@ -831,32 +1326,61 @@ script = ExtResource("34_jlt3b")
 [node name="Panel" type="Node2D" parent="Congratulations"]
 
 [node name="PanelBackground" type="Sprite2D" parent="Congratulations/Panel"]
-self_modulate = Color(1, 1, 1, 0.270588)
+modulate = Color(0.968627, 0.8, 0.815686, 1)
 position = Vector2(580.5, 369)
 scale = Vector2(1131, 544)
 texture = SubResource("CanvasTexture_ahlo6")
 
+[node name="Sprite2D" type="Sprite2D" parent="Congratulations/Panel"]
+modulate = Color(0.756863, 0.596078, 0.698039, 1)
+position = Vector2(51, 370)
+scale = Vector2(6.25, 480)
+texture = SubResource("CanvasTexture_u1hxd")
+
+[node name="Sprite2D2" type="Sprite2D" parent="Congratulations/Panel"]
+modulate = Color(0.756863, 0.596078, 0.698039, 1)
+position = Vector2(581.421, 133.001)
+rotation = 1.5708
+scale = Vector2(6.25, 1066.68)
+texture = SubResource("CanvasTexture_u1hxd")
+
+[node name="Sprite2D3" type="Sprite2D" parent="Congratulations/Panel"]
+modulate = Color(0.756863, 0.596078, 0.698039, 1)
+position = Vector2(1112, 369.109)
+scale = Vector2(6.25, 477.781)
+texture = SubResource("CanvasTexture_u1hxd")
+
+[node name="Sprite2D4" type="Sprite2D" parent="Congratulations/Panel"]
+modulate = Color(0.756863, 0.596078, 0.698039, 1)
+position = Vector2(581.476, 608.001)
+rotation = 1.5708
+scale = Vector2(6.25, 1067.5)
+texture = SubResource("CanvasTexture_u1hxd")
+
 [node name="Description" type="Label" parent="Congratulations"]
-offset_left = 38.0
-offset_top = 342.0
-offset_right = 1115.0
-offset_bottom = 424.0
-theme_override_font_sizes/font_size = 20
-text = "Teraz, przez nastepnych 5 rozegranych mini-gier Twoje punkty doswiadczenia beda podwajane! Dobra robota! 
+offset_left = 55.0
+offset_top = 366.0
+offset_right = 1108.0
+offset_bottom = 465.0
+theme_override_fonts/font = ExtResource("44_ewtis")
+theme_override_font_sizes/font_size = 25
+text = "Teraz, przez nastepnych 5 rozegranych mini-gier Twoje punkty doswiadczenia beda podwajane! 
+Dobra robota! 
 Mozesz wrocic do ekranu glownego klikajac strzalke na gorze."
 horizontal_alignment = 1
 autowrap_mode = 2
 
 [node name="Title" type="Label" parent="Congratulations"]
-offset_left = 16.0
+offset_left = 52.0
 offset_top = 240.0
-offset_right = 1146.0
+offset_right = 1109.0
 offset_bottom = 386.0
 theme_override_fonts/font = ExtResource("1_8ghdf")
 theme_override_font_sizes/font_size = 30
 text = "Gratulacje! Udalo Ci sie zbudowac i aktywowac booster "
 horizontal_alignment = 1
 vertical_alignment = 1
+autowrap_mode = 2
 
 [connection signal="mouse_entered" from="Header/BackButton/Button" to="Header/BackButton" method="_on_button_mouse_entered"]
 [connection signal="mouse_exited" from="Header/BackButton/Button" to="Header/BackButton" method="_on_button_mouse_exited"]
@@ -889,3 +1413,5 @@ vertical_alignment = 1
 [connection signal="pressed" from="BuildBooster/Button" to="BuildBooster" method="_on_button_pressed"]
 [connection signal="pressed" from="BuildBooster/UseButton" to="BuildBooster" method="_on_use_button_pressed"]
 [connection signal="timeout" from="BuildBooster/FuncTimer" to="BuildBooster" method="_on_func_timer_timeout"]
+[connection signal="mouse_entered" from="BuildBooster/Information/InformationButton" to="BuildBooster/Information" method="_on_information_button_mouse_entered"]
+[connection signal="mouse_exited" from="BuildBooster/Information/InformationButton" to="BuildBooster/Information" method="_on_information_button_mouse_exited"]

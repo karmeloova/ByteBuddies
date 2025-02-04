@@ -3,6 +3,7 @@ extends Resource
 class_name Plan
 
 @export var plan_name : String
+@export var res_name : String
 @export var booster_category : MyEnums.BoosterCategory
 @export var booster_description : String
 @export var required_level : Level

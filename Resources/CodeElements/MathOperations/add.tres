@@ -5,6 +5,7 @@
 [resource]
 script = ExtResource("1_wayrq")
 code_element_name = "+ (add)"
+res_name = "add_res"
 code_element_description = "Operator służący do dodawania dwóch liczb. Np. 2+2 = 4"
 category = 3
 price = 1

@@ -29,6 +29,7 @@ func check_promotion() :
 	set_level_elements()
 	
 	for i in LevelManager.was_promotion.size() :
+		print("EHE")
 		next_level_instance = next_level_pop_up.instantiate()
 		pop_up_node.add_child(next_level_instance)
 		next_level_instance.set_textes(LevelManager.promoted_levels[i])
