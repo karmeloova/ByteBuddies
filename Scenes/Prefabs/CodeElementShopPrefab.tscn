@@ -1,14 +1,17 @@
-[gd_scene load_steps=4 format=3 uid="uid://efafyn68uv1p"]
+[gd_scene load_steps=7 format=3 uid="uid://efafyn68uv1p"]
 
 [ext_resource type="Script" path="res://Scenes/Prefabs/CodeElementShopPrefab.gd" id="1_6hy7h"]
 [ext_resource type="FontFile" uid="uid://ccgpsjqwwow8o" path="res://Fonts/Bubblegum.ttf" id="2_pvuwe"]
+[ext_resource type="StyleBox" uid="uid://d32dm3665drok" path="res://Scenes/Rooms/MiniButton.stylebox" id="3_mfvxn"]
+[ext_resource type="StyleBox" uid="uid://5akr847h57wb" path="res://Scenes/DisabledMiniButton.tres" id="4_02hle"]
 [ext_resource type="Texture2D" uid="uid://bhcgfqs2j6bx4" path="res://Images/UI/Lives/Life.png" id="4_7dh4i"]
+[ext_resource type="Script" path="res://Scenes/Rooms/ButtonModulate.gd" id="5_62hui"]
 
 [node name="CodeElementShopPrefab" type="Control"]
-custom_minimum_size = Vector2(540, 55)
+custom_minimum_size = Vector2(480, 55)
 layout_mode = 3
 anchors_preset = 0
-offset_right = 553.0
+offset_right = 482.0
 offset_bottom = 57.0
 scale = Vector2(1.6, 1.6)
 script = ExtResource("1_6hy7h")
@@ -26,30 +29,49 @@ text = "CoDeElement"
 [node name="Button" type="Button" parent="."]
 modulate = Color(1, 1, 1, 0)
 layout_mode = 0
-offset_right = 533.0
+offset_left = -45.0
+offset_right = 488.0
 offset_bottom = 56.0
 
 [node name="BuyButton" type="Button" parent="."]
 layout_mode = 0
-offset_left = 443.125
-offset_top = 8.125
-offset_right = 526.125
-offset_bottom = 48.125
+offset_left = 398.125
+offset_top = 6.25
+offset_right = 473.125
+offset_bottom = 49.25
 theme_override_font_sizes/font_size = 20
-text = "Kup"
+theme_override_styles/normal = ExtResource("3_mfvxn")
+theme_override_styles/hover = ExtResource("3_mfvxn")
+theme_override_styles/pressed = ExtResource("3_mfvxn")
+theme_override_styles/disabled = ExtResource("4_02hle")
+theme_override_styles/focus = ExtResource("4_02hle")
+script = ExtResource("5_62hui")
+
+[node name="Label" type="Label" parent="BuyButton"]
+layout_mode = 0
+offset_top = 2.0
+offset_right = 75.0
+offset_bottom = 43.0
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.6)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_fonts/font = ExtResource("2_pvuwe")
+theme_override_font_sizes/font_size = 23
+text = "KUP"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="FishCoinSprite" type="Sprite2D" parent="."]
-position = Vector2(416.25, 27.5)
-rotation = 4.71239
+position = Vector2(371.25, 27.5)
 scale = Vector2(0.0561475, 0.0561475)
 texture = ExtResource("4_7dh4i")
 
 [node name="PriceLabel" type="Label" parent="."]
 layout_mode = 0
-offset_left = 325.0
-offset_top = 11.25
-offset_right = 388.0
-offset_bottom = 46.25
+offset_left = 280.0
+offset_top = 13.125
+offset_right = 343.0
+offset_bottom = 48.125
 theme_override_fonts/font = ExtResource("2_pvuwe")
 theme_override_font_sizes/font_size = 32
 text = "0"

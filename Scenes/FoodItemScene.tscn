@@ -1,9 +1,10 @@
-[gd_scene load_steps=6 format=3 uid="uid://cjnamwk0mbts2"]
+[gd_scene load_steps=7 format=3 uid="uid://cjnamwk0mbts2"]
 
 [ext_resource type="Script" path="res://Scenes/FoodItemScene.gd" id="1_fjw4n"]
 [ext_resource type="StyleBox" uid="uid://d32dm3665drok" path="res://Scenes/Rooms/MiniButton.stylebox" id="2_pqsnr"]
 [ext_resource type="FontFile" uid="uid://ccgpsjqwwow8o" path="res://Fonts/Bubblegum.ttf" id="3_3r4qh"]
 [ext_resource type="Script" path="res://Scenes/Rooms/ButtonModulate.gd" id="3_a8lbr"]
+[ext_resource type="StyleBox" uid="uid://5akr847h57wb" path="res://Scenes/DisabledMiniButton.tres" id="4_38qtm"]
 
 [sub_resource type="CanvasTexture" id="CanvasTexture_0wf03"]
 
@@ -73,7 +74,7 @@ text = "10"
 horizontal_alignment = 2
 vertical_alignment = 1
 
-[node name="Buy" type="Button" parent="MainContent/PriceBuyButton"]
+[node name="Buy" type="Button" parent="MainContent/PriceBuyButton" groups=["Button"]]
 custom_minimum_size = Vector2(90, 50)
 layout_mode = 2
 size_flags_horizontal = 4
@@ -82,12 +83,13 @@ theme_override_font_sizes/font_size = 20
 theme_override_styles/normal = ExtResource("2_pqsnr")
 theme_override_styles/hover = ExtResource("2_pqsnr")
 theme_override_styles/pressed = ExtResource("2_pqsnr")
-theme_override_styles/disabled = ExtResource("2_pqsnr")
-theme_override_styles/focus = ExtResource("2_pqsnr")
+theme_override_styles/disabled = ExtResource("4_38qtm")
+theme_override_styles/focus = ExtResource("4_38qtm")
 script = ExtResource("3_a8lbr")
 metadata/_edit_group_ = true
 
 [node name="Label" type="Label" parent="MainContent/PriceBuyButton/Buy"]
+layout_mode = 0
 offset_left = 1.0
 offset_top = 1.0
 offset_right = 90.0

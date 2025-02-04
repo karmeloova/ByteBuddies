@@ -5,6 +5,7 @@
 [resource]
 script = ExtResource("1_lw6qx")
 code_element_name = "for"
+res_name = "for_res"
 code_element_description = "for i in range(0, x) : co_ma_się_wykonać - wykonuje \"co_ma_się_wykonać\" przez x razy. \"i\" jest iteratorem - pozwala sprawdzić, na którym kroku obecnie jest pętla"
 category = 1
 price = 2

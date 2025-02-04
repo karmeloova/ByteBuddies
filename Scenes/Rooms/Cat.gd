@@ -6,6 +6,7 @@ func _ready():
 	SignalManager.eat_end.connect(_on_eat_end)
 
 func _on_go_to_bowl() :
+	get_tree().paused = true
 	tween = self.create_tween()
 	tween.set_parallel()
 	tween.tween_property(self, "scale", Vector2(0.6 ,0.6), 3)
@@ -17,6 +18,11 @@ func _on_eat_timer_timeout():
 
 func _on_eat_end() :
 	tween = self.create_tween()
+	tween.finished.connect(_on_eat_tween_end)
 	tween.set_parallel()
 	tween.tween_property(self, "scale", Vector2(1, 1), 3)
 	tween.tween_property(self, "position", Vector2(593, 408), 3)
+
+func _on_eat_tween_end() :
+	if(get_tree().paused) :
+		get_tree().paused = false

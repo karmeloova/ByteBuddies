@@ -82,9 +82,9 @@ texture = ExtResource("3_vriyc")
 
 [node name="LoseLabel" type="Label" parent="."]
 offset_left = 246.0
-offset_top = 109.0
+offset_top = 155.0
 offset_right = 923.0
-offset_bottom = 246.0
+offset_bottom = 292.0
 theme_override_colors/font_outline_color = Color(0.490196, 0, 0, 1)
 theme_override_fonts/font = ExtResource("3_adf35")
 theme_override_font_sizes/font_size = 70
@@ -92,7 +92,18 @@ text = "Przegrales"
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[node name="PointsLabel" type="Label" parent="."]
+offset_left = 246.0
+offset_top = 271.0
+offset_right = 923.0
+offset_bottom = 333.0
+theme_override_fonts/font = ExtResource("3_adf35")
+theme_override_font_sizes/font_size = 40
+text = "Wynik: 10"
+horizontal_alignment = 1
+
 [node name="RestartButton" type="Node2D" parent="."]
+position = Vector2(13, 118)
 
 [node name="RestartButton" type="TextureButton" parent="RestartButton"]
 process_mode = 3

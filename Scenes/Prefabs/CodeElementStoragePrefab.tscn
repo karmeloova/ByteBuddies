@@ -1,13 +1,16 @@
-[gd_scene load_steps=3 format=3 uid="uid://dccd85y8vg3pd"]
+[gd_scene load_steps=6 format=3 uid="uid://dccd85y8vg3pd"]
 
 [ext_resource type="Script" path="res://Scenes/Prefabs/CodeElementStoragePrefab.gd" id="1_aowsh"]
 [ext_resource type="FontFile" uid="uid://ccgpsjqwwow8o" path="res://Fonts/Bubblegum.ttf" id="2_qu4yq"]
+[ext_resource type="StyleBox" uid="uid://d32dm3665drok" path="res://Scenes/Rooms/MiniButton.stylebox" id="3_ktggt"]
+[ext_resource type="StyleBox" uid="uid://5akr847h57wb" path="res://Scenes/DisabledMiniButton.tres" id="4_08yla"]
+[ext_resource type="Script" path="res://Scenes/Rooms/ButtonModulate.gd" id="5_5xfd6"]
 
 [node name="CodeElementShopPrefab" type="Control"]
-custom_minimum_size = Vector2(540, 55)
+custom_minimum_size = Vector2(475, 55)
 layout_mode = 3
 anchors_preset = 0
-offset_right = 553.0
+offset_right = 475.0
 offset_bottom = 57.0
 scale = Vector2(1.6, 1.6)
 script = ExtResource("1_aowsh")
@@ -23,24 +26,47 @@ theme_override_font_sizes/font_size = 40
 text = "CoDeElement"
 
 [node name="UseButton" type="Button" parent="."]
+custom_minimum_size = Vector2(90, 43)
 layout_mode = 0
-offset_left = 443.125
-offset_top = 8.125
-offset_right = 526.125
-offset_bottom = 48.125
+offset_left = 386.25
+offset_top = 4.375
+offset_right = 476.25
+offset_bottom = 47.375
 theme_override_font_sizes/font_size = 20
-text = "Użyj"
+theme_override_styles/normal = ExtResource("3_ktggt")
+theme_override_styles/hover = ExtResource("3_ktggt")
+theme_override_styles/pressed = ExtResource("3_ktggt")
+theme_override_styles/disabled = ExtResource("4_08yla")
+theme_override_styles/focus = ExtResource("4_08yla")
+disabled = true
+script = ExtResource("5_5xfd6")
+
+[node name="Label" type="Label" parent="UseButton"]
+layout_mode = 0
+offset_left = -2.0
+offset_top = 2.0
+offset_right = 90.0
+offset_bottom = 43.0
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.6)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_fonts/font = ExtResource("2_qu4yq")
+theme_override_font_sizes/font_size = 23
+text = "Uzyj"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="Label" type="Label" parent="."]
 layout_mode = 0
-offset_right = 40.0
+offset_left = -56.875
+offset_right = -16.875
 offset_bottom = 23.0
 
 [node name="QuantityLabel" type="Label" parent="."]
 layout_mode = 0
-offset_left = 370.0
+offset_left = 313.125
 offset_top = 11.25
-offset_right = 432.0
+offset_right = 375.125
 offset_bottom = 46.25
 theme_override_fonts/font = ExtResource("2_qu4yq")
 theme_override_font_sizes/font_size = 32

@@ -12,7 +12,7 @@
 [ext_resource type="Script" path="res://Scripts/UI/Guides/Console.gd" id="8_yhaqs"]
 [ext_resource type="Script" path="res://Scenes/Rooms/ButtonModulate.gd" id="9_6x0sl"]
 [ext_resource type="Script" path="res://Scripts/UI/Guides/Functions.gd" id="10_1iwx4"]
-[ext_resource type="StyleBox" uid="uid://cqxmxvk085km8" path="res://Scenes/Prefabs/UI/ConsoleStyle.stylebox" id="12_2xmh2"]
+[ext_resource type="StyleBox" uid="uid://dbi84npb1fcqm" path="res://Scenes/Prefabs/UI/ConsoleStyleReadOnly.stylebox" id="10_yaugp"]
 [ext_resource type="Script" path="res://Scripts/UI/Guides/Loops.gd" id="12_fuwsn"]
 [ext_resource type="Script" path="res://Scripts/UI/Guides/Conditions.gd" id="13_xdlgc"]
 [ext_resource type="Script" path="res://Scripts/UI/Guides/Operators.gd" id="14_yc1po"]
@@ -303,10 +303,10 @@ theme_override_colors/font_readonly_color = Color(1, 1, 1, 1)
 theme_override_colors/line_number_color = Color(1, 1, 1, 1)
 theme_override_fonts/font = ExtResource("8_rl26j")
 theme_override_font_sizes/font_size = 20
-theme_override_styles/normal = ExtResource("12_2xmh2")
-theme_override_styles/focus = ExtResource("12_2xmh2")
-theme_override_styles/read_only = ExtResource("12_2xmh2")
-theme_override_styles/completion = ExtResource("12_2xmh2")
+theme_override_styles/normal = ExtResource("10_yaugp")
+theme_override_styles/focus = ExtResource("10_yaugp")
+theme_override_styles/read_only = ExtResource("10_yaugp")
+theme_override_styles/completion = ExtResource("10_yaugp")
 editable = false
 gutters_draw_line_numbers = true
 script = ExtResource("8_yhaqs")

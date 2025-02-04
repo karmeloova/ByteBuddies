@@ -6,7 +6,7 @@ extends Node
 @onready var buttons_panel = $".."
 
 func _on_button_mouse_entered():
-	if(not $Button.disabled) :
+	if(not $Button.disabled && !get_tree().paused) :
 		$Button.modulate = Color("b2b2b2")
 		$Icon.modulate = Color("b2b2b2")
 

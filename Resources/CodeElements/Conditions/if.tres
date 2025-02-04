@@ -5,6 +5,7 @@
 [resource]
 script = ExtResource("1_f48ph")
 code_element_name = "if"
+res_name = "if_res"
 code_element_description = "if [warunek] : co_ma_się_wykonać - jeśli warunek zostanie spełniony, to to co jest po nim wykona (co_się_ma_wykonać) się"
 category = 2
 price = 2

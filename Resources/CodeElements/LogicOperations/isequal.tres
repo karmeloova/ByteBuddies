@@ -5,6 +5,7 @@
 [resource]
 script = ExtResource("1_hdcpn")
 code_element_name = "== (is equal)"
+res_name = "is_equal_res"
 code_element_description = "Sprawdza, czy dwie wartości są sobie równe -  jeśli tak zwraca prawdę, w przeciwnym razie fałsz"
 category = 4
 price = 1

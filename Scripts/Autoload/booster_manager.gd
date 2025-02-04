@@ -8,11 +8,13 @@ func _ready():
 	SignalManager.use_booster.connect(_on_use_booster)
 	SignalManager.decrease_booster_uses.connect(_on_decrease_booster_uses)
 
-func _on_use_booster(booster : Plan) :
+func _on_use_booster(booster : Plan, extra_games : int) :
 	active_booster = booster
 	booster_category = booster.booster_category
 	multiplier = booster.multiplier
-	games_duration = booster.games_duration
+	games_duration = booster.games_duration + extra_games
+	VariableManager.current_plan = null
+	VariableManager.plan_parts = []
 
 func _on_decrease_booster_uses() :
 	games_duration -= 1

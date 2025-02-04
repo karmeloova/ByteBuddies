@@ -8,6 +8,8 @@ var eat_count : int = 0
 var can_count_to_achievement = false;
 
 func _ready():
+	process_mode = Node.PROCESS_MODE_ALWAYS
+	
 	SignalManager.scratch.connect(_on_scratch);
 	SignalManager.eat.connect(_on_eat)
 	SignalManager.playing.connect(_on_playing)
@@ -58,6 +60,9 @@ func _on_scratch(_howMany) :
 	if(VariableManager.needs["scratch"] >= 100 && can_count_to_achievement) : 
 		can_count_to_achievement = false
 		VariableManager.scratch_counter += 1
+		VariableManager.coins += 5
+		SignalManager.change_money.emit()
+		SignalManager.add_exp.emit(5)
 		SignalManager.unlock_achievement.emit(VariableManager.scratch_counter, "scratching", null)
 			
 func _on_eat() :
@@ -66,18 +71,21 @@ func _on_eat() :
 	eat_timer.start()
 
 func _on_eat_timer_timeout() :
-	if(VariableManager.needs["hungry"] + 5 <= 100 and VariableManager.hungry_points_in_bowl > 0) : 
+	if(VariableManager.needs["hungry"] + 5 <= 100 and VariableManager.hungry_points_in_bowl > 5) : 
 		VariableManager.needs["hungry"] += 5
 		VariableManager.hungry_points_in_bowl -= 5
 		SignalManager.changed_needs.emit()
 		eat_timer.start()
-	elif(VariableManager.needs["hungry"] + 5 > 100 and VariableManager.hungry_points_in_bowl > 0) :
+	elif(VariableManager.needs["hungry"] + 5 > 100 and VariableManager.hungry_points_in_bowl > 5) :
 		VariableManager.needs["hungry"] = 100
 		VariableManager.hungry_points_in_bowl -= 5
 		SignalManager.changed_needs.emit();
+		eat_timer.stop()
+		SignalManager.eat_end.emit()
 	else : 
 		eat_timer.stop()
 		SignalManager.eat_end.emit()
+	
 	if(VariableManager.needs["hungry"] >= 100 && can_count_to_achievement) :
 		can_count_to_achievement = false
 		VariableManager.eat_counter += 1
@@ -114,6 +122,9 @@ func _on_sleeping_timer_timeout() :
 	if(VariableManager.needs["sleep"] >= 100 && can_count_to_achievement) : 
 		can_count_to_achievement = false
 		VariableManager.sleep_counter += 1
+		VariableManager.coins += 5
+		SignalManager.change_money.emit()
+		SignalManager.add_exp.emit(5)
 		SignalManager.unlock_achievement.emit(VariableManager.sleep_counter, "sleeping", null)
 
 func _on_cleaning(state) :

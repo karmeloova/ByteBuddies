@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="CodeElement" load_steps=2 format=3 uid="uid://djr2yd3j1lfqs"]
+
+[ext_resource type="Script" path="res://Scripts/Resources/CodeElementRes.gd" id="1_uapq5"]
+
+[resource]
+script = ExtResource("1_uapq5")
+code_element_name = "earned_coins"
+res_name = "earned_coins_res"
+code_element_description = "Zmienna przechowująca ilość łapek (monet), które zostały zdobyte w mini-grze"
+category = 0
+price = 1

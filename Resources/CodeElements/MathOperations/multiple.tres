@@ -5,6 +5,7 @@
 [resource]
 script = ExtResource("1_2pofl")
 code_element_name = "* (multiple)"
+res_name = "multiple_res"
 code_element_description = "Operator służący do mnożenia dwóch liczb. Np. 2*4 = 8"
 category = 3
 price = 1

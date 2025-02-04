@@ -1,4 +1,4 @@
-[gd_scene load_steps=79 format=3 uid="uid://br5jh3sh28ig4"]
+[gd_scene load_steps=95 format=3 uid="uid://br5jh3sh28ig4"]
 
 [ext_resource type="Texture2D" uid="uid://ddmrcvq0prt24" path="res://Images/Backgrounds/Tlov1.png" id="1_5tq1h"]
 [ext_resource type="Script" path="res://Scenes/Rooms/MainRoom.gd" id="1_80uij"]
@@ -13,7 +13,6 @@
 [ext_resource type="Texture2D" uid="uid://ch1nxcb838mta" path="res://Images/UI/Lives/Needs/BgEmpty.png" id="8_kmuo1"]
 [ext_resource type="Texture2D" uid="uid://cf0reij86duo7" path="res://Images/UI/Lives/Needs/Food.png" id="8_onvnt"]
 [ext_resource type="Script" path="res://Scenes/Rooms/Level.gd" id="8_vwgn7"]
-[ext_resource type="Texture2D" uid="uid://dl8dw08og2gr8" path="res://Images/Backgrounds/Placeholder_backgorund_minigames.jpg" id="10_1xqql"]
 [ext_resource type="Script" path="res://Scripts/Minigames/MinigamesPanel.gd" id="10_j240k"]
 [ext_resource type="Texture2D" uid="uid://2rpmid1gnwur" path="res://Images/UI/Buttons/RoundButton.png" id="11_5i28f"]
 [ext_resource type="Script" path="res://Scripts/UI/Button.gd" id="11_g216v"]
@@ -34,21 +33,29 @@
 [ext_resource type="Texture2D" uid="uid://dwwahex67somt" path="res://Images/Accessories/Bowl/Food.png" id="19_kh8nr"]
 [ext_resource type="Resource" uid="uid://b8qtspxh2opu6" path="res://Resources/Food/Banana.tres" id="19_wcutm"]
 [ext_resource type="Script" path="res://Scenes/Rooms/PlayerPanelBack.gd" id="20_x0q0y"]
+[ext_resource type="Texture2D" uid="uid://c8xk10asf3kk0" path="res://Images/UI/Buttons/Grafika_bez_nazwy 6.png" id="21_kt4gx"]
 [ext_resource type="Texture2D" uid="uid://6adv5bnfl4ff" path="res://Images/UI/Buttons/Back.png" id="24_srg2u"]
 [ext_resource type="StyleBox" uid="uid://d32dm3665drok" path="res://Scenes/Rooms/MiniButton.stylebox" id="24_wqohh"]
 [ext_resource type="Script" path="res://Scenes/Rooms/ButtonModulate.gd" id="25_8mtfw"]
 [ext_resource type="Script" path="res://Scenes/Rooms/Den.gd" id="27_8vvth"]
 [ext_resource type="PackedScene" uid="uid://cjnamwk0mbts2" path="res://Scenes/FoodItemScene.tscn" id="27_g8m1e"]
 [ext_resource type="Texture2D" uid="uid://bowy12qgsf8t3" path="res://Images/UI/Buttons/Button.png" id="28_7d6xq"]
+[ext_resource type="Script" path="res://Scenes/Rooms/Information.gd" id="28_y6a4v"]
+[ext_resource type="PackedScene" uid="uid://dluxwfsypbvws" path="res://Scenes/Prefabs/UI/MinigamesLives.tscn" id="29_6tfrs"]
+[ext_resource type="FontFile" uid="uid://7a16745x5o1t" path="res://Fonts/consola.ttf" id="29_44xo7"]
 [ext_resource type="PackedScene" uid="uid://dgupbxjorf75y" path="res://Scenes/Prefabs/UI/Achievement.tscn" id="29_55sfc"]
 [ext_resource type="Script" path="res://Scenes/Rooms/AchievmentesButtons.gd" id="29_aywkh"]
+[ext_resource type="StyleBox" uid="uid://cqxmxvk085km8" path="res://Scenes/Prefabs/UI/ConsoleStyle.stylebox" id="30_87oih"]
 [ext_resource type="Script" path="res://Scenes/Rooms/BowlNode.gd" id="30_q7oku"]
 [ext_resource type="Script" path="res://Scenes/Rooms/Backach.gd" id="31_3dgfr"]
+[ext_resource type="StyleBox" uid="uid://dbi84npb1fcqm" path="res://Scenes/Prefabs/UI/ConsoleStyleReadOnly.stylebox" id="31_jruph"]
 [ext_resource type="Texture2D" uid="uid://ci8h24p34ui0e" path="res://Images/UI/Buttons/Grafika_bez_nazwy 3.png" id="31_u0620"]
+[ext_resource type="Script" path="res://Scripts/UI/Guides/Console.gd" id="31_x3cg5"]
 [ext_resource type="Texture2D" uid="uid://uhifpi6dj3ce" path="res://Images/Cats/Cat.png" id="32_3rwvs"]
 [ext_resource type="PackedScene" uid="uid://beq5bpbed2ls6" path="res://Scenes/Prefabs/UI/Settings.tscn" id="32_8hlnf"]
 [ext_resource type="Script" path="res://Scenes/Rooms/Cat.gd" id="32_38vco"]
 [ext_resource type="PackedScene" uid="uid://k2t0np43srls" path="res://Scenes/Prefabs/LevelPrefab.tscn" id="33_0i3x0"]
+[ext_resource type="FontFile" uid="uid://sjhlfawq34if" path="res://Fonts/Coolvetica Rg.otf" id="33_en7n4"]
 [ext_resource type="Script" path="res://Scenes/Rooms/ButtonInPlayerPanel.gd" id="33_h8ng0"]
 [ext_resource type="Script" path="res://Scenes/Rooms/CatName.gd" id="33_hmu7t"]
 [ext_resource type="Texture2D" uid="uid://b08rtmymx6de5" path="res://Images/UI/Buttons/Achievmentes.png" id="35_gbros"]
@@ -72,8 +79,24 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ymck7"]
 size = Vector2(120, 90)
 
+[sub_resource type="CanvasTexture" id="CanvasTexture_suel2"]
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_hdw1q"]
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_23wb8"]
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_e8mf3"]
 size = Vector2(108, 37.5)
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_0vx4m"]
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_n3kuc"]
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_hss0y"]
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_jy3fw"]
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_w7i0h"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qyput"]
 size = Vector2(1049.62, 1717.56)
@@ -90,13 +113,15 @@ radius = 186.172
 
 [sub_resource type="CanvasTexture" id="CanvasTexture_mgdda"]
 
-[sub_resource type="CanvasTexture" id="CanvasTexture_23wb8"]
-
-[sub_resource type="CanvasTexture" id="CanvasTexture_wlgti"]
+[sub_resource type="CanvasTexture" id="CanvasTexture_y5a2p"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ohl6w"]
-texture = SubResource("CanvasTexture_wlgti")
+texture = SubResource("CanvasTexture_y5a2p")
 modulate_color = Color(0.968627, 0.8, 0.815686, 1)
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_s0cmc"]
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_uf0ku"]
 
 [node name="MainRoom" type="Node2D"]
 script = ExtResource("1_80uij")
@@ -110,8 +135,10 @@ scale = Vector2(1.05, 1.05)
 texture = ExtResource("1_5tq1h")
 
 [node name="Room" type="Node2D" parent="."]
+visible = false
 
 [node name="Cat" type="Node2D" parent="Room"]
+process_mode = 3
 position = Vector2(593, 408)
 script = ExtResource("32_38vco")
 metadata/_edit_group_ = true
@@ -274,14 +301,16 @@ fridge = NodePath("../../../../Bowl/NormalFeed")
 panel_template = NodePath("../../../../Bowl")
 panels_node = NodePath("../../../../Panels")
 
-[node name="Miska" type="Sprite2D" parent="Room/UI/Buttons/Bowl"]
+[node name="Bowl" type="Node2D" parent="Room/UI/Buttons/Bowl"]
+
+[node name="Miska" type="Sprite2D" parent="Room/UI/Buttons/Bowl/Bowl"]
 modulate = Color(1, 0.819608, 0.862745, 1)
 self_modulate = Color(0.99558, 0.99558, 0.99558, 1)
-position = Vector2(-1.50012, -2.19997)
+position = Vector2(-1.50012, -2.19998)
 scale = Vector2(0.0879788, 0.0879788)
 texture = ExtResource("18_4lmds")
 
-[node name="Food" type="Sprite2D" parent="Room/UI/Buttons/Bowl"]
+[node name="Food" type="Sprite2D" parent="Room/UI/Buttons/Bowl/Bowl"]
 visible = false
 position = Vector2(-2.00003, -2)
 scale = Vector2(0.088, 0.088)
@@ -292,10 +321,23 @@ visible = false
 position = Vector2(-215.5, -479.2)
 polygon = PackedVector2Array(172, 454, 185, 447, 212, 443, 236, 444, 254, 451, 260, 458, 265, 478, 268, 488, 267, 495, 258, 501, 245, 506, 212, 509, 180, 504, 165, 496, 163, 486)
 
-[node name="QuitButton" type="Node2D" parent="Room/UI/Buttons"]
-position = Vector2(-0.404824, 0.158537)
+[node name="Label" type="Label" parent="Room/UI/Buttons/Bowl"]
+visible = false
+offset_left = -49.0006
+offset_top = -101.0
+offset_right = 54.9994
+offset_bottom = -43.9997
+theme_override_fonts/font = ExtResource("7_8rg5e")
+theme_override_font_sizes/font_size = 25
+text = "Obecnie:
+x%"
+horizontal_alignment = 1
+
+[node name="QuitButton" type="Node2D" parent="Room/UI/Buttons" node_paths=PackedStringArray("exit_pop_up")]
+position = Vector2(-0.497827, 0.178049)
 scale = Vector2(0.000782269, 0.00878049)
 script = ExtResource("17_e0iqd")
+exit_pop_up = NodePath("../../../../Panels/ExitPopUp")
 
 [node name="Button" type="TextureButton" parent="Room/UI/Buttons/QuitButton" groups=["Button"]]
 offset_left = -2.0
@@ -312,13 +354,25 @@ position = Vector2(51, 595)
 scale = Vector2(0.124325, 0.124325)
 texture = ExtResource("16_qpekd")
 
-[node name="BoosterButton" type="Button" parent="Room/UI" groups=["Button"]]
-offset_left = 12.0
-offset_top = 558.0
-offset_right = 108.0
-offset_bottom = 634.0
-text = "Boosters"
+[node name="BoosterButton" type="Node2D" parent="Room/UI/Buttons"]
+position = Vector2(-0.428292, 0.178049)
+scale = Vector2(0.000782269, 0.00878049)
 script = ExtResource("38_h1u42")
+
+[node name="Button" type="TextureButton" parent="Room/UI/Buttons/BoosterButton" groups=["Button"]]
+offset_left = -2.0
+offset_top = 546.0
+offset_right = 104.0
+offset_bottom = 646.0
+texture_normal = ExtResource("11_5i28f")
+texture_pressed = ExtResource("11_5i28f")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="Icon" type="Sprite2D" parent="Room/UI/Buttons/BoosterButton"]
+position = Vector2(51, 595)
+scale = Vector2(0.124325, 0.124325)
+texture = ExtResource("21_kt4gx")
 
 [node name="ScratchingPost" type="Node2D" parent="."]
 visible = false
@@ -334,16 +388,22 @@ scale = Vector2(0.25, 0.25)
 texture = ExtResource("2_rsjqa")
 
 [node name="Sprite2D2" type="Sprite2D" parent="ScratchingPost"]
-self_modulate = Color(1, 1, 1, 0.32549)
-position = Vector2(176.053, 374.5)
-scale = Vector2(0.478768, 1.11224)
-texture = ExtResource("10_1xqql")
+modulate = Color(0.968627, 0.8, 0.815686, 1)
+position = Vector2(183.5, 376)
+scale = Vector2(367, 544)
+texture = SubResource("CanvasTexture_suel2")
 
 [node name="Sprite2D" type="Sprite2D" parent="ScratchingPost"]
 modulate = Color(0.843137, 0.788235, 0.662745, 1)
-position = Vector2(184, 382)
-scale = Vector2(0.146567, 0.862119)
-texture = ExtResource("10_1xqql")
+position = Vector2(184.5, 382)
+scale = Vector2(107, 422)
+texture = SubResource("CanvasTexture_hdw1q")
+
+[node name="Sprite2D3" type="Sprite2D" parent="ScratchingPost"]
+modulate = Color(0.756863, 0.596078, 0.698039, 1)
+position = Vector2(370, 377)
+scale = Vector2(6.25, 547.563)
+texture = SubResource("CanvasTexture_23wb8")
 
 [node name="PlayerScratching" type="Area2D" parent="ScratchingPost"]
 position = Vector2(1, 29)
@@ -406,21 +466,25 @@ scale = Vector2(1.4, 1.4)
 metadata/_edit_group_ = true
 
 [node name="Information" type="Sprite2D" parent="ScratchingPost/Information/InformationNode"]
-self_modulate = Color(0.728822, 0.728822, 0.728822, 0.419608)
-position = Vector2(335.714, 439.911)
-scale = Vector2(0.57952, 0.501093)
-texture = ExtResource("10_1xqql")
+modulate = Color(0.968627, 0.8, 0.815686, 1)
+position = Vector2(368.367, 414.796)
+scale = Vector2(459.184, 290.816)
+texture = SubResource("CanvasTexture_0vx4m")
 
 [node name="RichTextLabel" type="RichTextLabel" parent="ScratchingPost/Information/InformationNode"]
-offset_left = 140.0
-offset_top = 322.857
-offset_right = 544.0
-offset_bottom = 688.857
+offset_left = 150.0
+offset_top = 285.0
+offset_right = 588.0
+offset_bottom = 546.0
+theme_override_fonts/normal_font = ExtResource("33_en7n4")
+theme_override_font_sizes/normal_font_size = 20
 bbcode_enabled = true
 text = "[b]1.[/b] Zaczynaj drapanie od góry, przeciągając myszką (przytrzymując odpowiedni klawisz myszy) w dół.
 [b]2.[/b] Strzałka pokazuje, gdzie rozpocząć drapanie i jaki przycisk myszy wcisnąć:
-	[color=\"green\"]-> Zielona strzałka –[/color] drap lewym przyciskiem myszy (LPM).
-	[color=\"red\"]-> Czerwona strzałka –[/color] drap prawym przyciskiem myszy (PPM).
+	[color=\"green\"]-> Zielona strzałka –[/color] drap lewym przyciskiem 
+	myszy (LPM).
+	[color=\"red\"]-> Czerwona strzałka –[/color] drap prawym przyciskiem
+	myszy (PPM).
 [b]3.[/b] Jeśli przestaniesz, strzałka wskaże miejsce, od którego wznowić drapanie."
 
 [node name="Bowl" type="Node2D" parent="." node_paths=PackedStringArray("panels_node")]
@@ -434,16 +498,26 @@ scale = Vector2(0.20254, 0.20254)
 texture = ExtResource("18_4lmds")
 
 [node name="Background" type="Sprite2D" parent="Bowl"]
-self_modulate = Color(1, 1, 1, 0.32549)
-position = Vector2(294.053, 374.5)
-scale = Vector2(0.799856, 1.11224)
-texture = ExtResource("10_1xqql")
+modulate = Color(0.968627, 0.8, 0.815686, 1)
+position = Vector2(319.5, 382.5)
+scale = Vector2(641, 551)
+texture = SubResource("CanvasTexture_n3kuc")
+
+[node name="Label" type="Label" parent="Bowl"]
+offset_left = 12.0
+offset_top = 117.0
+offset_right = 155.0
+offset_bottom = 186.0
+theme_override_fonts/font = ExtResource("7_8rg5e")
+theme_override_font_sizes/font_size = 30
+text = "Sposob karmienia:"
+autowrap_mode = 2
 
 [node name="CodeFeed" type="TextureButton" parent="Bowl" groups=["Button"]]
-offset_left = 88.0
-offset_top = 109.0
-offset_right = 313.0
-offset_bottom = 176.0
+offset_left = 412.0
+offset_top = 117.0
+offset_right = 637.0
+offset_bottom = 187.0
 texture_normal = ExtResource("28_7d6xq")
 ignore_texture_size = true
 stretch_mode = 0
@@ -460,15 +534,15 @@ theme_override_constants/shadow_offset_x = 2
 theme_override_constants/shadow_offset_y = 2
 theme_override_fonts/font = ExtResource("7_8rg5e")
 theme_override_font_sizes/font_size = 33
-text = "Code Feed"
+text = "Kodowe"
 horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="NormalFeedButton" type="TextureButton" parent="Bowl" groups=["Button"]]
-offset_left = 306.0
-offset_top = 109.0
-offset_right = 531.0
-offset_bottom = 176.0
+offset_left = 179.0
+offset_top = 117.0
+offset_right = 422.0
+offset_bottom = 187.0
 texture_normal = ExtResource("28_7d6xq")
 ignore_texture_size = true
 stretch_mode = 0
@@ -476,96 +550,138 @@ metadata/_edit_group_ = true
 
 [node name="Label" type="Label" parent="Bowl/NormalFeedButton"]
 layout_mode = 0
-offset_left = 17.0
+offset_left = 30.0
 offset_top = 15.0
-offset_right = 204.0
+offset_right = 217.0
 offset_bottom = 53.0
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.588235)
 theme_override_constants/shadow_offset_x = 2
 theme_override_constants/shadow_offset_y = 2
 theme_override_fonts/font = ExtResource("7_8rg5e")
 theme_override_font_sizes/font_size = 33
-text = "Normal"
+text = "Normalne"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="CodeFeedNode" type="Node2D" parent="Bowl"]
-visible = false
-script = ExtResource("38_s7xvu")
-
-[node name="CodeWindow" type="CodeEdit" parent="Bowl/CodeFeedNode"]
-offset_left = 52.0
-offset_top = 271.0
-offset_right = 352.0
-offset_bottom = 380.0
-placeholder_text = "Tutaj wprowadź swój kod..."
-gutters_draw_line_numbers = true
-
-[node name="Console" type="CodeEdit" parent="Bowl/CodeFeedNode"]
-offset_left = 53.0
-offset_top = 407.0
-offset_right = 353.0
-offset_bottom = 561.0
-editable = false
-
-[node name="TaskLabel" type="Label" parent="Bowl/CodeFeedNode"]
-offset_left = 51.0
-offset_top = 193.0
-offset_right = 569.0
-offset_bottom = 244.0
-
-[node name="HintsLabel" type="Label" parent="Bowl/CodeFeedNode"]
-offset_left = 373.0
-offset_top = 272.0
-offset_right = 581.0
-offset_bottom = 591.0
-
-[node name="Information" type="Node2D" parent="Bowl/CodeFeedNode"]
+[node name="Information" type="Node2D" parent="Bowl"]
 position = Vector2(276, 186)
 scale = Vector2(0.7, 0.7)
+script = ExtResource("28_y6a4v")
 
-[node name="InformationButton" type="TextureButton" parent="Bowl/CodeFeedNode/Information"]
-offset_left = 328.571
-offset_top = 546.0
-offset_right = 434.571
-offset_bottom = 646.0
+[node name="Information" type="Sprite2D" parent="Bowl/Information"]
+visible = false
+modulate = Color(0.968627, 0.8, 0.815686, 1)
+position = Vector2(884.286, 278.571)
+scale = Vector2(694.286, 734.286)
+texture = SubResource("CanvasTexture_hss0y")
+
+[node name="InformationButton" type="TextureButton" parent="Bowl/Information"]
+offset_left = 404.286
+offset_top = 558.571
+offset_right = 510.286
+offset_bottom = 658.571
 texture_normal = ExtResource("11_5i28f")
 texture_pressed = ExtResource("11_5i28f")
 ignore_texture_size = true
 stretch_mode = 0
 
-[node name="Icon" type="Sprite2D" parent="Bowl/CodeFeedNode/Information"]
-position = Vector2(381.571, 595)
+[node name="Icon" type="Sprite2D" parent="Bowl/Information"]
+position = Vector2(457.286, 607.571)
 scale = Vector2(0.124325, 0.124325)
 texture = ExtResource("31_u0620")
 
-[node name="InformationNode" type="Node2D" parent="Bowl/CodeFeedNode/Information"]
+[node name="CodeFeedNode" type="Node2D" parent="Bowl"]
 visible = false
-position = Vector2(291.429, -165.714)
-scale = Vector2(1.4, 1.4)
-metadata/_edit_group_ = true
+script = ExtResource("38_s7xvu")
 
-[node name="Information" type="Sprite2D" parent="Bowl/CodeFeedNode/Information/InformationNode"]
-self_modulate = Color(0.728822, 0.728822, 0.728822, 0.419608)
-position = Vector2(335.714, 319.095)
-scale = Vector2(0.57952, 0.994222)
-texture = ExtResource("10_1xqql")
+[node name="MinigamesLives" parent="Bowl/CodeFeedNode" instance=ExtResource("29_6tfrs")]
+position = Vector2(454, 357)
+scale = Vector2(0.8, 0.8)
 
-[node name="RichTextLabel" type="RichTextLabel" parent="Bowl/CodeFeedNode/Information/InformationNode"]
-offset_left = 132.0
-offset_top = 85.0
-offset_right = 546.0
-offset_bottom = 559.0
+[node name="CodeWindow" type="CodeEdit" parent="Bowl/CodeFeedNode"]
+offset_left = 23.0
+offset_top = 227.0
+offset_right = 287.0
+offset_bottom = 375.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_readonly_color = Color(1, 1, 1, 1)
+theme_override_colors/font_placeholder_color = Color(1, 1, 1, 1)
+theme_override_colors/line_number_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("29_44xo7")
+theme_override_font_sizes/font_size = 20
+theme_override_styles/normal = ExtResource("30_87oih")
+theme_override_styles/focus = ExtResource("30_87oih")
+theme_override_styles/read_only = ExtResource("31_jruph")
+theme_override_styles/completion = ExtResource("30_87oih")
+placeholder_text = "Tu wprowadź kod....."
+gutters_draw_line_numbers = true
+script = ExtResource("31_x3cg5")
+
+[node name="Console" type="CodeEdit" parent="Bowl/CodeFeedNode"]
+offset_left = 23.0
+offset_top = 418.0
+offset_right = 619.0
+offset_bottom = 558.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_readonly_color = Color(1, 1, 1, 1)
+theme_override_colors/line_number_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("29_44xo7")
+theme_override_font_sizes/font_size = 20
+theme_override_styles/normal = ExtResource("30_87oih")
+theme_override_styles/focus = ExtResource("31_jruph")
+theme_override_styles/read_only = ExtResource("31_jruph")
+theme_override_styles/completion = ExtResource("30_87oih")
+editable = false
+gutters_draw_line_numbers = true
+script = ExtResource("31_x3cg5")
+
+[node name="ConsoleText" type="Label" parent="Bowl/CodeFeedNode"]
+offset_left = 23.0
+offset_top = 394.0
+offset_right = 108.0
+offset_bottom = 417.0
+theme_override_fonts/font = ExtResource("7_8rg5e")
+theme_override_font_sizes/font_size = 20
+text = "Konsola"
+vertical_alignment = 2
+
+[node name="TaskLabel" type="Label" parent="Bowl/CodeFeedNode"]
+offset_left = 309.0
+offset_top = 223.0
+offset_right = 623.0
+offset_bottom = 276.0
+theme_override_fonts/font = ExtResource("33_en7n4")
+theme_override_font_sizes/font_size = 20
+text = "Testowy task żebym mogła widzieć jak wygląda xDDD"
+autowrap_mode = 2
+
+[node name="HintsLabel" type="Label" parent="Bowl/CodeFeedNode"]
+visible = false
+offset_left = 313.0
+offset_top = 272.0
+offset_right = 621.0
+offset_bottom = 539.0
+
+[node name="Information" type="RichTextLabel" parent="Bowl/CodeFeedNode"]
+visible = false
+offset_left = 668.6
+offset_top = 136.54
+offset_right = 1125.6
+offset_bottom = 622.54
+theme_override_fonts/normal_font = ExtResource("33_en7n4")
+theme_override_fonts/bold_font = ExtResource("33_en7n4")
+theme_override_font_sizes/normal_font_size = 20
+theme_override_font_sizes/bold_font_size = 20
 bbcode_enabled = true
 text = "Masz do wyboru dwa rodzaje pętli, aby nakarmić kotka:
 
-* [b]Pętla for:[/b] Powtarza zadanie określoną liczbę razy. Idealna, gdy kotek wie, ile jedzenia chce zjeść!
+[color=\"red\"] [b]Pętla for:[/b][/color] Powtarza zadanie określoną liczbę razy. Idealna, gdy kotek wie, ile jedzenia chce zjeść!
 Przykład:
 	[color=\"red\"]for i in range(2):
 	    eat(apple)[/color]
 Kod sprawia, że kotek zje dokładnie 2 jabłka.
 
-* [b]Pętla while:[/b] Wykonuje zadanie tak długo, jak warunek jest spełniony. Świetna, gdy kotek nie wie, ile chce jeść, ale je, dopóki jest głodny.
+[color=\"red\"]* [b]Pętla while:[/b][/color] Wykonuje zadanie tak długo, jak warunek jest spełniony. Świetna, gdy kotek nie wie, ile chce jeść, ale je, dopóki jest głodny.
 Przykład:
 	[color=\"red\"]while hungry:
     	eat(apple)[/color]
@@ -575,31 +691,123 @@ Aby nakarmić kotka, użyj funkcji [b]eat(*tu wpisz jedzenie*).[/b] Przykład: [
 
 [node name="EatTimer" type="Timer" parent="Bowl/CodeFeedNode"]
 
+[node name="Sprite2D" type="Sprite2D" parent="Bowl"]
+modulate = Color(0.756863, 0.596078, 0.698039, 1)
+position = Vector2(643, 377)
+scale = Vector2(6.25, 547.563)
+texture = SubResource("CanvasTexture_23wb8")
+
+[node name="Sprite2D3" type="Sprite2D" parent="Bowl"]
+modulate = Color(0.756863, 0.596078, 0.698039, 1)
+position = Vector2(314.25, 197)
+rotation = 1.5708
+scale = Vector2(6.25, 657.625)
+texture = SubResource("CanvasTexture_23wb8")
+
+[node name="Sprite2D4" type="Sprite2D" parent="Bowl"]
+modulate = Color(0.756863, 0.596078, 0.698039, 1)
+position = Vector2(314.25, 571)
+rotation = 1.5708
+scale = Vector2(6.25, 657.625)
+texture = SubResource("CanvasTexture_23wb8")
+
 [node name="NormalFeed" type="Control" parent="Bowl" node_paths=PackedStringArray("panel")]
 layout_mode = 3
 anchors_preset = 0
 script = ExtResource("14_6pba1")
 panel = NodePath("../../Panels/PanelTemplate")
 
+[node name="HungryInformation" type="Control" parent="Bowl/NormalFeed"]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Backgorund" type="TextureRect" parent="Bowl/NormalFeed/HungryInformation"]
+modulate = Color(0.968627, 0.8, 0.815686, 1)
+layout_mode = 0
+offset_left = 677.0
+offset_top = 137.0
+offset_right = 1129.0
+offset_bottom = 384.0
+texture = SubResource("CanvasTexture_jy3fw")
+
+[node name="Top" type="TextureRect" parent="Bowl/NormalFeed/HungryInformation"]
+modulate = Color(0.756863, 0.596078, 0.698039, 1)
+layout_mode = 0
+offset_left = 706.0
+offset_top = 160.0
+offset_right = 1104.0
+offset_bottom = 166.0
+texture = SubResource("CanvasTexture_w7i0h")
+
+[node name="Bottom" type="TextureRect" parent="Bowl/NormalFeed/HungryInformation"]
+modulate = Color(0.756863, 0.596078, 0.698039, 1)
+layout_mode = 0
+offset_left = 706.0
+offset_top = 360.0
+offset_right = 1104.0
+offset_bottom = 366.0
+texture = SubResource("CanvasTexture_w7i0h")
+
+[node name="Left" type="TextureRect" parent="Bowl/NormalFeed/HungryInformation"]
+modulate = Color(0.756863, 0.596078, 0.698039, 1)
+layout_mode = 0
+offset_left = 706.0
+offset_top = 160.0
+offset_right = 912.0
+offset_bottom = 166.0
+rotation = 1.5708
+texture = SubResource("CanvasTexture_w7i0h")
+
+[node name="Right" type="TextureRect" parent="Bowl/NormalFeed/HungryInformation"]
+modulate = Color(0.756863, 0.596078, 0.698039, 1)
+layout_mode = 0
+offset_left = 1106.0
+offset_top = 160.0
+offset_right = 1312.0
+offset_bottom = 166.0
+rotation = 1.5708
+texture = SubResource("CanvasTexture_w7i0h")
+
+[node name="HowManyCatNeeds" type="Label" parent="Bowl/NormalFeed/HungryInformation"]
+layout_mode = 0
+offset_left = 718.0
+offset_top = 184.0
+offset_right = 999.0
+offset_bottom = 217.0
+theme_override_fonts/font = ExtResource("7_8rg5e")
+theme_override_font_sizes/font_size = 30
+text = "Kotek potrzebuje: 0"
+
+[node name="HowManyInBowl" type="Label" parent="Bowl/NormalFeed/HungryInformation"]
+layout_mode = 0
+offset_left = 719.0
+offset_top = 220.0
+offset_right = 1000.0
+offset_bottom = 253.0
+theme_override_fonts/font = ExtResource("7_8rg5e")
+theme_override_font_sizes/font_size = 30
+text = "Obecnie w misce: 0"
+
 [node name="ScrollContainer" type="ScrollContainer" parent="Bowl/NormalFeed"]
 layout_mode = 0
-offset_left = 1.0
-offset_top = 185.0
-offset_right = 588.0
-offset_bottom = 647.0
+offset_left = 23.0
+offset_top = 218.0
+offset_right = 622.0
+offset_bottom = 552.0
 horizontal_scroll_mode = 0
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Bowl/NormalFeed/ScrollContainer"]
 layout_mode = 2
 size_flags_vertical = 3
-theme_override_constants/separation = 150
+theme_override_constants/separation = 15
 
 [node name="Feed" type="TextureButton" parent="Bowl/NormalFeed" groups=["Button"]]
 layout_mode = 0
-offset_left = 183.0
-offset_top = 568.0
-offset_right = 394.0
-offset_bottom = 635.0
+offset_left = 208.0
+offset_top = 577.0
+offset_right = 419.0
+offset_bottom = 644.0
 texture_normal = ExtResource("28_7d6xq")
 ignore_texture_size = true
 stretch_mode = 0
@@ -618,8 +826,28 @@ theme_override_fonts/font = ExtResource("7_8rg5e")
 theme_override_font_sizes/font_size = 33
 text = "Nakarm"
 
+[node name="Information" type="RichTextLabel" parent="Bowl/NormalFeed"]
+visible = false
+layout_mode = 0
+offset_left = 669.0
+offset_top = 136.0
+offset_right = 1119.0
+offset_bottom = 623.0
+theme_override_fonts/normal_font = ExtResource("33_en7n4")
+theme_override_fonts/bold_font = ExtResource("33_en7n4")
+theme_override_font_sizes/normal_font_size = 20
+theme_override_font_sizes/bold_font_size = 20
+bbcode_enabled = true
+text = "[fill]Witaj w panelu karmienia! Tutaj możesz zaspokoić jedną z najważniejszych potrzeb Twojego kotka. Masz do wyboru dwa sposoby:
+[color=\"TRANSPARENT\"][font_size=9]PRZERWA[/font_size][/color]
+* Normalne -> po zakupie jedzenia w sklepie, pojawi się ono po lewej stronie. Kliknij \"Dodaj\" aby dodać jedzenie do miski, a gdy miska będzie pełna lub przełepniona (więcej punktów głodu niż kotek potrzebuje) kliknij nakarm. UWAGA: Kotek lubi jeść, więc jeśli dasz mu za dużo to  zje wszystko!
+[color=\"TRANSPARENT\"][font_size=9]PRZERWA[/font_size][/color]
+* Kodowe -> Twoim zadaniem jest napisać krótki kod na podstawie tego co chce kotek (wybrał to sobie z Twoich zapasów, zatem musisz coś w nich mieć!). Po napisaniu kodu również należy wcisnąć \"Nakarm\". Poprawne rozwiązanie zadania skutkuje dodatkowymi korzyściami (których nie otrzymasz przy normalnym karmieniu!). 
+[color=\"TRANSPARENT\"][font_size=9]PRZERWA[/font_size][/color]
+Kiedy kotek nie jest zbyt głodny nakarmienie go nie jest możliwe."
+
 [node name="Back" type="Node2D" parent="Bowl"]
-position = Vector2(16, 186)
+position = Vector2(1, 194)
 scale = Vector2(0.7, 0.7)
 metadata/_edit_group_ = true
 
@@ -639,7 +867,18 @@ scale = Vector2(0.124325, 0.124325)
 texture = ExtResource("24_srg2u")
 
 [node name="Bath" type="Node2D" parent="."]
-visible = false
+
+[node name="Sprite2D2" type="Sprite2D" parent="Bath"]
+modulate = Color(0.968627, 0.8, 0.815686, 1)
+position = Vector2(183.5, 376)
+scale = Vector2(367, 544)
+texture = SubResource("CanvasTexture_suel2")
+
+[node name="Sprite2D3" type="Sprite2D" parent="Bath"]
+modulate = Color(0.756863, 0.596078, 0.698039, 1)
+position = Vector2(370, 377)
+scale = Vector2(6.25, 547.563)
+texture = SubResource("CanvasTexture_23wb8")
 
 [node name="Cat" type="Node2D" parent="Bath"]
 position = Vector2(762, 401)
@@ -658,10 +897,11 @@ texture = ExtResource("32_3rwvs")
 position = Vector2(17.175, -22.9009)
 shape = SubResource("RectangleShape2D_qyput")
 
-[node name="Soap" type="Area2D" parent="Bath"]
-position = Vector2(399, 397)
+[node name="Soap" type="Area2D" parent="Bath" node_paths=PackedStringArray("bubble_node")]
+position = Vector2(180, 304)
 rotation = -0.785398
 script = ExtResource("36_ie607")
+bubble_node = NodePath("../BubbleNode")
 metadata/_edit_group_ = true
 
 [node name="SoapTexture" type="Sprite2D" parent="Bath/Soap"]
@@ -693,7 +933,22 @@ position = Vector2(51, 595)
 scale = Vector2(0.124325, 0.124325)
 texture = ExtResource("24_srg2u")
 
+[node name="Label" type="Label" parent="Bath"]
+offset_left = -1.0
+offset_top = 150.0
+offset_right = 367.0
+offset_bottom = 219.0
+theme_override_fonts/font = ExtResource("7_8rg5e")
+theme_override_font_sizes/font_size = 30
+text = "Wez mydlo i umyj 
+nim kotka"
+horizontal_alignment = 1
+autowrap_mode = 2
+
+[node name="BubbleNode" type="Node2D" parent="Bath"]
+
 [node name="TopPanel" type="Node2D" parent="."]
+process_mode = 3
 
 [node name="Background" type="Sprite2D" parent="TopPanel"]
 modulate = Color(0.968233, 0.798957, 0.814014, 1)
@@ -724,10 +979,10 @@ need_label = NodePath("FoodLabel")
 
 [node name="TextureProgressBar" type="TextureProgressBar" parent="TopPanel/Needs/Hungry"]
 modulate = Color(0.933333, 0.933333, 0.933333, 1)
-offset_left = -241.0
-offset_top = -201.0
-offset_right = 183.0
-offset_bottom = 196.0
+offset_left = -191.639
+offset_top = -164.899
+offset_right = 128.361
+offset_bottom = 148.101
 fill_mode = 3
 nine_patch_stretch = true
 texture_progress = ExtResource("7_8l0el")
@@ -767,10 +1022,10 @@ need_label = NodePath("PlayLabel")
 
 [node name="TextureProgressBar" type="TextureProgressBar" parent="TopPanel/Needs/Play"]
 modulate = Color(0.933333, 0.933333, 0.933333, 1)
-offset_left = -241.0
-offset_top = -201.0
-offset_right = 183.0
-offset_bottom = 196.0
+offset_left = -191.639
+offset_top = -164.899
+offset_right = 128.361
+offset_bottom = 148.101
 fill_mode = 3
 nine_patch_stretch = true
 texture_progress = ExtResource("7_8l0el")
@@ -810,10 +1065,10 @@ need_label = NodePath("ScratchLabel")
 
 [node name="TextureProgressBar" type="TextureProgressBar" parent="TopPanel/Needs/Scratch"]
 modulate = Color(0.93408, 0.93408, 0.93408, 1)
-offset_left = -241.0
-offset_top = -201.0
-offset_right = 183.0
-offset_bottom = 196.0
+offset_left = -191.639
+offset_top = -164.899
+offset_right = 128.361
+offset_bottom = 148.101
 fill_mode = 3
 nine_patch_stretch = true
 texture_progress = ExtResource("7_8l0el")
@@ -853,10 +1108,10 @@ need_label = NodePath("SleepLabel")
 
 [node name="TextureProgressBar" type="TextureProgressBar" parent="TopPanel/Needs/Sleep"]
 modulate = Color(0.933333, 0.933333, 0.933333, 1)
-offset_left = -245.0
-offset_top = -205.0
-offset_right = 193.0
-offset_bottom = 201.0
+offset_left = -191.643
+offset_top = -164.899
+offset_right = 128.357
+offset_bottom = 148.101
 fill_mode = 3
 nine_patch_stretch = true
 texture_progress = ExtResource("7_8l0el")
@@ -896,10 +1151,10 @@ need_label = NodePath("CleanLabel")
 
 [node name="TextureProgressBar" type="TextureProgressBar" parent="TopPanel/Needs/Clean"]
 modulate = Color(0.933333, 0.933333, 0.933333, 1)
-offset_left = -245.0
-offset_top = -205.0
-offset_right = 193.0
-offset_bottom = 201.0
+offset_left = -191.644
+offset_top = -164.899
+offset_right = 128.356
+offset_bottom = 148.101
 fill_mode = 3
 nine_patch_stretch = true
 texture_progress = ExtResource("7_8l0el")
@@ -1372,11 +1627,6 @@ stretch_mode = 0
 position = Vector2(51, 595)
 scale = Vector2(0.124325, 0.124325)
 texture = ExtResource("24_srg2u")
-
-[node name="NextLevelsPopUp" type="Node2D" parent="Panels"]
-position = Vector2(230, 152)
-scale = Vector2(1.2, 1.2)
-metadata/_edit_group_ = true
 
 [node name="Achievmentes" type="Node2D" parent="Panels"]
 visible = false
@@ -2266,6 +2516,114 @@ text = "Poradnik"
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[node name="NextLevelsPopUp" type="Node2D" parent="Panels"]
+position = Vector2(40, 73)
+metadata/_edit_group_ = true
+
+[node name="ExitPopUp" type="Node2D" parent="Panels"]
+visible = false
+position = Vector2(399, 272)
+
+[node name="Sprite2D" type="Sprite2D" parent="Panels/ExitPopUp"]
+modulate = Color(0.921569, 0.768627, 0.686275, 1)
+position = Vector2(183.25, 86.75)
+scale = Vector2(367.5, 174.5)
+texture = SubResource("CanvasTexture_s0cmc")
+
+[node name="Frames" type="Node2D" parent="Panels/ExitPopUp"]
+
+[node name="Sprite2D2" type="Sprite2D" parent="Panels/ExitPopUp/Frames"]
+modulate = Color(0.756863, 0.596078, 0.698039, 1)
+position = Vector2(15.125, 85)
+scale = Vector2(6.25, 146)
+texture = SubResource("CanvasTexture_uf0ku")
+
+[node name="Sprite2D3" type="Sprite2D" parent="Panels/ExitPopUp/Frames"]
+modulate = Color(0.756863, 0.596078, 0.698039, 1)
+position = Vector2(182.555, 15.1255)
+rotation = 1.5708
+scale = Vector2(6.25, 340.376)
+texture = SubResource("CanvasTexture_uf0ku")
+
+[node name="Sprite2D4" type="Sprite2D" parent="Panels/ExitPopUp/Frames"]
+modulate = Color(0.756863, 0.596078, 0.698039, 1)
+position = Vector2(350, 85)
+scale = Vector2(6.25, 146)
+texture = SubResource("CanvasTexture_uf0ku")
+
+[node name="Sprite2D5" type="Sprite2D" parent="Panels/ExitPopUp/Frames"]
+modulate = Color(0.756863, 0.596078, 0.698039, 1)
+position = Vector2(182.555, 159)
+rotation = 1.5708
+scale = Vector2(6.25, 340.376)
+texture = SubResource("CanvasTexture_uf0ku")
+
+[node name="Label" type="Label" parent="Panels/ExitPopUp"]
+offset_left = 18.0
+offset_top = 30.0
+offset_right = 347.0
+offset_bottom = 99.0
+theme_override_fonts/font = ExtResource("7_8rg5e")
+theme_override_font_sizes/font_size = 30
+text = "Czy na pewno chcesz wyjsc z gry?"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Panels/ExitPopUp"]
+offset_left = 18.0
+offset_top = 113.0
+offset_right = 347.0
+offset_bottom = 146.0
+theme_override_constants/separation = 15
+alignment = 1
+
+[node name="YesButton" type="Button" parent="Panels/ExitPopUp/HBoxContainer" groups=["Button"]]
+custom_minimum_size = Vector2(75, 30)
+layout_mode = 2
+theme_override_styles/normal = ExtResource("24_wqohh")
+theme_override_styles/hover = ExtResource("24_wqohh")
+theme_override_styles/pressed = ExtResource("24_wqohh")
+theme_override_styles/disabled = ExtResource("24_wqohh")
+theme_override_styles/focus = ExtResource("24_wqohh")
+script = ExtResource("25_8mtfw")
+
+[node name="Label" type="Label" parent="Panels/ExitPopUp/HBoxContainer/YesButton"]
+layout_mode = 0
+offset_right = 76.0
+offset_bottom = 34.0
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.6)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_fonts/font = ExtResource("7_8rg5e")
+theme_override_font_sizes/font_size = 20
+text = "Tak"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="NoButton" type="Button" parent="Panels/ExitPopUp/HBoxContainer" groups=["Button"]]
+custom_minimum_size = Vector2(75, 30)
+layout_mode = 2
+theme_override_styles/normal = ExtResource("24_wqohh")
+theme_override_styles/hover = ExtResource("24_wqohh")
+theme_override_styles/pressed = ExtResource("24_wqohh")
+theme_override_styles/disabled = ExtResource("24_wqohh")
+theme_override_styles/focus = ExtResource("24_wqohh")
+script = ExtResource("25_8mtfw")
+
+[node name="Label" type="Label" parent="Panels/ExitPopUp/HBoxContainer/NoButton"]
+layout_mode = 0
+offset_right = 76.0
+offset_bottom = 35.0
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.6)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_fonts/font = ExtResource("7_8rg5e")
+theme_override_font_sizes/font_size = 20
+text = "NIe"
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [connection signal="timeout" from="Room/Cat/EatTimer" to="Room/Cat" method="_on_eat_timer_timeout"]
 [connection signal="input_event" from="Room/Scratching_post" to="Room/Scratching_post" method="_on_input_event"]
 [connection signal="mouse_entered" from="Room/Scratching_post" to="Room/Scratching_post" method="_on_mouse_entered"]
@@ -2291,7 +2649,9 @@ vertical_alignment = 1
 [connection signal="mouse_entered" from="Room/UI/Buttons/QuitButton/Button" to="Room/UI/Buttons/QuitButton" method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="Room/UI/Buttons/QuitButton/Button" to="Room/UI/Buttons/QuitButton" method="_on_mouse_exited"]
 [connection signal="pressed" from="Room/UI/Buttons/QuitButton/Button" to="Room/UI/Buttons/QuitButton" method="_on_button_pressed"]
-[connection signal="pressed" from="Room/UI/BoosterButton" to="Room/UI/BoosterButton" method="_on_pressed"]
+[connection signal="mouse_entered" from="Room/UI/Buttons/BoosterButton/Button" to="Room/UI/Buttons/BoosterButton" method="_on_button_mouse_entered"]
+[connection signal="mouse_exited" from="Room/UI/Buttons/BoosterButton/Button" to="Room/UI/Buttons/BoosterButton" method="_on_button_mouse_exited"]
+[connection signal="pressed" from="Room/UI/Buttons/BoosterButton/Button" to="Room/UI/Buttons/BoosterButton" method="_on_button_pressed"]
 [connection signal="mouse_entered" from="ScratchingPost/PlayerScratching" to="ScratchingPost/Scene" method="_on_player_scratching_mouse_entered"]
 [connection signal="mouse_exited" from="ScratchingPost/PlayerScratching" to="ScratchingPost/Scene" method="_on_player_scratching_mouse_exited"]
 [connection signal="mouse_entered" from="ScratchingPost/Back/BackButton" to="ScratchingPost/Scene" method="_on_back_button_mouse_entered"]
@@ -2305,8 +2665,8 @@ vertical_alignment = 1
 [connection signal="mouse_entered" from="Bowl/NormalFeedButton" to="Bowl" method="_on_code_feed_mouse_entered"]
 [connection signal="mouse_exited" from="Bowl/NormalFeedButton" to="Bowl" method="_on_code_feed_mouse_exited"]
 [connection signal="pressed" from="Bowl/NormalFeedButton" to="Bowl" method="_on_code_feed_pressed"]
-[connection signal="mouse_entered" from="Bowl/CodeFeedNode/Information/InformationButton" to="Bowl/CodeFeedNode" method="_on_information_button_mouse_entered"]
-[connection signal="mouse_exited" from="Bowl/CodeFeedNode/Information/InformationButton" to="Bowl/CodeFeedNode" method="_on_information_button_mouse_exited"]
+[connection signal="mouse_entered" from="Bowl/Information/InformationButton" to="Bowl/Information" method="_on_information_button_mouse_entered"]
+[connection signal="mouse_exited" from="Bowl/Information/InformationButton" to="Bowl/Information" method="_on_information_button_mouse_exited"]
 [connection signal="timeout" from="Bowl/CodeFeedNode/EatTimer" to="Bowl/CodeFeedNode" method="good_code"]
 [connection signal="mouse_entered" from="Bowl/NormalFeed/Feed" to="Bowl/NormalFeed" method="_on_feed_mouse_entered"]
 [connection signal="mouse_exited" from="Bowl/NormalFeed/Feed" to="Bowl/NormalFeed" method="_on_feed_mouse_exited"]
@@ -2371,3 +2731,5 @@ vertical_alignment = 1
 [connection signal="mouse_entered" from="Panels/PlayerPanel/GuideButton/Button" to="Panels/PlayerPanel/GuideButton" method="_on_button_mouse_entered"]
 [connection signal="mouse_exited" from="Panels/PlayerPanel/GuideButton/Button" to="Panels/PlayerPanel/GuideButton" method="_on_button_mouse_exited"]
 [connection signal="pressed" from="Panels/PlayerPanel/GuideButton/Button" to="Panels/PlayerPanel/GuideButton" method="_on_button_pressed"]
+[connection signal="pressed" from="Panels/ExitPopUp/HBoxContainer/YesButton" to="Room/UI/Buttons/QuitButton" method="_on_yes_button_pressed"]
+[connection signal="pressed" from="Panels/ExitPopUp/HBoxContainer/NoButton" to="Room/UI/Buttons/QuitButton" method="_on_no_button_pressed"]

@@ -9,6 +9,7 @@ signal loseLife()
 signal nextLevel()
 signal add_point()
 signal save_data()
+signal set_lose_score(points : int)
 
 signal fruitColl(what); #właścicielem sygnału jest SignalManager
 signal basketColor(color);
@@ -75,7 +76,7 @@ signal add_code_element_to_plan(code_element : CodeElement)
 signal start_build_booster(plan : Plan)
 signal check_booster_build()
 signal check_if_is_good(is_good : bool, code_element : String)
-signal use_booster(plan : Plan)
+signal use_booster(plan : Plan, extra_games : int)
 signal decrease_booster_uses()
 signal show_description(description: String)
 signal hide_description()
@@ -93,6 +94,7 @@ signal show_pop_up()
 signal hide_settings_panel()
 signal show_test_node()
 signal hide_test_node()
+signal enable_use_buttons(code_elements : Array[CodeElement])
 
 #------------------ LEVEL -----------------------------------
 signal add_exp(value)

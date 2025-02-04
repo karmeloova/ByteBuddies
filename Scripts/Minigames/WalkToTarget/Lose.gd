@@ -5,6 +5,7 @@ extends Node2D
 func _ready():
 	visible = false;
 	SignalManager.loseGame.connect(_on_lose_game)
+	SignalManager.set_lose_score.connect(_on_set_lose_score)
 
 func _on_lose_game() :
 	VariableManager.is_playing = false;
@@ -32,3 +33,6 @@ func _on_restart_button_mouse_entered():
 
 func _on_restart_button_mouse_exited():
 	$RestartButton.modulate = Color("ffffff")
+
+func _on_set_lose_score(points : int) :
+	$PointsLabel.text = "Wynik: " + str(points)

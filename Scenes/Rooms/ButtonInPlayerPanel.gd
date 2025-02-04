@@ -6,6 +6,11 @@ extends Node2D
 
 func _on_button_pressed():
 	SignalManager.set_panel_to_hide.emit(node_to_show)
+	if(node_to_show.name == "Settings") :
+		get_tree().paused = true
+		node_to_show.process_mode = Node.PROCESS_MODE_ALWAYS
+		back_button.process_mode = Node.PROCESS_MODE_ALWAYS
+	
 	node_to_hide.visible = false
 	node_to_show.visible = true
 	exit_button.visible = false

@@ -4,7 +4,7 @@ extends Node2D
 
 func _on_button_pressed():
 	for i in panels_node.get_children() :
-		if i.visible == true :
+		if i.visible == true && i.name != "NextLevelsPopUp":
 			i.visible = false
 	
 	for i in buttons_node.get_children() :

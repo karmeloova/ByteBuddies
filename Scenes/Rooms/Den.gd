@@ -18,5 +18,11 @@ func change_sleep_state() :
 	SignalManager.sleeping.emit(is_sleeping)
 	if(is_sleeping) :
 		$"../..".modulate = Color("6a6a6a")
+		process_mode = Node.PROCESS_MODE_ALWAYS
+		$"../UI/Buttons/QuitButton".process_mode = Node.PROCESS_MODE_ALWAYS
+		get_tree().paused = true
 	else :
+		get_tree().paused = false
+		process_mode = Node.PROCESS_MODE_INHERIT
+		$"../UI/Buttons/QuitButton".process_mode = Node.PROCESS_MODE_INHERIT
 		$"../..".modulate = Color("ffffff")

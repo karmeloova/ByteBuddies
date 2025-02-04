@@ -26,6 +26,6 @@ func _on_restart_game() :
 
 func check_active_booster() :
 	if(BoosterManager.active_booster != null && !$Panel/BoosterGamesLeft.visible) :
-		booster_text = "Booster " + BoosterManager.active_booster.plan_name + " aktywny. Pozostalo " + str(BoosterManager.games_duration) + " gier                                      hujyiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiź ."
+		booster_text = "Booster " + BoosterManager.active_booster.plan_name + " aktywny. Pozostalo " + str(BoosterManager.games_duration) + " gier."
 		$Panel/BoosterGamesLeft.text = booster_text
 		$Panel/BoosterGamesLeft.visible = true
