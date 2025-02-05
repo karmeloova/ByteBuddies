@@ -113,6 +113,7 @@ var save_data = {
 	"audio_volumes" : [1,1,1],
 	"full_screen" : true,
 	"resolution" : 0,
+	"mute_check_boxes" : [false, false, false],
 	"food_resource" : [],
 	"plans_resource" : [],
 	"parts_resource" : [],
@@ -122,7 +123,8 @@ var save_data = {
 	"active_booster" : "",
 	"games_left" : 0,
 	"try_to_build_booster" : false,
-	"booster_lives" : 3
+	"booster_lives" : 3,
+	"tutorial" : true
 }
  
 # Called when the node enters the scene tree for the first time.
@@ -152,6 +154,8 @@ func _ready():
 	VariableManager.hungry_points_in_bowl = save_data["hungry_points_in_bowl"]
 	VariableManager.try_to_build_booster = save_data["try_to_build_booster"]
 	VariableManager.booster_lives = save_data["booster_lives"]
+	VariableManager.tutorial = save_data["tutorial"]
+	VariableManager.mute_check_boxes = save_data["mute_check_boxes"]
 	
 	Achievements.cat_jump = save_data["cat_jump_achievementes"]
 	Achievements.snack_navigator = save_data["snack_navigator_achievementes"]
@@ -239,6 +243,8 @@ func _notification(what):
 		save("hungry_points_in_bowl", VariableManager.hungry_points_in_bowl)
 		save("try_to_build_booster", VariableManager.try_to_build_booster)
 		save("booster_lives", VariableManager.booster_lives)
+		save("tutorial", VariableManager.tutorial)
+		save("mute_check_boxes", VariableManager.mute_check_boxes)
 		
 		save_resource(VariableManager.food_resource, "food_resource")
 		save_resource(VariableManager.plans_resource, "plans_resource")

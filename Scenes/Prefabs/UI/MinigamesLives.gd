@@ -21,6 +21,7 @@ func _on_lose_life() :
 func _on_add_fishes() :
 	VariableManager.fishes += lives_count
 	SignalManager.update_fish_counter.emit()
+	SignalManager.update_fish_counter_in_mini_game.emit(lives_count)
 
 func reset_lives() :
 	for i in get_children() :

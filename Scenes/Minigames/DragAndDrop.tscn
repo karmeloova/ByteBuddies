@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://2q5dqmbag8tm"]
+[gd_scene load_steps=16 format=3 uid="uid://2q5dqmbag8tm"]
 
 [ext_resource type="Script" path="res://Scenes/Minigames/InstructionNode.gd" id="1_pr2fo"]
 [ext_resource type="Texture2D" uid="uid://dl8dw08og2gr8" path="res://Images/Backgrounds/Placeholder_backgorund_minigames.jpg" id="1_q4qfm"]
@@ -9,10 +9,12 @@
 [ext_resource type="Resource" uid="uid://ikx558mnu4en" path="res://Resources/CodeTasks/PetWalking.tres" id="6_73bo2"]
 [ext_resource type="Resource" uid="uid://bm5vldwuqfl7e" path="res://Resources/CodeTasks/PlayWithPet.tres" id="7_sxg87"]
 [ext_resource type="Script" path="res://Scenes/Minigames/GameStatePetCode.gd" id="9_x7c5n"]
+[ext_resource type="Texture2D" uid="uid://cjcm8dskr3xnv" path="res://Images/UI/Currency.png" id="10_x8xuh"]
 [ext_resource type="PackedScene" uid="uid://dluxwfsypbvws" path="res://Scenes/Prefabs/UI/MinigamesLives.tscn" id="12_a2gxt"]
 [ext_resource type="PackedScene" uid="uid://cyn346855vab8" path="res://Scenes/Prefabs/UI/PauseUI.tscn" id="13_mgrwr"]
 [ext_resource type="PackedScene" uid="uid://bpck4nf2x81gt" path="res://Scenes/Prefabs/UI/MinigamesPanel.tscn" id="14_d0lr8"]
 [ext_resource type="PackedScene" uid="uid://doyyhye04gaml" path="res://Scenes/Prefabs/UI/LoseUI.tscn" id="14_hht7t"]
+[ext_resource type="Texture2D" uid="uid://bhcgfqs2j6bx4" path="res://Images/UI/Lives/Life.png" id="15_5182q"]
 
 [node name="DragAndDrop" type="Node2D"]
 
@@ -83,24 +85,49 @@ script = ExtResource("9_x7c5n")
 
 [node name="Score" type="Label" parent="GameState"]
 offset_left = 9.0
-offset_top = 79.0
+offset_top = 58.0
 offset_right = 182.0
-offset_bottom = 127.0
-theme_override_font_sizes/font_size = 30
+offset_bottom = 112.0
+theme_override_fonts/font = ExtResource("3_5qsjs")
+theme_override_font_sizes/font_size = 50
 text = "Wynik:"
 metadata/_edit_use_anchors_ = true
 
 [node name="Money" type="Label" parent="GameState"]
-offset_left = 8.0
-offset_top = 124.0
-offset_right = 181.0
-offset_bottom = 172.0
-theme_override_font_sizes/font_size = 30
+offset_left = 65.0
+offset_top = 117.0
+offset_right = 238.0
+offset_bottom = 171.0
+theme_override_fonts/font = ExtResource("3_5qsjs")
+theme_override_font_sizes/font_size = 50
 text = "Kasa:"
 metadata/_edit_use_anchors_ = true
 
+[node name="TextureRect" type="TextureRect" parent="GameState"]
+offset_left = 5.0
+offset_top = 108.0
+offset_right = 62.0
+offset_bottom = 173.0
+texture = ExtResource("10_x8xuh")
+expand_mode = 1
+
+[node name="Fishes" type="Label" parent="GameState"]
+offset_left = 65.0
+offset_top = 181.0
+offset_right = 238.0
+offset_bottom = 235.0
+theme_override_fonts/font = ExtResource("3_5qsjs")
+theme_override_font_sizes/font_size = 50
+text = "Rybki"
+metadata/_edit_use_anchors_ = true
+
+[node name="Life" type="Sprite2D" parent="GameState"]
+position = Vector2(31, 208)
+scale = Vector2(0.0840081, 0.0840081)
+texture = ExtResource("15_5182q")
+
 [node name="MinigamesLives" parent="." instance=ExtResource("12_a2gxt")]
-position = Vector2(22, 215)
+position = Vector2(22, 284)
 
 [node name="Pause" parent="." instance=ExtResource("13_mgrwr")]
 z_index = 2

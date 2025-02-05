@@ -11,6 +11,7 @@ var needs = {
 var food_list : Array[Food_Resource]
 var first_start : bool = true
 var cat_name : String
+var tutorial : bool = true
 
 var is_playing : bool = false
 var is_mouse_moving = false
@@ -67,6 +68,7 @@ var scratch_counter : int = 0
 var volumes_levels = [1,1,1]
 var resolution = 0
 var is_full_screen = true
+var mute_check_boxes = [false, false, false]
 
 #----------- RESOURCES -----------------------
 var food_resource : Array[storage_resource]

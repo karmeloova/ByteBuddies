@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://8ht3543k8u8l"]
+[gd_scene load_steps=17 format=3 uid="uid://8ht3543k8u8l"]
 
 [ext_resource type="Script" path="res://Scripts/Basket.gd" id="1_w5xul"]
 [ext_resource type="Script" path="res://Scripts/FruitNode.gd" id="2_ebjhj"]
@@ -9,6 +9,9 @@
 [ext_resource type="Texture2D" uid="uid://cu38aqp5mo2e6" path="res://Images/backgroung.jpg" id="5_efxct"]
 [ext_resource type="PackedScene" uid="uid://doyyhye04gaml" path="res://Scenes/Prefabs/UI/LoseUI.tscn" id="7_2c0eh"]
 [ext_resource type="PackedScene" uid="uid://bpck4nf2x81gt" path="res://Scenes/Prefabs/UI/MinigamesPanel.tscn" id="7_ubdb5"]
+[ext_resource type="FontFile" uid="uid://ccgpsjqwwow8o" path="res://Fonts/Bubblegum.ttf" id="7_ygja5"]
+[ext_resource type="Texture2D" uid="uid://cjcm8dskr3xnv" path="res://Images/UI/Currency.png" id="8_jace6"]
+[ext_resource type="Texture2D" uid="uid://bhcgfqs2j6bx4" path="res://Images/UI/Lives/Life.png" id="9_jeuro"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_g6epj"]
 size = Vector2(169.219, 15.9297)
@@ -25,7 +28,7 @@ size = Vector2(10, 84)
 [node name="World" type="Node2D"]
 
 [node name="MinigamesLives" parent="." instance=ExtResource("2_xq8fu")]
-position = Vector2(934, 5)
+position = Vector2(86, 5)
 
 [node name="Pause" parent="." instance=ExtResource("2_mnafx")]
 
@@ -68,36 +71,57 @@ shape = SubResource("RectangleShape2D_igrkt")
 script = ExtResource("3_efxh8")
 
 [node name="Instruction" type="Label" parent="Text"]
-offset_left = 12.0
-offset_top = 89.0
-offset_right = 450.0
-offset_bottom = 217.0
+offset_left = 699.0
+offset_top = 9.0
+offset_right = 1137.0
+offset_bottom = 137.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 20
 text = "		1 - Liczby zmiennoprzecinkowe (float, double)
 		2 - Liczby całkowite (int)
 		3 - Łańcuch znaków (string)
-		4 - Znak (char)"
+		4 - Typ logiczny (bool)"
 
 [node name="Score" type="Label" parent="Text"]
-offset_left = 937.0
-offset_top = 83.0
-offset_right = 1142.0
-offset_bottom = 152.0
-theme_override_colors/font_color = Color(0, 0, 0, 1)
+offset_left = 11.0
+offset_top = 89.0
+offset_right = 216.0
+offset_bottom = 158.0
+theme_override_fonts/font = ExtResource("7_ygja5")
 theme_override_font_sizes/font_size = 50
 text = "TEST"
-horizontal_alignment = 2
 
 [node name="Coins" type="Label" parent="Text"]
-offset_left = 939.0
-offset_top = 147.0
-offset_right = 1144.0
-offset_bottom = 216.0
-theme_override_colors/font_color = Color(0, 0, 0, 1)
+offset_left = 68.0
+offset_top = 153.0
+offset_right = 273.0
+offset_bottom = 222.0
+theme_override_fonts/font = ExtResource("7_ygja5")
 theme_override_font_sizes/font_size = 50
 text = "Coins:"
-horizontal_alignment = 2
+
+[node name="Fishes" type="Label" parent="Text"]
+offset_left = 68.0
+offset_top = 217.0
+offset_right = 273.0
+offset_bottom = 286.0
+theme_override_fonts/font = ExtResource("7_ygja5")
+theme_override_font_sizes/font_size = 50
+text = "Fishes
+"
+
+[node name="TextureRect" type="TextureRect" parent="Text"]
+offset_left = 5.0
+offset_top = 142.0
+offset_right = 62.0
+offset_bottom = 207.0
+texture = ExtResource("8_jace6")
+expand_mode = 1
+
+[node name="Life" type="Sprite2D" parent="Text"]
+position = Vector2(31, 236)
+scale = Vector2(0.0840081, 0.0840081)
+texture = ExtResource("9_jeuro")
 
 [node name="Left" type="Area2D" parent="."]
 
@@ -120,7 +144,6 @@ texture = ExtResource("5_efxct")
 metadata/_edit_lock_ = true
 
 [node name="Lose" parent="." instance=ExtResource("7_2c0eh")]
-visible = false
 
 [node name="MinigamesPanel" parent="." instance=ExtResource("7_ubdb5")]
 game_name = "Fruit Catcher"

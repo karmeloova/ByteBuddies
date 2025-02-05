@@ -7,11 +7,11 @@ func _ready():
 	SignalManager.loseGame.connect(_on_lose_game)
 	SignalManager.save_data.connect(_on_save_data)
 	SignalManager.restartGame.connect(_on_save_data)
-	text = "Coins: " + str(coins)
+	text = str(coins)
 
 func _on_add_coin(value) :
 	coins += 1
-	text = "Coins: " + str(coins)
+	text = str(coins)
 
 func _on_lose_game() :
 	add_coins()
@@ -21,7 +21,6 @@ func _on_save_data() :
 
 func add_coins() :
 	if(BoosterManager.active_booster != null && BoosterManager.active_booster.booster_category == MyEnums.BoosterCategory.coins && VariableManager.is_playing) :
-		print(BoosterManager.multiplier)
 		VariableManager.coins += coins*BoosterManager.multiplier
 		SignalManager.decrease_booster_uses.emit()
 	else :

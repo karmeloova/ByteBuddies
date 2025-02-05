@@ -6,8 +6,7 @@ func _on_button_pressed():
 	exit_pop_up.visible = true
 
 func _on_mouse_entered() :
-	if(!process_mode == PROCESS_MODE_INHERIT && !get_tree().paused):
-		modulate = Color("b2b2b2")
+	modulate = Color("b2b2b2")
 
 func _on_mouse_exited() :
 	modulate = Color("ffffff")

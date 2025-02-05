@@ -34,5 +34,7 @@ func _on_restart_button_mouse_entered():
 func _on_restart_button_mouse_exited():
 	$RestartButton.modulate = Color("ffffff")
 
-func _on_set_lose_score(points : int) :
+func _on_set_lose_score(points : int, is_new_highscore : bool) :
 	$PointsLabel.text = "Wynik: " + str(points)
+	if(is_new_highscore) : $NewRecord.visible = true
+	else : $NewRecord.visible = false

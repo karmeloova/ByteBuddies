@@ -26,7 +26,7 @@ func _process(delta):
 			$Label.text = "string"
 		3: 
 			$BasketPicture.texture = baskets[3]
-			$Label.text = "Char"
+			$Label.text = "Bool"
 
 func _input(event):
 	if(Input.is_key_pressed(KEY_1)) : color = 0;

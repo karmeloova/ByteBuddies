@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://bpck4nf2x81gt"]
+[gd_scene load_steps=14 format=3 uid="uid://bpck4nf2x81gt"]
 
 [ext_resource type="Script" path="res://Scenes/Prefabs/UI/MinigamesPanel.gd" id="1_hj3fy"]
 [ext_resource type="FontFile" uid="uid://ccgpsjqwwow8o" path="res://Fonts/Bubblegum.ttf" id="2_a4mhf"]
@@ -9,6 +9,7 @@
 [ext_resource type="Script" path="res://Scenes/Prefabs/UI/HowToPlayButton.gd" id="5_6yy22"]
 [ext_resource type="Texture2D" uid="uid://6adv5bnfl4ff" path="res://Images/UI/Buttons/Back.png" id="5_eyy1f"]
 [ext_resource type="Script" path="res://Scenes/Prefabs/UI/HowToPlay.gd" id="10_g1eg1"]
+[ext_resource type="FontFile" uid="uid://sjhlfawq34if" path="res://Fonts/Coolvetica Rg.otf" id="10_rh88a"]
 
 [sub_resource type="CanvasTexture" id="CanvasTexture_dpvta"]
 
@@ -175,8 +176,7 @@ script = ExtResource("10_g1eg1")
 
 [node name="Previous" type="Node2D" parent="HowToPlay"]
 process_mode = 3
-visible = false
-position = Vector2(220, 237)
+position = Vector2(218, 247)
 scale = Vector2(0.5, 0.5)
 metadata/_edit_group_ = true
 
@@ -198,7 +198,7 @@ texture = ExtResource("5_eyy1f")
 
 [node name="Next" type="Node2D" parent="HowToPlay"]
 process_mode = 3
-position = Vector2(898, 238)
+position = Vector2(898, 248)
 scale = Vector2(0.5, 0.5)
 metadata/_edit_group_ = true
 
@@ -222,20 +222,22 @@ texture = ExtResource("5_eyy1f")
 visible = false
 
 [node name="Page1" type="RichTextLabel" parent="HowToPlay/CatJump"]
-offset_left = 282.0
-offset_top = 161.0
-offset_right = 893.0
-offset_bottom = 619.0
-theme_override_font_sizes/normal_font_size = 20
-theme_override_font_sizes/bold_font_size = 20
+offset_left = 270.0
+offset_top = 123.0
+offset_right = 908.0
+offset_bottom = 464.0
+theme_override_fonts/normal_font = ExtResource("10_rh88a")
+theme_override_fonts/bold_font = ExtResource("10_rh88a")
+theme_override_font_sizes/normal_font_size = 23
+theme_override_font_sizes/bold_font_size = 23
 theme_override_font_sizes/italics_font_size = 20
 theme_override_font_sizes/bold_italics_font_size = 20
 theme_override_font_sizes/mono_font_size = 20
 bbcode_enabled = true
 text = "Twoim celem jest wspinać się jak najwyżej, skacząc po platformach. Im wyżej dojdziesz, tym więcej punktów zdobędziesz! Sterowanie:
- [b]- Spacja –[/b] Naciśnij, aby skoczyć w górę.
- [b]- Strzałka w lewo –[/b] Przesuń się w lewo.
- [b]- Strzałka w prawo –[/b] Przesuń się w prawo.
+ [b][color=\"B1849F\"]- Spacja –[/color][/b] Naciśnij, aby skoczyć w górę.
+ [b][color=\"B1849F\"]- Strzałka w lewo –[/color][/b] Przesuń się w lewo.
+ [b][color=\"B1849F\"]- Strzałka w prawo –[/color][/b] Przesuń się w prawo.
 
 Unikaj upadku – Jeśli spadniesz na dół, gra się kończy.
 
@@ -248,47 +250,52 @@ visible = false
 
 [node name="Page1" type="RichTextLabel" parent="HowToPlay/SnackNavigator"]
 offset_left = 282.0
-offset_top = 161.0
-offset_right = 893.0
+offset_top = 130.0
+offset_right = 905.0
 offset_bottom = 516.0
-theme_override_font_sizes/normal_font_size = 20
-theme_override_font_sizes/bold_font_size = 20
+theme_override_fonts/normal_font = ExtResource("10_rh88a")
+theme_override_fonts/bold_font = ExtResource("10_rh88a")
+theme_override_font_sizes/normal_font_size = 23
+theme_override_font_sizes/bold_font_size = 23
 theme_override_font_sizes/italics_font_size = 20
 theme_override_font_sizes/bold_italics_font_size = 20
 theme_override_font_sizes/mono_font_size = 20
 bbcode_enabled = true
 text = "Hej, mały programisto! 🎉 Pomóż naszemu zwierzakowi dojść po kafelkach do miski pełnej pyszności! Twoim zadaniem jest wpisanie odpowiednich komend, które poprowadzą zwierzaka do celu.
-[b]Jak grać?[/b]
+
+[b][color=\"B1849F\"]Jak grać?[/color][/b]
 Spójrz na kafelki – To jest droga do miski! Określ, ile kroków potrzebujesz w każdym kierunku.
 Wpisz komendy:
-[b]- forward –  [/b] ruch do przodu
-[b]- left –[/b] skręt w lewo
-[b]- right –[/b] skręt w prawo
-[b]- back –[/b] krok w tył
+[b][color=\"B1849F\"]- forward –  [/color][/b] ruch do przodu
+[b][color=\"B1849F\"]- left –[/color][/b] skręt w lewo
+[b][color=\"B1849F\"]- right –[/color][/b] skręt w prawo
+[b][color=\"B1849F\"]- back –[/color][/b] krok w tył
 "
 autowrap_mode = 2
 
 [node name="Page2" type="RichTextLabel" parent="HowToPlay/SnackNavigator"]
 visible = false
-offset_left = 285.0
-offset_top = 149.0
+offset_left = 282.0
+offset_top = 131.0
 offset_right = 913.0
-offset_bottom = 569.0
-theme_override_font_sizes/normal_font_size = 20
-theme_override_font_sizes/bold_font_size = 20
+offset_bottom = 553.0
+theme_override_fonts/normal_font = ExtResource("10_rh88a")
+theme_override_fonts/bold_font = ExtResource("10_rh88a")
+theme_override_font_sizes/normal_font_size = 23
+theme_override_font_sizes/bold_font_size = 23
 theme_override_font_sizes/italics_font_size = 20
 theme_override_font_sizes/bold_italics_font_size = 20
 theme_override_font_sizes/mono_font_size = 20
 bbcode_enabled = true
 text = "Dodaj liczbę kroków – Po komendzie wpisz w nawiasie, ile kafelków zwierzak ma przejść, np.:
-[b]- forward(3) –[/b] 3 kroki do przodu
-[b]- left(1) –[/b] skręt w lewo o 1 krok
+[b][color=\"B1849F\"]- forward(3) –[/color][/b] 3 kroki do przodu
+[b][color=\"B1849F\"]- left(1) –[/color][/b] skręt w lewo o 1 krok
 Po kliknięciu \"Wykonaj\" obserwuj jak zwierzak idzie do miski!
 
 [b]Przykład[/b]
 Aby przejść 4 kafelki do przodu, a potem skręcić w lewo i przejść 2 kafelki, wpisz: 
-	[b]forward(4)
-	left(2)[/b]
+	[b][color=\"B1849F\"]forward(4)
+	left(2)[/color][/b]
 
 Pamiętaj, by wpisywać komendy dokładnie tak, jak pokazano. Powodzenia! 🚀"
 autowrap_mode = 2
@@ -297,13 +304,14 @@ autowrap_mode = 2
 visible = false
 
 [node name="Page1" type="RichTextLabel" parent="HowToPlay/CodePet"]
-visible = false
 offset_left = 282.0
-offset_top = 161.0
+offset_top = 132.0
 offset_right = 893.0
 offset_bottom = 516.0
-theme_override_font_sizes/normal_font_size = 20
-theme_override_font_sizes/bold_font_size = 20
+theme_override_fonts/normal_font = ExtResource("10_rh88a")
+theme_override_fonts/bold_font = ExtResource("10_rh88a")
+theme_override_font_sizes/normal_font_size = 23
+theme_override_font_sizes/bold_font_size = 23
 theme_override_font_sizes/italics_font_size = 20
 theme_override_font_sizes/bold_italics_font_size = 20
 theme_override_font_sizes/mono_font_size = 20
@@ -311,29 +319,35 @@ bbcode_enabled = true
 text = "Twoim zadaniem jest pomóc w opiece nad wirtualnym kotkiem, rozwiązując zadania kodowania. Poprawne ułożenie bloczków kodu umożliwia przejście na kolejne poziomy i rozwijanie umiejętności programowania. Każde zadanie to inny fragment logicznego myślenia, który pomaga Ci lepiej zrozumieć opiekę nad kotkiem.
 
 [b]Jak grać:
-1. [/b]Przeczytaj zadanie – Na każdym poziomie pojawia się zadanie związane z opieką nad kotkiem, np.: „Ułóż bloczki, aby kotek był najedzony” lub „Zwiększ poziom energii poprzez odpowiednią liczbę porcji”.
+[color=\"B1849F\"]1. Przeczytaj zadanie –[/color][/b] Na każdym poziomie pojawia się zadanie związane z opieką nad kotkiem, np.: „Ułóż bloczki, aby kotek był najedzony” lub „Zwiększ poziom energii poprzez odpowiednią liczbę porcji”.
 "
 autowrap_mode = 2
 
 [node name="Page2" type="RichTextLabel" parent="HowToPlay/CodePet"]
 visible = false
 offset_left = 285.0
-offset_top = 149.0
+offset_top = 134.0
 offset_right = 913.0
-offset_bottom = 569.0
-theme_override_font_sizes/normal_font_size = 20
-theme_override_font_sizes/bold_font_size = 20
+offset_bottom = 545.0
+theme_override_fonts/normal_font = ExtResource("10_rh88a")
+theme_override_fonts/bold_font = ExtResource("10_rh88a")
+theme_override_font_sizes/normal_font_size = 23
+theme_override_font_sizes/bold_font_size = 23
 theme_override_font_sizes/italics_font_size = 20
 theme_override_font_sizes/bold_italics_font_size = 20
 theme_override_font_sizes/mono_font_size = 20
 bbcode_enabled = true
-text = "[b]2. Układaj bloczki kodu –[/b] W każdym zadaniu masz do dyspozycji bloczki kodu, które możesz łączyć:
-	[b]- Pętle –[/b] Powtarzaj czynności, np. dodawanie punktów energii 			   lub zwiększanie liczby porcji.
-	[b]- Warunki –[/b] Wybierz odpowiednie działania w zależności od stanu zadania.
-	[b]- Operacje matematyczne –[/b] Zwiększaj lub zmniejszaj poziom wybranych parametrów, by spełnić cel zadania.
-[b]3. Rozwiązuj logiczne wyzwania – [/b] Ułóż bloczki, aby kod spełniał warunki zadania. Przykłady:
-	- Użyj [b]pętli for[/b], by dodać porcje karmy, aż licznik osiągnie 3.
- 	- Stwórz [b]warunek if[/b], który sprawdza, czy poziom energii jest poniżej progu i odpowiednio go zwiększa.
+text = "[color=\"B1849F\"][b]2. Układaj bloczki kodu –[/b][/color] W każdym zadaniu masz do dyspozycji bloczki kodu, które możesz łączyć:
+	[color=\"B1849F\"][b]- Pętle –[/b][/color] Powtarzaj czynności, np. dodawanie punktów energii 
+	lub zwiększanie liczby porcji.
+	[color=\"B1849F\"][b]- Warunki –[/b][/color] Wybierz odpowiednie działania w zależności od 
+	stanu zadania.
+	[color=\"B1849F\"][b]- Operacje matematyczne –[/b][/color] Zwiększaj lub zmniejszaj poziom 
+	wybranych parametrów, by spełnić cel zadania.
+[color=\"B1849F\"][b]3. Rozwiązuj logiczne wyzwania – [/b][/color] Ułóż bloczki, aby kod spełniał warunki zadania. Przykłady:
+	- Użyj [color=\"B1849F\"][b]pętli for[/b][/color], by dodać porcje karmy, aż licznik osiągnie 3.
+ 	- Stwórz [color=\"B1849F\"][b]warunek if[/b][/color], który sprawdza, czy poziom energii jest 
+	poniżej progu i odpowiednio go zwiększa.
 
 "
 autowrap_mode = 2
@@ -341,16 +355,18 @@ autowrap_mode = 2
 [node name="Page3" type="RichTextLabel" parent="HowToPlay/CodePet"]
 visible = false
 offset_left = 285.0
-offset_top = 149.0
+offset_top = 134.0
 offset_right = 913.0
 offset_bottom = 569.0
-theme_override_font_sizes/normal_font_size = 20
-theme_override_font_sizes/bold_font_size = 20
+theme_override_fonts/normal_font = ExtResource("10_rh88a")
+theme_override_fonts/bold_font = ExtResource("10_rh88a")
+theme_override_font_sizes/normal_font_size = 23
+theme_override_font_sizes/bold_font_size = 23
 theme_override_font_sizes/italics_font_size = 20
 theme_override_font_sizes/bold_italics_font_size = 20
 theme_override_font_sizes/mono_font_size = 20
 bbcode_enabled = true
-text = "[b]4. Sprawdź swoje rozwiązanie –[/b] Po ułożeniu bloczków naciśnij „Sprawdź”, aby zobaczyć, czy poprawnie ułożyłeś bloczki. Pomyślne ułożenie bloczków pozwoli Ci przejść do kolejnego zadania!
+text = "[b][color=\"B1849F\"]4. Sprawdź swoje rozwiązanie –[/color][/b] Po ułożeniu bloczków naciśnij „Sprawdź”, aby zobaczyć, czy poprawnie ułożyłeś bloczki. Pomyślne ułożenie bloczków pozwoli Ci przejść do kolejnego zadania!
 
 [b]Powodzenia![/b]"
 autowrap_mode = 2
@@ -359,23 +375,24 @@ autowrap_mode = 2
 visible = false
 
 [node name="Page1" type="RichTextLabel" parent="HowToPlay/FruitCatcher"]
-visible = false
 offset_left = 282.0
-offset_top = 161.0
+offset_top = 132.0
 offset_right = 893.0
 offset_bottom = 521.0
-theme_override_font_sizes/normal_font_size = 20
-theme_override_font_sizes/bold_font_size = 20
+theme_override_fonts/normal_font = ExtResource("10_rh88a")
+theme_override_fonts/bold_font = ExtResource("10_rh88a")
+theme_override_font_sizes/normal_font_size = 23
+theme_override_font_sizes/bold_font_size = 23
 theme_override_font_sizes/italics_font_size = 20
 theme_override_font_sizes/bold_italics_font_size = 20
 theme_override_font_sizes/mono_font_size = 20
 bbcode_enabled = true
-text = "W grze [b]FruitCatcher[/b] Twoim zadaniem jest złapanie owoców do odpowiednich koszyków:
+text = "W grze [b][color=\"B1849F\"]FruitCatcher[/color][/b] Twoim zadaniem jest złapanie owoców do odpowiednich koszyków:
 
-[b]* Koszyk 1:[/b] Liczby zmiennoprzecinkowe (float) – np. połówka lub półtora owocu.
-[b]* Koszyk 2:[/b] Liczby całkowite (int) – np. cały owoc.
-[b]* Koszyk 3:[/b] Łańcuch znaków (string) – np. nazwa owocu zapisana tekstem.
-[b]* Koszyk 4:[/b] Znaki (char) – np. jedna litera.
+[b][color=\"B1849F\"]* Koszyk 1:Liczby zmiennoprzecinkowe (float) –[/color][/b] np. połówka lub półtora owocu.
+[color=\"B1849F\"][b]* Koszyk 2:[/b] Liczby całkowite (int) –[/color] np. cały owoc.
+[color=\"B1849F\"][b]* Koszyk 3:[/b] Łańcuch znaków (string) –[/color] np. nazwa owocu zapisana tekstem.
+[color=\"B1849F\"][b]* Koszyk 4:[/b] Typ logiczny (bool) – [/color]np. jablko==jablko (prawda - true), jablko == winogrono (fałsz, jabłko nie jest winogronem), arbuz > jablko (prawda, arbuz jest większy od jabłka)
 
 Na koszyku znajduje się informacja jaki jest obecnie wybrany"
 autowrap_mode = 2
@@ -383,11 +400,13 @@ autowrap_mode = 2
 [node name="Page2" type="RichTextLabel" parent="HowToPlay/FruitCatcher"]
 visible = false
 offset_left = 285.0
-offset_top = 149.0
+offset_top = 132.0
 offset_right = 913.0
 offset_bottom = 569.0
-theme_override_font_sizes/normal_font_size = 20
-theme_override_font_sizes/bold_font_size = 20
+theme_override_fonts/normal_font = ExtResource("10_rh88a")
+theme_override_fonts/bold_font = ExtResource("10_rh88a")
+theme_override_font_sizes/normal_font_size = 23
+theme_override_font_sizes/bold_font_size = 23
 theme_override_font_sizes/italics_font_size = 20
 theme_override_font_sizes/bold_italics_font_size = 20
 theme_override_font_sizes/mono_font_size = 20

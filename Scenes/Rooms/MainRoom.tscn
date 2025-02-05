@@ -1,4 +1,4 @@
-[gd_scene load_steps=95 format=3 uid="uid://br5jh3sh28ig4"]
+[gd_scene load_steps=99 format=3 uid="uid://br5jh3sh28ig4"]
 
 [ext_resource type="Texture2D" uid="uid://ddmrcvq0prt24" path="res://Images/Backgrounds/Tlov1.png" id="1_5tq1h"]
 [ext_resource type="Script" path="res://Scenes/Rooms/MainRoom.gd" id="1_80uij"]
@@ -73,6 +73,7 @@
 [ext_resource type="Script" path="res://Scenes/Rooms/ShowNeedStatus.gd" id="47_y5i0a"]
 [ext_resource type="Script" path="res://Scenes/Rooms/Fishes.gd" id="58_a3d2p"]
 [ext_resource type="Texture2D" uid="uid://bhcgfqs2j6bx4" path="res://Images/UI/Lives/Life.png" id="58_axfkj"]
+[ext_resource type="Script" path="res://Scenes/Rooms/Tutorial.gd" id="74_mm82f"]
 
 [sub_resource type="CanvasTexture" id="CanvasTexture_7555d"]
 
@@ -123,6 +124,12 @@ modulate_color = Color(0.968627, 0.8, 0.815686, 1)
 
 [sub_resource type="CanvasTexture" id="CanvasTexture_uf0ku"]
 
+[sub_resource type="CanvasTexture" id="CanvasTexture_3dv7o"]
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_saxpw"]
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_wrr22"]
+
 [node name="MainRoom" type="Node2D"]
 script = ExtResource("1_80uij")
 
@@ -135,7 +142,6 @@ scale = Vector2(1.05, 1.05)
 texture = ExtResource("1_5tq1h")
 
 [node name="Room" type="Node2D" parent="."]
-visible = false
 
 [node name="Cat" type="Node2D" parent="Room"]
 process_mode = 3
@@ -867,6 +873,7 @@ scale = Vector2(0.124325, 0.124325)
 texture = ExtResource("24_srg2u")
 
 [node name="Bath" type="Node2D" parent="."]
+visible = false
 
 [node name="Sprite2D2" type="Sprite2D" parent="Bath"]
 modulate = Color(0.968627, 0.8, 0.815686, 1)
@@ -2624,6 +2631,1381 @@ text = "NIe"
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[node name="Tutorial" type="Control" parent="."]
+process_mode = 3
+visible = false
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("74_mm82f")
+
+[node name="Etap1" type="Control" parent="Tutorial"]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 232.0
+offset_top = 154.0
+offset_right = 913.0
+offset_bottom = 560.0
+
+[node name="TextureRect" type="TextureRect" parent="Tutorial/Etap1"]
+modulate = Color(1, 1, 1, 0.635294)
+self_modulate = Color(0.408329, 0.408329, 0.408329, 1)
+layout_mode = 0
+offset_left = -316.0
+offset_top = -212.0
+offset_right = 968.0
+offset_bottom = 542.0
+texture = SubResource("CanvasTexture_3dv7o")
+
+[node name="Panel" type="Control" parent="Tutorial/Etap1"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Background" type="TextureRect" parent="Tutorial/Etap1/Panel"]
+modulate = Color(0.968627, 0.8, 0.815686, 1)
+layout_mode = 0
+offset_right = 1.0
+offset_bottom = 1.0
+scale = Vector2(680, 405)
+texture = SubResource("CanvasTexture_saxpw")
+
+[node name="Right" type="TextureRect" parent="Tutorial/Etap1/Panel"]
+modulate = Color(0.756863, 0.596078, 0.698039, 1)
+layout_mode = 0
+offset_left = 645.0
+offset_top = 35.0
+offset_right = 651.25
+offset_bottom = 376.0
+texture = SubResource("CanvasTexture_wrr22")
+
+[node name="Left" type="TextureRect" parent="Tutorial/Etap1/Panel"]
+modulate = Color(0.756863, 0.596078, 0.698039, 1)
+layout_mode = 0
+offset_left = 35.0
+offset_top = 35.0
+offset_right = 41.25
+offset_bottom = 376.0
+texture = SubResource("CanvasTexture_wrr22")
+
+[node name="Bottom" type="TextureRect" parent="Tutorial/Etap1/Panel"]
+modulate = Color(0.756863, 0.596078, 0.698039, 1)
+layout_mode = 0
+offset_left = 647.0
+offset_top = 370.0
+offset_right = 653.0
+offset_bottom = 981.0
+rotation = 1.5708
+texture = SubResource("CanvasTexture_wrr22")
+
+[node name="Top" type="TextureRect" parent="Tutorial/Etap1/Panel"]
+modulate = Color(0.756863, 0.596078, 0.698039, 1)
+layout_mode = 0
+offset_left = 651.0
+offset_top = 35.0
+offset_right = 657.25
+offset_bottom = 647.0
+rotation = 1.5708
+texture = SubResource("CanvasTexture_wrr22")
+
+[node name="Label" type="Label" parent="Tutorial/Etap1"]
+layout_mode = 0
+offset_left = 41.0
+offset_top = 65.0
+offset_right = 644.0
+offset_bottom = 116.0
+theme_override_fonts/font = ExtResource("7_8rg5e")
+theme_override_font_sizes/font_size = 40
+text = "Witaj w grze ByteBuddies!"
+horizontal_alignment = 1
+
+[node name="Label2" type="Label" parent="Tutorial/Etap1"]
+layout_mode = 0
+offset_left = 55.0
+offset_top = 126.0
+offset_right = 633.0
+offset_bottom = 263.0
+theme_override_fonts/font = ExtResource("33_en7n4")
+theme_override_font_sizes/font_size = 20
+text = "Tutaj możesz opiekować się wirtualnym kotkiem oraz uczyć się podstaw programowania. Jednak pamiętaj! To w jaki sposób opiekujesz się tutaj swoim kotkiem nie może mieć odzwierciedlenia w realnym świecie. Teraz zostaniesz przeprowadzony przez krótki tutorial, opisujący widoczne elementy. Miłej zabawy oraz nauki!"
+horizontal_alignment = 3
+autowrap_mode = 2
+
+[node name="Button" type="Button" parent="Tutorial/Etap1"]
+layout_mode = 0
+offset_left = 523.0
+offset_top = 317.0
+offset_right = 637.0
+offset_bottom = 363.0
+theme_override_styles/normal = ExtResource("24_wqohh")
+theme_override_styles/hover = ExtResource("24_wqohh")
+theme_override_styles/pressed = ExtResource("24_wqohh")
+theme_override_styles/disabled = ExtResource("24_wqohh")
+theme_override_styles/focus = ExtResource("24_wqohh")
+script = ExtResource("25_8mtfw")
+
+[node name="Label" type="Label" parent="Tutorial/Etap1/Button"]
+layout_mode = 0
+offset_right = 114.0
+offset_bottom = 48.0
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.6)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_fonts/font = ExtResource("7_8rg5e")
+theme_override_font_sizes/font_size = 28
+text = "Dalej"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Etap2" type="Control" parent="Tutorial"]
+visible = false
+layout_mode = 3
+anchors_preset = 0
+offset_left = 232.0
+offset_top = 154.0
+offset_right = 913.0
+offset_bottom = 560.0
+
+[node name="Darkness" type="TextureRect" parent="Tutorial/Etap2"]
+modulate = Color(1, 1, 1, 0.635294)
+self_modulate = Color(0.408329, 0.408329, 0.408329, 1)
+layout_mode = 0
+offset_left = -44.0
+offset_top = -212.0
+offset_right = 968.0
+offset_bottom = 542.0
+texture = SubResource("CanvasTexture_3dv7o")
+
+[node name="Darkness2" type="TextureRect" parent="Tutorial/Etap2"]
+modulate = Color(1, 1, 1, 0.635294)
+self_modulate = Color(0.408329, 0.408329, 0.408329, 1)
+layout_mode = 0
+offset_left = -241.0
+offset_top = -38.0
+offset_right = -44.0
+offset_bottom = 494.0
+texture = SubResource("CanvasTexture_3dv7o")
+
+[node name="Panel" type="Control" parent="Tutorial/Etap2"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Background" type="TextureRect" parent="Tutorial/Etap2/Panel"]
+modulate = Color(0.968627, 0.8, 0.815686, 1)
+layout_mode = 0
+offset_right = 1.0
+offset_bottom = 1.0
+scale = Vector2(680, 405)
+texture = SubResource("CanvasTexture_saxpw")
+
+[node name="Right" type="TextureRect" parent="Tutorial/Etap2/Panel"]
+modulate = Color(0.756863, 0.596078, 0.698039, 1)
+layout_mode = 0
+offset_left = 645.0
+offset_top = 35.0
+offset_right = 651.25
+offset_bottom = 376.0
+texture = SubResource("CanvasTexture_wrr22")
+
+[node name="Left" type="TextureRect" parent="Tutorial/Etap2/Panel"]
+modulate = Color(0.756863, 0.596078, 0.698039, 1)
+layout_mode = 0
+offset_left = 35.0
+offset_top = 35.0
+offset_right = 41.25
+offset_bottom = 376.0
+texture = SubResource("CanvasTexture_wrr22")
+
+[node name="Bottom" type="TextureRect" parent="Tutorial/Etap2/Panel"]
+modulate = Color(0.756863, 0.596078, 0.698039, 1)
+layout_mode = 0
+offset_left = 647.0
+offset_top = 370.0
+offset_right = 653.0
+offset_bottom = 981.0
+rotation = 1.5708
+texture = SubResource("CanvasTexture_wrr22")
+
+[node name="Top" type="TextureRect" parent="Tutorial/Etap2/Panel"]
+modulate = Color(0.756863, 0.596078, 0.698039, 1)
+layout_mode = 0
+offset_left = 651.0
+offset_top = 35.0
+offset_right = 657.25
+offset_bottom = 647.0
+rotation = 1.5708
+texture = SubResource("CanvasTexture_wrr22")
+
+[node name="Label" type="Label" parent="Tutorial/Etap2"]
+layout_mode = 0
+offset_left = 42.0
+offset_top = 55.0
+offset_right = 645.0
+offset_bottom = 106.0
+theme_override_fonts/font = ExtResource("7_8rg5e")
+theme_override_font_sizes/font_size = 40
+text = "Waluta"
+horizontal_alignment = 1
+
+[node name="Label2" type="Label" parent="Tutorial/Etap2"]
+layout_mode = 0
+offset_left = 55.0
+offset_top = 104.0
+offset_right = 633.0
+offset_bottom = 297.0
+theme_override_fonts/font = ExtResource("33_en7n4")
+theme_override_font_sizes/font_size = 20
+text = "W grze dostępne są dwie waluty: łapki oraz rybki. Zdobywać je można w różny sposób: 
+- Łapki - w każdej mini grze, za zdobywanie poziomów, osiągnięć oraz za uzupełnianie niektórych potrzeb. Przydatne do kupowania jedzenia dla kotka.
+- Rybki - za programistyczne mini-gry oraz za inne elementy związane z programowaniem. Przydatne do budowy własnych ulepszaczy!"
+autowrap_mode = 2
+
+[node name="Button" type="Button" parent="Tutorial/Etap2"]
+layout_mode = 0
+offset_left = 523.0
+offset_top = 317.0
+offset_right = 637.0
+offset_bottom = 363.0
+theme_override_styles/normal = ExtResource("24_wqohh")
+theme_override_styles/hover = ExtResource("24_wqohh")
+theme_override_styles/pressed = ExtResource("24_wqohh")
+theme_override_styles/disabled = ExtResource("24_wqohh")
+theme_override_styles/focus = ExtResource("24_wqohh")
+script = ExtResource("25_8mtfw")
+
+[node name="Label" type="Label" parent="Tutorial/Etap2/Button"]
+layout_mode = 0
+offset_right = 114.0
+offset_bottom = 48.0
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.6)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_fonts/font = ExtResource("7_8rg5e")
+theme_override_font_sizes/font_size = 28
+text = "Dalej"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Etap3" type="Control" parent="Tutorial"]
+visible = false
+layout_mode = 3
+anchors_preset = 0
+offset_left = 232.0
+offset_top = 154.0
+offset_right = 913.0
+offset_bottom = 560.0
+
+[node name="Darkness" type="TextureRect" parent="Tutorial/Etap3"]
+modulate = Color(1, 1, 1, 0.635294)
+self_modulate = Color(0.408329, 0.408329, 0.408329, 1)
+layout_mode = 0
+offset_left = 591.0
+offset_top = -212.0
+offset_right = 968.0
+offset_bottom = 542.0
+texture = SubResource("CanvasTexture_3dv7o")
+
+[node name="Darkness2" type="TextureRect" parent="Tutorial/Etap3"]
+modulate = Color(1, 1, 1, 0.635294)
+self_modulate = Color(0.408329, 0.408329, 0.408329, 1)
+layout_mode = 0
+offset_left = -241.0
+offset_top = -181.0
+offset_right = 89.0
+offset_bottom = 524.0
+texture = SubResource("CanvasTexture_3dv7o")
+
+[node name="Darkness3" type="TextureRect" parent="Tutorial/Etap3"]
+modulate = Color(1, 1, 1, 0.635294)
+self_modulate = Color(0.408329, 0.408329, 0.408329, 1)
+layout_mode = 0
+offset_left = 89.0
+offset_top = -53.0
+offset_right = 591.0
+offset_bottom = 529.0
+texture = SubResource("CanvasTexture_3dv7o")
+
+[node name="Panel" type="Control" parent="Tutorial/Etap3"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Background" type="TextureRect" parent="Tutorial/Etap3/Panel"]
+modulate = Color(0.968627, 0.8, 0.815686, 1)
+layout_mode = 0
+offset_right = 1.0
+offset_bottom = 1.0
+scale = Vector2(680, 405)
+texture = SubResource("CanvasTexture_saxpw")
+
+[node name="Right" type="TextureRect" parent="Tutorial/Etap3/Panel"]
+modulate = Color(0.756863, 0.596078, 0.698039, 1)
+layout_mode = 0
+offset_left = 645.0
+offset_top = 35.0
+offset_right = 651.25
+offset_bottom = 376.0
+texture = SubResource("CanvasTexture_wrr22")
+
+[node name="Left" type="TextureRect" parent="Tutorial/Etap3/Panel"]
+modulate = Color(0.756863, 0.596078, 0.698039, 1)
+layout_mode = 0
+offset_left = 35.0
+offset_top = 35.0
+offset_right = 41.25
+offset_bottom = 376.0
+texture = SubResource("CanvasTexture_wrr22")
+
+[node name="Bottom" type="TextureRect" parent="Tutorial/Etap3/Panel"]
+modulate = Color(0.756863, 0.596078, 0.698039, 1)
+layout_mode = 0
+offset_left = 647.0
+offset_top = 370.0
+offset_right = 653.0
+offset_bottom = 981.0
+rotation = 1.5708
+texture = SubResource("CanvasTexture_wrr22")
+
+[node name="Top" type="TextureRect" parent="Tutorial/Etap3/Panel"]
+modulate = Color(0.756863, 0.596078, 0.698039, 1)
+layout_mode = 0
+offset_left = 651.0
+offset_top = 35.0
+offset_right = 657.25
+offset_bottom = 647.0
+rotation = 1.5708
+texture = SubResource("CanvasTexture_wrr22")
+
+[node name="Label" type="Label" parent="Tutorial/Etap3"]
+layout_mode = 0
+offset_left = 42.0
+offset_top = 55.0
+offset_right = 645.0
+offset_bottom = 106.0
+theme_override_fonts/font = ExtResource("7_8rg5e")
+theme_override_font_sizes/font_size = 40
+text = "Potrzeby kotka"
+horizontal_alignment = 1
+
+[node name="Label2" type="Label" parent="Tutorial/Etap3"]
+layout_mode = 0
+offset_left = 55.0
+offset_top = 104.0
+offset_right = 633.0
+offset_bottom = 297.0
+theme_override_fonts/font = ExtResource("33_en7n4")
+theme_override_font_sizes/font_size = 20
+text = "W grze należy opiekować się kotkiem poprzez uzupełnianie następujących potrzeb: jedzenie, zabawa, drapanie, spanie oraz mycie. Każda potrzeba zaspakajana jest w inny sposób. Niektóre są obowiązkowe do zaspakajania, ponieważ bez nich nie będzie można grać w mini-gry, a niektóre nie są konieczne, ale dają nagrody za zaspakajanie ich. Po najechaniu na daną potrzebę zobaczysz jej obecny status."
+autowrap_mode = 2
+
+[node name="Button" type="Button" parent="Tutorial/Etap3"]
+layout_mode = 0
+offset_left = 523.0
+offset_top = 317.0
+offset_right = 637.0
+offset_bottom = 363.0
+theme_override_styles/normal = ExtResource("24_wqohh")
+theme_override_styles/hover = ExtResource("24_wqohh")
+theme_override_styles/pressed = ExtResource("24_wqohh")
+theme_override_styles/disabled = ExtResource("24_wqohh")
+theme_override_styles/focus = ExtResource("24_wqohh")
+script = ExtResource("25_8mtfw")
+
+[node name="Label" type="Label" parent="Tutorial/Etap3/Button"]
+layout_mode = 0
+offset_right = 114.0
+offset_bottom = 48.0
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.6)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_fonts/font = ExtResource("7_8rg5e")
+theme_override_font_sizes/font_size = 28
+text = "Dalej"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Etap4" type="Control" parent="Tutorial"]
+visible = false
+layout_mode = 3
+anchors_preset = 0
+offset_left = 232.0
+offset_top = 154.0
+offset_right = 913.0
+offset_bottom = 560.0
+
+[node name="Darkness" type="TextureRect" parent="Tutorial/Etap4"]
+modulate = Color(1, 1, 1, 0.635294)
+self_modulate = Color(0.408329, 0.408329, 0.408329, 1)
+layout_mode = 0
+offset_left = -247.0
+offset_top = -212.0
+offset_right = 805.0
+offset_bottom = 542.0
+texture = SubResource("CanvasTexture_3dv7o")
+
+[node name="Darkness2" type="TextureRect" parent="Tutorial/Etap4"]
+modulate = Color(1, 1, 1, 0.635294)
+self_modulate = Color(0.408329, 0.408329, 0.408329, 1)
+layout_mode = 0
+offset_left = 804.0
+offset_top = -50.0
+offset_right = 1134.0
+offset_bottom = 655.0
+texture = SubResource("CanvasTexture_3dv7o")
+
+[node name="Panel" type="Control" parent="Tutorial/Etap4"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Background" type="TextureRect" parent="Tutorial/Etap4/Panel"]
+modulate = Color(0.968627, 0.8, 0.815686, 1)
+layout_mode = 0
+offset_right = 1.0
+offset_bottom = 1.0
+scale = Vector2(680, 405)
+texture = SubResource("CanvasTexture_saxpw")
+
+[node name="Right" type="TextureRect" parent="Tutorial/Etap4/Panel"]
+modulate = Color(0.756863, 0.596078, 0.698039, 1)
+layout_mode = 0
+offset_left = 645.0
+offset_top = 35.0
+offset_right = 651.25
+offset_bottom = 376.0
+texture = SubResource("CanvasTexture_wrr22")
+
+[node name="Left" type="TextureRect" parent="Tutorial/Etap4/Panel"]
+modulate = Color(0.756863, 0.596078, 0.698039, 1)
+layout_mode = 0
+offset_left = 35.0
+offset_top = 35.0
+offset_right = 41.25
+offset_bottom = 376.0
+texture = SubResource("CanvasTexture_wrr22")
+
+[node name="Bottom" type="TextureRect" parent="Tutorial/Etap4/Panel"]
+modulate = Color(0.756863, 0.596078, 0.698039, 1)
+layout_mode = 0
+offset_left = 647.0
+offset_top = 370.0
+offset_right = 653.0
+offset_bottom = 981.0
+rotation = 1.5708
+texture = SubResource("CanvasTexture_wrr22")
+
+[node name="Top" type="TextureRect" parent="Tutorial/Etap4/Panel"]
+modulate = Color(0.756863, 0.596078, 0.698039, 1)
+layout_mode = 0
+offset_left = 651.0
+offset_top = 35.0
+offset_right = 657.25
+offset_bottom = 647.0
+rotation = 1.5708
+texture = SubResource("CanvasTexture_wrr22")
+
+[node name="Label" type="Label" parent="Tutorial/Etap4"]
+layout_mode = 0
+offset_left = 42.0
+offset_top = 55.0
+offset_right = 645.0
+offset_bottom = 106.0
+theme_override_fonts/font = ExtResource("7_8rg5e")
+theme_override_font_sizes/font_size = 40
+text = "Panel gracza"
+horizontal_alignment = 1
+
+[node name="Label2" type="Label" parent="Tutorial/Etap4"]
+layout_mode = 0
+offset_left = 55.0
+offset_top = 104.0
+offset_right = 633.0
+offset_bottom = 297.0
+theme_override_fonts/font = ExtResource("33_en7n4")
+theme_override_font_sizes/font_size = 20
+text = "Tutaj znajdziesz następujące elementy:
+* Swój poziom, który zdobywasz za granie w mini gry i zaspakajanie potrzeb
+* Osiągnięcia za opiekę i granie
+* Poradnik z podstawami programowania, z którym powinieneś zapoznać się na samym początku, aby być w stanie rozwiązywać różne problemy podczas grania"
+autowrap_mode = 2
+
+[node name="Button" type="Button" parent="Tutorial/Etap4"]
+layout_mode = 0
+offset_left = 523.0
+offset_top = 317.0
+offset_right = 637.0
+offset_bottom = 363.0
+theme_override_styles/normal = ExtResource("24_wqohh")
+theme_override_styles/hover = ExtResource("24_wqohh")
+theme_override_styles/pressed = ExtResource("24_wqohh")
+theme_override_styles/disabled = ExtResource("24_wqohh")
+theme_override_styles/focus = ExtResource("24_wqohh")
+script = ExtResource("25_8mtfw")
+
+[node name="Label" type="Label" parent="Tutorial/Etap4/Button"]
+layout_mode = 0
+offset_right = 114.0
+offset_bottom = 48.0
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.6)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_fonts/font = ExtResource("7_8rg5e")
+theme_override_font_sizes/font_size = 28
+text = "Dalej"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Etap5" type="Control" parent="Tutorial"]
+visible = false
+layout_mode = 3
+anchors_preset = 0
+offset_left = 232.0
+offset_top = 154.0
+offset_right = 913.0
+offset_bottom = 560.0
+
+[node name="Darkness" type="TextureRect" parent="Tutorial/Etap5"]
+modulate = Color(1, 1, 1, 0.635294)
+self_modulate = Color(0.408329, 0.408329, 0.408329, 1)
+layout_mode = 0
+offset_left = -247.0
+offset_top = -212.0
+offset_right = 742.0
+offset_bottom = 542.0
+texture = SubResource("CanvasTexture_3dv7o")
+
+[node name="Darkness2" type="TextureRect" parent="Tutorial/Etap5"]
+modulate = Color(1, 1, 1, 0.635294)
+self_modulate = Color(0.408329, 0.408329, 0.408329, 1)
+layout_mode = 0
+offset_left = 742.0
+offset_top = -302.0
+offset_right = 976.0
+offset_bottom = 403.0
+texture = SubResource("CanvasTexture_3dv7o")
+
+[node name="Panel" type="Control" parent="Tutorial/Etap5"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Background" type="TextureRect" parent="Tutorial/Etap5/Panel"]
+modulate = Color(0.968627, 0.8, 0.815686, 1)
+layout_mode = 0
+offset_right = 1.0
+offset_bottom = 1.0
+scale = Vector2(680, 405)
+texture = SubResource("CanvasTexture_saxpw")
+
+[node name="Right" type="TextureRect" parent="Tutorial/Etap5/Panel"]
+modulate = Color(0.756863, 0.596078, 0.698039, 1)
+layout_mode = 0
+offset_left = 645.0
+offset_top = 35.0
+offset_right = 651.25
+offset_bottom = 376.0
+texture = SubResource("CanvasTexture_wrr22")
+
+[node name="Left" type="TextureRect" parent="Tutorial/Etap5/Panel"]
+modulate = Color(0.756863, 0.596078, 0.698039, 1)
+layout_mode = 0
+offset_left = 35.0
+offset_top = 35.0
+offset_right = 41.25
+offset_bottom = 376.0
+texture = SubResource("CanvasTexture_wrr22")
+
+[node name="Bottom" type="TextureRect" parent="Tutorial/Etap5/Panel"]
+modulate = Color(0.756863, 0.596078, 0.698039, 1)
+layout_mode = 0
+offset_left = 647.0
+offset_top = 370.0
+offset_right = 653.0
+offset_bottom = 981.0
+rotation = 1.5708
+texture = SubResource("CanvasTexture_wrr22")
+
+[node name="Top" type="TextureRect" parent="Tutorial/Etap5/Panel"]
+modulate = Color(0.756863, 0.596078, 0.698039, 1)
+layout_mode = 0
+offset_left = 651.0
+offset_top = 35.0
+offset_right = 657.25
+offset_bottom = 647.0
+rotation = 1.5708
+texture = SubResource("CanvasTexture_wrr22")
+
+[node name="Label" type="Label" parent="Tutorial/Etap5"]
+layout_mode = 0
+offset_left = 42.0
+offset_top = 55.0
+offset_right = 645.0
+offset_bottom = 106.0
+theme_override_fonts/font = ExtResource("7_8rg5e")
+theme_override_font_sizes/font_size = 40
+text = "Sklep oraz mini-gry"
+horizontal_alignment = 1
+
+[node name="Label2" type="Label" parent="Tutorial/Etap5"]
+layout_mode = 0
+offset_left = 55.0
+offset_top = 104.0
+offset_right = 633.0
+offset_bottom = 297.0
+theme_override_fonts/font = ExtResource("33_en7n4")
+theme_override_font_sizes/font_size = 20
+text = "Pierwszy przycisk z ikonką koszyka oznacza sklep. Kupisz tam jedzenie dla swojego kotka.
+Po kliknięciu przycisku z ikonką pada wyświetlą Ci się dostępne mini-gry, w które możesz zagrać aby pobawić się ze swoim kotkiem. Przy każdej mini-grze znajdziesz instrukcję, która dokładnie wytłumaczy Ci co masz w niej robić!"
+autowrap_mode = 2
+
+[node name="Button" type="Button" parent="Tutorial/Etap5"]
+layout_mode = 0
+offset_left = 523.0
+offset_top = 317.0
+offset_right = 637.0
+offset_bottom = 363.0
+theme_override_styles/normal = ExtResource("24_wqohh")
+theme_override_styles/hover = ExtResource("24_wqohh")
+theme_override_styles/pressed = ExtResource("24_wqohh")
+theme_override_styles/disabled = ExtResource("24_wqohh")
+theme_override_styles/focus = ExtResource("24_wqohh")
+script = ExtResource("25_8mtfw")
+
+[node name="Label" type="Label" parent="Tutorial/Etap5/Button"]
+layout_mode = 0
+offset_right = 114.0
+offset_bottom = 48.0
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.6)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_fonts/font = ExtResource("7_8rg5e")
+theme_override_font_sizes/font_size = 28
+text = "Dalej"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Etap6" type="Control" parent="Tutorial"]
+visible = false
+layout_mode = 3
+anchors_preset = 0
+offset_left = 232.0
+offset_top = 154.0
+offset_right = 913.0
+offset_bottom = 560.0
+
+[node name="Darkness" type="TextureRect" parent="Tutorial/Etap6"]
+modulate = Color(1, 1, 1, 0.635294)
+self_modulate = Color(0.408329, 0.408329, 0.408329, 1)
+layout_mode = 0
+offset_left = -50.0
+offset_top = -212.0
+offset_right = 961.0
+offset_bottom = 542.0
+texture = SubResource("CanvasTexture_3dv7o")
+
+[node name="Darkness2" type="TextureRect" parent="Tutorial/Etap6"]
+modulate = Color(1, 1, 1, 0.635294)
+self_modulate = Color(0.408329, 0.408329, 0.408329, 1)
+layout_mode = 0
+offset_left = -283.0
+offset_top = -308.0
+offset_right = -50.0
+offset_bottom = 397.0
+texture = SubResource("CanvasTexture_3dv7o")
+
+[node name="Panel" type="Control" parent="Tutorial/Etap6"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Background" type="TextureRect" parent="Tutorial/Etap6/Panel"]
+modulate = Color(0.968627, 0.8, 0.815686, 1)
+layout_mode = 0
+offset_right = 1.0
+offset_bottom = 1.0
+scale = Vector2(680, 405)
+texture = SubResource("CanvasTexture_saxpw")
+
+[node name="Right" type="TextureRect" parent="Tutorial/Etap6/Panel"]
+modulate = Color(0.756863, 0.596078, 0.698039, 1)
+layout_mode = 0
+offset_left = 645.0
+offset_top = 35.0
+offset_right = 651.25
+offset_bottom = 376.0
+texture = SubResource("CanvasTexture_wrr22")
+
+[node name="Left" type="TextureRect" parent="Tutorial/Etap6/Panel"]
+modulate = Color(0.756863, 0.596078, 0.698039, 1)
+layout_mode = 0
+offset_left = 35.0
+offset_top = 35.0
+offset_right = 41.25
+offset_bottom = 376.0
+texture = SubResource("CanvasTexture_wrr22")
+
+[node name="Bottom" type="TextureRect" parent="Tutorial/Etap6/Panel"]
+modulate = Color(0.756863, 0.596078, 0.698039, 1)
+layout_mode = 0
+offset_left = 647.0
+offset_top = 370.0
+offset_right = 653.0
+offset_bottom = 981.0
+rotation = 1.5708
+texture = SubResource("CanvasTexture_wrr22")
+
+[node name="Top" type="TextureRect" parent="Tutorial/Etap6/Panel"]
+modulate = Color(0.756863, 0.596078, 0.698039, 1)
+layout_mode = 0
+offset_left = 651.0
+offset_top = 35.0
+offset_right = 657.25
+offset_bottom = 647.0
+rotation = 1.5708
+texture = SubResource("CanvasTexture_wrr22")
+
+[node name="Label" type="Label" parent="Tutorial/Etap6"]
+layout_mode = 0
+offset_left = 42.0
+offset_top = 55.0
+offset_right = 645.0
+offset_bottom = 106.0
+theme_override_fonts/font = ExtResource("7_8rg5e")
+theme_override_font_sizes/font_size = 40
+text = "Wyjscie oraz warsztat"
+horizontal_alignment = 1
+
+[node name="Label2" type="Label" parent="Tutorial/Etap6"]
+layout_mode = 0
+offset_left = 55.0
+offset_top = 104.0
+offset_right = 633.0
+offset_bottom = 297.0
+theme_override_fonts/font = ExtResource("33_en7n4")
+theme_override_font_sizes/font_size = 20
+text = "Przycisk z ikonką krzyżyka pozwala na wyjście z gry. Jednak mam nadzieję, że nie będziesz chciał z niego korzystać :)
+Skrzyżowane klucze oznaczają warsztat, w którym możesz zbudować swoje ulepszacze, które pozwolą Ci np. na podwjenie punktów doświadczenia zdobytych w mini-grze"
+autowrap_mode = 2
+
+[node name="Button" type="Button" parent="Tutorial/Etap6"]
+layout_mode = 0
+offset_left = 523.0
+offset_top = 317.0
+offset_right = 637.0
+offset_bottom = 363.0
+theme_override_styles/normal = ExtResource("24_wqohh")
+theme_override_styles/hover = ExtResource("24_wqohh")
+theme_override_styles/pressed = ExtResource("24_wqohh")
+theme_override_styles/disabled = ExtResource("24_wqohh")
+theme_override_styles/focus = ExtResource("24_wqohh")
+script = ExtResource("25_8mtfw")
+
+[node name="Label" type="Label" parent="Tutorial/Etap6/Button"]
+layout_mode = 0
+offset_right = 114.0
+offset_bottom = 48.0
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.6)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_fonts/font = ExtResource("7_8rg5e")
+theme_override_font_sizes/font_size = 28
+text = "Dalej"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Etap7" type="Control" parent="Tutorial"]
+visible = false
+layout_mode = 3
+anchors_preset = 0
+offset_left = 333.0
+offset_top = 159.0
+offset_right = 1014.0
+offset_bottom = 565.0
+
+[node name="Darkness" type="TextureRect" parent="Tutorial/Etap7"]
+modulate = Color(1, 1, 1, 0.635294)
+self_modulate = Color(0.408329, 0.408329, 0.408329, 1)
+layout_mode = 0
+offset_left = -36.0
+offset_top = -251.0
+offset_right = 975.0
+offset_bottom = 503.0
+texture = SubResource("CanvasTexture_3dv7o")
+
+[node name="Darkness2" type="TextureRect" parent="Tutorial/Etap7"]
+modulate = Color(1, 1, 1, 0.635294)
+self_modulate = Color(0.408329, 0.408329, 0.408329, 1)
+layout_mode = 0
+offset_left = -406.0
+offset_top = -188.0
+offset_right = -173.0
+offset_bottom = 517.0
+texture = SubResource("CanvasTexture_3dv7o")
+
+[node name="Darkness3" type="TextureRect" parent="Tutorial/Etap7"]
+modulate = Color(1, 1, 1, 0.635294)
+self_modulate = Color(0.408329, 0.408329, 0.408329, 1)
+layout_mode = 0
+offset_left = -173.0
+offset_top = -191.0
+offset_right = -36.0
+offset_bottom = 239.0
+texture = SubResource("CanvasTexture_3dv7o")
+
+[node name="Darkness4" type="TextureRect" parent="Tutorial/Etap7"]
+modulate = Color(1, 1, 1, 0.635294)
+self_modulate = Color(0.408329, 0.408329, 0.408329, 1)
+layout_mode = 0
+offset_left = -173.0
+offset_top = 353.0
+offset_right = -36.0
+offset_bottom = 517.0
+texture = SubResource("CanvasTexture_3dv7o")
+
+[node name="Panel" type="Control" parent="Tutorial/Etap7"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Background" type="TextureRect" parent="Tutorial/Etap7/Panel"]
+modulate = Color(0.968627, 0.8, 0.815686, 1)
+layout_mode = 0
+offset_right = 1.0
+offset_bottom = 1.0
+scale = Vector2(680, 405)
+texture = SubResource("CanvasTexture_saxpw")
+
+[node name="Right" type="TextureRect" parent="Tutorial/Etap7/Panel"]
+modulate = Color(0.756863, 0.596078, 0.698039, 1)
+layout_mode = 0
+offset_left = 645.0
+offset_top = 35.0
+offset_right = 651.25
+offset_bottom = 376.0
+texture = SubResource("CanvasTexture_wrr22")
+
+[node name="Left" type="TextureRect" parent="Tutorial/Etap7/Panel"]
+modulate = Color(0.756863, 0.596078, 0.698039, 1)
+layout_mode = 0
+offset_left = 35.0
+offset_top = 35.0
+offset_right = 41.25
+offset_bottom = 376.0
+texture = SubResource("CanvasTexture_wrr22")
+
+[node name="Bottom" type="TextureRect" parent="Tutorial/Etap7/Panel"]
+modulate = Color(0.756863, 0.596078, 0.698039, 1)
+layout_mode = 0
+offset_left = 647.0
+offset_top = 370.0
+offset_right = 653.0
+offset_bottom = 981.0
+rotation = 1.5708
+texture = SubResource("CanvasTexture_wrr22")
+
+[node name="Top" type="TextureRect" parent="Tutorial/Etap7/Panel"]
+modulate = Color(0.756863, 0.596078, 0.698039, 1)
+layout_mode = 0
+offset_left = 651.0
+offset_top = 35.0
+offset_right = 657.25
+offset_bottom = 647.0
+rotation = 1.5708
+texture = SubResource("CanvasTexture_wrr22")
+
+[node name="Label" type="Label" parent="Tutorial/Etap7"]
+layout_mode = 0
+offset_left = 42.0
+offset_top = 55.0
+offset_right = 645.0
+offset_bottom = 106.0
+theme_override_fonts/font = ExtResource("7_8rg5e")
+theme_override_font_sizes/font_size = 40
+text = "Miska - karmienie"
+horizontal_alignment = 1
+
+[node name="Label2" type="Label" parent="Tutorial/Etap7"]
+layout_mode = 0
+offset_left = 55.0
+offset_top = 104.0
+offset_right = 633.0
+offset_bottom = 297.0
+theme_override_fonts/font = ExtResource("33_en7n4")
+theme_override_font_sizes/font_size = 20
+text = "Najważniejsza rzecz dla Twojego kotka. Gdy klikniesz otworzy Ci się panel karmienia, a gdy najedziesz wyświetli Ci się status miski (czyli ile obecnie ma w sobie jedzenia). Do wyboru masz dwa sposoby karmienia,  jednak wszystkie informacje znajdziesz po przejściu do panelu miski i najechaniu na przycisk z ikonką \"i\""
+autowrap_mode = 2
+
+[node name="Button" type="Button" parent="Tutorial/Etap7"]
+layout_mode = 0
+offset_left = 523.0
+offset_top = 317.0
+offset_right = 637.0
+offset_bottom = 363.0
+theme_override_styles/normal = ExtResource("24_wqohh")
+theme_override_styles/hover = ExtResource("24_wqohh")
+theme_override_styles/pressed = ExtResource("24_wqohh")
+theme_override_styles/disabled = ExtResource("24_wqohh")
+theme_override_styles/focus = ExtResource("24_wqohh")
+script = ExtResource("25_8mtfw")
+
+[node name="Label" type="Label" parent="Tutorial/Etap7/Button"]
+layout_mode = 0
+offset_right = 114.0
+offset_bottom = 48.0
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.6)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_fonts/font = ExtResource("7_8rg5e")
+theme_override_font_sizes/font_size = 28
+text = "Dalej"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Etap8" type="Control" parent="Tutorial"]
+visible = false
+layout_mode = 3
+anchors_preset = 0
+offset_left = 461.0
+offset_top = 159.0
+offset_right = 1142.0
+offset_bottom = 565.0
+
+[node name="Darkness" type="TextureRect" parent="Tutorial/Etap8"]
+modulate = Color(1, 1, 1, 0.635294)
+self_modulate = Color(0.408329, 0.408329, 0.408329, 1)
+layout_mode = 0
+offset_left = -11.0
+offset_top = -251.0
+offset_right = 1000.0
+offset_bottom = 503.0
+texture = SubResource("CanvasTexture_3dv7o")
+
+[node name="Darkness2" type="TextureRect" parent="Tutorial/Etap8"]
+modulate = Color(1, 1, 1, 0.635294)
+self_modulate = Color(0.408329, 0.408329, 0.408329, 1)
+layout_mode = 0
+offset_left = -483.0
+offset_top = -188.0
+offset_right = -158.0
+offset_bottom = 517.0
+texture = SubResource("CanvasTexture_3dv7o")
+
+[node name="Darkness3" type="TextureRect" parent="Tutorial/Etap8"]
+modulate = Color(1, 1, 1, 0.635294)
+self_modulate = Color(0.408329, 0.408329, 0.408329, 1)
+layout_mode = 0
+offset_left = -158.0
+offset_top = -191.0
+offset_right = -11.0
+offset_bottom = 239.0
+texture = SubResource("CanvasTexture_3dv7o")
+
+[node name="Darkness4" type="TextureRect" parent="Tutorial/Etap8"]
+modulate = Color(1, 1, 1, 0.635294)
+self_modulate = Color(0.408329, 0.408329, 0.408329, 1)
+layout_mode = 0
+offset_left = -158.0
+offset_top = 353.0
+offset_right = -11.0
+offset_bottom = 517.0
+texture = SubResource("CanvasTexture_3dv7o")
+
+[node name="Panel" type="Control" parent="Tutorial/Etap8"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Background" type="TextureRect" parent="Tutorial/Etap8/Panel"]
+modulate = Color(0.968627, 0.8, 0.815686, 1)
+layout_mode = 0
+offset_right = 1.0
+offset_bottom = 1.0
+scale = Vector2(680, 405)
+texture = SubResource("CanvasTexture_saxpw")
+
+[node name="Right" type="TextureRect" parent="Tutorial/Etap8/Panel"]
+modulate = Color(0.756863, 0.596078, 0.698039, 1)
+layout_mode = 0
+offset_left = 645.0
+offset_top = 35.0
+offset_right = 651.25
+offset_bottom = 376.0
+texture = SubResource("CanvasTexture_wrr22")
+
+[node name="Left" type="TextureRect" parent="Tutorial/Etap8/Panel"]
+modulate = Color(0.756863, 0.596078, 0.698039, 1)
+layout_mode = 0
+offset_left = 35.0
+offset_top = 35.0
+offset_right = 41.25
+offset_bottom = 376.0
+texture = SubResource("CanvasTexture_wrr22")
+
+[node name="Bottom" type="TextureRect" parent="Tutorial/Etap8/Panel"]
+modulate = Color(0.756863, 0.596078, 0.698039, 1)
+layout_mode = 0
+offset_left = 647.0
+offset_top = 370.0
+offset_right = 653.0
+offset_bottom = 981.0
+rotation = 1.5708
+texture = SubResource("CanvasTexture_wrr22")
+
+[node name="Top" type="TextureRect" parent="Tutorial/Etap8/Panel"]
+modulate = Color(0.756863, 0.596078, 0.698039, 1)
+layout_mode = 0
+offset_left = 651.0
+offset_top = 35.0
+offset_right = 657.25
+offset_bottom = 647.0
+rotation = 1.5708
+texture = SubResource("CanvasTexture_wrr22")
+
+[node name="Label" type="Label" parent="Tutorial/Etap8"]
+layout_mode = 0
+offset_left = 42.0
+offset_top = 55.0
+offset_right = 645.0
+offset_bottom = 106.0
+theme_override_fonts/font = ExtResource("7_8rg5e")
+theme_override_font_sizes/font_size = 40
+text = "Wanna - mycie"
+horizontal_alignment = 1
+
+[node name="Label2" type="Label" parent="Tutorial/Etap8"]
+layout_mode = 0
+offset_left = 55.0
+offset_top = 104.0
+offset_right = 642.0
+offset_bottom = 297.0
+theme_override_fonts/font = ExtResource("33_en7n4")
+theme_override_font_sizes/font_size = 20
+text = "Po kliknięciu przejdziesz do panelu mycia. Bierz mydło w dłoń (złap je za pomocą myszki) i wyczyść futerko swojego kotka tak, aby lśniło!"
+autowrap_mode = 2
+
+[node name="Button" type="Button" parent="Tutorial/Etap8"]
+layout_mode = 0
+offset_left = 523.0
+offset_top = 317.0
+offset_right = 637.0
+offset_bottom = 363.0
+theme_override_styles/normal = ExtResource("24_wqohh")
+theme_override_styles/hover = ExtResource("24_wqohh")
+theme_override_styles/pressed = ExtResource("24_wqohh")
+theme_override_styles/disabled = ExtResource("24_wqohh")
+theme_override_styles/focus = ExtResource("24_wqohh")
+script = ExtResource("25_8mtfw")
+
+[node name="Label" type="Label" parent="Tutorial/Etap8/Button"]
+layout_mode = 0
+offset_right = 114.0
+offset_bottom = 48.0
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.6)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_fonts/font = ExtResource("7_8rg5e")
+theme_override_font_sizes/font_size = 28
+text = "Dalej"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Etap9" type="Control" parent="Tutorial"]
+visible = false
+layout_mode = 3
+anchors_preset = 0
+offset_left = 76.0
+offset_top = 163.0
+offset_right = 757.0
+offset_bottom = 569.0
+
+[node name="Darkness" type="TextureRect" parent="Tutorial/Etap9"]
+modulate = Color(1, 1, 1, 0.635294)
+self_modulate = Color(0.408329, 0.408329, 0.408329, 1)
+layout_mode = 0
+offset_left = 834.0
+offset_top = -251.0
+offset_right = 1148.0
+offset_bottom = 503.0
+texture = SubResource("CanvasTexture_3dv7o")
+
+[node name="Darkness2" type="TextureRect" parent="Tutorial/Etap9"]
+modulate = Color(1, 1, 1, 0.635294)
+self_modulate = Color(0.408329, 0.408329, 0.408329, 1)
+layout_mode = 0
+offset_left = -99.0
+offset_top = -188.0
+offset_right = 679.0
+offset_bottom = 517.0
+texture = SubResource("CanvasTexture_3dv7o")
+
+[node name="Darkness3" type="TextureRect" parent="Tutorial/Etap9"]
+modulate = Color(1, 1, 1, 0.635294)
+self_modulate = Color(0.408329, 0.408329, 0.408329, 1)
+layout_mode = 0
+offset_left = 679.0
+offset_top = -191.0
+offset_right = 834.0
+offset_bottom = 239.0
+texture = SubResource("CanvasTexture_3dv7o")
+
+[node name="Darkness4" type="TextureRect" parent="Tutorial/Etap9"]
+modulate = Color(1, 1, 1, 0.635294)
+self_modulate = Color(0.408329, 0.408329, 0.408329, 1)
+layout_mode = 0
+offset_left = 675.0
+offset_top = 353.0
+offset_right = 834.0
+offset_bottom = 517.0
+texture = SubResource("CanvasTexture_3dv7o")
+
+[node name="Panel" type="Control" parent="Tutorial/Etap9"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Background" type="TextureRect" parent="Tutorial/Etap9/Panel"]
+modulate = Color(0.968627, 0.8, 0.815686, 1)
+layout_mode = 0
+offset_right = 1.0
+offset_bottom = 1.0
+scale = Vector2(680, 405)
+texture = SubResource("CanvasTexture_saxpw")
+
+[node name="Right" type="TextureRect" parent="Tutorial/Etap9/Panel"]
+modulate = Color(0.756863, 0.596078, 0.698039, 1)
+layout_mode = 0
+offset_left = 645.0
+offset_top = 35.0
+offset_right = 651.25
+offset_bottom = 376.0
+texture = SubResource("CanvasTexture_wrr22")
+
+[node name="Left" type="TextureRect" parent="Tutorial/Etap9/Panel"]
+modulate = Color(0.756863, 0.596078, 0.698039, 1)
+layout_mode = 0
+offset_left = 35.0
+offset_top = 35.0
+offset_right = 41.25
+offset_bottom = 376.0
+texture = SubResource("CanvasTexture_wrr22")
+
+[node name="Bottom" type="TextureRect" parent="Tutorial/Etap9/Panel"]
+modulate = Color(0.756863, 0.596078, 0.698039, 1)
+layout_mode = 0
+offset_left = 647.0
+offset_top = 370.0
+offset_right = 653.0
+offset_bottom = 981.0
+rotation = 1.5708
+texture = SubResource("CanvasTexture_wrr22")
+
+[node name="Top" type="TextureRect" parent="Tutorial/Etap9/Panel"]
+modulate = Color(0.756863, 0.596078, 0.698039, 1)
+layout_mode = 0
+offset_left = 651.0
+offset_top = 35.0
+offset_right = 657.25
+offset_bottom = 647.0
+rotation = 1.5708
+texture = SubResource("CanvasTexture_wrr22")
+
+[node name="Label" type="Label" parent="Tutorial/Etap9"]
+layout_mode = 0
+offset_left = 42.0
+offset_top = 55.0
+offset_right = 645.0
+offset_bottom = 106.0
+theme_override_fonts/font = ExtResource("7_8rg5e")
+theme_override_font_sizes/font_size = 40
+text = "Legowisko - spanie"
+horizontal_alignment = 1
+
+[node name="Label2" type="Label" parent="Tutorial/Etap9"]
+layout_mode = 0
+offset_left = 55.0
+offset_top = 104.0
+offset_right = 641.0
+offset_bottom = 297.0
+theme_override_fonts/font = ExtResource("33_en7n4")
+theme_override_font_sizes/font_size = 20
+text = "Kotki, tak jak wszyscy muszą czasem spać. Tutaj po kliknięciu zgasisz światło i kotek zaśnie. Możesz go obudzić w każdej chwili, jednak może być on bardzo niezadowolony z tego powodu."
+autowrap_mode = 2
+
+[node name="Button" type="Button" parent="Tutorial/Etap9"]
+layout_mode = 0
+offset_left = 523.0
+offset_top = 317.0
+offset_right = 637.0
+offset_bottom = 363.0
+theme_override_styles/normal = ExtResource("24_wqohh")
+theme_override_styles/hover = ExtResource("24_wqohh")
+theme_override_styles/pressed = ExtResource("24_wqohh")
+theme_override_styles/disabled = ExtResource("24_wqohh")
+theme_override_styles/focus = ExtResource("24_wqohh")
+script = ExtResource("25_8mtfw")
+
+[node name="Label" type="Label" parent="Tutorial/Etap9/Button"]
+layout_mode = 0
+offset_right = 114.0
+offset_bottom = 48.0
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.6)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_fonts/font = ExtResource("7_8rg5e")
+theme_override_font_sizes/font_size = 28
+text = "Dalej"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Etap10" type="Control" parent="Tutorial"]
+visible = false
+layout_mode = 3
+anchors_preset = 0
+offset_left = 76.0
+offset_top = 163.0
+offset_right = 757.0
+offset_bottom = 569.0
+
+[node name="Darkness2" type="TextureRect" parent="Tutorial/Etap10"]
+modulate = Color(1, 1, 1, 0.635294)
+self_modulate = Color(0.408329, 0.408329, 0.408329, 1)
+layout_mode = 0
+offset_left = 819.0
+offset_top = -188.0
+offset_right = 1095.0
+offset_bottom = 39.0
+texture = SubResource("CanvasTexture_3dv7o")
+
+[node name="Darkness3" type="TextureRect" parent="Tutorial/Etap10"]
+modulate = Color(1, 1, 1, 0.635294)
+self_modulate = Color(0.408329, 0.408329, 0.408329, 1)
+layout_mode = 0
+offset_left = -121.0
+offset_top = -191.0
+offset_right = 819.0
+offset_bottom = 371.0
+texture = SubResource("CanvasTexture_3dv7o")
+
+[node name="Darkness4" type="TextureRect" parent="Tutorial/Etap10"]
+modulate = Color(1, 1, 1, 0.635294)
+self_modulate = Color(0.408329, 0.408329, 0.408329, 1)
+layout_mode = 0
+offset_left = -112.0
+offset_top = 371.0
+offset_right = 1127.0
+offset_bottom = 517.0
+texture = SubResource("CanvasTexture_3dv7o")
+
+[node name="Panel" type="Control" parent="Tutorial/Etap10"]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 82.0
+offset_right = 122.0
+offset_bottom = 40.0
+
+[node name="Background" type="TextureRect" parent="Tutorial/Etap10/Panel"]
+modulate = Color(0.968627, 0.8, 0.815686, 1)
+layout_mode = 0
+offset_right = 1.0
+offset_bottom = 1.0
+scale = Vector2(680, 405)
+texture = SubResource("CanvasTexture_saxpw")
+
+[node name="Right" type="TextureRect" parent="Tutorial/Etap10/Panel"]
+modulate = Color(0.756863, 0.596078, 0.698039, 1)
+layout_mode = 0
+offset_left = 645.0
+offset_top = 35.0
+offset_right = 651.25
+offset_bottom = 376.0
+texture = SubResource("CanvasTexture_wrr22")
+
+[node name="Left" type="TextureRect" parent="Tutorial/Etap10/Panel"]
+modulate = Color(0.756863, 0.596078, 0.698039, 1)
+layout_mode = 0
+offset_left = 35.0
+offset_top = 35.0
+offset_right = 41.25
+offset_bottom = 376.0
+texture = SubResource("CanvasTexture_wrr22")
+
+[node name="Bottom" type="TextureRect" parent="Tutorial/Etap10/Panel"]
+modulate = Color(0.756863, 0.596078, 0.698039, 1)
+layout_mode = 0
+offset_left = 647.0
+offset_top = 370.0
+offset_right = 653.0
+offset_bottom = 981.0
+rotation = 1.5708
+texture = SubResource("CanvasTexture_wrr22")
+
+[node name="Top" type="TextureRect" parent="Tutorial/Etap10/Panel"]
+modulate = Color(0.756863, 0.596078, 0.698039, 1)
+layout_mode = 0
+offset_left = 651.0
+offset_top = 35.0
+offset_right = 657.25
+offset_bottom = 647.0
+rotation = 1.5708
+texture = SubResource("CanvasTexture_wrr22")
+
+[node name="Label" type="Label" parent="Tutorial/Etap10"]
+layout_mode = 0
+offset_left = 124.0
+offset_top = 55.0
+offset_right = 727.0
+offset_bottom = 106.0
+theme_override_fonts/font = ExtResource("7_8rg5e")
+theme_override_font_sizes/font_size = 40
+text = "Drapak - drapanie"
+horizontal_alignment = 1
+
+[node name="Label2" type="Label" parent="Tutorial/Etap10"]
+layout_mode = 0
+offset_left = 137.0
+offset_top = 104.0
+offset_right = 723.0
+offset_bottom = 297.0
+theme_override_fonts/font = ExtResource("33_en7n4")
+theme_override_font_sizes/font_size = 20
+text = "Jeżeli uznasz, że kotek ma za długie pazurki, to możesz przejść do tego panelu, aby  je trochę starł. Po kliknięciu otworzy Ci się panel drapaka, a jego mechanika jest wytłumaczona po najechaniu na przycisk z ikonką \"i\". To już wszystko, możesz rozpocząć grę. Miłej zabawy!"
+autowrap_mode = 2
+
+[node name="Button" type="Button" parent="Tutorial/Etap10"]
+layout_mode = 0
+offset_left = 605.0
+offset_top = 317.0
+offset_right = 719.0
+offset_bottom = 363.0
+theme_override_styles/normal = ExtResource("24_wqohh")
+theme_override_styles/hover = ExtResource("24_wqohh")
+theme_override_styles/pressed = ExtResource("24_wqohh")
+theme_override_styles/disabled = ExtResource("24_wqohh")
+theme_override_styles/focus = ExtResource("24_wqohh")
+script = ExtResource("25_8mtfw")
+
+[node name="Label" type="Label" parent="Tutorial/Etap10/Button"]
+layout_mode = 0
+offset_right = 114.0
+offset_bottom = 48.0
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.6)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_fonts/font = ExtResource("7_8rg5e")
+theme_override_font_sizes/font_size = 28
+text = "Graj"
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [connection signal="timeout" from="Room/Cat/EatTimer" to="Room/Cat" method="_on_eat_timer_timeout"]
 [connection signal="input_event" from="Room/Scratching_post" to="Room/Scratching_post" method="_on_input_event"]
 [connection signal="mouse_entered" from="Room/Scratching_post" to="Room/Scratching_post" method="_on_mouse_entered"]
@@ -2733,3 +4115,13 @@ vertical_alignment = 1
 [connection signal="pressed" from="Panels/PlayerPanel/GuideButton/Button" to="Panels/PlayerPanel/GuideButton" method="_on_button_pressed"]
 [connection signal="pressed" from="Panels/ExitPopUp/HBoxContainer/YesButton" to="Room/UI/Buttons/QuitButton" method="_on_yes_button_pressed"]
 [connection signal="pressed" from="Panels/ExitPopUp/HBoxContainer/NoButton" to="Room/UI/Buttons/QuitButton" method="_on_no_button_pressed"]
+[connection signal="pressed" from="Tutorial/Etap1/Button" to="Tutorial" method="_on_button_pressed"]
+[connection signal="pressed" from="Tutorial/Etap2/Button" to="Tutorial" method="_on_button_pressed"]
+[connection signal="pressed" from="Tutorial/Etap3/Button" to="Tutorial" method="_on_button_pressed"]
+[connection signal="pressed" from="Tutorial/Etap4/Button" to="Tutorial" method="_on_button_pressed"]
+[connection signal="pressed" from="Tutorial/Etap5/Button" to="Tutorial" method="_on_button_pressed"]
+[connection signal="pressed" from="Tutorial/Etap6/Button" to="Tutorial" method="_on_button_pressed"]
+[connection signal="pressed" from="Tutorial/Etap7/Button" to="Tutorial" method="_on_button_pressed"]
+[connection signal="pressed" from="Tutorial/Etap8/Button" to="Tutorial" method="_on_button_pressed"]
+[connection signal="pressed" from="Tutorial/Etap9/Button" to="Tutorial" method="_on_button_pressed"]
+[connection signal="pressed" from="Tutorial/Etap10/Button" to="Tutorial" method="_on_button_pressed"]

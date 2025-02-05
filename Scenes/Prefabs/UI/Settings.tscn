@@ -180,12 +180,13 @@ text = "grafika"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="AudioSettings" type="Control" parent="." node_paths=PackedStringArray("sliders_tab")]
+[node name="AudioSettings" type="Control" parent="." node_paths=PackedStringArray("sliders_tab", "check_box_tab")]
 visible = false
 layout_mode = 3
 anchors_preset = 0
 script = ExtResource("8_movmu")
 sliders_tab = [NodePath("ContentContainer/SliderContainer/MasterSlider"), NodePath("ContentContainer/SliderContainer/MusicSlider"), NodePath("ContentContainer/SliderContainer/SFXSlider")]
+check_box_tab = [NodePath("ContentContainer/CheckboxContainer/MasterCheckBox"), NodePath("ContentContainer/CheckboxContainer/MusicCheckBox"), NodePath("ContentContainer/CheckboxContainer/SFXCheckBox")]
 
 [node name="AudioLabel" type="Label" parent="AudioSettings"]
 layout_mode = 0

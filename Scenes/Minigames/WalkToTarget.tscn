@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://d4bs4i6ftyij1"]
+[gd_scene load_steps=19 format=3 uid="uid://d4bs4i6ftyij1"]
 
 [ext_resource type="PackedScene" uid="uid://bpck4nf2x81gt" path="res://Scenes/Prefabs/UI/MinigamesPanel.tscn" id="1_2gm7f"]
 [ext_resource type="Script" path="res://Scripts/Minigames/WalkToTarget/CodeArea.gd" id="1_dto5f"]
@@ -13,7 +13,10 @@
 [ext_resource type="PackedScene" uid="uid://dluxwfsypbvws" path="res://Scenes/Prefabs/UI/MinigamesLives.tscn" id="10_aljue"]
 [ext_resource type="PackedScene" uid="uid://cyn346855vab8" path="res://Scenes/Prefabs/UI/PauseUI.tscn" id="11_cltnc"]
 [ext_resource type="PackedScene" uid="uid://doyyhye04gaml" path="res://Scenes/Prefabs/UI/LoseUI.tscn" id="11_nlonb"]
+[ext_resource type="FontFile" uid="uid://ccgpsjqwwow8o" path="res://Fonts/Bubblegum.ttf" id="13_dxyar"]
 [ext_resource type="Script" path="res://Scenes/Minigames/GameState.gd" id="13_oqhy5"]
+[ext_resource type="Texture2D" uid="uid://cjcm8dskr3xnv" path="res://Images/UI/Currency.png" id="14_ollgd"]
+[ext_resource type="Texture2D" uid="uid://bhcgfqs2j6bx4" path="res://Images/UI/Lives/Life.png" id="15_76x2i"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_qkeyp"]
 radius = 30.0167
@@ -31,7 +34,7 @@ texture = ExtResource("2_jbpt1")
 
 [node name="CodeField" type="TextEdit" parent="CodeArea"]
 offset_left = 14.0
-offset_top = 197.0
+offset_top = 256.0
 offset_right = 304.0
 offset_bottom = 570.0
 
@@ -112,21 +115,44 @@ offset_left = 9.0
 offset_top = 79.0
 offset_right = 182.0
 offset_bottom = 127.0
-theme_override_font_sizes/font_size = 30
+theme_override_fonts/font = ExtResource("13_dxyar")
+theme_override_font_sizes/font_size = 50
 text = "Wynik:"
 
 [node name="Money" type="Label" parent="Layout/GameState"]
-offset_left = 8.0
+offset_left = 66.0
+offset_top = 132.0
+offset_right = 239.0
+offset_bottom = 186.0
+theme_override_fonts/font = ExtResource("13_dxyar")
+theme_override_font_sizes/font_size = 50
+
+[node name="Fishes" type="Label" parent="Layout/GameState"]
+offset_left = 66.0
+offset_top = 194.0
+offset_right = 239.0
+offset_bottom = 248.0
+theme_override_fonts/font = ExtResource("13_dxyar")
+theme_override_font_sizes/font_size = 50
+
+[node name="TextureRect" type="TextureRect" parent="Layout/GameState"]
+offset_left = 5.0
 offset_top = 124.0
-offset_right = 181.0
-offset_bottom = 172.0
-theme_override_font_sizes/font_size = 30
-text = "Kasa:"
+offset_right = 62.0
+offset_bottom = 189.0
+texture = ExtResource("14_ollgd")
+expand_mode = 1
+
+[node name="Life" type="Sprite2D" parent="Layout/GameState"]
+position = Vector2(31, 218)
+scale = Vector2(0.0840081, 0.0840081)
+texture = ExtResource("15_76x2i")
 
 [node name="Lose" parent="Layout" instance=ExtResource("11_nlonb")]
 visible = false
 
 [node name="MinigamesPanel" parent="." instance=ExtResource("1_2gm7f")]
+visible = false
 game_name = "Snack Navigator"
 
 [connection signal="text_changed" from="CodeArea/CodeField" to="CodeArea" method="_on_code_field_text_changed"]

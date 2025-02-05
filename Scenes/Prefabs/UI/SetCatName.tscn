@@ -1,9 +1,14 @@
-[gd_scene load_steps=5 format=3 uid="uid://bf20hpr4l7vhb"]
+[gd_scene load_steps=8 format=3 uid="uid://bf20hpr4l7vhb"]
 
 [ext_resource type="Script" path="res://Scenes/Prefabs/UI/SetCatName.gd" id="1_pa7ks"]
-[ext_resource type="Texture2D" uid="uid://dl8dw08og2gr8" path="res://Images/Backgrounds/Placeholder_backgorund_minigames.jpg" id="1_xp0vg"]
 [ext_resource type="FontFile" uid="uid://ccgpsjqwwow8o" path="res://Fonts/Bubblegum.ttf" id="2_nwg5w"]
+[ext_resource type="StyleBox" uid="uid://c3d7d8lwbm7iw" path="res://Scenes/Prefabs/UI/TextEditStyleBox.tres" id="3_m5cw3"]
 [ext_resource type="Texture2D" uid="uid://bowy12qgsf8t3" path="res://Images/UI/Buttons/Button.png" id="3_quomu"]
+[ext_resource type="FontFile" uid="uid://sjhlfawq34if" path="res://Fonts/Coolvetica Rg.otf" id="5_tusut"]
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_5v1lp"]
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_dxawl"]
 
 [node name="SetCatName" type="Node2D"]
 process_mode = 3
@@ -11,17 +16,48 @@ position = Vector2(580, 348)
 scale = Vector2(1.3, 1.3)
 script = ExtResource("1_pa7ks")
 
-[node name="Background" type="Sprite2D" parent="."]
-modulate = Color(1, 1, 1, 0.392157)
-position = Vector2(0, -12.6874)
-scale = Vector2(0.663435, 0.398724)
-texture = ExtResource("1_xp0vg")
+[node name="Panel" type="Node2D" parent="."]
+position = Vector2(-243.077, -112.308)
+
+[node name="Sprite2D" type="Sprite2D" parent="Panel"]
+modulate = Color(0.968627, 0.8, 0.815686, 1)
+position = Vector2(242.827, 114.75)
+scale = Vector2(486.654, 230.5)
+texture = SubResource("CanvasTexture_5v1lp")
+
+[node name="Frames" type="Node2D" parent="Panel"]
+
+[node name="Sprite2D2" type="Sprite2D" parent="Panel/Frames"]
+modulate = Color(0.756863, 0.596078, 0.698039, 1)
+position = Vector2(15.125, 112.154)
+scale = Vector2(6.25, 200.308)
+texture = SubResource("CanvasTexture_dxawl")
+
+[node name="Sprite2D3" type="Sprite2D" parent="Panel/Frames"]
+modulate = Color(0.756863, 0.596078, 0.698039, 1)
+position = Vector2(240.121, 15.1257)
+rotation = 1.5708
+scale = Vector2(6.25, 455.508)
+texture = SubResource("CanvasTexture_dxawl")
+
+[node name="Sprite2D4" type="Sprite2D" parent="Panel/Frames"]
+modulate = Color(0.756863, 0.596078, 0.698039, 1)
+position = Vector2(466.923, 113.692)
+scale = Vector2(6.25, 203.385)
+texture = SubResource("CanvasTexture_dxawl")
+
+[node name="Sprite2D5" type="Sprite2D" parent="Panel/Frames"]
+modulate = Color(0.756863, 0.596078, 0.698039, 1)
+position = Vector2(241.182, 212.308)
+rotation = 1.5708
+scale = Vector2(6.25, 457.629)
+texture = SubResource("CanvasTexture_dxawl")
 
 [node name="SetCatNameLabel" type="Label" parent="."]
 offset_left = -243.0
-offset_top = -110.0
-offset_right = 244.0
-offset_bottom = -53.0
+offset_top = -95.0
+offset_right = 242.0
+offset_bottom = -38.0
 theme_override_fonts/font = ExtResource("2_nwg5w")
 theme_override_font_sizes/font_size = 30
 text = "Wybierz imie dla kotka"
@@ -31,11 +67,19 @@ vertical_alignment = 1
 [node name="EnterCatName" type="TextEdit" parent="."]
 modulate = Color(1, 1, 1, 0.694118)
 offset_left = -139.0
-offset_top = -42.0
+offset_top = -19.2308
 offset_right = 140.0
-offset_bottom = -6.0
+offset_bottom = 16.7692
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_selected_color = Color(1, 1, 1, 1)
+theme_override_colors/font_placeholder_color = Color(0.597176, 0.597176, 0.597176, 1)
+theme_override_styles/normal = ExtResource("3_m5cw3")
+theme_override_styles/focus = ExtResource("3_m5cw3")
+theme_override_styles/read_only = ExtResource("3_m5cw3")
+placeholder_text = "Wprowadź imię..."
 
 [node name="AcceptButton" type="Node2D" parent="."]
+position = Vector2(0, 20)
 
 [node name="TextureButton" type="TextureButton" parent="AcceptButton"]
 offset_left = -103.0
@@ -61,11 +105,12 @@ text = "Zatwierdz"
 [node name="Warningtext" type="Label" parent="."]
 visible = false
 offset_left = -244.0
-offset_top = -67.0
+offset_top = -52.3077
 offset_right = 244.0
-offset_bottom = -44.0
+offset_bottom = -29.3077
 theme_override_colors/font_color = Color(1, 0, 0, 1)
-theme_override_font_sizes/font_size = 15
+theme_override_fonts/font = ExtResource("5_tusut")
+theme_override_font_sizes/font_size = 18
 text = "Imię nie może być dłuższe niż 20 znaków"
 horizontal_alignment = 1
 vertical_alignment = 1

@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://x5i72wcl8spx"]
+[gd_scene load_steps=18 format=3 uid="uid://x5i72wcl8spx"]
 
 [ext_resource type="Script" path="res://Scripts/Minigames/CatJump/Player.gd" id="1_76w8l"]
 [ext_resource type="Script" path="res://Scripts/Minigames/CatJump/CameraCatHop.gd" id="2_ebytp"]
@@ -8,6 +8,7 @@
 [ext_resource type="Script" path="res://Scripts/Minigames/CatJump/Points.gd" id="5_of3sl"]
 [ext_resource type="PackedScene" uid="uid://doyyhye04gaml" path="res://Scenes/Prefabs/UI/LoseUI.tscn" id="6_wbr14"]
 [ext_resource type="Script" path="res://Scripts/Minigames/CatJump/Coins.gd" id="6_x1t1n"]
+[ext_resource type="Texture2D" uid="uid://cjcm8dskr3xnv" path="res://Images/UI/Currency.png" id="8_bvrlr"]
 [ext_resource type="PackedScene" uid="uid://cyn346855vab8" path="res://Scenes/Prefabs/UI/PauseUI.tscn" id="9_sdip7"]
 [ext_resource type="PackedScene" uid="uid://bpck4nf2x81gt" path="res://Scenes/Prefabs/UI/MinigamesPanel.tscn" id="10_b3i4s"]
 
@@ -86,15 +87,14 @@ anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
 offset_left = -553.0
-offset_top = -486.0
+offset_top = -515.0
 offset_right = -255.0
-offset_bottom = -432.0
+offset_bottom = -461.0
 grow_horizontal = 0
 theme_override_fonts/font = ExtResource("4_v2enh")
 theme_override_font_sizes/font_size = 50
 text = "SSSSS"
 script = ExtResource("5_of3sl")
-metadata/_edit_use_anchors_ = true
 
 [node name="Coins" type="Label" parent="Camera2D"]
 clip_contents = true
@@ -102,16 +102,23 @@ layout_direction = 1
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
-offset_left = -553.0
-offset_top = -431.0
-offset_right = -255.0
-offset_bottom = -377.0
+offset_left = -498.0
+offset_top = -460.0
+offset_right = -200.0
+offset_bottom = -406.0
 grow_horizontal = 0
 theme_override_fonts/font = ExtResource("4_v2enh")
 theme_override_font_sizes/font_size = 50
 text = "SSSSS"
 script = ExtResource("5_4fi6x")
-metadata/_edit_use_anchors_ = true
+
+[node name="TextureRect" type="TextureRect" parent="Camera2D"]
+offset_left = -556.0
+offset_top = -468.0
+offset_right = -499.0
+offset_bottom = -403.0
+texture = ExtResource("8_bvrlr")
+expand_mode = 1
 
 [node name="Pause" parent="Camera2D" instance=ExtResource("9_sdip7")]
 position = Vector2(-553, -592)

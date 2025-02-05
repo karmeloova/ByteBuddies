@@ -1,10 +1,12 @@
-[gd_scene load_steps=9 format=3 uid="uid://doyyhye04gaml"]
+[gd_scene load_steps=11 format=3 uid="uid://doyyhye04gaml"]
 
 [ext_resource type="Script" path="res://Scripts/Minigames/WalkToTarget/Lose.gd" id="1_shpas"]
 [ext_resource type="Texture2D" uid="uid://2rpmid1gnwur" path="res://Images/UI/Buttons/RoundButton.png" id="2_mi0mo"]
 [ext_resource type="FontFile" uid="uid://ccgpsjqwwow8o" path="res://Fonts/Bubblegum.ttf" id="3_adf35"]
 [ext_resource type="Texture2D" uid="uid://6adv5bnfl4ff" path="res://Images/UI/Buttons/Back.png" id="3_vriyc"]
 [ext_resource type="Texture2D" uid="uid://o332hh7r7y4y" path="res://Images/UI/Button.png" id="4_880pk"]
+[ext_resource type="Texture2D" uid="uid://cjcm8dskr3xnv" path="res://Images/UI/Currency.png" id="6_81qnq"]
+[ext_resource type="Texture2D" uid="uid://bhcgfqs2j6bx4" path="res://Images/UI/Lives/Life.png" id="7_lt34y"]
 
 [sub_resource type="CanvasTexture" id="CanvasTexture_r286d"]
 
@@ -102,8 +104,19 @@ theme_override_font_sizes/font_size = 40
 text = "Wynik: 10"
 horizontal_alignment = 1
 
+[node name="NewRecord" type="Label" parent="."]
+visible = false
+modulate = Color(0.756863, 0.596078, 0.698039, 1)
+offset_left = 509.0
+offset_top = 314.0
+offset_right = 660.0
+offset_bottom = 339.0
+theme_override_fonts/font = ExtResource("3_adf35")
+theme_override_font_sizes/font_size = 23
+text = "Nowy rekord"
+
 [node name="RestartButton" type="Node2D" parent="."]
-position = Vector2(13, 118)
+position = Vector2(13, 183)
 
 [node name="RestartButton" type="TextureButton" parent="RestartButton"]
 process_mode = 3
@@ -129,6 +142,44 @@ theme_override_font_sizes/font_size = 45
 text = "Restart"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+offset_left = 440.0
+offset_top = 357.0
+offset_right = 719.0
+offset_bottom = 412.0
+theme_override_constants/separation = 20
+alignment = 1
+
+[node name="Money" type="HBoxContainer" parent="HBoxContainer"]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="HBoxContainer/Money"]
+custom_minimum_size = Vector2(50, 55)
+layout_mode = 2
+texture = ExtResource("6_81qnq")
+expand_mode = 1
+
+[node name="Label" type="Label" parent="HBoxContainer/Money"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_adf35")
+theme_override_font_sizes/font_size = 23
+text = "Monety"
+
+[node name="Fishes" type="HBoxContainer" parent="HBoxContainer"]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="HBoxContainer/Fishes"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+texture = ExtResource("7_lt34y")
+expand_mode = 1
+
+[node name="Label" type="Label" parent="HBoxContainer/Fishes"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_adf35")
+theme_override_font_sizes/font_size = 23
+text = "Rybki"
 
 [connection signal="mouse_entered" from="Back/BackButton" to="." method="_on_back_button_mouse_entered"]
 [connection signal="mouse_exited" from="Back/BackButton" to="." method="_on_back_button_mouse_exited"]
