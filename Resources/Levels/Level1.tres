@@ -7,4 +7,4 @@ script = ExtResource("1_vtsen")
 level = 1
 next_level_need_exp = 100
 money_prize = 0
-unlock_something = false
+unlock_something = true

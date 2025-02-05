@@ -61,7 +61,7 @@ position = Vector2(187, 21.748)
 scale = Vector2(0.056, 0.056)
 texture = ExtResource("3_dsj7r")
 
-[node name="BuyButton" type="Button" parent="Price"]
+[node name="BuyButton" type="Button" parent="Price" groups=["Button"]]
 offset_left = 218.0
 offset_top = -1.0
 offset_right = 293.0

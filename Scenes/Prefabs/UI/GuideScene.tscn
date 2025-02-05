@@ -27,7 +27,7 @@
 texture = SubResource("CanvasTexture_60hwr")
 modulate_color = Color(0.968627, 0.8, 0.815686, 1)
 
-[sub_resource type="CanvasTexture" id="CanvasTexture_gcxxg"]
+[sub_resource type="CanvasTexture" id="CanvasTexture_te6e5"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_eka6r"]
 line_spacing = 0.5
@@ -50,7 +50,7 @@ theme_override_constants/h_separation = 15
 theme_override_constants/v_separation = 15
 columns = 3
 
-[node name="Variables" type="Button" parent="MainNode/GridContainer"]
+[node name="Variables" type="Button" parent="MainNode/GridContainer" groups=["Button"]]
 custom_minimum_size = Vector2(200, 50)
 layout_mode = 2
 theme_override_styles/normal = ExtResource("8_8t3p3")
@@ -74,7 +74,7 @@ text = "Zmienne"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Functions" type="Button" parent="MainNode/GridContainer"]
+[node name="Functions" type="Button" parent="MainNode/GridContainer" groups=["Button"]]
 custom_minimum_size = Vector2(200, 50)
 layout_mode = 2
 theme_override_styles/normal = ExtResource("8_8t3p3")
@@ -98,7 +98,7 @@ text = "Funkcje"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Operators" type="Button" parent="MainNode/GridContainer"]
+[node name="Operators" type="Button" parent="MainNode/GridContainer" groups=["Button"]]
 custom_minimum_size = Vector2(200, 50)
 layout_mode = 2
 theme_override_styles/normal = ExtResource("8_8t3p3")
@@ -122,7 +122,7 @@ text = "Operatory"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="DataTypes" type="Button" parent="MainNode/GridContainer"]
+[node name="DataTypes" type="Button" parent="MainNode/GridContainer" groups=["Button"]]
 custom_minimum_size = Vector2(200, 50)
 layout_mode = 2
 theme_override_styles/normal = ExtResource("8_8t3p3")
@@ -145,7 +145,7 @@ text = "Typy danych"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Conditions" type="Button" parent="MainNode/GridContainer"]
+[node name="Conditions" type="Button" parent="MainNode/GridContainer" groups=["Button"]]
 custom_minimum_size = Vector2(200, 50)
 layout_mode = 2
 theme_override_styles/normal = ExtResource("8_8t3p3")
@@ -169,7 +169,7 @@ text = "Warunki"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Loops" type="Button" parent="MainNode/GridContainer"]
+[node name="Loops" type="Button" parent="MainNode/GridContainer" groups=["Button"]]
 custom_minimum_size = Vector2(200, 50)
 layout_mode = 2
 theme_override_styles/normal = ExtResource("8_8t3p3")
@@ -205,6 +205,54 @@ text = "Elementy programowania"
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[node name="Sprite2D2" type="Sprite2D" parent="MainNode"]
+modulate = Color(0.756863, 0.596078, 0.698039, 1)
+position = Vector2(341, 262)
+rotation = 1.5708
+scale = Vector2(6.25, 680.744)
+texture = SubResource("CanvasTexture_te6e5")
+
+[node name="TutorialLabel" type="Label" parent="MainNode"]
+offset_left = 82.0
+offset_top = 235.0
+offset_right = 606.0
+offset_bottom = 289.0
+theme_override_fonts/font = ExtResource("7_bw6jb")
+theme_override_font_sizes/font_size = 45
+theme_override_styles/normal = SubResource("StyleBoxTexture_36ymj")
+text = "Tutorial ByteBuddies"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TutorialButton" type="Button" parent="MainNode/TutorialLabel" groups=["Button"]]
+custom_minimum_size = Vector2(200, 50)
+layout_mode = 0
+offset_left = 123.0
+offset_top = 72.0
+offset_right = 379.0
+offset_bottom = 122.0
+theme_override_styles/normal = ExtResource("8_8t3p3")
+theme_override_styles/hover = ExtResource("8_8t3p3")
+theme_override_styles/pressed = ExtResource("8_8t3p3")
+theme_override_styles/disabled = ExtResource("8_8t3p3")
+theme_override_styles/focus = ExtResource("8_8t3p3")
+script = ExtResource("9_6x0sl")
+metadata/_edit_group_ = true
+
+[node name="Label" type="Label" parent="MainNode/TutorialLabel/TutorialButton"]
+layout_mode = 0
+offset_left = 1.0
+offset_right = 255.0
+offset_bottom = 52.0
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.6)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_fonts/font = ExtResource("7_bw6jb")
+theme_override_font_sizes/font_size = 27
+text = "Wlacz tutorial"
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [node name="GuidesNode" type="Node2D" parent="."]
 visible = false
 position = Vector2(35, 0)
@@ -234,65 +282,6 @@ texture = ExtResource("6_8md52")
 visible = false
 position = Vector2(-35, 0)
 
-[node name="Frames" type="Control" parent="GuidesNode/Console"]
-layout_mode = 3
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
-
-[node name="Margin" type="TextureRect" parent="GuidesNode/Console/Frames"]
-modulate = Color(0.952941, 0.796078, 0.709804, 1)
-layout_mode = 0
-offset_left = 456.0
-offset_top = 246.0
-offset_right = 688.0
-offset_bottom = 251.0
-rotation = 1.5708
-texture = SubResource("CanvasTexture_gcxxg")
-expand_mode = 1
-
-[node name="Top" type="TextureRect" parent="GuidesNode/Console/Frames"]
-modulate = Color(0.756863, 0.596078, 0.698039, 1)
-layout_mode = 0
-offset_left = 451.0
-offset_top = 246.0
-offset_right = 708.0
-offset_bottom = 251.0
-texture = SubResource("CanvasTexture_gcxxg")
-expand_mode = 1
-
-[node name="Bottom" type="TextureRect" parent="GuidesNode/Console/Frames"]
-modulate = Color(0.756863, 0.596078, 0.698039, 1)
-layout_mode = 0
-offset_left = 451.0
-offset_top = 473.0
-offset_right = 708.0
-offset_bottom = 478.0
-texture = SubResource("CanvasTexture_gcxxg")
-expand_mode = 1
-
-[node name="Left" type="TextureRect" parent="GuidesNode/Console/Frames"]
-modulate = Color(0.756863, 0.596078, 0.698039, 1)
-layout_mode = 0
-offset_left = 451.0
-offset_top = 246.0
-offset_right = 683.0
-offset_bottom = 251.0
-rotation = 1.5708
-texture = SubResource("CanvasTexture_gcxxg")
-expand_mode = 1
-
-[node name="Right" type="TextureRect" parent="GuidesNode/Console/Frames"]
-modulate = Color(0.756863, 0.596078, 0.698039, 1)
-layout_mode = 0
-offset_left = 708.0
-offset_top = 246.0
-offset_right = 940.0
-offset_bottom = 251.0
-rotation = 1.5708
-texture = SubResource("CanvasTexture_gcxxg")
-expand_mode = 1
-
 [node name="Console" type="CodeEdit" parent="GuidesNode/Console"]
 offset_left = 456.0
 offset_top = 251.0
@@ -312,9 +301,9 @@ gutters_draw_line_numbers = true
 script = ExtResource("8_yhaqs")
 
 [node name="ConsoleText" type="Label" parent="GuidesNode/Console"]
-offset_left = 446.0
+offset_left = 455.0
 offset_top = 223.0
-offset_right = 531.0
+offset_right = 540.0
 offset_bottom = 246.0
 theme_override_fonts/font = ExtResource("7_bw6jb")
 theme_override_font_sizes/font_size = 20
@@ -353,9 +342,11 @@ theme_override_constants/separation = 10
 custom_minimum_size = Vector2(0, 80)
 layout_mode = 2
 theme_override_fonts/normal_font = ExtResource("16_46alq")
+theme_override_fonts/bold_font = ExtResource("16_46alq")
 theme_override_font_sizes/normal_font_size = 20
+theme_override_font_sizes/bold_font_size = 20
 bbcode_enabled = true
-text = "[fill][color=\"red\"]Zmienne[/color] w programowaniu są \"pudełkami\", w których przechowuje się dane. Można je wykorzystywać w swoim programie w każdym miejscu i modyfikować ich zawartość. Przykład (zmienna x przechowuje liczbę 5)[/fill]
+text = "[fill][color=\"B1849F\"]Zmienne[/color] w programowaniu są \"pudełkami\", w których przechowuje się dane. Można je wykorzystywać w swoim programie w każdym miejscu i modyfikować ich zawartość. Przykład (zmienna x przechowuje liczbę 5)[/fill]
 [font_size=3][color=\"Transparent\"]PRZERWA[/color][/font_size]"
 metadata/_edit_group_ = true
 
@@ -484,9 +475,11 @@ theme_override_constants/separation = 10
 custom_minimum_size = Vector2(0, 180)
 layout_mode = 2
 theme_override_fonts/normal_font = ExtResource("16_46alq")
+theme_override_fonts/bold_font = ExtResource("16_46alq")
 theme_override_font_sizes/normal_font_size = 20
+theme_override_font_sizes/bold_font_size = 20
 bbcode_enabled = true
-text = "[fill][color=\"red\"]Funkcje[/color] w programowaniu są \"kawałkami kodu\", które wykonują konkretne zadania. W nawiasach przyjmują określone zmienne, na których wykonywana jest operacja. Można je wywoływać w dowolnym miejscu w programie, zamiast wielokrotnie powtarzać ten sam kod. Return zwraca wynik funkcji oraz kończy jej działanie, przekazując wynik do miejsca, w którym funkcja została wywołana.[/fill]
+text = "[fill][color=\"B1849F\"]Funkcje[/color] w programowaniu są \"kawałkami kodu\", które wykonują konkretne zadania. W nawiasach przyjmują określone zmienne, na których wykonywana jest operacja. Można je wywoływać w dowolnym miejscu w programie, zamiast wielokrotnie powtarzać ten sam kod. Return zwraca wynik funkcji oraz kończy jej działanie, przekazując wynik do miejsca, w którym funkcja została wywołana.[/fill]
 Przykład (funkcja zwracająca sumę dwóch liczb):
 "
 metadata/_edit_group_ = true
@@ -597,11 +590,13 @@ theme_override_constants/separation = 10
 custom_minimum_size = Vector2(0, 187)
 layout_mode = 2
 theme_override_fonts/normal_font = ExtResource("16_46alq")
+theme_override_fonts/bold_font = ExtResource("16_46alq")
 theme_override_font_sizes/normal_font_size = 20
+theme_override_font_sizes/bold_font_size = 20
 bbcode_enabled = true
-text = "[fill][color=\"red\"]Pętle[/color] pozwalają przetwarzać kod określoną liczbę razy lub dopóki spełniony jest warunek. Wyróżnia się kilka rodzajów pętli, a najważniejsze z nich to:[/fill]
-- [b]for[/b] - wykonuje kod określoną liczbę razy. Posiada w sobie zmienną (iterator), która pozwala sprawdzać na którym kroku obecnie jest pętla.
-- [b]while[/b] - wykonuje kod dopóki warunek jest spełniony [font_size=7]
+text = "[fill][color=\"B1849F\"]Pętle[/color] pozwalają przetwarzać kod określoną liczbę razy lub dopóki spełniony jest warunek. Wyróżnia się kilka rodzajów pętli, a najważniejsze z nich to:[/fill]
+[b][color=\"B1849F\"]- for[/color][/b] - wykonuje kod określoną liczbę razy. Posiada w sobie zmienną (iterator), która pozwala sprawdzać na którym kroku obecnie jest pętla.
+[b][color=\"B1849F\"]- while[/color][/b] - wykonuje kod dopóki warunek jest spełniony [font_size=7]
 [color=\"Transparent\"]PRZERWA][/color][/font_size]
 [fill]Przykład dla pętli \"for\" - wypisuje liczby od 0 do 4 (ponieważ pętla zaczyna się od i=0): "
 metadata/_edit_group_ = true
@@ -782,6 +777,9 @@ offset_left = 358.0
 offset_top = 294.0
 offset_right = 399.0
 offset_bottom = 324.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_readonly_color = Color(0.670588, 0.670588, 0.670588, 1)
+theme_override_colors/caret_color = Color(1, 1, 1, 1)
 theme_override_font_sizes/font_size = 13
 theme_override_styles/normal = ExtResource("16_2tvkc")
 theme_override_styles/focus = ExtResource("16_2tvkc")
@@ -830,11 +828,13 @@ theme_override_constants/separation = 10
 custom_minimum_size = Vector2(0, 211)
 layout_mode = 2
 theme_override_fonts/normal_font = ExtResource("16_46alq")
+theme_override_fonts/bold_font = ExtResource("16_46alq")
 theme_override_font_sizes/normal_font_size = 20
+theme_override_font_sizes/bold_font_size = 20
 bbcode_enabled = true
-text = "[fill][color=\"red\"]Warunki[/color] pozwalają podejmować decyzje w kodzie. W zależności od spełnienia warunku program wykonuje odpowiednie działania. Składa się z następujących części:[/fill]
-[b]- if[/b] - jeżeli warunek będzie spełniony wykonaj to co po if
-[b]- else[/b] (opcjonalne) - co ma się stać, gdy warunek nie będzie spełniony
+text = "[fill][color=\"B1849F\"]Warunki[/color] pozwalają podejmować decyzje w kodzie. W zależności od spełnienia warunku program wykonuje odpowiednie działania. Składa się z następujących części:[/fill]
+[color=\"B1849F\"][b]- if[/b][/color] - jeżeli warunek będzie spełniony wykonaj to co po if
+[color=\"B1849F\"][b]- else[/b][/color] (opcjonalne) - co ma się stać, gdy warunek nie będzie spełniony
 [font_size=8][color=\"Transparent\"]PRZERWA[/color][/font_size]
 [fill]Przykład - gdy liczba będzie większa od 10 (if x > 10) to w konsoli wyświetli się tekst \"Liczba większa niz 10\", a jeżeli będzie mniejsza lub równa 10 (else), to wyświetli się \"Liczba mniejsza lub równa 10\"[/fill]"
 metadata/_edit_group_ = true
@@ -934,40 +934,47 @@ layout_mode = 2
 theme_override_constants/separation = 10
 
 [node name="Explain" type="RichTextLabel" parent="GuidesNode/Operators/Tutorial/Tutorial"]
-custom_minimum_size = Vector2(0, 794)
+custom_minimum_size = Vector2(0, 1000)
 layout_mode = 2
 theme_override_fonts/normal_font = ExtResource("16_46alq")
+theme_override_fonts/bold_font = ExtResource("16_46alq")
 theme_override_font_sizes/normal_font_size = 20
+theme_override_font_sizes/bold_font_size = 20
 bbcode_enabled = true
-text = "[color=\"red\"]Operatory[/color] pozwalają wykonywać różne operacje na danych, takie jak np. dodawanie czy porównywanie. Wyróżniamy 3 typy operatorów:
-[b]- Arytmetyczne[/b]
-	[b]• Dodawanie (+) -[/b] dodaje do siebie dwie liczby, np. 2+2=4 
-	[b]• Odejmowanie (-) -[/b] odejmuje od siebie dwie liczby, np. 5-3=2
-	[b]• Mnożenie (*) -[/b] mnoży przez siebie dwie liczby, np. 2*3=6
-	[b]• Dzielenie (/) -[/b] dzieli przez siebie dwie liczby, np. 9/3=3. W języku Python 
+text = "[color=\"B1849F\"]Operatory[/color] pozwalają wykonywać różne operacje na danych, takie jak np. dodawanie czy porównywanie. Wyróżniamy 3 typy operatorów:
+[color=\"B1849F\"][b]- Arytmetyczne[/b][/color]
+	[color=\"B1849F\"]• Dodawanie (+) -[/color] dodaje do siebie dwie liczby, np. 2+2=4 
+	[color=\"B1849F\"][b]• Odejmowanie (-) -[/b][/color] odejmuje od siebie dwie liczby, np. 5-3=2
+	[color=\"B1849F\"][b]• Mnożenie (*) -[/b][/color] mnoży przez siebie dwie liczby, np. 2*3=6
+	[color=\"B1849F\"][b]• Dzielenie (/) -[/b][/color] dzieli przez siebie dwie liczby, np. 9/3=3. W języku Python 
 	operator \"/\" zwraca wynik w postaci liczby rzeczywistej. Istnieje jednak 
 	możliwość aby uzyskać wynik w postaci liczby całkowitej (np. 5/2 = 2) - 
 	należy użyć operatora \"//\"
-	[b]• Reszta z dzielenia (%) -[/b] zwraca resztę z dzielenia dwóch liczb, np. 5%3 = 2
-[b]- Porównania[/b]
-	[b]• Czy równe sobie (==) -[/b] porównuje czy wartości są sobie równe np. 
+	[color=\"B1849F\"][b]• Reszta z dzielenia (%) -[/b][/color] zwraca resztę z dzielenia dwóch liczb, np. 5%3 = 2
+[color=\"B1849F\"][b]- Porównania[/b][/color]
+	[color=\"B1849F\"][b]• Czy równe sobie (==) -[/b][/color] porównuje czy wartości są sobie równe np. 
 	6 == 6 -> prawda
-	[b]• Czy różne od siebie (!=) -[/b] sprawdza, czy wartości są od siebie różne np. 
+	[color=\"B1849F\"][b]• Czy różne od siebie (!=) -[/b][/color] sprawdza, czy wartości są od siebie różne np. 
 	2!=2 -> fałsz 
-	[b]• Czy mniejsze/większe (</>) -[/b] sprawdza czy jedna wartość jest mniejsza/
+	[color=\"B1849F\"][b]• Czy mniejsze/większe (</>) -[/b][/color] sprawdza czy jedna wartość jest mniejsza/
 	większa od drugiej np. 6 < 2 -> fałsz, 6 > 2 - prawda), 
-	[b]• Czy mniejsze/większe lub równe (<=/>=) -[/b] sprawdza czy jedna wartość 
+	[color=\"B1849F\"][b]• Czy mniejsze/większe lub równe (<=/>=) -[/b][/color] sprawdza czy jedna wartość 
 	jest mniejsza/większa lub równa drugiej np. 2<=3 -> prawda, 2<=2 ->
 	prawda), 2 >= 3 -> fałsz, 3 >= 3 - prawda)
-[b]- Logiczne[/b]
-	[b]• Logiczne and (i) -[/b] zwraca prawdę, jeżeli oba warunki będą spełnione, gdy 
+[color=\"B1849F\"][b]- Logiczne[/b][/color]
+	[color=\"B1849F\"][b]• Logiczne and (i) -[/b][/color] zwraca prawdę, jeżeli oba warunki będą spełnione, gdy 
 	przynajmniej jeden z warunków nie jest prawdziwy, zwraca fałsz np. 
 	10 > 0 and 10 < 20 -> prawda
-	[b]• Logiczne or (lub) -[/b] zwraca prawdę, gdy przynajmniej jeden warunek jest 
+	[color=\"B1849F\"][b]• Logiczne or (lub) -[/b][/color] zwraca prawdę, gdy przynajmniej jeden warunek jest 
 	prawdą, gdy oba będą nieprawdą, to operator zwraca fałsz np. np. 10 > 0 
 	or 10 > 20 zwróci prawdę, mimo że drugie wyrażenie (10 > 20) to fałsz
-	[b]• Logiczne not (nie)-[/b] zwraca wartość przeciwną do tej, która została 
+	[color=\"B1849F\"][b]• Logiczne not (nie)-[/b][/color] zwraca wartość przeciwną do tej, która została 
 	podana np. not(10 > 0) da fałsz, ponieważ 10 > 0 jest prawdą
+[color=\"B1849F\"]- Inne[/color]
+	[color=\"B1849F\"]• = [/color]- operator przypisania wartości do zmiennej np. x = 5 - od teraz wartość x to 5
+	[color=\"B1849F\"]• +=, -=, *=, /= [/color]- dodaje/odejmuje/mnoży/dzieli obecną wartość liczby i to 
+	co  jest po znaku równości. Np. zapis x += 1 jest równoważny zapisowi 
+	x = x +1, co oznacza że do obecnej wartości \"x\" dodajemy 1. 
 
 Kliknij \"ESC\" aby przetestować!"
 metadata/_edit_group_ = true
@@ -1120,9 +1127,7 @@ theme_override_styles/focus = ExtResource("18_862ro")
 theme_override_styles/normal = ExtResource("18_862ro")
 bbcode_enabled = true
 text = "print(a>b and a*b==10) # Sprawdza, czy a większe od b i czy a*b równe 10 
-[font_size=3][color=\"Transparent\"]PRZERWA[/color][/font_size]
 print(a*b<1000 or a>b) # Czy a*b < 1000 lub a większe od b
-[font_size=3][color=\"Transparent\"]PRZERWA[/color][/font_size]
 print(not(a>b*2))"
 autowrap_mode = 2
 
@@ -1198,13 +1203,6 @@ text = "Typy Danych"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="RichTextLabel" type="RichTextLabel" parent="GuidesNode/DataTypes"]
-offset_left = 16.0
-offset_top = 89.0
-offset_right = 638.0
-offset_bottom = 229.0
-bbcode_enabled = true
-
 [node name="Tutorial" type="ScrollContainer" parent="GuidesNode/DataTypes"]
 offset_left = 25.0
 offset_top = 65.0
@@ -1221,15 +1219,18 @@ theme_override_constants/separation = 10
 custom_minimum_size = Vector2(200, 330)
 layout_mode = 2
 theme_override_fonts/normal_font = ExtResource("16_46alq")
+theme_override_fonts/bold_font = ExtResource("16_46alq")
 theme_override_font_sizes/normal_font_size = 20
+theme_override_font_sizes/bold_font_size = 20
 bbcode_enabled = true
-text = "[color=\"red\"]Typy danych[/color] określają, jakie wartości przechowuje dana zmienna. Wyróżnia się następujące typy danych:
-	[b]• int -[/b] liczby całkowite, np. 4, 25, 98, 100
-	[b]• float -[/b] liczby rzeczywiste (z miejscami po przecinku) np. 2.5, 100.34
-	[b]• str (string) -[/b] łańcuch znaków, czyli po prostu tekst, np. \"Hello world\". 
+text = "[color=\"B1849F\"]Typy danych[/color] określają, jakie wartości przechowuje dana zmienna. Wyróżnia się następujące typy danych:
+	[color=\"B1849F\"][b]• int -[/b][/color] liczby całkowite, np. 4, 25, 98, 100
+	[color=\"B1849F\"][b]• float -[/b][/color] liczby rzeczywiste (z miejscami po przecinku) np. 2.5, 100.34
+	[color=\"B1849F\"][b]• str (string) -[/b][/color] łańcuch znaków, czyli po prostu tekst, np. \"Hello world\". 
 	Wartość zawsze należy podawać w cudzysłowie
-	[b]• bool -[/b] typ logiczny, może przyjmować tylko dwie wartości: true (prawda) 
-	oraz false (fałsz). 
+	[color=\"B1849F\"][b]• bool -[/b][/color] typ logiczny, może przyjmować tylko dwie wartości: true 
+	(prawda) oraz false (fałsz), np. x = 8==2 -> x będzie miało wartość false, 
+	bo 8 nie jest równe 2
 
 Python automatycznie rozpoznaje typ zmiennej na podstawie wartości (np. x = 10 - python sam wie, że zmienna x jest typu int), ale można go też jawnie określić:"
 
@@ -1312,8 +1313,6 @@ theme_override_font_sizes/font_size = 13
 theme_override_styles/normal = ExtResource("16_2tvkc")
 theme_override_styles/focus = ExtResource("16_2tvkc")
 theme_override_styles/read_only = ExtResource("16_2tvkc")
-text = "Text"
-editable = false
 autowrap_mode = 1
 
 [node name="x" type="Label" parent="GuidesNode/DataTypes/TestNode"]
@@ -1355,6 +1354,7 @@ autowrap_mode = 2
 [connection signal="pressed" from="MainNode/GridContainer/DataTypes" to="MainNode" method="_on_button_pressed" binds= ["DataTypes"]]
 [connection signal="pressed" from="MainNode/GridContainer/Conditions" to="MainNode" method="_on_button_pressed" binds= ["Conditions"]]
 [connection signal="pressed" from="MainNode/GridContainer/Loops" to="MainNode" method="_on_button_pressed" binds= ["Loops"]]
+[connection signal="pressed" from="MainNode/TutorialLabel/TutorialButton" to="MainNode" method="_on_tutorial_button_pressed"]
 [connection signal="mouse_entered" from="GuidesNode/Back/BackButton" to="GuidesNode/Back" method="_on_back_button_mouse_entered"]
 [connection signal="mouse_exited" from="GuidesNode/Back/BackButton" to="GuidesNode/Back" method="_on_back_button_mouse_exited"]
 [connection signal="pressed" from="GuidesNode/Back/BackButton" to="GuidesNode/Back" method="_on_back_button_pressed"]

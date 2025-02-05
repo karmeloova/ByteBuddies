@@ -19,8 +19,8 @@ func _ready():
 	SignalManager.add_to_bowl.connect(_on_add_to_bowl)
 	SignalManager.remove_from_fridge.connect(_on_remove_from_fridge)
 	SignalManager.changed_needs.connect(_on_needs_changed)
-	$HungryInformation/HowManyCatNeeds.text = "Kotek potrzebuje: " + str(100-VariableManager.needs["hungry"])+"%"
-	$HungryInformation/HowManyInBowl.text = "Obecnie w misce: " + str(VariableManager.hungry_points_in_bowl)+"%"
+	$"../HungryInformation/HowManyCatNeeds".text = "Kotek potrzebuje: " + str(100-VariableManager.needs["hungry"])+"%"
+	$"../HungryInformation/HowManyInBowl".text = "Obecnie w misce: " + str(VariableManager.hungry_points_in_bowl)+"%"
 	load_food_resources()
 	
 func _on_add_to_fridge(item : Food_Resource) :
@@ -40,7 +40,7 @@ func _on_feed_mouse_exited():
 	$Feed.modulate = Color("ffffff")
 
 func _on_feed_pressed():
-	if added_to_bowl && $ScrollContainer.visible == true:
+	if VariableManager.hungry_points_in_bowl > 0 && $ScrollContainer.visible == true:
 		visible = false
 		panel.visible = false
 		added_to_bowl = false
@@ -54,7 +54,7 @@ func _on_feed_pressed():
 
 func _on_add_to_bowl(hungry_points) :
 	VariableManager.hungry_points_in_bowl += hungry_points.to_int()
-	$HungryInformation/HowManyInBowl.text = "Obecnie w misce: " + str(VariableManager.hungry_points_in_bowl)+"%"
+	$"../HungryInformation/HowManyInBowl".text = "Obecnie w misce: " + str(VariableManager.hungry_points_in_bowl)+"%"
 	if not added_to_bowl :
 		# Oznacza to, że dodaliśmy do miski cokolwiek
 		added_to_bowl = true
@@ -72,4 +72,4 @@ func load_food_resources() :
 		food_node.call_deferred("add_child", food_instance)
 
 func _on_needs_changed() :
-	$HungryInformation/HowManyCatNeeds.text = "Kotek potrzebuje: " + str(100-VariableManager.needs["hungry"]) + "%"
+	$"../HungryInformation/HowManyCatNeeds".text = "Kotek potrzebuje: " + str(100-VariableManager.needs["hungry"]) + "%"

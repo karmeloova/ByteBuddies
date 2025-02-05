@@ -8,6 +8,7 @@ func _ready():
 		set_cat_name()
 		VariableManager.first_start = false
 	VariableManager.is_playing = false
+	SignalManager.changed_scene.emit()
 
 func set_cat_name():
 	cat_name_instance = cat_name_scene.instantiate()

@@ -15,6 +15,7 @@ func _on_buy_pressed():
 	SignalManager.change_money.emit()
 	SignalManager.add_to_fridge.emit(food_type)
 	release_focus()
+	SignalManager.changed_scene.emit()
 
 func set_item_scene() :
 	food_price.text = str(food_type.price)

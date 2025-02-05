@@ -14,6 +14,7 @@ func _on_buy_button_pressed():
 	SignalManager.add_code_element.emit(code_element);
 	VariableManager.fishes -= code_element.price
 	SignalManager.update_fish_counter.emit()
+	SignalManager.changed_scene.emit()
 
 func _on_button_mouse_entered():
 	SignalManager.show_description.emit(code_element.code_element_description)

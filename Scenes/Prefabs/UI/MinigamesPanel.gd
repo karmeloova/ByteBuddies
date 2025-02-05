@@ -9,6 +9,8 @@ func _ready():
 	check_active_booster()
 	SignalManager.set_correct_instruction.emit(game_name)
 	SignalManager.restartGame.connect(_on_restart_game)
+	SignalManager.play_music.emit(load("res://Audio/MiniGameMusic.mp3"))
+	SignalManager.changed_scene.emit()
 	
 func set_high_score() :
 	match game_name :

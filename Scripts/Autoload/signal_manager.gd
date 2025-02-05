@@ -10,6 +10,7 @@ signal nextLevel()
 signal add_point()
 signal save_data()
 signal set_lose_score(points : int, is_new_high_score : bool)
+signal set_lose_currencies(coins : int, fishes : int, fish : bool)
 
 signal fruitColl(what); #właścicielem sygnału jest SignalManager
 signal basketColor(color);
@@ -96,6 +97,7 @@ signal show_test_node()
 signal hide_test_node()
 signal enable_use_buttons(code_elements : Array[CodeElement])
 signal update_fish_counter_in_mini_game(value : int)
+signal changed_scene()
 
 #------------------ LEVEL -----------------------------------
 signal add_exp(value)

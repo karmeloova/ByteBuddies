@@ -68,7 +68,7 @@ scale = Vector2(0.7, 0.7)
 script = ExtResource("3_5cpqd")
 metadata/_edit_group_ = true
 
-[node name="BackButton" type="TextureButton" parent="Back"]
+[node name="BackButton" type="TextureButton" parent="Back" groups=["Button"]]
 offset_left = -2.0
 offset_top = 546.0
 offset_right = 104.0
@@ -107,7 +107,7 @@ text = "Record"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="StartButton" type="TextureButton" parent="Panel"]
+[node name="StartButton" type="TextureButton" parent="Panel" groups=["Button"]]
 process_mode = 3
 offset_left = 448.0
 offset_top = 301.0
@@ -133,7 +133,7 @@ text = "Start"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="HowToPlayButton" type="TextureButton" parent="Panel"]
+[node name="HowToPlayButton" type="TextureButton" parent="Panel" groups=["Button"]]
 process_mode = 3
 offset_left = 448.0
 offset_top = 381.0
@@ -176,11 +176,12 @@ script = ExtResource("10_g1eg1")
 
 [node name="Previous" type="Node2D" parent="HowToPlay"]
 process_mode = 3
+visible = false
 position = Vector2(218, 247)
 scale = Vector2(0.5, 0.5)
 metadata/_edit_group_ = true
 
-[node name="BackButton" type="TextureButton" parent="HowToPlay/Previous"]
+[node name="BackButton" type="TextureButton" parent="HowToPlay/Previous" groups=["Button"]]
 offset_left = -2.0
 offset_top = 546.0
 offset_right = 104.0
@@ -202,7 +203,7 @@ position = Vector2(898, 248)
 scale = Vector2(0.5, 0.5)
 metadata/_edit_group_ = true
 
-[node name="NextButton" type="TextureButton" parent="HowToPlay/Next"]
+[node name="NextButton" type="TextureButton" parent="HowToPlay/Next" groups=["Button"]]
 offset_left = -2.0
 offset_top = 546.0
 offset_right = 104.0

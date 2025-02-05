@@ -23,8 +23,6 @@ func _ready():
 	full_screen_check_box.button_pressed = VariableManager.is_full_screen
 	resolution_dropdown.selected = VariableManager.resolution
 	current_resolution = resolution_dropdown.selected
-	_on_resolution_drop_down_item_selected(current_resolution)
-	_on_check_box_toggled(full_screen_check_box.button_pressed)
 
 func _on_resolution_drop_down_item_selected(index):
 	current_resolution = index

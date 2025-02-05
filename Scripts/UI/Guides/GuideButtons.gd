@@ -8,3 +8,11 @@ func _on_button_pressed(extra_arg_0):
 		if(guide.name == extra_arg_0 || guide.name == "Back") : guide.visible = true
 		else : guide.visible = false
 	get_parent().back_button.visible = false
+
+
+func _on_tutorial_button_pressed():
+	VariableManager.tutorial = true
+	for child in get_parent().panels.get_children() :
+		if(child.name != "NextLevelsPopUp") : child.visible = false
+	
+	get_parent().tutorial_node.show_tutorial()

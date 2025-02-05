@@ -91,13 +91,13 @@ size = Vector2(108, 37.5)
 
 [sub_resource type="CanvasTexture" id="CanvasTexture_0vx4m"]
 
-[sub_resource type="CanvasTexture" id="CanvasTexture_n3kuc"]
-
-[sub_resource type="CanvasTexture" id="CanvasTexture_hss0y"]
-
 [sub_resource type="CanvasTexture" id="CanvasTexture_jy3fw"]
 
 [sub_resource type="CanvasTexture" id="CanvasTexture_w7i0h"]
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_n3kuc"]
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_hss0y"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qyput"]
 size = Vector2(1049.62, 1717.56)
@@ -142,21 +142,6 @@ scale = Vector2(1.05, 1.05)
 texture = ExtResource("1_5tq1h")
 
 [node name="Room" type="Node2D" parent="."]
-
-[node name="Cat" type="Node2D" parent="Room"]
-process_mode = 3
-position = Vector2(593, 408)
-script = ExtResource("32_38vco")
-metadata/_edit_group_ = true
-
-[node name="Image" type="Sprite2D" parent="Room/Cat"]
-texture_filter = 2
-position = Vector2(0, 3.05176e-05)
-scale = Vector2(0.262, 0.262)
-texture = ExtResource("32_3rwvs")
-
-[node name="EatTimer" type="Timer" parent="Room/Cat"]
-one_shot = true
 
 [node name="Scratching_post" type="Area2D" parent="Room" node_paths=PackedStringArray("panel_template", "panels_node") groups=["Button"]]
 script = ExtResource("14_7xxgu")
@@ -380,6 +365,21 @@ position = Vector2(51, 595)
 scale = Vector2(0.124325, 0.124325)
 texture = ExtResource("21_kt4gx")
 
+[node name="Cat" type="Node2D" parent="Room"]
+process_mode = 3
+position = Vector2(593, 408)
+script = ExtResource("32_38vco")
+metadata/_edit_group_ = true
+
+[node name="Image" type="Sprite2D" parent="Room/Cat"]
+texture_filter = 2
+position = Vector2(0, 3.05176e-05)
+scale = Vector2(0.262, 0.262)
+texture = ExtResource("32_3rwvs")
+
+[node name="EatTimer" type="Timer" parent="Room/Cat"]
+one_shot = true
+
 [node name="ScratchingPost" type="Node2D" parent="."]
 visible = false
 
@@ -498,6 +498,79 @@ visible = false
 script = ExtResource("30_q7oku")
 panels_node = NodePath("../Panels")
 
+[node name="HungryInformation" type="Control" parent="Bowl"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Backgorund" type="TextureRect" parent="Bowl/HungryInformation"]
+modulate = Color(0.968627, 0.8, 0.815686, 1)
+layout_mode = 0
+offset_left = 677.0
+offset_top = 137.0
+offset_right = 1129.0
+offset_bottom = 384.0
+texture = SubResource("CanvasTexture_jy3fw")
+
+[node name="Top" type="TextureRect" parent="Bowl/HungryInformation"]
+modulate = Color(0.756863, 0.596078, 0.698039, 1)
+layout_mode = 0
+offset_left = 706.0
+offset_top = 160.0
+offset_right = 1104.0
+offset_bottom = 166.0
+texture = SubResource("CanvasTexture_w7i0h")
+
+[node name="Bottom" type="TextureRect" parent="Bowl/HungryInformation"]
+modulate = Color(0.756863, 0.596078, 0.698039, 1)
+layout_mode = 0
+offset_left = 706.0
+offset_top = 360.0
+offset_right = 1104.0
+offset_bottom = 366.0
+texture = SubResource("CanvasTexture_w7i0h")
+
+[node name="Left" type="TextureRect" parent="Bowl/HungryInformation"]
+modulate = Color(0.756863, 0.596078, 0.698039, 1)
+layout_mode = 0
+offset_left = 706.0
+offset_top = 160.0
+offset_right = 912.0
+offset_bottom = 166.0
+rotation = 1.5708
+texture = SubResource("CanvasTexture_w7i0h")
+
+[node name="Right" type="TextureRect" parent="Bowl/HungryInformation"]
+modulate = Color(0.756863, 0.596078, 0.698039, 1)
+layout_mode = 0
+offset_left = 1106.0
+offset_top = 160.0
+offset_right = 1312.0
+offset_bottom = 166.0
+rotation = 1.5708
+texture = SubResource("CanvasTexture_w7i0h")
+
+[node name="HowManyCatNeeds" type="Label" parent="Bowl/HungryInformation"]
+layout_mode = 0
+offset_left = 718.0
+offset_top = 184.0
+offset_right = 999.0
+offset_bottom = 217.0
+theme_override_fonts/font = ExtResource("7_8rg5e")
+theme_override_font_sizes/font_size = 30
+text = "Kotek potrzebuje: 0"
+
+[node name="HowManyInBowl" type="Label" parent="Bowl/HungryInformation"]
+layout_mode = 0
+offset_left = 719.0
+offset_top = 220.0
+offset_right = 1000.0
+offset_bottom = 253.0
+theme_override_fonts/font = ExtResource("7_8rg5e")
+theme_override_font_sizes/font_size = 30
+text = "Obecnie w misce: 0"
+
 [node name="BowlSprite" type="Sprite2D" parent="Bowl"]
 position = Vector2(994, 482)
 scale = Vector2(0.20254, 0.20254)
@@ -518,6 +591,33 @@ theme_override_fonts/font = ExtResource("7_8rg5e")
 theme_override_font_sizes/font_size = 30
 text = "Sposob karmienia:"
 autowrap_mode = 2
+
+[node name="Information" type="Node2D" parent="Bowl"]
+position = Vector2(276, 186)
+scale = Vector2(0.7, 0.7)
+script = ExtResource("28_y6a4v")
+
+[node name="Information" type="Sprite2D" parent="Bowl/Information"]
+visible = false
+modulate = Color(0.968627, 0.8, 0.815686, 1)
+position = Vector2(884.286, 278.571)
+scale = Vector2(694.286, 734.286)
+texture = SubResource("CanvasTexture_hss0y")
+
+[node name="InformationButton" type="TextureButton" parent="Bowl/Information"]
+offset_left = 404.286
+offset_top = 558.571
+offset_right = 510.286
+offset_bottom = 658.571
+texture_normal = ExtResource("11_5i28f")
+texture_pressed = ExtResource("11_5i28f")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="Icon" type="Sprite2D" parent="Bowl/Information"]
+position = Vector2(457.286, 607.571)
+scale = Vector2(0.124325, 0.124325)
+texture = ExtResource("31_u0620")
 
 [node name="CodeFeed" type="TextureButton" parent="Bowl" groups=["Button"]]
 offset_left = 412.0
@@ -568,33 +668,6 @@ theme_override_font_sizes/font_size = 33
 text = "Normalne"
 horizontal_alignment = 1
 vertical_alignment = 1
-
-[node name="Information" type="Node2D" parent="Bowl"]
-position = Vector2(276, 186)
-scale = Vector2(0.7, 0.7)
-script = ExtResource("28_y6a4v")
-
-[node name="Information" type="Sprite2D" parent="Bowl/Information"]
-visible = false
-modulate = Color(0.968627, 0.8, 0.815686, 1)
-position = Vector2(884.286, 278.571)
-scale = Vector2(694.286, 734.286)
-texture = SubResource("CanvasTexture_hss0y")
-
-[node name="InformationButton" type="TextureButton" parent="Bowl/Information"]
-offset_left = 404.286
-offset_top = 558.571
-offset_right = 510.286
-offset_bottom = 658.571
-texture_normal = ExtResource("11_5i28f")
-texture_pressed = ExtResource("11_5i28f")
-ignore_texture_size = true
-stretch_mode = 0
-
-[node name="Icon" type="Sprite2D" parent="Bowl/Information"]
-position = Vector2(457.286, 607.571)
-scale = Vector2(0.124325, 0.124325)
-texture = ExtResource("31_u0620")
 
 [node name="CodeFeedNode" type="Node2D" parent="Bowl"]
 visible = false
@@ -681,19 +754,19 @@ theme_override_font_sizes/bold_font_size = 20
 bbcode_enabled = true
 text = "Masz do wyboru dwa rodzaje pętli, aby nakarmić kotka:
 
-[color=\"red\"] [b]Pętla for:[/b][/color] Powtarza zadanie określoną liczbę razy. Idealna, gdy kotek wie, ile jedzenia chce zjeść!
+[color=\"B1849F\"] [b]Pętla for:[/b][/color] Powtarza zadanie określoną liczbę razy. Idealna, gdy kotek wie, ile jedzenia chce zjeść!
 Przykład:
-	[color=\"red\"]for i in range(2):
+	[color=\"B1849F\"]for i in range(2):
 	    eat(apple)[/color]
 Kod sprawia, że kotek zje dokładnie 2 jabłka.
 
-[color=\"red\"]* [b]Pętla while:[/b][/color] Wykonuje zadanie tak długo, jak warunek jest spełniony. Świetna, gdy kotek nie wie, ile chce jeść, ale je, dopóki jest głodny.
+[color=\"B1849F\"]* [b]Pętla while:[/b][/color] Wykonuje zadanie tak długo, jak warunek jest spełniony. Świetna, gdy kotek nie wie, ile chce jeść, ale je, dopóki jest głodny.
 Przykład:
-	[color=\"red\"]while hungry:
+	[color=\"B1849F\"]while hungry:
     	eat(apple)[/color]
 Kod sprawia, że kotek będzie jadł, dopóki jest głodny.
 
-Aby nakarmić kotka, użyj funkcji [b]eat(*tu wpisz jedzenie*).[/b] Przykład: [color=\"red\"]eat(apple).[/color]"
+Aby nakarmić kotka, użyj funkcji [b]eat(*tu wpisz jedzenie*).[/b] Przykład: [color=\"B1849F\"]eat(apple).[/color]"
 
 [node name="EatTimer" type="Timer" parent="Bowl/CodeFeedNode"]
 
@@ -723,77 +796,25 @@ anchors_preset = 0
 script = ExtResource("14_6pba1")
 panel = NodePath("../../Panels/PanelTemplate")
 
-[node name="HungryInformation" type="Control" parent="Bowl/NormalFeed"]
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
-
-[node name="Backgorund" type="TextureRect" parent="Bowl/NormalFeed/HungryInformation"]
-modulate = Color(0.968627, 0.8, 0.815686, 1)
+[node name="Information" type="RichTextLabel" parent="Bowl/NormalFeed"]
+visible = false
 layout_mode = 0
-offset_left = 677.0
-offset_top = 137.0
-offset_right = 1129.0
-offset_bottom = 384.0
-texture = SubResource("CanvasTexture_jy3fw")
-
-[node name="Top" type="TextureRect" parent="Bowl/NormalFeed/HungryInformation"]
-modulate = Color(0.756863, 0.596078, 0.698039, 1)
-layout_mode = 0
-offset_left = 706.0
-offset_top = 160.0
-offset_right = 1104.0
-offset_bottom = 166.0
-texture = SubResource("CanvasTexture_w7i0h")
-
-[node name="Bottom" type="TextureRect" parent="Bowl/NormalFeed/HungryInformation"]
-modulate = Color(0.756863, 0.596078, 0.698039, 1)
-layout_mode = 0
-offset_left = 706.0
-offset_top = 360.0
-offset_right = 1104.0
-offset_bottom = 366.0
-texture = SubResource("CanvasTexture_w7i0h")
-
-[node name="Left" type="TextureRect" parent="Bowl/NormalFeed/HungryInformation"]
-modulate = Color(0.756863, 0.596078, 0.698039, 1)
-layout_mode = 0
-offset_left = 706.0
-offset_top = 160.0
-offset_right = 912.0
-offset_bottom = 166.0
-rotation = 1.5708
-texture = SubResource("CanvasTexture_w7i0h")
-
-[node name="Right" type="TextureRect" parent="Bowl/NormalFeed/HungryInformation"]
-modulate = Color(0.756863, 0.596078, 0.698039, 1)
-layout_mode = 0
-offset_left = 1106.0
-offset_top = 160.0
-offset_right = 1312.0
-offset_bottom = 166.0
-rotation = 1.5708
-texture = SubResource("CanvasTexture_w7i0h")
-
-[node name="HowManyCatNeeds" type="Label" parent="Bowl/NormalFeed/HungryInformation"]
-layout_mode = 0
-offset_left = 718.0
-offset_top = 184.0
-offset_right = 999.0
-offset_bottom = 217.0
-theme_override_fonts/font = ExtResource("7_8rg5e")
-theme_override_font_sizes/font_size = 30
-text = "Kotek potrzebuje: 0"
-
-[node name="HowManyInBowl" type="Label" parent="Bowl/NormalFeed/HungryInformation"]
-layout_mode = 0
-offset_left = 719.0
-offset_top = 220.0
-offset_right = 1000.0
-offset_bottom = 253.0
-theme_override_fonts/font = ExtResource("7_8rg5e")
-theme_override_font_sizes/font_size = 30
-text = "Obecnie w misce: 0"
+offset_left = 669.0
+offset_top = 136.0
+offset_right = 1119.0
+offset_bottom = 623.0
+theme_override_fonts/normal_font = ExtResource("33_en7n4")
+theme_override_fonts/bold_font = ExtResource("33_en7n4")
+theme_override_font_sizes/normal_font_size = 20
+theme_override_font_sizes/bold_font_size = 20
+bbcode_enabled = true
+text = "[fill]Witaj w panelu karmienia! Tutaj możesz zaspokoić jedną z najważniejszych potrzeb Twojego kotka. Masz do wyboru dwa sposoby:
+[color=\"TRANSPARENT\"][font_size=9]PRZERWA[/font_size][/color]
+[color=\"B1849F\"]* Normalne ->[/color] po zakupie jedzenia w sklepie, pojawi się ono po lewej stronie. Kliknij \"Dodaj\" aby dodać jedzenie do miski, a gdy miska będzie pełna lub przełepniona (więcej punktów głodu niż kotek potrzebuje) kliknij nakarm. 
+[color=\"TRANSPARENT\"][font_size=9]PRZERWA[/font_size][/color]
+[color=\"B1849F\"]* Kodowe -> [/color]Twoim zadaniem jest napisać krótki kod na podstawie tego co chce kotek (wybrał to sobie z Twoich zapasów, zatem musisz coś w nich mieć!). Po napisaniu kodu również należy wcisnąć \"Nakarm\". Poprawne rozwiązanie zadania skutkuje dodatkowymi korzyściami (których nie otrzymasz przy normalnym karmieniu!). 
+[color=\"TRANSPARENT\"][font_size=9]PRZERWA[/font_size][/color]
+Kiedy kotek nie jest zbyt głodny nakarmienie go nie jest możliwe."
 
 [node name="ScrollContainer" type="ScrollContainer" parent="Bowl/NormalFeed"]
 layout_mode = 0
@@ -831,26 +852,6 @@ theme_override_constants/shadow_offset_y = 2
 theme_override_fonts/font = ExtResource("7_8rg5e")
 theme_override_font_sizes/font_size = 33
 text = "Nakarm"
-
-[node name="Information" type="RichTextLabel" parent="Bowl/NormalFeed"]
-visible = false
-layout_mode = 0
-offset_left = 669.0
-offset_top = 136.0
-offset_right = 1119.0
-offset_bottom = 623.0
-theme_override_fonts/normal_font = ExtResource("33_en7n4")
-theme_override_fonts/bold_font = ExtResource("33_en7n4")
-theme_override_font_sizes/normal_font_size = 20
-theme_override_font_sizes/bold_font_size = 20
-bbcode_enabled = true
-text = "[fill]Witaj w panelu karmienia! Tutaj możesz zaspokoić jedną z najważniejszych potrzeb Twojego kotka. Masz do wyboru dwa sposoby:
-[color=\"TRANSPARENT\"][font_size=9]PRZERWA[/font_size][/color]
-* Normalne -> po zakupie jedzenia w sklepie, pojawi się ono po lewej stronie. Kliknij \"Dodaj\" aby dodać jedzenie do miski, a gdy miska będzie pełna lub przełepniona (więcej punktów głodu niż kotek potrzebuje) kliknij nakarm. UWAGA: Kotek lubi jeść, więc jeśli dasz mu za dużo to  zje wszystko!
-[color=\"TRANSPARENT\"][font_size=9]PRZERWA[/font_size][/color]
-* Kodowe -> Twoim zadaniem jest napisać krótki kod na podstawie tego co chce kotek (wybrał to sobie z Twoich zapasów, zatem musisz coś w nich mieć!). Po napisaniu kodu również należy wcisnąć \"Nakarm\". Poprawne rozwiązanie zadania skutkuje dodatkowymi korzyściami (których nie otrzymasz przy normalnym karmieniu!). 
-[color=\"TRANSPARENT\"][font_size=9]PRZERWA[/font_size][/color]
-Kiedy kotek nie jest zbyt głodny nakarmienie go nie jest możliwe."
 
 [node name="Back" type="Node2D" parent="Bowl"]
 position = Vector2(1, 194)
@@ -1245,7 +1246,6 @@ script = ExtResource("58_a3d2p")
 
 [node name="FishIcon" type="Sprite2D" parent="TopPanel/Fishes"]
 position = Vector2(31, 77)
-rotation = -1.5708
 scale = Vector2(0.0606898, 0.0606898)
 texture = ExtResource("58_axfkj")
 
@@ -2387,10 +2387,12 @@ position = Vector2(51, 595)
 scale = Vector2(0.124325, 0.124325)
 texture = ExtResource("24_srg2u")
 
-[node name="GuideScene" parent="Panels" node_paths=PackedStringArray("back_button") instance=ExtResource("38_r2qal")]
+[node name="GuideScene" parent="Panels" node_paths=PackedStringArray("back_button", "panels", "tutorial_node") instance=ExtResource("38_r2qal")]
 visible = false
 position = Vector2(209, 118)
 back_button = NodePath("../PanelTemplate/Back")
+panels = NodePath("..")
+tutorial_node = NodePath("../../Tutorial")
 
 [node name="Settings" parent="Panels" node_paths=PackedStringArray("exit_button") instance=ExtResource("32_8hlnf")]
 visible = false
@@ -2633,7 +2635,6 @@ vertical_alignment = 1
 
 [node name="Tutorial" type="Control" parent="."]
 process_mode = 3
-visible = false
 layout_mode = 3
 anchors_preset = 0
 script = ExtResource("74_mm82f")
@@ -2731,7 +2732,7 @@ text = "Tutaj możesz opiekować się wirtualnym kotkiem oraz uczyć się podsta
 horizontal_alignment = 3
 autowrap_mode = 2
 
-[node name="Button" type="Button" parent="Tutorial/Etap1"]
+[node name="Button" type="Button" parent="Tutorial/Etap1" groups=["Button"]]
 layout_mode = 0
 offset_left = 523.0
 offset_top = 317.0
@@ -2754,6 +2755,32 @@ theme_override_constants/shadow_offset_y = 2
 theme_override_fonts/font = ExtResource("7_8rg5e")
 theme_override_font_sizes/font_size = 28
 text = "Dalej"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="SkipButton" type="Button" parent="Tutorial/Etap1" groups=["Button"]]
+layout_mode = 0
+offset_left = 49.0
+offset_top = 317.0
+offset_right = 173.0
+offset_bottom = 363.0
+theme_override_styles/normal = ExtResource("24_wqohh")
+theme_override_styles/hover = ExtResource("24_wqohh")
+theme_override_styles/pressed = ExtResource("24_wqohh")
+theme_override_styles/disabled = ExtResource("24_wqohh")
+theme_override_styles/focus = ExtResource("24_wqohh")
+script = ExtResource("25_8mtfw")
+
+[node name="Label" type="Label" parent="Tutorial/Etap1/SkipButton"]
+layout_mode = 0
+offset_right = 125.0
+offset_bottom = 48.0
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.6)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_fonts/font = ExtResource("7_8rg5e")
+theme_override_font_sizes/font_size = 28
+text = "Pomin"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -2862,7 +2889,7 @@ text = "W grze dostępne są dwie waluty: łapki oraz rybki. Zdobywać je można
 - Rybki - za programistyczne mini-gry oraz za inne elementy związane z programowaniem. Przydatne do budowy własnych ulepszaczy!"
 autowrap_mode = 2
 
-[node name="Button" type="Button" parent="Tutorial/Etap2"]
+[node name="Button" type="Button" parent="Tutorial/Etap2" groups=["Button"]]
 layout_mode = 0
 offset_left = 523.0
 offset_top = 317.0
@@ -2885,6 +2912,32 @@ theme_override_constants/shadow_offset_y = 2
 theme_override_fonts/font = ExtResource("7_8rg5e")
 theme_override_font_sizes/font_size = 28
 text = "Dalej"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="SkipButton" type="Button" parent="Tutorial/Etap2" groups=["Button"]]
+layout_mode = 0
+offset_left = 49.0
+offset_top = 317.0
+offset_right = 173.0
+offset_bottom = 363.0
+theme_override_styles/normal = ExtResource("24_wqohh")
+theme_override_styles/hover = ExtResource("24_wqohh")
+theme_override_styles/pressed = ExtResource("24_wqohh")
+theme_override_styles/disabled = ExtResource("24_wqohh")
+theme_override_styles/focus = ExtResource("24_wqohh")
+script = ExtResource("25_8mtfw")
+
+[node name="Label" type="Label" parent="Tutorial/Etap2/SkipButton"]
+layout_mode = 0
+offset_right = 125.0
+offset_bottom = 48.0
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.6)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_fonts/font = ExtResource("7_8rg5e")
+theme_override_font_sizes/font_size = 28
+text = "Pomin"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -3001,7 +3054,7 @@ theme_override_font_sizes/font_size = 20
 text = "W grze należy opiekować się kotkiem poprzez uzupełnianie następujących potrzeb: jedzenie, zabawa, drapanie, spanie oraz mycie. Każda potrzeba zaspakajana jest w inny sposób. Niektóre są obowiązkowe do zaspakajania, ponieważ bez nich nie będzie można grać w mini-gry, a niektóre nie są konieczne, ale dają nagrody za zaspakajanie ich. Po najechaniu na daną potrzebę zobaczysz jej obecny status."
 autowrap_mode = 2
 
-[node name="Button" type="Button" parent="Tutorial/Etap3"]
+[node name="Button" type="Button" parent="Tutorial/Etap3" groups=["Button"]]
 layout_mode = 0
 offset_left = 523.0
 offset_top = 317.0
@@ -3024,6 +3077,32 @@ theme_override_constants/shadow_offset_y = 2
 theme_override_fonts/font = ExtResource("7_8rg5e")
 theme_override_font_sizes/font_size = 28
 text = "Dalej"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="SkipButton" type="Button" parent="Tutorial/Etap3" groups=["Button"]]
+layout_mode = 0
+offset_left = 49.0
+offset_top = 317.0
+offset_right = 173.0
+offset_bottom = 363.0
+theme_override_styles/normal = ExtResource("24_wqohh")
+theme_override_styles/hover = ExtResource("24_wqohh")
+theme_override_styles/pressed = ExtResource("24_wqohh")
+theme_override_styles/disabled = ExtResource("24_wqohh")
+theme_override_styles/focus = ExtResource("24_wqohh")
+script = ExtResource("25_8mtfw")
+
+[node name="Label" type="Label" parent="Tutorial/Etap3/SkipButton"]
+layout_mode = 0
+offset_right = 125.0
+offset_bottom = 48.0
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.6)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_fonts/font = ExtResource("7_8rg5e")
+theme_override_font_sizes/font_size = 28
+text = "Pomin"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -3133,7 +3212,7 @@ text = "Tutaj znajdziesz następujące elementy:
 * Poradnik z podstawami programowania, z którym powinieneś zapoznać się na samym początku, aby być w stanie rozwiązywać różne problemy podczas grania"
 autowrap_mode = 2
 
-[node name="Button" type="Button" parent="Tutorial/Etap4"]
+[node name="Button" type="Button" parent="Tutorial/Etap4" groups=["Button"]]
 layout_mode = 0
 offset_left = 523.0
 offset_top = 317.0
@@ -3156,6 +3235,32 @@ theme_override_constants/shadow_offset_y = 2
 theme_override_fonts/font = ExtResource("7_8rg5e")
 theme_override_font_sizes/font_size = 28
 text = "Dalej"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="SkipButton" type="Button" parent="Tutorial/Etap4" groups=["Button"]]
+layout_mode = 0
+offset_left = 49.0
+offset_top = 317.0
+offset_right = 173.0
+offset_bottom = 363.0
+theme_override_styles/normal = ExtResource("24_wqohh")
+theme_override_styles/hover = ExtResource("24_wqohh")
+theme_override_styles/pressed = ExtResource("24_wqohh")
+theme_override_styles/disabled = ExtResource("24_wqohh")
+theme_override_styles/focus = ExtResource("24_wqohh")
+script = ExtResource("25_8mtfw")
+
+[node name="Label" type="Label" parent="Tutorial/Etap4/SkipButton"]
+layout_mode = 0
+offset_right = 125.0
+offset_bottom = 48.0
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.6)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_fonts/font = ExtResource("7_8rg5e")
+theme_override_font_sizes/font_size = 28
+text = "Pomin"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -3263,7 +3368,7 @@ text = "Pierwszy przycisk z ikonką koszyka oznacza sklep. Kupisz tam jedzenie d
 Po kliknięciu przycisku z ikonką pada wyświetlą Ci się dostępne mini-gry, w które możesz zagrać aby pobawić się ze swoim kotkiem. Przy każdej mini-grze znajdziesz instrukcję, która dokładnie wytłumaczy Ci co masz w niej robić!"
 autowrap_mode = 2
 
-[node name="Button" type="Button" parent="Tutorial/Etap5"]
+[node name="Button" type="Button" parent="Tutorial/Etap5" groups=["Button"]]
 layout_mode = 0
 offset_left = 523.0
 offset_top = 317.0
@@ -3286,6 +3391,32 @@ theme_override_constants/shadow_offset_y = 2
 theme_override_fonts/font = ExtResource("7_8rg5e")
 theme_override_font_sizes/font_size = 28
 text = "Dalej"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="SkipButton" type="Button" parent="Tutorial/Etap5" groups=["Button"]]
+layout_mode = 0
+offset_left = 49.0
+offset_top = 317.0
+offset_right = 173.0
+offset_bottom = 363.0
+theme_override_styles/normal = ExtResource("24_wqohh")
+theme_override_styles/hover = ExtResource("24_wqohh")
+theme_override_styles/pressed = ExtResource("24_wqohh")
+theme_override_styles/disabled = ExtResource("24_wqohh")
+theme_override_styles/focus = ExtResource("24_wqohh")
+script = ExtResource("25_8mtfw")
+
+[node name="Label" type="Label" parent="Tutorial/Etap5/SkipButton"]
+layout_mode = 0
+offset_right = 125.0
+offset_bottom = 48.0
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.6)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_fonts/font = ExtResource("7_8rg5e")
+theme_override_font_sizes/font_size = 28
+text = "Pomin"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -3393,7 +3524,7 @@ text = "Przycisk z ikonką krzyżyka pozwala na wyjście z gry. Jednak mam nadzi
 Skrzyżowane klucze oznaczają warsztat, w którym możesz zbudować swoje ulepszacze, które pozwolą Ci np. na podwjenie punktów doświadczenia zdobytych w mini-grze"
 autowrap_mode = 2
 
-[node name="Button" type="Button" parent="Tutorial/Etap6"]
+[node name="Button" type="Button" parent="Tutorial/Etap6" groups=["Button"]]
 layout_mode = 0
 offset_left = 523.0
 offset_top = 317.0
@@ -3416,6 +3547,32 @@ theme_override_constants/shadow_offset_y = 2
 theme_override_fonts/font = ExtResource("7_8rg5e")
 theme_override_font_sizes/font_size = 28
 text = "Dalej"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="SkipButton" type="Button" parent="Tutorial/Etap6" groups=["Button"]]
+layout_mode = 0
+offset_left = 49.0
+offset_top = 317.0
+offset_right = 173.0
+offset_bottom = 363.0
+theme_override_styles/normal = ExtResource("24_wqohh")
+theme_override_styles/hover = ExtResource("24_wqohh")
+theme_override_styles/pressed = ExtResource("24_wqohh")
+theme_override_styles/disabled = ExtResource("24_wqohh")
+theme_override_styles/focus = ExtResource("24_wqohh")
+script = ExtResource("25_8mtfw")
+
+[node name="Label" type="Label" parent="Tutorial/Etap6/SkipButton"]
+layout_mode = 0
+offset_right = 125.0
+offset_bottom = 48.0
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.6)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_fonts/font = ExtResource("7_8rg5e")
+theme_override_font_sizes/font_size = 28
+text = "Pomin"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -3542,7 +3699,7 @@ theme_override_font_sizes/font_size = 20
 text = "Najważniejsza rzecz dla Twojego kotka. Gdy klikniesz otworzy Ci się panel karmienia, a gdy najedziesz wyświetli Ci się status miski (czyli ile obecnie ma w sobie jedzenia). Do wyboru masz dwa sposoby karmienia,  jednak wszystkie informacje znajdziesz po przejściu do panelu miski i najechaniu na przycisk z ikonką \"i\""
 autowrap_mode = 2
 
-[node name="Button" type="Button" parent="Tutorial/Etap7"]
+[node name="Button" type="Button" parent="Tutorial/Etap7" groups=["Button"]]
 layout_mode = 0
 offset_left = 523.0
 offset_top = 317.0
@@ -3565,6 +3722,32 @@ theme_override_constants/shadow_offset_y = 2
 theme_override_fonts/font = ExtResource("7_8rg5e")
 theme_override_font_sizes/font_size = 28
 text = "Dalej"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="SkipButton" type="Button" parent="Tutorial/Etap7" groups=["Button"]]
+layout_mode = 0
+offset_left = 49.0
+offset_top = 317.0
+offset_right = 173.0
+offset_bottom = 363.0
+theme_override_styles/normal = ExtResource("24_wqohh")
+theme_override_styles/hover = ExtResource("24_wqohh")
+theme_override_styles/pressed = ExtResource("24_wqohh")
+theme_override_styles/disabled = ExtResource("24_wqohh")
+theme_override_styles/focus = ExtResource("24_wqohh")
+script = ExtResource("25_8mtfw")
+
+[node name="Label" type="Label" parent="Tutorial/Etap7/SkipButton"]
+layout_mode = 0
+offset_right = 125.0
+offset_bottom = 48.0
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.6)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_fonts/font = ExtResource("7_8rg5e")
+theme_override_font_sizes/font_size = 28
+text = "Pomin"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -3691,7 +3874,7 @@ theme_override_font_sizes/font_size = 20
 text = "Po kliknięciu przejdziesz do panelu mycia. Bierz mydło w dłoń (złap je za pomocą myszki) i wyczyść futerko swojego kotka tak, aby lśniło!"
 autowrap_mode = 2
 
-[node name="Button" type="Button" parent="Tutorial/Etap8"]
+[node name="Button" type="Button" parent="Tutorial/Etap8" groups=["Button"]]
 layout_mode = 0
 offset_left = 523.0
 offset_top = 317.0
@@ -3714,6 +3897,32 @@ theme_override_constants/shadow_offset_y = 2
 theme_override_fonts/font = ExtResource("7_8rg5e")
 theme_override_font_sizes/font_size = 28
 text = "Dalej"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="SkipButton" type="Button" parent="Tutorial/Etap8" groups=["Button"]]
+layout_mode = 0
+offset_left = 49.0
+offset_top = 317.0
+offset_right = 173.0
+offset_bottom = 363.0
+theme_override_styles/normal = ExtResource("24_wqohh")
+theme_override_styles/hover = ExtResource("24_wqohh")
+theme_override_styles/pressed = ExtResource("24_wqohh")
+theme_override_styles/disabled = ExtResource("24_wqohh")
+theme_override_styles/focus = ExtResource("24_wqohh")
+script = ExtResource("25_8mtfw")
+
+[node name="Label" type="Label" parent="Tutorial/Etap8/SkipButton"]
+layout_mode = 0
+offset_right = 125.0
+offset_bottom = 48.0
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.6)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_fonts/font = ExtResource("7_8rg5e")
+theme_override_font_sizes/font_size = 28
+text = "Pomin"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -3840,7 +4049,7 @@ theme_override_font_sizes/font_size = 20
 text = "Kotki, tak jak wszyscy muszą czasem spać. Tutaj po kliknięciu zgasisz światło i kotek zaśnie. Możesz go obudzić w każdej chwili, jednak może być on bardzo niezadowolony z tego powodu."
 autowrap_mode = 2
 
-[node name="Button" type="Button" parent="Tutorial/Etap9"]
+[node name="Button" type="Button" parent="Tutorial/Etap9" groups=["Button"]]
 layout_mode = 0
 offset_left = 523.0
 offset_top = 317.0
@@ -3863,6 +4072,32 @@ theme_override_constants/shadow_offset_y = 2
 theme_override_fonts/font = ExtResource("7_8rg5e")
 theme_override_font_sizes/font_size = 28
 text = "Dalej"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="SkipButton" type="Button" parent="Tutorial/Etap9" groups=["Button"]]
+layout_mode = 0
+offset_left = 49.0
+offset_top = 317.0
+offset_right = 173.0
+offset_bottom = 363.0
+theme_override_styles/normal = ExtResource("24_wqohh")
+theme_override_styles/hover = ExtResource("24_wqohh")
+theme_override_styles/pressed = ExtResource("24_wqohh")
+theme_override_styles/disabled = ExtResource("24_wqohh")
+theme_override_styles/focus = ExtResource("24_wqohh")
+script = ExtResource("25_8mtfw")
+
+[node name="Label" type="Label" parent="Tutorial/Etap9/SkipButton"]
+layout_mode = 0
+offset_right = 125.0
+offset_bottom = 48.0
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.6)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_fonts/font = ExtResource("7_8rg5e")
+theme_override_font_sizes/font_size = 28
+text = "Pomin"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -3980,7 +4215,7 @@ theme_override_font_sizes/font_size = 20
 text = "Jeżeli uznasz, że kotek ma za długie pazurki, to możesz przejść do tego panelu, aby  je trochę starł. Po kliknięciu otworzy Ci się panel drapaka, a jego mechanika jest wytłumaczona po najechaniu na przycisk z ikonką \"i\". To już wszystko, możesz rozpocząć grę. Miłej zabawy!"
 autowrap_mode = 2
 
-[node name="Button" type="Button" parent="Tutorial/Etap10"]
+[node name="Button" type="Button" parent="Tutorial/Etap10" groups=["Button"]]
 layout_mode = 0
 offset_left = 605.0
 offset_top = 317.0
@@ -4006,7 +4241,6 @@ text = "Graj"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[connection signal="timeout" from="Room/Cat/EatTimer" to="Room/Cat" method="_on_eat_timer_timeout"]
 [connection signal="input_event" from="Room/Scratching_post" to="Room/Scratching_post" method="_on_input_event"]
 [connection signal="mouse_entered" from="Room/Scratching_post" to="Room/Scratching_post" method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="Room/Scratching_post" to="Room/Scratching_post" method="_on_mouse_exited"]
@@ -4034,6 +4268,7 @@ vertical_alignment = 1
 [connection signal="mouse_entered" from="Room/UI/Buttons/BoosterButton/Button" to="Room/UI/Buttons/BoosterButton" method="_on_button_mouse_entered"]
 [connection signal="mouse_exited" from="Room/UI/Buttons/BoosterButton/Button" to="Room/UI/Buttons/BoosterButton" method="_on_button_mouse_exited"]
 [connection signal="pressed" from="Room/UI/Buttons/BoosterButton/Button" to="Room/UI/Buttons/BoosterButton" method="_on_button_pressed"]
+[connection signal="timeout" from="Room/Cat/EatTimer" to="Room/Cat" method="_on_eat_timer_timeout"]
 [connection signal="mouse_entered" from="ScratchingPost/PlayerScratching" to="ScratchingPost/Scene" method="_on_player_scratching_mouse_entered"]
 [connection signal="mouse_exited" from="ScratchingPost/PlayerScratching" to="ScratchingPost/Scene" method="_on_player_scratching_mouse_exited"]
 [connection signal="mouse_entered" from="ScratchingPost/Back/BackButton" to="ScratchingPost/Scene" method="_on_back_button_mouse_entered"]
@@ -4041,14 +4276,14 @@ vertical_alignment = 1
 [connection signal="pressed" from="ScratchingPost/Back/BackButton" to="ScratchingPost/Scene" method="_on_back_button_pressed"]
 [connection signal="mouse_entered" from="ScratchingPost/Information/InformationButton" to="ScratchingPost/Scene" method="_on_information_button_mouse_entered"]
 [connection signal="mouse_exited" from="ScratchingPost/Information/InformationButton" to="ScratchingPost/Scene" method="_on_information_button_mouse_exited"]
+[connection signal="mouse_entered" from="Bowl/Information/InformationButton" to="Bowl/Information" method="_on_information_button_mouse_entered"]
+[connection signal="mouse_exited" from="Bowl/Information/InformationButton" to="Bowl/Information" method="_on_information_button_mouse_exited"]
 [connection signal="mouse_entered" from="Bowl/CodeFeed" to="Bowl/CodeFeedNode" method="_on_code_feed_mouse_entered"]
 [connection signal="mouse_exited" from="Bowl/CodeFeed" to="Bowl/CodeFeedNode" method="_on_code_feed_mouse_exited"]
 [connection signal="pressed" from="Bowl/CodeFeed" to="Bowl/CodeFeedNode" method="_on_code_feed_pressed"]
 [connection signal="mouse_entered" from="Bowl/NormalFeedButton" to="Bowl" method="_on_code_feed_mouse_entered"]
 [connection signal="mouse_exited" from="Bowl/NormalFeedButton" to="Bowl" method="_on_code_feed_mouse_exited"]
 [connection signal="pressed" from="Bowl/NormalFeedButton" to="Bowl" method="_on_code_feed_pressed"]
-[connection signal="mouse_entered" from="Bowl/Information/InformationButton" to="Bowl/Information" method="_on_information_button_mouse_entered"]
-[connection signal="mouse_exited" from="Bowl/Information/InformationButton" to="Bowl/Information" method="_on_information_button_mouse_exited"]
 [connection signal="timeout" from="Bowl/CodeFeedNode/EatTimer" to="Bowl/CodeFeedNode" method="good_code"]
 [connection signal="mouse_entered" from="Bowl/NormalFeed/Feed" to="Bowl/NormalFeed" method="_on_feed_mouse_entered"]
 [connection signal="mouse_exited" from="Bowl/NormalFeed/Feed" to="Bowl/NormalFeed" method="_on_feed_mouse_exited"]
@@ -4116,12 +4351,21 @@ vertical_alignment = 1
 [connection signal="pressed" from="Panels/ExitPopUp/HBoxContainer/YesButton" to="Room/UI/Buttons/QuitButton" method="_on_yes_button_pressed"]
 [connection signal="pressed" from="Panels/ExitPopUp/HBoxContainer/NoButton" to="Room/UI/Buttons/QuitButton" method="_on_no_button_pressed"]
 [connection signal="pressed" from="Tutorial/Etap1/Button" to="Tutorial" method="_on_button_pressed"]
+[connection signal="pressed" from="Tutorial/Etap1/SkipButton" to="Tutorial" method="_on_skip_button_pressed"]
 [connection signal="pressed" from="Tutorial/Etap2/Button" to="Tutorial" method="_on_button_pressed"]
+[connection signal="pressed" from="Tutorial/Etap2/SkipButton" to="Tutorial" method="_on_skip_button_pressed"]
 [connection signal="pressed" from="Tutorial/Etap3/Button" to="Tutorial" method="_on_button_pressed"]
+[connection signal="pressed" from="Tutorial/Etap3/SkipButton" to="Tutorial" method="_on_skip_button_pressed"]
 [connection signal="pressed" from="Tutorial/Etap4/Button" to="Tutorial" method="_on_button_pressed"]
+[connection signal="pressed" from="Tutorial/Etap4/SkipButton" to="Tutorial" method="_on_skip_button_pressed"]
 [connection signal="pressed" from="Tutorial/Etap5/Button" to="Tutorial" method="_on_button_pressed"]
+[connection signal="pressed" from="Tutorial/Etap5/SkipButton" to="Tutorial" method="_on_skip_button_pressed"]
 [connection signal="pressed" from="Tutorial/Etap6/Button" to="Tutorial" method="_on_button_pressed"]
+[connection signal="pressed" from="Tutorial/Etap6/SkipButton" to="Tutorial" method="_on_skip_button_pressed"]
 [connection signal="pressed" from="Tutorial/Etap7/Button" to="Tutorial" method="_on_button_pressed"]
+[connection signal="pressed" from="Tutorial/Etap7/SkipButton" to="Tutorial" method="_on_skip_button_pressed"]
 [connection signal="pressed" from="Tutorial/Etap8/Button" to="Tutorial" method="_on_button_pressed"]
+[connection signal="pressed" from="Tutorial/Etap8/SkipButton" to="Tutorial" method="_on_skip_button_pressed"]
 [connection signal="pressed" from="Tutorial/Etap9/Button" to="Tutorial" method="_on_button_pressed"]
+[connection signal="pressed" from="Tutorial/Etap9/SkipButton" to="Tutorial" method="_on_skip_button_pressed"]
 [connection signal="pressed" from="Tutorial/Etap10/Button" to="Tutorial" method="_on_button_pressed"]

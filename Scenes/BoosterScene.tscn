@@ -1,6 +1,7 @@
-[gd_scene load_steps=59 format=3 uid="uid://c826tkspvt4i8"]
+[gd_scene load_steps=62 format=3 uid="uid://c826tkspvt4i8"]
 
 [ext_resource type="FontFile" uid="uid://ccgpsjqwwow8o" path="res://Fonts/Bubblegum.ttf" id="1_8ghdf"]
+[ext_resource type="Script" path="res://Scenes/BoosterScene.gd" id="1_ecy7c"]
 [ext_resource type="Script" path="res://Scenes/BoosterSceneButton.gd" id="2_1tf8h"]
 [ext_resource type="Script" path="res://Scenes/BackButtonToMainRoom.gd" id="2_8au02"]
 [ext_resource type="Texture2D" uid="uid://2rpmid1gnwur" path="res://Images/UI/Buttons/RoundButton.png" id="2_c63af"]
@@ -9,8 +10,10 @@
 [ext_resource type="Resource" uid="uid://cbrh0bymtpjyj" path="res://Resources/Plans/DoubleExp.tres" id="5_1sg3u"]
 [ext_resource type="Script" path="res://Scripts/UI/ExitButton.gd" id="5_f7nr3"]
 [ext_resource type="Texture2D" uid="uid://dj5an2o6yuccm" path="res://Images/UI/Buttons/Exit.png" id="5_sg6fy"]
+[ext_resource type="Texture2D" uid="uid://cgqchbixm3xb7" path="res://Images/UI/Buttons/Grafika_bez_nazwy 8.png" id="6_pjqex"]
 [ext_resource type="Script" path="res://Scenes/BackButtonBoosters.gd" id="7_7se2f"]
 [ext_resource type="Texture2D" uid="uid://6adv5bnfl4ff" path="res://Images/UI/Buttons/Back.png" id="7_kpp2h"]
+[ext_resource type="Texture2D" uid="uid://7jpkgkkcdt34" path="res://Images/UI/Buttons/Grafika_bez_nazwy 7.png" id="8_isqhh"]
 [ext_resource type="Script" path="res://Scenes/Description.gd" id="10_mx3yy"]
 [ext_resource type="FontFile" uid="uid://7a16745x5o1t" path="res://Fonts/consola.ttf" id="10_ymans"]
 [ext_resource type="Script" path="res://Scenes/PlansStoragePanel.gd" id="11_l566k"]
@@ -72,6 +75,7 @@ modulate_color = Color(0.968627, 0.8, 0.815686, 1)
 [sub_resource type="CanvasTexture" id="CanvasTexture_7roh4"]
 
 [node name="BoosterScene" type="Node2D"]
+script = ExtResource("1_ecy7c")
 
 [node name="Background" type="Sprite2D" parent="."]
 modulate = Color(0.733333, 0.603922, 0.694118, 1)
@@ -105,7 +109,7 @@ position = Vector2(-562, -3)
 script = ExtResource("2_8au02")
 metadata/_edit_group_ = true
 
-[node name="Button" type="TextureButton" parent="Header/BackButton"]
+[node name="Button" type="TextureButton" parent="Header/BackButton" groups=["Button"]]
 offset_left = -30.0
 offset_top = -28.0
 offset_right = 32.0
@@ -134,13 +138,14 @@ position = Vector2(24, -3)
 
 [node name="PlansButton" type="Node2D" parent="ShopPart/ButtonsContainer" node_paths=PackedStringArray("panel_to_show", "panel_container", "button_container")]
 position = Vector2(47, 601)
+scale = Vector2(0.8, 0.8)
 script = ExtResource("2_1tf8h")
 panel_to_show = NodePath("../../PanelsContainer/PlansPanel")
 panel_container = NodePath("../../PanelsContainer")
 button_container = NodePath("..")
 metadata/_edit_group_ = true
 
-[node name="Button" type="TextureButton" parent="ShopPart/ButtonsContainer/PlansButton"]
+[node name="Button" type="TextureButton" parent="ShopPart/ButtonsContainer/PlansButton" groups=["Button"]]
 offset_left = -52.0
 offset_top = -45.0
 offset_right = 50.0
@@ -149,23 +154,21 @@ texture_normal = ExtResource("2_c63af")
 ignore_texture_size = true
 stretch_mode = 0
 
-[node name="Icon" type="Label" parent="ShopPart/ButtonsContainer/PlansButton"]
-offset_left = -23.0
-offset_top = -27.0
-offset_right = 25.0
-offset_bottom = 28.0
-theme_override_font_sizes/font_size = 40
-text = "PL"
+[node name="Icon" type="Sprite2D" parent="ShopPart/ButtonsContainer/PlansButton"]
+position = Vector2(-0.999992, 3)
+scale = Vector2(0.129892, 0.129892)
+texture = ExtResource("6_pjqex")
 
 [node name="ShopButton" type="Node2D" parent="ShopPart/ButtonsContainer" node_paths=PackedStringArray("panel_to_show", "panel_container", "button_container")]
-position = Vector2(133, 601)
+position = Vector2(123, 601)
+scale = Vector2(0.8, 0.8)
 script = ExtResource("2_1tf8h")
 panel_to_show = NodePath("../../PanelsContainer/ShopPanel")
 panel_container = NodePath("../../PanelsContainer")
 button_container = NodePath("..")
 metadata/_edit_group_ = true
 
-[node name="Button" type="TextureButton" parent="ShopPart/ButtonsContainer/ShopButton"]
+[node name="Button" type="TextureButton" parent="ShopPart/ButtonsContainer/ShopButton" groups=["Button"]]
 offset_left = -52.0
 offset_top = -45.0
 offset_right = 50.0
@@ -180,14 +183,15 @@ scale = Vector2(0.122048, 0.122048)
 texture = ExtResource("3_tkx36")
 
 [node name="StorageButton" type="Node2D" parent="ShopPart/ButtonsContainer" node_paths=PackedStringArray("panel_to_show", "panel_container", "button_container")]
-position = Vector2(220, 601)
+position = Vector2(197, 601)
+scale = Vector2(0.8, 0.8)
 script = ExtResource("2_1tf8h")
 panel_to_show = NodePath("../../PanelsContainer/StoragePanel")
 panel_container = NodePath("../../PanelsContainer")
 button_container = NodePath("..")
 metadata/_edit_group_ = true
 
-[node name="Button" type="TextureButton" parent="ShopPart/ButtonsContainer/StorageButton"]
+[node name="Button" type="TextureButton" parent="ShopPart/ButtonsContainer/StorageButton" groups=["Button"]]
 offset_left = -52.0
 offset_top = -45.0
 offset_right = 50.0
@@ -196,13 +200,10 @@ texture_normal = ExtResource("2_c63af")
 ignore_texture_size = true
 stretch_mode = 0
 
-[node name="Icon" type="Label" parent="ShopPart/ButtonsContainer/StorageButton"]
-offset_left = -23.0
-offset_top = -27.0
-offset_right = 25.0
-offset_bottom = 28.0
-theme_override_font_sizes/font_size = 40
-text = "M"
+[node name="Icon" type="Sprite2D" parent="ShopPart/ButtonsContainer/StorageButton"]
+position = Vector2(6.07967e-06, 2)
+scale = Vector2(0.128796, 0.128796)
+texture = ExtResource("8_isqhh")
 
 [node name="PanelsContainer" type="Node2D" parent="ShopPart"]
 position = Vector2(0, -6)
@@ -250,7 +251,7 @@ panels_node = NodePath("../..")
 buttons_node = NodePath("../../../ButtonsContainer")
 metadata/_edit_group_ = true
 
-[node name="Button" type="TextureButton" parent="ShopPart/PanelsContainer/PanelTemplate/CloseButton"]
+[node name="Button" type="TextureButton" parent="ShopPart/PanelsContainer/PanelTemplate/CloseButton" groups=["Button"]]
 offset_left = -30.0
 offset_top = -28.0
 offset_right = 32.0
@@ -271,7 +272,7 @@ script = ExtResource("7_7se2f")
 panel_container = NodePath("../..")
 metadata/_edit_group_ = true
 
-[node name="Button" type="TextureButton" parent="ShopPart/PanelsContainer/PanelTemplate/BackButton"]
+[node name="Button" type="TextureButton" parent="ShopPart/PanelsContainer/PanelTemplate/BackButton" groups=["Button"]]
 offset_left = -30.0
 offset_top = -28.0
 offset_right = 32.0
@@ -355,7 +356,7 @@ panel_to_show = NodePath("../../../../VariablesShop")
 panel_container = NodePath("../../../..")
 second_level_button = true
 
-[node name="Button" type="Button" parent="ShopPart/PanelsContainer/ShopPanel/GridContainer/Variables/Variables"]
+[node name="Button" type="Button" parent="ShopPart/PanelsContainer/ShopPanel/GridContainer/Variables/Variables" groups=["Button"]]
 custom_minimum_size = Vector2(0, 45)
 offset_right = 140.0
 offset_bottom = 40.0
@@ -389,7 +390,7 @@ panel_to_show = NodePath("../../../../LoopsShop")
 panel_container = NodePath("../../../..")
 second_level_button = true
 
-[node name="Button" type="Button" parent="ShopPart/PanelsContainer/ShopPanel/GridContainer/Loops/Loops"]
+[node name="Button" type="Button" parent="ShopPart/PanelsContainer/ShopPanel/GridContainer/Loops/Loops" groups=["Button"]]
 custom_minimum_size = Vector2(140, 45)
 offset_right = 140.0
 offset_bottom = 40.0
@@ -425,7 +426,7 @@ panel_to_show = NodePath("../../../../ConditionsShop")
 panel_container = NodePath("../../../..")
 second_level_button = true
 
-[node name="Button" type="Button" parent="ShopPart/PanelsContainer/ShopPanel/GridContainer/Conditions/Conditions"]
+[node name="Button" type="Button" parent="ShopPart/PanelsContainer/ShopPanel/GridContainer/Conditions/Conditions" groups=["Button"]]
 custom_minimum_size = Vector2(140, 45)
 offset_right = 140.0
 offset_bottom = 40.0
@@ -462,7 +463,7 @@ panel_to_show = NodePath("../../../../MathOperationsShop")
 panel_container = NodePath("../../../..")
 second_level_button = true
 
-[node name="Button" type="Button" parent="ShopPart/PanelsContainer/ShopPanel/GridContainer/MathOperations/MathOperations"]
+[node name="Button" type="Button" parent="ShopPart/PanelsContainer/ShopPanel/GridContainer/MathOperations/MathOperations" groups=["Button"]]
 custom_minimum_size = Vector2(150, 45)
 offset_right = 150.0
 offset_bottom = 40.0
@@ -499,7 +500,7 @@ panel_to_show = NodePath("../../../../LogicOperationsShop")
 panel_container = NodePath("../../../..")
 second_level_button = true
 
-[node name="Button" type="Button" parent="ShopPart/PanelsContainer/ShopPanel/GridContainer/LogicOperations/LogicOperations"]
+[node name="Button" type="Button" parent="ShopPart/PanelsContainer/ShopPanel/GridContainer/LogicOperations/LogicOperations" groups=["Button"]]
 custom_minimum_size = Vector2(150, 45)
 offset_right = 150.0
 offset_bottom = 40.0
@@ -535,7 +536,7 @@ panel_to_show = NodePath("../../../../FunctionsShop")
 panel_container = NodePath("../../../..")
 second_level_button = true
 
-[node name="Button" type="Button" parent="ShopPart/PanelsContainer/ShopPanel/GridContainer/Functions/Functions"]
+[node name="Button" type="Button" parent="ShopPart/PanelsContainer/ShopPanel/GridContainer/Functions/Functions" groups=["Button"]]
 custom_minimum_size = Vector2(140, 45)
 offset_right = 140.0
 offset_bottom = 40.0
@@ -582,7 +583,7 @@ panel_container = NodePath("../..")
 button_container = NodePath("../../../ButtonsContainer")
 second_level_button = true
 
-[node name="Button" type="Button" parent="ShopPart/PanelsContainer/StoragePanel/PlansStorageButton"]
+[node name="Button" type="Button" parent="ShopPart/PanelsContainer/StoragePanel/PlansStorageButton" groups=["Button"]]
 offset_left = 90.0
 offset_top = 179.0
 offset_right = 225.0
@@ -615,7 +616,7 @@ panel_container = NodePath("../..")
 button_container = NodePath("../../../ButtonsContainer")
 second_level_button = true
 
-[node name="Button" type="Button" parent="ShopPart/PanelsContainer/StoragePanel/PartsStorageButton"]
+[node name="Button" type="Button" parent="ShopPart/PanelsContainer/StoragePanel/PartsStorageButton" groups=["Button"]]
 offset_left = 379.0
 offset_top = 179.0
 offset_right = 514.0
@@ -938,7 +939,7 @@ visible = false
 position = Vector2(309, 601)
 metadata/_edit_group_ = true
 
-[node name="CurrButton" type="TextureButton" parent="PrepareBoosterPanel/CurrBoosterButton"]
+[node name="CurrButton" type="TextureButton" parent="PrepareBoosterPanel/CurrBoosterButton" groups=["Button"]]
 offset_left = -52.0
 offset_top = -45.0
 offset_right = 50.0
@@ -1021,7 +1022,7 @@ text = "[fill]Witaj w warsztacie! Tutaj możesz tworzyć specjalne ulepszenia, k
 [color=\"B1849F\"][b]5. Twórz booster:[/b][/color] Gdy wszystkie części są gotowe, kliknij „START” i przejdź do kodowania, aby ukończyć swój projekt! Powodzeenia i baw się dobrze! "
 autowrap_mode = 2
 
-[node name="StartMakeBooster" type="Button" parent="PrepareBoosterPanel/Panel"]
+[node name="StartMakeBooster" type="Button" parent="PrepareBoosterPanel/Panel" groups=["Button"]]
 visible = false
 offset_left = 382.0
 offset_top = 549.0
@@ -1089,7 +1090,7 @@ texture = SubResource("CanvasTexture_u1hxd")
 [node name="CodeInputNode" type="Node2D" parent="BuildBooster"]
 position = Vector2(616, 158)
 
-[node name="Button" type="Button" parent="BuildBooster"]
+[node name="Button" type="Button" parent="BuildBooster" groups=["Button"]]
 offset_left = 967.0
 offset_top = 419.0
 offset_right = 1100.0
@@ -1115,7 +1116,7 @@ text = "Sprawdz"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="UseButton" type="Button" parent="BuildBooster"]
+[node name="UseButton" type="Button" parent="BuildBooster" groups=["Button"]]
 visible = false
 offset_left = 988.0
 offset_top = 471.0

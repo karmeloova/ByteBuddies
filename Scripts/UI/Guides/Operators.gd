@@ -94,7 +94,7 @@ func aritmetic_operators(a : int, b : int) :
 	SignalManager.set_console_text.emit(result_to_show)
 
 func comparing_operation(a : int, b : int) :
-	$TestNode/OperatorsExamples/Comparing/Code.text = "print("+str(a)+"=="+str(b)+")\n" + "print("+str(a)+"!="+str(b)+")\n" + "print("+str(a)+">"+str(b)+")\n" + "print("+str(a)+"<"+str(b)+")\n" + "print("+str(a)+">="+str(b)+")\n" + "print("+str(a)+"<="+str(b)+")"
+	$TestNode/OperatorsExamples/Comparing/Code.text = "print("+str(a)+"=="+str(b)+", \"\\n\", " + str(a)+"!="+str(b)+")\n" + "print("+str(a)+">"+str(b)+", \"\\n\", " +str(a)+"<"+str(b)+")\n" + "print("+str(a)+">="+str(b)+", \"\\n\", " +str(a)+"<="+str(b)+")"
 	result_to_show += str(a==b) + "\n"
 	result_to_show += str(a!=b) + "\n"
 	result_to_show += str(a>b) + "\n"
@@ -104,7 +104,7 @@ func comparing_operation(a : int, b : int) :
 	SignalManager.set_console_text.emit(result_to_show)
 
 func logic_operations(a : int, b : int) :
-	$TestNode/OperatorsExamples/Logic/Code.text = "print(" + str(a) + ">" + str(b) + " and " + str(a) + "*" + str(b) + "==10)\n" + "# Sprawdza, czy  a większe od b i czy a*b równe 10\n" + "print(" + str(a) + "*" + str(b) + "<1000" + " or " + str(a) + ">" + str(b) + ")\n" + "# Czy a*b < 1000 lub a większe od b\n" + "print(not(" + str(a) + ">" + str(b) + "*2))"
+	$TestNode/OperatorsExamples/Logic/Code.text = "print(" + str(a) + ">" + str(b) + " and " + str(a) + "*" + str(b) + "==10)" +  "# Sprawdza, czy a większe od b i czy a*b równe 10\n" + "print(" + str(a) + "*" + str(b) + "<1000" + " or " + str(a) + ">" + str(b) + ")" + " # Czy a*b < 1000 lub a większe od b\n" + "print(not(" + str(a) + ">" + str(b) + "*2))"
 	result_to_show += str(a>b and a*b==10) + "\n"
 	result_to_show += str(a*b<1000 or a>b) + "\n"
 	result_to_show += str(not(a>b*2))

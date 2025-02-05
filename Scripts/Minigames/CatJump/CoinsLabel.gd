@@ -15,6 +15,7 @@ func _on_add_coin(value) :
 
 func _on_lose_game() :
 	add_coins()
+	SignalManager.set_lose_currencies.emit(coins, 0, false)
 
 func _on_save_data() :
 	add_coins()

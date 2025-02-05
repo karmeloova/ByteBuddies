@@ -6,8 +6,10 @@ func _ready():
 	visible = false;
 	SignalManager.loseGame.connect(_on_lose_game)
 	SignalManager.set_lose_score.connect(_on_set_lose_score)
+	SignalManager.set_lose_currencies.connect(_on_set_lose_currencies)
 
 func _on_lose_game() :
+	SignalManager.play_sfx.emit(load("res://Audio/GameOver.mp3"))
 	VariableManager.is_playing = false;
 	get_tree().paused = true
 	visible = true;
@@ -38,3 +40,12 @@ func _on_set_lose_score(points : int, is_new_highscore : bool) :
 	$PointsLabel.text = "Wynik: " + str(points)
 	if(is_new_highscore) : $NewRecord.visible = true
 	else : $NewRecord.visible = false
+
+func _on_set_lose_currencies(coins : int, fishes : int, fish : bool) :
+	if(fish) :
+		$HBoxContainer/Fishes.visible = true
+		$HBoxContainer/Fishes/Label.text = "+" + str(fishes)
+	else :
+		$HBoxContainer/Fishes.visible = false
+	
+	$HBoxContainer/Money/Label.text = "+" + str(coins)

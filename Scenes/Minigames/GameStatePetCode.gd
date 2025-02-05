@@ -29,6 +29,7 @@ func _on_lose_game() :
 		VariableManager.pet_code_high_score = score
 		new_high_score = true
 	SignalManager.set_lose_score.emit(score, new_high_score)
+	SignalManager.set_lose_currencies.emit(coins, fishes, true)
 	add_coins()
 	SignalManager.unlock_achievement.emit(score, "pet_code", null)
 	SignalManager.add_exp.emit(score/3)

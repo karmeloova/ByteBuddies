@@ -26,6 +26,7 @@ func _on_code_feed_pressed():
 		$TaskLabel.text = "Nie masz co dać swojemu kotkowi"
 	$".".visible = true
 	$"../NormalFeed/ScrollContainer".visible = false
+	$"../HungryInformation".visible = false
 
 func _on_code_feed_mouse_entered():
 	$"../CodeFeed".modulate = Color("b2b2b2")
@@ -142,6 +143,7 @@ func _on_lose_game() :
 	get_tree().paused = false
 
 func give_prizes() :
+	SignalManager.play_sfx.emit(load("res://Audio/Money.mp3"))
 	if(VariableManager.needs["hungry"] < 80) :
 		SignalManager.add_fishes.emit()
 		VariableManager.eat_counter += 1

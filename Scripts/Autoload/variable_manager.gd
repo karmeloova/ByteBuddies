@@ -33,6 +33,7 @@ var coins : int = 0
 var fishes : int = 0
 
 var is_soap_on_cat = false
+var is_run = false
 
 #------------- MINI-GAMES ---------------
 

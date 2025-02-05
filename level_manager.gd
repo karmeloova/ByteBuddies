@@ -17,7 +17,6 @@ func _ready():
 
 func _on_add_exp(value):
 	if(BoosterManager.active_booster != null && BoosterManager.booster_category == MyEnums.BoosterCategory.exp && VariableManager.is_playing) :
-		print("juhu podwójny exp")
 		SignalManager.decrease_booster_uses.emit()
 		exp += value*2
 	else : exp += value

@@ -1,8 +1,11 @@
-[gd_scene load_steps=7 format=3 uid="uid://bf6baqi0v0mld"]
+[gd_scene load_steps=10 format=3 uid="uid://bf6baqi0v0mld"]
 
 [ext_resource type="Script" path="res://Scenes/Prefabs/UI/NextLevelPopUp.gd" id="1_l0o4g"]
 [ext_resource type="FontFile" uid="uid://ccgpsjqwwow8o" path="res://Fonts/Bubblegum.ttf" id="1_tlpdj"]
+[ext_resource type="Resource" uid="uid://cbrh0bymtpjyj" path="res://Resources/Plans/DoubleExp.tres" id="2_i860d"]
+[ext_resource type="Resource" uid="uid://4xnqxd8r6ujq" path="res://Resources/Plans/DoubleCoins.tres" id="3_nxpwi"]
 [ext_resource type="Texture2D" uid="uid://2rpmid1gnwur" path="res://Images/UI/Buttons/RoundButton.png" id="4_acmto"]
+[ext_resource type="Texture2D" uid="uid://cjcm8dskr3xnv" path="res://Images/UI/Currency.png" id="4_xiyv7"]
 [ext_resource type="Texture2D" uid="uid://dj5an2o6yuccm" path="res://Images/UI/Buttons/Exit.png" id="5_tjr38"]
 
 [sub_resource type="CanvasTexture" id="CanvasTexture_um6fo"]
@@ -12,6 +15,7 @@
 [node name="NextLevelPopUp" type="Node2D"]
 position = Vector2(169, 45)
 script = ExtResource("1_l0o4g")
+plans_to_unlock = Array[Resource("res://Scripts/Resources/Plansres.gd")]([ExtResource("2_i860d"), ExtResource("3_nxpwi")])
 
 [node name="PanelTemplate" type="Node2D" parent="."]
 
@@ -67,6 +71,15 @@ position = Vector2(51, 595)
 scale = Vector2(0.124325, 0.124325)
 texture = ExtResource("5_tjr38")
 
+[node name="TextureRect" type="TextureRect" parent="."]
+custom_minimum_size = Vector2(40, 45)
+offset_left = 314.0
+offset_top = 361.0
+offset_right = 354.0
+offset_bottom = 406.0
+texture = ExtResource("4_xiyv7")
+expand_mode = 1
+
 [node name="WinText" type="Label" parent="."]
 offset_left = 38.0
 offset_top = 82.0
@@ -101,15 +114,25 @@ text = "Nagroda:"
 horizontal_alignment = 1
 
 [node name="Prize" type="Label" parent="."]
-offset_left = 37.0
-offset_top = 368.0
-offset_right = 714.0
-offset_bottom = 407.0
+offset_left = 355.0
+offset_top = 367.0
+offset_right = 427.0
+offset_bottom = 406.0
 theme_override_fonts/font = ExtResource("1_tlpdj")
 theme_override_font_sizes/font_size = 30
 text = "1234"
-horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="UnlockLabel" type="Label" parent="."]
+visible = false
+offset_left = 36.0
+offset_top = 413.0
+offset_right = 713.0
+offset_bottom = 435.0
+theme_override_fonts/font = ExtResource("1_tlpdj")
+theme_override_font_sizes/font_size = 20
+text = "Gratulacje, odblokowales *nazwa_boostera*"
+horizontal_alignment = 1
 
 [connection signal="mouse_entered" from="PanelTemplate/Exit/Button" to="." method="_on_button_mouse_entered"]
 [connection signal="mouse_exited" from="PanelTemplate/Exit/Button" to="." method="_on_button_mouse_exited"]

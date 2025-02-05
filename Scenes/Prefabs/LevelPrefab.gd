@@ -27,9 +27,8 @@ func _on_changed_exp() :
 
 func check_promotion() :
 	set_level_elements()
-	
+	if(LevelManager.was_promotion.size() > 0) : SignalManager.play_sfx.emit(load("res://Audio/LevelUp.mp3"))
 	for i in LevelManager.was_promotion.size() :
-		print("EHE")
 		next_level_instance = next_level_pop_up.instantiate()
 		pop_up_node.add_child(next_level_instance)
 		next_level_instance.set_textes(LevelManager.promoted_levels[i])

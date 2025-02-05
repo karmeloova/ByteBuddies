@@ -33,7 +33,7 @@ offset_left = -45.0
 offset_right = 488.0
 offset_bottom = 56.0
 
-[node name="BuyButton" type="Button" parent="."]
+[node name="BuyButton" type="Button" parent="." groups=["Button"]]
 layout_mode = 0
 offset_left = 398.125
 offset_top = 6.25

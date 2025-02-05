@@ -38,7 +38,7 @@ offset_top = 256.0
 offset_right = 304.0
 offset_bottom = 570.0
 
-[node name="ExecuteButton" type="Button" parent="CodeArea"]
+[node name="ExecuteButton" type="Button" parent="CodeArea" groups=["Button"]]
 offset_left = 99.0
 offset_top = 583.0
 offset_right = 224.0
@@ -149,10 +149,8 @@ scale = Vector2(0.0840081, 0.0840081)
 texture = ExtResource("15_76x2i")
 
 [node name="Lose" parent="Layout" instance=ExtResource("11_nlonb")]
-visible = false
 
 [node name="MinigamesPanel" parent="." instance=ExtResource("1_2gm7f")]
-visible = false
 game_name = "Snack Navigator"
 
 [connection signal="text_changed" from="CodeArea/CodeField" to="CodeArea" method="_on_code_field_text_changed"]

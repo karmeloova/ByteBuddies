@@ -34,6 +34,7 @@ func _on_buy_button_pressed():
 	SignalManager.add_plan_booster.emit(plan)
 	VariableManager.fishes -= plan.price
 	SignalManager.update_fish_counter.emit()
+	SignalManager.changed_scene.emit()
 
 func _on_area_2d_mouse_entered():
 	SignalManager.show_description.emit(desc)

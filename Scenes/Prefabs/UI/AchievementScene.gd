@@ -86,6 +86,8 @@ func find_achievement(unlocked_achievmentes) :
 		else : loop_ind += 1
 
 func set_new_achievement(key, value, prize, number) :
+	SignalManager.changed_scene.emit()
+	SignalManager.play_sfx.emit(load("res://Audio/LevelUp.mp3"))
 	for i in key.length() :
 		if(key[i] == "0" || key[i]=="1" || key[i] == "2" || key[i]=="3" || key[i]=="4" || key[i]=="5" || key[i]=="6" || key[i]=="7" || key[i]=="8" || key[i]=="9" ) :
 			key[i] = ""

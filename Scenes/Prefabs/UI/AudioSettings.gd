@@ -17,13 +17,13 @@ func _on_slider_mouse_exited():
 
 func _on_slider_value_changed(value, extra_arg_0):
 	AudioServer.set_bus_volume_db(extra_arg_0, linear_to_db(value))
+	if(check_box_tab[extra_arg_0].button_pressed) :
+		check_box_tab[extra_arg_0].button_pressed = false
 
 func _on_check_box_toggled(toggled_on, extra_arg_0):
 	if(toggled_on) : 
-		sliders_tab[extra_arg_0].editable = false
 		AudioServer.set_bus_volume_db(extra_arg_0, linear_to_db(0))
 	else : 
-		sliders_tab[extra_arg_0].editable = true
 		AudioServer.set_bus_volume_db(extra_arg_0, linear_to_db(sliders_tab[extra_arg_0].value))
 		
 	VariableManager.mute_check_boxes[extra_arg_0] = toggled_on

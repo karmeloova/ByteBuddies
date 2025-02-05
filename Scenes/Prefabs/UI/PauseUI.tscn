@@ -17,7 +17,7 @@ script = ExtResource("1_h2l0n")
 [node name="PauseButton" type="Node2D" parent="."]
 metadata/_edit_group_ = true
 
-[node name="Button" type="TextureButton" parent="PauseButton"]
+[node name="Button" type="TextureButton" parent="PauseButton" groups=["Button"]]
 offset_left = -5.0
 offset_top = -3.0
 offset_right = 81.0
@@ -69,7 +69,7 @@ rotation = 1.5708
 scale = Vector2(6.25, 302.232)
 texture = SubResource("CanvasTexture_ofcb1")
 
-[node name="BackButton" type="TextureButton" parent="PauseMenu"]
+[node name="BackButton" type="TextureButton" parent="PauseMenu" groups=["Button"]]
 offset_left = 457.74
 offset_top = 267.563
 offset_right = 685.74
@@ -93,7 +93,7 @@ text = "Wroc"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="RestartButton" type="TextureButton" parent="PauseMenu"]
+[node name="RestartButton" type="TextureButton" parent="PauseMenu" groups=["Button"]]
 offset_left = 457.74
 offset_top = 337.563
 offset_right = 685.74
@@ -117,7 +117,7 @@ text = "Restart"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="QuitButton" type="TextureButton" parent="PauseMenu"]
+[node name="QuitButton" type="TextureButton" parent="PauseMenu" groups=["Button"]]
 offset_left = 457.74
 offset_top = 404.563
 offset_right = 685.74

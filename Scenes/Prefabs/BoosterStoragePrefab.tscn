@@ -25,7 +25,7 @@ theme_override_fonts/font = ExtResource("1_fllub")
 theme_override_font_sizes/font_size = 40
 text = "BoosterName"
 
-[node name="UseButton" type="Button" parent="."]
+[node name="UseButton" type="Button" parent="." groups=["Button"]]
 layout_mode = 0
 offset_left = 383.125
 offset_top = 3.75

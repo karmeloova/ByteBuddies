@@ -18,6 +18,7 @@ func _on_back_button_pressed():
 func _on_code_feed_pressed():
 	$CodeFeedNode.visible = false
 	$NormalFeed/ScrollContainer.visible = true
+	$HungryInformation.visible = true
 
 func _on_code_feed_mouse_entered():
 	$NormalFeedButton.modulate = Color("b2b2b2")

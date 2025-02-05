@@ -33,11 +33,11 @@ func _on_fruitColor(color) :
 	fruitColor = color;
 
 func _on_lose_game() :
-	
 	if(points > VariableManager.fruit_catcher_high_score) :
 		VariableManager.fruit_catcher_high_score = points
 		new_high_score = true
 	SignalManager.set_lose_score.emit(points, new_high_score)
+	SignalManager.set_lose_currencies.emit(coins, fishes, true)
 	add_coins()
 	SignalManager.unlock_achievement.emit(points, "fruit_catcher", null)
 	SignalManager.add_exp.emit(points/2)

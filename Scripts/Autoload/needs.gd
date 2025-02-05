@@ -61,6 +61,7 @@ func _on_scratch(_howMany) :
 		can_count_to_achievement = false
 		VariableManager.scratch_counter += 1
 		VariableManager.coins += 5
+		SignalManager.play_sfx.emit(load("res://Audio/Money.mp3"))
 		SignalManager.change_money.emit()
 		SignalManager.add_exp.emit(5)
 		SignalManager.unlock_achievement.emit(VariableManager.scratch_counter, "scratching", null)
@@ -71,12 +72,12 @@ func _on_eat() :
 	eat_timer.start()
 
 func _on_eat_timer_timeout() :
-	if(VariableManager.needs["hungry"] + 5 <= 100 and VariableManager.hungry_points_in_bowl > 5) : 
+	if(VariableManager.needs["hungry"] + 5 <= 100 and VariableManager.hungry_points_in_bowl >= 5) : 
 		VariableManager.needs["hungry"] += 5
 		VariableManager.hungry_points_in_bowl -= 5
 		SignalManager.changed_needs.emit()
 		eat_timer.start()
-	elif(VariableManager.needs["hungry"] + 5 > 100 and VariableManager.hungry_points_in_bowl > 5) :
+	elif(VariableManager.needs["hungry"] + 5 > 100 and VariableManager.hungry_points_in_bowl >= 5) :
 		VariableManager.needs["hungry"] = 100
 		VariableManager.hungry_points_in_bowl -= 5
 		SignalManager.changed_needs.emit();
@@ -123,6 +124,7 @@ func _on_sleeping_timer_timeout() :
 		can_count_to_achievement = false
 		VariableManager.sleep_counter += 1
 		VariableManager.coins += 5
+		SignalManager.play_sfx.emit(load("res://Audio/Money.mp3"))
 		SignalManager.change_money.emit()
 		SignalManager.add_exp.emit(5)
 		SignalManager.unlock_achievement.emit(VariableManager.sleep_counter, "sleeping", null)
@@ -144,4 +146,8 @@ func _on_cleaning_timer_timeout() :
 	if(VariableManager.needs["clean"] >= 100 && can_count_to_achievement) : 
 		can_count_to_achievement = false
 		VariableManager.clean_counter += 1
+		VariableManager.coins += 5
+		SignalManager.play_sfx.emit(load("res://Audio/Money.mp3"))
+		SignalManager.change_money.emit()
+		SignalManager.add_exp.emit(5)
 		SignalManager.unlock_achievement.emit(VariableManager.clean_counter, "cleaning", null)

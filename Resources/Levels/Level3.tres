@@ -7,4 +7,4 @@ script = ExtResource("1_8pjwx")
 level = 3
 next_level_need_exp = 300
 money_prize = 150
-unlock_something = false
+unlock_something = true
