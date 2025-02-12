@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://6qc5i7jd7gmy"]
 
 [ext_resource type="Script" path="res://Scenes/Prefabs/CodeElement.gd" id="1_a28c5"]
-[ext_resource type="FontFile" uid="uid://7a16745x5o1t" path="res://Fonts/consola.ttf" id="2_jcb3r"]
+[ext_resource type="FontFile" uid="uid://vm5ihjsga40m" path="res://Fonts/FiraCode-VariableFont_wght.ttf" id="2_f53fa"]
 
 [node name="CodeElement" type="Node2D"]
 script = ExtResource("1_a28c5")
@@ -12,7 +12,7 @@ offset_bottom = 35.0
 theme_override_colors/background_color = Color(0.621524, 0.621524, 0.621524, 1)
 theme_override_colors/font_readonly_color = Color(1, 1, 1, 1)
 theme_override_constants/line_spacing = 8
-theme_override_fonts/font = ExtResource("2_jcb3r")
+theme_override_fonts/font = ExtResource("2_f53fa")
 
 [connection signal="focus_entered" from="CodeField" to="." method="_on_code_field_focus_entered"]
 [connection signal="text_changed" from="CodeField" to="." method="_on_code_field_text_changed"]

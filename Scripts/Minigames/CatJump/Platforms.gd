@@ -15,6 +15,10 @@ var direction: int = 0;
 var count_platforms : int = 0
 var generated : bool = false
 
+@export var coins_node : Node2D
+var Coin = preload("res://Scenes/Prefabs/Coin.tscn")
+var coin_instance
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	player_size = VariableManager.player_size
@@ -39,7 +43,7 @@ func generate_board() -> void:
 		if(generate_platform()) :
 			count_platforms += 1
 		if(count_platforms % 3 == 0) : 
-			SignalManager.generate_coin.emit(last_position, platform_size)
+			generate_coin(last_position, platform_size)
 
 func _on_add_platform() -> void:
 	generated = false
@@ -68,4 +72,7 @@ func generate_platform() -> bool:
 		return true
 	return false
 
-
+func generate_coin(last_position, platform_size) :
+	coin_instance = Coin.instantiate()
+	coins_node.call_deferred("add_child", coin_instance)
+	coin_instance.position = Vector2(last_position.x+platform_size/2-15, last_position.y-40)

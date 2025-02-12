@@ -42,7 +42,6 @@
 [ext_resource type="Texture2D" uid="uid://bowy12qgsf8t3" path="res://Images/UI/Buttons/Button.png" id="28_7d6xq"]
 [ext_resource type="Script" path="res://Scenes/Rooms/Information.gd" id="28_y6a4v"]
 [ext_resource type="PackedScene" uid="uid://dluxwfsypbvws" path="res://Scenes/Prefabs/UI/MinigamesLives.tscn" id="29_6tfrs"]
-[ext_resource type="FontFile" uid="uid://7a16745x5o1t" path="res://Fonts/consola.ttf" id="29_44xo7"]
 [ext_resource type="PackedScene" uid="uid://dgupbxjorf75y" path="res://Scenes/Prefabs/UI/Achievement.tscn" id="29_55sfc"]
 [ext_resource type="Script" path="res://Scenes/Rooms/AchievmentesButtons.gd" id="29_aywkh"]
 [ext_resource type="StyleBox" uid="uid://cqxmxvk085km8" path="res://Scenes/Prefabs/UI/ConsoleStyle.stylebox" id="30_87oih"]
@@ -54,6 +53,7 @@
 [ext_resource type="Texture2D" uid="uid://uhifpi6dj3ce" path="res://Images/Cats/Cat.png" id="32_3rwvs"]
 [ext_resource type="PackedScene" uid="uid://beq5bpbed2ls6" path="res://Scenes/Prefabs/UI/Settings.tscn" id="32_8hlnf"]
 [ext_resource type="Script" path="res://Scenes/Rooms/Cat.gd" id="32_38vco"]
+[ext_resource type="FontFile" uid="uid://vm5ihjsga40m" path="res://Fonts/FiraCode-VariableFont_wght.ttf" id="32_fu4ip"]
 [ext_resource type="PackedScene" uid="uid://k2t0np43srls" path="res://Scenes/Prefabs/LevelPrefab.tscn" id="33_0i3x0"]
 [ext_resource type="FontFile" uid="uid://sjhlfawq34if" path="res://Fonts/Coolvetica Rg.otf" id="33_en7n4"]
 [ext_resource type="Script" path="res://Scenes/Rooms/ButtonInPlayerPanel.gd" id="33_h8ng0"]
@@ -157,6 +157,7 @@ texture = ExtResource("2_rsjqa")
 polygon = PackedVector2Array(919, 245, 932, 226, 965, 216, 1004, 218, 1033, 230, 1039, 246, 1035, 261, 1035, 270, 1019, 281, 995, 286, 994, 454, 1024, 454, 1023, 407, 1025, 393, 1044, 380, 1074, 374, 1098, 376, 1117, 386, 1125, 400, 1124, 411, 1126, 410, 1125, 457, 1135, 468, 1137, 480, 1135, 489, 1127, 498, 1114, 506, 1091, 512, 1061, 513, 913, 513, 912, 503, 939, 455, 961, 455, 962, 284, 939, 279, 924, 269, 923, 262)
 
 [node name="XD" type="Node2D" parent="Room"]
+visible = false
 script = ExtResource("36_iupy0")
 
 [node name="Button" type="Button" parent="Room/XD"]
@@ -686,7 +687,7 @@ theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_colors/font_readonly_color = Color(1, 1, 1, 1)
 theme_override_colors/font_placeholder_color = Color(1, 1, 1, 1)
 theme_override_colors/line_number_color = Color(1, 1, 1, 1)
-theme_override_fonts/font = ExtResource("29_44xo7")
+theme_override_fonts/font = ExtResource("32_fu4ip")
 theme_override_font_sizes/font_size = 20
 theme_override_styles/normal = ExtResource("30_87oih")
 theme_override_styles/focus = ExtResource("30_87oih")
@@ -704,7 +705,7 @@ offset_bottom = 558.0
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_colors/font_readonly_color = Color(1, 1, 1, 1)
 theme_override_colors/line_number_color = Color(1, 1, 1, 1)
-theme_override_fonts/font = ExtResource("29_44xo7")
+theme_override_fonts/font = ExtResource("32_fu4ip")
 theme_override_font_sizes/font_size = 20
 theme_override_styles/normal = ExtResource("30_87oih")
 theme_override_styles/focus = ExtResource("31_jruph")

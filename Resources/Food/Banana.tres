@@ -6,6 +6,6 @@
 script = ExtResource("1_i37hr")
 id = 3
 res_name = "banana_res"
-food_name = "Banana"
+food_name = "Banan"
 hungry_points = 11
-price = 100
+price = 12

@@ -47,13 +47,13 @@ func set_code_task():
 		expected_code.append("for")
 		expected_code.append("i")
 		expected_code.append("in")
-		expected_code.append("range(" + str(how_many) + ")")
+		expected_code.append("range(" + str(how_many) + "):")
 		expected_code.append("eat(" + what_to_eat.item.food_name.to_lower() + ")")
 		$TaskLabel.text = "Kotek chce zjeść " + str(how_many) + " " + what_to_eat.item.food_name.to_lower()
-		$HintsLabel.text = "Elementy do użycia: \nfor \ni \nin range(" +  str(how_many) + ")\n" + "eat(" + what_to_eat.item.food_name.to_lower() + ")"
+		$HintsLabel.text = "Elementy do użycia: \nfor \ni \nin range(" +  str(how_many) + "):\n" + "eat(" + what_to_eat.item.food_name.to_lower() + ")"
 	else :
 		expected_code.append("while")
-		expected_code.append("hungry")
+		expected_code.append("hungry:")
 		expected_code.append("eat(" + what_to_eat.item.food_name.to_lower() + ")")
 		$TaskLabel.text = "Karm kotka " + what_to_eat.item.food_name.to_lower() + " dopóki jest głodny"
 		$HintsLabel.text = "Elementy do użycia: \nwhile \nhungry \neat(" + what_to_eat.item.food_name.to_lower() + ")"

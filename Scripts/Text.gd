@@ -4,7 +4,7 @@ var basketColor = 0;
 var fruitColor = 0;
 var coins = 0;
 var fishes = 0;
-var new_high_score
+var new_high_score = false
 
 func _ready():
 	$Score.text = "Wynik: 0" 

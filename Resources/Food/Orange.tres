@@ -6,6 +6,6 @@
 script = ExtResource("1_e2bnm")
 id = 1
 res_name = "orange_res"
-food_name = "Orange"
+food_name = "Pomarancza"
 hungry_points = 12
 price = 20

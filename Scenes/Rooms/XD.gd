@@ -10,3 +10,7 @@ func _on_button_2_pressed():
 func _on_button_3_pressed():
 	VariableManager.fishes += 10
 	SignalManager.update_fish_counter.emit()
+
+func _input(event):
+	if(Input.is_key_pressed(KEY_0)) :
+		visible = !visible

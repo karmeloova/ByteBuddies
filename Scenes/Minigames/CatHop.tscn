@@ -65,8 +65,9 @@ texture = SubResource("CanvasTexture_3hfeu")
 position = Vector2(572, 12)
 shape = SubResource("RectangleShape2D_nxcys")
 
-[node name="Platforms" type="Node2D" parent="."]
+[node name="Platforms" type="Node2D" parent="." node_paths=PackedStringArray("coins_node")]
 script = ExtResource("2_w0emf")
+coins_node = NodePath("../Coins")
 
 [node name="Coins" type="Node2D" parent="."]
 script = ExtResource("6_x1t1n")

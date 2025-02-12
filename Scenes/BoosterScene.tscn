@@ -15,7 +15,6 @@
 [ext_resource type="Texture2D" uid="uid://6adv5bnfl4ff" path="res://Images/UI/Buttons/Back.png" id="7_kpp2h"]
 [ext_resource type="Texture2D" uid="uid://7jpkgkkcdt34" path="res://Images/UI/Buttons/Grafika_bez_nazwy 7.png" id="8_isqhh"]
 [ext_resource type="Script" path="res://Scenes/Description.gd" id="10_mx3yy"]
-[ext_resource type="FontFile" uid="uid://7a16745x5o1t" path="res://Fonts/consola.ttf" id="10_ymans"]
 [ext_resource type="Script" path="res://Scenes/PlansStoragePanel.gd" id="11_l566k"]
 [ext_resource type="Script" path="res://Scenes/PartsStoragePanel.gd" id="12_pv66d"]
 [ext_resource type="PackedScene" uid="uid://efafyn68uv1p" path="res://Scenes/Prefabs/CodeElementShopPrefab.tscn" id="12_xoax1"]
@@ -51,6 +50,7 @@
 [ext_resource type="Script" path="res://Scenes/BoosterInformation.gd" id="42_acb2g"]
 [ext_resource type="Texture2D" uid="uid://ci8h24p34ui0e" path="res://Images/UI/Buttons/Grafika_bez_nazwy 3.png" id="43_skidl"]
 [ext_resource type="FontFile" uid="uid://sjhlfawq34if" path="res://Fonts/Coolvetica Rg.otf" id="44_ewtis"]
+[ext_resource type="FontFile" uid="uid://vm5ihjsga40m" path="res://Fonts/FiraCode-VariableFont_wght.ttf" id="45_lphun"]
 
 [sub_resource type="CanvasTexture" id="CanvasTexture_x5l5x"]
 
@@ -1214,7 +1214,7 @@ offset_right = 958.0
 offset_bottom = 594.0
 theme_override_colors/font_readonly_color = Color(1, 1, 1, 1)
 theme_override_colors/line_number_color = Color(1, 1, 1, 1)
-theme_override_fonts/font = ExtResource("10_ymans")
+theme_override_fonts/font = ExtResource("45_lphun")
 theme_override_styles/normal = ExtResource("39_ynvke")
 theme_override_styles/focus = ExtResource("40_6yk7k")
 theme_override_styles/read_only = ExtResource("40_6yk7k")
