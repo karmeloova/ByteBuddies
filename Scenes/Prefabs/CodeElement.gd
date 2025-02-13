@@ -9,7 +9,7 @@ func _ready():
 
 func set_size_and_text(word : String) :
 	$CodeField.size.x = 10*word.length()+8
-	$CodeField.text = word
+	#$CodeField.text = word
 	expected_word = word
 
 func get_my_size() -> int :
