@@ -25,6 +25,7 @@ var tile = preload("res://Scenes/Prefabs/Tiles.tscn");
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	VariableManager.level_counter = 1
 	generateBoard();
 	SignalManager.nextLevel.connect(_on_next_level)
 
